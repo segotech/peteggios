@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  petegg
+
+  Created by ldp on 16/3/14.
+  Copyright © 2016年 ldp. All rights reserved.
+*/
+
+//tab
+"tabSquare" = "广场";
+"tabNear" = "附近";
+"tabEgg" = "不倒蛋";
+"tabRank" = "榜单";
+"tabPersonal" = "个人中心";
+
