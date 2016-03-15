@@ -21,6 +21,8 @@
     // Override point for customization after application launch.
     
     NSLog(@"come on baby");
+    NSLog(@"wo shi  chengzexuan");
+    
     
     
     //初始化分享
