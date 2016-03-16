@@ -21,6 +21,8 @@
     // Override point for customization after application launch.
     
     NSLog(@"ceishi");
+    NSLog(@"我在写一个");
+    
     
     //初始化分享
     [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
