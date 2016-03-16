@@ -20,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    NSLog(@"ceishi");
     
     //初始化分享
     [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
