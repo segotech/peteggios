@@ -22,7 +22,7 @@
     
     NSLog(@"ceishi");
     NSLog(@"我在写一个");
-    
+    NSLog(@"哈哈哈");
     
     //初始化分享
     [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
