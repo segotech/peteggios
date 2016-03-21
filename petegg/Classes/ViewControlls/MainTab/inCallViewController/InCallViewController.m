@@ -13,12 +13,17 @@
 @end
 
 @implementation InCallViewController
+@synthesize laserPen;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor =[UIColor whiteColor];
+    UIImage *thumbImage =[UIImage imageNamed:@"1.png"];
+    UIImage *thumbImage1 =[UIImage imageNamed:@"2.png"];
+    [laserPen setThumbImage:thumbImage1 forState:UIControlStateHighlighted];
+    [laserPen setThumbImage:thumbImage forState:UIControlStateNormal];
     
 }
 

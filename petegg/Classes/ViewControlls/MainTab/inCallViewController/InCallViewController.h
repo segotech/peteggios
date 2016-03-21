@@ -10,4 +10,6 @@
 
 @interface InCallViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UISlider *laserPen;
+
 @end
