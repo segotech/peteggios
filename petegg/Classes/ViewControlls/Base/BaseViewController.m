@@ -14,6 +14,9 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor grayColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    
+    
 }
 
 - (void)showBarButton:(EzNavigationBar)position title:(NSString *)name fontColor:(UIColor *)color{
@@ -77,5 +80,6 @@
 
 - (void)rightButtonTouch{
 }
+
 
 @end

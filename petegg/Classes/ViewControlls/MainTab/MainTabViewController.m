@@ -87,14 +87,32 @@
     if (!_navEggVC) {
         
         EggViewController* vc = [[EggViewController alloc] init];
+        UIButton * btnFb2 =[UIButton buttonWithType:UIButtonTypeCustom];
+        btnFb2.frame=CGRectMake(0, 0, 18, 18) ;
+        [btnFb2 setImage:[UIImage imageNamed:@"new_egg_seting.png"] forState:UIControlStateNormal];
+        [btnFb2 addTarget:self action:@selector(settings:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem * settings =[[UIBarButtonItem alloc]initWithCustomView:btnFb2];
+        vc.navigationItem.rightBarButtonItem = settings;
+
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabEgg", nil)
                                       image:[[UIImage imageNamed:@"tab_egg_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_egg_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        
         _navEggVC = [[UINavigationController alloc]initWithRootViewController:vc];
     }
     
     return _navEggVC;
+}
+
+
+// 设置
+- (void)settings:(UIButton *)sender
+{
+    NSLog(@"hha");
+    
+    
 }
 
 //榜单
@@ -126,5 +144,4 @@
     
     return _navPersonalVC;
 }
-
 @end

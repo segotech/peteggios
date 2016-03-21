@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InCallViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3l-XL-QyW">
+                    <rect key="frame" x="15" y="303" width="50" height="50"/>
+                    <state key="normal" image="feed_off.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1w6-4H-qXq">
+                    <rect key="frame" x="98" y="303" width="50" height="50"/>
+                    <state key="normal" image="trun_off.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G36-9l-A16">
+                    <rect key="frame" x="173" y="303" width="50" height="50"/>
+                    <state key="normal" image="juankfood_off.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKH-NF-sJ3">
+                    <rect key="frame" x="248" y="303" width="50" height="50"/>
+                    <state key="normal" image="snap_off.png"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="round.png" translatesAutoresizingMaskIntoConstraints="NO" id="bqj-2U-TN2">
+                    <rect key="frame" x="60" y="361" width="190" height="190"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="190" id="BFc-Wl-KrS"/>
+                        <constraint firstAttribute="width" constant="190" id="j01-Gr-FOx"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPJ-u0-XsX">
+                    <rect key="frame" x="123" y="374" width="65" height="22"/>
+                    <state key="normal" title="Button" image="before_off.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vur-PE-QyA">
+                    <rect key="frame" x="74" y="424" width="23" height="57"/>
+                    <state key="normal" title="Button" image="left_off.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EM1-1q-QiH">
+                    <rect key="frame" x="123" y="509" width="64" height="20"/>
+                    <state key="normal" title="Button" image="behand_off.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycV-il-bK5">
+                    <rect key="frame" x="210" y="424" width="29" height="57"/>
+                    <state key="normal" title="Button" image="right_off.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="bqj-2U-TN2" secondAttribute="trailing" constant="70" id="4S4-O3-0eq"/>
+                <constraint firstAttribute="bottom" secondItem="bqj-2U-TN2" secondAttribute="bottom" constant="17" id="4t3-V8-wJj"/>
+                <constraint firstItem="bqj-2U-TN2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="361" id="YUW-Dw-ETB"/>
+                <constraint firstItem="bqj-2U-TN2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="ZR8-ji-kMG"/>
+            </constraints>
+            <point key="canvasLocation" x="278" y="357"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="before_off.png" width="62" height="26"/>
+        <image name="behand_off.png" width="62" height="27"/>
+        <image name="feed_off.png" width="99" height="99"/>
+        <image name="juankfood_off.png" width="99" height="99"/>
+        <image name="left_off.png" width="27" height="62"/>
+        <image name="right_off.png" width="27" height="62"/>
+        <image name="round.png" width="382" height="382"/>
+        <image name="snap_off.png" width="99" height="99"/>
+        <image name="trun_off.png" width="99" height="99"/>
+    </resources>
+</document>

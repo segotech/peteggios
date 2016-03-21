@@ -10,4 +10,6 @@
 
 @interface EggViewController : BaseViewController
 
+@property (nonatomic,strong)AppDelegate *_appdelegate;
+
 @end

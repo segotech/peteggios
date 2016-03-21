@@ -85,5 +85,6 @@ static NSString * getServer3 =@"http://180.97.81.213:15101/";
     UIGraphicsEndImageContext();
     return scaledImage;   //返回的就是已经改变的图片
 }
+
 @end
 

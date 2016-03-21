@@ -25,7 +25,16 @@
 #undef	NAV_BAR_HEIGHT
 #define	NAV_BAR_HEIGHT	(44.0f)
 
+#define WHITE_FG [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_fg"]]
+// 适配代码部分
+#define M_Wide 375
+#define M_Higth 667
 
+// 缩放比例
+#define W_Wide_Zoom [UIScreen mainScreen].bounds.size.width/M_Wide
+#define W_Hight_Zoom [UIScreen mainScreen].bounds.size.height/M_Higth
+// 海之蓝
+#define AllBackColor [UIColor colorWithRed:73/255.0 green:195/255.0 blue:241/255.0 alpha:1]
 
 
 
