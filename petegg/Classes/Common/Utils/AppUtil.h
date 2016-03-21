@@ -25,6 +25,24 @@
 #undef	NAV_BAR_HEIGHT
 #define	NAV_BAR_HEIGHT	(44.0f)
 
+
+
+
+
 @interface AppUtil : NSObject
+// 服务器
++ (NSString *)getServerSego3;
++ (NSString*) getServer;
+// 字符判断
++ (BOOL) isBlankString:(NSString *)string;
+// 单个颜色grb
++ (CGColorRef) getColorFromRed:(int)red Green:(int)green Blue:(int)blue Alpha:(int)alpha;
+// 判断手机号
++ (BOOL) isValidateMobile:(NSString *)mobile;
+// lable 适应
++ (CGSize)lable:(UILabel *)sender scaleToSize:(CGSize)sizeL;
+// 图片处理
++ (UIImage*) OriginImage:(UIImage *)image scaleToSize:(CGSize)size;
+
 
 @end

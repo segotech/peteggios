@@ -10,4 +10,80 @@
 
 @implementation AppUtil
 
+
+//方法
+
+//硬件设备
+static NSString* server = @"http://192.168.43.1:7766/rest/operate";
+
+//赛果三期 外网服务器
+static NSString * getServer3 =@"http://180.97.81.213:15101/";
+
+
++ (NSString *)getServerSego3
+{
+    return  getServer3;
+}
+
++ (NSString*) getServer{
+    return server;
+}
+
++ (BOOL) isBlankString:(NSString *)string {
+    if (string == nil || string == NULL) {
+        return true;
+    }
+    if ([string isKindOfClass:[NSNull class]]) {
+        return true;
+    }
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        return true;
+    }
+    return false;
+}
+
++ (CGColorRef) getColorFromRed:(int)red Green:(int)green Blue:(int)blue Alpha:(int)alpha;
+{
+    CGFloat r = (CGFloat) red/255.0;
+    CGFloat g = (CGFloat) green/255.0;
+    CGFloat b = (CGFloat) blue/255.0;
+    CGFloat a = (CGFloat) alpha/255.0;
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGColorRef colorref1 = CGColorCreate(colorSpace,(CGFloat[]){r, g,b, a });
+    return colorref1;
+}
+
++ (BOOL) isValidateMobile:(NSString *)mobile
+{
+    //手机号以13， 15，18开头，八个 \d 数字字符
+    NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    //    NSLog(@"phoneTest is %@",phoneTest);
+    return [phoneTest evaluateWithObject:mobile];
+}
+
++ (CGSize)lable:(UILabel *)sender scaleToSize:(CGSize)sizeL
+{
+    
+    CGSize size = sizeL;
+    UIFont *font = [UIFont fontWithName:@"Arial" size:12];
+    NSDictionary * tdic = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName,nil];
+    size =[sender.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin |NSStringDrawingUsesFontLeading attributes:tdic context:nil].size;
+    
+    return size;
+    
+}
++ (UIImage*) OriginImage:(UIImage *)image scaleToSize:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);  //size 为CGSize类型，即你所需要的图片尺寸
+    
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    return scaledImage;   //返回的就是已经改变的图片
+}
 @end
+

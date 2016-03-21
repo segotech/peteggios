@@ -21,5 +21,7 @@
 
 #import "UIView+Sizes.h"
 #import "UIViewController+HUD.h"
+#import "MBProgressHUD.h"
+#import "AFHTTPRequestOperationManager.h"
 
 #endif /* PrefixHeader_pch */
