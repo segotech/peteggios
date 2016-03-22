@@ -8,6 +8,7 @@
 
 #import "EggViewController.h"
 #import "InCallViewController.h"
+#import "SettingViewController.h"
 
 @interface EggViewController ()
 {
@@ -30,12 +31,33 @@
     [super viewDidLoad];
     
   [self setNavTitle: NSLocalizedString(@"tabEgg", nil)];
+    UIButton * btnFb2 =[UIButton buttonWithType:UIButtonTypeCustom];
+    btnFb2.frame=CGRectMake(0, 0, 18, 18) ;
+    [btnFb2 setImage:[UIImage imageNamed:@"new_egg_seting.png"] forState:UIControlStateNormal];
+    [btnFb2 addTarget:self action:@selector(settings:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem * settings =[[UIBarButtonItem alloc]initWithCustomView:btnFb2];
+    self.navigationItem.rightBarButtonItem = settings;
+
     
   //[self equipmentState];
     [self buttonOpen];
     
     
 }
+
+// 设置
+- (void)settings:(UIButton *)sender
+{
+    NSLog(@"hha");
+    
+    SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+    [self.navigationController pushViewController:setVC animated:YES];
+    
+    
+}
+
+
 /**
  *  通知  内存 处理
  *
