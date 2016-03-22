@@ -16,4 +16,16 @@ typedef enum
 
 @interface BaseViewController : UIViewController
 
+- (void)showBarButton:(EzNavigationBar)position title:(NSString *)name fontColor:(UIColor *)color;
+
+- (void)showBarButton:(EzNavigationBar)position imageName:(NSString *)imageName;
+
+- (void)showBarButton:(EzNavigationBar)position button:(UIButton *)button;
+
+- (void)setTitleView:(UIView *)titleView;
+
+- (void)doLeftButtonTouch;
+
+- (void)doRightButtonTouch;
+
 @end
