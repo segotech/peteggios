@@ -17,7 +17,20 @@
     
     [self setLeftBackButton];
     
+    [self setupData];
+    
+    [self setupView];
 }
+
+- (void)setupData{
+    
+}
+
+- (void)setupView{
+    
+}
+
+
 
 /**
  *  设置返回按钮
@@ -104,5 +117,9 @@
     
 }
 
+- (void)dealloc{
+    
+    
+}
 
 @end
