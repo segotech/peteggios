@@ -15,3 +15,9 @@
 //egg
 "openButton" = "开启";
 
+// set
+"setTitle" = "设置";
+
+// wifi
+"wifiTitle" = "设置网络";
+
