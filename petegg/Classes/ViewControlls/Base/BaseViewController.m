@@ -44,6 +44,7 @@
     
         UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
         leftbutton.frame = CGRectMake(0, 0, 30, 30);
+        [leftbutton setTitleEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
         [leftbutton setImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
         
         [self showBarButton:NAV_LEFT button:leftbutton];
@@ -110,6 +111,7 @@
 }
 
 - (void)doRightButtonTouch{
+    
 }
 
 - (void)dealloc{

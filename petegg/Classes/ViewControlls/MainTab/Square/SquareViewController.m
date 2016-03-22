@@ -66,16 +66,13 @@
 //    self.navigationItem.rightBarButtonItem = _petShowBUtton;
     
     [self showBarButton:NAV_RIGHT imageName:@"btn_new_issue"];
-    
 }
 
 -(void)leftbuttonTouch{
     _leftButton.selected = YES;
     _rightButton.selected = NO;
-    
     [UIView animateWithDuration:0.3 animations:^{
         _lineLabel.frame = CGRectMake(60, 40, 18, 1);
-        
     }];
 }
 
@@ -99,7 +96,6 @@
     }
 }
 
-
 -(void)doRightButtonTouch{
     
     _downWhiteView = [[UIView alloc]initWithFrame:CGRectMake(0 , 667, 375, 120 )];
@@ -119,8 +115,7 @@
         _downView.frame = CGRectMake(0, 627, 375, 40);
         _downView.backgroundColor = [UIColor whiteColor];
         [[UIApplication sharedApplication].keyWindow addSubview:_downView];
-        
-    }];
+              }];
     UIButton * downBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 375, 40)];
     [downBtn setTitle:@"取消" forState:UIControlStateNormal];
     [downBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

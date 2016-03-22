@@ -37,6 +37,8 @@
 		344F02651C9FEBDE0076CE62 /* turn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02511C9FEBDE0076CE62 /* turn_on.png */; };
 		344F02711CA009A30076CE62 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02701CA009A30076CE62 /* 2.png */; };
 		344F02731CA009DD0076CE62 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02721CA009DD0076CE62 /* 1.png */; };
+		344F02781CA0DB280076CE62 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02761CA0DB280076CE62 /* SettingViewController.m */; };
+		344F02791CA0DB280076CE62 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344F02771CA0DB280076CE62 /* SettingViewController.xib */; };
 		57666F511C96619700A52DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F501C96619700A52DBA /* main.m */; };
 		57666F571C96619700A52DBA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F561C96619700A52DBA /* ViewController.m */; };
 		57666F5A1C96619700A52DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57666F581C96619700A52DBA /* Main.storyboard */; };
@@ -111,6 +113,9 @@
 		344F02511C9FEBDE0076CE62 /* turn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turn_on.png; sourceTree = "<group>"; };
 		344F02701CA009A30076CE62 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		344F02721CA009DD0076CE62 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		344F02751CA0DB280076CE62 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		344F02761CA0DB280076CE62 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		344F02771CA0DB280076CE62 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		57666F4C1C96619700A52DBA /* petegg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petegg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57666F501C96619700A52DBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -251,6 +256,23 @@
 			);
 			name = inCallViewController;
 			path = MainTab/inCallViewController;
+			sourceTree = "<group>";
+		};
+		344F02741CA0DB120076CE62 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				344F02751CA0DB280076CE62 /* SettingViewController.h */,
+				344F02761CA0DB280076CE62 /* SettingViewController.m */,
+				344F02771CA0DB280076CE62 /* SettingViewController.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		344F027A1CA0DE8A0076CE62 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bluetooth;
 			sourceTree = "<group>";
 		};
 		54F8349C273A2EB97EF3EBE0 /* Pods */ = {
@@ -423,6 +445,8 @@
 		57666F751C9686DE00A52DBA /* ViewControlls */ = {
 			isa = PBXGroup;
 			children = (
+				344F027A1CA0DE8A0076CE62 /* Bluetooth */,
+				344F02741CA0DB120076CE62 /* Setting */,
 				344F02381C9FE4910076CE62 /* inCallViewController */,
 				57666F931C96894500A52DBA /* Login */,
 				57666F801C96878800A52DBA /* MainTab */,
@@ -685,6 +709,7 @@
 				57666FC11C96979F00A52DBA /* tab_rank_normal@3x.png in Resources */,
 				344F025B1C9FEBDE0076CE62 /* juankfood_on.png in Resources */,
 				344F025C1C9FEBDE0076CE62 /* left_off.png in Resources */,
+				344F02791CA0DB280076CE62 /* SettingViewController.xib in Resources */,
 				344F02551C9FEBDE0076CE62 /* behand_off.png in Resources */,
 				57666FC01C96979F00A52DBA /* tab_personal_press@3x.png in Resources */,
 				57666FBB1C96979F00A52DBA /* tab_egg_normal@3x.png in Resources */,
@@ -790,6 +815,7 @@
 				57666F861C9687E300A52DBA /* BaseViewController.m in Sources */,
 				57666FAD1C9692B500A52DBA /* PersonalViewController.m in Sources */,
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
+				344F02781CA0DB280076CE62 /* SettingViewController.m in Sources */,
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
 				57666FDC1C96BE6F00A52DBA /* UIButton+Blocks.m in Sources */,
