@@ -39,6 +39,11 @@
 		344F02731CA009DD0076CE62 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02721CA009DD0076CE62 /* 1.png */; };
 		344F02781CA0DB280076CE62 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02761CA0DB280076CE62 /* SettingViewController.m */; };
 		344F02791CA0DB280076CE62 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344F02771CA0DB280076CE62 /* SettingViewController.xib */; };
+		344F027E1CA12A830076CE62 /* wifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F027C1CA12A830076CE62 /* wifiViewController.m */; };
+		344F027F1CA12A830076CE62 /* wifiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344F027D1CA12A830076CE62 /* wifiViewController.xib */; };
+		344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02841CA12E3C0076CE62 /* CALayer+XibConfiguration.m */; };
+		344F02881CA143AC0076CE62 /* kuang_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02861CA143AC0076CE62 /* kuang_off.png */; };
+		344F02891CA143AC0076CE62 /* kuang_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02871CA143AC0076CE62 /* kuang_on.png */; };
 		57666F511C96619700A52DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F501C96619700A52DBA /* main.m */; };
 		57666F571C96619700A52DBA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F561C96619700A52DBA /* ViewController.m */; };
 		57666F5A1C96619700A52DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57666F581C96619700A52DBA /* Main.storyboard */; };
@@ -75,10 +80,7 @@
 		57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666FE11C96BF4400A52DBA /* UIViewController+HUD.m */; };
 		57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666FE91C96C5AA00A52DBA /* AccountManager.m */; };
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
-		57F2C8341CA1231A005324DD /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8331CA1231A005324DD /* BaseTableViewController.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
-		7DF068971CA14B5B003BEE94 /* ReView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF068961CA14B5B003BEE94 /* ReView.m */; };
-		7DF0689A1CA14B77003BEE94 /* SpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF068991CA14B77003BEE94 /* SpView.m */; };
 		BDBD400ACF926B8107FB0148 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1A6847CCE0F91359A0FB97 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +120,13 @@
 		344F02751CA0DB280076CE62 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		344F02761CA0DB280076CE62 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		344F02771CA0DB280076CE62 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		344F027B1CA12A830076CE62 /* wifiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wifiViewController.h; sourceTree = "<group>"; };
+		344F027C1CA12A830076CE62 /* wifiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wifiViewController.m; sourceTree = "<group>"; };
+		344F027D1CA12A830076CE62 /* wifiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = wifiViewController.xib; sourceTree = "<group>"; };
+		344F02831CA12E3C0076CE62 /* CALayer+XibConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+XibConfiguration.h"; sourceTree = "<group>"; };
+		344F02841CA12E3C0076CE62 /* CALayer+XibConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XibConfiguration.m"; sourceTree = "<group>"; };
+		344F02861CA143AC0076CE62 /* kuang_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang_off.png; sourceTree = "<group>"; };
+		344F02871CA143AC0076CE62 /* kuang_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang_on.png; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		57666F4C1C96619700A52DBA /* petegg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petegg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57666F501C96619700A52DBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -180,13 +189,7 @@
 		57666FE81C96C5AA00A52DBA /* AccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
 		57666FE91C96C5AA00A52DBA /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
 		57F2C8301CA10FB8005324DD /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
-		57F2C8321CA1231A005324DD /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
-		57F2C8331CA1231A005324DD /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_new_issue@2x.png"; sourceTree = "<group>"; };
-		7DF068951CA14B5B003BEE94 /* ReView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReView.h; sourceTree = "<group>"; };
-		7DF068961CA14B5B003BEE94 /* ReView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReView.m; sourceTree = "<group>"; };
-		7DF068981CA14B77003BEE94 /* SpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpView.h; sourceTree = "<group>"; };
-		7DF068991CA14B77003BEE94 /* SpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpView.m; sourceTree = "<group>"; };
 		8B1A6847CCE0F91359A0FB97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -205,6 +208,8 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				344F02861CA143AC0076CE62 /* kuang_off.png */,
+				344F02871CA143AC0076CE62 /* kuang_on.png */,
 				344F02721CA009DD0076CE62 /* 1.png */,
 				344F02701CA009A30076CE62 /* 2.png */,
 				344F023E1C9FEBDE0076CE62 /*  laser_pen.png */,
@@ -270,6 +275,9 @@
 				344F02751CA0DB280076CE62 /* SettingViewController.h */,
 				344F02761CA0DB280076CE62 /* SettingViewController.m */,
 				344F02771CA0DB280076CE62 /* SettingViewController.xib */,
+				344F027B1CA12A830076CE62 /* wifiViewController.h */,
+				344F027C1CA12A830076CE62 /* wifiViewController.m */,
+				344F027D1CA12A830076CE62 /* wifiViewController.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -464,10 +472,10 @@
 		57666F761C9686DE00A52DBA /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				344F02831CA12E3C0076CE62 /* CALayer+XibConfiguration.h */,
+				344F02841CA12E3C0076CE62 /* CALayer+XibConfiguration.m */,
 				57666F841C9687E300A52DBA /* BaseViewController.h */,
 				57666F851C9687E300A52DBA /* BaseViewController.m */,
-				57F2C8321CA1231A005324DD /* BaseTableViewController.h */,
-				57F2C8331CA1231A005324DD /* BaseTableViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -572,10 +580,6 @@
 			children = (
 				57666F9F1C9689CC00A52DBA /* SquareViewController.h */,
 				57666FA01C9689CC00A52DBA /* SquareViewController.m */,
-				7DF068951CA14B5B003BEE94 /* ReView.h */,
-				7DF068961CA14B5B003BEE94 /* ReView.m */,
-				7DF068981CA14B77003BEE94 /* SpView.h */,
-				7DF068991CA14B77003BEE94 /* SpView.m */,
 			);
 			path = Square;
 			sourceTree = "<group>";
@@ -724,10 +728,12 @@
 				57666FC01C96979F00A52DBA /* tab_personal_press@3x.png in Resources */,
 				57666FBB1C96979F00A52DBA /* tab_egg_normal@3x.png in Resources */,
 				57666F5F1C96619700A52DBA /* LaunchScreen.storyboard in Resources */,
+				344F027F1CA12A830076CE62 /* wifiViewController.xib in Resources */,
 				57666FC41C96979F00A52DBA /* tab_square_press@3x.png in Resources */,
 				57666FC31C96979F00A52DBA /* tab_square_normal@3x.png in Resources */,
 				344F02591C9FEBDE0076CE62 /* feed_on.png in Resources */,
 				57666FBE1C96979F00A52DBA /* tab_near_press@3x.png in Resources */,
+				344F02881CA143AC0076CE62 /* kuang_off.png in Resources */,
 				344F02521C9FEBDE0076CE62 /*  laser_pen.png in Resources */,
 				344F025F1C9FEBDE0076CE62 /* right_off.png in Resources */,
 				344F022B1C9FD6200076CE62 /* noDevice.png in Resources */,
@@ -740,6 +746,7 @@
 				344F02351C9FE0410076CE62 /* egg_upload.png in Resources */,
 				57666FAF1C96947B00A52DBA /* Localizable.strings in Resources */,
 				344F02331C9FE0410076CE62 /* egg_offline.png in Resources */,
+				344F02891CA143AC0076CE62 /* kuang_on.png in Resources */,
 				344F02641C9FEBDE0076CE62 /* trun_off.png in Resources */,
 				344F025A1C9FEBDE0076CE62 /* juankfood_off.png in Resources */,
 				344F02341C9FE0410076CE62 /* egg_online.png in Resources */,
@@ -816,11 +823,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				57666FA21C9689CC00A52DBA /* NearViewController.m in Sources */,
-				7DF0689A1CA14B77003BEE94 /* SpView.m in Sources */,
 				344F023C1C9FE4C60076CE62 /* InCallViewController.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
 				57666FA41C9689CC00A52DBA /* SquareViewController.m in Sources */,
 				57666FA31C9689CC00A52DBA /* RankViewController.m in Sources */,
+				344F027E1CA12A830076CE62 /* wifiViewController.m in Sources */,
 				57666FA71C968B1F00A52DBA /* LoginViewController.m in Sources */,
 				57666FE21C96BF4400A52DBA /* UIView+Sizes.m in Sources */,
 				57666F861C9687E300A52DBA /* BaseViewController.m in Sources */,
@@ -830,12 +837,11 @@
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
 				57666FDC1C96BE6F00A52DBA /* UIButton+Blocks.m in Sources */,
-				7DF068971CA14B5B003BEE94 /* ReView.m in Sources */,
 				57666FDB1C96BE6F00A52DBA /* UIAlertView+Blocks.m in Sources */,
 				57666FC71C969B4800A52DBA /* AppUtil.m in Sources */,
 				57666FAA1C968DBB00A52DBA /* AppDelegate+Launcher.m in Sources */,
 				57666F511C96619700A52DBA /* main.m in Sources */,
-				57F2C8341CA1231A005324DD /* BaseTableViewController.m in Sources */,
+				344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */,
 				57666FA11C9689CC00A52DBA /* EggViewController.m in Sources */,
 				57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */,
 				57666FDA1C96BE6F00A52DBA /* UIActionSheet+Blocks.m in Sources */,

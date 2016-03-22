@@ -22,3 +22,8 @@
 "photoalbum" = "相册";
 "lvideo" = "小视频";
 "repository" = "资源库";
+// set
+"setTitle" = "设置";
+
+// wifi
+"wifiTitle" = "设置网络";
