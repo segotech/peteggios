@@ -33,7 +33,7 @@
     UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
     // topView.backgroundColor =[UIColor whiteColor];
     _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(50 , 10, 40 , 30 )];
-    [_leftButton setTitle:@"推荐" forState:UIControlStateNormal];
+    [_leftButton setTitle:NSLocalizedString(@"recommend", nil) forState:UIControlStateNormal];
     _leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_leftButton setTitleColor:GREEN_COLOR forState:UIControlStateSelected];
@@ -47,7 +47,7 @@
     [topView addSubview:_lineLabel];
     
     _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(110, 10, 40, 30)];
-    [_rightButton setTitle:@"萌宠" forState:UIControlStateNormal];
+    [_rightButton setTitle:NSLocalizedString(@"sprout", nil) forState:UIControlStateNormal];
     _rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_rightButton setTitleColor:GREEN_COLOR forState:UIControlStateSelected];
@@ -117,7 +117,7 @@
         [[UIApplication sharedApplication].keyWindow addSubview:_downView];
               }];
     UIButton * downBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 375, 40)];
-    [downBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [downBtn setTitle:NSLocalizedString(@"cancel", nil) forState:UIControlStateNormal];
     [downBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     downBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [_downView addSubview:downBtn];
@@ -125,7 +125,7 @@
     [downBtn addTarget:self action:@selector(yincang:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    NSArray * nameArray = @[@"拍照",@"相册",@"资源库",@"小视频"];
+    NSArray * nameArray = @[NSLocalizedString(@"photograph", nil),@"相册",@"资源库",@"小视频"];
     for (int i = 0 ; i < 4; i++ ) {
         UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0 + 40 * i , 375, 1)];
         lineLabel.backgroundColor = GRAY_COLOR;
