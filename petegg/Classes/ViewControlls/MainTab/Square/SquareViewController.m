@@ -54,16 +54,18 @@
     _rightButton.selected = NO;
     [topView addSubview:_rightButton];
     [_rightButton addTarget:self action:@selector(rightButtonTouch) forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setTitleView:topView];
+//    [self.navigationItem setTitleView:topView];
     
-    _issueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _issueBtn.frame = CGRectMake(0, 300, 18, 16);
-    [_issueBtn setImage:[UIImage imageNamed:@"new_issue.png"] forState:UIControlStateNormal];
-    [_issueBtn addTarget:self action:@selector(touchIssue) forControlEvents:UIControlEventTouchUpInside];
-    _petShowBUtton = [[UIBarButtonItem alloc]initWithCustomView:_issueBtn];
-    self.navigationItem.rightBarButtonItem = _petShowBUtton;
+    [self setTitleView:topView];
     
+//    _issueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    _issueBtn.frame = CGRectMake(0, 300, 18, 16);
+//    [_issueBtn setImage:[UIImage imageNamed:@"new_issue.png"] forState:UIControlStateNormal];
+//    [_issueBtn addTarget:self action:@selector(touchIssue) forControlEvents:UIControlEventTouchUpInside];
+//    _petShowBUtton = [[UIBarButtonItem alloc]initWithCustomView:_issueBtn];
+//    self.navigationItem.rightBarButtonItem = _petShowBUtton;
     
+    [self showBarButton:NAV_RIGHT imageName:@"btn_new_issue"];
     
 }
 
@@ -95,11 +97,11 @@
     }else{
         _coverBtn.hidden = YES;
     }
-    
 }
 
 
--(void)touchIssue{
+-(void)doRightButtonTouch{
+    
     _downWhiteView = [[UIView alloc]initWithFrame:CGRectMake(0 , 667, 375, 120 )];
     _downView = [[UIView alloc]initWithFrame:CGRectMake(0, 667, 375, 40)];
     _coverBtn = [[UIButton alloc]initWithFrame:self.view.bounds];

@@ -14,9 +14,27 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor grayColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
+    [self setLeftBackButton];
     
+}
+
+/**
+ *  设置返回按钮
+ */
+- (void)setLeftBackButton{
+    
+    NSArray *array = self.navigationController.viewControllers;
+    self.navigationItem.backBarButtonItem= nil;
+    
+    if (array.count > 1) {
+    
+        UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+        leftbutton.frame = CGRectMake(0, 0, 30, 30);
+        [leftbutton setImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+        
+        [self showBarButton:NAV_LEFT button:leftbutton];
+    }
 }
 
 - (void)showBarButton:(EzNavigationBar)position title:(NSString *)name fontColor:(UIColor *)color{
@@ -59,12 +77,12 @@
 
 - (void)showBarButton:(EzNavigationBar)position button:(UIButton *)button{
     if (NAV_LEFT == position) {
-        [button addTarget:self action:@selector(leftButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(doLeftButtonTouch) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
         self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     }else if (NAV_RIGHT == position){
-        [button addTarget:self action:@selector(rightButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(doRightButtonTouch) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = nil;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
@@ -74,11 +92,11 @@
     self.navigationItem.titleView = titleView;
 }
 
-- (void)leftButtonTouch{
+- (void)doLeftButtonTouch{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)rightButtonTouch{
+- (void)doRightButtonTouch{
 }
 
 
