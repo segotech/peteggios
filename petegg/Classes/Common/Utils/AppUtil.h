@@ -36,6 +36,8 @@
 // 海之蓝
 #define AllBackColor [UIColor colorWithRed:73/255.0 green:195/255.0 blue:241/255.0 alpha:1]
 
+//分页请求个数
+#define REQUEST_PAGE_SIZE 10
 
 
 @interface AppUtil : NSObject

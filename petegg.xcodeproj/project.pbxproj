@@ -73,6 +73,7 @@
 		57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666FE11C96BF4400A52DBA /* UIViewController+HUD.m */; };
 		57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666FE91C96C5AA00A52DBA /* AccountManager.m */; };
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
+		57F2C8341CA1231A005324DD /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8331CA1231A005324DD /* BaseTableViewController.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
 		BDBD400ACF926B8107FB0148 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1A6847CCE0F91359A0FB97 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -172,6 +173,8 @@
 		57666FE81C96C5AA00A52DBA /* AccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
 		57666FE91C96C5AA00A52DBA /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
 		57F2C8301CA10FB8005324DD /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
+		57F2C8321CA1231A005324DD /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		57F2C8331CA1231A005324DD /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_new_issue@2x.png"; sourceTree = "<group>"; };
 		8B1A6847CCE0F91359A0FB97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -433,6 +436,8 @@
 			children = (
 				57666F841C9687E300A52DBA /* BaseViewController.h */,
 				57666F851C9687E300A52DBA /* BaseViewController.m */,
+				57F2C8321CA1231A005324DD /* BaseTableViewController.h */,
+				57F2C8331CA1231A005324DD /* BaseTableViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -792,6 +797,7 @@
 				57666FC71C969B4800A52DBA /* AppUtil.m in Sources */,
 				57666FAA1C968DBB00A52DBA /* AppDelegate+Launcher.m in Sources */,
 				57666F511C96619700A52DBA /* main.m in Sources */,
+				57F2C8341CA1231A005324DD /* BaseTableViewController.m in Sources */,
 				57666FA11C9689CC00A52DBA /* EggViewController.m in Sources */,
 				57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */,
 				57666FDA1C96BE6F00A52DBA /* UIActionSheet+Blocks.m in Sources */,
