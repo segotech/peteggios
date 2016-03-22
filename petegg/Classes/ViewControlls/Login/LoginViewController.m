@@ -9,5 +9,9 @@
 #import "LoginViewController.h"
 
 @implementation LoginViewController
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
 
+}
 @end

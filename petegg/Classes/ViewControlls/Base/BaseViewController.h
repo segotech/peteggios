@@ -16,6 +16,10 @@ typedef enum
 
 @interface BaseViewController : UIViewController
 
+- (void)setupData;
+
+- (void)setupView;
+
 - (void)showBarButton:(EzNavigationBar)position title:(NSString *)name fontColor:(UIColor *)color;
 
 - (void)showBarButton:(EzNavigationBar)position imageName:(NSString *)imageName;

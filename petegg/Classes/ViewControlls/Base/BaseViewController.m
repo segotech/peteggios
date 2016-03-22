@@ -17,7 +17,20 @@
     
     [self setLeftBackButton];
     
+    [self setupData];
+    
+    [self setupView];
 }
+
+- (void)setupData{
+    
+}
+
+- (void)setupView{
+    
+}
+
+
 
 /**
  *  设置返回按钮
@@ -29,10 +42,13 @@
     
     if (array.count > 1) {
     
+
         UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
         leftbutton.frame = CGRectMake(0, 0, 30, 30);
-        [leftbutton setImageEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
+        [leftbutton setTitleEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
+
         [leftbutton setImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+        
         
         [self showBarButton:NAV_LEFT button:leftbutton];
     }
@@ -101,5 +117,9 @@
     
 }
 
+- (void)dealloc{
+    
+    
+}
 
 @end
