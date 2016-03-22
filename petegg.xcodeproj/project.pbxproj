@@ -44,6 +44,7 @@
 		344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02841CA12E3C0076CE62 /* CALayer+XibConfiguration.m */; };
 		344F02881CA143AC0076CE62 /* kuang_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02861CA143AC0076CE62 /* kuang_off.png */; };
 		344F02891CA143AC0076CE62 /* kuang_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02871CA143AC0076CE62 /* kuang_on.png */; };
+		344F028C1CA15E510076CE62 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F028B1CA15E510076CE62 /* BaseTableViewController.m */; };
 		57666F511C96619700A52DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F501C96619700A52DBA /* main.m */; };
 		57666F571C96619700A52DBA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F561C96619700A52DBA /* ViewController.m */; };
 		57666F5A1C96619700A52DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57666F581C96619700A52DBA /* Main.storyboard */; };
@@ -127,6 +128,8 @@
 		344F02841CA12E3C0076CE62 /* CALayer+XibConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XibConfiguration.m"; sourceTree = "<group>"; };
 		344F02861CA143AC0076CE62 /* kuang_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang_off.png; sourceTree = "<group>"; };
 		344F02871CA143AC0076CE62 /* kuang_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang_on.png; sourceTree = "<group>"; };
+		344F028A1CA15E510076CE62 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		344F028B1CA15E510076CE62 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		57666F4C1C96619700A52DBA /* petegg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petegg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57666F501C96619700A52DBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -472,6 +475,8 @@
 		57666F761C9686DE00A52DBA /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				344F028A1CA15E510076CE62 /* BaseTableViewController.h */,
+				344F028B1CA15E510076CE62 /* BaseTableViewController.m */,
 				344F02831CA12E3C0076CE62 /* CALayer+XibConfiguration.h */,
 				344F02841CA12E3C0076CE62 /* CALayer+XibConfiguration.m */,
 				57666F841C9687E300A52DBA /* BaseViewController.h */,
@@ -830,6 +835,7 @@
 				344F027E1CA12A830076CE62 /* wifiViewController.m in Sources */,
 				57666FA71C968B1F00A52DBA /* LoginViewController.m in Sources */,
 				57666FE21C96BF4400A52DBA /* UIView+Sizes.m in Sources */,
+				344F028C1CA15E510076CE62 /* BaseTableViewController.m in Sources */,
 				57666F861C9687E300A52DBA /* BaseViewController.m in Sources */,
 				57666FAD1C9692B500A52DBA /* PersonalViewController.m in Sources */,
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
