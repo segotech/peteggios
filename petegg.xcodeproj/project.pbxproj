@@ -77,6 +77,8 @@
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
 		57F2C8341CA1231A005324DD /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8331CA1231A005324DD /* BaseTableViewController.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
+		7DF068971CA14B5B003BEE94 /* ReView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF068961CA14B5B003BEE94 /* ReView.m */; };
+		7DF0689A1CA14B77003BEE94 /* SpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF068991CA14B77003BEE94 /* SpView.m */; };
 		BDBD400ACF926B8107FB0148 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1A6847CCE0F91359A0FB97 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -181,6 +183,10 @@
 		57F2C8321CA1231A005324DD /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		57F2C8331CA1231A005324DD /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_new_issue@2x.png"; sourceTree = "<group>"; };
+		7DF068951CA14B5B003BEE94 /* ReView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReView.h; sourceTree = "<group>"; };
+		7DF068961CA14B5B003BEE94 /* ReView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReView.m; sourceTree = "<group>"; };
+		7DF068981CA14B77003BEE94 /* SpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpView.h; sourceTree = "<group>"; };
+		7DF068991CA14B77003BEE94 /* SpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpView.m; sourceTree = "<group>"; };
 		8B1A6847CCE0F91359A0FB97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -566,6 +572,10 @@
 			children = (
 				57666F9F1C9689CC00A52DBA /* SquareViewController.h */,
 				57666FA01C9689CC00A52DBA /* SquareViewController.m */,
+				7DF068951CA14B5B003BEE94 /* ReView.h */,
+				7DF068961CA14B5B003BEE94 /* ReView.m */,
+				7DF068981CA14B77003BEE94 /* SpView.h */,
+				7DF068991CA14B77003BEE94 /* SpView.m */,
 			);
 			path = Square;
 			sourceTree = "<group>";
@@ -806,6 +816,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57666FA21C9689CC00A52DBA /* NearViewController.m in Sources */,
+				7DF0689A1CA14B77003BEE94 /* SpView.m in Sources */,
 				344F023C1C9FE4C60076CE62 /* InCallViewController.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
 				57666FA41C9689CC00A52DBA /* SquareViewController.m in Sources */,
@@ -819,6 +830,7 @@
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
 				57666FDC1C96BE6F00A52DBA /* UIButton+Blocks.m in Sources */,
+				7DF068971CA14B5B003BEE94 /* ReView.m in Sources */,
 				57666FDB1C96BE6F00A52DBA /* UIAlertView+Blocks.m in Sources */,
 				57666FC71C969B4800A52DBA /* AppUtil.m in Sources */,
 				57666FAA1C968DBB00A52DBA /* AppDelegate+Launcher.m in Sources */,
