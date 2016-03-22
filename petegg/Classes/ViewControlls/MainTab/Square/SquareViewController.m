@@ -58,7 +58,7 @@
     
     _issueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _issueBtn.frame = CGRectMake(0, 300, 18, 16);
-    [_issueBtn setImage:[UIImage imageNamed:@"new_发布.png"] forState:UIControlStateNormal];
+    [_issueBtn setImage:[UIImage imageNamed:@"new_issue.png"] forState:UIControlStateNormal];
     [_issueBtn addTarget:self action:@selector(touchIssue) forControlEvents:UIControlEventTouchUpInside];
     _petShowBUtton = [[UIBarButtonItem alloc]initWithCustomView:_issueBtn];
     self.navigationItem.rightBarButtonItem = _petShowBUtton;
