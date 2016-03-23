@@ -12,7 +12,7 @@
 #import "AttentionViewController.h"
 
 
-@interface SquareViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UIPageViewControllerDelegate>
+@interface SquareViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 @property(nonatomic,strong)UIButton * leftButton;
 @property(nonatomic,strong)UIButton * rightButton;
@@ -24,7 +24,10 @@
 @property(nonatomic,strong)UIView * downWhiteView;
 @property(nonatomic,strong)UIView * downView;
 
-@property(nonatomic,strong)UIScrollView *scrollView;
+@property UIPageViewController *pageViewController;
+@property (assign) id<UIScrollViewDelegate> origPageScrollViewDelegate;
+
+@property (nonatomic, strong)NSArray *viewControllers;
 
 @property(nonatomic,strong)RecommendViewController *recommendVC;
 @property(nonatomic,strong)AttentionViewController *attentionVC;
@@ -74,23 +77,22 @@
 
 - (void)setupView{
 
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height - 64 - 49 )];
-    [_scrollView setPagingEnabled:YES];
-    _scrollView.scrollEnabled = YES;
-    [_scrollView setContentSize:CGSizeMake(2 * _scrollView.width, _scrollView.height)];
-    [_scrollView setShowsHorizontalScrollIndicator:NO];
-    _scrollView.delegate = self;
-    [self.view addSubview:_scrollView];
-    
+    //初始化 pageViewController
     _recommendVC = [[RecommendViewController alloc]init];
     _attentionVC = [[AttentionViewController alloc]init];
+    _viewControllers = @[_recommendVC, _attentionVC];
     
-    _recommendVC.view.frame = CGRectMake(0,0,_scrollView.width,_scrollView.height);
-    _attentionVC.view.frame = CGRectMake(_scrollView.width,0,_scrollView.width,_scrollView.height);
+    _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+                                                          navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                                                        options:nil];
+    _pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64 - 49);
+    [self addChildViewController:_pageViewController];
+    [self.view addSubview:_pageViewController.view];
     
-    [_scrollView addSubview:_recommendVC.view];
-    [_scrollView addSubview:_attentionVC.view];
+    _pageViewController.dataSource = self;
+    _pageViewController.delegate = self;
     
+    [_pageViewController setViewControllers:@[_recommendVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
 }
 
 -(void)leftbuttonTouch{
@@ -100,9 +102,7 @@
         _lineLabel.frame = CGRectMake(60, 40, 18, 1);
            }];
     
-    CGRect frame = self.scrollView.frame;
-    frame.origin.x = 0 ;
-    [self.scrollView scrollRectToVisible:frame animated:YES];
+    [self.pageViewController setViewControllers:@[self.viewControllers[0]] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
 }
 
 -(void)rightButtonTouch{
@@ -114,10 +114,9 @@
         
     }];
     
-    CGRect frame = self.scrollView.frame;
-    frame.origin.x = frame.size.width;
-    [self.scrollView scrollRectToVisible:frame animated:YES];
+    [self.pageViewController setViewControllers:@[self.viewControllers[1]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
+
 -(void)yincang:(UIButton * )sender{
     [UIView animateWithDuration:0.3 animations:^{
         _downWhiteView.frame = CGRectMake(0, 667, 375, 180);
@@ -189,10 +188,44 @@
     
 }
 
-
-#pragma mark - UIScrollViewDelegate, Responding to Scrolling and Dragging
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+#pragma mark - UIPageViewControllerDataSource
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
+    NSUInteger index = [self.viewControllers indexOfObject: viewController];
+    if ((index == 0) || (index == NSNotFound)) {
+        return nil;
+    }
+    index--;
+    return self.viewControllers[index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    
+    NSUInteger index = [self.viewControllers indexOfObject: viewController];
+    if (index == NSNotFound) {
+        return nil;
+    }
+    index++;
+    if (index == [self.viewControllers count]) {
+        return nil;
+    }
+    return self.viewControllers[index];
+}
+
+#pragma mark - UIPageViewControllerDelegate
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
+    //    NSLog(@"willTransitionToViewController: %i", [self indexForViewController:[pendingViewControllers objectAtIndex:0]]);
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
+    
+    UIViewController *viewController = self.pageViewController.viewControllers[0];
+    
+    if ([self.recommendVC isEqual:viewController]) {
+        [self leftbuttonTouch];
+    }else if([self.attentionVC isEqual:viewController]) {
+        [self rightButtonTouch];
+    }
 }
 
 
