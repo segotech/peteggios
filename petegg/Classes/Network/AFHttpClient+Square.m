@@ -17,7 +17,7 @@
                           pageSize:(int)pageSize
                              ftype:(NSString*)ftype
                               type:(NSString*)type
-                          complete:(void(^)(id model))completeBlock
+                          complete:(void(^)(RecommendListModel *model))completeBlock
                            failure:(void(^)())failureBlock{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
@@ -33,7 +33,7 @@
    
     [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (completeBlock) {
-            completeBlock(responseObject);
+            completeBlock([[RecommendListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         if (failureBlock) {
