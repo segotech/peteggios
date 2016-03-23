@@ -7,8 +7,12 @@
 //
 
 #import "RecommendViewController.h"
-#import "AFHTTPRequestOperationManager.h"
+
+#import "AFHttpClient+Square.h"
+
 #import "RecommendTableViewCell.h"
+
+
 
 @interface RecommendViewController ()
 
@@ -36,37 +40,25 @@
 
 -(void)setupData{
     [super setupData];
-   
-    NSString * str = [AppUtil getServerSego3];
-    NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
-    [dic setValue:@"MI16010000006219" forKey:@"mid"];
-    [dic setValue:@"1" forKey:@"page"];
-    [dic setValue:@"10" forKey:@"size"];
-    [dic setValue:@"gz" forKey:@"ftype"];
-    [dic setValue:@"up" forKey:@"type"];
-    str = [str stringByAppendingString:@"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"];
-    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-    [manager POST:str parameters:dic success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        //NSLog(@"成功数据%@",responseObject);
-        responseObject = [responseObject objectForKey:@"jsondata"];
-        self.dataSource = [responseObject objectForKey:@"list"];
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-        NSLog(@"成功数据:%@",self.dataSource);
+}
+
+- (void)loadDataSourceWithPage:(int)page type:(NSString *)type{
+    
+    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:0 pageSize:REQUEST_PAGE_SIZE ftype:@"gz" type:type complete:^(id model) {
         
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+    } failure:^{
         
     }];
 }
+
 #pragma mark - TableView的代理函数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-      
     return self.dataSource.count;
 }
 
@@ -74,8 +66,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 360*W_Hight_Zoom;
-    
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString * cellId = @"recommeCellId";

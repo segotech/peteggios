@@ -46,13 +46,13 @@
     
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.pageIndex = 0;
-        [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
+        [weakSelf loadDataSourceWithPage:weakSelf.pageIndex type:@"up"];
     }];
     
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         if ((weakSelf.pageIndex +1)*REQUEST_PAGE_SIZE == weakSelf.dataSource.count) {
             weakSelf.pageIndex++;
-            [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
+            [weakSelf loadDataSourceWithPage:weakSelf.pageIndex type:@"down"];
         }else{
             [weakSelf.tableView.footer endRefreshing];
             weakSelf.tableView.footer.hidden = YES;
@@ -69,7 +69,7 @@
     [self.tableView.footer endRefreshing];
 }
 
-- (void)loadDataSourceWithPage:(int)page{
+- (void)loadDataSourceWithPage:(int)page type:(NSString*)type{
     
 }
 
