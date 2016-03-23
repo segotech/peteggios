@@ -31,5 +31,6 @@ typedef enum
 - (void)doLeftButtonTouch;
 
 - (void)doRightButtonTouch;
+-(void) setNavTitle:(NSString*) navTitle;
 
 @end
