@@ -8,8 +8,12 @@
 
 #import "SquareViewController.h"
 
+#import "RecommendViewController.h"
+#import "AttentionViewController.h"
 
-@interface SquareViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+
+@interface SquareViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UIPageViewControllerDelegate>
+
 @property(nonatomic,strong)UIButton * leftButton;
 @property(nonatomic,strong)UIButton * rightButton;
 @property(nonatomic,strong)UILabel * lineLabel;
@@ -20,10 +24,15 @@
 @property(nonatomic,strong)UIView * downWhiteView;
 @property(nonatomic,strong)UIView * downView;
 
+@property(nonatomic,strong)UIScrollView *scrollView;
+
+@property(nonatomic,strong)RecommendViewController *recommendVC;
+@property(nonatomic,strong)AttentionViewController *attentionVC;
 
 @end
 
 @implementation SquareViewController
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     //self.title = NSLocalizedString(@"tabSquare", nil);
@@ -61,8 +70,27 @@
     [self setTitleView:topView];
     [self showBarButton:NAV_RIGHT imageName:@"btn_new_issue"];
 
-   
+}
 
+- (void)setupView{
+
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height - 64 - 49 )];
+    [_scrollView setPagingEnabled:YES];
+    _scrollView.scrollEnabled = YES;
+    [_scrollView setContentSize:CGSizeMake(2 * _scrollView.width, _scrollView.height)];
+    [_scrollView setShowsHorizontalScrollIndicator:NO];
+    _scrollView.delegate = self;
+    [self.view addSubview:_scrollView];
+    
+    _recommendVC = [[RecommendViewController alloc]init];
+    _attentionVC = [[AttentionViewController alloc]init];
+    
+    _recommendVC.view.frame = CGRectMake(0,0,_scrollView.width,_scrollView.height);
+    _attentionVC.view.frame = CGRectMake(_scrollView.width,0,_scrollView.width,_scrollView.height);
+    
+    [_scrollView addSubview:_recommendVC.view];
+    [_scrollView addSubview:_attentionVC.view];
+    
 }
 
 -(void)leftbuttonTouch{
@@ -71,6 +99,10 @@
     [UIView animateWithDuration:0.3 animations:^{
         _lineLabel.frame = CGRectMake(60, 40, 18, 1);
            }];
+    
+    CGRect frame = self.scrollView.frame;
+    frame.origin.x = 0 ;
+    [self.scrollView scrollRectToVisible:frame animated:YES];
 }
 
 -(void)rightButtonTouch{
@@ -81,6 +113,10 @@
               
         
     }];
+    
+    CGRect frame = self.scrollView.frame;
+    frame.origin.x = frame.size.width;
+    [self.scrollView scrollRectToVisible:frame animated:YES];
 }
 -(void)yincang:(UIButton * )sender{
     [UIView animateWithDuration:0.3 animations:^{
@@ -154,8 +190,10 @@
 }
 
 
-
-
+#pragma mark - UIScrollViewDelegate, Responding to Scrolling and Dragging
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+}
 
 
 

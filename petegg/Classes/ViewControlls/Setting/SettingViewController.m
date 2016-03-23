@@ -40,6 +40,15 @@
 }
 
 
-
+// 导航栏
+-(void) setNavTitle:(NSString*) navTitle{
+    
+    UILabel *lbl_navtitle=[[UILabel alloc] initWithFrame:CGRectMake(40, 0, 240, 44)];
+    lbl_navtitle.textAlignment=NSTextAlignmentCenter;
+    [lbl_navtitle setTextColor:WHITE_FG];
+    lbl_navtitle.text=navTitle;
+    self.navigationItem.titleView=lbl_navtitle;
+    
+}
 
 @end
