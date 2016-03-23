@@ -15,14 +15,30 @@
 
 @implementation wifiViewController
 @synthesize hud;
+@synthesize passCodeTF;
+@synthesize wifiNameTF;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupData];
+    [self setupView];
+    
+    
+}
+// 数据
+- (void)setupData
+{
+    
+    
+    
+}
+// 页面
+- (void)setupView
+{
     self.view.backgroundColor =[UIColor whiteColor];
     self.sureBtn.backgroundColor =GREEN_COLOR;
     [self setNavTitle: NSLocalizedString(@"wifiTitle", nil)];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,13 +52,11 @@
    
     sender.selected = !sender.selected;
     if (sender.selected) {
-        NSLog(@"哈哈");
-        
-
-        
+     
+        passCodeTF.secureTextEntry = YES;
     }else{
         
-         NSLog(@"不哈");
+        passCodeTF.secureTextEntry = NO;
         
     }
     
@@ -66,6 +80,7 @@
     
     [super viewWillDisappear:animated];
     hud =nil;
+    passCodeTF =nil;
     
     
 }
