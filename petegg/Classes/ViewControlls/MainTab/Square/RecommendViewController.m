@@ -12,6 +12,7 @@
 
 @interface RecommendViewController ()
 
+@end
 @interface RecommendViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -36,7 +37,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-
+}
 -(void)setupData{
     [super setupData];
     NSString * str = [AppUtil getServerSego3];
@@ -65,8 +66,7 @@
     return 20;
 }
 
-/*
-#pragma mark - Navigation
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //   NSString * strUlr =[NSString stringWithFormat:@"%@",_midArr[indexPath.row][@"resources"]];
@@ -85,16 +85,11 @@
         cell = [[RecommendTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
-    
+
     
     
     return cell;
 }
-*/
+
 
 @end
