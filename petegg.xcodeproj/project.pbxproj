@@ -84,6 +84,7 @@
 		57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8361CA21E89005324DD /* RecommendViewController.m */; };
 		57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8391CA21EB1005324DD /* AttentionViewController.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
+		7DF068A31CA15D9C003BEE94 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF068A21CA15D9C003BEE94 /* BaseTableViewController.m */; };
 		BDBD400ACF926B8107FB0148 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1A6847CCE0F91359A0FB97 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -199,6 +200,8 @@
 		57F2C8381CA21EB1005324DD /* AttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionViewController.h; sourceTree = "<group>"; };
 		57F2C8391CA21EB1005324DD /* AttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
 		7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_new_issue@2x.png"; sourceTree = "<group>"; };
+		7DF068A11CA15D9C003BEE94 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		7DF068A21CA15D9C003BEE94 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		8B1A6847CCE0F91359A0FB97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -487,6 +490,8 @@
 				344F02841CA12E3C0076CE62 /* CALayer+XibConfiguration.m */,
 				57666F841C9687E300A52DBA /* BaseViewController.h */,
 				57666F851C9687E300A52DBA /* BaseViewController.m */,
+				7DF068A11CA15D9C003BEE94 /* BaseTableViewController.h */,
+				7DF068A21CA15D9C003BEE94 /* BaseTableViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -844,6 +849,7 @@
 				344F027E1CA12A830076CE62 /* wifiViewController.m in Sources */,
 				57666FA71C968B1F00A52DBA /* LoginViewController.m in Sources */,
 				57666FE21C96BF4400A52DBA /* UIView+Sizes.m in Sources */,
+				7DF068A31CA15D9C003BEE94 /* BaseTableViewController.m in Sources */,
 				344F028C1CA15E510076CE62 /* BaseTableViewController.m in Sources */,
 				57666F861C9687E300A52DBA /* BaseViewController.m in Sources */,
 				57666FAD1C9692B500A52DBA /* PersonalViewController.m in Sources */,

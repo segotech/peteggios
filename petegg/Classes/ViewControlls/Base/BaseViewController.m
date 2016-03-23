@@ -47,6 +47,7 @@
 
         UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
         leftbutton.frame = CGRectMake(0, 0, 30, 30);
+        [leftbutton setTitleEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
         [leftbutton setImageEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
 
         [leftbutton setImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
@@ -108,7 +109,18 @@
 }
 
 - (void)setTitleView:(UIView *)titleView{
+    
     self.navigationItem.titleView = titleView;
+}
+
+-(void) setNavTitle:(NSString*) navTitle{
+    
+    UILabel *lbl_navtitle=[[UILabel alloc] initWithFrame:CGRectMake(40, 0, 240, 44)];
+    lbl_navtitle.textAlignment=NSTextAlignmentCenter;
+    [lbl_navtitle setTextColor:WHITE_FG];
+    lbl_navtitle.text=navTitle;
+    self.navigationItem.titleView=lbl_navtitle;
+    
 }
 
 - (void)doLeftButtonTouch{
