@@ -13,11 +13,9 @@
 #import "RecommendTableViewCell.h"
 
 
+static NSString * cellId = @"recommeCellId";
 
 @interface RecommendViewController ()
-
-@end
-@interface RecommendViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -34,7 +32,8 @@
     [super setupView];
     
     self.tableView.frame = self.view.frame;
-
+    [self.tableView registerClass:[RecommendTableViewCell class] forCellReuseIdentifier:cellId];
+    
 }
 
 
@@ -45,6 +44,11 @@
 - (void)loadDataSourceWithPage:(int)page type:(NSString *)type{
     
     [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:0 pageSize:REQUEST_PAGE_SIZE ftype:@"gz" type:type complete:^(id model) {
+        
+        
+        [self.tableView reloadData];
+        
+        [self handleEndRefresh];
         
     } failure:^{
         
@@ -59,7 +63,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataSource.count;
+    return 10;
 }
 
 
@@ -70,13 +74,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * cellId = @"recommeCellId";
     RecommendTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    if (!cell) {
-        cell = [[RecommendTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-    }
-    cell.nameLabel.text = self.dataSource[indexPath.row][@"nickname"];
-    cell.nameLabel.backgroundColor = [UIColor blackColor];
+    
+//    cell.nameLabel.text = self.dataSource[indexPath.row][@"nickname"];
+//    cell.nameLabel.backgroundColor = [UIColor blackColor];
     
     
     

@@ -10,7 +10,7 @@
 
 #import "MJRefresh.h"
 
-@interface BaseTableViewController ()
+@interface BaseTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -29,6 +29,8 @@
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:self.bGroupView ? UITableViewStyleGrouped : UITableViewStylePlain];
     _tableView.tableFooterView = [[UIView alloc]init];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
     
     [self.view addSubview:_tableView];
     
@@ -73,5 +75,13 @@
     
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 0;
+}
 
 @end
