@@ -69,11 +69,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //   NSString * strUlr =[NSString stringWithFormat:@"%@",_midArr[indexPath.row][@"resources"]];
-    //    NSArray * imageUrl =[[NSArray alloc]init];
-    //    imageUrl =[strUlr componentsSeparatedByString:@","];
-    
-    //  UIImage *cachedImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imageUrl[0]];
+  
     return 360*W_Hight_Zoom;
     
 }
