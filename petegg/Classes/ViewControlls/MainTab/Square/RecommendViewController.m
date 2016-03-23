@@ -30,16 +30,13 @@
     [super setupView];
     
     self.tableView.frame = self.view.frame;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 -(void)setupData{
     [super setupData];
+   
     NSString * str = [AppUtil getServerSego3];
     NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
     [dic setValue:@"MI16010000006219" forKey:@"mid"];
@@ -51,7 +48,13 @@
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     [manager POST:str parameters:dic success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        NSLog(@"成功数据%@",responseObject);
+        //NSLog(@"成功数据%@",responseObject);
+        responseObject = [responseObject objectForKey:@"jsondata"];
+        self.dataSource = [responseObject objectForKey:@"list"];
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        NSLog(@"成功数据:%@",self.dataSource);
+        
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         
     }];
@@ -63,13 +66,13 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+      
+    return self.dataSource.count;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
     return 360*W_Hight_Zoom;
     
 }
@@ -80,12 +83,14 @@
     if (!cell) {
         cell = [[RecommendTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-
-
+    cell.nameLabel.text = self.dataSource[indexPath.row][@"nickname"];
+    cell.nameLabel.backgroundColor = [UIColor blackColor];
+    
     
     
     return cell;
 }
+
 
 
 @end
