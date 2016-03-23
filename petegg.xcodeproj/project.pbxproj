@@ -76,6 +76,8 @@
 		57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666FE91C96C5AA00A52DBA /* AccountManager.m */; };
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
 		57F2C8341CA1231A005324DD /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8331CA1231A005324DD /* BaseTableViewController.m */; };
+		57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8361CA21E89005324DD /* RecommendViewController.m */; };
+		57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8391CA21EB1005324DD /* AttentionViewController.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
 		7DF068971CA14B5B003BEE94 /* ReView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF068961CA14B5B003BEE94 /* ReView.m */; };
 		7DF0689A1CA14B77003BEE94 /* SpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF068991CA14B77003BEE94 /* SpView.m */; };
@@ -182,6 +184,10 @@
 		57F2C8301CA10FB8005324DD /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
 		57F2C8321CA1231A005324DD /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		57F2C8331CA1231A005324DD /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		57F2C8351CA21E89005324DD /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
+		57F2C8361CA21E89005324DD /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
+		57F2C8381CA21EB1005324DD /* AttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionViewController.h; sourceTree = "<group>"; };
+		57F2C8391CA21EB1005324DD /* AttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
 		7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_new_issue@2x.png"; sourceTree = "<group>"; };
 		7DF068951CA14B5B003BEE94 /* ReView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReView.h; sourceTree = "<group>"; };
 		7DF068961CA14B5B003BEE94 /* ReView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReView.m; sourceTree = "<group>"; };
@@ -572,6 +578,10 @@
 			children = (
 				57666F9F1C9689CC00A52DBA /* SquareViewController.h */,
 				57666FA01C9689CC00A52DBA /* SquareViewController.m */,
+				57F2C8351CA21E89005324DD /* RecommendViewController.h */,
+				57F2C8361CA21E89005324DD /* RecommendViewController.m */,
+				57F2C8381CA21EB1005324DD /* AttentionViewController.h */,
+				57F2C8391CA21EB1005324DD /* AttentionViewController.m */,
 				7DF068951CA14B5B003BEE94 /* ReView.h */,
 				7DF068961CA14B5B003BEE94 /* ReView.m */,
 				7DF068981CA14B77003BEE94 /* SpView.h */,
@@ -840,7 +850,9 @@
 				57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */,
 				57666FDA1C96BE6F00A52DBA /* UIActionSheet+Blocks.m in Sources */,
 				57666FDD1C96BE6F00A52DBA /* UIView+TapBlocks.m in Sources */,
+				57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */,
 				57666F7F1C9686DE00A52DBA /* AppDelegate.m in Sources */,
+				57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
