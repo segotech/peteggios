@@ -44,6 +44,9 @@
 		344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02841CA12E3C0076CE62 /* CALayer+XibConfiguration.m */; };
 		344F02881CA143AC0076CE62 /* kuang_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02861CA143AC0076CE62 /* kuang_off.png */; };
 		344F02891CA143AC0076CE62 /* kuang_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02871CA143AC0076CE62 /* kuang_on.png */; };
+		344F028E1CA23A1B0076CE62 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344F028D1CA23A1B0076CE62 /* CFNetwork.framework */; };
+		344F02901CA23AC30076CE62 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344F028F1CA23AC30076CE62 /* SystemConfiguration.framework */; };
+		344F02931CA23F790076CE62 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02921CA23F790076CE62 /* Reachability.m */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		57666F511C96619700A52DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F501C96619700A52DBA /* main.m */; };
 		57666F571C96619700A52DBA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F561C96619700A52DBA /* ViewController.m */; };
@@ -130,6 +133,10 @@
 		344F02841CA12E3C0076CE62 /* CALayer+XibConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XibConfiguration.m"; sourceTree = "<group>"; };
 		344F02861CA143AC0076CE62 /* kuang_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang_off.png; sourceTree = "<group>"; };
 		344F02871CA143AC0076CE62 /* kuang_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang_on.png; sourceTree = "<group>"; };
+		344F028D1CA23A1B0076CE62 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		344F028F1CA23AC30076CE62 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		344F02911CA23F790076CE62 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		344F02921CA23F790076CE62 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -207,6 +214,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				344F02901CA23AC30076CE62 /* SystemConfiguration.framework in Frameworks */,
+				344F028E1CA23A1B0076CE62 /* CFNetwork.framework in Frameworks */,
 				BDBD400ACF926B8107FB0148 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +424,8 @@
 		57666F6D1C9686DE00A52DBA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				344F02911CA23F790076CE62 /* Reachability.h */,
+				344F02921CA23F790076CE62 /* Reachability.m */,
 				57666FC51C969B4800A52DBA /* AppUtil.h */,
 				57666FC61C969B4800A52DBA /* AppUtil.m */,
 			);
@@ -664,6 +675,8 @@
 		E5E56A0B5C5FC8A2D504C1A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				344F028F1CA23AC30076CE62 /* SystemConfiguration.framework */,
+				344F028D1CA23A1B0076CE62 /* CFNetwork.framework */,
 				8B1A6847CCE0F91359A0FB97 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -703,6 +716,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 4UKEB375ND;
 					};
 				};
 			};
@@ -860,6 +874,7 @@
 				57666FA11C9689CC00A52DBA /* EggViewController.m in Sources */,
 				57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */,
 				57666FDA1C96BE6F00A52DBA /* UIActionSheet+Blocks.m in Sources */,
+				344F02931CA23F790076CE62 /* Reachability.m in Sources */,
 				57666FDD1C96BE6F00A52DBA /* UIView+TapBlocks.m in Sources */,
 				57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */,
 				57666F7F1C9686DE00A52DBA /* AppDelegate.m in Sources */,
