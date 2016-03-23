@@ -1,3 +1,5 @@
+// !$*UTF8*$!
+{
 	archiveVersion = 1;
 	classes = {
 	};
@@ -79,7 +81,6 @@
 		57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666FE11C96BF4400A52DBA /* UIViewController+HUD.m */; };
 		57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666FE91C96C5AA00A52DBA /* AccountManager.m */; };
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
-		57F2C8341CA1231A005324DD /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8331CA1231A005324DD /* BaseTableViewController.m */; };
 		57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8361CA21E89005324DD /* RecommendViewController.m */; };
 		57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8391CA21EB1005324DD /* AttentionViewController.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
@@ -193,8 +194,6 @@
 		57666FE81C96C5AA00A52DBA /* AccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
 		57666FE91C96C5AA00A52DBA /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
 		57F2C8301CA10FB8005324DD /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
-		57F2C8321CA1231A005324DD /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
-		57F2C8331CA1231A005324DD /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		57F2C8351CA21E89005324DD /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
 		57F2C8361CA21E89005324DD /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
 		57F2C8381CA21EB1005324DD /* AttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionViewController.h; sourceTree = "<group>"; };
@@ -596,10 +595,6 @@
 				57F2C8361CA21E89005324DD /* RecommendViewController.m */,
 				57F2C8381CA21EB1005324DD /* AttentionViewController.h */,
 				57F2C8391CA21EB1005324DD /* AttentionViewController.m */,
-				7DF068951CA14B5B003BEE94 /* ReView.h */,
-				7DF068961CA14B5B003BEE94 /* ReView.m */,
-				7DF068981CA14B77003BEE94 /* SpView.h */,
-				7DF068991CA14B77003BEE94 /* SpView.m */,
 			);
 			path = Square;
 			sourceTree = "<group>";
@@ -708,7 +703,6 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4UKEB375ND;
 					};
 				};
 			};

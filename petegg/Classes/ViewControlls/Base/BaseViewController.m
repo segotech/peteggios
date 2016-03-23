@@ -15,6 +15,8 @@
 
     self.view.backgroundColor = [UIColor grayColor];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self setLeftBackButton];
     
     [self setupData];

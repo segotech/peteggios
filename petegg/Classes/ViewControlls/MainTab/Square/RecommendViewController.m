@@ -21,6 +21,12 @@
     self.view.backgroundColor = [UIColor blackColor];
 }
 
+- (void)setupView{
+    [super setupView];
+    
+    self.tableView.frame = self.view.frame;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
