@@ -78,10 +78,7 @@
 - (void)setupView{
 
     //初始化 pageViewController
-    _recommendVC = [[RecommendViewController alloc]init];
-    _attentionVC = [[AttentionViewController alloc]init];
-    _viewControllers = @[_recommendVC, _attentionVC];
-    
+   
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                         options:nil];
@@ -92,6 +89,11 @@
     _pageViewController.dataSource = self;
     _pageViewController.delegate = self;
     
+    _recommendVC = [[RecommendViewController alloc]init];
+    _attentionVC = [[AttentionViewController alloc]init];
+    
+    _viewControllers = @[_recommendVC, _attentionVC];
+     
     [_pageViewController setViewControllers:@[_recommendVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
 }
 

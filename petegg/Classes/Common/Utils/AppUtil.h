@@ -24,6 +24,8 @@
 
 #undef	NAV_BAR_HEIGHT
 #define	NAV_BAR_HEIGHT	(44.0f)
+#define	STATUS_BAR_HEIGHT	(20.0f)
+#define	TAB_BAR_HEIGHT	(49.0f)
 
 #define WHITE_FG [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_fg"]]
 // 适配代码部分
