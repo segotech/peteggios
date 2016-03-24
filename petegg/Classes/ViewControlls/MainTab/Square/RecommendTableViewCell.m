@@ -24,12 +24,12 @@
         
         
         // 头像
-        self.iconImageV =[[UIImageView alloc]initWithFrame:CGRectMake(8*W_Wide_Zoom, 2*W_Hight_Zoom, 50*W_Wide_Zoom, 50*W_Hight_Zoom)];
+        self.iconImageV =[[UIImageView alloc]initWithFrame:CGRectMake(8*W_Wide_Zoom, 22*W_Hight_Zoom, 50*W_Wide_Zoom, 50*W_Hight_Zoom)];
         [self addSubview:self.iconImageV];
         
         // 名字
         
-        self.nameLabel =[[UILabel alloc]initWithFrame:CGRectMake(60*W_Wide_Zoom, 10*W_Hight_Zoom, 100*W_Wide_Zoom, 20)];
+        self.nameLabel =[[UILabel alloc]initWithFrame:CGRectMake(60*W_Wide_Zoom, 30*W_Hight_Zoom, 100*W_Wide_Zoom, 20)];
         self.nameLabel.font =[UIFont systemFontOfSize:13];
         [self addSubview:self.nameLabel];
         
@@ -40,7 +40,7 @@
         [self addSubview:self.introduceLable];
         
         
-        self.photoView =[[UIImageView alloc]initWithFrame:CGRectMake(8*W_Wide_Zoom, 75*W_Hight_Zoom, 356*W_Wide_Zoom, 250*W_Hight_Zoom)];
+        self.photoView =[[UIImageView alloc]initWithFrame:CGRectMake(0*W_Wide_Zoom, 75*W_Hight_Zoom, 375*W_Wide_Zoom, 250*W_Hight_Zoom)];
         self.photoView.backgroundColor =[UIColor clearColor];
         [self addSubview:self.photoView];
         
@@ -86,6 +86,10 @@
         [self.centerImage setImage:[UIImage imageNamed:@"MV.png"]];
        // [self addSubview:self.centerImage];
     
+        self.topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 373 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+        self.topView.backgroundColor = [UIColor grayColor];
+        [self addSubview:self.topView];
+        
     }
 
     return self;

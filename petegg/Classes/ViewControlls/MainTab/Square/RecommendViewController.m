@@ -43,7 +43,7 @@ static NSString * cellId = @"recommeCellId";
 
 - (void)loadDataSourceWithPage:(int)page type:(NSString *)type{
     [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:0 pageSize:REQUEST_PAGE_SIZE ftype:@"gz" type:type complete:^(RecommendListModel *model) {
-        if ([type isEqualToString:@"up"]) {
+        if ([type isEqualToString:@"down"]) {
             [self.dataSource addObjectsFromArray:model.list];
         }else{
             [self.dataSource removeAllObjects];
@@ -86,7 +86,7 @@ static NSString * cellId = @"recommeCellId";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 360*W_Hight_Zoom;
+    return 380*W_Hight_Zoom;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -110,6 +110,7 @@ static NSString * cellId = @"recommeCellId";
     cell.leftnumber.text = model.comments;
     cell.rihttnumber.text = model.praises;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
