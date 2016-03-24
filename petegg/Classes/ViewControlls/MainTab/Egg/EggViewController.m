@@ -305,9 +305,7 @@
         // 测试
         
         _incallVC =[[InCallViewController alloc]initWithNibName:@"InCallViewController" bundle:nil];
-//        [self.navigationController pushViewController:_incallVC animated:YES];
-        
-        [self presentViewController:_incallVC animated:YES completion:nil];
+      [self presentViewController:_incallVC animated:YES completion:nil];
         
         
         
