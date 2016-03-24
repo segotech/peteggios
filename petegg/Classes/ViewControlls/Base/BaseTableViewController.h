@@ -16,6 +16,8 @@
 
 //资源数组
 @property (nonatomic, strong) NSMutableArray* dataSource;
+//一个不够用加了一个
+@property (nonatomic,strong)NSMutableArray * dataSourceImage;
 
 @property (nonatomic, assign) int pageIndex;
 
