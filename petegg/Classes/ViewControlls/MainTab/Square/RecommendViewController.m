@@ -42,10 +42,16 @@ static NSString * cellId = @"recommeCellId";
 }
 
 - (void)loadDataSourceWithPage:(int)page type:(NSString *)type{
-    
     [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:0 pageSize:REQUEST_PAGE_SIZE ftype:@"gz" type:type complete:^(RecommendListModel *model) {
+        if ([type isEqualToString:@"up"]) {
+            [self.dataSource addObject:model.list];
+        }else{
+            [self.dataSource removeAllObjects];
+            [self.dataSource addObject:model.list];
+        }
         
         [self.tableView reloadData];
+      
         
         [self handleEndRefresh];
         
@@ -77,7 +83,7 @@ static NSString * cellId = @"recommeCellId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.dataSource.count;
 }
 
 
@@ -88,10 +94,13 @@ static NSString * cellId = @"recommeCellId";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RecommendTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
-//    cell.nameLabel.text = self.dataSource[indexPath.row][@"nickname"];
-//    cell.nameLabel.backgroundColor = [UIColor blackColor];
+    RecommendTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+
+    RecommendModel * model = self.dataSource[indexPath.row];
+    
+  //  cell.nameLabel.text = model.nickname;
+  //cell.nameLabel.backgroundColor = [UIColor blackColor];
     
     
     
