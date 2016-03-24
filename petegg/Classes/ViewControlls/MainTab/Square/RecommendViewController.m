@@ -44,10 +44,10 @@ static NSString * cellId = @"recommeCellId";
 - (void)loadDataSourceWithPage:(int)page type:(NSString *)type{
     [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:0 pageSize:REQUEST_PAGE_SIZE ftype:@"gz" type:type complete:^(RecommendListModel *model) {
         if ([type isEqualToString:@"up"]) {
-            [self.dataSource addObject:model.list];
+            [self.dataSource addObjectsFromArray:model.list];
         }else{
             [self.dataSource removeAllObjects];
-            [self.dataSource addObject:model.list];
+            [self.dataSource addObjectsFromArray:model.list];
         }
         
         [self.tableView reloadData];
@@ -99,7 +99,7 @@ static NSString * cellId = @"recommeCellId";
 
     RecommendModel * model = self.dataSource[indexPath.row];
     
-  //  cell.nameLabel.text = model.nickname;
+    cell.nameLabel.text = model.nickname;
   //cell.nameLabel.backgroundColor = [UIColor blackColor];
     
     
