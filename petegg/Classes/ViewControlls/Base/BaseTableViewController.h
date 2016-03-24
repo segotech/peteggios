@@ -26,5 +26,6 @@
 
 //更新数据从开始
 - (void)updateData;
-
+//裁剪图片
+- (UIImage *)cutImage:(UIImage*)image;
 @end

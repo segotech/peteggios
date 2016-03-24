@@ -11,8 +11,8 @@
 #import "AFHttpClient+Square.h"
 
 #import "RecommendTableViewCell.h"
-
-
+#import "UIImageView+WebCache.h"
+#import "sys/utsname.h"
 static NSString * cellId = @"recommeCellId";
 
 @interface RecommendViewController ()
@@ -49,10 +49,7 @@ static NSString * cellId = @"recommeCellId";
             [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:model.list];
         }
-        
         [self.tableView reloadData];
-      
-        
         [self handleEndRefresh];
         
     } failure:^{
@@ -94,16 +91,25 @@ static NSString * cellId = @"recommeCellId";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     RecommendTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-
     RecommendModel * model = self.dataSource[indexPath.row];
-    
     cell.nameLabel.text = model.nickname;
-  //cell.nameLabel.backgroundColor = [UIColor blackColor];
+    [cell.iconImageV.layer setMasksToBounds:YES];
+    NSString * imageStr = [NSString stringWithFormat:@"%@",model.headportrait];
+    NSURL * imageUrl = [NSURL URLWithString:imageStr];
+    [cell.iconImageV sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
+    cell.iconImageV.layer.cornerRadius = cell.iconImageV.bounds.size.width/2;
     
+    [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        cell.photoView.image =[self cutImage:image];
+        
+    }];
+    cell.introduceLable.text = model.content;
     
-    
+    cell.timeLable.text = model.publishtime;
+    cell.leftnumber.text = model.comments;
+    cell.rihttnumber.text = model.praises;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
