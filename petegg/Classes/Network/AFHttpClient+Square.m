@@ -10,8 +10,6 @@
 
 @implementation AFHttpClient (Square)
 
-
-
 -(void)queryFollowSproutpetWithMid:(NSString *)mid
                          pageIndex:(int)pageIndex
                           pageSize:(int)pageSize

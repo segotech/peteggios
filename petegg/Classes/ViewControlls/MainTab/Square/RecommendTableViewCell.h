@@ -26,4 +26,6 @@
 @property (nonatomic, strong)  UIImageView *aixin;
 @property (nonatomic,strong)UILabel * lineLable;
 @property (nonatomic,strong)UIImageView * centerImage; //视频图标
+
+@property (nonatomic,strong)UIView * topView;
 @end
