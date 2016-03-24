@@ -58,6 +58,15 @@ static NSString * const LocalNameKey =  @"myPeripheral";
     //characteristics字段描述
     CBUUID *CBUUIDCharacteristicUserDescriptionStringUUID = [CBUUID UUIDWithString:CBUUIDCharacteristicUserDescriptionString];
     
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"WIFI", @"10403",
+                            @"WIFIPassWord", @"22407",
+                            @"Mid", @"1111",nil];
+    
+    
+    NSString *str = [self dictionaryToJson:params];
+    NSData *data =[str dataUsingEncoding:NSUTF8StringEncoding];
+    
     /*
      可以通知的Characteristic
      properties：CBCharacteristicPropertyNotify 
@@ -81,7 +90,7 @@ static NSString * const LocalNameKey =  @"myPeripheral";
      properties：CBCharacteristicPropertyRead
      permissions CBAttributePermissionsReadable
      */
-    CBMutableCharacteristic *readCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:readCharacteristicUUID] properties:CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsReadable];
+    CBMutableCharacteristic *readCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:readCharacteristicUUID] properties:CBCharacteristicPropertyRead value:data permissions:CBAttributePermissionsReadable];
 
     
     //service1初始化并加入两个characteristics
@@ -213,6 +222,19 @@ static NSString * const LocalNameKey =  @"myPeripheral";
 //
 - (void)peripheralManagerIsReadyToUpdateSubscribers:(CBPeripheralManager *)peripheral{
     NSLog(@"peripheralManagerIsReadyToUpdateSubscribers");
+    
+}
+
+// 转换
+- (NSString*)dictionaryToJson:(NSDictionary *)dic
+
+{
+    
+    NSError *parseError = nil;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
+    
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
 }
 

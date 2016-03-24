@@ -23,6 +23,8 @@
 
 - (void)setupData{
     _dataSource = [NSMutableArray array];
+    _dataSourceImage =[NSMutableArray array];
+    
 }
 
 - (void)setupView{
