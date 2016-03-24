@@ -7,13 +7,15 @@
 //
 
 #import "RecommendViewController.h"
-#import "AFHTTPRequestOperationManager.h"
+
+#import "AFHttpClient+Square.h"
+
 #import "RecommendTableViewCell.h"
 
-@interface RecommendViewController ()
 
-@end
-@interface RecommendViewController ()<UITableViewDelegate,UITableViewDataSource>
+static NSString * cellId = @"recommeCellId";
+
+@interface RecommendViewController ()
 
 @end
 
@@ -30,62 +32,81 @@
     [super setupView];
     
     self.tableView.frame = self.view.frame;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    [self.tableView registerClass:[RecommendTableViewCell class] forCellReuseIdentifier:cellId];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 -(void)setupData{
     [super setupData];
-    NSString * str = [AppUtil getServerSego3];
-    NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
-    [dic setValue:@"MI16010000006219" forKey:@"mid"];
-    [dic setValue:@"1" forKey:@"page"];
-    [dic setValue:@"10" forKey:@"size"];
-    [dic setValue:@"gz" forKey:@"ftype"];
-    [dic setValue:@"up" forKey:@"type"];
-    str = [str stringByAppendingString:@"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"];
-    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-    [manager POST:str parameters:dic success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        NSLog(@"成功数据%@",responseObject);
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+}
+
+- (void)loadDataSourceWithPage:(int)page type:(NSString *)type{
+    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:0 pageSize:REQUEST_PAGE_SIZE ftype:@"gz" type:type complete:^(RecommendListModel *model) {
+        if ([type isEqualToString:@"up"]) {
+            [self.dataSource addObjectsFromArray:model.list];
+        }else{
+            [self.dataSource removeAllObjects];
+            [self.dataSource addObjectsFromArray:model.list];
+        }
+        
+        [self.tableView reloadData];
+      
+        
+        [self handleEndRefresh];
+        
+    } failure:^{
         
     }];
 }
+
+-(NSString*)DataTOjsonString:(id)object
+{
+    NSString *jsonString = nil;
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
+    if (! jsonData) {
+        NSLog(@"Got an error: %@", error);
+    } else {
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    return jsonString;
+}
+
 #pragma mark - TableView的代理函数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.dataSource.count;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
     return 360*W_Hight_Zoom;
-    
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * cellId = @"recommeCellId";
+    
     RecommendTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    if (!cell) {
-        cell = [[RecommendTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-    }
 
-
+    RecommendModel * model = self.dataSource[indexPath.row];
+    
+    cell.nameLabel.text = model.nickname;
+  //cell.nameLabel.backgroundColor = [UIColor blackColor];
+    
     
     
     return cell;
 }
+
 
 
 @end

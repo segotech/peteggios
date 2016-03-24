@@ -10,7 +10,7 @@
 
 #import "MJRefresh.h"
 
-@interface BaseTableViewController ()
+@interface BaseTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -29,6 +29,8 @@
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:self.bGroupView ? UITableViewStyleGrouped : UITableViewStylePlain];
     _tableView.tableFooterView = [[UIView alloc]init];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
     
     [self.view addSubview:_tableView];
     
@@ -46,13 +48,13 @@
     
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.pageIndex = 0;
-        [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
+        [weakSelf loadDataSourceWithPage:weakSelf.pageIndex type:@"up"];
     }];
     
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         if ((weakSelf.pageIndex +1)*REQUEST_PAGE_SIZE == weakSelf.dataSource.count) {
             weakSelf.pageIndex++;
-            [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
+            [weakSelf loadDataSourceWithPage:weakSelf.pageIndex type:@"down"];
         }else{
             [weakSelf.tableView.footer endRefreshing];
             weakSelf.tableView.footer.hidden = YES;
@@ -69,9 +71,17 @@
     [self.tableView.footer endRefreshing];
 }
 
-- (void)loadDataSourceWithPage:(int)page{
+- (void)loadDataSourceWithPage:(int)page type:(NSString*)type{
     
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 0;
+}
 
 @end
