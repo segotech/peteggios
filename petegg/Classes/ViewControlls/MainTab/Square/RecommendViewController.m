@@ -33,7 +33,8 @@ static NSString * cellId = @"recommeCellId";
     
     self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height - STATUS_BAR_HEIGHT - NAV_BAR_HEIGHT - TAB_BAR_HEIGHT);
     [self.tableView registerClass:[RecommendTableViewCell class] forCellReuseIdentifier:cellId];
-    
+    self.tableView.backgroundColor = GRAY_COLOR;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self initRefreshView];
 }
 
@@ -42,7 +43,7 @@ static NSString * cellId = @"recommeCellId";
 }
 
 - (void)loadDataSourceWithPage:(int)page {
-    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE ftype:@"gz" complete:^(RecommendListModel *model) {
+    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(RecommendListModel *model) {
         if (page == 1) {
             [self.dataSource addObjectsFromArray:model.list];
         }else{
@@ -86,13 +87,17 @@ static NSString * cellId = @"recommeCellId";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 380*W_Hight_Zoom;
+    return 370*W_Hight_Zoom;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RecommendTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+
+    //把数据给model
     RecommendModel * model = self.dataSource[indexPath.row];
+
+    //cell赋值
     cell.nameLabel.text = model.nickname;
     [cell.iconImageV.layer setMasksToBounds:YES];
     NSString * imageStr = [NSString stringWithFormat:@"%@",model.headportrait];
@@ -109,6 +114,8 @@ static NSString * cellId = @"recommeCellId";
     cell.timeLable.text = model.publishtime;
     cell.leftnumber.text = model.comments;
     cell.rihttnumber.text = model.praises;
+    
+    //tabview隐藏点击效果和分割线
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     return cell;

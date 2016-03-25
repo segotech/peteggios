@@ -15,7 +15,7 @@
 singleton_implementation(AFHttpClient)
 
 - (instancetype)init{
-    if (self = [super initWithBaseURL:[NSURL URLWithString: [AppUtil getServerSego3]]]) {
+    if (self = [super initWithBaseURL:[NSURL URLWithString: [AppUtil getServerTest]]]) {
         self.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain", @"application/json", nil];
         [self.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {

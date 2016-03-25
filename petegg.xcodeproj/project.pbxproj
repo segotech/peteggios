@@ -825,6 +825,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = ZMFX8728A9;
 					};
 				};
 			};
@@ -1126,7 +1127,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = petegg/PrefixHeader.pch;
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sego.petegg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1144,7 +1145,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = petegg/PrefixHeader.pch;
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sego.petegg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
