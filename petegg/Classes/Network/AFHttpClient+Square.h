@@ -27,5 +27,7 @@
                     complete:(void(^)(RecommendListModel *model))completeBlock
                      failure:(void(^)())failureBlock;
 
+-(void)queryRecommendWithcomplete:(void(^)(RecommendListModel *model))completeBlock failure:(void(^)())failureBlock;
+;
 
 @end

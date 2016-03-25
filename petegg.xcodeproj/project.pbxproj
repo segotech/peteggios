@@ -114,6 +114,8 @@
 		7D3DA5BB1CA3EC43005BD38B /* 评论.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5BA1CA3EC43005BD38B /* 评论.png */; };
 		7D3DA5BD1CA3EC5B005BD38B /* 点赞5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5BC1CA3EC5B005BD38B /* 点赞5.png */; };
 		7D3DA5BF1CA3EC67005BD38B /* MV.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5BE1CA3EC67005BD38B /* MV.png */; };
+		7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D02F1CA535820098706C /* CycleScrollView.m */; };
+		7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
 		BDBD400ACF926B8107FB0148 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1A6847CCE0F91359A0FB97 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -268,6 +270,10 @@
 		7D3DA5BA1CA3EC43005BD38B /* 评论.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论.png"; sourceTree = "<group>"; };
 		7D3DA5BC1CA3EC5B005BD38B /* 点赞5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点赞5.png"; sourceTree = "<group>"; };
 		7D3DA5BE1CA3EC67005BD38B /* MV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MV.png; sourceTree = "<group>"; };
+		7DC8D02E1CA535820098706C /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
+		7DC8D02F1CA535820098706C /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
+		7DC8D0311CA5358F0098706C /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
+		7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
 		7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_new_issue@2x.png"; sourceTree = "<group>"; };
 		8B1A6847CCE0F91359A0FB97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -481,10 +487,10 @@
 		57666F6A1C9686DE00A52DBA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7DC8D02D1CA535730098706C /* Views */,
 				57666F6B1C9686DE00A52DBA /* Categories */,
 				57666F6C1C9686DE00A52DBA /* Macro */,
 				57666F6D1C9686DE00A52DBA /* Utils */,
-				57666F6E1C9686DE00A52DBA /* Views */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -522,13 +528,6 @@
 				57666FC61C969B4800A52DBA /* AppUtil.m */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		57666F6E1C9686DE00A52DBA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		57666F6F1C9686DE00A52DBA /* Managers */ = {
@@ -777,6 +776,17 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		7DC8D02D1CA535730098706C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7DC8D02E1CA535820098706C /* CycleScrollView.h */,
+				7DC8D02F1CA535820098706C /* CycleScrollView.m */,
+				7DC8D0311CA5358F0098706C /* NSTimer+Addition.h */,
+				7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E5E56A0B5C5FC8A2D504C1A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -976,6 +986,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */,
 				57666FA21C9689CC00A52DBA /* NearViewController.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
 				344F02E81CA3EC040076CE62 /* personTableViewCell.m in Sources */,
@@ -985,6 +996,7 @@
 				57666FA31C9689CC00A52DBA /* RankViewController.m in Sources */,
 				344F027E1CA12A830076CE62 /* wifiViewController.m in Sources */,
 				57666FA71C968B1F00A52DBA /* LoginViewController.m in Sources */,
+				7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */,
 				57666FE21C96BF4400A52DBA /* UIView+Sizes.m in Sources */,
 				57666F861C9687E300A52DBA /* BaseViewController.m in Sources */,
 				57666FAD1C9692B500A52DBA /* PersonalViewController.m in Sources */,

@@ -13,10 +13,11 @@
 #import "RecommendTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "sys/utsname.h"
+#import "CycleScrollView.h"
 static NSString * cellId = @"recommeCellId";
 
 @interface RecommendViewController ()
-
+@property (nonatomic,strong)CycleScrollView * topScrollView;
 @end
 
 @implementation RecommendViewController
@@ -30,12 +31,15 @@ static NSString * cellId = @"recommeCellId";
 
 - (void)setupView{
     [super setupView];
+    _topScrollView = [[CycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 150) animationDuration:3];
     
     self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height - STATUS_BAR_HEIGHT - NAV_BAR_HEIGHT - TAB_BAR_HEIGHT);
     [self.tableView registerClass:[RecommendTableViewCell class] forCellReuseIdentifier:cellId];
     self.tableView.backgroundColor = GRAY_COLOR;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.tableView.tableHeaderView = _topScrollView;
     [self initRefreshView];
+    
 }
 
 -(void)setupData{
@@ -44,7 +48,6 @@ static NSString * cellId = @"recommeCellId";
 
 - (void)loadDataSourceWithPage:(int)page {
     [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(RecommendListModel *model) {
-        
         if (page == 1) {
             [self.dataSource addObjectsFromArray:model.list];
         }else{
@@ -57,7 +60,43 @@ static NSString * cellId = @"recommeCellId";
     } failure:^{
         [self handleEndRefresh];
     }];
+    
+    [[AFHttpClient sharedAFHttpClient]queryRecommendWithcomplete:^(RecommendListModel *model) {
+      //  [self.dataSourceImage addObjectsFromArray:model.list];
+     //   NSLog(@"%@",self.dataSourceImage);
+        [self.dataSourceImage addObjectsFromArray:model.list];
+       
+        [self initTopView];
+    } failure:^{
+        
+    }];
+    
 }
+
+-(void)initTopView{
+    NSMutableArray * arrList =[[NSMutableArray alloc]init];
+    NSMutableArray * textList =[[NSMutableArray alloc]init];
+
+    for (int i = 0 ; i < self.dataSourceImage.count; i++) {
+       RecommendModel * model  = self.dataSourceImage[i];
+        UIImageView * pImageView1 =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 150)];
+        [pImageView1 sd_setImageWithURL:[NSURL URLWithString:model.frontcover] placeholderImage:[UIImage imageNamed:@"segouploade.png"]];
+        
+     //   [textList addObject:_imageArr[i][@"title"]];
+        [arrList addObject:pImageView1];
+
+    }
+    _topScrollView.fetchContentViewAtIndex=  ^UIView *(NSInteger pageIndex){
+        return arrList[pageIndex];
+    };
+    _topScrollView.totalPagesCount = ^NSInteger(void){
+        return arrList.count;
+    };
+    
+
+}
+
+
 
 -(NSString*)DataTOjsonString:(id)object
 {

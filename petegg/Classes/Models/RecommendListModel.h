@@ -53,6 +53,7 @@
 
 @property (nonatomic, copy) NSString<Optional> *reports;
 
+@property (nonatomic,copy)  NSString<Optional> * frontcover;
 @end
 @protocol RecommendModel
 @end
