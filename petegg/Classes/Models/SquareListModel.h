@@ -53,8 +53,9 @@
 
 @property (nonatomic, copy) NSString<Optional> *reports;
 
+@property (nonatomic,copy)  NSString<Optional> * frontcover;
 @end
-@protocol RecommendModel
+@protocol SquareModel
 @end
 
 @interface SquareListModel : BaseModel
@@ -65,6 +66,6 @@
 
 @property (nonatomic, copy) NSString<Optional> *totalrecords;
 
-@property (nonatomic, strong) NSMutableArray<RecommendModel, Optional> *list;
+@property (nonatomic, strong) NSMutableArray<SquareModel, Optional> *list;
 
 @end

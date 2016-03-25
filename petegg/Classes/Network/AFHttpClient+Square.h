@@ -27,5 +27,7 @@
                     complete:(void(^)(SquareListModel *model))completeBlock
                      failure:(void(^)())failureBlock;
 
+-(void)queryRecommendWithcomplete:(void(^)(SquareListModel *model))completeBlock failure:(void(^)())failureBlock;
+;
 
 @end

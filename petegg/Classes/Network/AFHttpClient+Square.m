@@ -87,12 +87,28 @@
             failureBlock();
         }
     }];
-
-
-
 }
 
 
+-(void)queryRecommendWithcomplete:(void (^)(SquareListModel *))completeBlock failure:(void (^)())failureBlock{
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    params[@"classes"] = @"appinterface";
+    params[@"method"] = @"json";
+    params[@"common"] = @"queryRecommend";
+    
 
+    [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        if (completeBlock) {
+            completeBlock([[SquareListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
+            
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        if (failureBlock) {
+            failureBlock();
+        }
+    }];
+
+}
 
 @end
