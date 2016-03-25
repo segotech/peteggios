@@ -17,8 +17,7 @@
                            failure:(void(^)())failureBlock{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
-    params[@"classes"] = @"appinterface";
-    params[@"method"] = @"json";
+
     params[@"common"] = @"querySproutpet";
     
     params[@"mid"] = mid;

@@ -44,6 +44,9 @@ singleton_implementation(AFHttpClient)
 
 - (AFHTTPRequestOperation *)POST:(NSString *)URLString parameters:(id)parameters success:(void (^)(AFHTTPRequestOperation * _Nonnull, id _Nonnull))success failure:(void (^)(AFHTTPRequestOperation * _Nullable, NSError * _Nonnull))failure{
     
+    parameters[@"classes"] = @"appinterface";
+    parameters[@"method"] = @"json";
+    
     return [super POST:URLString parameters:parameters success:success failure:failure];
 }
 
