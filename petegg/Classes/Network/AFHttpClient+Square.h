@@ -19,5 +19,6 @@
                           pageSize:(int)pageSize
                           complete:(void(^)(RecommendListModel *model))completeBlock
                            failure:(void(^)())failureBlock;
+
     
 @end
