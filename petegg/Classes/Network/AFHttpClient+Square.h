@@ -17,7 +17,6 @@
 -(void)queryFollowSproutpetWithMid:(NSString *)mid
                          pageIndex:(int)pageIndex
                           pageSize:(int)pageSize
-                             ftype:(NSString*)ftype
                           complete:(void(^)(RecommendListModel *model))completeBlock
                            failure:(void(^)())failureBlock;
     

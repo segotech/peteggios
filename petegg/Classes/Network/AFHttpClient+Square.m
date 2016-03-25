@@ -13,7 +13,6 @@
 -(void)queryFollowSproutpetWithMid:(NSString *)mid
                          pageIndex:(int)pageIndex
                           pageSize:(int)pageSize
-                             ftype:(NSString*)ftype
                           complete:(void(^)(RecommendListModel *model))completeBlock
                            failure:(void(^)())failureBlock{
     
@@ -25,7 +24,7 @@
     params[@"mid"] = mid;
     params[@"page"] = @(pageIndex);
     params[@"size"] = @(pageSize);
-    params[@"ftype"] = ftype;
+    //params[@"ftype"] = ftype;
 //    params[@"type"] = type;
    
     [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {

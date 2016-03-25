@@ -57,5 +57,5 @@
 // 图片处理
 + (UIImage*) OriginImage:(UIImage *)image scaleToSize:(CGSize)size;
 
-
++ (NSString *)getServerTest;
 @end
