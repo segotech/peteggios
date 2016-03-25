@@ -34,16 +34,16 @@ static NSString * cellId = @"recommeCellId";
     self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height - STATUS_BAR_HEIGHT - NAV_BAR_HEIGHT - TAB_BAR_HEIGHT);
     [self.tableView registerClass:[RecommendTableViewCell class] forCellReuseIdentifier:cellId];
     
+    [self initRefreshView];
 }
-
 
 -(void)setupData{
     [super setupData];
 }
 
-- (void)loadDataSourceWithPage:(int)page type:(NSString *)type{
-    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE ftype:@"gz" type:type complete:^(RecommendListModel *model) {
-        if ([type isEqualToString:@"down"]) {
+- (void)loadDataSourceWithPage:(int)page {
+    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE ftype:@"gz" complete:^(RecommendListModel *model) {
+        if (page == 1) {
             [self.dataSource addObjectsFromArray:model.list];
         }else{
             [self.dataSource removeAllObjects];
@@ -53,7 +53,7 @@ static NSString * cellId = @"recommeCellId";
         [self handleEndRefresh];
         
     } failure:^{
-        
+        [self handleEndRefresh];
     }];
 }
 

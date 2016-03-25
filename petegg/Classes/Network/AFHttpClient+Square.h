@@ -18,7 +18,6 @@
                          pageIndex:(int)pageIndex
                           pageSize:(int)pageSize
                              ftype:(NSString*)ftype
-                              type:(NSString*)type
                           complete:(void(^)(RecommendListModel *model))completeBlock
                            failure:(void(^)())failureBlock;
     

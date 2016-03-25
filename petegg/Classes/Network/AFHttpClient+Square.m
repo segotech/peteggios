@@ -14,7 +14,6 @@
                          pageIndex:(int)pageIndex
                           pageSize:(int)pageSize
                              ftype:(NSString*)ftype
-                              type:(NSString*)type
                           complete:(void(^)(RecommendListModel *model))completeBlock
                            failure:(void(^)())failureBlock{
     
@@ -27,7 +26,7 @@
     params[@"page"] = @(pageIndex);
     params[@"size"] = @(pageSize);
     params[@"ftype"] = ftype;
-    params[@"type"] = type;
+//    params[@"type"] = type;
    
     [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (completeBlock) {

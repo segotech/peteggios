@@ -22,9 +22,11 @@
 @property (nonatomic, assign) int pageIndex;
 
 //加载分页数据
-- (void)loadDataSourceWithPage:(int)page type:(NSString*)type;
+- (void)loadDataSourceWithPage:(int)page ;
 
 - (void)handleEndRefresh;
+
+- (void)initRefreshView;
 
 //更新数据从开始
 - (void)updateData;

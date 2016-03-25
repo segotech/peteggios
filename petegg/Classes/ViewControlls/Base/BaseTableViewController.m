@@ -35,8 +35,6 @@
     _tableView.delegate = self;
     
     [self.view addSubview:_tableView];
-    
-    [self initRefreshView];
 }
 
 - (void)updateData
@@ -49,14 +47,14 @@
     __typeof (&*self) __weak weakSelf = self;
     
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        weakSelf.pageIndex = 0;
-        [weakSelf loadDataSourceWithPage:weakSelf.pageIndex type:@"up"];
+        weakSelf.pageIndex = 1;
+        [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
     }];
     
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         if ((weakSelf.pageIndex +1)*REQUEST_PAGE_SIZE == weakSelf.dataSource.count) {
             weakSelf.pageIndex++;
-            [weakSelf loadDataSourceWithPage:weakSelf.pageIndex type:@"down"];
+            [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
         }else{
             [weakSelf.tableView.footer endRefreshing];
             weakSelf.tableView.footer.hidden = YES;
@@ -73,7 +71,7 @@
     [self.tableView.footer endRefreshing];
 }
 
-- (void)loadDataSourceWithPage:(int)page type:(NSString*)type{
+- (void)loadDataSourceWithPage:(int)page {
     
 }
 
