@@ -51,7 +51,7 @@
         [leftbutton setImageEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
 
         [leftbutton setImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
-        
+        self.tabBarController.tabBar.hidden= YES;
         
         [self showBarButton:NAV_LEFT button:leftbutton];
     }
