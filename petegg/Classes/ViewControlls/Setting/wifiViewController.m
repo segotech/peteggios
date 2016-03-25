@@ -22,10 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self isConnectionAvailable];
     
 }
+
 // 数据
 - (void)setupData
 {
@@ -157,7 +157,7 @@
     [super viewWillDisappear:animated];
     hud =nil;
     passCodeTF =nil;
-    
+
     
 }
 

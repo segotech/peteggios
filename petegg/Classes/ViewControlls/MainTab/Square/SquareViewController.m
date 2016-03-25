@@ -181,7 +181,7 @@
     if (0 == sender.tag) {
         NSLog(@"拍照");
     }else if (1 == sender.tag){
-        NSLog(@"录像");
+        NSLog(@"相册");
     }else if (2 == sender.tag){
         NSLog(@"资源库");
     }else if (3 == sender.tag){
