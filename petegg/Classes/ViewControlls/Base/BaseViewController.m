@@ -17,7 +17,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [self setLeftBackButton];
+   
     
     [self setupData];
     
@@ -32,13 +32,17 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+     [self setLeftBackButton];
 
+}
 
 /**
  *  设置返回按钮
  */
 - (void)setLeftBackButton{
-    
+    self.tabBarController.tabBar.hidden= NO;
     NSArray *array = self.navigationController.viewControllers;
     self.navigationItem.backBarButtonItem= nil;
     
@@ -50,7 +54,9 @@
         [leftbutton setTitleEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
         [leftbutton setImageEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
 
-        [leftbutton setImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];        
+        [leftbutton setImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+        self.tabBarController.tabBar.hidden= YES;
+        
         [self showBarButton:NAV_LEFT button:leftbutton];
     }
 }
