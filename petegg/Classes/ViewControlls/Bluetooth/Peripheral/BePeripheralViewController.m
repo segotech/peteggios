@@ -16,7 +16,7 @@ static NSString *const readwriteCharacteristicUUID =  @"FFF2";
 
 static NSString *const ServiceUUID2 =  @"FFE0";
 static NSString *const readCharacteristicUUID =  @"FFE1";
-static NSString * const LocalNameKey =  @"myPeripheral";
+static NSString * const LocalNameKey =  @"segopass";
 
 @implementation BePeripheralViewController{
     CBPeripheralManager *peripheralManager;
@@ -45,6 +45,8 @@ static NSString * const LocalNameKey =  @"myPeripheral";
     
 }
 
+
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -57,11 +59,12 @@ static NSString * const LocalNameKey =  @"myPeripheral";
 -(void)setUp{
     //characteristics字段描述
     CBUUID *CBUUIDCharacteristicUserDescriptionStringUUID = [CBUUID UUIDWithString:CBUUIDCharacteristicUserDescriptionString];
-    
+    NSString * str1 =@"123";
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"WIFI", @"10403",
-                            @"WIFIPassWord", @"22407",
-                            @"Mid", @"1111",nil];
+                            @"action", @"bind",
+                            @"Mid", str1,nil];
+    
+    
     
     
     NSString *str = [self dictionaryToJson:params];

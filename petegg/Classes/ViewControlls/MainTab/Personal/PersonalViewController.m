@@ -12,7 +12,10 @@
 @interface PersonalViewController()
 
 {
-    UIButton * heandBtn;
+    UIButton * _heandBtn;
+    UILabel *  _nameLabel;
+    
+    
     
     
 }
@@ -50,19 +53,39 @@
     [super setupView];
     
     // 头像
-    heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-40, self.view.origin.y+80, 80, 80)];
-    heandBtn.backgroundColor =[UIColor redColor];
-    [heandBtn.layer setMasksToBounds:YES];
-    [heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
-    heandBtn.userInteractionEnabled = YES;
-    [heandBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    _heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-40, self.view.origin.y+80, 80, 80)];
+    _heandBtn.backgroundColor =[UIColor redColor];
+    [_heandBtn.layer setMasksToBounds:YES];
+    [_heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
+    _heandBtn.userInteractionEnabled = YES;
+    [_heandBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:heandBtn];
+    [self.view addSubview:_heandBtn];
+    /**
+        点赞  名字
+     */
+    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 20)];
+    _nameLabel.text = @"我是余磊 我爱打麻将";
+    _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+100);
+    _nameLabel.font = [UIFont systemFontOfSize:14];
+    _nameLabel.textAlignment = NSTextAlignmentCenter;
+    _nameLabel.textColor = [UIColor blackColor];
+    [self.view addSubview:_nameLabel];
     
-    // 点赞
+    UIImageView * message1 =[[UIImageView alloc]initWithFrame:CGRectMake(240, -20, 15,15)];
+    message1.image =[UIImage imageNamed:@"while_good"];
+    [self.view addSubview:message1];
+    
+    UILabel * goodLabel = [[UILabel alloc]initWithFrame:CGRectMake(260, -23, 100, 20)];
+    goodLabel.textColor = [UIColor grayColor];
+    goodLabel.font = [UIFont systemFontOfSize:12];
+    [self.view addSubview:goodLabel];
     
 
-    self.tableView.frame = CGRectMake(0, heandBtn.frame.origin.y+100, SCREEN_WIDTH, SCREEN_HEIGHT-104);
+    
+    
+
+    self.tableView.frame = CGRectMake(0, _heandBtn.frame.origin.y+140, SCREEN_WIDTH, SCREEN_HEIGHT-104);
    
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
