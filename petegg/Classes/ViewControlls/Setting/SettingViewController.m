@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "wifiViewController.h"
+#import "BindDeviceViewControler.h"
 
 
 @interface SettingViewController ()
@@ -37,12 +38,16 @@
     
     
 }
-// 设置网络
+/**
+ *  绑定设备
+ *
+ *  @param sender nil
+ */
 - (IBAction)sethttpBtn:(id)sender {
     
     
-    wifiViewController * WiFiVC = [[wifiViewController alloc]initWithNibName:@"wifiViewController" bundle:nil];
-    [self.navigationController pushViewController:WiFiVC animated:YES];
+    BindDeviceViewControler * bindDeVC = [[BindDeviceViewControler alloc]initWithNibName:@"BindDeviceViewControler" bundle:nil];
+    [self.navigationController pushViewController:bindDeVC animated:YES];
     
 }
 

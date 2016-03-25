@@ -63,6 +63,8 @@
 		344F02E41CA3EA0B0076CE62 /* while_good.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02DA1CA3EA0B0076CE62 /* while_good.png */; };
 		344F02E81CA3EC040076CE62 /* personTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02E61CA3EC040076CE62 /* personTableViewCell.m */; };
 		344F02E91CA3EC040076CE62 /* personTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344F02E71CA3EC040076CE62 /* personTableViewCell.xib */; };
+		3460AE261CA5339800D50F43 /* BindDeviceViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3460AE241CA5339800D50F43 /* BindDeviceViewControler.m */; };
+		3460AE271CA5339800D50F43 /* BindDeviceViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3460AE251CA5339800D50F43 /* BindDeviceViewControler.xib */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		570BA4F91CA25570009AA2FC /* InCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F71CA25570009AA2FC /* InCallViewController.m */; };
 		570BA4FA1CA25570009AA2FC /* InCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570BA4F81CA25570009AA2FC /* InCallViewController.xib */; };
@@ -182,6 +184,9 @@
 		344F02E51CA3EC040076CE62 /* personTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = personTableViewCell.h; sourceTree = "<group>"; };
 		344F02E61CA3EC040076CE62 /* personTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personTableViewCell.m; sourceTree = "<group>"; };
 		344F02E71CA3EC040076CE62 /* personTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = personTableViewCell.xib; sourceTree = "<group>"; };
+		3460AE231CA5339800D50F43 /* BindDeviceViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindDeviceViewControler.h; sourceTree = "<group>"; };
+		3460AE241CA5339800D50F43 /* BindDeviceViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindDeviceViewControler.m; sourceTree = "<group>"; };
+		3460AE251CA5339800D50F43 /* BindDeviceViewControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BindDeviceViewControler.xib; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -368,6 +373,9 @@
 				344F027B1CA12A830076CE62 /* wifiViewController.h */,
 				344F027C1CA12A830076CE62 /* wifiViewController.m */,
 				344F027D1CA12A830076CE62 /* wifiViewController.xib */,
+				3460AE231CA5339800D50F43 /* BindDeviceViewControler.h */,
+				3460AE241CA5339800D50F43 /* BindDeviceViewControler.m */,
+				3460AE251CA5339800D50F43 /* BindDeviceViewControler.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -825,7 +833,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = ZMFX8728A9;
+						DevelopmentTeam = 4UKEB375ND;
 					};
 				};
 			};
@@ -893,6 +901,7 @@
 				57666FAF1C96947B00A52DBA /* Localizable.strings in Resources */,
 				344F02331C9FE0410076CE62 /* egg_offline.png in Resources */,
 				344F02DF1CA3EA0B0076CE62 /* person_history.png in Resources */,
+				3460AE271CA5339800D50F43 /* BindDeviceViewControler.xib in Resources */,
 				344F02891CA143AC0076CE62 /* kuang_on.png in Resources */,
 				344F02641C9FEBDE0076CE62 /* trun_off.png in Resources */,
 				344F02E21CA3EA0B0076CE62 /* person_systemmessage.png in Resources */,
@@ -993,6 +1002,7 @@
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
 				344F02781CA0DB280076CE62 /* SettingViewController.m in Sources */,
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
+				3460AE261CA5339800D50F43 /* BindDeviceViewControler.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
 				57666FDC1C96BE6F00A52DBA /* UIButton+Blocks.m in Sources */,
 				578B9E5E1CA29A9E00CAC21D /* AFHttpClient.m in Sources */,
