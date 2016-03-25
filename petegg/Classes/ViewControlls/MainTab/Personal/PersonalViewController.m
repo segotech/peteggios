@@ -7,9 +7,14 @@
 //
 
 #import "PersonalViewController.h"
-
+#import "personTableViewCell.h"
 @interface PersonalViewController()
 
+{
+    UIButton * heandBtn;
+    
+    
+}
 
 @end
 
@@ -43,7 +48,14 @@
 {
     [super setupView];
     [self handleEndRefresh];
-    self.tableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-104);
+    self.tableView.frame = CGRectMake(0, 184*W_Hight_Zoom, SCREEN_WIDTH, SCREEN_HEIGHT-104);
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
     [self showBarButton:NAV_RIGHT imageName:@"new_3point.png"];
      NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"黑名单",@"逗币",@"逗码",@"权限设置",@"修改密码"];
     [self.dataSource addObjectsFromArray:arrName];
@@ -51,8 +63,32 @@
     [self.dataSourceImage addObjectsFromArray:arrImage];
     
     
+    // 头像
+    heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-40, 64, 80, 80)];
+    heandBtn.backgroundColor =[UIColor redColor];
+    [heandBtn.layer setMasksToBounds:YES];
+    [heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
+    heandBtn.userInteractionEnabled = YES;
+    [heandBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:heandBtn];
+    
+    // 点赞 
+
+    
+
+    
     
 }
+// 头像点击
+- (void)headBtnClick:(UIButton *)sender
+{
+    
+    
+    
+}
+
+
 // 关于sego
 - (void)doRightButtonTouch
 {
@@ -62,6 +98,221 @@
     
 }
 
+
+#pragma Marr ------ UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+
+{
+    
+    return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    
+    switch (section) {
+            
+        case 0:
+            
+            return  3;
+            
+            break;
+            
+        case 1:
+            
+            return  4;
+            
+            break;
+            
+        case 2:
+            return 2;
+            break;
+        default:
+            
+            return 0;
+            
+            break;
+            
+    }
+    
+    
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    
+    
+    UIView * sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width+3, 18)];
+    [sectionView setBackgroundColor:[UIColor clearColor]];
+    sectionView.layer.borderWidth =0.4;
+    sectionView.layer.borderColor =GRAY_COLOR.CGColor;
+    return sectionView;
+}
+
+
+//  设置标题的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    switch (section) {
+            
+        case 0:
+            
+            return  0.5;
+            
+            break;
+            
+        case 1:
+            
+            return  18;
+            
+            break;
+            
+        case 2:
+            return 18;
+            break;
+        default:
+            
+            return 0;
+            
+            break;
+            
+    }
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 39*W_Hight_Zoom;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString * showUserInfoCellIdentifier = @"ShowUserInfoCell123";
+    personTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:showUserInfoCellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[personTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:showUserInfoCellIdentifier];
+    }
+    
+    switch (indexPath.section) {
+            
+        case 0:
+            // Configure the cell.
+            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row]];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.introduce.text= self.dataSource[indexPath.row];
+            break;
+            
+        case 1:
+            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+3]];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.introduce.text= self.dataSource[indexPath.row+3];
+
+            break;
+            
+        case 2:
+            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+7]];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.introduce.text= self.dataSource[indexPath.row+7];
+            break;
+            
+        default:
+            
+            break;
+            
+    }
+    
+    // 选择之后的风格
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   
+    switch (indexPath.section) {
+        case 0:
+            
+            if (indexPath.row == 0) {
+                NSLog(@"时光轴");
+            
+            }
+            if (indexPath.row == 1) {
+                NSLog(@"录像");
+                
+               
+                
+            }
+            if (indexPath.row == 2) {
+                NSLog(@"抓拍");
+            
+                
+            }
+            break;
+        case 1:
+            if (indexPath.row == 0) {
+                
+                NSLog(@"00");
+               
+                
+            }
+            if (indexPath.row == 1) {
+              
+            }
+            
+            if (indexPath.row == 2) {
+                NSLog(@"11");
+               
+                
+            }
+            
+            if (indexPath.row == 3) {
+               
+                
+            }
+            break;
+            
+        case 2:
+            if (indexPath.row ==0) {
+                NSLog(@"000");
+                
+            
+                
+            }
+            
+            
+            if (indexPath.row  ==1) {
+                NSLog(@"111");
+                
+                
+            }
+            
+            
+            break;
+        default:
+            break;
+    }
+    
+    
+}
 
 
 @end

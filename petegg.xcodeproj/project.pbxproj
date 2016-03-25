@@ -61,6 +61,8 @@
 		344F02E21CA3EA0B0076CE62 /* person_systemmessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02D81CA3EA0B0076CE62 /* person_systemmessage.png */; };
 		344F02E31CA3EA0B0076CE62 /* person_videotape.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02D91CA3EA0B0076CE62 /* person_videotape.png */; };
 		344F02E41CA3EA0B0076CE62 /* while_good.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02DA1CA3EA0B0076CE62 /* while_good.png */; };
+		344F02E81CA3EC040076CE62 /* personTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02E61CA3EC040076CE62 /* personTableViewCell.m */; };
+		344F02E91CA3EC040076CE62 /* personTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344F02E71CA3EC040076CE62 /* personTableViewCell.xib */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		570BA4F91CA25570009AA2FC /* InCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F71CA25570009AA2FC /* InCallViewController.m */; };
 		570BA4FA1CA25570009AA2FC /* InCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570BA4F81CA25570009AA2FC /* InCallViewController.xib */; };
@@ -177,6 +179,9 @@
 		344F02D81CA3EA0B0076CE62 /* person_systemmessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_systemmessage.png; sourceTree = "<group>"; };
 		344F02D91CA3EA0B0076CE62 /* person_videotape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_videotape.png; sourceTree = "<group>"; };
 		344F02DA1CA3EA0B0076CE62 /* while_good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = while_good.png; sourceTree = "<group>"; };
+		344F02E51CA3EC040076CE62 /* personTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = personTableViewCell.h; sourceTree = "<group>"; };
+		344F02E61CA3EC040076CE62 /* personTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personTableViewCell.m; sourceTree = "<group>"; };
+		344F02E71CA3EC040076CE62 /* personTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = personTableViewCell.xib; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -679,6 +684,9 @@
 			children = (
 				57666FAB1C9692B500A52DBA /* PersonalViewController.h */,
 				57666FAC1C9692B500A52DBA /* PersonalViewController.m */,
+				344F02E51CA3EC040076CE62 /* personTableViewCell.h */,
+				344F02E61CA3EC040076CE62 /* personTableViewCell.m */,
+				344F02E71CA3EC040076CE62 /* personTableViewCell.xib */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -844,6 +852,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */,
+				344F02E91CA3EC040076CE62 /* personTableViewCell.xib in Resources */,
 				344F02631C9FEBDE0076CE62 /* snap_on.png in Resources */,
 				344F02E01CA3EA0B0076CE62 /* person_photograph.png in Resources */,
 				570BA4FA1CA25570009AA2FC /* InCallViewController.xib in Resources */,
@@ -968,6 +977,7 @@
 			files = (
 				57666FA21C9689CC00A52DBA /* NearViewController.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
+				344F02E81CA3EC040076CE62 /* personTableViewCell.m in Sources */,
 				578B9E641CA2D78A00CAC21D /* BaseModel.m in Sources */,
 				578B9E611CA29E5D00CAC21D /* AFHttpClient+Square.m in Sources */,
 				57666FA41C9689CC00A52DBA /* SquareViewController.m in Sources */,
