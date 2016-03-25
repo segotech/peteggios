@@ -43,14 +43,21 @@ static NSString * cellId = @"recommeCellId";
 }
 
 - (void)loadDataSourceWithPage:(int)page {
-    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(RecommendListModel *model) {
+    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(SquareListModel *model) {
         
-        if (page == 1) {
-            [self.dataSource addObjectsFromArray:model.list];
-        }else{
+        if (page == START_PAGE_INDEX) {
             [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:model.list];
+        } else {
+            [self.dataSource addObjectsFromArray:model.list];
         }
+        
+        if (model.list.count < REQUEST_PAGE_SIZE){
+            self.tableView.footer.hidden = YES;
+        }else{
+            self.tableView.footer.hidden = NO;
+        }
+
         [self.tableView reloadData];
         [self handleEndRefresh];
         
@@ -96,7 +103,7 @@ static NSString * cellId = @"recommeCellId";
     RecommendTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
 
     //把数据给model
-    RecommendModel * model = self.dataSource[indexPath.row];
+    SquareModel * model = self.dataSource[indexPath.row];
 
     //cell赋值
     cell.nameLabel.text = model.nickname;

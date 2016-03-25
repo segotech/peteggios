@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
+#import "MJRefresh.h"
+
 @interface BaseTableViewController : BaseViewController
 
 @property (nonatomic, strong) UITableView* tableView;
