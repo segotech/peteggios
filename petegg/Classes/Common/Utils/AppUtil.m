@@ -19,10 +19,12 @@ static NSString* server = @"http://192.168.43.1:7766/rest/operate";
 //赛果三期 外网服务器
 static NSString * getServer3 =@"http://180.97.81.213:15101/";
 static NSString * getServerTest = @"http://180.97.81.213:15102/";
+
 + (NSString *)getServerSego3
 {
     return  getServer3;
 }
+
 +(NSString *)getServerTest{
     return getServerTest;
 }
@@ -81,9 +83,7 @@ static NSString * getServerTest = @"http://180.97.81.213:15102/";
     UIGraphicsBeginImageContext(size);  //size 为CGSize类型，即你所需要的图片尺寸
     
     [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    
     UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    
     UIGraphicsEndImageContext();
     return scaledImage;   //返回的就是已经改变的图片
 }

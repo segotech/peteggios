@@ -8,7 +8,7 @@
 
 #import "BaseTableViewController.h"
 
-#import "MJRefresh.h"
+
 
 @interface BaseTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -33,6 +33,7 @@
     _tableView.tableFooterView = [[UIView alloc]init];
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    _tableView.backgroundColor = GRAY_COLOR;
     
     [self.view addSubview:_tableView];
 }
@@ -47,12 +48,12 @@
     __typeof (&*self) __weak weakSelf = self;
     
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        weakSelf.pageIndex = 1;
+        weakSelf.pageIndex = START_PAGE_INDEX;
         [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
     }];
     
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        if ((weakSelf.pageIndex +1)*REQUEST_PAGE_SIZE == weakSelf.dataSource.count) {
+        if ((weakSelf.pageIndex )* REQUEST_PAGE_SIZE == weakSelf.dataSource.count) {
             weakSelf.pageIndex++;
             [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
         }else{

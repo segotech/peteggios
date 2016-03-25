@@ -1,17 +1,17 @@
 //
-//  RecommendModel.m
+//  SquareListModel.m
 //  MBProgressHUD
 //
 //  Created by ldp on 16/03/23
 //  Copyright (c) __ORGANIZATIONNAME__. All rights reserved.
 //
 
-#import "RecommendListModel.h"
+#import "SquareListModel.h"
 
-@implementation RecommendModel
+@implementation SquareModel
 
 @end
 
-@implementation RecommendListModel
+@implementation SquareListModel
 
 @end

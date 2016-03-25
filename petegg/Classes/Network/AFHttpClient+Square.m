@@ -10,15 +10,41 @@
 
 @implementation AFHttpClient (Square)
 
+-(void)querySquareListWithMid:(NSString *)mid
+                    pageIndex:(int)pageIndex
+                     pageSize:(int)pageSize
+                     complete:(void(^)(SquareListModel *model))completeBlock
+                      failure:(void(^)())failureBlock{
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    
+    params[@"common"] = @"querySproutpet";
+    
+    params[@"mid"] = mid;
+    params[@"page"] = @(pageIndex);
+    params[@"size"] = @(pageSize);
+    //params[@"ftype"] = ftype;
+    //    params[@"type"] = type;
+    
+    [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        if (completeBlock) {
+            completeBlock([[SquareListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        if (failureBlock) {
+            failureBlock();
+        }
+    }];
+}
+
 -(void)queryFollowSproutpetWithMid:(NSString *)mid
                          pageIndex:(int)pageIndex
                           pageSize:(int)pageSize
-                          complete:(void(^)(RecommendListModel *model))completeBlock
+                          complete:(void(^)(SquareListModel *model))completeBlock
                            failure:(void(^)())failureBlock{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
-    params[@"classes"] = @"appinterface";
-    params[@"method"] = @"json";
+
     params[@"common"] = @"querySproutpet";
     
     params[@"mid"] = mid;
@@ -29,7 +55,7 @@
    
     [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (completeBlock) {
-            completeBlock([[RecommendListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
+            completeBlock([[SquareListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         if (failureBlock) {
@@ -39,7 +65,7 @@
 }
 
 
--(void)querySproutpetWithMid:(NSString *)mid pageIndex:(int)pageIndex pageSize:(int)pageSize complete:(void (^)(RecommendListModel *))completeBlock failure:(void (^)())failureBlock{
+-(void)querySproutpetWithMid:(NSString *)mid pageIndex:(int)pageIndex pageSize:(int)pageSize complete:(void (^)(SquareListModel *))completeBlock failure:(void (^)())failureBlock{
 
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     params[@"classes"] = @"appinterface";
@@ -54,7 +80,28 @@
     
     [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (completeBlock) {
-            completeBlock([[RecommendListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
+            completeBlock([[SquareListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        if (failureBlock) {
+            failureBlock();
+        }
+    }];
+}
+
+
+-(void)queryRecommendWithcomplete:(void (^)(SquareListModel *))completeBlock failure:(void (^)())failureBlock{
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    params[@"classes"] = @"appinterface";
+    params[@"method"] = @"json";
+    params[@"common"] = @"queryRecommend";
+    
+
+    [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        if (completeBlock) {
+            completeBlock([[SquareListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
+            
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         if (failureBlock) {
@@ -62,11 +109,6 @@
         }
     }];
 
-
-
 }
-
-
-
 
 @end

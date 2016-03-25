@@ -1,5 +1,5 @@
 //
-//  RecommendModel.h
+//  SquareListModel.h
 //  MBProgressHUD
 //
 //  Created by ldp on 16/03/23
@@ -9,7 +9,7 @@
 #import "BaseModel.h"
 
 
-@interface RecommendModel : JSONModel
+@interface SquareModel : JSONModel
 
 @property (nonatomic, copy) NSString<Optional> *address;
 
@@ -53,11 +53,12 @@
 
 @property (nonatomic, copy) NSString<Optional> *reports;
 
+@property (nonatomic,copy)  NSString<Optional> * frontcover;
 @end
-@protocol RecommendModel
+@protocol SquareModel
 @end
 
-@interface RecommendListModel : BaseModel
+@interface SquareListModel : BaseModel
 
 //@property (nonatomic, strong) NSArray *listToXML;
 
@@ -65,6 +66,6 @@
 
 @property (nonatomic, copy) NSString<Optional> *totalrecords;
 
-@property (nonatomic, strong) NSMutableArray<RecommendModel, Optional> *list;
+@property (nonatomic, strong) NSMutableArray<SquareModel, Optional> *list;
 
 @end

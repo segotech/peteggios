@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
+#import "MJRefresh.h"
+
 @interface BaseTableViewController : BaseViewController
 
 @property (nonatomic, strong) UITableView* tableView;
@@ -22,7 +24,7 @@
 @property (nonatomic, assign) int pageIndex;
 
 //加载分页数据
-- (void)loadDataSourceWithPage:(int)page ;
+- (void)loadDataSourceWithPage:(int)page;
 
 - (void)handleEndRefresh;
 

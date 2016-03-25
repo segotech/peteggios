@@ -8,7 +8,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-#import "RecommendListModel.h"
+#import "SquareListModel.h"
 
 #define BASE_URL    @"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"
 
