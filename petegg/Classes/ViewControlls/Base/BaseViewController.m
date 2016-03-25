@@ -115,11 +115,14 @@
 
 -(void) setNavTitle:(NSString*) navTitle{
     
-    UILabel *lbl_navtitle=[[UILabel alloc] initWithFrame:CGRectMake(40, 0, 240, 44)];
-    lbl_navtitle.textAlignment=NSTextAlignmentCenter;
-    [lbl_navtitle setTextColor:WHITE_FG];
-    lbl_navtitle.text=navTitle;
-    self.navigationItem.titleView=lbl_navtitle;
+    // 修改居中问题
+    CGSize titleSize =self.navigationController.navigationBar.bounds.size;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, titleSize.width/2,titleSize.height)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = WHITE_FG;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text=navTitle;
+    self.navigationItem.titleView=label;
     
 }
 

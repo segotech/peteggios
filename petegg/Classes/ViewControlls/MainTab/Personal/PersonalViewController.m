@@ -8,6 +8,7 @@
 
 #import "PersonalViewController.h"
 #import "personTableViewCell.h"
+
 @interface PersonalViewController()
 
 {
@@ -47,8 +48,22 @@
 - (void)setupView
 {
     [super setupView];
-    [self handleEndRefresh];
-    self.tableView.frame = CGRectMake(0, 184*W_Hight_Zoom, SCREEN_WIDTH, SCREEN_HEIGHT-104);
+    
+    // 头像
+    heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-40, self.view.origin.y+80, 80, 80)];
+    heandBtn.backgroundColor =[UIColor redColor];
+    [heandBtn.layer setMasksToBounds:YES];
+    [heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
+    heandBtn.userInteractionEnabled = YES;
+    [heandBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:heandBtn];
+    
+    // 点赞
+    
+
+    self.tableView.frame = CGRectMake(0, heandBtn.frame.origin.y+100, SCREEN_WIDTH, SCREEN_HEIGHT-104);
+   
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
     }
@@ -63,18 +78,6 @@
     [self.dataSourceImage addObjectsFromArray:arrImage];
     
     
-    // 头像
-    heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-40, 64, 80, 80)];
-    heandBtn.backgroundColor =[UIColor redColor];
-    [heandBtn.layer setMasksToBounds:YES];
-    [heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
-    heandBtn.userInteractionEnabled = YES;
-    [heandBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:heandBtn];
-    
-    // 点赞 
-
     
 
     
