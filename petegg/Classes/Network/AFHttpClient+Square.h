@@ -20,5 +20,12 @@
                           complete:(void(^)(RecommendListModel *model))completeBlock
                            failure:(void(^)())failureBlock;
 
-    
+
+-(void)querySproutpetWithMid:(NSString *)mid
+                   pageIndex:(int)pageIndex
+                    pageSize:(int)pageSize
+                    complete:(void(^)(RecommendListModel *model))completeBlock
+                     failure:(void(^)())failureBlock;
+
+
 @end

@@ -38,7 +38,7 @@ static NSString * cellId = @"AttentionCellId";
 }
 
 -(void)loadDataSourceWithPage:(int)page{
-    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(RecommendListModel *model) {
+    [[AFHttpClient sharedAFHttpClient] querySproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(RecommendListModel *model) {
         if (page == 1) {
             [self.dataSource addObjectsFromArray:model.list];
         }else{
