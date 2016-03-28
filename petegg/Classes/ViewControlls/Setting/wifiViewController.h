@@ -14,6 +14,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *sureBtn;
 
 @property (nonatomic,strong)MBProgressHUD *hud;
+@property (nonatomic, strong) NSMutableData* nsData;
+@property (nonatomic,strong)NSString * statsStep;
+
 
 
 // 此wifi为家庭 非硬件热点

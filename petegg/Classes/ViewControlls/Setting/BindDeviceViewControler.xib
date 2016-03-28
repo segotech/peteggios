@@ -25,7 +25,7 @@
                     <rect key="frame" x="43" y="114" width="235" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piO-My-XVy">
-                            <rect key="frame" x="0.0" y="5" width="53" height="28"/>
+                            <rect key="frame" x="0.0" y="5" width="53" height="29"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="53" id="Fzu-bt-2SA"/>
                             </constraints>
@@ -43,16 +43,16 @@
                     <constraints>
                         <constraint firstItem="TUj-d2-8oL" firstAttribute="leading" secondItem="piO-My-XVy" secondAttribute="trailing" constant="1" id="3lc-Lw-dKk"/>
                         <constraint firstItem="piO-My-XVy" firstAttribute="leading" secondItem="urP-X6-rqd" secondAttribute="leading" id="B66-al-XNg"/>
-                        <constraint firstItem="TUj-d2-8oL" firstAttribute="baseline" secondItem="piO-My-XVy" secondAttribute="baseline" id="Iev-jq-je6"/>
+                        <constraint firstItem="TUj-d2-8oL" firstAttribute="baseline" secondItem="piO-My-XVy" secondAttribute="baseline" constant="1" id="Iev-jq-je6"/>
                         <constraint firstAttribute="trailing" secondItem="TUj-d2-8oL" secondAttribute="trailing" id="Nvx-Pe-ZQl"/>
-                        <constraint firstItem="piO-My-XVy" firstAttribute="baseline" secondItem="TUj-d2-8oL" secondAttribute="firstBaseline" id="Sj7-XK-j1Y"/>
+                        <constraint firstItem="piO-My-XVy" firstAttribute="baseline" secondItem="TUj-d2-8oL" secondAttribute="firstBaseline" constant="-1" id="Sj7-XK-j1Y"/>
                         <constraint firstAttribute="width" secondItem="urP-X6-rqd" secondAttribute="height" multiplier="47:8" id="TUV-Ra-dE9"/>
                         <constraint firstAttribute="height" constant="40" id="WrL-vU-Y4R"/>
                         <constraint firstItem="piO-My-XVy" firstAttribute="top" secondItem="urP-X6-rqd" secondAttribute="top" constant="5" id="X34-Mf-KcQ"/>
                         <constraint firstAttribute="bottom" secondItem="piO-My-XVy" secondAttribute="bottom" constant="7" id="aRm-qn-yFS"/>
                         <constraint firstAttribute="bottom" secondItem="TUj-d2-8oL" secondAttribute="bottom" id="b5d-UC-rDj"/>
                         <constraint firstItem="TUj-d2-8oL" firstAttribute="top" secondItem="urP-X6-rqd" secondAttribute="top" id="pbz-Ae-Q1u"/>
-                        <constraint firstItem="TUj-d2-8oL" firstAttribute="baseline" secondItem="piO-My-XVy" secondAttribute="firstBaseline" id="wXY-Jk-DVL"/>
+                        <constraint firstItem="TUj-d2-8oL" firstAttribute="baseline" secondItem="piO-My-XVy" secondAttribute="firstBaseline" constant="1" id="wXY-Jk-DVL"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>

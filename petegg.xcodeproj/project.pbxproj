@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34076C231CA8C40900BD5AE9 /* BindDeviceViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 34076C211CA8C40900BD5AE9 /* BindDeviceViewControler.m */; };
+		34076C241CA8C40900BD5AE9 /* BindDeviceViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34076C221CA8C40900BD5AE9 /* BindDeviceViewControler.xib */; };
 		344F022B1C9FD6200076CE62 /* noDevice.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F022A1C9FD6200076CE62 /* noDevice.png */; };
 		344F022D1C9FE02C0076CE62 /* new_egg_seting.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F022C1C9FE02C0076CE62 /* new_egg_seting.png */; };
 		344F02321C9FE0410076CE62 /* egg_calling.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F022E1C9FE0410076CE62 /* egg_calling.png */; };
@@ -63,8 +65,6 @@
 		344F02E41CA3EA0B0076CE62 /* while_good.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02DA1CA3EA0B0076CE62 /* while_good.png */; };
 		344F02E81CA3EC040076CE62 /* personTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02E61CA3EC040076CE62 /* personTableViewCell.m */; };
 		344F02E91CA3EC040076CE62 /* personTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344F02E71CA3EC040076CE62 /* personTableViewCell.xib */; };
-		3460AE261CA5339800D50F43 /* BindDeviceViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3460AE241CA5339800D50F43 /* BindDeviceViewControler.m */; };
-		3460AE271CA5339800D50F43 /* BindDeviceViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3460AE251CA5339800D50F43 /* BindDeviceViewControler.xib */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		570BA4F91CA25570009AA2FC /* InCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F71CA25570009AA2FC /* InCallViewController.m */; };
 		570BA4FA1CA25570009AA2FC /* InCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570BA4F81CA25570009AA2FC /* InCallViewController.xib */; };
@@ -124,6 +124,9 @@
 
 /* Begin PBXFileReference section */
 		12B3F5078F1D20378D19682F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		34076C201CA8C40900BD5AE9 /* BindDeviceViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindDeviceViewControler.h; sourceTree = "<group>"; };
+		34076C211CA8C40900BD5AE9 /* BindDeviceViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindDeviceViewControler.m; sourceTree = "<group>"; };
+		34076C221CA8C40900BD5AE9 /* BindDeviceViewControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BindDeviceViewControler.xib; sourceTree = "<group>"; };
 		344F022A1C9FD6200076CE62 /* noDevice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noDevice.png; sourceTree = "<group>"; };
 		344F022C1C9FE02C0076CE62 /* new_egg_seting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_egg_seting.png; sourceTree = "<group>"; };
 		344F022E1C9FE0410076CE62 /* egg_calling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_calling.png; sourceTree = "<group>"; };
@@ -376,6 +379,9 @@
 				344F027B1CA12A830076CE62 /* wifiViewController.h */,
 				344F027C1CA12A830076CE62 /* wifiViewController.m */,
 				344F027D1CA12A830076CE62 /* wifiViewController.xib */,
+				34076C201CA8C40900BD5AE9 /* BindDeviceViewControler.h */,
+				34076C211CA8C40900BD5AE9 /* BindDeviceViewControler.m */,
+				34076C221CA8C40900BD5AE9 /* BindDeviceViewControler.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -904,6 +910,7 @@
 				57666FAF1C96947B00A52DBA /* Localizable.strings in Resources */,
 				344F02331C9FE0410076CE62 /* egg_offline.png in Resources */,
 				344F02DF1CA3EA0B0076CE62 /* person_history.png in Resources */,
+				34076C241CA8C40900BD5AE9 /* BindDeviceViewControler.xib in Resources */,
 				344F02891CA143AC0076CE62 /* kuang_on.png in Resources */,
 				344F02641C9FEBDE0076CE62 /* trun_off.png in Resources */,
 				344F02E21CA3EA0B0076CE62 /* person_systemmessage.png in Resources */,
@@ -1020,6 +1027,7 @@
 				57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */,
 				57666FDA1C96BE6F00A52DBA /* UIActionSheet+Blocks.m in Sources */,
 				344F02931CA23F790076CE62 /* Reachability.m in Sources */,
+				34076C231CA8C40900BD5AE9 /* BindDeviceViewControler.m in Sources */,
 				57666FDD1C96BE6F00A52DBA /* UIView+TapBlocks.m in Sources */,
 				57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */,
 				344F02BC1CA27E780076CE62 /* BePeripheralViewController.m in Sources */,

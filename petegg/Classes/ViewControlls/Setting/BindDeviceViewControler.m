@@ -15,9 +15,17 @@ static NSString *const ServiceUUID2 =  @"FFE0";
 static NSString *const readCharacteristicUUID =  @"FFE1";
 static NSString * const LocalNameKey =  @"segopass";
 
+/**
+ *  正确结果标示符
+ *
+ *  @return ResultDeviceID
+ */
+
+static NSString * const ResultDeviceID = @"Segopet730";
 
 
 #import "BindDeviceViewControler.h"
+#import "wifiViewController.h"
 
 @interface BindDeviceViewControler ()<UIAlertViewDelegate>
 
@@ -27,6 +35,9 @@ static NSString * const LocalNameKey =  @"segopass";
     NSTimer *timer;
     //添加成功的service数量
     int serviceNum;
+    // 服务器计数
+    NSInteger DeviceNu;
+    
    
 }
 
@@ -238,8 +249,27 @@ static NSString * const LocalNameKey =  @"segopass";
 
 //写characteristics请求
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray *)requests{
+    DeviceNu++;
     NSLog(@"服务器写入的数据 商定发送三次");
     CBATTRequest *request = requests[0];
+    NSString * str;
+    
+    /**
+     *  Segopet730
+     */
+    if ([[str substringToIndex:9] isEqualToString:ResultDeviceID]) {
+        
+        NSLog(@"是我们的数据");
+        wifiViewController * wifVC =[[wifiViewController alloc]initWithNibName:@"wifiViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:wifVC animated:YES];
+        
+    }else if(DeviceNu<=3)
+    {
+        
+        NSLog(@"获取设备信息失败弹出框");
+        
+    }
     
     //判断是否有写数据的权限
     if (request.characteristic.properties & CBCharacteristicPropertyWrite) {
