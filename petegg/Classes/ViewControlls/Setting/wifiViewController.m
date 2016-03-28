@@ -149,6 +149,7 @@
     hud.minSize = CGSizeMake(132.f, 108.0f);
     [hud hide:YES afterDelay:3];
     
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
