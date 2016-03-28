@@ -107,6 +107,7 @@ static NSString * cellId = @"AttentionCellId";
     cell.timeLable.text = model.publishtime;
     cell.leftnumber.text = model.comments;
     cell.rihttnumber.text = model.praises;
+    cell.aboutBtn.hidden = YES;
     
     //tabview隐藏点击效果和分割线
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -10,9 +10,10 @@
 
 #import "RecommendViewController.h"
 #import "AttentionViewController.h"
+#import "IssuePinViewController.h"
+#import "WechatShortVideoController.h"
 
-
-@interface SquareViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource>
+@interface SquareViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource,WechatShortVideoDelegate>
 
 @property(nonatomic,strong)UIButton * leftButton;
 @property(nonatomic,strong)UIButton * rightButton;
@@ -23,6 +24,8 @@
 @property(nonatomic,strong)UIButton * coverBtn;
 @property(nonatomic,strong)UIView * downWhiteView;
 @property(nonatomic,strong)UIView * downView;
+
+@property(nonatomic,strong)UIImagePickerController * imagePicker;
 
 @property UIPageViewController *pageViewController;
 @property (assign) id<UIScrollViewDelegate> origPageScrollViewDelegate;
@@ -39,6 +42,8 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     //self.title = NSLocalizedString(@"tabSquare", nil);
+    _imagePicker =[[UIImagePickerController alloc]init];
+    _imagePicker.delegate= self;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self initUserface];
 }
@@ -76,9 +81,7 @@
 }
 
 - (void)setupView{
-
     //初始化 pageViewController
-   
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                         options:nil];
@@ -134,7 +137,7 @@
 
 -(void)doRightButtonTouch{
     
-    _downWhiteView = [[UIView alloc]initWithFrame:CGRectMake(0 , 667, 375, 120 )];
+    _downWhiteView = [[UIView alloc]initWithFrame:CGRectMake(0 , 667, 375, 160 )];
     _downView = [[UIView alloc]initWithFrame:CGRectMake(0, 667, 375, 40)];
     _coverBtn = [[UIButton alloc]initWithFrame:self.view.bounds];
     _coverBtn.backgroundColor = [UIColor blackColor];
@@ -179,15 +182,82 @@
 
 -(void)touchSonme:(UIButton *)sender{
     if (0 == sender.tag) {
-        NSLog(@"拍照");
+        [self takePhoto];
     }else if (1 == sender.tag){
-        NSLog(@"相册");
+        [self loacalPhoto];
     }else if (2 == sender.tag){
         NSLog(@"资源库");
+        
     }else if (3 == sender.tag){
         NSLog(@"小视频");
+        [self takeChat];
     }
     
+}
+
+#pragma mark - wechat
+//仿微信小视频
+- (void)takeChat{
+    [self yincang:nil];
+    WechatShortVideoController *wechatShortVideoController = [[WechatShortVideoController alloc] init];
+    wechatShortVideoController.delegate = self;
+    // [self presentViewController:wechatShortVideoController animated:YES completion:^{}];
+    [self.navigationController pushViewController:wechatShortVideoController animated:YES];
+}
+
+
+
+
+#pragma mark - Uiimagepicker
+  // 拍照
+- (void)takePhoto
+{
+    [self yincang:nil];
+  
+    NSArray * mediaty = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        _imagePicker.mediaTypes = @[mediaty[0]];
+        //设置相机模式：1摄像2录像
+        _imagePicker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+        //使用前置还是后置摄像头
+        _imagePicker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+        //闪光模式
+        _imagePicker.cameraFlashMode = UIImagePickerControllerCameraFlashModeAuto;
+        _imagePicker.allowsEditing = YES;
+    }else
+    {
+        NSLog(@"打开摄像头失败");
+    }
+    [self presentViewController:_imagePicker animated:YES completion:nil];
+    //[self.navigationController pushViewController:_imagePicker animated:YES];
+    
+}
+//相册选取
+
+- (void)loacalPhoto
+{
+    [self yincang:nil];
+    NSArray * mediaTypers = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        _imagePicker.mediaTypes = @[mediaTypers[0],mediaTypers[1]];
+        _imagePicker.allowsEditing = YES;
+    }
+    [self presentViewController:_imagePicker animated:NO completion:nil];
+    
+}
+
+
+
+
+//得到图片之后的处理
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+    IssuePinViewController * vC = [[IssuePinViewController alloc]init];
+    [self.navigationController pushViewController:vC animated:YES];
+
 }
 
 #pragma mark - UIPageViewControllerDataSource
@@ -229,7 +299,6 @@
         [self rightButtonTouch];
     }
 }
-
 
 
 
