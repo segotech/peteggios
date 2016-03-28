@@ -60,7 +60,12 @@ static NSString * const ResultDeviceID = @"Segopet730";
     /**
      蓝牙从机  options 一定要设置为nil（余）
      */
-    peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil options:nil];
+//    peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil options:nil];
+    NSUserDefaults * defults =[NSUserDefaults standardUserDefaults];
+    [defults setObject:@"1" forKey:@"DEVICE_NUMBER"];
+    [defults synchronize];
+
+    [self.navigationController popViewControllerAnimated:YES];
     
     
 
@@ -79,7 +84,7 @@ static NSString * const ResultDeviceID = @"Segopet730";
 -(void)setUp{
     //characteristics字段描述
     CBUUID *CBUUIDCharacteristicUserDescriptionStringUUID = [CBUUID UUIDWithString:CBUUIDCharacteristicUserDescriptionString];
-    NSString * str1 =@"123";
+    NSString * str1 =@"MI16030000012833";
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"action", @"bind",
                             @"Mid", str1,nil];
@@ -260,6 +265,9 @@ static NSString * const ResultDeviceID = @"Segopet730";
     if ([[str substringToIndex:9] isEqualToString:ResultDeviceID]) {
         
         NSLog(@"是我们的数据");
+        NSUserDefaults * defults =[NSUserDefaults standardUserDefaults];
+        [defults setObject:nil forKey:@"DEVICE_NUMBER"];
+        [defults synchronize];
         wifiViewController * wifVC =[[wifiViewController alloc]initWithNibName:@"wifiViewController" bundle:nil];
         
         [self.navigationController pushViewController:wifVC animated:YES];
