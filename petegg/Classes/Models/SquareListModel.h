@@ -53,7 +53,11 @@
 
 @property (nonatomic, copy) NSString<Optional> *reports;
 
-@property (nonatomic,copy)  NSString<Optional> * frontcover;
+@property (nonatomic, copy)  NSString<Optional> * frontcover;
+
+@property (nonatomic, copy)  NSString<Optional> * title;
+
+@property (nonatomic, copy) NSString<Optional> * aid;
 @end
 @protocol SquareModel
 @end

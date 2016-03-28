@@ -86,6 +86,20 @@
         self.topView.alpha = 0.1;
         [self addSubview:self.topView];
         
+        self.aboutBtn = [[UIButton alloc]initWithFrame:CGRectMake(305 * W_Wide_Zoom, 23 * W_Hight_Zoom, 60 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
+        self.aboutBtn.backgroundColor = GREEN_COLOR;
+        self.aboutBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [self.aboutBtn setTitle:@"+关注" forState:UIControlStateNormal];
+        [self.aboutBtn setTitle:@"已关注" forState:UIControlStateSelected];
+        self.aboutBtn.layer.cornerRadius = 5;
+        [self.aboutBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        [self addSubview:self.aboutBtn];
+        
+        
+        
+        
+        
     }
 
     return self;

@@ -85,27 +85,33 @@ static NSString * cellId = @"recommeCellId";
 -(void)initTopView{
     NSMutableArray * arrList =[[NSMutableArray alloc]init];
     NSMutableArray * textList =[[NSMutableArray alloc]init];
-
+    NSMutableArray * aidList = [[NSMutableArray alloc]init];
+    
     for (int i = 0 ; i < self.dataSourceImage.count; i++) {
        SquareModel * model  = self.dataSourceImage[i];
         UIImageView * pImageView1 =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 150)];
         [pImageView1 sd_setImageWithURL:[NSURL URLWithString:model.frontcover] placeholderImage:[UIImage imageNamed:@"segouploade.png"]];
-        
-     //   [textList addObject:_imageArr[i][@"title"]];
+        //[textList addObject:_imageArr[i][@"title"]];
+        [textList addObject:model.title];
         [arrList addObject:pImageView1];
-
+        [aidList addObject:model.aid] ;
     }
+    _topScrollView.textArr = textList;
     _topScrollView.fetchContentViewAtIndex=  ^UIView *(NSInteger pageIndex){
         return arrList[pageIndex];
     };
+    
     _topScrollView.totalPagesCount = ^NSInteger(void){
         return arrList.count;
     };
     
+    _topScrollView.TapActionBlock = ^(NSInteger pagIndex){
+    
+        //这里写点击事件
+        NSLog(@"%@",aidList[pagIndex]);
+    };
 
 }
-
-
 
 -(NSString*)DataTOjsonString:(id)object
 {
@@ -163,6 +169,7 @@ static NSString * cellId = @"recommeCellId";
     cell.timeLable.text = model.publishtime;
     cell.leftnumber.text = model.comments;
     cell.rihttnumber.text = model.praises;
+    [cell.aboutBtn addTarget:self action:@selector(attentionTouch:) forControlEvents:UIControlEventTouchUpInside];
     
     //tabview隐藏点击效果和分割线
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -170,6 +177,10 @@ static NSString * cellId = @"recommeCellId";
     return cell;
 }
 
+//关注按钮点击事件
+-(void)attentionTouch:(UIButton * )sender{
+    sender.selected = !sender.selected;
 
+}
 
 @end

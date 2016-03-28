@@ -45,10 +45,7 @@
     self.tabBarController.tabBar.hidden= NO;
     NSArray *array = self.navigationController.viewControllers;
     self.navigationItem.backBarButtonItem= nil;
-    
     if (array.count > 1) {
-    
-
         UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
         leftbutton.frame = CGRectMake(0, 0, 30, 30);
         [leftbutton setTitleEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
