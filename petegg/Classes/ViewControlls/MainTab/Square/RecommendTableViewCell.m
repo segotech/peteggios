@@ -17,7 +17,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     
         
-        self.lineLable =[[UILabel alloc]initWithFrame:CGRectMake(0, 369 , 375 * W_Wide_Zoom, 1)];
+        self.lineLable =[[UILabel alloc]initWithFrame:CGRectMake(0, 369 * W_Hight_Zoom , 375 * W_Wide_Zoom, 1)];
         self.lineLable.backgroundColor =GRAY_COLOR;
         
         [self addSubview:self.lineLable];

@@ -254,8 +254,13 @@
 //得到图片之后的处理
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    //NSMutableArray * imageArray = [[NSMutableArray alloc]init];
+    UIImage * getImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    //[imageArray addObject:getImage];
+    
     [self dismissViewControllerAnimated:NO completion:nil];
     IssuePinViewController * vC = [[IssuePinViewController alloc]init];
+    vC.firstImage = getImage;
     [self.navigationController pushViewController:vC animated:YES];
 
 }
