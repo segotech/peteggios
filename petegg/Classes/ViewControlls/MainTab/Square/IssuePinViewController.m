@@ -34,13 +34,12 @@
 -(void)setupView{
     [super setupData];
     _topTextView = [[UITextView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 10 * W_Hight_Zoom, 375 * W_Wide_Zoom, 200 * W_Hight_Zoom)];
-    _topTextView.backgroundColor = [UIColor blackColor];
+    _topTextView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_topTextView];
     _imageArray = [[NSMutableArray alloc]init];
     [_imageArray addObject:_firstImage];
   
     [self addImageS];
-    
     
 }
 
@@ -65,9 +64,12 @@
 }
 
 -(void)buttonTouch:(UIButton *)sender{
-    
-    
+
     NSInteger i = _imageArray.count;
+    if (i <= 1) {
+        NSLog(@"如果删除完了，弹出来的是可以选择视频的界面");
+        [self openDownBigView];
+    }else{
     if (sender.tag == i - 1 ) {
         if (_imageArray.count > 4) {
             NSLog(@"不能大于4张");
@@ -95,12 +97,11 @@
             }]];
         [self presentViewController:alert animated:YES completion:nil];
     }
-        
+    }
 }
 //删除照片后重新排序
 -(void)paixuImageButton{
 
-  
     _bigView = [[UIView alloc]initWithFrame:CGRectMake(0, 220, 375, 200)];
     _bigView.backgroundColor = self.view.backgroundColor;
     [self.view addSubview:_bigView];
@@ -111,6 +112,12 @@
         _imageButtones.tag = i;
         [_imageButtones addTarget:self action:@selector(buttonTouch:) forControlEvents:UIControlEventTouchUpInside];
     }
+
+}
+
+-(void)openDownBigView{
+    _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0, 667, 375, 160)];
+        
 
 }
 
@@ -148,17 +155,13 @@
         
     }
     
-
 }
-
-
 -(void)hideButton:(UIButton *)sender{
     _coverButton.hidden = YES;
     [UIView animateWithDuration:0.3 animations:^{
         _downWithView.frame = CGRectMake(0, 667, 375, 80);
         _littleDownView.frame = CGRectMake(0, 667, 375, 40);
     }];
-    
 }
 
 -(void)imageButtonTouch:(UIButton *)sender{
@@ -193,11 +196,10 @@
         NSLog(@"打开摄像头失败");
     }
     [self presentViewController:_imagePicker animated:YES completion:nil];
-    //[self.navigationController pushViewController:_imagePicker animated:YES];
+     //[self.navigationCo                                                                                                                                                                                                                                                                                                                                                                                                             ntroller pushViewController:_imagePicker animated:YES];
     
 }
 //相册选取
-
 - (void)loacalPhoto
 {
     [self hideButton:nil];

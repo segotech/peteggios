@@ -201,7 +201,6 @@
     [self yincang:nil];
     WechatShortVideoController *wechatShortVideoController = [[WechatShortVideoController alloc] init];
     wechatShortVideoController.delegate = self;
-    // [self presentViewController:wechatShortVideoController animated:YES completion:^{}];
     [self.navigationController pushViewController:wechatShortVideoController animated:YES];
 }
 
@@ -306,6 +305,9 @@
 }
 
 
+-(void)finishWechatShortVideoCapture:(NSURL *)filePath{
+    
 
+}
 
 @end
