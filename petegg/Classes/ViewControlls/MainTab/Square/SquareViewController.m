@@ -201,7 +201,6 @@
     [self yincang:nil];
     WechatShortVideoController *wechatShortVideoController = [[WechatShortVideoController alloc] init];
     wechatShortVideoController.delegate = self;
-    // [self presentViewController:wechatShortVideoController animated:YES completion:^{}];
     [self.navigationController pushViewController:wechatShortVideoController animated:YES];
 }
 
@@ -254,8 +253,13 @@
 //得到图片之后的处理
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    //NSMutableArray * imageArray = [[NSMutableArray alloc]init];
+    UIImage * getImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    //[imageArray addObject:getImage];
+    
     [self dismissViewControllerAnimated:NO completion:nil];
     IssuePinViewController * vC = [[IssuePinViewController alloc]init];
+    vC.firstImage = getImage;
     [self.navigationController pushViewController:vC animated:YES];
 
 }
@@ -301,6 +305,9 @@
 }
 
 
+-(void)finishWechatShortVideoCapture:(NSURL *)filePath{
+    
 
+}
 
 @end

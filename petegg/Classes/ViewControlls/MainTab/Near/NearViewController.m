@@ -17,4 +17,15 @@
     
 }
 
+-(void)setupView{
+    
+
+
+
+
+
+}
+
+
+
 @end
