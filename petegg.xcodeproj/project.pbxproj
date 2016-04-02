@@ -65,6 +65,9 @@
 		344F02E41CA3EA0B0076CE62 /* while_good.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02DA1CA3EA0B0076CE62 /* while_good.png */; };
 		344F02E81CA3EC040076CE62 /* personTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02E61CA3EC040076CE62 /* personTableViewCell.m */; };
 		344F02E91CA3EC040076CE62 /* personTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344F02E71CA3EC040076CE62 /* personTableViewCell.xib */; };
+		3455BB4D1CAFC98E00CA0D27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3455BB4C1CAFC98E00CA0D27 /* QuartzCore.framework */; };
+		3455BB4F1CAFC99B00CA0D27 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3455BB4E1CAFC99B00CA0D27 /* Accelerate.framework */; };
+		3455BB531CAFD31200CA0D27 /* ceishi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3455BB521CAFD31200CA0D27 /* ceishi.jpg */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		570BA4F91CA25570009AA2FC /* InCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F71CA25570009AA2FC /* InCallViewController.m */; };
 		570BA4FA1CA25570009AA2FC /* InCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570BA4F81CA25570009AA2FC /* InCallViewController.xib */; };
@@ -228,6 +231,9 @@
 		344F02E51CA3EC040076CE62 /* personTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = personTableViewCell.h; sourceTree = "<group>"; };
 		344F02E61CA3EC040076CE62 /* personTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personTableViewCell.m; sourceTree = "<group>"; };
 		344F02E71CA3EC040076CE62 /* personTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = personTableViewCell.xib; sourceTree = "<group>"; };
+		3455BB4C1CAFC98E00CA0D27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3455BB4E1CAFC99B00CA0D27 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		3455BB521CAFD31200CA0D27 /* ceishi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ceishi.jpg; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -407,6 +413,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3455BB4F1CAFC99B00CA0D27 /* Accelerate.framework in Frameworks */,
+				3455BB4D1CAFC98E00CA0D27 /* QuartzCore.framework in Frameworks */,
 				344F02B11CA2475A0076CE62 /* Foundation.framework in Frameworks */,
 				344F02AF1CA247510076CE62 /* CoreGraphics.framework in Frameworks */,
 				344F02AD1CA247450076CE62 /* CoreBluetooth.framework in Frameworks */,
@@ -749,6 +757,7 @@
 		57666F7D1C9686DE00A52DBA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3455BB521CAFD31200CA0D27 /* ceishi.jpg */,
 				344F02291C9FD6130076CE62 /* background */,
 				344F02281C9FD5BC0076CE62 /* nav */,
 				344F02271C9FD5A00076CE62 /* button */,
@@ -1013,6 +1022,8 @@
 		E5E56A0B5C5FC8A2D504C1A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3455BB4E1CAFC99B00CA0D27 /* Accelerate.framework */,
+				3455BB4C1CAFC98E00CA0D27 /* QuartzCore.framework */,
 				344F02B01CA2475A0076CE62 /* Foundation.framework */,
 				344F02AE1CA247510076CE62 /* CoreGraphics.framework */,
 				344F02AC1CA247450076CE62 /* CoreBluetooth.framework */,
@@ -1123,6 +1134,7 @@
 				344F02351C9FE0410076CE62 /* egg_upload.png in Resources */,
 				344F02DB1CA3EA0B0076CE62 /* blank_list.png in Resources */,
 				57666FAF1C96947B00A52DBA /* Localizable.strings in Resources */,
+				3455BB531CAFD31200CA0D27 /* ceishi.jpg in Resources */,
 				344F02331C9FE0410076CE62 /* egg_offline.png in Resources */,
 				344F02DF1CA3EA0B0076CE62 /* person_history.png in Resources */,
 				34076C241CA8C40900BD5AE9 /* BindDeviceViewControler.xib in Resources */,
