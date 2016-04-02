@@ -52,40 +52,57 @@
 {
     [super setupView];
     
+    UIView  * _headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 375, 200)];
+    _headView.backgroundColor = [UIColor whiteColor];
+    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,375,200)];
+    //applyBlurRadius
+    UIImage * image =[[UIImage alloc]init];
+ 
+    
+    [self.view addSubview:_headView];
+    
     // 头像
-    _heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-40, self.view.origin.y+80, 80, 80)];
+    _heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(_headView.center.x-40, self.view.origin.y+30, 80, 80)];
     _heandBtn.backgroundColor =[UIColor redColor];
     [_heandBtn.layer setMasksToBounds:YES];
     [_heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
     _heandBtn.userInteractionEnabled = YES;
     [_heandBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:_heandBtn];
-    /**
-        点赞  名字
-     */
-    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 20)];
-    _nameLabel.text = @"我是余磊 我爱打麻将";
-    _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+100);
-    _nameLabel.font = [UIFont systemFontOfSize:14];
-    _nameLabel.textAlignment = NSTextAlignmentCenter;
-    _nameLabel.textColor = [UIColor blackColor];
-    [self.view addSubview:_nameLabel];
+    [_headView addSubview:_heandBtn];
     
-    UIImageView * message1 =[[UIImageView alloc]initWithFrame:CGRectMake(240, -20, 15,15)];
-    message1.image =[UIImage imageNamed:@"while_good"];
-    [self.view addSubview:message1];
+//    /**
+//        点赞  名字
+//     */
+//    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 20)];
+//    _nameLabel.text = @"我是余磊 我爱打麻将";
+//    _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+100);
+//    _nameLabel.font = [UIFont systemFontOfSize:14];
+//    _nameLabel.textAlignment = NSTextAlignmentCenter;
+//    _nameLabel.textColor = [UIColor blackColor];
+//    [self.view addSubview:_nameLabel];
+//    
+//    UIImageView * message1 =[[UIImageView alloc]initWithFrame:CGRectMake(240, -20, 15,15)];
+//    message1.image =[UIImage imageNamed:@"while_good"];
+//    [self.view addSubview:message1];
+//    
+//    UILabel * goodLabel = [[UILabel alloc]initWithFrame:CGRectMake(260, -23, 100, 20)];
+//    goodLabel.textColor = [UIColor grayColor];
+//    goodLabel.font = [UIFont systemFontOfSize:12];
+//    [self.view addSubview:goodLabel];
     
-    UILabel * goodLabel = [[UILabel alloc]initWithFrame:CGRectMake(260, -23, 100, 20)];
-    goodLabel.textColor = [UIColor grayColor];
-    goodLabel.font = [UIFont systemFontOfSize:12];
-    [self.view addSubview:goodLabel];
-    
+  
+
 
     
     
-
-    self.tableView.frame = CGRectMake(0, _heandBtn.frame.origin.y+140, SCREEN_WIDTH, SCREEN_HEIGHT-104);
+   
+    self.tableView.frame = CGRectMake(0, 60, SCREEN_WIDTH, SCREEN_HEIGHT-104);
+    
+    self.tableView.tableHeaderView =_headView;
+    self.tableView.tableFooterView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    
+    
    
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
@@ -210,7 +227,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 39*W_Hight_Zoom;
+    return 55*W_Hight_Zoom;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -339,6 +356,37 @@
     
     
 }
+/**
+ *  @1毛玻璃效果方法
+ *
+ *  @param radius
+ *  @param image
+ *
+ *  @return 
+ */
++ (UIImage *)applyBlurRadius:(CGFloat)radius toImage:(UIImage *)image
+{
+    if (radius < 0) radius = 0;
+    
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *inputImage = [CIImage imageWithCGImage:image.CGImage];
+    
+    // Setting up gaussian blur
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [filter setValue:inputImage forKey:kCIInputImageKey];
+    [filter setValue:[NSNumber numberWithFloat:radius] forKey:@"inputRadius"];
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+    
+    CGImageRef cgImage = [context createCGImage:result fromRect:[inputImage extent]];
+    
+    UIImage *returnImage = [UIImage imageWithCGImage:cgImage];
+    CGImageRelease(cgImage);
+    return returnImage;
+}
+/**
+ *  @2 第二种方法
+ *
+ */
 
 
 @end

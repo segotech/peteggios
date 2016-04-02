@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="wifiViewController">
             <connections>
+                <outlet property="encryptionlistTab" destination="eDQ-VQ-KHb" id="OBo-nb-K8v"/>
                 <outlet property="passCodeTF" destination="WWR-aS-BWf" id="5wz-CB-ZJh"/>
+                <outlet property="seletEncryption" destination="ZCR-qU-Tp7" id="Dm7-mt-Ylt"/>
                 <outlet property="sureBtn" destination="fUU-mr-Gs1" id="T1k-DI-Gbb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wifiNameTF" destination="Kdf-oS-i5T" id="CjN-9V-t0X"/>
@@ -106,9 +107,9 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="22" id="hnh-Vj-865"/>
                     </constraints>
-                    <state key="normal" image="kuang_off.png"/>
-                    <state key="selected" image="kuang_on.png"/>
-                    <state key="highlighted" image="kuang_on.png"/>
+                    <state key="normal" image="kuang_on.png"/>
+                    <state key="selected" image="kuang_off.png"/>
+                    <state key="highlighted" image="kuang_off.png"/>
                     <connections>
                         <action selector="showPassWordBtn:" destination="-1" eventType="touchUpInside" id="0xh-vD-Sox"/>
                     </connections>
@@ -123,16 +124,65 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siG-El-cD0">
+                    <rect key="frame" x="43" y="282" width="85" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="85" id="ljK-gu-79K"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="加密方式:">
+                        <color key="titleColor" red="0.054125463589999999" green="0.060724431820000001" blue="0.059614748199999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCR-qU-Tp7">
+                    <rect key="frame" x="126" y="280" width="152" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="152" id="ptG-dd-7L8"/>
+                        <constraint firstAttribute="height" constant="25" id="r9k-Jz-I0G"/>
+                    </constraints>
+                    <state key="normal" title="WPA/WPA2">
+                        <color key="titleColor" red="0.054125463589999999" green="0.060724431820000001" blue="0.059614748199999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                            <color key="value" red="0.83137254901960789" green="0.83137254901960789" blue="0.83137254901960789" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="selectEncryptionClick:" destination="-1" eventType="touchUpInside" id="7Sl-0K-8bk"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="eDQ-VQ-KHb">
+                    <rect key="frame" x="126" y="307" width="152" height="130"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="Uaa-0o-nyj"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                            <color key="value" red="0.83137254901960789" green="0.83137254901960789" blue="0.83137254901960789" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                    </userDefinedRuntimeAttributes>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="eDQ-VQ-KHb" firstAttribute="trailing" secondItem="fUU-mr-Gs1" secondAttribute="trailing" id="3Na-Vb-b5w"/>
                 <constraint firstItem="h8y-eI-eiq" firstAttribute="bottom" secondItem="mwl-U1-76R" secondAttribute="bottom" id="5yE-41-p6H"/>
                 <constraint firstItem="h8y-eI-eiq" firstAttribute="centerY" secondItem="mwl-U1-76R" secondAttribute="centerY" id="6Da-1P-n8s"/>
                 <constraint firstItem="mwl-U1-76R" firstAttribute="top" secondItem="sRx-6A-wU0" secondAttribute="bottom" constant="14" id="99I-jo-aiT"/>
                 <constraint firstItem="sRx-6A-wU0" firstAttribute="width" secondItem="a6B-Ti-8PX" secondAttribute="width" id="DmG-yF-OtH"/>
+                <constraint firstItem="ZCR-qU-Tp7" firstAttribute="leading" secondItem="eDQ-VQ-KHb" secondAttribute="leading" id="JVS-JJ-W7e"/>
                 <constraint firstItem="a6B-Ti-8PX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="43" id="JbN-eY-4KG"/>
                 <constraint firstItem="sRx-6A-wU0" firstAttribute="leading" secondItem="mwl-U1-76R" secondAttribute="leading" id="Ndm-8T-SOG"/>
+                <constraint firstItem="ZCR-qU-Tp7" firstAttribute="trailing" secondItem="sRx-6A-wU0" secondAttribute="trailing" id="RrP-D8-zIG"/>
                 <constraint firstItem="sRx-6A-wU0" firstAttribute="height" secondItem="a6B-Ti-8PX" secondAttribute="height" id="eJC-hF-V5u"/>
+                <constraint firstItem="eDQ-VQ-KHb" firstAttribute="top" secondItem="ZCR-qU-Tp7" secondAttribute="bottom" constant="2" id="enR-Ld-3qN"/>
+                <constraint firstItem="siG-El-cD0" firstAttribute="leading" secondItem="mwl-U1-76R" secondAttribute="leading" id="hCc-0q-2Uk"/>
                 <constraint firstItem="h8y-eI-eiq" firstAttribute="leading" secondItem="mwl-U1-76R" secondAttribute="trailing" constant="8" symbolic="YES" id="hVD-zY-TOI"/>
                 <constraint firstItem="a6B-Ti-8PX" firstAttribute="leading" secondItem="sRx-6A-wU0" secondAttribute="leading" id="ifm-cQ-fdN"/>
                 <constraint firstItem="fUU-mr-Gs1" firstAttribute="leading" secondItem="mwl-U1-76R" secondAttribute="leading" id="keR-mm-kRo"/>
@@ -140,8 +190,11 @@
                 <constraint firstItem="fUU-mr-Gs1" firstAttribute="width" secondItem="a6B-Ti-8PX" secondAttribute="width" id="pIg-9X-BKj"/>
                 <constraint firstItem="fUU-mr-Gs1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="siD-zS-Fnj"/>
                 <constraint firstItem="a6B-Ti-8PX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="138" id="uiI-Tc-pZX"/>
+                <constraint firstItem="siG-El-cD0" firstAttribute="top" secondItem="mwl-U1-76R" secondAttribute="bottom" constant="8" symbolic="YES" id="vju-Pw-RG2"/>
                 <constraint firstItem="fUU-mr-Gs1" firstAttribute="top" secondItem="mwl-U1-76R" secondAttribute="bottom" constant="101" id="yeY-QK-o31"/>
+                <constraint firstItem="fUU-mr-Gs1" firstAttribute="top" secondItem="siG-El-cD0" secondAttribute="bottom" constant="67" id="ypc-SZ-Ufv"/>
                 <constraint firstItem="sRx-6A-wU0" firstAttribute="top" secondItem="a6B-Ti-8PX" secondAttribute="bottom" constant="20" id="z8g-4j-YTJ"/>
+                <constraint firstItem="ZCR-qU-Tp7" firstAttribute="top" secondItem="h8y-eI-eiq" secondAttribute="bottom" constant="6" id="zN3-pa-IVy"/>
             </constraints>
             <point key="canvasLocation" x="253" y="292"/>
         </view>

@@ -7,13 +7,21 @@
 //
 
 // 标示符
-static NSString *const ServiceUUID1 =  @"FFF0";
-static NSString *const notiyCharacteristicUUID =  @"FFF1";
-static NSString *const readwriteCharacteristicUUID =  @"FFF2";
 
-static NSString *const ServiceUUID2 =  @"FFE0";
-static NSString *const readCharacteristicUUID =  @"FFE1";
-static NSString * const LocalNameKey =  @"segopass";
+
+static NSString *const ServiceUUID2 =  @"1f0b6a86-0dd6-440f-8aa6-8d11f3486af0";
+static NSString *const readCharacteristicUUID = @"a2e8d661-0bba-4a61-91e8-dd7ff3d55b27";
+static NSString *const readwriteCharacteristicUUID = @"aa78471c-257b-49f6-93a1-8686cadb1fe6";
+static NSString *const LocalNameKey =  @"segopass";
+
+/**
+ *  1f0b6a86-0dd6-440f-8aa6-8d11f3486af0
+ *  a2e8d661-0bba-4a61-91e8-dd7ff3d55b27
+ *  aa78471c-257b-49f6-93a1-8686cadb1fe6
+ */
+
+
+
 
 /**
  *  正确结果标示符
@@ -21,7 +29,7 @@ static NSString * const LocalNameKey =  @"segopass";
  *  @return ResultDeviceID
  */
 
-static NSString * const ResultDeviceID = @"Segopet730";
+static NSString * const ResultDeviceID = @"segoegg";
 
 
 #import "BindDeviceViewControler.h"
@@ -36,7 +44,8 @@ static NSString * const ResultDeviceID = @"Segopet730";
     //添加成功的service数量
     int serviceNum;
     // 服务器计数
-    NSInteger DeviceNu;
+    BOOL isAccectData;
+    
     
    
 }
@@ -48,28 +57,34 @@ static NSString * const ResultDeviceID = @"Segopet730";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    /**
+     蓝牙从机  options 一定要设置为nil（余）
+     */
+
+    peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil options:nil];
+  
+    isAccectData = NO;
+    
+    
+    
 
 }
 /**
- *
+ *   告知服务器蓝牙传输完成了
  *
  *  @param sender 绑定设备
  */
 - (IBAction)bindBtnClick:(UIButton *)sender {
     
-    /**
-     蓝牙从机  options 一定要设置为nil（余）
-     */
-//    peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil options:nil];
-    NSUserDefaults * defults =[NSUserDefaults standardUserDefaults];
-    [defults setObject:@"1" forKey:@"DEVICE_NUMBER"];
-    [defults synchronize];
+   
 
-    [self.navigationController popViewControllerAnimated:YES];
     
     
 
 }
+
+
 
 - (void)setupView
 {
@@ -84,10 +99,11 @@ static NSString * const ResultDeviceID = @"Segopet730";
 -(void)setUp{
     //characteristics字段描述
     CBUUID *CBUUIDCharacteristicUserDescriptionStringUUID = [CBUUID UUIDWithString:CBUUIDCharacteristicUserDescriptionString];
+    
     NSString * str1 =@"MI16030000012833";
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"action", @"bind",
-                            @"Mid", str1,nil];
+                            @"bind", @"action",
+                            str1,@"userid",nil];
     
     
     
@@ -95,18 +111,6 @@ static NSString * const ResultDeviceID = @"Segopet730";
     NSString *str = [self dictionaryToJson:params];
     NSData *data =[str dataUsingEncoding:NSUTF8StringEncoding];
     
-    /*
-     可以通知的Characteristic
-     properties：CBCharacteristicPropertyNotify
-     permissions CBAttributePermissionsReadable
-     */
-    CBMutableCharacteristic *notiyCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:notiyCharacteristicUUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable];
-    
-    /*
-     可读写的characteristics
-     properties：CBCharacteristicPropertyWrite | CBCharacteristicPropertyRead
-     permissions CBAttributePermissionsReadable | CBAttributePermissionsWriteable
-     */
     CBMutableCharacteristic *readwriteCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:readwriteCharacteristicUUID] properties:CBCharacteristicPropertyWrite | CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsReadable | CBAttributePermissionsWriteable];
     //设置description
     CBMutableDescriptor *readwriteCharacteristicDescription1 = [[CBMutableDescriptor alloc]initWithType: CBUUIDCharacteristicUserDescriptionStringUUID value:@"name"];
@@ -121,20 +125,17 @@ static NSString * const ResultDeviceID = @"Segopet730";
     CBMutableCharacteristic *readCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:readCharacteristicUUID] properties:CBCharacteristicPropertyRead value:data permissions:CBAttributePermissionsReadable];
     
     
-    //service1初始化并加入两个characteristics
-    CBMutableService *service1 = [[CBMutableService alloc]initWithType:[CBUUID UUIDWithString:ServiceUUID1] primary:YES];
-    NSLog(@"%@",service1.UUID);
-    
-    [service1 setCharacteristics:@[notiyCharacteristic,readwriteCharacteristic]];
-    
     //service2初始化并加入一个characteristics
     CBMutableService *service2 = [[CBMutableService alloc]initWithType:[CBUUID UUIDWithString:ServiceUUID2] primary:YES];
-    [service2 setCharacteristics:@[readCharacteristic]];
-    
-    //添加后就会调用代理的- (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error
-    [peripheralManager addService:service1];
+    [service2 setCharacteristics:@[readCharacteristic,readwriteCharacteristic]];
     [peripheralManager addService:service2];
+
+    
+    
 }
+
+
+
 #pragma  mark -- CBPeripheralManagerDelegate
 
 //peripheralManager状态改变
@@ -145,7 +146,8 @@ static NSString * const ResultDeviceID = @"Segopet730";
             NSLog(@"powered on");
             hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.labelText=@"正在拼命配置";
-            [hud hide:YES afterDelay:3.0];
+//            [hud hide:YES];
+            
 
             [self setUp];
             break;
@@ -191,11 +193,11 @@ static NSString * const ResultDeviceID = @"Segopet730";
     }
     
     //因为我们添加了2个服务，所以想两次都添加完成后才去发送广播
-    if (serviceNum==2) {
+    if (serviceNum==1) {
         //添加服务后可以在此向外界发出通告 调用完这个方法后会调用代理的
         //(void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error
         [peripheralManager startAdvertising:@{
-                                              CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:ServiceUUID1],[CBUUID UUIDWithString:ServiceUUID2]],
+                                              CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:ServiceUUID2]],
                                               CBAdvertisementDataLocalNameKey : LocalNameKey
                                               }
          ];
@@ -254,42 +256,74 @@ static NSString * const ResultDeviceID = @"Segopet730";
 
 //写characteristics请求
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray *)requests{
-    DeviceNu++;
-    NSLog(@"服务器写入的数据 商定发送三次");
+    NSLog(@"服务器写入的数据");
     CBATTRequest *request = requests[0];
-    NSString * str;
+        //判断是否有写数据的权限
     
-    /**
-     *  Segopet730
-     */
-    if ([[str substringToIndex:9] isEqualToString:ResultDeviceID]) {
+   
+    if (isAccectData == NO) {
         
-        NSLog(@"是我们的数据");
-        NSUserDefaults * defults =[NSUserDefaults standardUserDefaults];
-        [defults setObject:nil forKey:@"DEVICE_NUMBER"];
-        [defults synchronize];
-        wifiViewController * wifVC =[[wifiViewController alloc]initWithNibName:@"wifiViewController" bundle:nil];
+        /**
+         *  这样主要是为了 这个蓝牙的机智 毕竟人家是开启的 所以协议会走 代理也会走 方法也会走
+         */
         
-        [self.navigationController pushViewController:wifVC animated:YES];
-        
-    }else if(DeviceNu<=3)
-    {
-        
-        NSLog(@"获取设备信息失败弹出框");
-        
-    }
     
-    //判断是否有写数据的权限
     if (request.characteristic.properties & CBCharacteristicPropertyWrite) {
         //需要转换成CBMutableCharacteristic对象才能进行写值
         CBMutableCharacteristic *c =(CBMutableCharacteristic *)request.characteristic;
         
         c.value = request.value;
+        Byte * b =(Byte *)[c.value bytes];
+        NSString * str =[[NSString alloc]initWithBytes:b length:c.value.length encoding:NSUTF8StringEncoding];
+        NSLog(@"转换结果为===========%@",str);
+        NSArray *array = [str componentsSeparatedByString:@","]; //从字符A中分隔成2个元素的数组
+        str =array[1];
+        /**
+         *  Segopet730
+         */
+        if ([[str substringToIndex:7] isEqualToString:ResultDeviceID]) {
+            hud.labelText = @"配置成功";
+            [hud hide:YES afterDelay:1];
+            isAccectData = YES;
+            self.deviceNumLB.text = str;
+            self.jieruCodeTF.text = @"123456";
+            NSLog(@"是我们的数据");
+            NSUserDefaults * defults =[NSUserDefaults standardUserDefaults];
+            [defults setObject:str forKey:@"DEVICE_NUMBER"];
+            [defults synchronize];
+            /**
+             不能经行服务器多次同步操作
+             */
+//            wifiViewController * wifVC =[[wifiViewController alloc]initWithNibName:@"wifiViewController" bundle:nil];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            
+            
+        }else if([AppUtil isBlankString:self.deviceNumLB.text])
+        {
+            hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeCustomView;
+            hud.labelText=@"配置失败,请尝试重启不倒蛋";
+            [hud hide:YES afterDelay:3.0];
+             NSLog(@"获取设备信息失败弹出框");
+            
+        }
+
         [peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
     }else{
         [peripheralManager respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
     }
-    
+    }else if(isAccectData == YES)
+    {
+        
+        
+        /**
+         *  不做任何事情
+         *
+         *  @return 
+         */
+    }
     
 }
 
@@ -319,5 +353,13 @@ static NSString * const ResultDeviceID = @"Segopet730";
 }
 
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    
+    [super viewWillDisappear:animated];
+     hud = nil;
+    [hud removeFromSuperview];
+    
+}
 
 @end
