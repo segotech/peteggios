@@ -8,6 +8,8 @@
 
 #import "AppDelegate+Launcher.h"
 
+#import "AccountManager.h"
+
 @interface AppDelegate()
 
 @end
@@ -22,8 +24,36 @@
  */
 - (void)launcherApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     
-    [self enterMainTabVC];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       [UIColor grayColor], NSForegroundColorAttributeName,
+                                                       nil] forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       GREEN_COLOR,NSForegroundColorAttributeName,
+                                                       nil] forState:UIControlStateSelected];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:NotificationLoginStateChange object:nil];
+    
+    [self checkLogin];
+}
+
+- (void)checkLogin{
+    if ([AccountManager sharedAccountManager].isLogin) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
+    }
+}
+
+-(void)loginStateChange:(NSNotification *)notification{
+    
+    BOOL loginSuccess = [notification.object boolValue];
+    
+    if (loginSuccess) {
+        [self enterMainTabVC];
+    }else{
+        [self enterLoginVC];
+    }
 }
 
 /**
@@ -31,21 +61,30 @@
  */
 - (void)enterMainTabVC{
     
-    if (!self.mainTabVC) {
-        
-        self.mainTabVC = [[MainTabViewController alloc]init];
-        
-        [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       [UIColor grayColor], NSForegroundColorAttributeName,
-                                                       nil] forState:UIControlStateNormal];
-        [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       GREEN_COLOR,NSForegroundColorAttributeName,
-                                                       nil] forState:UIControlStateSelected];
-        [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+    if (self.loginVC) {
+        self.loginVC = nil;
     }
     
+    self.mainTabVC = [[MainTabViewController alloc]init];
+
     self.window.rootViewController = self.mainTabVC;
 
+    [self.window makeKeyAndVisible];
+}
+
+/**
+ *  进入登陆界面
+ */
+- (void)enterLoginVC{
+    
+    if (self.mainTabVC) {
+        self.mainTabVC = nil;
+    }
+    
+    self.loginVC = [[LoginViewController alloc]init];
+    
+    self.window.rootViewController = self.loginVC;
+    
     [self.window makeKeyAndVisible];
 }
 
