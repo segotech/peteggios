@@ -160,6 +160,8 @@
 		7D30E8CA1CA66C67004DE055 /* WechatShortVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E8C51CA66C67004DE055 /* WechatShortVideoController.m */; };
 		7D30E8CB1CA66C67004DE055 /* WechatShortVideoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D30E8C61CA66C67004DE055 /* WechatShortVideoController.xib */; };
 		7D3A351F1CB3AE790037C616 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3A351E1CB3AE790037C616 /* LoginModel.m */; };
+		7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3A352A1CB3CAE00037C616 /* RegiestViewController.m */; };
+		7D3A352E1CB3CAFA0037C616 /* ReDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3A352D1CB3CAFA0037C616 /* ReDataViewController.m */; };
 		7D3DA5B71CA3D292005BD38B /* sego1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5B61CA3D292005BD38B /* sego1.png */; };
 		7D3DA5B91CA3D2C7005BD38B /* sego.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5B81CA3D2C7005BD38B /* sego.png */; };
 		7D3DA5BB1CA3EC43005BD38B /* 评论.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5BA1CA3EC43005BD38B /* 评论.png */; };
@@ -412,6 +414,10 @@
 		7D30E8C61CA66C67004DE055 /* WechatShortVideoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WechatShortVideoController.xib; sourceTree = "<group>"; };
 		7D3A351D1CB3AE790037C616 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		7D3A351E1CB3AE790037C616 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
+		7D3A35291CB3CAE00037C616 /* RegiestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegiestViewController.h; sourceTree = "<group>"; };
+		7D3A352A1CB3CAE00037C616 /* RegiestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegiestViewController.m; sourceTree = "<group>"; };
+		7D3A352C1CB3CAFA0037C616 /* ReDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReDataViewController.h; sourceTree = "<group>"; };
+		7D3A352D1CB3CAFA0037C616 /* ReDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReDataViewController.m; sourceTree = "<group>"; };
 		7D3DA5B61CA3D292005BD38B /* sego1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sego1.png; sourceTree = "<group>"; };
 		7D3DA5B81CA3D2C7005BD38B /* sego.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sego.png; sourceTree = "<group>"; };
 		7D3DA5BA1CA3EC43005BD38B /* 评论.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论.png"; sourceTree = "<group>"; };
@@ -821,6 +827,10 @@
 			children = (
 				57666FA51C968B1F00A52DBA /* LoginViewController.h */,
 				57666FA61C968B1F00A52DBA /* LoginViewController.m */,
+				7D3A35291CB3CAE00037C616 /* RegiestViewController.h */,
+				7D3A352A1CB3CAE00037C616 /* RegiestViewController.m */,
+				7D3A352C1CB3CAFA0037C616 /* ReDataViewController.h */,
+				7D3A352D1CB3CAFA0037C616 /* ReDataViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1264,6 +1274,7 @@
 				7D30E8C91CA66C67004DE055 /* SCRecordSessionManager.m in Sources */,
 				7D30E8CA1CA66C67004DE055 /* WechatShortVideoController.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
+				7D3A352E1CB3CAFA0037C616 /* ReDataViewController.m in Sources */,
 				344F02E81CA3EC040076CE62 /* personTableViewCell.m in Sources */,
 				578B9E641CA2D78A00CAC21D /* BaseModel.m in Sources */,
 				578B9E611CA29E5D00CAC21D /* AFHttpClient+Square.m in Sources */,
@@ -1294,6 +1305,7 @@
 				7D3A351F1CB3AE790037C616 /* LoginModel.m in Sources */,
 				7D30E8AC1CA66C05004DE055 /* SCPhotoConfiguration.m in Sources */,
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
+				7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
 				7D30E8B41CA66C05004DE055 /* SCRecordSessionSegment.m in Sources */,
