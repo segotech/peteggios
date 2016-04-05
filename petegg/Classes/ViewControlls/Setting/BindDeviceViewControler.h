@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *bindBtnClick;
 @property (strong, nonatomic) IBOutlet UITextField *deviceNumLB;
 @property (nonatomic,strong)MBProgressHUD *hud;
+@property (strong, nonatomic) IBOutlet UITextField *jieruCodeTF;
 
 @end

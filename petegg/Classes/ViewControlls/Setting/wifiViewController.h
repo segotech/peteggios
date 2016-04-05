@@ -17,6 +17,11 @@
 @property (nonatomic, strong) NSMutableData* nsData;
 @property (nonatomic,strong)NSString * statsStep;
 
+@property (nonatomic,strong)NSString * fixWIFI;
+
+@property (strong, nonatomic) IBOutlet UIButton *seletEncryption;
+@property (strong, nonatomic) IBOutlet UITableView *encryptionlistTab;
+
 
 
 // 此wifi为家庭 非硬件热点
