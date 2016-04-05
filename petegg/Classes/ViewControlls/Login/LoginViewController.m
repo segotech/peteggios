@@ -66,6 +66,10 @@
     [self.view addSubview:_passwordTextField];
     
 
+    _accountTextField.text = @"18380476512";
+    _passwordTextField.text = @"123456";
+    
+    [[AccountManager sharedAccountManager] logout];
 }
 
 

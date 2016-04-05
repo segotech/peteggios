@@ -27,4 +27,6 @@
 
 #import "AppDelegate.h"
 
+#import "AccountManager.h"
+
 #endif /* PrefixHeader_pch */

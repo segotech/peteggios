@@ -12,6 +12,8 @@
 
 singleton_interface(AccountManager)
 
+@property (nonatomic, strong) id loginModel;
+
 /**
  *  登录
  */

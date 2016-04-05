@@ -18,6 +18,9 @@ singleton_implementation(AccountManager)
 - (instancetype)init{
     if (self = [super init]) {
         
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        
+        self.loginModel = [defaults rm_customObjectForKey:KEY_LOGIN_INFO];
     }
     
     return self;
@@ -29,13 +32,16 @@ singleton_implementation(AccountManager)
 -(void)login{
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
+    [defaults rm_setCustomObject:self.loginModel forKey:KEY_LOGIN_INFO];
 }
 
 /**
  *  登出
  */
 -(void)logout{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
+    [defaults rm_setCustomObject:[NSNull null] forKey:KEY_LOGIN_INFO];
 }
 
 /**

@@ -8,7 +8,6 @@
 
 #import "AppDelegate+Launcher.h"
 
-#import "AccountManager.h"
 
 @interface AppDelegate()
 
