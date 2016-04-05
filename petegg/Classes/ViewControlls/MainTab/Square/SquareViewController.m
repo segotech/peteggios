@@ -13,6 +13,8 @@
 #import "IssuePinViewController.h"
 #import "WechatShortVideoController.h"
 
+#import "LoginViewController.h"
+
 @interface SquareViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource,WechatShortVideoDelegate>
 
 @property(nonatomic,strong)UIButton * leftButton;
@@ -187,7 +189,9 @@
         [self loacalPhoto];
     }else if (2 == sender.tag){
         NSLog(@"资源库");
-        
+         [self yincang:nil];
+        LoginViewController * loginVc = [[LoginViewController alloc]init];
+        [self presentViewController:loginVc animated:YES completion:nil];
     }else if (3 == sender.tag){
         NSLog(@"小视频");
         [self takeChat];

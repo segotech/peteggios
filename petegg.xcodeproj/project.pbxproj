@@ -111,6 +111,12 @@
 		57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8361CA21E89005324DD /* RecommendViewController.m */; };
 		57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8391CA21EB1005324DD /* AttentionViewController.m */; };
 		7D0E23B21CA2709700061973 /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */; };
+		7D2F81FA1CAE24CC0097820B /* egg_login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81F91CAE24CC0097820B /* egg_login.jpg */; };
+		7D2F82001CAE25030097820B /* egg_bigKuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81FB1CAE25030097820B /* egg_bigKuang.png */; };
+		7D2F82011CAE25030097820B /* egg_eye.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81FC1CAE25030097820B /* egg_eye.png */; };
+		7D2F82021CAE25030097820B /* egg_hiddeneye.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81FD1CAE25030097820B /* egg_hiddeneye.png */; };
+		7D2F82031CAE25030097820B /* egg_passtubiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81FE1CAE25030097820B /* egg_passtubiao.png */; };
+		7D2F82041CAE25030097820B /* egg_usertubiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81FF1CAE25030097820B /* egg_usertubiao.png */; };
 		7D30E8541CA66622004DE055 /* IssuePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E8531CA66622004DE055 /* IssuePinViewController.m */; };
 		7D30E89B1CA66C05004DE055 /* CALayer+AddUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E8571CA66C05004DE055 /* CALayer+AddUIColor.m */; };
 		7D30E89C1CA66C05004DE055 /* CIImageRendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E85A1CA66C05004DE055 /* CIImageRendererUtils.m */; };
@@ -309,6 +315,12 @@
 		57F2C8391CA21EB1005324DD /* AttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
 		7D0E23B01CA2709700061973 /* RecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendTableViewCell.h; sourceTree = "<group>"; };
 		7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendTableViewCell.m; sourceTree = "<group>"; };
+		7D2F81F91CAE24CC0097820B /* egg_login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = egg_login.jpg; sourceTree = "<group>"; };
+		7D2F81FB1CAE25030097820B /* egg_bigKuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_bigKuang.png; sourceTree = "<group>"; };
+		7D2F81FC1CAE25030097820B /* egg_eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_eye.png; sourceTree = "<group>"; };
+		7D2F81FD1CAE25030097820B /* egg_hiddeneye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_hiddeneye.png; sourceTree = "<group>"; };
+		7D2F81FE1CAE25030097820B /* egg_passtubiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_passtubiao.png; sourceTree = "<group>"; };
+		7D2F81FF1CAE25030097820B /* egg_usertubiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_usertubiao.png; sourceTree = "<group>"; };
 		7D30E8521CA66622004DE055 /* IssuePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuePinViewController.h; sourceTree = "<group>"; };
 		7D30E8531CA66622004DE055 /* IssuePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuePinViewController.m; sourceTree = "<group>"; };
 		7D30E8561CA66C05004DE055 /* CALayer+AddUIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+AddUIColor.h"; sourceTree = "<group>"; };
@@ -474,6 +486,11 @@
 				7D3DA5BA1CA3EC43005BD38B /* 评论.png */,
 				7D3DA5BC1CA3EC5B005BD38B /* 点赞5.png */,
 				7D3DA5BE1CA3EC67005BD38B /* MV.png */,
+				7D2F81FB1CAE25030097820B /* egg_bigKuang.png */,
+				7D2F81FC1CAE25030097820B /* egg_eye.png */,
+				7D2F81FD1CAE25030097820B /* egg_hiddeneye.png */,
+				7D2F81FE1CAE25030097820B /* egg_passtubiao.png */,
+				7D2F81FF1CAE25030097820B /* egg_usertubiao.png */,
 			);
 			path = nav;
 			sourceTree = "<group>";
@@ -486,6 +503,7 @@
 				344F022F1C9FE0410076CE62 /* egg_offline.png */,
 				344F02301C9FE0410076CE62 /* egg_online.png */,
 				344F02311C9FE0410076CE62 /* egg_upload.png */,
+				7D2F81F91CAE24CC0097820B /* egg_login.jpg */,
 			);
 			path = background;
 			sourceTree = "<group>";
@@ -1113,6 +1131,7 @@
 				344F02881CA143AC0076CE62 /* kuang_off.png in Resources */,
 				344F02521C9FEBDE0076CE62 /*  laser_pen.png in Resources */,
 				7D3DA5BD1CA3EC5B005BD38B /* 点赞5.png in Resources */,
+				7D2F82021CAE25030097820B /* egg_hiddeneye.png in Resources */,
 				344F022B1C9FD6200076CE62 /* noDevice.png in Resources */,
 				57666FBC1C96979F00A52DBA /* tab_egg_press@3x.png in Resources */,
 				344F02731CA009DD0076CE62 /* 1.png in Resources */,
@@ -1124,11 +1143,13 @@
 				344F02DB1CA3EA0B0076CE62 /* blank_list.png in Resources */,
 				57666FAF1C96947B00A52DBA /* Localizable.strings in Resources */,
 				344F02331C9FE0410076CE62 /* egg_offline.png in Resources */,
+				7D2F82011CAE25030097820B /* egg_eye.png in Resources */,
 				344F02DF1CA3EA0B0076CE62 /* person_history.png in Resources */,
 				34076C241CA8C40900BD5AE9 /* BindDeviceViewControler.xib in Resources */,
 				344F02891CA143AC0076CE62 /* kuang_on.png in Resources */,
 				344F02641C9FEBDE0076CE62 /* trun_off.png in Resources */,
 				344F02E21CA3EA0B0076CE62 /* person_systemmessage.png in Resources */,
+				7D2F81FA1CAE24CC0097820B /* egg_login.jpg in Resources */,
 				344F02CB1CA2DA2C0076CE62 /* before_off.png in Resources */,
 				344F025A1C9FEBDE0076CE62 /* juankfood_off.png in Resources */,
 				344F02DC1CA3EA0B0076CE62 /* person_attention.png in Resources */,
@@ -1147,11 +1168,14 @@
 				57666F5A1C96619700A52DBA /* Main.storyboard in Resources */,
 				344F02611C9FEBDE0076CE62 /* round.png in Resources */,
 				7D30E89D1CA66C05004DE055 /* LICENSE in Resources */,
+				7D2F82041CAE25030097820B /* egg_usertubiao.png in Resources */,
 				57666FBF1C96979F00A52DBA /* tab_personal_normal@3x.png in Resources */,
+				7D2F82031CAE25030097820B /* egg_passtubiao.png in Resources */,
 				7D30E8CB1CA66C67004DE055 /* WechatShortVideoController.xib in Resources */,
 				344F02C01CA2D8CE0076CE62 /* left_on.png in Resources */,
 				344F02C71CA2D9E70076CE62 /* behand_off.png in Resources */,
 				344F02E11CA3EA0B0076CE62 /* person_rule.png in Resources */,
+				7D2F82001CAE25030097820B /* egg_bigKuang.png in Resources */,
 				344F025E1C9FEBDE0076CE62 /* line_background.png in Resources */,
 				344F02621C9FEBDE0076CE62 /* snap_off.png in Resources */,
 			);
