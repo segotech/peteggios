@@ -22,5 +22,9 @@ singleton_interface(AccountManager)
  */
 -(void)logout;
 
+/**
+ *  是否登录
+ */
+-(BOOL)isLogin;
 
 @end

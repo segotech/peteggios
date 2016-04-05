@@ -64,12 +64,9 @@
     }];
 }
 
-
 -(void)querySproutpetWithMid:(NSString *)mid pageIndex:(int)pageIndex pageSize:(int)pageSize complete:(void (^)(SquareListModel *))completeBlock failure:(void (^)())failureBlock{
 
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
-    params[@"classes"] = @"appinterface";
-    params[@"method"] = @"json";
     params[@"common"] = @"queryFollowSproutpet";
     
     params[@"mid"] = mid;
@@ -89,14 +86,10 @@
     }];
 }
 
-
 -(void)queryRecommendWithcomplete:(void (^)(SquareListModel *))completeBlock failure:(void (^)())failureBlock{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
-    params[@"classes"] = @"appinterface";
-    params[@"method"] = @"json";
     params[@"common"] = @"queryRecommend";
-    
 
     [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (completeBlock) {

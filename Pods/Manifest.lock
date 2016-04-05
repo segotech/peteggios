@@ -28,6 +28,7 @@ PODS:
   - MJRefresh (2.4.12)
   - MOBFoundation (1.5.1)
   - MojoDatabase (1.4)
+  - RMMapper (1.1.5)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - MJRefresh (~> 2.4.12)
   - MOBFoundation
   - MojoDatabase (~> 1.4)
+  - RMMapper (~> 1.1.5)
   - SDWebImage (~> 3.7.1)
   - ShareSDK3
   - ShareSDK3/ShareSDKPlatforms/QQ
@@ -62,6 +64,7 @@ SPEC CHECKSUMS:
   MJRefresh: ca8e9589895977df32d379d46e6b8a5450b3ff44
   MOBFoundation: 79efc94db961fe5a08cf32de69166f6a29a3b2b5
   MojoDatabase: 02e3eb98510b69033ab537156969d1f76b4f369e
+  RMMapper: 21122d753c736d975f6c61e674afce8db73579af
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   ShareSDK3: 76a2b7bee33fc7360fbc9670adb3e9e06534ee82
 

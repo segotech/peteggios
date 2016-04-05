@@ -7,15 +7,27 @@
 //
 
 #import "AccountManager.h"
+#import "NSUserDefaults+RMSaveCustomObject.h"
+
+#define KEY_LOGIN_INFO     @"LoginInfo"
 
 @implementation AccountManager
 
 singleton_implementation(AccountManager)
 
+- (instancetype)init{
+    if (self = [super init]) {
+        
+    }
+    
+    return self;
+}
+
 /**
  *  登录
  */
 -(void)login{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
 }
 
@@ -24,6 +36,14 @@ singleton_implementation(AccountManager)
  */
 -(void)logout{
     
+}
+
+/**
+ *  是否登录
+ */
+-(BOOL)isLogin{
+    
+    return NO;
 }
 
 @end
