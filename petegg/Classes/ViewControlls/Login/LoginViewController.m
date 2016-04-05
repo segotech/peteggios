@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 
+#import "AFHttpClient+Account.h"
 
 @interface LoginViewController()
 @property (nonatomic,strong)UIButton * loginButton;
@@ -65,41 +66,52 @@
     [_passwordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.view addSubview:_passwordTextField];
     
-
-    _accountTextField.text = @"18380476512";
-    _passwordTextField.text = @"123456";
-    
-    [[AccountManager sharedAccountManager] logout];
 }
 
 
 -(void)loginTouch{
     NSLog(@"登录");
-    NSString * service = [AppUtil getServerSego3];
-    NSString *strSysVersion = [[UIDevice currentDevice] systemVersion];
-    NSString *strModel = [[UIDevice currentDevice] model];
-    NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
-    [dic setValue:_accountTextField.text forKey:@"accountnumber"];
-    [dic setValue:_passwordTextField.text forKey:@"password"];
-    [dic setValue:strModel forKey:@"model"];
-    [dic setValue:@"iphone" forKey:@"brand"];
-    [dic setValue:strSysVersion forKey:@"version"];
-    [dic setValue:@"" forKey:@"imei"];
-    [dic setValue:@"" forKey:@"imsi"];
-    [dic setValue:@"ios" forKey:@"type"];
-    service = [service stringByAppendingString:@"clientAction.do?common=memberLogin&classes=appinterface&method=json"];
-    AFHTTPRequestOperationManager *manager =  [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObject:@"text/html"];
-    [manager POST:service parameters:dic success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        NSLog(@"%@",responseObject);
-          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
-        //登出
-        // [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
-        
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-        
-    }];
+//    NSString * service = [AppUtil getServerSego3];
+//    NSString *strSysVersion = [[UIDevice currentDevice] systemVersion];
+//    NSString *strModel = [[UIDevice currentDevice] model];
+//    NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
+//    [dic setValue:_accountTextField.text forKey:@"accountnumber"];
+//    [dic setValue:_passwordTextField.text forKey:@"password"];
+//    [dic setValue:strModel forKey:@"model"];
+//    [dic setValue:@"iphone" forKey:@"brand"];
+//    [dic setValue:strSysVersion forKey:@"version"];
+//    [dic setValue:@"" forKey:@"imei"];
+//    [dic setValue:@"" forKey:@"imsi"];
+//    [dic setValue:@"ios" forKey:@"type"];
+//    service = [service stringByAppendingString:@"clientAction.do?common=memberLogin&classes=appinterface&method=json"];
+//    AFHTTPRequestOperationManager *manager =  [AFHTTPRequestOperationManager manager];
+//    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObject:@"text/html"];
+//    [manager POST:service parameters:dic success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+//        NSLog(@"%@",responseObject);
+//          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
+//        //登出
+//        // [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
+//        
+//    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+//
+//    }];
     
+    [self showHudInView:self.view hint:@"正在登录..."];
+    
+    [[AFHttpClient sharedAFHttpClient] loginWithUserName:self.accountTextField.text password:self.passwordTextField.text complete:^(BaseModel *model) {
+        
+        [self hideHud];
+        
+        if ([model.retCode integerValue] > 0) {
+            
+        }else{
+            [[AccountManager sharedAccountManager] login:model.list[0]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
+        }
+        
+    } failure:^{
+        [self hideHud];
+    }];
     
     
 }

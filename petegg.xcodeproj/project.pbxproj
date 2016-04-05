@@ -71,6 +71,7 @@
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		570BA4F91CA25570009AA2FC /* InCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F71CA25570009AA2FC /* InCallViewController.m */; };
 		570BA4FA1CA25570009AA2FC /* InCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570BA4F81CA25570009AA2FC /* InCallViewController.xib */; };
+		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		57666F511C96619700A52DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F501C96619700A52DBA /* main.m */; };
 		57666F571C96619700A52DBA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F561C96619700A52DBA /* ViewController.m */; };
 		57666F5A1C96619700A52DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57666F581C96619700A52DBA /* Main.storyboard */; };
@@ -109,7 +110,7 @@
 		578B9E5E1CA29A9E00CAC21D /* AFHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */; };
 		578B9E611CA29E5D00CAC21D /* AFHttpClient+Square.m in Sources */ = {isa = PBXBuildFile; fileRef = 578B9E601CA29E5D00CAC21D /* AFHttpClient+Square.m */; };
 		578B9E641CA2D78A00CAC21D /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 578B9E631CA2D78A00CAC21D /* BaseModel.m */; };
-		578B9E671CA2D8CB00CAC21D /* SquareListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 578B9E661CA2D8CB00CAC21D /* SquareListModel.m */; };
+		578B9E671CA2D8CB00CAC21D /* SquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 578B9E661CA2D8CB00CAC21D /* SquareModel.m */; };
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
 		57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8361CA21E89005324DD /* RecommendViewController.m */; };
 		57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8391CA21EB1005324DD /* AttentionViewController.m */; };
@@ -158,7 +159,7 @@
 		7D30E8C91CA66C67004DE055 /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E8C21CA66C67004DE055 /* SCRecordSessionManager.m */; };
 		7D30E8CA1CA66C67004DE055 /* WechatShortVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E8C51CA66C67004DE055 /* WechatShortVideoController.m */; };
 		7D30E8CB1CA66C67004DE055 /* WechatShortVideoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D30E8C61CA66C67004DE055 /* WechatShortVideoController.xib */; };
-		7D3A351F1CB3AE790037C616 /* LoginListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3A351E1CB3AE790037C616 /* LoginListModel.m */; };
+		7D3A351F1CB3AE790037C616 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3A351E1CB3AE790037C616 /* LoginModel.m */; };
 		7D3DA5B71CA3D292005BD38B /* sego1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5B61CA3D292005BD38B /* sego1.png */; };
 		7D3DA5B91CA3D2C7005BD38B /* sego.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5B81CA3D2C7005BD38B /* sego.png */; };
 		7D3DA5BB1CA3EC43005BD38B /* 评论.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5BA1CA3EC43005BD38B /* 评论.png */; };
@@ -247,6 +248,8 @@
 		570BA4F61CA25570009AA2FC /* InCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InCallViewController.h; sourceTree = "<group>"; };
 		570BA4F71CA25570009AA2FC /* InCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InCallViewController.m; sourceTree = "<group>"; };
 		570BA4F81CA25570009AA2FC /* InCallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InCallViewController.xib; sourceTree = "<group>"; };
+		572220CE1CB3B6CB00C9C7D2 /* AFHttpClient+Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Account.h"; sourceTree = "<group>"; };
+		572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Account.m"; sourceTree = "<group>"; };
 		57666F4C1C96619700A52DBA /* petegg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petegg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57666F501C96619700A52DBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		57666F551C96619700A52DBA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -313,8 +316,8 @@
 		578B9E601CA29E5D00CAC21D /* AFHttpClient+Square.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Square.m"; sourceTree = "<group>"; };
 		578B9E621CA2D78A00CAC21D /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		578B9E631CA2D78A00CAC21D /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
-		578B9E651CA2D8CB00CAC21D /* SquareListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareListModel.h; sourceTree = "<group>"; };
-		578B9E661CA2D8CB00CAC21D /* SquareListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareListModel.m; sourceTree = "<group>"; };
+		578B9E651CA2D8CB00CAC21D /* SquareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareModel.h; sourceTree = "<group>"; };
+		578B9E661CA2D8CB00CAC21D /* SquareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareModel.m; sourceTree = "<group>"; };
 		57F2C8301CA10FB8005324DD /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
 		57F2C8351CA21E89005324DD /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
 		57F2C8361CA21E89005324DD /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
@@ -407,8 +410,8 @@
 		7D30E8C41CA66C67004DE055 /* WechatShortVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatShortVideoController.h; sourceTree = "<group>"; };
 		7D30E8C51CA66C67004DE055 /* WechatShortVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WechatShortVideoController.m; sourceTree = "<group>"; };
 		7D30E8C61CA66C67004DE055 /* WechatShortVideoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WechatShortVideoController.xib; sourceTree = "<group>"; };
-		7D3A351D1CB3AE790037C616 /* LoginListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginListModel.h; sourceTree = "<group>"; };
-		7D3A351E1CB3AE790037C616 /* LoginListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginListModel.m; sourceTree = "<group>"; };
+		7D3A351D1CB3AE790037C616 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
+		7D3A351E1CB3AE790037C616 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		7D3DA5B61CA3D292005BD38B /* sego1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sego1.png; sourceTree = "<group>"; };
 		7D3DA5B81CA3D2C7005BD38B /* sego.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sego.png; sourceTree = "<group>"; };
 		7D3DA5BA1CA3EC43005BD38B /* 评论.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论.png"; sourceTree = "<group>"; };
@@ -698,10 +701,10 @@
 		57666F711C9686DE00A52DBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				578B9E651CA2D8CB00CAC21D /* SquareListModel.h */,
-				578B9E661CA2D8CB00CAC21D /* SquareListModel.m */,
-				7D3A351D1CB3AE790037C616 /* LoginListModel.h */,
-				7D3A351E1CB3AE790037C616 /* LoginListModel.m */,
+				578B9E651CA2D8CB00CAC21D /* SquareModel.h */,
+				578B9E661CA2D8CB00CAC21D /* SquareModel.m */,
+				7D3A351D1CB3AE790037C616 /* LoginModel.h */,
+				7D3A351E1CB3AE790037C616 /* LoginModel.m */,
 				57666F721C9686DE00A52DBA /* Base */,
 			);
 			path = Models;
@@ -721,6 +724,8 @@
 			children = (
 				578B9E5C1CA29A9E00CAC21D /* AFHttpClient.h */,
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
+				572220CE1CB3B6CB00C9C7D2 /* AFHttpClient+Account.h */,
+				572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */,
 				578B9E5F1CA29E5D00CAC21D /* AFHttpClient+Square.h */,
 				578B9E601CA29E5D00CAC21D /* AFHttpClient+Square.m */,
 			);
@@ -1280,13 +1285,13 @@
 				7D30E8A91CA66C05004DE055 /* SCImageView.m in Sources */,
 				7D30E8B01CA66C05004DE055 /* SCRecorderFocusTargetView.m in Sources */,
 				570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */,
-				578B9E671CA2D8CB00CAC21D /* SquareListModel.m in Sources */,
+				578B9E671CA2D8CB00CAC21D /* SquareModel.m in Sources */,
 				7D30E8B11CA66C05004DE055 /* SCRecorderTools.m in Sources */,
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
 				7D30E8541CA66622004DE055 /* IssuePinViewController.m in Sources */,
 				344F02781CA0DB280076CE62 /* SettingViewController.m in Sources */,
 				7D30E8A61CA66C05004DE055 /* SCFilter.m in Sources */,
-				7D3A351F1CB3AE790037C616 /* LoginListModel.m in Sources */,
+				7D3A351F1CB3AE790037C616 /* LoginModel.m in Sources */,
 				7D30E8AC1CA66C05004DE055 /* SCPhotoConfiguration.m in Sources */,
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
@@ -1329,6 +1334,7 @@
 				57666F7F1C9686DE00A52DBA /* AppDelegate.m in Sources */,
 				57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */,
 				7D30E8B31CA66C05004DE055 /* SCRecordSession.m in Sources */,
+				572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,7 +29,10 @@ singleton_implementation(AccountManager)
 /**
  *  登录
  */
--(void)login{
+-(void)login:(LoginModel*) model{
+    
+    _loginModel = model;
+    
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
     [defaults rm_setCustomObject:self.loginModel forKey:KEY_LOGIN_INFO];
@@ -41,7 +44,9 @@ singleton_implementation(AccountManager)
 -(void)logout{
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
-    [defaults rm_setCustomObject:[NSNull null] forKey:KEY_LOGIN_INFO];
+    self.loginModel.mid = @"";
+    
+    [defaults rm_setCustomObject:self.loginModel forKey:KEY_LOGIN_INFO];
 }
 
 /**
@@ -49,7 +54,7 @@ singleton_implementation(AccountManager)
  */
 -(BOOL)isLogin{
     
-    return NO;
+    return self.loginModel && self.loginModel.mid && ![self.loginModel.mid isEqualToString:@""];
 }
 
 @end

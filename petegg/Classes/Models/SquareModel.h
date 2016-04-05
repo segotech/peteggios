@@ -1,5 +1,5 @@
 //
-//  SquareListModel.h
+//  SquareModel.h
 //  MBProgressHUD
 //
 //  Created by ldp on 16/03/23
@@ -53,23 +53,11 @@
 
 @property (nonatomic, copy) NSString<Optional> *reports;
 
-@property (nonatomic, copy)  NSString<Optional> * frontcover;
+@property (nonatomic, copy) NSString<Optional> *frontcover;
 
-@property (nonatomic, copy)  NSString<Optional> * title;
+@property (nonatomic, copy) NSString<Optional> *title;
 
-@property (nonatomic, copy) NSString<Optional> * aid;
-@end
-@protocol SquareModel
+@property (nonatomic, copy) NSString<Optional> *aid;
 @end
 
-@interface SquareListModel : BaseModel
 
-//@property (nonatomic, strong) NSArray *listToXML;
-
-//@property (nonatomic, strong) NSArray *dlist;
-
-@property (nonatomic, copy) NSString<Optional> *totalrecords;
-
-@property (nonatomic, strong) NSMutableArray<SquareModel, Optional> *list;
-
-@end

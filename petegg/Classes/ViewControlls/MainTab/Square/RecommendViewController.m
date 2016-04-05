@@ -48,7 +48,7 @@ static NSString * cellId = @"recommeCellId";
 }
 
 - (void)loadDataSourceWithPage:(int)page {
-    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(SquareListModel *model) {
+    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
         
         if (page == START_PAGE_INDEX) {
             [self.dataSource removeAllObjects];
@@ -70,7 +70,7 @@ static NSString * cellId = @"recommeCellId";
         [self handleEndRefresh];
     }];
     
-    [[AFHttpClient sharedAFHttpClient]queryRecommendWithcomplete:^(SquareListModel *model) {
+    [[AFHttpClient sharedAFHttpClient]queryRecommendWithcomplete:^(BaseModel *model) {
       //  [self.dataSourceImage addObjectsFromArray:model.list];
      //   NSLog(@"%@",self.dataSourceImage);
         [self.dataSourceImage addObjectsFromArray:model.list];

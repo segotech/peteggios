@@ -16,7 +16,8 @@
 
 @property (nonatomic, copy) NSString<Optional> *retDesc;
 
-@property (nonatomic, copy) NSString<Optional>*retCode;
+@property (nonatomic, copy) NSString<Optional> *retCode;
 
+@property (nonatomic, strong) NSArray<Optional> *list;
 
 @end

@@ -17,17 +17,17 @@
 -(void)queryFollowSproutpetWithMid:(NSString *)mid
                          pageIndex:(int)pageIndex
                           pageSize:(int)pageSize
-                          complete:(void(^)(SquareListModel *model))completeBlock
+                          complete:(void(^)(BaseModel *model))completeBlock
                            failure:(void(^)())failureBlock;
 
 
 -(void)querySproutpetWithMid:(NSString *)mid
                    pageIndex:(int)pageIndex
                     pageSize:(int)pageSize
-                    complete:(void(^)(SquareListModel *model))completeBlock
+                    complete:(void(^)(BaseModel *model))completeBlock
                      failure:(void(^)())failureBlock;
 
--(void)queryRecommendWithcomplete:(void(^)(SquareListModel *model))completeBlock failure:(void(^)())failureBlock;
+-(void)queryRecommendWithcomplete:(void(^)(BaseModel *model))completeBlock failure:(void(^)())failureBlock;
 ;
 
 @end

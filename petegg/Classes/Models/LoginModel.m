@@ -1,18 +1,15 @@
 //
-//  LoginListModel.m
+//  LoginModel.m
 //  petegg
 //
 //  Created by czx on 16/4/5.
 //  Copyright © 2016年 sego. All rights reserved.
 //
 
-#import "LoginListModel.h"
+#import "LoginModel.h"
 
 @implementation LoginModel
 
 
 @end
 
-@implementation LoginListModel
-
-@end

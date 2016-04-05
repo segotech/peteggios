@@ -13,7 +13,7 @@
 -(void)querySquareListWithMid:(NSString *)mid
                     pageIndex:(int)pageIndex
                      pageSize:(int)pageSize
-                     complete:(void(^)(SquareListModel *model))completeBlock
+                     complete:(void(^)(BaseModel *model))completeBlock
                       failure:(void(^)())failureBlock{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
@@ -28,7 +28,9 @@
     
     [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (completeBlock) {
-            completeBlock([[SquareListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
+            BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
+            model.list = [SquareModel arrayOfModelsFromDictionaries:model.list];
+            completeBlock(model);
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         if (failureBlock) {
@@ -40,7 +42,7 @@
 -(void)queryFollowSproutpetWithMid:(NSString *)mid
                          pageIndex:(int)pageIndex
                           pageSize:(int)pageSize
-                          complete:(void(^)(SquareListModel *model))completeBlock
+                          complete:(void(^)(BaseModel *model))completeBlock
                            failure:(void(^)())failureBlock{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
@@ -55,7 +57,9 @@
    
     [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (completeBlock) {
-            completeBlock([[SquareListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
+            BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
+            model.list = [SquareModel arrayOfModelsFromDictionaries:model.list];
+            completeBlock(model);
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         if (failureBlock) {
@@ -64,7 +68,7 @@
     }];
 }
 
--(void)querySproutpetWithMid:(NSString *)mid pageIndex:(int)pageIndex pageSize:(int)pageSize complete:(void (^)(SquareListModel *))completeBlock failure:(void (^)())failureBlock{
+-(void)querySproutpetWithMid:(NSString *)mid pageIndex:(int)pageIndex pageSize:(int)pageSize complete:(void (^)(BaseModel *))completeBlock failure:(void (^)())failureBlock{
 
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     params[@"common"] = @"queryFollowSproutpet";
@@ -77,7 +81,9 @@
     
     [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (completeBlock) {
-            completeBlock([[SquareListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
+            BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
+            model.list = [SquareModel arrayOfModelsFromDictionaries:model.list];
+            completeBlock(model);
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         if (failureBlock) {
@@ -86,14 +92,16 @@
     }];
 }
 
--(void)queryRecommendWithcomplete:(void (^)(SquareListModel *))completeBlock failure:(void (^)())failureBlock{
+-(void)queryRecommendWithcomplete:(void (^)(BaseModel *))completeBlock failure:(void (^)())failureBlock{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     params[@"common"] = @"queryRecommend";
 
     [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (completeBlock) {
-            completeBlock([[SquareListModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil]);
+            BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
+            model.list = [SquareModel arrayOfModelsFromDictionaries:model.list];
+            completeBlock(model);
             
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {

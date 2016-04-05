@@ -1,5 +1,5 @@
 //
-//  LoginListModel.h
+//  LoginModel.h
 //  petegg
 //
 //  Created by czx on 16/4/5.
@@ -51,9 +51,9 @@
 
 @property (nonatomic, copy) NSString<Optional> *pet_age;
 
-@property (nonatomic, copy)  NSString<Optional> * pet_birthday;
+@property (nonatomic, copy) NSString<Optional> * pet_birthday;
 
-@property (nonatomic, copy)  NSString<Optional> * pet_createtime;
+@property (nonatomic, copy) NSString<Optional> * pet_createtime;
 
 @property (nonatomic, copy) NSString<Optional> * pet_nickname;
 
@@ -88,13 +88,4 @@
 @property (nonatomic, copy) NSString<Optional> * type;
 
 @property (nonatomic, copy) NSString<Optional> * wechat;
-@end
-
-@protocol LoginModel
-@end
-@interface LoginListModel : BaseModel
-@property (nonatomic, copy) NSString<Optional> *totalrecords;
-
-@property (nonatomic, strong) NSMutableArray<SquareModel, Optional> *list;
-
 @end
