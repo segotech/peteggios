@@ -158,6 +158,7 @@
 		7D30E8C91CA66C67004DE055 /* SCRecordSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E8C21CA66C67004DE055 /* SCRecordSessionManager.m */; };
 		7D30E8CA1CA66C67004DE055 /* WechatShortVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E8C51CA66C67004DE055 /* WechatShortVideoController.m */; };
 		7D30E8CB1CA66C67004DE055 /* WechatShortVideoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D30E8C61CA66C67004DE055 /* WechatShortVideoController.xib */; };
+		7D3A351F1CB3AE790037C616 /* LoginListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3A351E1CB3AE790037C616 /* LoginListModel.m */; };
 		7D3DA5B71CA3D292005BD38B /* sego1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5B61CA3D292005BD38B /* sego1.png */; };
 		7D3DA5B91CA3D2C7005BD38B /* sego.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5B81CA3D2C7005BD38B /* sego.png */; };
 		7D3DA5BB1CA3EC43005BD38B /* 评论.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5BA1CA3EC43005BD38B /* 评论.png */; };
@@ -406,6 +407,8 @@
 		7D30E8C41CA66C67004DE055 /* WechatShortVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatShortVideoController.h; sourceTree = "<group>"; };
 		7D30E8C51CA66C67004DE055 /* WechatShortVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WechatShortVideoController.m; sourceTree = "<group>"; };
 		7D30E8C61CA66C67004DE055 /* WechatShortVideoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WechatShortVideoController.xib; sourceTree = "<group>"; };
+		7D3A351D1CB3AE790037C616 /* LoginListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginListModel.h; sourceTree = "<group>"; };
+		7D3A351E1CB3AE790037C616 /* LoginListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginListModel.m; sourceTree = "<group>"; };
 		7D3DA5B61CA3D292005BD38B /* sego1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sego1.png; sourceTree = "<group>"; };
 		7D3DA5B81CA3D2C7005BD38B /* sego.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sego.png; sourceTree = "<group>"; };
 		7D3DA5BA1CA3EC43005BD38B /* 评论.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论.png"; sourceTree = "<group>"; };
@@ -697,6 +700,8 @@
 			children = (
 				578B9E651CA2D8CB00CAC21D /* SquareListModel.h */,
 				578B9E661CA2D8CB00CAC21D /* SquareListModel.m */,
+				7D3A351D1CB3AE790037C616 /* LoginListModel.h */,
+				7D3A351E1CB3AE790037C616 /* LoginListModel.m */,
 				57666F721C9686DE00A52DBA /* Base */,
 			);
 			path = Models;
@@ -1281,6 +1286,7 @@
 				7D30E8541CA66622004DE055 /* IssuePinViewController.m in Sources */,
 				344F02781CA0DB280076CE62 /* SettingViewController.m in Sources */,
 				7D30E8A61CA66C05004DE055 /* SCFilter.m in Sources */,
+				7D3A351F1CB3AE790037C616 /* LoginListModel.m in Sources */,
 				7D30E8AC1CA66C05004DE055 /* SCPhotoConfiguration.m in Sources */,
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,

@@ -92,6 +92,9 @@
     manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObject:@"text/html"];
     [manager POST:service parameters:dic success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSLog(@"%@",responseObject);
+          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
+        //登出
+        // [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
         
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         

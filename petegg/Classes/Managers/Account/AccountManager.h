@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "LoginListModel.h"
 @interface AccountManager : NSObject
 
 singleton_interface(AccountManager)
 
-@property (nonatomic, strong) id loginModel;
+@property (nonatomic, strong) LoginListModel* loginModel;
 
 /**
  *  登录
