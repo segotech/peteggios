@@ -12,4 +12,9 @@
 
 - (void)loginWithUserName:(NSString*)userName password:(NSString*)password complete:(void(^)(BaseModel *model))completeBlock failure:(void(^)())failureBlock;
 
+
+
+
+
+
 @end

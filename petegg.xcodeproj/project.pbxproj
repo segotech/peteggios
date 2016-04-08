@@ -114,7 +114,11 @@
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
 		57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8361CA21E89005324DD /* RecommendViewController.m */; };
 		57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8391CA21EB1005324DD /* AttentionViewController.m */; };
+		7D03322B1CB5FA3900E923A9 /* PersonDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */; };
+		7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */; };
 		7D0E23B21CA2709700061973 /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */; };
+		7D1EA05E1CB4ED6800328C2D /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */; };
+		7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA0661CB4F28500328C2D /* PersonDetailViewController.m */; };
 		7D2F81FA1CAE24CC0097820B /* egg_login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81F91CAE24CC0097820B /* egg_login.jpg */; };
 		7D2F82001CAE25030097820B /* egg_bigKuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81FB1CAE25030097820B /* egg_bigKuang.png */; };
 		7D2F82011CAE25030097820B /* egg_eye.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81FC1CAE25030097820B /* egg_eye.png */; };
@@ -325,8 +329,16 @@
 		57F2C8361CA21E89005324DD /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
 		57F2C8381CA21EB1005324DD /* AttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionViewController.h; sourceTree = "<group>"; };
 		57F2C8391CA21EB1005324DD /* AttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
+		7D0332291CB5FA3900E923A9 /* PersonDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDataTableViewCell.h; sourceTree = "<group>"; };
+		7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDataTableViewCell.m; sourceTree = "<group>"; };
+		7D03322C1CB6680F00E923A9 /* AFHttpClient+PersonDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PersonDate.h"; sourceTree = "<group>"; };
+		7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PersonDate.m"; sourceTree = "<group>"; };
 		7D0E23B01CA2709700061973 /* RecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendTableViewCell.h; sourceTree = "<group>"; };
 		7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendTableViewCell.m; sourceTree = "<group>"; };
+		7D1EA05C1CB4ED6800328C2D /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
+		7D1EA0651CB4F28500328C2D /* PersonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDetailViewController.h; sourceTree = "<group>"; };
+		7D1EA0661CB4F28500328C2D /* PersonDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDetailViewController.m; sourceTree = "<group>"; };
 		7D2F81F91CAE24CC0097820B /* egg_login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = egg_login.jpg; sourceTree = "<group>"; };
 		7D2F81FB1CAE25030097820B /* egg_bigKuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_bigKuang.png; sourceTree = "<group>"; };
 		7D2F81FC1CAE25030097820B /* egg_eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_eye.png; sourceTree = "<group>"; };
@@ -730,6 +742,8 @@
 			children = (
 				578B9E5C1CA29A9E00CAC21D /* AFHttpClient.h */,
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
+				7D03322C1CB6680F00E923A9 /* AFHttpClient+PersonDate.h */,
+				7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */,
 				572220CE1CB3B6CB00C9C7D2 /* AFHttpClient+Account.h */,
 				572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */,
 				578B9E5F1CA29E5D00CAC21D /* AFHttpClient+Square.h */,
@@ -889,6 +903,12 @@
 				57F2C8391CA21EB1005324DD /* AttentionViewController.m */,
 				7D30E8521CA66622004DE055 /* IssuePinViewController.h */,
 				7D30E8531CA66622004DE055 /* IssuePinViewController.m */,
+				7D1EA05C1CB4ED6800328C2D /* InformationViewController.h */,
+				7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */,
+				7D1EA0651CB4F28500328C2D /* PersonDetailViewController.h */,
+				7D1EA0661CB4F28500328C2D /* PersonDetailViewController.m */,
+				7D0332291CB5FA3900E923A9 /* PersonDataTableViewCell.h */,
+				7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */,
 			);
 			path = Square;
 			sourceTree = "<group>";
@@ -1301,6 +1321,7 @@
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
 				7D30E8541CA66622004DE055 /* IssuePinViewController.m in Sources */,
 				344F02781CA0DB280076CE62 /* SettingViewController.m in Sources */,
+				7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */,
 				7D30E8A61CA66C05004DE055 /* SCFilter.m in Sources */,
 				7D3A351F1CB3AE790037C616 /* LoginModel.m in Sources */,
 				7D30E8AC1CA66C05004DE055 /* SCPhotoConfiguration.m in Sources */,
@@ -1325,6 +1346,7 @@
 				7D30E8A01CA66C05004DE055 /* SCAssetExportSession.m in Sources */,
 				57666FC71C969B4800A52DBA /* AppUtil.m in Sources */,
 				7D30E8BA1CA66C05004DE055 /* SCWeakSelectorTarget.m in Sources */,
+				7D03322B1CB5FA3900E923A9 /* PersonDataTableViewCell.m in Sources */,
 				57666FAA1C968DBB00A52DBA /* AppDelegate+Launcher.m in Sources */,
 				57666F511C96619700A52DBA /* main.m in Sources */,
 				344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */,
@@ -1339,10 +1361,12 @@
 				344F02931CA23F790076CE62 /* Reachability.m in Sources */,
 				34076C231CA8C40900BD5AE9 /* BindDeviceViewControler.m in Sources */,
 				57666FDD1C96BE6F00A52DBA /* UIView+TapBlocks.m in Sources */,
+				7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */,
 				7D30E8B21CA66C05004DE055 /* SCRecorderToolsView.m in Sources */,
 				7D30E8A11CA66C05004DE055 /* SCAudioConfiguration.m in Sources */,
 				57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */,
 				344F02BC1CA27E780076CE62 /* BePeripheralViewController.m in Sources */,
+				7D1EA05E1CB4ED6800328C2D /* InformationViewController.m in Sources */,
 				57666F7F1C9686DE00A52DBA /* AppDelegate.m in Sources */,
 				57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */,
 				7D30E8B31CA66C05004DE055 /* SCRecordSession.m in Sources */,

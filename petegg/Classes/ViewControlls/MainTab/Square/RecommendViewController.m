@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "sys/utsname.h"
 #import "CycleScrollView.h"
+#import "PersonDetailViewController.h"
 static NSString * cellId = @"recommeCellId";
 
 @interface RecommendViewController ()
@@ -159,6 +160,11 @@ static NSString * cellId = @"recommeCellId";
     NSURL * imageUrl = [NSURL URLWithString:imageStr];
     [cell.iconImageV sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     cell.iconImageV.layer.cornerRadius = cell.iconImageV.bounds.size.width/2;
+    UIButton * touchButton = [[UIButton alloc]initWithFrame:cell.iconImageV.frame];
+    [touchButton addTarget:self action:@selector(iconImageVTouch:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:touchButton];
+    
+    
     
     [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         cell.photoView.image =[self cutImage:image];
@@ -182,5 +188,13 @@ static NSString * cellId = @"recommeCellId";
     sender.selected = !sender.selected;
 
 }
+
+-(void)iconImageVTouch:(UIButton *)sender{
+
+    PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
+    [self.navigationController pushViewController:personVc animated:YES];
+   // [self presentViewController:personVc animated:NO completion:nil];
+}
+
 
 @end

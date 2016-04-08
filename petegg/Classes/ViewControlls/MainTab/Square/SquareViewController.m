@@ -117,8 +117,7 @@
     _rightButton.selected = YES;
     [UIView animateWithDuration:0.3 animations:^{
         _lineLabel.frame = CGRectMake(120, 40, 18, 1);
-              
-        
+
     }];
     
     [self.pageViewController setViewControllers:@[self.viewControllers[1]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
@@ -191,7 +190,8 @@
         NSLog(@"资源库");
          [self yincang:nil];
         LoginViewController * loginVc = [[LoginViewController alloc]init];
-        [self presentViewController:loginVc animated:YES completion:nil];
+       // [self presentViewController:loginVc animated:YES completion:nil];
+        [self.navigationController pushViewController:loginVc animated:YES];
     }else if (3 == sender.tag){
         NSLog(@"小视频");
         [self takeChat];
