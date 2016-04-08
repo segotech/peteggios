@@ -14,11 +14,24 @@
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     
+    params[@"common"] = @"getHomePage";
+    params[@"mid"] = mid;
+    params[@"friend"] = friendId;
     
-    
-    
-    
-    
+    [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        if (completeBlock) {
+            
+            BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
+            model.list = [LoginModel arrayOfModelsFromDictionaries:model.list];
+            
+            completeBlock(model);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        if (failureBlock) {
+            failureBlock();
+        }
+    }];
+
     
 }
 

@@ -8,6 +8,11 @@
 
 #import "PersonDetailViewController.h"
 #import "PersonDataTableViewCell.h"
+#import "AFHttpClient+PersonDate.h"
+#import "AFHttpClient+Detailed.h"
+#import "LoginModel.h"
+
+
 static NSString * cellId = @"personDetailCellId";
 @interface PersonDetailViewController ()
 @property (nonatomic,strong)UIImageView * headImage; //头像
@@ -27,11 +32,14 @@ static NSString * cellId = @"personDetailCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self initUseTopView];
+   // [self initUseTopView];
+    
     
 }
 
 -(void)initUseTopView{
+    
+    
     _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 10 * W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
     _headImage.backgroundColor = [UIColor blackColor];
     _headImage.layer.cornerRadius = _headImage.width/2;
@@ -114,7 +122,22 @@ static NSString * cellId = @"personDetailCellId";
 
 -(void)setupData{
     [super setupData];
-
+    
+    [[AFHttpClient sharedAFHttpClient]querPresenWithMid:@"MI16010000006219" friend:@"MI16010000006219" complete:^(BaseModel *model) {
+        [self.dataSource addObjectsFromArray:model.list];
+        [self initUseTopView];
+    } failure:^{
+        
+    }];
+    
+    //BCT16010000011926  4张
+    
+//    [[AFHttpClient sharedAFHttpClient]querDetailWithStid:@"BCT16010000011915" complete:^(BaseModel *model) {
+//        
+//    } failure:^{
+//        
+//    }];
+    
 }
 
 

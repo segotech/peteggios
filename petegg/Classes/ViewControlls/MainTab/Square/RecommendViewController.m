@@ -15,6 +15,8 @@
 #import "sys/utsname.h"
 #import "CycleScrollView.h"
 #import "PersonDetailViewController.h"
+#import "DetailesViewController.h"
+
 static NSString * cellId = @"recommeCellId";
 
 @interface RecommendViewController ()
@@ -170,6 +172,13 @@ static NSString * cellId = @"recommeCellId";
         cell.photoView.image =[self cutImage:image];
         
     }];
+    UIButton * photoViewBtn = [[UIButton alloc]initWithFrame:cell.photoView.frame];
+    photoViewBtn.tag = indexPath.row + 11;
+    [photoViewBtn addTarget:self action:@selector(photoButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:photoViewBtn];
+    
+    
+    
     cell.introduceLable.text = model.content;
     
     cell.timeLable.text = model.publishtime;
@@ -195,6 +204,21 @@ static NSString * cellId = @"recommeCellId";
     [self.navigationController pushViewController:personVc animated:YES];
    // [self presentViewController:personVc animated:NO completion:nil];
 }
+
+-(void)photoButtonTouch:(UIButton *)sender{
+    NSInteger i = sender.tag -11;
+
+    SquareModel * model = self.dataSource[i];
+    NSString * stid = model.stid;
+    NSLog(@"%@",stid);
+
+    DetailesViewController * detailVc = [[DetailesViewController alloc]init];
+    stid = detailVc.stid;
+    [self.navigationController pushViewController:detailVc animated:YES];
+
+
+}
+
 
 
 @end
