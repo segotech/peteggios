@@ -14,6 +14,8 @@
 #import "UIImageView+WebCache.h"
 #import "sys/utsname.h"
 #import "CycleScrollView.h"
+#import "DetailViewController.h"
+
 static NSString * cellId = @"recommeCellId";
 
 @interface RecommendViewController ()
@@ -175,6 +177,15 @@ static NSString * cellId = @"recommeCellId";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    SquareModel * model = self.dataSource[indexPath.row];
+    
+    DetailViewController* viewController = [[DetailViewController alloc] init];
+    viewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 //关注按钮点击事件

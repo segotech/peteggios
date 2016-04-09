@@ -15,13 +15,9 @@
 
     self.view.backgroundColor = [UIColor grayColor];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-   
+    [self setupView];
     
     [self setupData];
-    
-    [self setupView];
 }
 
 - (void)setupData{

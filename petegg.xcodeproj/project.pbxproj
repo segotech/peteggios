@@ -72,6 +72,11 @@
 		570BA4F91CA25570009AA2FC /* InCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F71CA25570009AA2FC /* InCallViewController.m */; };
 		570BA4FA1CA25570009AA2FC /* InCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570BA4F81CA25570009AA2FC /* InCallViewController.xib */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
+		572220E01CB7541E00C9C7D2 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */; };
+		572220ED1CB7829A00C9C7D2 /* DetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220EC1CB7829A00C9C7D2 /* DetailCommentCell.m */; };
+		572220F61CB8A99100C9C7D2 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220D91CB66BE000C9C7D2 /* DetailViewController.m */; };
+		57462D9D1CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462D9A1CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.m */; };
+		57462D9E1CB8DD480071047E /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462D9C1CB8DD480071047E /* UIView+SDAutoLayout.m */; };
 		57666F511C96619700A52DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F501C96619700A52DBA /* main.m */; };
 		57666F571C96619700A52DBA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F561C96619700A52DBA /* ViewController.m */; };
 		57666F5A1C96619700A52DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57666F581C96619700A52DBA /* Main.storyboard */; };
@@ -252,6 +257,16 @@
 		570BA4F81CA25570009AA2FC /* InCallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InCallViewController.xib; sourceTree = "<group>"; };
 		572220CE1CB3B6CB00C9C7D2 /* AFHttpClient+Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Account.h"; sourceTree = "<group>"; };
 		572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Account.m"; sourceTree = "<group>"; };
+		572220D81CB66BE000C9C7D2 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		572220D91CB66BE000C9C7D2 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		572220DE1CB7541E00C9C7D2 /* DetailContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContentCell.h; sourceTree = "<group>"; };
+		572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContentCell.m; sourceTree = "<group>"; };
+		572220EB1CB7829A00C9C7D2 /* DetailCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCommentCell.h; sourceTree = "<group>"; };
+		572220EC1CB7829A00C9C7D2 /* DetailCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCommentCell.m; sourceTree = "<group>"; };
+		57462D991CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
+		57462D9A1CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
+		57462D9B1CB8DD480071047E /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
+		57462D9C1CB8DD480071047E /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
 		57666F4C1C96619700A52DBA /* petegg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petegg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57666F501C96619700A52DBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		57666F551C96619700A52DBA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -580,6 +595,38 @@
 			path = InCall;
 			sourceTree = "<group>";
 		};
+		572220D71CB66B7100C9C7D2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				572220DB1CB750FA00C9C7D2 /* Views */,
+				572220D81CB66BE000C9C7D2 /* DetailViewController.h */,
+				572220D91CB66BE000C9C7D2 /* DetailViewController.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		572220DB1CB750FA00C9C7D2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				572220DE1CB7541E00C9C7D2 /* DetailContentCell.h */,
+				572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */,
+				572220EB1CB7829A00C9C7D2 /* DetailCommentCell.h */,
+				572220EC1CB7829A00C9C7D2 /* DetailCommentCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		57462D981CB8DD480071047E /* SDAutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				57462D991CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.h */,
+				57462D9A1CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.m */,
+				57462D9B1CB8DD480071047E /* UIView+SDAutoLayout.h */,
+				57462D9C1CB8DD480071047E /* UIView+SDAutoLayout.m */,
+			);
+			path = SDAutoLayout;
+			sourceTree = "<group>";
+		};
 		57666F431C96619700A52DBA = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +788,7 @@
 		57666F741C9686DE00A52DBA /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				57462D981CB8DD480071047E /* SDAutoLayout */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -877,6 +925,7 @@
 		57666F9E1C9689CC00A52DBA /* Square */ = {
 			isa = PBXGroup;
 			children = (
+				572220D71CB66B7100C9C7D2 /* Detail */,
 				7D30E8BC1CA66C47004DE055 /* WheChat */,
 				7D30E8551CA66C05004DE055 /* SCRecorder */,
 				57666F9F1C9689CC00A52DBA /* SquareViewController.h */,
@@ -1303,12 +1352,14 @@
 				344F02781CA0DB280076CE62 /* SettingViewController.m in Sources */,
 				7D30E8A61CA66C05004DE055 /* SCFilter.m in Sources */,
 				7D3A351F1CB3AE790037C616 /* LoginModel.m in Sources */,
+				572220ED1CB7829A00C9C7D2 /* DetailCommentCell.m in Sources */,
 				7D30E8AC1CA66C05004DE055 /* SCPhotoConfiguration.m in Sources */,
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
 				7D30E8B41CA66C05004DE055 /* SCRecordSessionSegment.m in Sources */,
+				57462D9D1CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				7D30E89F1CA66C05004DE055 /* README.md in Sources */,
 				7D30E8A51CA66C05004DE055 /* SCFilter+VideoComposition.m in Sources */,
 				7D30E8AF1CA66C05004DE055 /* SCRecorder.m in Sources */,
@@ -1316,6 +1367,7 @@
 				7D30E8AD1CA66C05004DE055 /* SCPlayer.m in Sources */,
 				578B9E5E1CA29A9E00CAC21D /* AFHttpClient.m in Sources */,
 				7D30E8A21CA66C05004DE055 /* SCAudioTools.m in Sources */,
+				57462D9E1CB8DD480071047E /* UIView+SDAutoLayout.m in Sources */,
 				57666FDB1C96BE6F00A52DBA /* UIAlertView+Blocks.m in Sources */,
 				7D30E89C1CA66C05004DE055 /* CIImageRendererUtils.m in Sources */,
 				7D30E8B61CA66C05004DE055 /* SCSaveToCameraRollOperation.m in Sources */,
@@ -1336,6 +1388,7 @@
 				7D30E8AA1CA66C05004DE055 /* SCIOPixelBuffers.m in Sources */,
 				57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */,
 				57666FDA1C96BE6F00A52DBA /* UIActionSheet+Blocks.m in Sources */,
+				572220F61CB8A99100C9C7D2 /* DetailViewController.m in Sources */,
 				344F02931CA23F790076CE62 /* Reachability.m in Sources */,
 				34076C231CA8C40900BD5AE9 /* BindDeviceViewControler.m in Sources */,
 				57666FDD1C96BE6F00A52DBA /* UIView+TapBlocks.m in Sources */,
@@ -1347,6 +1400,7 @@
 				57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */,
 				7D30E8B31CA66C05004DE055 /* SCRecordSession.m in Sources */,
 				572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */,
+				572220E01CB7541E00C9C7D2 /* DetailContentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1462,7 +1516,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = petegg/PrefixHeader.pch;
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sego.petegg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1480,7 +1534,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = petegg/PrefixHeader.pch;
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sego.petegg;
 				PRODUCT_NAME = "$(TARGET_NAME)";

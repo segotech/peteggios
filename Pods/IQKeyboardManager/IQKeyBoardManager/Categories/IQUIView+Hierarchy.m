@@ -1,7 +1,7 @@
 //
 //  UIView+Hierarchy.m
 // https://github.com/hackiftekhar/IQKeyboardManager
-// Copyright (c) 2013-14 Iftekhar Qurashi.
+// Copyright (c) 2013-16 Iftekhar Qurashi.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,31 +22,31 @@
 // THE SOFTWARE.
 
 #import "IQUIView+Hierarchy.h"
-#import "IQKeyboardManagerConstantsInternal.h"
 
 #import <UIKit/UICollectionView.h>
+
 #import <UIKit/UITableView.h>
 #import <UIKit/UITextView.h>
 #import <UIKit/UITextField.h>
 #import <UIKit/UISearchBar.h>
 #import <UIKit/UIViewController.h>
+#import <UIKit/UIWindow.h>
 
 #import <objc/runtime.h>
 
-
-IQ_LoadCategory(IQUIViewHierarchy)
-
+#import "IQNSArray+Sort.h"
 
 @implementation UIView (IQ_UIView_Hierarchy)
 
 //Special textFields,textViews,scrollViews
-Class UIAlertSheetTextFieldClass;
-Class UIAlertSheetTextFieldClass_iOS8;
+Class UIAlertSheetTextFieldClass;       //UIAlertView
+Class UIAlertSheetTextFieldClass_iOS8;  //UIAlertView
 
-Class UITableViewCellScrollViewClass;
-Class UITableViewWrapperViewClass;
+Class UITableViewCellScrollViewClass;   //UITableViewCell
+Class UITableViewWrapperViewClass;      //UITableViewCell
+Class UIQueuingScrollViewClass;         //UIPageViewController
 
-Class UISearchBarTextFieldClass;
+Class UISearchBarTextFieldClass;        //UISearchBar
 
 +(void)initialize
 {
@@ -57,19 +57,20 @@ Class UISearchBarTextFieldClass;
     
     UITableViewCellScrollViewClass      = NSClassFromString(@"UITableViewCellScrollView");
     UITableViewWrapperViewClass         = NSClassFromString(@"UITableViewWrapperView");
+    UIQueuingScrollViewClass            = NSClassFromString(@"_UIQueuingScrollView");
 
     UISearchBarTextFieldClass           = NSClassFromString(@"UISearchBarTextField");
 }
 
 -(void)_setIsAskingCanBecomeFirstResponder:(BOOL)isAskingCanBecomeFirstResponder
 {
-    objc_setAssociatedObject(self, @selector(isAskingCanBecomeFirstResponder), @(isAskingCanBecomeFirstResponder), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(isAskingCanBecomeFirstResponder), [NSNumber numberWithBool:isAskingCanBecomeFirstResponder], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(BOOL)isAskingCanBecomeFirstResponder
 {
-    NSNumber *shouldHideTitle = objc_getAssociatedObject(self, @selector(isAskingCanBecomeFirstResponder));
-    return [shouldHideTitle boolValue];
+    NSNumber *isAskingCanBecomeFirstResponder = objc_getAssociatedObject(self, @selector(isAskingCanBecomeFirstResponder));
+    return [isAskingCanBecomeFirstResponder boolValue];
 }
 
 -(UIViewController*)viewController
@@ -88,48 +89,49 @@ Class UISearchBarTextFieldClass;
     return nil;
 }
 
-- (UITableView*)superTableView
+-(UIViewController *)topMostController
 {
-    UIView *superview = self.superview;
+    NSMutableArray *controllersHierarchy = [[NSMutableArray alloc] init];
     
-    while (superview)
+    UIViewController *topController = self.window.rootViewController;
+    
+    if (topController)
     {
-        if ([superview isKindOfClass:[UITableView class]])
-        {
-            return (UITableView*)superview;
-        }
-        else    superview = superview.superview;
+        [controllersHierarchy addObject:topController];
     }
     
-    return nil;
-}
-
--(UICollectionView *)superCollectionView
-{
-    UIView *superview = self.superview;
-    
-    while (superview)
-    {
-        if ([superview isKindOfClass:[UICollectionView class]])
-        {
-            return (UICollectionView*)superview;
-        }
-        else    superview = superview.superview;
+    while ([topController presentedViewController]) {
+        
+        topController = [topController presentedViewController];
+        [controllersHierarchy addObject:topController];
     }
     
-    return nil;
+    UIResponder *matchController = [self viewController];
+    
+    while (matchController != nil && [controllersHierarchy containsObject:matchController] == NO)
+    {
+        do
+        {
+            matchController = [matchController nextResponder];
+            
+        } while (matchController != nil && [matchController isKindOfClass:[UIViewController class]] == NO);
+    }
+    
+    return (UIViewController*)matchController;
 }
 
-- (UIScrollView*)superScrollView
+-(UIView*)superviewOfClassType:(Class)classType
 {
     UIView *superview = self.superview;
     
     while (superview)
     {
-        //UITableViewWrapperView
-        if ([superview isKindOfClass:[UIScrollView class]] && ([superview isKindOfClass:UITableViewCellScrollViewClass] == NO) && ([superview isKindOfClass:UITableViewWrapperViewClass] == NO))
+        if ([superview isKindOfClass:classType] &&
+            ([superview isKindOfClass:UITableViewCellScrollViewClass] == NO) &&
+            ([superview isKindOfClass:UITableViewWrapperViewClass] == NO) &&
+            ([superview isKindOfClass:UIQueuingScrollViewClass] == NO))
         {
-            return (UIScrollView*)superview;
+            return superview;
         }
         else    superview = superview.superview;
     }
@@ -140,7 +142,20 @@ Class UISearchBarTextFieldClass;
 -(BOOL)_IQcanBecomeFirstResponder
 {
     [self _setIsAskingCanBecomeFirstResponder:YES];
-    BOOL _IQcanBecomeFirstResponder = ([self canBecomeFirstResponder] && [self isUserInteractionEnabled] && ![self isAlertViewTextField]  && ![self isSearchBarTextField]);
+    BOOL _IQcanBecomeFirstResponder = ([self canBecomeFirstResponder] && [self isUserInteractionEnabled] && ![self isHidden] && [self alpha]!=0.0 && ![self isAlertViewTextField]  && ![self isSearchBarTextField]);
+    
+    if (_IQcanBecomeFirstResponder == YES)
+    {
+        if ([self isKindOfClass:[UITextField class]])
+        {
+            _IQcanBecomeFirstResponder = [(UITextField*)self isEnabled];
+        }
+        else if ([self isKindOfClass:[UITextView class]])
+        {
+            _IQcanBecomeFirstResponder = [(UITextView*)self isEditable];
+        }
+    }
+    
     [self _setIsAskingCanBecomeFirstResponder:NO];
     
     return _IQcanBecomeFirstResponder;
@@ -166,16 +181,8 @@ Class UISearchBarTextFieldClass;
     NSMutableArray *textFields = [[NSMutableArray alloc] init];
     
     //subviews are returning in opposite order. So I sorted it according the frames 'y'.
-    NSArray *subViews = [self.subviews sortedArrayUsingComparator:^NSComparisonResult(UIView *view1, UIView *view2) {
-        
-        if (view1.y < view2.y)	return NSOrderedAscending;
-        
-        else if (view1.y > view2.y)	return NSOrderedDescending;
-        
-        else	return NSOrderedSame;
-    }];
+    NSArray *subViews = [self.subviews sortedArrayByPosition];
 
-    
     for (UITextField *textField in subViews)
     {
         if ([textField _IQcanBecomeFirstResponder])
@@ -241,7 +248,7 @@ Class UISearchBarTextFieldClass;
     
     for (int counter = 0; counter < depth; counter ++)  [debugInfo appendString:@"|  "];
     
-    [debugInfo appendFormat:@"%@: ( %.0f, %.0f, %.0f, %.0f )",NSStringFromClass([self class]),self.x,self.y,self.width,self.height];
+    [debugInfo appendString:[self debugHierarchy]];
     
     for (UIView *subview in self.subviews)
     {
@@ -268,7 +275,29 @@ Class UISearchBarTextFieldClass;
     
     for (int counter = 0; counter < depth; counter ++)  [debugInfo appendString:@"|  "];
     
-    [debugInfo appendFormat:@"%@: ( %.0f, %.0f, %.0f, %.0f )\n",NSStringFromClass([self class]),self.x,self.y,self.width,self.height];
+    [debugInfo appendString:[self debugHierarchy]];
+
+    [debugInfo appendString:@"\n"];
+    
+    return debugInfo;
+}
+
+-(NSString *)debugHierarchy
+{
+    NSMutableString *debugInfo = [[NSMutableString alloc] init];
+
+    [debugInfo appendFormat:@"%@: ( %.0f, %.0f, %.0f, %.0f )",NSStringFromClass([self class]), CGRectGetMinX(self.frame), CGRectGetMinY(self.frame), CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)];
+    
+    if ([self isKindOfClass:[UIScrollView class]])
+    {
+        UIScrollView *scrollView = (UIScrollView*)self;
+        [debugInfo appendFormat:@"%@: ( %.0f, %.0f )",NSStringFromSelector(@selector(contentSize)),scrollView.contentSize.width,scrollView.contentSize.height];
+    }
+    
+    if (CGAffineTransformEqualToTransform(self.transform, CGAffineTransformIdentity) == false)
+    {
+        [debugInfo appendFormat:@"%@: %@",NSStringFromSelector(@selector(transform)),NSStringFromCGAffineTransform(self.transform)];
+    }
     
     return debugInfo;
 }
@@ -285,108 +314,12 @@ Class UISearchBarTextFieldClass;
 
 @end
 
-@implementation UIView (IQ_UIView_Frame)
 
--(CGFloat)x         {   return CGRectGetMinX(self.frame);   }
--(CGFloat)y         {   return CGRectGetMinY(self.frame);   }
--(CGFloat)width     {   return CGRectGetWidth(self.frame);  }
--(CGFloat)height    {   return CGRectGetHeight(self.frame); }
--(CGPoint)origin    {   return self.frame.origin;           }
--(CGSize)size       {   return self.frame.size;             }
--(CGFloat)left      {   return CGRectGetMinX(self.frame);   }
--(CGFloat)right     {   return CGRectGetMaxX(self.frame);   }
--(CGFloat)top       {   return CGRectGetMinY(self.frame);   }
--(CGFloat)bottom    {   return CGRectGetMaxY(self.frame);   }
--(CGFloat)centerX   {   return self.center.x;               }
--(CGFloat)centerY   {   return self.center.y;               }
--(CGPoint)boundsCenter  {   return CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));   };
+@implementation NSObject (IQ_Logging)
 
--(void)setX:(CGFloat)x
+-(NSString *)_IQDescription
 {
-    CGRect frame = self.frame;
-    frame.origin.x = x;
-    self.frame = frame;
-}
-
--(void)setY:(CGFloat)y
-{
-    CGRect frame = self.frame;
-    frame.origin.y = y;
-    self.frame = frame;
-}
-
--(void)setWidth:(CGFloat)width
-{
-    CGRect frame = self.frame;
-    frame.size.width = width;
-    self.frame = frame;
-}
-
--(void)setHeight:(CGFloat)height
-{
-    CGRect frame = self.frame;
-    frame.size.height = height;
-    self.frame = frame;
-}
-
-- (void)setOrigin:(CGPoint)origin
-{
-    CGRect frame = self.frame;
-    frame.origin = origin;
-    self.frame = frame;
-}
-
--(void)setSize:(CGSize)size
-{
-    CGRect frame = self.frame;
-    frame.size = size;
-    self.frame = frame;
-}
-
--(void)setLeft:(CGFloat)left
-{
-    CGRect frame = self.frame;
-    frame.origin.x = left;
-    frame.size.width = MAX(self.right-left, 0);
-    self.frame = frame;
-}
-
--(void)setRight:(CGFloat)right
-{
-    CGRect frame = self.frame;
-    frame.size.width = MAX(right-self.left, 0);
-    self.frame = frame;
-}
-
--(void)setTop:(CGFloat)top
-{
-    CGRect frame = self.frame;
-    frame.origin.y = top;
-    frame.size.height = MAX(self.bottom-top, 0);
-    self.frame = frame;
-}
-
--(void)setBottom:(CGFloat)bottom
-{
-    CGRect frame = self.frame;
-    frame.size.height = MAX(bottom-self.top, 0);
-    self.frame = frame;
-}
-
--(void)setCenterX:(CGFloat)centerX
-{
-    CGPoint center = self.center;
-    center.x = centerX;
-    self.center = center;
-}
-
--(void)setCenterY:(CGFloat)centerY
-{
-    CGPoint center = self.center;
-    center.y = centerY;
-    self.center = center;
+    return [NSString stringWithFormat:@"<%@ %p>",NSStringFromClass([self class]),self];
 }
 
 @end
-
-
