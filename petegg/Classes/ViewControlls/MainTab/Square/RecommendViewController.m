@@ -164,6 +164,7 @@ static NSString * cellId = @"recommeCellId";
     cell.iconImageV.layer.cornerRadius = cell.iconImageV.bounds.size.width/2;
     UIButton * touchButton = [[UIButton alloc]initWithFrame:cell.iconImageV.frame];
     [touchButton addTarget:self action:@selector(iconImageVTouch:) forControlEvents:UIControlEventTouchUpInside];
+    touchButton.tag = indexPath.row + 9;
     [cell addSubview:touchButton];
     
     
@@ -199,10 +200,16 @@ static NSString * cellId = @"recommeCellId";
 }
 
 -(void)iconImageVTouch:(UIButton *)sender{
+    NSInteger i = sender.tag - 9;
+    
+    SquareModel * model = self.dataSource[i];
+    NSString * mid = model.mid;
 
+   
     PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
+    personVc.ddddd = mid;
     [self.navigationController pushViewController:personVc animated:YES];
-   // [self presentViewController:personVc animated:NO completion:nil];
+   
 }
 
 -(void)photoButtonTouch:(UIButton *)sender{

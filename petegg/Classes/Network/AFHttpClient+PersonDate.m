@@ -22,7 +22,7 @@
         if (completeBlock) {
             
             BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
-            model.list = [LoginModel arrayOfModelsFromDictionaries:model.list];
+            model.list = [PersonDetailModel arrayOfModelsFromDictionaries:model.list];
             
             completeBlock(model);
         }
@@ -34,5 +34,40 @@
 
     
 }
+
+-(void)querByIdSproutpetWithFriend:(NSString *)friendId pageIndex:(int)pageIndex pageSize:(int)pageSize complete:(void (^)(BaseModel *))completeBlock failure:(void (^)())failureBlock{
+
+     NSMutableDictionary* params = [NSMutableDictionary dictionary];
+     params[@"common"] = @"queryByIdSproutpet";
+     params[@"friend"] = friendId;
+     params[@"page"] = @(pageIndex);
+     params[@"size"] = @(pageSize);
+
+
+    [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        if (completeBlock) {
+            
+            BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
+            model.list = [DetailModel arrayOfModelsFromDictionaries:model.list];
+            
+            completeBlock(model);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        if (failureBlock) {
+            failureBlock();
+        }
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @end

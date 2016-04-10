@@ -11,7 +11,7 @@
 #import "SquareModel.h"
 #import "LoginModel.h"
 #import "DetailModel.h"
-
+#import "PersonDetailModel.h"
 
 #define BASE_URL    @"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"
 

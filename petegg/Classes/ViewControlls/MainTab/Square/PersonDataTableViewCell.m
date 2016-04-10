@@ -16,10 +16,11 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 10 * W_Hight_Zoom)];
         _topView.backgroundColor = [UIColor lightGrayColor];
+        _topView.alpha = 0.1;
         [self addSubview:_topView];
         
         _bigImage = [[UIImageView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 10 * W_Hight_Zoom, 375 * W_Wide_Zoom, 250 * W_Hight_Zoom)];
-        _bigImage.backgroundColor = [UIColor blackColor];
+        _bigImage.backgroundColor = [UIColor clearColor];
         [self addSubview:_bigImage];
         
         

@@ -13,4 +13,17 @@
                   friend:(NSString *)friendId
                 complete:(void(^)(BaseModel *model))completeBlock
                  failure:(void(^)())failureBlock;
+
+
+
+-(void)querByIdSproutpetWithFriend:(NSString *)friendId
+                         pageIndex:(int)pageIndex
+                         pageSize:(int)pageSize
+                         complete:(void(^)(BaseModel *model))completeBlock
+                         failure:(void(^)())failureBlock;
+
+
+
+
+
 @end
