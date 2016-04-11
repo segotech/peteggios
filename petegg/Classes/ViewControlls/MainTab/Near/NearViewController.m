@@ -7,12 +7,13 @@
 //
 
 #import "NearViewController.h"
+#import "NearbyPeopleViewController.h"
+#import "DouYIDouViewController.h"
+#import "SeachePeopleViewController.h"
+
 
 @interface NearViewController ()
 @property (nonatomic,strong)UIButton * seacherBtn;
-
-
-
 @end
 
 @implementation NearViewController
@@ -20,29 +21,74 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.title = NSLocalizedString(@"tabNear", nil);
+    
 }
 
 -(void)setupView{
-    _seacherBtn = [[UIButton alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom,NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT , 355 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    [super setupView];
+    _seacherBtn = [[UIButton alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom,NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT + 5 , 355 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
     [_seacherBtn setImage:[UIImage imageNamed:@"seacherkuang.png"] forState:UIControlStateNormal];
-    //_seacherBtn.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_seacherBtn];
+    [_seacherBtn addTarget:self action:@selector(seacherTouch) forControlEvents:UIControlEventTouchUpInside];
     
-    NSArray * imagearray = @[@"nearPeople.png",@"DouYiDou.png"];
-    for (int i = 0 ; i < 2 ; i++) {
-        UIImageView * headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 120 + 80 * i * W_Hight_Zoom, 40 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
-        headImage.image = [UIImage imageNamed:imagearray[i]];
-        headImage.layer.cornerRadius = 5;
-        [self.view addSubview:headImage];
+    
+    UIView * whiteView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 100 * W_Hight_Zoom, self.view.width, 120 * W_Hight_Zoom)];
+    whiteView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:whiteView];
+ 
+    NSArray * imageNameArray = @[@"nearPeople.png",@"DouYiDou.png"];
+    NSArray * nameArray = @[@"附近的人",@"逗一逗"];
+    for (int i = 0 ; i < 2 ; i ++) {
+        UIImageView * headImages = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 15 + i * 60 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        headImages.image = [UIImage imageNamed:imageNameArray[i]];
+        headImages.layer.cornerRadius = 5;
+        [whiteView addSubview:headImages];
+        
+        UILabel * lineLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 + i * 59 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1)];
+        lineLabeles.backgroundColor = [UIColor lightGrayColor];
+        lineLabeles.alpha = 0.2;
+        [whiteView addSubview:lineLabeles];
+        
+        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(50 * W_Wide_Zoom, 15 + i * 60 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        nameLabeles.textColor = [UIColor blackColor];
+        nameLabeles.font =[UIFont systemFontOfSize:14];
+        nameLabeles.text = nameArray[i];
+        [whiteView addSubview:nameLabeles];
+        
+        UIImageView * rightImages = [[UIImageView alloc]initWithFrame:CGRectMake(350 * W_Wide_Zoom, 23 +i * 60 * W_Hight_Zoom, 13 * W_Wide_Zoom, 13 * W_Hight_Zoom)];
+        rightImages.image = [UIImage imageNamed:@"jiantou.png"];
+        [whiteView addSubview:rightImages];
+        
+        
+        UIButton * buttones = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 + i * 60 * W_Hight_Zoom, 375 * W_Wide_Zoom, 60 * W_Hight_Zoom)];
+        buttones.tag = i;
+        [buttones addTarget:self action:@selector(bigButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+        [whiteView addSubview:buttones];
+        
     }
-    UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 160, 375, 1)];
-    lineLabel.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:lineLabel];
-    
-    
-    
     
 }
+-(void)setupData{
+    [super setupData];
+}
+
+-(void)bigButtonTouch:(UIButton *)sender{
+    if (0 == sender.tag) {
+        NearbyPeopleViewController * NearVc = [[NearbyPeopleViewController alloc]init];
+        [self.navigationController pushViewController:NearVc animated:YES];
+    
+    }else{
+        DouYIDouViewController * douVc = [[DouYIDouViewController alloc]init];
+        [self.navigationController pushViewController:douVc animated:YES];
+    }
+}
+-(void)seacherTouch{
+    NSLog(@"搜索");
+    SeachePeopleViewController * seacher = [[SeachePeopleViewController alloc]init];
+    [self.navigationController pushViewController:seacher animated:YES];
+}
+
+
 
 
 @end

@@ -127,6 +127,11 @@
 		7D1714311CBB4C620047FA70 /* DouYiDou.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D17142E1CBB4C620047FA70 /* DouYiDou.png */; };
 		7D1714321CBB4C620047FA70 /* nearPeople.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D17142F1CBB4C620047FA70 /* nearPeople.png */; };
 		7D1714331CBB4C620047FA70 /* seacherkuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D1714301CBB4C620047FA70 /* seacherkuang.png */; };
+		7D17143C1CBB99300047FA70 /* jiantou.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D17143B1CBB99300047FA70 /* jiantou.png */; };
+		7D17143F1CBBA0850047FA70 /* NearbyPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D17143E1CBBA0850047FA70 /* NearbyPeopleViewController.m */; };
+		7D1714421CBBA0AA0047FA70 /* DouYIDouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1714411CBBA0AA0047FA70 /* DouYIDouViewController.m */; };
+		7D1714451CBBA3670047FA70 /* NearTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1714441CBBA3670047FA70 /* NearTableViewCell.m */; };
+		7D1714481CBBB1EB0047FA70 /* SeachePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1714471CBBB1EB0047FA70 /* SeachePeopleViewController.m */; };
 		7D1EA05E1CB4ED6800328C2D /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */; };
 		7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA0661CB4F28500328C2D /* PersonDetailViewController.m */; };
 		7D2F81FA1CAE24CC0097820B /* egg_login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81F91CAE24CC0097820B /* egg_login.jpg */; };
@@ -365,6 +370,15 @@
 		7D17142E1CBB4C620047FA70 /* DouYiDou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DouYiDou.png; sourceTree = "<group>"; };
 		7D17142F1CBB4C620047FA70 /* nearPeople.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nearPeople.png; sourceTree = "<group>"; };
 		7D1714301CBB4C620047FA70 /* seacherkuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seacherkuang.png; sourceTree = "<group>"; };
+		7D17143B1CBB99300047FA70 /* jiantou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jiantou.png; sourceTree = "<group>"; };
+		7D17143D1CBBA0850047FA70 /* NearbyPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyPeopleViewController.h; sourceTree = "<group>"; };
+		7D17143E1CBBA0850047FA70 /* NearbyPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyPeopleViewController.m; sourceTree = "<group>"; };
+		7D1714401CBBA0AA0047FA70 /* DouYIDouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DouYIDouViewController.h; sourceTree = "<group>"; };
+		7D1714411CBBA0AA0047FA70 /* DouYIDouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DouYIDouViewController.m; sourceTree = "<group>"; };
+		7D1714431CBBA3670047FA70 /* NearTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearTableViewCell.h; sourceTree = "<group>"; };
+		7D1714441CBBA3670047FA70 /* NearTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearTableViewCell.m; sourceTree = "<group>"; };
+		7D1714461CBBB1EB0047FA70 /* SeachePeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeachePeopleViewController.h; sourceTree = "<group>"; };
+		7D1714471CBBB1EB0047FA70 /* SeachePeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeachePeopleViewController.m; sourceTree = "<group>"; };
 		7D1EA05C1CB4ED6800328C2D /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		7D1EA0651CB4F28500328C2D /* PersonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDetailViewController.h; sourceTree = "<group>"; };
@@ -503,6 +517,7 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				7D17143B1CBB99300047FA70 /* jiantou.png */,
 				7D17142E1CBB4C620047FA70 /* DouYiDou.png */,
 				7D17142F1CBB4C620047FA70 /* nearPeople.png */,
 				7D1714301CBB4C620047FA70 /* seacherkuang.png */,
@@ -943,8 +958,15 @@
 		57666F971C9689CC00A52DBA /* Near */ = {
 			isa = PBXGroup;
 			children = (
+				7D1714351CBB8F3C0047FA70 /* Views */,
 				57666F981C9689CC00A52DBA /* NearViewController.h */,
 				57666F991C9689CC00A52DBA /* NearViewController.m */,
+				7D17143D1CBBA0850047FA70 /* NearbyPeopleViewController.h */,
+				7D17143E1CBBA0850047FA70 /* NearbyPeopleViewController.m */,
+				7D1714401CBBA0AA0047FA70 /* DouYIDouViewController.h */,
+				7D1714411CBBA0AA0047FA70 /* DouYIDouViewController.m */,
+				7D1714461CBBB1EB0047FA70 /* SeachePeopleViewController.h */,
+				7D1714471CBBB1EB0047FA70 /* SeachePeopleViewController.m */,
 			);
 			path = Near;
 			sourceTree = "<group>";
@@ -1062,6 +1084,15 @@
 				7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */,
 				7D0332291CB5FA3900E923A9 /* PersonDataTableViewCell.h */,
 				7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7D1714351CBB8F3C0047FA70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7D1714431CBBA3670047FA70 /* NearTableViewCell.h */,
+				7D1714441CBBA3670047FA70 /* NearTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1295,6 +1326,7 @@
 				344F02891CA143AC0076CE62 /* kuang_on.png in Resources */,
 				344F02641C9FEBDE0076CE62 /* trun_off.png in Resources */,
 				344F02E21CA3EA0B0076CE62 /* person_systemmessage.png in Resources */,
+				7D17143C1CBB99300047FA70 /* jiantou.png in Resources */,
 				7D2F81FA1CAE24CC0097820B /* egg_login.jpg in Resources */,
 				344F02CB1CA2DA2C0076CE62 /* before_off.png in Resources */,
 				344F025A1C9FEBDE0076CE62 /* juankfood_off.png in Resources */,
@@ -1382,6 +1414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D1714481CBBB1EB0047FA70 /* SeachePeopleViewController.m in Sources */,
 				7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */,
 				57666FA21C9689CC00A52DBA /* NearViewController.m in Sources */,
 				7D30E8B81CA66C05004DE055 /* SCVideoConfiguration.m in Sources */,
@@ -1391,6 +1424,7 @@
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
 				7DFF05A91CB7A26E00CF713E /* DetailModel.m in Sources */,
 				7D3A352E1CB3CAFA0037C616 /* ReDataViewController.m in Sources */,
+				7D1714421CBBA0AA0047FA70 /* DouYIDouViewController.m in Sources */,
 				344F02E81CA3EC040076CE62 /* personTableViewCell.m in Sources */,
 				578B9E641CA2D78A00CAC21D /* BaseModel.m in Sources */,
 				578B9E611CA29E5D00CAC21D /* AFHttpClient+Square.m in Sources */,
@@ -1436,6 +1470,7 @@
 				7D30E8AD1CA66C05004DE055 /* SCPlayer.m in Sources */,
 				578B9E5E1CA29A9E00CAC21D /* AFHttpClient.m in Sources */,
 				7D30E8A21CA66C05004DE055 /* SCAudioTools.m in Sources */,
+				7D1714451CBBA3670047FA70 /* NearTableViewCell.m in Sources */,
 				57462D9E1CB8DD480071047E /* UIView+SDAutoLayout.m in Sources */,
 				57666FDB1C96BE6F00A52DBA /* UIAlertView+Blocks.m in Sources */,
 				7D30E89C1CA66C05004DE055 /* CIImageRendererUtils.m in Sources */,
@@ -1464,6 +1499,7 @@
 				7DFF05AC1CB7A45800CF713E /* PersonDetailModel.m in Sources */,
 				57666FDD1C96BE6F00A52DBA /* UIView+TapBlocks.m in Sources */,
 				7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */,
+				7D17143F1CBBA0850047FA70 /* NearbyPeopleViewController.m in Sources */,
 				7D30E8B21CA66C05004DE055 /* SCRecorderToolsView.m in Sources */,
 				7D30E8A11CA66C05004DE055 /* SCAudioConfiguration.m in Sources */,
 				57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */,
