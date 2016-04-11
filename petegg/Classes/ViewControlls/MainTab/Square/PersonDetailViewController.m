@@ -10,8 +10,9 @@
 #import "PersonDataTableViewCell.h"
 #import "AFHttpClient+PersonDate.h"
 #import "AFHttpClient+Detailed.h"
-#import "LoginModel.h"
-
+#import "PersonDetailModel.h"
+#import "DetailModel.h"
+#import "UIImageView+WebCache.h"
 
 static NSString * cellId = @"personDetailCellId";
 @interface PersonDetailViewController ()
@@ -39,10 +40,15 @@ static NSString * cellId = @"personDetailCellId";
 
 -(void)initUseTopView{
     
+    PersonDetailModel * model = self.dataSource[0];
+    
     
     _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 10 * W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
-    _headImage.backgroundColor = [UIColor blackColor];
+    [_headImage.layer setMasksToBounds:YES];
     _headImage.layer.cornerRadius = _headImage.width/2;
+    NSString * imageStr = [NSString stringWithFormat:@"%@",model.headportrait];
+    NSURL * imageUrl = [NSURL URLWithString:imageStr];
+    [_headImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     [_topView addSubview:_headImage];
     
     _typeImage = [[UIImageView alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 10 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
@@ -67,7 +73,7 @@ static NSString * cellId = @"personDetailCellId";
     [_topView addSubview:qq];
     
     _qqLabel = [[UILabel alloc]initWithFrame:CGRectMake(140 * W_Wide_Zoom, 40 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _qqLabel.text = @"2432143434";
+    _qqLabel.text = model.qq;
     _qqLabel.font = [UIFont systemFontOfSize:14];
     _qqLabel.textColor = [UIColor blackColor];
     [_topView addSubview:_qqLabel];
@@ -80,7 +86,7 @@ static NSString * cellId = @"personDetailCellId";
     [_topView addSubview:guanzhu];
     
     _attentionLabel = [[UILabel alloc]initWithFrame:CGRectMake(140 * W_Wide_Zoom, 60 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _attentionLabel.text = @"33";
+    _attentionLabel.text = model.gznum;
     _attentionLabel.textColor = [UIColor blackColor];
     _attentionLabel.font = [UIFont systemFontOfSize:14];
     [_topView addSubview:_attentionLabel];
@@ -93,13 +99,13 @@ static NSString * cellId = @"personDetailCellId";
     [_topView addSubview:fensi];
     
     _fansLabel = [[UILabel alloc]initWithFrame:CGRectMake(210 * W_Wide_Zoom, 60 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _fansLabel.text = @"44";
+    _fansLabel.text = model.fsnum;
     _fansLabel.textColor = [UIColor blackColor];
     _fansLabel.font = [UIFont systemFontOfSize:14];
     [_topView addSubview:_fansLabel];
     
     _autographLabel = [[UILabel alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 90 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _autographLabel.text = @"这是我的好朋友，嘻嘻嘻!";
+    _autographLabel.text = model.signature;
     _autographLabel.textColor = [UIColor blackColor];
     _autographLabel.font = [UIFont systemFontOfSize:14];
     [_topView addSubview:_autographLabel];
@@ -117,28 +123,46 @@ static NSString * cellId = @"personDetailCellId";
     [self.tableView registerClass:[PersonDataTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.tableView.tableHeaderView = _topView;
-   // [self initRefreshView];
+    [self initRefreshView];
 }
 
 -(void)setupData{
     [super setupData];
     
-    [[AFHttpClient sharedAFHttpClient]querPresenWithMid:@"MI16010000006219" friend:@"MI16010000006219" complete:^(BaseModel *model) {
+    [[AFHttpClient sharedAFHttpClient]querPresenWithMid:@"MI16010000006219" friend:_ddddd complete:^(BaseModel *model) {
         [self.dataSource addObjectsFromArray:model.list];
         [self initUseTopView];
     } failure:^{
         
     }];
-    
-    //BCT16010000011926  4张
-    
-//    [[AFHttpClient sharedAFHttpClient]querDetailWithStid:@"BCT16010000011915" complete:^(BaseModel *model) {
-//        
-//    } failure:^{
-//        
-//    }];
+}
+
+-(void)loadDataSourceWithPage:(int)page{
+    [[AFHttpClient sharedAFHttpClient]querByIdSproutpetWithFriend:_ddddd pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
+        
+        if (page == START_PAGE_INDEX) {
+            [self.dataSourceImage removeAllObjects];
+            [self.dataSourceImage addObjectsFromArray:model.list];
+        } else {
+            [self.dataSourceImage addObjectsFromArray:model.list];
+        }
+        
+        if (model.list.count < REQUEST_PAGE_SIZE){
+            self.tableView.footer.hidden = YES;
+        }else{
+            self.tableView.footer.hidden = NO;
+        }
+        
+        [self.tableView reloadData];
+        [self handleEndRefresh];
+    } failure:^{
+        [self handleEndRefresh];
+    }];
+
+
     
 }
+
 
 
 #pragma mark - TableView的代理函数
@@ -149,7 +173,7 @@ static NSString * cellId = @"personDetailCellId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.dataSourceImage.count;
 }
 
 
@@ -161,10 +185,18 @@ static NSString * cellId = @"personDetailCellId";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PersonDataTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    DetailModel * model = self.dataSourceImage[indexPath.row];
+    [cell.bigImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        cell.bigImage.image =[self cutImage:image];
+    }];
     
     
     
     
+    
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

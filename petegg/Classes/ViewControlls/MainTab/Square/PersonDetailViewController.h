@@ -10,4 +10,6 @@
 
 @interface PersonDetailViewController : BaseTableViewController
 
+@property (nonatomic,copy)NSString *ddddd;
+
 @end
