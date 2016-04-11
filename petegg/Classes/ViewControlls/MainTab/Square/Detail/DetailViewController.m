@@ -14,6 +14,7 @@
 
 #import "DetailContentCell.h"
 #import "DetailCommentCell.h"
+#import "DetailImageCell.h"
 
 @interface DetailViewController()
 
@@ -31,6 +32,7 @@
 const CGFloat contentLabelFontSize = 15;
 NSString * const kDetailContentCellID = @"DetailContentCell";
 NSString * const kDetailCommentCellID = @"DetailCommentCell";
+NSString * const kDetailImageCellID = @"DetailImageCell";
 
 @implementation DetailViewController
 
@@ -44,7 +46,6 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
     self.resourcesArray = [NSMutableArray array];
     
     [self loadDetailInfo];
-    
 }
 
 - (void)setupView{
@@ -56,6 +57,7 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
     
     [self.tableView registerClass:[DetailContentCell class] forCellReuseIdentifier:kDetailContentCellID];
     [self.tableView registerClass:[DetailCommentCell class] forCellReuseIdentifier:kDetailCommentCellID];
+    [self.tableView registerClass:[DetailImageCell class] forCellReuseIdentifier:kDetailImageCellID];
     
     [self initRefreshView];
 }
@@ -68,10 +70,10 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
             
             self.detailModel = model.list[0];
             
-//            [self.resourcesArray removeAllObjects];
-//            self.resourcesArray = [[self.detailModel.resources componentsSeparatedByString:@","] mutableCopy];
+            [self.resourcesArray removeAllObjects];
+            self.resourcesArray = [[self.detailModel.resources componentsSeparatedByString:@","] mutableCopy];
             
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,2)] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
 }
@@ -94,7 +96,7 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
                 self.tableView.footer.hidden = NO;
             }
             
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
     
@@ -133,7 +135,7 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
     switch (section) {
         case 0:
             return self.userInfoView;
-        case 1:
+        case 2:
         {
             UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 44)];
             headerView.backgroundColor = [UIColor whiteColor];
@@ -155,17 +157,17 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
     switch (section) {
         case 0:
             return self.detailModel ? self.userInfoView.height : 0;
-        case 1:
+        case 2:
             return 44;
         default:
             break;
     }
-    return 0;
+    return 0.000001;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     switch (section) {
-        case 0:
+        case 1:
             return 16;
             
         default:
@@ -176,9 +178,13 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
-        case 0:
-            return self.detailModel ? 1: 0;
         case 1:
+            return self.detailModel ? 1: 0;
+          
+        case 0:
+            return self.resourcesArray.count;
+            
+        case 2:
             return self.dataSource.count;
             
         default:
@@ -188,18 +194,23 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     switch (indexPath.section) {
         case 0:
-            return [self.tableView cellHeightForIndexPath:indexPath model:self.detailModel keyPath:@"model" cellClass:[DetailContentCell class] contentViewWidth:[self cellContentViewWith]];
+        {
+            NSString* resources = self.resourcesArray[indexPath.row];
+            return [self.tableView cellHeightForIndexPath:indexPath model:resources keyPath:@"model" cellClass:[DetailImageCell class] contentViewWidth:SCREEN_WIDTH];
+        }
         case 1:
+            return [self.tableView cellHeightForIndexPath:indexPath model:self.detailModel keyPath:@"model" cellClass:[DetailContentCell class] contentViewWidth:SCREEN_WIDTH];
+        case 2:
         {
             CommentModel* model = self.dataSource[indexPath.row];
-            return [self.tableView cellHeightForIndexPath:indexPath model:model keyPath:@"model" cellClass:[DetailCommentCell class] contentViewWidth:[self cellContentViewWith]];
+            return [self.tableView cellHeightForIndexPath:indexPath model:model keyPath:@"model" cellClass:[DetailCommentCell class] contentViewWidth:SCREEN_WIDTH];
         }
     }
     
@@ -211,6 +222,18 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
     switch (indexPath.section) {
         case 0:
         {
+            NSString* resources = self.resourcesArray[indexPath.row];
+            
+            DetailImageCell* cell = [tableView dequeueReusableCellWithIdentifier:kDetailImageCellID];
+            
+            [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
+            
+            cell.model = resources;
+            
+            return cell;
+        }
+        case 1:
+        {
             DetailContentCell* cell = [tableView dequeueReusableCellWithIdentifier:kDetailContentCellID];
             
             [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
@@ -219,7 +242,7 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
 
             return cell;
         }
-        case 1:
+        case 2:
         {
             CommentModel* model = self.dataSource[indexPath.row];
             DetailCommentCell* cell = [tableView dequeueReusableCellWithIdentifier:kDetailCommentCellID];
@@ -230,7 +253,6 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
             
             return cell;
         }
-            break;
             
         default:
             break;
@@ -239,17 +261,10 @@ NSString * const kDetailCommentCellID = @"DetailCommentCell";
     return nil;
 }
 
-
-
-- (CGFloat)cellContentViewWith{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    
-    // 适配ios7
-    if ([UIApplication sharedApplication].statusBarOrientation != UIInterfaceOrientationPortrait && [[UIDevice currentDevice].systemVersion floatValue] < 8) {
-        width = [UIScreen mainScreen].bounds.size.height;
-    }
-    return width;
 }
+
+
 
 @end

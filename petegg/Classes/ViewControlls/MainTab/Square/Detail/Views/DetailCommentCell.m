@@ -40,12 +40,10 @@
     
     _iconIV = [[UIImageView alloc] init];
     _iconIV.backgroundColor = [UIColor redColor];
-    [self.contentView addSubview:_iconIV];
     
     _nameLB = [[UILabel alloc] init];
     _nameLB.font = [UIFont systemFontOfSize:18];
     _nameLB.numberOfLines = 1;
-    [self.contentView addSubview:_nameLB];
 
     _typeLB = [[UILabel alloc] init];
     _typeLB.font = [UIFont systemFontOfSize:13];
