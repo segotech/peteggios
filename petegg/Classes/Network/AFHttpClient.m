@@ -50,4 +50,51 @@ singleton_implementation(AFHttpClient)
     return [super POST:URLString parameters:parameters success:success failure:failure];
 }
 
+- (AFHTTPRequestOperation *)POST:(NSString *)URLString parameters:(id)parameters result:(void (^)(BaseModel* model))result {
+    
+    parameters[@"classes"] = @"appinterface";
+    parameters[@"method"] = @"json";
+    
+    return [super POST:URLString parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        NSError* error = nil;
+        NSLog(@"respons === %@", [self DataTOjsonString:responseObject]);
+        BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:&error];
+        
+        if (error || [model.retCode integerValue] != 0) {
+            [[AppUtil appTopViewController] showHint:error ? [error localizedDescription] : model.retDesc];
+        
+            if (result) {
+                result(nil);
+            }
+            return ;
+        }
+        
+        if (result) {
+            result(model);
+        }
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        if (result) {
+            result(nil);
+        }
+    }];
+}
+
+
+-(NSString*)DataTOjsonString:(id)object
+{
+    NSString *jsonString = nil;
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
+    if (! jsonData) {
+        NSLog(@"Got an error: %@", error);
+    } else {
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    return jsonString;
+}
+
 @end

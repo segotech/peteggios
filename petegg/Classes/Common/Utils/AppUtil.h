@@ -58,4 +58,7 @@
 + (UIImage*) OriginImage:(UIImage *)image scaleToSize:(CGSize)size;
 
 + (NSString *)getServerTest;
+
++ (UIViewController *)appTopViewController;
+
 @end

@@ -82,7 +82,8 @@
     
     self.loginVC = [[LoginViewController alloc]init];
     
-    self.window.rootViewController = self.loginVC;
+    UINavigationController * loginNaVc = [[UINavigationController alloc]initWithRootViewController:self.loginVC];
+    self.window.rootViewController = loginNaVc;
     
     [self.window makeKeyAndVisible];
 }

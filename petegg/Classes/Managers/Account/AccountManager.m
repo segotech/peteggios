@@ -17,6 +17,7 @@ singleton_implementation(AccountManager)
 
 - (instancetype)init{
     if (self = [super init]) {
+       
         
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         
@@ -53,7 +54,7 @@ singleton_implementation(AccountManager)
  *  是否登录
  */
 -(BOOL)isLogin{
-    
+   // return NO;
     return self.loginModel && self.loginModel.mid && ![self.loginModel.mid isEqualToString:@""];
 }
 

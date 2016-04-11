@@ -37,6 +37,7 @@
     
     _timeLabel = [[UILabel alloc] init];
     _timeLabel.font = [UIFont systemFontOfSize:12];
+    _timeLabel.textColor = [UIColor lightGrayColor];
     _timeLabel.numberOfLines = 1;
     
     NSArray* views = @[_contentLabel, _timeLabel];
@@ -54,18 +55,16 @@
     .topSpaceToView(_contentLabel, 8)
     .rightEqualToView(_contentLabel)
     .autoHeightRatio(0);
-    
-    self.contentView.backgroundColor = RGBA(0, 0, 0, 0.4);
 }
 
-- (void)setModel:(NSString *)model{
+- (void)setModel:(DetailModel *)model{
     
     _model = model;
     
-    _contentLabel.text = model;
+    _contentLabel.text = model.content;
     _contentLabel.sd_layout.maxHeightIs(MAXFLOAT);
     
-    _timeLabel.text = @"2016-12-12 23:23:23";
+    _timeLabel.text = model.publishtime;
     
     [self setupAutoHeightWithBottomView:self.timeLabel bottomMargin:8];
 }

@@ -10,4 +10,7 @@
 
 @interface DetailViewController : BaseTableViewController
 
+//萌宠秀的stid，接口里面有提到
+@property (nonatomic,copy)NSString * stid;
+
 @end

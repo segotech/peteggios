@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 
 #import "AFHttpClient+Account.h"
+#import "RegiestViewController.h"
+#import "ReDataViewController.h"
 
 @interface LoginViewController()
 @property (nonatomic,strong)UIButton * loginButton;
@@ -22,7 +24,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    //self.navigationController.navigationBarHidden = YES;
     [self initUserFace];
 }
 -(void)initUserFace{
@@ -66,7 +68,40 @@
     [_passwordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.view addSubview:_passwordTextField];
     
+    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(100, 350, 100, 35)];
+    [regiestButton setTitle:@"新用户注册" forState:UIControlStateNormal];
+    [regiestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    regiestButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:regiestButton];
+    [regiestButton addTarget:self action:@selector(regiestButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UILabel * shulineLabel = [[UILabel alloc]initWithFrame:CGRectMake(190, 360, 1, 12)];
+    shulineLabel.backgroundColor = GRAY_COLOR;
+    [self.view addSubview:shulineLabel];
+    
+    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(180, 350, 100, 35)];
+    [reDataButton setTitle:@"忘记密码?" forState:UIControlStateNormal];
+    [reDataButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    reDataButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:reDataButton];
+    [reDataButton addTarget:self action:@selector(reDataButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+
 }
+
+-(void)regiestButtonTouch:(UIButton *)sender{
+    RegiestViewController * reVc = [[RegiestViewController alloc]init];
+    [self.navigationController pushViewController:reVc animated:YES];
+}
+
+-(void)reDataButtonTouch:(UIButton *)sender{
+    ReDataViewController * reDataVc = [[ReDataViewController alloc]init];
+    [self.navigationController pushViewController:reDataVc animated:YES];
+
+}
+
+
+
 
 
 -(void)loginTouch{
@@ -116,6 +151,17 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+
+
+}
 
 @end

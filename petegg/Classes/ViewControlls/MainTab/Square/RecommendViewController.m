@@ -15,6 +15,7 @@
 #import "sys/utsname.h"
 #import "CycleScrollView.h"
 #import "DetailViewController.h"
+#import "PersonDetailViewController.h"
 
 static NSString * cellId = @"recommeCellId";
 
@@ -50,7 +51,7 @@ static NSString * cellId = @"recommeCellId";
 }
 
 - (void)loadDataSourceWithPage:(int)page {
-    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
+    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
         
         if (page == START_PAGE_INDEX) {
             [self.dataSource removeAllObjects];
@@ -115,20 +116,6 @@ static NSString * cellId = @"recommeCellId";
 
 }
 
--(NSString*)DataTOjsonString:(id)object
-{
-    NSString *jsonString = nil;
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
-                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-                                                         error:&error];
-    if (! jsonData) {
-        NSLog(@"Got an error: %@", error);
-    } else {
-        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
-    return jsonString;
-}
 
 #pragma mark - TableView的代理函数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -161,11 +148,23 @@ static NSString * cellId = @"recommeCellId";
     NSURL * imageUrl = [NSURL URLWithString:imageStr];
     [cell.iconImageV sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     cell.iconImageV.layer.cornerRadius = cell.iconImageV.bounds.size.width/2;
+    UIButton * touchButton = [[UIButton alloc]initWithFrame:cell.iconImageV.frame];
+    [touchButton addTarget:self action:@selector(iconImageVTouch:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:touchButton];
+    
+    
     
     [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         cell.photoView.image =[self cutImage:image];
         
     }];
+    UIButton * photoViewBtn = [[UIButton alloc]initWithFrame:cell.photoView.frame];
+    photoViewBtn.tag = indexPath.row + 11;
+    [photoViewBtn addTarget:self action:@selector(photoButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:photoViewBtn];
+    
+    
+    
     cell.introduceLable.text = model.content;
     
     cell.timeLable.text = model.publishtime;
@@ -180,12 +179,7 @@ static NSString * cellId = @"recommeCellId";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    SquareModel * model = self.dataSource[indexPath.row];
-    
-    DetailViewController* viewController = [[DetailViewController alloc] init];
-    viewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewController animated:YES];
+   
 }
 
 //关注按钮点击事件
@@ -193,5 +187,26 @@ static NSString * cellId = @"recommeCellId";
     sender.selected = !sender.selected;
 
 }
+
+-(void)iconImageVTouch:(UIButton *)sender{
+
+    PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
+    [self.navigationController pushViewController:personVc animated:YES];
+   // [self presentViewController:personVc animated:NO completion:nil];
+}
+
+-(void)photoButtonTouch:(UIButton *)sender{
+    NSInteger i = sender.tag -11;
+
+    SquareModel * model = self.dataSource[i];
+    NSString * stid = model.stid;
+
+    DetailViewController* viewController = [[DetailViewController alloc] init];
+    viewController.stid = model.stid;
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+}
+
+
 
 @end

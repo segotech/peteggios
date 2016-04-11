@@ -30,4 +30,10 @@
 -(void)queryRecommendWithcomplete:(void(^)(BaseModel *model))completeBlock failure:(void(^)())failureBlock;
 ;
 
+
+
+
+
+
+
 @end

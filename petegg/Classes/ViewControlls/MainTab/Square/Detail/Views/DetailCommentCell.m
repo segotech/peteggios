@@ -8,6 +8,8 @@
 
 #import "DetailCommentCell.h"
 
+#import "UIImageView+WebCache.h"
+
 @interface DetailCommentCell()
 
 @property (nonatomic, strong) UIImageView* iconIV;
@@ -94,10 +96,10 @@
     
     UIView *contentView = self.contentView;
 
-    _iconIV.sd_layout.widthIs(60).heightEqualToWidth().leftSpaceToView(contentView, 8).topSpaceToView(contentView, 8);
+    _iconIV.sd_layout.widthIs(50).heightEqualToWidth().leftSpaceToView(contentView, 8).topSpaceToView(contentView, 8);
     _iconIV.sd_cornerRadiusFromWidthRatio = @(0.5);
 
-    _nameLB.sd_layout.leftSpaceToView(_iconIV, 10).topEqualToView(_iconIV).heightIs(30);
+    _nameLB.sd_layout.leftSpaceToView(_iconIV, 10).topEqualToView(_iconIV).minHeightIs(25);
     [_nameLB setSingleLineAutoResizeWithMaxWidth:contentView.width * 0.5];
     
     _typeLB.sd_layout.leftSpaceToView(_nameLB, 8).centerYEqualToView(_nameLB).widthIs(20).heightIs(20);
@@ -109,29 +111,31 @@
     _ageLB.sd_layout.leftSpaceToView(_genderLB, 8).centerYEqualToView(_genderLB).widthIs(40).heightIs(20);
     _ageLB.sd_cornerRadiusFromWidthRatio = @(0.28);
     
-    _timeLB.sd_layout.leftEqualToView(_nameLB).topSpaceToView(_nameLB, 8).heightIs(30).autoHeightRatio(0);
+    _timeLB.sd_layout.leftEqualToView(_nameLB).topSpaceToView(_nameLB, 6).heightIs(30).autoHeightRatio(0);
     [_timeLB setSingleLineAutoResizeWithMaxWidth:contentView.width * 0.5];
     
     _replyBtn.sd_layout.centerYEqualToView(_timeLB).rightSpaceToView(contentView, 8).heightIs(30).widthIs(40);
     
     _contentLB.sd_layout.leftEqualToView(_timeLB).topSpaceToView(_timeLB, 8).rightSpaceToView(contentView, 8).autoHeightRatio(0);
     
-    contentView.backgroundColor = [UIColor yellowColor];
 }
 
-- (void)setModel:(NSString *)model{
+- (void)setModel:(CommentModel *)model{
     
     _model = model;
     
-    self.nameLB.text = @"哦哦哦解解决";
-    self.typeLB.text = @"汪";
-    self.timeLB.text = @"2016-12-12 23:23:23";
+    self.nameLB.text = model.memname;
+    
+    [self.iconIV sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:nil];
+    
+    self.typeLB.text = model.race;
+    self.timeLB.text = model.opttime;
      
-    self.contentLB.text = model;
+    self.contentLB.text = model.content;
     self.contentLB.sd_layout.maxHeightIs(MAXFLOAT);
     
-    self.genderLB.text = @"♂";
-    self.ageLB.text = @"1岁";
+    self.genderLB.text = [model.sex isEqualToString:@"公"] ? @"♂" : @"♀";
+    self.ageLB.text = [NSString stringWithFormat:@"%@岁", model.age];
     
     [self setupAutoHeightWithBottomView:self.contentLB bottomMargin:8];
    

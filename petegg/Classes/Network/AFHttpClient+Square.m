@@ -102,7 +102,6 @@
             BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
             model.list = [SquareModel arrayOfModelsFromDictionaries:model.list];
             completeBlock(model);
-            
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         if (failureBlock) {

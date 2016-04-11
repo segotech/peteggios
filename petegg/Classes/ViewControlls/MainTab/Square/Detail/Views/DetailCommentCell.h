@@ -10,7 +10,7 @@
 
 @interface DetailCommentCell : UITableViewCell
 
-@property (nonatomic, strong) NSString *model;
+@property (nonatomic, strong) CommentModel *model;
 
 @property (nonatomic, copy) void (^replyBlock)();
 

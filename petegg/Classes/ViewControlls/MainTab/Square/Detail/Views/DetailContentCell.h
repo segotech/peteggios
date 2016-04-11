@@ -10,6 +10,6 @@
 
 @interface DetailContentCell : UITableViewCell
 
-@property (nonatomic, strong) NSString *model;
+@property (nonatomic, strong) DetailModel *model;
 
 @end
