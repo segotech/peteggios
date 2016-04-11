@@ -207,15 +207,7 @@ static NSString * cellId = @"recommeCellId";
 
     SquareModel * model = self.dataSource[i];
     NSString * stid = model.stid;
-<<<<<<< HEAD
     NSLog(@"%@",stid);
-
-    DetailesViewController * detailVc = [[DetailesViewController alloc]init];
-    detailVc.stid = stid;
-    [self.navigationController pushViewController:detailVc animated:YES];
-
-=======
->>>>>>> 0dec7d39098f5202e82652dcd47f5c10d7021541
 
     DetailViewController* viewController = [[DetailViewController alloc] init];
     viewController.stid = model.stid;

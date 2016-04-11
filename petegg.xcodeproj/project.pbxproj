@@ -356,12 +356,12 @@
 		57F2C8361CA21E89005324DD /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
 		57F2C8381CA21EB1005324DD /* AttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionViewController.h; sourceTree = "<group>"; };
 		57F2C8391CA21EB1005324DD /* AttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
-		7D0332291CB5FA3900E923A9 /* PersonDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDataTableViewCell.h; sourceTree = "<group>"; };
-		7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDataTableViewCell.m; sourceTree = "<group>"; };
+		7D0332291CB5FA3900E923A9 /* PersonDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonDataTableViewCell.h; path = ../PersonDataTableViewCell.h; sourceTree = "<group>"; };
+		7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonDataTableViewCell.m; path = ../PersonDataTableViewCell.m; sourceTree = "<group>"; };
 		7D03322C1CB6680F00E923A9 /* AFHttpClient+PersonDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PersonDate.h"; sourceTree = "<group>"; };
 		7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PersonDate.m"; sourceTree = "<group>"; };
-		7D0E23B01CA2709700061973 /* RecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendTableViewCell.h; sourceTree = "<group>"; };
-		7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendTableViewCell.m; sourceTree = "<group>"; };
+		7D0E23B01CA2709700061973 /* RecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommendTableViewCell.h; path = ../RecommendTableViewCell.h; sourceTree = "<group>"; };
+		7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommendTableViewCell.m; path = ../RecommendTableViewCell.m; sourceTree = "<group>"; };
 		7D17142E1CBB4C620047FA70 /* DouYiDou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DouYiDou.png; sourceTree = "<group>"; };
 		7D17142F1CBB4C620047FA70 /* nearPeople.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nearPeople.png; sourceTree = "<group>"; };
 		7D1714301CBB4C620047FA70 /* seacherkuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seacherkuang.png; sourceTree = "<group>"; };
@@ -976,12 +976,11 @@
 				572220D71CB66B7100C9C7D2 /* Detail */,
 				7D30E8BC1CA66C47004DE055 /* WheChat */,
 				7D30E8551CA66C05004DE055 /* SCRecorder */,
+				7D1714341CBB86950047FA70 /* Views */,
 				57666F9F1C9689CC00A52DBA /* SquareViewController.h */,
 				57666FA01C9689CC00A52DBA /* SquareViewController.m */,
 				57F2C8351CA21E89005324DD /* RecommendViewController.h */,
 				57F2C8361CA21E89005324DD /* RecommendViewController.m */,
-				7D0E23B01CA2709700061973 /* RecommendTableViewCell.h */,
-				7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */,
 				57F2C8381CA21EB1005324DD /* AttentionViewController.h */,
 				57F2C8391CA21EB1005324DD /* AttentionViewController.m */,
 				7D30E8521CA66622004DE055 /* IssuePinViewController.h */,
@@ -990,8 +989,6 @@
 				7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */,
 				7D1EA0651CB4F28500328C2D /* PersonDetailViewController.h */,
 				7D1EA0661CB4F28500328C2D /* PersonDetailViewController.m */,
-				7D0332291CB5FA3900E923A9 /* PersonDataTableViewCell.h */,
-				7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */,
 			);
 			path = Square;
 			sourceTree = "<group>";
@@ -1056,6 +1053,17 @@
 				57666FE91C96C5AA00A52DBA /* AccountManager.m */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		7D1714341CBB86950047FA70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7D0E23B01CA2709700061973 /* RecommendTableViewCell.h */,
+				7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */,
+				7D0332291CB5FA3900E923A9 /* PersonDataTableViewCell.h */,
+				7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7D30E8551CA66C05004DE055 /* SCRecorder */ = {
