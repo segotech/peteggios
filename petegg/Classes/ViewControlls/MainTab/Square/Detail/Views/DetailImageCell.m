@@ -42,14 +42,14 @@
     
     [self.iconIV sd_setImageWithURL:[NSURL URLWithString:model] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
-        if (image) {
+        if (image && self.iconIV.width > 0) {
             
             CGSize size = image.size;
             
             if (size.width >= self.width) {
                 
                 if (size.width < size.height) {
-                    self.iconIV.sd_layout.heightIs(self.iconIV.width * size.width / size.height);
+                    self.iconIV.sd_layout.heightIs(size.height / (size.width / self.iconIV.width));
                 }else{
                     self.iconIV.sd_layout.heightIs(self.iconIV.width * size.height / size.width);
                 }
