@@ -220,7 +220,7 @@ static NSString * cellId = @"recommeCellId";
     NSLog(@"%@",stid);
 
     DetailesViewController * detailVc = [[DetailesViewController alloc]init];
-    stid = detailVc.stid;
+    detailVc.stid = stid;
     [self.navigationController pushViewController:detailVc animated:YES];
 
 
