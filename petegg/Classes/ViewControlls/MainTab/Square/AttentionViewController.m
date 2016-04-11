@@ -10,6 +10,9 @@
 #import "RecommendTableViewCell.h"
 #import "AFHttpClient+Square.h"
 #import "UIImageView+WebCache.h"
+
+#import "DetailViewController.h"
+
 static NSString * cellId = @"AttentionCellId";
 @interface AttentionViewController ()
 
@@ -38,7 +41,7 @@ static NSString * cellId = @"AttentionCellId";
 }
 
 -(void)loadDataSourceWithPage:(int)page{
-    [[AFHttpClient sharedAFHttpClient] querySproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
+    [[AFHttpClient sharedAFHttpClient] querySproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
         if (page == 1) {
             [self.dataSource addObjectsFromArray:model.list];
         }else{
@@ -115,6 +118,14 @@ static NSString * cellId = @"AttentionCellId";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    SquareModel * model = self.dataSource[indexPath.row];
+
+    DetailViewController* viewController = [[DetailViewController alloc] init];
+    viewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 
 

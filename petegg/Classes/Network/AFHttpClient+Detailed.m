@@ -22,7 +22,6 @@
             BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
             model.list = [DetailModel arrayOfModelsFromDictionaries:model.list];
             
-            
             completeBlock(model);
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
@@ -32,8 +31,28 @@
     }];
 }
 
+//萌宠秀详情的接口
+-(void)querDetailWithStid:(NSString *)stid
+                 complete:(void(^)(BaseModel *model))completeBlock{
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    params[@"common"] = @"queryByStid";
+    params[@"stid"] = stid;
+    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        
+        if (model){
+            model.list = [DetailModel arrayOfModelsFromDictionaries:model.list];
+        }
+        
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+}
 
--(void)queryCommentWithWid:(NSString *)wid pageIndex:(int)pageIndex pageSize:(int)pageSize complete:(void (^)(BaseModel *))completeBlock failure:(void (^)())failureBlock{
+
+-(void)queryCommentWithWid:(NSString *)wid pageIndex:(int)pageIndex pageSize:(int)pageSize complete:(void(^)(BaseModel *model))completeBlock{
+    
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     params[@"common"] = @"querycomment";
     params[@"ptype"] = @"m";
@@ -41,28 +60,16 @@
     params[@"page"] = @(pageIndex);
     params[@"size"] = @(pageSize);
     
-    /*
-     wid:文章标识 （就是传过来的stid）
-     size  page
-     */
-    [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        
+        if (model){
+            model.list = [CommentModel arrayOfModelsFromDictionaries:model.list];
+        }
+        
         if (completeBlock) {
-            
-            BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
-         
-            //这里接口已经调通了，model不知道该怎么写了，list里面还有数组，我蒙b了
-            //  model.list = [DetailModel arrayOfModelsFromDictionaries:model.list];
-
             completeBlock(model);
         }
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-        if (failureBlock) {
-            failureBlock();
-        }
     }];
-
-    
-    
 }
 
 

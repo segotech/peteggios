@@ -14,8 +14,8 @@
 #import "UIImageView+WebCache.h"
 #import "sys/utsname.h"
 #import "CycleScrollView.h"
+#import "DetailViewController.h"
 #import "PersonDetailViewController.h"
-#import "DetailesViewController.h"
 
 static NSString * cellId = @"recommeCellId";
 
@@ -51,7 +51,7 @@ static NSString * cellId = @"recommeCellId";
 }
 
 - (void)loadDataSourceWithPage:(int)page {
-    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:@"MI16010000006219" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
+    [[AFHttpClient sharedAFHttpClient] queryFollowSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
         
         if (page == START_PAGE_INDEX) {
             [self.dataSource removeAllObjects];
@@ -116,20 +116,6 @@ static NSString * cellId = @"recommeCellId";
 
 }
 
--(NSString*)DataTOjsonString:(id)object
-{
-    NSString *jsonString = nil;
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
-                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-                                                         error:&error];
-    if (! jsonData) {
-        NSLog(@"Got an error: %@", error);
-    } else {
-        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
-    return jsonString;
-}
 
 #pragma mark - TableView的代理函数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -193,6 +179,10 @@ static NSString * cellId = @"recommeCellId";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+}
+
 //关注按钮点击事件
 -(void)attentionTouch:(UIButton * )sender{
     sender.selected = !sender.selected;
@@ -217,13 +207,20 @@ static NSString * cellId = @"recommeCellId";
 
     SquareModel * model = self.dataSource[i];
     NSString * stid = model.stid;
+<<<<<<< HEAD
     NSLog(@"%@",stid);
 
     DetailesViewController * detailVc = [[DetailesViewController alloc]init];
     detailVc.stid = stid;
     [self.navigationController pushViewController:detailVc animated:YES];
 
+=======
+>>>>>>> 0dec7d39098f5202e82652dcd47f5c10d7021541
 
+    DetailViewController* viewController = [[DetailViewController alloc] init];
+    viewController.stid = model.stid;
+    [self.navigationController pushViewController:viewController animated:YES];
+    
 }
 
 

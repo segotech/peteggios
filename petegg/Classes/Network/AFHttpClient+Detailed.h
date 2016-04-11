@@ -14,12 +14,15 @@
                  complete:(void(^)(BaseModel *model))completeBlock
                   failure:(void(^)())failureBlock;
 
+//萌宠秀详情的接口
+-(void)querDetailWithStid:(NSString *)stid
+                 complete:(void(^)(BaseModel *model))completeBlock;
+
 //评论列表接口
 -(void)queryCommentWithWid:(NSString *)wid
-                       pageIndex:(int)pageIndex
-                       pageSize:(int)pageSize
-                       complete:(void(^)(BaseModel *model))completeBlock
-                       failure:(void(^)())failureBlock;
+                 pageIndex:(int)pageIndex
+                  pageSize:(int)pageSize
+                  complete:(void(^)(BaseModel *model))completeBlock;
 
 //添加/回复评论接口
 -(void)AddCommentWithPid:(NSString *)pid

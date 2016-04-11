@@ -11,6 +11,7 @@
 #import "SquareModel.h"
 #import "LoginModel.h"
 #import "DetailModel.h"
+#import "CommentModel.h"
 #import "PersonDetailModel.h"
 
 #define BASE_URL    @"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"
@@ -20,5 +21,7 @@
 @interface AFHttpClient : AFHTTPRequestOperationManager
 
 singleton_interface(AFHttpClient)
+
+- (AFHTTPRequestOperation *)POST:(NSString *)URLString parameters:(id)parameters result:(void (^)(BaseModel* model))result;
 
 @end

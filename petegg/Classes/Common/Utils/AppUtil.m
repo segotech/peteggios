@@ -8,6 +8,7 @@
 
 #import "AppUtil.h"
 
+
 @implementation AppUtil
 
 
@@ -87,6 +88,16 @@ static NSString * getServerTest1 = @"http://192.168.1.115:8080/sego_v3";
     UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return scaledImage;   //返回的就是已经改变的图片
+}
+
++ (UIViewController *)appTopViewController{
+    UIViewController *appRootVC = ApplicationDelegate.window.rootViewController;
+    
+    UIViewController *topVC = appRootVC;
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    return topVC;
 }
 
 @end

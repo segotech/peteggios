@@ -80,6 +80,6 @@ _instance = [[self alloc] init]; \
 return _instance; \
 }
 
-
+#define ApplicationDelegate                 ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 
 #endif /* Definition_h */
