@@ -25,15 +25,14 @@
                   complete:(void(^)(BaseModel *model))completeBlock;
 
 //添加/回复评论接口
--(void)AddCommentWithPid:(NSString *)pid
+-(void)addCommentWithPid:(NSString *)pid
                      bid:(NSString *)bid
                      wid:(NSString *)wid
-                     bcid:(NSString *)bcid
-                     ptype:(NSString *)ptype
-                     action:(NSString *)action
-                     content:(NSString *)content
-                     complete:(void(^)(BaseModel *model))completeBlock
-                     failure:(void(^)())failureBlock;
+                    bcid:(NSString *)bcid
+                   ptype:(NSString *)ptype
+                  action:(NSString *)action
+                 content:(NSString *)content
+                complete:(void(^)(BaseModel *model))completeBlock;
 
 
 

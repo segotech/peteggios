@@ -30,10 +30,10 @@
 - (void)setupView{
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:self.bGroupView ? UITableViewStyleGrouped : UITableViewStylePlain];
-    _tableView.tableFooterView = [[UIView alloc]init];
+    _tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0.1)];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.backgroundColor = GRAY_COLOR;
+    _tableView.backgroundColor = LIGHT_GRAY_COLOR;
     
     [self.view addSubview:_tableView];
 }

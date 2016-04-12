@@ -8,6 +8,7 @@
 
 #import "NearbyPeopleViewController.h"
 #import "NearTableViewCell.h"
+#import "AFHttpClient+Nearby.h"
 static NSString * cellId = @"111111111111";
 @interface NearbyPeopleViewController ()
 
@@ -34,7 +35,9 @@ static NSString * cellId = @"111111111111";
 
 -(void)setupData{
     [super setupData];
-
+    [[AFHttpClient sharedAFHttpClient]querNeighborhoodWithMid:[AccountManager sharedAccountManager].loginModel.mid pageIndex:1 pageSize:10 complete:^(BaseModel *model) {
+        
+    }];
 }
 
 #pragma mark - TableView的代理函数
