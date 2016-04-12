@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AppDelegate+Launcher.h"
 #import "AppDelegate+ShareSDK.h"
+#import "IQKeyboardManager.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +20,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    //点击背景收起键盘
+    [[IQKeyboardManager sharedManager]setShouldResignOnTouchOutside:YES];
+    //影藏键盘上的自定义工具栏
+    [[IQKeyboardManager sharedManager]setEnableAutoToolbar:NO];
     
     //初始化分享
     [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
