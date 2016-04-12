@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate+Launcher.h"
-
+#import "WasCallViewController.h"
 
 @interface AppDelegate()
 
@@ -32,6 +32,19 @@
     [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:NotificationLoginStateChange object:nil];
+    
+    
+    NSUserDefaults * standDefus =[NSUserDefaults standardUserDefaults];
+    
+    if ([AppUtil isBlankString:[standDefus objectForKey:@"content"]]) {
+        
+    }else{
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"checkSatats"object:nil userInfo:[standDefus objectForKey:@"content"]];
+        
+    }
+    
+    
+    
     
     [self checkLogin];
 }
@@ -87,5 +100,34 @@
     
     [self.window makeKeyAndVisible];
 }
+
+/**
+ *  粘贴快捷
+ *  直接跳到别人的视频开启界面逗宠
+ */
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    
+    UIPasteboard *pboard = [UIPasteboard generalPasteboard];
+    // 测试
+    if ([pboard.string  isEqualToString:@"123"]) {
+        NSLog(@"==========%@",pboard.string);
+        WasCallViewController * BeComeVC =[[WasCallViewController alloc]initWithNibName:@"WasCallViewController" bundle:nil];
+        [self.window.rootViewController presentViewController:BeComeVC animated:YES completion:nil];
+        // 也有可能自己开启自己
+        pboard.string  =@"";
+        
+        
+        
+        
+    }else
+    {
+        // 正常情况
+        
+        
+    }
+}
+
+
 
 @end

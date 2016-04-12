@@ -33,9 +33,18 @@
         [self addSubview:self.introduce];
         
         
-        self.moneyLabel =[[UILabel alloc]initWithFrame:CGRectMake(270*W_Wide_Zoom, 0, 100*W_Wide_Zoom, 45*W_Hight_Zoom)];
+        self.moneyLabel =[[UILabel alloc]initWithFrame:CGRectMake(310*W_Wide_Zoom, 15, 20*W_Wide_Zoom, 20*W_Hight_Zoom)];
+        self.moneyLabel.textColor=[UIColor whiteColor];
+        self.moneyLabel.hidden = YES;
+        self.moneyLabel.textAlignment = NSTextAlignmentCenter;
+        self.moneyLabel.backgroundColor =[UIColor redColor];
+        [self.moneyLabel.layer setMasksToBounds:YES];
+        self.moneyLabel.layer.cornerRadius = self.moneyLabel.bounds.size.width/2;
+        
         
         [self addSubview:self.moneyLabel];
+        
+        
         
         
     }

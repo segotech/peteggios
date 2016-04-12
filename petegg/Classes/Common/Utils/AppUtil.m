@@ -100,5 +100,19 @@ static NSString * getServerTest1 = @"http://192.168.1.115:8080/sego_v3";
     return topVC;
 }
 
++(NSString *)getNowTime
+{
+    
+    
+    NSString* date;
+    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"hh:mm:ss"];
+    date = [formatter stringFromDate:[NSDate date]];
+    return date;
+    
+    
+}
+
+
 @end
 

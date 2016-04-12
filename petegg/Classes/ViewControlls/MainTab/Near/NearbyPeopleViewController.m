@@ -60,8 +60,7 @@ static NSString * cellId = @"111111111111";
     NearTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
 
     
-    
-    
+
     [cell.rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     cell.rightBtn.layer.cornerRadius = 5;
     [cell.rightBtn setTitle:@"+关注" forState:UIControlStateNormal];

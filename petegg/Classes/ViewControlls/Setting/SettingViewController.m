@@ -6,153 +6,187 @@
 //  Copyright © 2016年 ldp. All rights reserved.
 //
 
-#import "SettingViewController.h"
-#import "wifiViewController.h"
 #import "BindDeviceViewControler.h"
+#import "SettingViewController.h"
+#import "WifiViewController.h"
 
+// 设备号配置项
+NSString *const PREF_DEVICE_NUMBER = @"deviceNumber";
+// wifi是否已设置配置项
+NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
 
-@interface SettingViewController ()
-{
-    
-    NSString * str;
-    // 绑定成功标示符
-    NSString * strBind;
-    
+@interface SettingViewController () {
+    NSString *strDeviceNo;     // 设备号
+    NSString *strConfigResult; // 已设置过wifi的标示符
 }
 
 @end
 
 @implementation SettingViewController
-@synthesize solveBidBtn;
-@synthesize incodeTF;
-@synthesize deviceNumTF;
-@synthesize setHttpBtn;
 
+@synthesize unbindButton;
+@synthesize resolveButton;
+@synthesize deviceNumberEdit;
+@synthesize incodeEdit;
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    NSUserDefaults * defults =[NSUserDefaults standardUserDefaults];
-     str =[defults objectForKey:@"DEVICE_NUMBER"];
-     strBind =[defults objectForKey:@"bindSuccesful"];
-    if ([AppUtil isBlankString:str]) {
-        
-        
-    }else if ([strBind isEqualToString:@"1"] && str!=nil)
-    {
-       
-        [self changeUIandData:@"修改网络"];
-        deviceNumTF.text = [NSString stringWithFormat:@" 设备号:%@",str];
-        incodeTF.text = [NSString stringWithFormat:@" 接入码:FFO23"];
-        
-    }
-    else
-    {
-        /**
-         *  b-a 改变
-         *
-         *  @return
-         */
-        deviceNumTF.text = [NSString stringWithFormat:@" 设备号:%@",str];
-        incodeTF.text = [NSString stringWithFormat:@" 接入码:FFO23"];
-        [self changeUIandData:@"设置网络"];
-    }
-   
-}
+#pragma mark - View Events
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupView];
-    
-    
 }
--  (void)setupView
-{
-    
-    self.view.backgroundColor =[UIColor whiteColor];
-    setHttpBtn.backgroundColor =GREEN_COLOR;
-    [self setNavTitle: NSLocalizedString(@"setTitle", nil)];
-    
-    
-    
 
-    
+/**
+ *  初始化界面
+ */
+- (void)setupView {
+    [super setupView];
+
+    self.view.backgroundColor = [UIColor whiteColor];
+
+    // 解绑按钮默认可用。
+    unbindButton.backgroundColor = GREEN_COLOR;
+    unbindButton.enabled = YES;
+    // 功能按钮默认不可用。
+    resolveButton.backgroundColor = GRAY_COLOR;
+    resolveButton.enabled = FALSE;
+
+    [self setNavTitle:NSLocalizedString(@"settingViewTitle", nil)];
 }
-//解除绑定
-- (IBAction)solvebidBtn:(id)sender {
+
+/**
+ *  视图显示前处理
+ *
+ *  @param animated <#animated description#>
+ */
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    NSUserDefaults *defults = [NSUserDefaults standardUserDefaults];
+    strDeviceNo = [defults objectForKey:PREF_DEVICE_NUMBER];
+    strConfigResult = [defults objectForKey:PREF_WIFI_CONFIGURED];
+
+    // 尚未绑定设备，则绑定设备。
+    if ([AppUtil isBlankString:strDeviceNo]) {
+        [self updateUI:@"绑定设备" State:false];
+    }
+    // 已绑定设备，解除绑定。
+    else {
+        deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", strDeviceNo];
+        incodeEdit.text = [NSString stringWithFormat:@"  接入码:  ******"];
+        [self updateUI:@"解除绑定" State:true];
+    }
+}
+
+/**
+ *  显示警告提示
+ */
+- (void)showWarningTip:(NSString *)str {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = str;
+    hud.minSize = CGSizeMake(132.f, 66.0f);
+    [hud hide:YES afterDelay:1.0];
+}
+
+/**
+ *  执行解绑http请求
+ */
+- (void)doUnbindRequest {
+    // 格式化参数。
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *mid = [userDefault objectForKey:@"segomid"];
+    if ([AppUtil isBlankString:mid]) {
+        return;
+    }
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:mid forKey:@"mid"];
+
     NSString *service = [AppUtil getServerSego3];
-    NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
-    [dicc setValue:mid                forKey:@"mid"];
     service = [service stringByAppendingString:@"clientAction.do?common=delDevice&classes=appinterface&method=json"];
-    
-    AFHTTPRequestOperationManager *manager =  [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObject:@"text/html"];
-    
-    [manager POST:service parameters:dicc success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *dic1 = [responseObject objectForKey:@"jsondata"] ;
-        
-        if ([[dic1 objectForKey:@"retCode"] isEqualToString:@"0000"]) {
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"DEVICE_NUMBER"];
-            
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+
+    // 创建进度提示窗。
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"正在解除绑定设备，请等待...";
+
+    // 执行http请求。
+    [manager POST:service
+        parameters:params
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"JSON: %@", responseObject);
+            [hud hide:YES];
+
+            // 解析执行结果。
+            NSDictionary *result = [responseObject objectForKey:@"jsondata"];
+            if ([[result objectForKey:@"retCode"] isEqualToString:@"0000"]) {
+                // 清除设备号。
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_DEVICE_NUMBER];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_WIFI_CONFIGURED];
+                // 更新界面状态。
+                [self updateUI:@"绑定设备" State:false];
+            }
         }
-        
-    }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              
-              NSLog(@"解除绑定失败");
-              
-              
-    }];
-    
-    
+        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Unbind device failed: %@", error);
+            [self showWarningTip:@"执行失败，请检查网络是否正常"];
+        }];
 }
 
 /**
- *  绑定设备
+ *  绑定/解除绑定设备
+ *
+ *  @param sender <#sender description#>
  */
-- (IBAction)sethttpBtn:(id)sender {
-    
-    // 绑定设备
-    if ([AppUtil isBlankString:str]) {
-        BindDeviceViewControler * bindDeVC = [[BindDeviceViewControler alloc]initWithNibName:@"BindDeviceViewControler" bundle:nil];
-        [self.navigationController pushViewController:bindDeVC animated:YES];
-        
+- (IBAction)onUnbindButtonClicked:(id)sender {
+    // 搜索设备并绑定。
+    if ([AppUtil isBlankString:strDeviceNo]) {
+        BindDeviceViewControler *bindView = [[BindDeviceViewControler alloc] initWithNibName:@"BindDeviceViewControler" bundle:nil];
+        [self.navigationController pushViewController:bindView animated:YES];
     }
-    // 修改网络
-    else if(strBind!=nil && str!= nil)
-    {
-        
-        wifiViewController * wifiVC =[[wifiViewController alloc]initWithNibName:@"wifiViewController" bundle:nil];
-        wifiVC.fixWIFI =@"FIX";
-        [self.navigationController pushViewController:wifiVC animated:YES];
-
-        
+    // 解除绑定。
+    else {
+        [self doUnbindRequest];
     }
-    else{
-        // 网络设置
-        wifiViewController * wifiVC =[[wifiViewController alloc]initWithNibName:@"wifiViewController" bundle:nil];
-          [self.navigationController pushViewController:wifiVC animated:YES];
-        
-    }
-  
-    
 }
 
 /**
- *  绑定成功  操作界面
+ *  修改网络配置
+ *
+ *  @param sender <#sender description#>
  */
+- (IBAction)onResolveButtonClicked:(id)sender {
+    if ([AppUtil isBlankString:strDeviceNo]) {
+    }
+    // 设置网络配置。
+    else {
+        WifiViewController *wifiView = [[WifiViewController alloc] initWithNibName:@"WifiViewController" bundle:nil];
+        [self.navigationController pushViewController:wifiView animated:YES];
+    }
+}
 
-- (void)changeUIandData:(NSString *)title
-{
-    
-    solveBidBtn.enabled= YES;
-    solveBidBtn.backgroundColor =GREEN_COLOR;
-    [setHttpBtn setTitle:title forState:UIControlStateNormal];
-    
-    
+/**
+ *  更新界面按钮状态
+ *
+ *  @param title 绑定按钮标题
+ */
+- (void)updateUI:(NSString *)title State:(BOOL)enable {
+    unbindButton.enabled = YES;
+    unbindButton.backgroundColor = GREEN_COLOR;
+    [unbindButton setTitle:title forState:UIControlStateNormal];
+
+    // 使能功能按钮。
+    if (enable) {
+        resolveButton.backgroundColor = GREEN_COLOR;
+        resolveButton.enabled = TRUE;
+    } else {
+        resolveButton.backgroundColor = GRAY_COLOR;
+        resolveButton.enabled = FALSE;
+
+        deviceNumberEdit.text = @"  设备号:  ";
+        incodeEdit.text = @"  接入码:  ";
+        strDeviceNo = strConfigResult = @"";
+    }
 }
 
 @end
