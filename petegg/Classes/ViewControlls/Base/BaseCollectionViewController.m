@@ -8,6 +8,8 @@
 
 #import "BaseCollectionViewController.h"
 
+static NSString *statsModel = @"0";
+static NSString *statsModelNoll = @"1";
 @interface BaseCollectionViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @end
@@ -32,17 +34,15 @@
     [super setupView];
     UICollectionViewFlowLayout * fl=[[UICollectionViewFlowLayout alloc] init];
     fl.scrollDirection=UICollectionViewScrollDirectionVertical;
-    _collection =[[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:fl]
-    ;
-    _collection.dataSource = self;
-    _collection.delegate = self;
-    _collection.backgroundColor =[UIColor whiteColor];
-    [self.view addSubview:_collection];
+    self.collection =[[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:fl];
+    self.collection.dataSource = self;
+    self.collection.delegate = self;
+    self.collection.backgroundColor =[UIColor whiteColor];
+    [self.view addSubview:self.collection];
     
 }
 
 - (void)setupData
-
 {
     [super setupData];
     _dataSource =[[NSMutableArray alloc]init];
@@ -61,18 +61,27 @@
 
 - (void)initRefreshView
 {
+     __typeof (&*self) __weak weakSelf = self;
     self.collection.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+         weakSelf.stateNum = statsModel;
+        [weakSelf data:weakSelf.stateNum];
         
-      
     }];
-    
     self.collection.footer.hidden = YES;
     [self.collection.header beginRefreshing];
 }
 
 -(void)handleEndRefresh{
-    
     [self.collection.header endRefreshing];
+    [self.collection.footer endRefreshing];
+    
+    
+}
+
+- (void)data:(NSString *)stateNum
+{
+    
+    
 }
 
 #pragma Mrak ---UICollectionViewDelegate

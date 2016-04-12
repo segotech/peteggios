@@ -52,6 +52,7 @@
 		3455BB4D1CAFC98E00CA0D27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3455BB4C1CAFC98E00CA0D27 /* QuartzCore.framework */; };
 		3455BB4F1CAFC99B00CA0D27 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3455BB4E1CAFC99B00CA0D27 /* Accelerate.framework */; };
 		3455BB531CAFD31200CA0D27 /* ceishi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3455BB521CAFD31200CA0D27 /* ceishi.jpg */; };
+		3481B3A61CBCB4A400A4344D /* selecting.png in Resources */ = {isa = PBXBuildFile; fileRef = 3481B3A51CBCB4A400A4344D /* selecting.png */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		572220E01CB7541E00C9C7D2 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */; };
@@ -273,6 +274,7 @@
 		3455BB4C1CAFC98E00CA0D27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3455BB4E1CAFC99B00CA0D27 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		3455BB521CAFD31200CA0D27 /* ceishi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ceishi.jpg; sourceTree = "<group>"; };
+		3481B3A51CBCB4A400A4344D /* selecting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selecting.png; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 				7D825D331CBCA88D00F4E216 /* timeLIst.png */,
 				7D825D341CBCA88D00F4E216 /* update.png */,
 				7D825D351CBCA88D00F4E216 /* yi_xuan.png */,
+				3481B3A51CBCB4A400A4344D /* selecting.png */,
 			);
 			path = button;
 			sourceTree = "<group>";
@@ -1424,6 +1427,7 @@
 				57666FC21C96979F00A52DBA /* tab_rank_press@3x.png in Resources */,
 				344F02E41CA3EA0B0076CE62 /* while_good.png in Resources */,
 				57666FC11C96979F00A52DBA /* tab_rank_normal@3x.png in Resources */,
+				3481B3A61CBCB4A400A4344D /* selecting.png in Resources */,
 				7D825CD81CBCA4C800F4E216 /* WasCallViewController.xib in Resources */,
 				344F025B1C9FEBDE0076CE62 /* juankfood_on.png in Resources */,
 				7D825D261CBCA85A00F4E216 /* person_attention.png.png in Resources */,

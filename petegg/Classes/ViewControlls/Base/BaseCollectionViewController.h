@@ -15,8 +15,13 @@
 
 // 资源
 @property (nonatomic,strong) NSMutableArray* dataSource;
+@property (nonatomic,strong)NSString * stateNum;
+
 
 - (void)initRefreshView;
+/**
+ *  结束
+ */
 - (void)handleEndRefresh;
 
 //更新数据从开始
