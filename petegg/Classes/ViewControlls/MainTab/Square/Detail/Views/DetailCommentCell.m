@@ -8,6 +8,8 @@
 
 #import "DetailCommentCell.h"
 
+#import "DetailCommentView.h"
+
 #import "UIImageView+WebCache.h"
 
 @interface DetailCommentCell()
@@ -21,7 +23,7 @@
 @property (nonatomic, strong) UIButton* replyBtn; //回复
 @property (nonatomic, strong) UILabel* contentLB; //评论内容
 
-@property (nonatomic, strong) NSMutableArray *commentLabelsArray;
+@property (nonatomic, strong) DetailCommentView *commentView;
 
 @end
 
@@ -42,7 +44,7 @@
     _iconIV.backgroundColor = [UIColor redColor];
     
     _nameLB = [[UILabel alloc] init];
-    _nameLB.font = [UIFont systemFontOfSize:18];
+    _nameLB.font = [UIFont systemFontOfSize:15];
     _nameLB.numberOfLines = 1;
 
     _typeLB = [[UILabel alloc] init];
@@ -85,12 +87,13 @@
         }
     }];
     
-    
     _contentLB = [UILabel new];
-    _contentLB.font = [UIFont systemFontOfSize:15];
+    _contentLB.font = [UIFont systemFontOfSize:18];
     _contentLB.numberOfLines = 0;
+    
+    _commentView = [DetailCommentView new];
 
-    [self.contentView sd_addSubviews:@[_iconIV, _nameLB, _typeLB, _genderLB, _ageLB, _timeLB, _contentLB, _replyBtn]];
+    [self.contentView sd_addSubviews:@[_iconIV, _nameLB, _typeLB, _genderLB, _ageLB, _timeLB, _contentLB, _replyBtn, _commentView]];
     
     UIView *contentView = self.contentView;
 
@@ -109,13 +112,14 @@
     _ageLB.sd_layout.leftSpaceToView(_genderLB, 8).centerYEqualToView(_genderLB).widthIs(40).heightIs(20);
     _ageLB.sd_cornerRadiusFromWidthRatio = @(0.28);
     
-    _timeLB.sd_layout.leftEqualToView(_nameLB).topSpaceToView(_nameLB, 6).heightIs(30).autoHeightRatio(0);
-    [_timeLB setSingleLineAutoResizeWithMaxWidth:contentView.width * 0.5];
+    _timeLB.sd_layout.leftEqualToView(_nameLB).topSpaceToView(_nameLB, 6).heightIs(30).rightSpaceToView(contentView, 80);
+//    [_timeLB setSingleLineAutoResizeWithMaxWidth:contentView.width * 0.5];
     
     _replyBtn.sd_layout.centerYEqualToView(_timeLB).rightSpaceToView(contentView, 8).heightIs(30).widthIs(40);
     
     _contentLB.sd_layout.leftEqualToView(_timeLB).topSpaceToView(_timeLB, 8).rightSpaceToView(contentView, 8).autoHeightRatio(0);
     
+    _commentView.sd_layout.leftEqualToView(_timeLB).topSpaceToView(_contentLB, 8).rightSpaceToView(contentView, 8);
 }
 
 - (void)setModel:(CommentModel *)model{
@@ -135,7 +139,24 @@
     self.genderLB.text = [model.sex isEqualToString:@"公"] ? @"♂" : @"♀";
     self.ageLB.text = [NSString stringWithFormat:@"%@岁", model.age];
     
-    [self setupAutoHeightWithBottomView:self.contentLB bottomMargin:8];
+    self.commentView.frame = CGRectZero;
+    [self.commentView setupWithCommentItemsArray:model.list];
+    
+    UIView *bottomView;
+    
+    if (!model.list.count ) {
+        self.commentView.fixedWidth = @0;
+        self.commentView.fixedHeight = @0;
+        self.commentView.sd_layout.topSpaceToView(_contentLB, 8);
+        bottomView = self.contentLB;
+    } else {
+        _commentView.fixedHeight = nil;
+        _commentView.fixedWidth = nil;
+        _commentView.sd_layout.topSpaceToView(_contentLB, 10);
+        bottomView = self.commentView;
+    }
+    
+    [self setupAutoHeightWithBottomView:bottomView bottomMargin:8];
    
 }
 

@@ -15,14 +15,18 @@
 #import "DetailContentCell.h"
 #import "DetailCommentCell.h"
 #import "DetailImageCell.h"
+#import "CommentInputView.h"
 
 @interface DetailViewController()
 
 @property (nonatomic, strong) UIView* userInfoView;
 @property (nonatomic, strong) UIView* contentView;
+@property (nonatomic, strong) UIView* toolView;
 
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UILabel *nameLabel;
+
+@property (nonatomic, strong) CommentInputView *commentInputView;
 
 @property (nonatomic, strong) DetailModel* detailModel;
 @property (nonatomic, strong) NSMutableArray* resourcesArray;
@@ -38,6 +42,8 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
 - (void)setupData{
@@ -52,12 +58,16 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     self.bGroupView = YES;
     [super setupView];
     
-    self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height);
+    self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height - 50);
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1)];
     
     [self.tableView registerClass:[DetailContentCell class] forCellReuseIdentifier:kDetailContentCellID];
     [self.tableView registerClass:[DetailCommentCell class] forCellReuseIdentifier:kDetailCommentCellID];
     [self.tableView registerClass:[DetailImageCell class] forCellReuseIdentifier:kDetailImageCellID];
+    
+    [self.view addSubview:self.toolView];
+    
+    [self.view addSubview:self.commentInputView];
     
     [self initRefreshView];
 }
@@ -100,6 +110,71 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
         }
     }];
     
+}
+
+- (UIView *)toolView{
+    if (!_toolView) {
+        _toolView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height - 49, self.tableView.width, 49)];
+        _toolView.backgroundColor = LIGHT_GRAY_COLOR;
+        
+        //分享
+        UIButton* shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [shareBtn setImage:[UIImage imageNamed:@"shareBtn"] forState:UIControlStateNormal];
+        [shareBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+            
+        }];
+        
+        //评论
+        UIButton* commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [commentBtn setImage:[UIImage imageNamed:@"commentBtn"] forState:UIControlStateNormal];
+        [commentBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+            [self.commentInputView showWithSendCommentBlock:^(NSString *text) {
+                if (text && text.length > 0) {
+                    [[AFHttpClient sharedAFHttpClient] addCommentWithPid:[AccountManager sharedAccountManager].loginModel.mid bid:@"" wid:self.stid bcid:@"" ptype:@"m" action:@"p" content:text complete:^(BaseModel *model) {
+                        
+                        if (model) {
+                            self.pageIndex = START_PAGE_INDEX;
+                            [self loadDataSourceWithPage:self.pageIndex];
+                        }
+                    }];
+                }
+            }];
+        }];
+       
+        //赞
+        UIButton* likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [likeBtn setImage:[UIImage imageNamed:@"likeBtn"] forState:UIControlStateNormal];
+        [likeBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+            
+        }];
+        
+        //警告
+        UIButton* warningBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [warningBtn setImage:[UIImage imageNamed:@"warningBtn"] forState:UIControlStateNormal];
+        [warningBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+            
+        }];
+        
+        [_toolView sd_addSubviews:@[shareBtn, commentBtn, likeBtn, warningBtn]];
+        
+        _toolView.sd_equalWidthSubviews = @[shareBtn, commentBtn, likeBtn, warningBtn];
+        
+        shareBtn.sd_layout.leftSpaceToView(_toolView, 0).topSpaceToView(_toolView, 0).heightIs(49);
+        commentBtn.sd_layout.leftSpaceToView(shareBtn, 0).topSpaceToView(_toolView, 0).heightIs(49);
+        likeBtn.sd_layout.leftSpaceToView(commentBtn, 0).topSpaceToView(_toolView, 0).heightIs(49);
+        warningBtn.sd_layout.leftSpaceToView(likeBtn, 0).topSpaceToView(_toolView, 0).rightSpaceToView(_toolView, 0).heightIs(49);
+    }
+    
+    return _toolView;
+}
+
+- (CommentInputView *)commentInputView{
+    
+    if (!_commentInputView) {
+        _commentInputView = [[CommentInputView alloc] initWithFrame:CGRectMake(0, self.view.height - [CommentInputView defaultHeight], self.view.width, [CommentInputView defaultHeight])];
+    }
+    
+    return _commentInputView;
 }
 
 - (UIView *)userInfoView{
@@ -246,6 +321,19 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
         {
             CommentModel* model = self.dataSource[indexPath.row];
             DetailCommentCell* cell = [tableView dequeueReusableCellWithIdentifier:kDetailCommentCellID];
+            cell.replyBlock = ^(){
+            [self.commentInputView showWithSendCommentBlock:^(NSString *text) {
+                    if (text && text.length > 0) {
+                        [[AFHttpClient sharedAFHttpClient] addCommentWithPid:[AccountManager sharedAccountManager].loginModel.mid bid:model.bid wid:self.stid bcid:model.bcid ptype:@"r" action:@"h" content:text complete:^(BaseModel *model) {
+                            
+                            if (model) {
+                                self.pageIndex = START_PAGE_INDEX;
+                                [self loadDataSourceWithPage:self.pageIndex];
+                            }
+                        }];
+                    }
+                }];
+            };
             
             [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
             
@@ -265,6 +353,18 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     
 }
 
+- (void)keyboardNotification:(NSNotification *)notification
+{
+    NSDictionary *dict = notification.userInfo;
+    CGRect rect = [dict[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    
+    CGRect textFieldRect = CGRectMake(0, rect.origin.y - self.commentInputView.height, rect.size.width, self.commentInputView.height);
+    if (rect.origin.y == [UIScreen mainScreen].bounds.size.height) {
+        textFieldRect = rect;
+    }
+    
+    self.commentInputView.frame = textFieldRect;
+}
 
 
 @end

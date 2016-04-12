@@ -61,6 +61,9 @@
 		57462D9E1CB8DD480071047E /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462D9C1CB8DD480071047E /* UIView+SDAutoLayout.m */; };
 		57462DA61CBA46270071047E /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462DA51CBA46270071047E /* CommentModel.m */; };
 		57462DAB1CBB4AF30071047E /* DetailImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462DAA1CBB4AF30071047E /* DetailImageCell.m */; };
+		57462DAE1CBB85D00071047E /* DetailCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462DAD1CBB85D00071047E /* DetailCommentView.m */; };
+		57462DB01CBB95A20071047E /* button.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57462DAF1CBB95A20071047E /* button.xcassets */; };
+		57462DB31CBBABBA0071047E /* CommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462DB21CBBABBA0071047E /* CommentInputView.m */; };
 		57666F511C96619700A52DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F501C96619700A52DBA /* main.m */; };
 		57666F571C96619700A52DBA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666F561C96619700A52DBA /* ViewController.m */; };
 		57666F5A1C96619700A52DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57666F581C96619700A52DBA /* Main.storyboard */; };
@@ -293,6 +296,11 @@
 		57462DA51CBA46270071047E /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
 		57462DA91CBB4AF30071047E /* DetailImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailImageCell.h; sourceTree = "<group>"; };
 		57462DAA1CBB4AF30071047E /* DetailImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailImageCell.m; sourceTree = "<group>"; };
+		57462DAC1CBB85D00071047E /* DetailCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCommentView.h; sourceTree = "<group>"; };
+		57462DAD1CBB85D00071047E /* DetailCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCommentView.m; sourceTree = "<group>"; };
+		57462DAF1CBB95A20071047E /* button.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = button.xcassets; sourceTree = "<group>"; };
+		57462DB11CBBABBA0071047E /* CommentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInputView.h; sourceTree = "<group>"; };
+		57462DB21CBBABBA0071047E /* CommentInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentInputView.m; sourceTree = "<group>"; };
 		57666F4C1C96619700A52DBA /* petegg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petegg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57666F501C96619700A52DBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		57666F551C96619700A52DBA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -745,6 +753,10 @@
 				572220EC1CB7829A00C9C7D2 /* DetailCommentCell.m */,
 				57462DA91CBB4AF30071047E /* DetailImageCell.h */,
 				57462DAA1CBB4AF30071047E /* DetailImageCell.m */,
+				57462DAC1CBB85D00071047E /* DetailCommentView.h */,
+				57462DAD1CBB85D00071047E /* DetailCommentView.m */,
+				57462DB11CBBABBA0071047E /* CommentInputView.h */,
+				57462DB21CBBABBA0071047E /* CommentInputView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -999,6 +1011,7 @@
 				344F02281C9FD5BC0076CE62 /* nav */,
 				344F02271C9FD5A00076CE62 /* button */,
 				57666FB01C96979F00A52DBA /* tab */,
+				57462DAF1CBB95A20071047E /* button.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1446,6 +1459,8 @@
 				57666F5F1C96619700A52DBA /* LaunchScreen.storyboard in Resources */,
 				344F02C41CA2D9720076CE62 /* right_on.png in Resources */,
 				344F02CE1CA39B9B0076CE62 /* new_3point.png in Resources */,
+				57462DB01CBB95A20071047E /* button.xcassets in Resources */,
+				344F027F1CA12A830076CE62 /* wifiViewController.xib in Resources */,
 				7D1714331CBB4C620047FA70 /* seacherkuang.png in Resources */,
 				7D3DA5B71CA3D292005BD38B /* sego1.png in Resources */,
 				57666FC41C96979F00A52DBA /* tab_square_press@3x.png in Resources */,
@@ -1637,6 +1652,7 @@
 				7D30E8A51CA66C05004DE055 /* SCFilter+VideoComposition.m in Sources */,
 				7D30E8AF1CA66C05004DE055 /* SCRecorder.m in Sources */,
 				57666FDC1C96BE6F00A52DBA /* UIButton+Blocks.m in Sources */,
+				57462DB31CBBABBA0071047E /* CommentInputView.m in Sources */,
 				7D30E8AD1CA66C05004DE055 /* SCPlayer.m in Sources */,
 				578B9E5E1CA29A9E00CAC21D /* AFHttpClient.m in Sources */,
 				7D30E8A21CA66C05004DE055 /* SCAudioTools.m in Sources */,
@@ -1655,6 +1671,8 @@
 				57666FC71C969B4800A52DBA /* AppUtil.m in Sources */,
 				7D30E8BA1CA66C05004DE055 /* SCWeakSelectorTarget.m in Sources */,
 				7D03322B1CB5FA3900E923A9 /* PersonDataTableViewCell.m in Sources */,
+				57462DAE1CBB85D00071047E /* DetailCommentView.m in Sources */,
+				57666FAA1C968DBB00A52DBA /* AppDelegate+Launcher.m in Sources */,
 				57666F511C96619700A52DBA /* main.m in Sources */,
 				344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */,
 				57666FA11C9689CC00A52DBA /* EggViewController.m in Sources */,

@@ -16,6 +16,7 @@ typedef enum
 
 @interface BaseViewController : UIViewController
 
+
 - (void)setupData;
 
 - (void)setupView;
@@ -31,6 +32,7 @@ typedef enum
 - (void)doLeftButtonTouch;
 
 - (void)doRightButtonTouch;
--(void) setNavTitle:(NSString*) navTitle;
+
+- (void) setNavTitle:(NSString*) navTitle;
 
 @end
