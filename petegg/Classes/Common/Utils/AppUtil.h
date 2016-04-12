@@ -43,6 +43,7 @@
 #define REQUEST_PAGE_SIZE           10
 #define START_PAGE_INDEX            1
 
+
 @interface AppUtil : NSObject
 // 服务器
 + (NSString *)getServerSego3;

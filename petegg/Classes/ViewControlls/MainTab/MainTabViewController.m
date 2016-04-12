@@ -14,8 +14,14 @@
 #import "RankViewController.h"
 #import "PersonalViewController.h"
 #import "SettingViewController.h"
-
+#import "UITabBar+Badge.h"
 @interface MainTabViewController()
+{
+    
+    dispatch_source_t timer3;
+    
+    
+}
 
 //广场
 @property (nonatomic, strong) UINavigationController* navSquareVC;
@@ -38,17 +44,25 @@
     [self setupSubviews];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(check:) name:@"checkSatats" object:nil];
+    
+}
+
 - (void)setupSubviews
 {
     self.tabBar.backgroundColor=[UIColor whiteColor];
     
     self.viewControllers = @[
-                                self.navSquareVC,
-                                self.navNearVC,
-                                self.navEggVC,
-                                self.navRankVC,
-                                self.navPersonalVC
+                             self.navSquareVC,
+                             self.navNearVC,
+                             self.navEggVC,
+                             self.navRankVC,
+                             self.navPersonalVC
                              ];
+    
 }
 
 //广场
@@ -88,7 +102,7 @@
     if (!_navEggVC) {
         
         EggViewController* vc = [[EggViewController alloc] init];
-       
+        
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabEgg", nil)
                                       image:[[UIImage imageNamed:@"tab_egg_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
@@ -127,9 +141,104 @@
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabPersonal", nil)
                                       image:[[UIImage imageNamed:@"tab_personal_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_personal_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        // vc.tabBarItem.badgeValue =@"";
+        [self.tabBar showBadgeOnItemIndex:4];
+        
+        
         _navPersonalVC = [[UINavigationController alloc]initWithRootViewController:vc];
+        
     }
     
     return _navPersonalVC;
 }
+
+- (void)check:(NSNotification *)sender
+{
+    
+    NSTimeInterval period = 5.0; //设置时间间隔
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    timer3 = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(timer3, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0); //每秒执行
+    dispatch_source_set_event_handler(timer3, ^{
+        
+        [self compareDoubleTime];
+        
+        
+    });
+    dispatch_resume(timer3);
+    
+    
+}
+/**
+ *  对比时间差
+ */
+
+- (void)compareDoubleTime
+{
+    
+    NSLog(@"===================================");
+    
+    NSString *date = [AppUtil getNowTime];
+    int dateOver = [self spare:date];
+    
+    NSUserDefaults *standDefus = [NSUserDefaults standardUserDefaults];
+    NSString *dateEnd = [standDefus objectForKey:@"endTime"];
+    int dateEndOver = [self spare:dateEnd];
+    // dateEndOver = (dateOver -dateEndOver)/60 + (dateOver -dateEndOver)%60;
+    dateEndOver = dateOver - dateEndOver;
+    
+    if ([AppUtil isBlankString:[standDefus objectForKey:@"content"]]) {
+        
+    } else {
+        // 先查询状态视频状态
+        
+        NSString *service =
+        [NSString stringWithFormat:@"clientAction.do?common=queryTask&classes="
+         @"appinterface&method=json&tid=%@",
+         [standDefus objectForKey:@"content"]];
+        [AFNetWorking postWithApi:service
+                       parameters:nil
+                          success:^(id json) {
+                              json = [json objectForKey:@"jsondata"];
+                              if ([[json objectForKey:@"content"] isEqualToString:@"0"]) {
+                                  // 在对比时间 做出判断
+                                  if (dateEndOver >= 600) {
+                                      // 已经超时
+                                      dispatch_suspend(timer3);
+                                      
+                                  } else {
+                                      // 正在上传
+                                  }
+                              }
+                              if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
+                                  // 上传成功
+                                  
+                                  dispatch_suspend(timer3);
+                                  
+                              }
+                              if ([[json objectForKey:@"content"] isEqualToString:@"2"]) {
+                                  //  失败
+                                  // [timer setFireDate:[NSDate distantFuture]];
+                              }
+                              
+                          }
+         
+                          failure:^(NSError *error){
+                              
+                              // 网络错误
+                              
+                          }];
+    }
+}
+
+- (int )spare:(NSString *)str
+{
+    int a =[[str substringWithRange:NSMakeRange(0, 2)] intValue];
+    int b =[[str substringWithRange:NSMakeRange(3, 2)] intValue];
+    int c=[[str substringWithRange:NSMakeRange(6, 2)] intValue];
+    a= a*3600+b*60+c;
+    return a;
+    
+}
+
 @end

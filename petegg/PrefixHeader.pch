@@ -32,5 +32,6 @@
 #import "AppDelegate.h"
 
 #import "AccountManager.h"
+#import "AFNetWorking.h"
 
 #endif /* PrefixHeader_pch */
