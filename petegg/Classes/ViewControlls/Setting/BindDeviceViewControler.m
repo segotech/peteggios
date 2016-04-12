@@ -6,174 +6,125 @@
 //  Copyright © 2016年 sego. All rights reserved.
 //
 
-// 标示符
-
-
-static NSString *const ServiceUUID2 =  @"1f0b6a86-0dd6-440f-8aa6-8d11f3486af0";
-static NSString *const readCharacteristicUUID = @"a2e8d661-0bba-4a61-91e8-dd7ff3d55b27";
-static NSString *const readwriteCharacteristicUUID = @"aa78471c-257b-49f6-93a1-8686cadb1fe6";
-static NSString *const LocalNameKey =  @"segopass";
-
-/**
- *  1f0b6a86-0dd6-440f-8aa6-8d11f3486af0
- *  a2e8d661-0bba-4a61-91e8-dd7ff3d55b27
- *  aa78471c-257b-49f6-93a1-8686cadb1fe6
- */
-
-
-
-
-/**
- *  正确结果标示符
- *
- *  @return ResultDeviceID
- */
-
-static NSString * const ResultDeviceID = @"segoegg";
-
-
 #import "BindDeviceViewControler.h"
-#import "wifiViewController.h"
+#import "Reachability.h"
+#import "SettingViewController.h"
 
-@interface BindDeviceViewControler ()<UIAlertViewDelegate>
+// sego配置设备名
+NSString *const SEGOPASS_BLE_DEVICE_NAME = @"segopass";
+// 蓝牙配置服务UUID
+NSString *const CONFIG_SERVICE_UUID = @"1f0b6a86-0dd6-440f-8aa6-8d11f3486af0";
+// 请求特征
+NSString *const REQUEST_CHARACTERISTIC_UUID = @"a2e8d661-0bba-4a61-91e8-dd7ff3d55b27";
+// 结果特征
+NSString *const RESULT_CHARACTERISTIC_UUID = @"aa78471c-257b-49f6-93a1-8686cadb1fe6";
+// 正确结果设备号前缀
+NSString *const SEGOEGG_PREFIX = @"segoegg";
 
-{
+@interface BindDeviceViewControler () <UIAlertViewDelegate> {
     CBPeripheralManager *peripheralManager;
-    //定时器
-    NSTimer *timer;
-    //添加成功的service数量
-    int serviceNum;
-    // 服务器计数
-    BOOL isAccectData;
-    
-    
-   
+    int serviceNum;   // 添加成功的service数量
+    BOOL isAccecptOk; // 是否接收结果成功
 }
 
 @end
 
 @implementation BindDeviceViewControler
+
+@synthesize bindButton;
+@synthesize deviceNumberEdit;
 @synthesize hud;
+
+#pragma mark - View Events
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    /**
-     蓝牙从机  options 一定要设置为nil（余）
-     */
-
-    peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil options:nil];
-  
-    isAccectData = NO;
-    
-    
-    
-
 }
+
 /**
- *   告知服务器蓝牙传输完成了
- *
- *  @param sender 绑定设备
+ *  初始化界面
  */
-- (IBAction)bindBtnClick:(UIButton *)sender {
-    
-   
+- (void)setupView {
+    [super setupView];
 
-    
-    
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.bindButton.backgroundColor = GRAY_COLOR;
+    self.bindButton.enabled = FALSE;
+    self.incodeEdit.secureTextEntry = TRUE;
 
+    [self setNavTitle:NSLocalizedString(@"bindDeviceViewTitle", nil)];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 
-
-- (void)setupView
-{
-    self.view.backgroundColor =[UIColor whiteColor];
-    self.bindBtnClick.backgroundColor =GREEN_COLOR;
-    [self setNavTitle: NSLocalizedString(@"bindDevice", nil)];
-   
-    
+    // 创建蓝牙从机。
+    peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
+    serviceNum = 0;
+    isAccecptOk = NO;
 }
 
-//配置bluetooch的
--(void)setUp{
-    //characteristics字段描述
-    CBUUID *CBUUIDCharacteristicUserDescriptionStringUUID = [CBUUID UUIDWithString:CBUUIDCharacteristicUserDescriptionString];
-    
-    NSString * str1 =@"MI16030000012833";
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"bind", @"action",
-                            str1,@"userid",nil];
-    
-    
-    
-    
-    NSString *str = [self dictionaryToJson:params];
-    NSData *data =[str dataUsingEncoding:NSUTF8StringEncoding];
-    
-    CBMutableCharacteristic *readwriteCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:readwriteCharacteristicUUID] properties:CBCharacteristicPropertyWrite | CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsReadable | CBAttributePermissionsWriteable];
-    //设置description
-    CBMutableDescriptor *readwriteCharacteristicDescription1 = [[CBMutableDescriptor alloc]initWithType: CBUUIDCharacteristicUserDescriptionStringUUID value:@"name"];
-    [readwriteCharacteristic setDescriptors:@[readwriteCharacteristicDescription1]];
-    
-    
-    /*
-     只读的Characteristic
-     properties：CBCharacteristicPropertyRead
-     permissions CBAttributePermissionsReadable
-     */
-    CBMutableCharacteristic *readCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:readCharacteristicUUID] properties:CBCharacteristicPropertyRead value:data permissions:CBAttributePermissionsReadable];
-    
-    
-    //service2初始化并加入一个characteristics
-    CBMutableService *service2 = [[CBMutableService alloc]initWithType:[CBUUID UUIDWithString:ServiceUUID2] primary:YES];
-    [service2 setCharacteristics:@[readCharacteristic,readwriteCharacteristic]];
-    [peripheralManager addService:service2];
-
-    
-    
-}
-
-
-
-#pragma  mark -- CBPeripheralManagerDelegate
-
-//peripheralManager状态改变
-- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
-    switch (peripheral.state) {
-            //在这里判断蓝牙设别的状态  当开启了则可调用  setUp方法(自定义)
-        case CBPeripheralManagerStatePoweredOn:
-            NSLog(@"powered on");
-            hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText=@"正在拼命配置";
-//            [hud hide:YES];
-            
-
-            [self setUp];
-            break;
-        case CBPeripheralManagerStatePoweredOff:
-            NSLog(@"powered off");
-           
-            [self showWaring];
-            
-            break;
-            
-        default:
-            break;
+/**
+ *  检查网络状态
+ *
+ *  @return 是否联网
+ */
+- (BOOL)checkConnectionAvailable {
+    BOOL hasNetwork = NO;
+    Reachability *reach = [Reachability reachabilityWithHostName:@"www.baidu.com"];
+    switch ([reach currentReachabilityStatus]) {
+    // wifi网络可用。
+    case ReachableViaWiFi:
+        hasNetwork = YES;
+        break;
+    // 网络不可用。
+    case NotReachable:
+        hasNetwork = NO;
+        [self showWarningTip:NSLocalizedString(@"INFO_NetNoReachable", nil)];
+        break;
+    // 3G网可用。
+    case ReachableViaWWAN:
+        hasNetwork = YES;
+        [self showWarningTip:NSLocalizedString(@"INFO_ReachableViaWWAN", nil)];
+        break;
     }
+    return hasNetwork;
 }
 
-- (void)showWaring
-{
-    
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你未打开蓝牙进行连接" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"去设置",nil];
-    [alert show];
-    
+/**
+ *  使能绑定按钮
+ */
+- (void)enableBindButton {
+    self.bindButton.backgroundColor = GREEN_COLOR;
+    self.bindButton.enabled = TRUE;
 }
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+/**
+ *  显示打开蓝牙提示窗
+ */
+- (void)showNeedBluetoothWaringDialog {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"你尚未打开蓝牙" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"去设置", nil];
+    [alert show];
+}
+
+/**
+ *  提示窗消息处理
+ *
+ *  @param alertView   提示窗
+ *  @param buttonIndex 按钮序号
+ */
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // 进入蓝牙设置窗口。
     if (buttonIndex == 1) {
         self.view.backgroundColor = [UIColor whiteColor];
         NSURL *url = [NSURL URLWithString:@"prefs:root=Bluetooth"];
@@ -181,185 +132,266 @@ static NSString * const ResultDeviceID = @"segoegg";
             [[UIApplication sharedApplication] openURL:url];
         }
     }
-    
 }
 
-
-
-//perihpheral添加了service
-- (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error{
-    if (error == nil) {
-        serviceNum++;
+/**
+ *  绑定设备
+ *
+ *  @param sender
+ */
+- (IBAction)bindButtonClicked:(UIButton *)sender {
+    // 检查网络是否可用。
+    BOOL hasNetwork = [self checkConnectionAvailable];
+    if (!hasNetwork) {
+        return;
     }
-    
-    //因为我们添加了2个服务，所以想两次都添加完成后才去发送广播
-    if (serviceNum==1) {
-        //添加服务后可以在此向外界发出通告 调用完这个方法后会调用代理的
-        //(void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error
-        [peripheralManager startAdvertising:@{
-                                              CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:ServiceUUID2]],
-                                              CBAdvertisementDataLocalNameKey : LocalNameKey
-                                              }
-         ];
-        
+    NSString *strNumber = self.deviceNumberEdit.text;
+    if ([AppUtil isBlankString:strNumber]) {
+        [self showWarningTip:@"设备号不存在"];
+        return;
     }
-    
+
+    // TODO 实现设备http绑定。
+
+    // 保存之。
+    NSUserDefaults *defults = [NSUserDefaults standardUserDefaults];
+    [defults setObject:strNumber forKey:PREF_DEVICE_NUMBER];
+    [defults synchronize];
+
+    // 返回上级页面。
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-//peripheral开始发送advertising
-- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error{
-    NSLog(@"in peripheralManagerDidStartAdvertisiong");
-    
+/**
+ *  显示警告提示
+ */
+- (void)showWarningTip:(NSString *)str {
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = str;
+    hud.minSize = CGSizeMake(132.f, 66.0f);
+    [hud hide:YES afterDelay:1.0];
 }
 
-//订阅characteristics
--(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic{
-    NSLog(@"订阅了 %@的数据",characteristic.UUID);
-    //每秒执行一次给主设备发送一个当前时间的秒数
-    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendData:) userInfo:characteristic  repeats:YES];
+#pragma mark - Bluetooth Peripheral Manager
+
+/**
+ *  将字典对象转为json串
+ *
+ *  @param dic 字典
+ *
+ *  @return json串
+ */
+- (NSString *)dictionaryToJson:(NSDictionary *)dic {
+    NSError *parseError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
-//取消订阅characteristics
--(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic{
-    NSLog(@"取消订阅 %@的数据",characteristic.UUID);
-    //取消回应
-    [timer invalidate];
+/**
+ *  创建ble设备
+ *
+ *  创建模拟的ble设备，收发绑定请求。
+ */
+- (void)setUpBleDevice {
+    // bind请求的参数json对象。
+    NSString *strUserid = @"MI16030000012833";
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bind", @"action", strUserid, @"userid", nil];
+    NSString *str = [self dictionaryToJson:params];
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+
+    // 请求特征：广播bind请求。
+    // 创建特征1：请求特征。
+    CBMutableCharacteristic *readCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:REQUEST_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyRead value:data permissions:CBAttributePermissionsReadable];
+
+    // 结果特征：接收设备号。
+    // 创建特征2：结果特征。
+    CBMutableCharacteristic *resultCharacteristic =
+        [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:RESULT_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyWrite | CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsReadable | CBAttributePermissionsWriteable];
+    CBUUID *CBUUIDCharacteristicUserDescriptionStringUUID = [CBUUID UUIDWithString:CBUUIDCharacteristicUserDescriptionString];
+    CBMutableDescriptor *resultCharacteristicDescription = [[CBMutableDescriptor alloc] initWithType:CBUUIDCharacteristicUserDescriptionStringUUID value:@"name"];
+    [resultCharacteristic setDescriptors:@[ resultCharacteristicDescription ]];
+
+    // 创建配置服务，加入上述2个特征。
+    CBMutableService *configService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:CONFIG_SERVICE_UUID] primary:YES];
+    [configService setCharacteristics:@[ readCharacteristic, resultCharacteristic ]];
+    [peripheralManager addService:configService];
 }
 
-//发送数据，发送当前时间的秒数
--(BOOL)sendData:(NSTimer *)t {
-    CBMutableCharacteristic *characteristic = t.userInfo;
-    NSDateFormatter *dft = [[NSDateFormatter alloc]init];
-    [dft setDateFormat:@"ss"];
-    NSLog(@"%@",[dft stringFromDate:[NSDate date]]);
-    
-    //执行回应Central通知数据
-    return  [peripheralManager updateValue:[[dft stringFromDate:[NSDate date]] dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:(CBMutableCharacteristic *)characteristic onSubscribedCentrals:nil];
-    
+/**
+ *  蓝牙状态更新回调
+ *
+ *  @param peripheral 蓝牙周边管理器
+ */
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
+    switch (peripheral.state) {
+    // 蓝牙开启时，启动sego配置服务。
+    case CBPeripheralManagerStatePoweredOn:
+        NSLog(@"Bluetooth powered on");
+
+        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"正在获取设备信息，请等待...";
+
+        [self setUpBleDevice];
+        break;
+
+    // 蓝牙关闭时，提示用户打开蓝牙。
+    case CBPeripheralManagerStatePoweredOff:
+        NSLog(@"Bluetooth powered off");
+
+        [self showNeedBluetoothWaringDialog];
+        break;
+
+    default:
+        break;
+    }
 }
 
+/**
+ *  蓝牙添加服务完成回调
+ *
+ *  @param peripheral 蓝牙周边管理器
+ *  @param service    服务
+ *  @param error      错误描述
+ */
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error {
+    if (error != nil) {
+        NSLog(@"Add service error: %@", error);
+        return;
+    }
+    serviceNum++;
 
-//读characteristics请求
-- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request{
+    // 添加服务成功后，广播蓝牙ble设备。
+    [peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[ [CBUUID UUIDWithString:CONFIG_SERVICE_UUID] ], CBAdvertisementDataLocalNameKey : SEGOPASS_BLE_DEVICE_NAME }];
+}
+
+/**
+ *  蓝牙开始发送广播
+ *
+ *  @param peripheral 蓝牙周边管理器
+ *  @param error      错误描述
+ */
+- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error {
+    NSLog(@"peripheralManagerDidStartAdvertisiong");
+}
+
+/**
+ *  特征订阅回调
+ *
+ *  @param peripheral     蓝牙周边管理器
+ *  @param central        中心
+ *  @param characteristic 被订阅的特征
+ */
+- (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
+    NSLog(@"didSubscribeToCharacteristic %@", characteristic.UUID);
+}
+
+/**
+ *  取消特征订阅回调
+ *
+ *  @param peripheral     蓝牙周边管理器
+ *  @param central        中心
+ *  @param characteristic 被取消订阅的特征
+ */
+- (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
+    NSLog(@"didUnsubscribeFromCharacteristic %@", characteristic.UUID);
+}
+
+/**
+ *  读特征回调
+ *
+ *  @param peripheral 蓝牙周边管理器
+ *  @param request    请求
+ */
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request {
     NSLog(@"didReceiveReadRequest");
-    //判断是否有读数据的权限
+
+    // 判断特征是否有读权限。
     if (request.characteristic.properties & CBCharacteristicPropertyRead) {
+        // 设置特征值。
         NSData *data = request.characteristic.value;
         [request setValue:data];
-        //对请求作出成功响应
         [peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
-    }else{
+    }
+    // 无读权限，拒绝之。
+    else {
         [peripheralManager respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
     }
 }
 
+/**
+ *  写特征回调
+ *
+ *  @param peripheral 蓝牙周边管理器
+ *  @param requests   请求
+ */
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray *)requests {
+    NSLog(@"didReceiveWriteRequests");
 
-//写characteristics请求
-- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray *)requests{
-    NSLog(@"服务器写入的数据");
     CBATTRequest *request = requests[0];
-        //判断是否有写数据的权限
-    
-   
-    if (isAccectData == NO) {
-        
-        /**
-         *  这样主要是为了 这个蓝牙的机智 毕竟人家是开启的 所以协议会走 代理也会走 方法也会走
-         */
-        
-    
-    if (request.characteristic.properties & CBCharacteristicPropertyWrite) {
-        //需要转换成CBMutableCharacteristic对象才能进行写值
-        CBMutableCharacteristic *c =(CBMutableCharacteristic *)request.characteristic;
-        
-        c.value = request.value;
-        Byte * b =(Byte *)[c.value bytes];
-        NSString * str =[[NSString alloc]initWithBytes:b length:c.value.length encoding:NSUTF8StringEncoding];
-        NSLog(@"转换结果为===========%@",str);
-        NSArray *array = [str componentsSeparatedByString:@","]; //从字符A中分隔成2个元素的数组
-        str =array[1];
-        /**
-         *  Segopet730
-         */
-        if ([[str substringToIndex:7] isEqualToString:ResultDeviceID]) {
-            hud.labelText = @"配置成功";
-            [hud hide:YES afterDelay:1];
-            isAccectData = YES;
-            self.deviceNumLB.text = str;
-            self.jieruCodeTF.text = @"123456";
-            NSLog(@"是我们的数据");
-            NSUserDefaults * defults =[NSUserDefaults standardUserDefaults];
-            [defults setObject:str forKey:@"DEVICE_NUMBER"];
-            [defults synchronize];
-            /**
-             不能经行服务器多次同步操作
-             */
-//            wifiViewController * wifVC =[[wifiViewController alloc]initWithNibName:@"wifiViewController" bundle:nil];
-            
-            [self.navigationController popViewControllerAnimated:YES];
-            
-            
-            
-        }else if([AppUtil isBlankString:self.deviceNumLB.text])
-        {
-            hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeCustomView;
-            hud.labelText=@"配置失败,请尝试重启不倒蛋";
-            [hud hide:YES afterDelay:3.0];
-             NSLog(@"获取设备信息失败弹出框");
-            
+    // 尚未收到应答，解析之。
+    if (isAccecptOk == NO) {
+        // 判断特征是否有写权限。
+        if (request.characteristic.properties & CBCharacteristicPropertyWrite) {
+            CBMutableCharacteristic *vchar = (CBMutableCharacteristic *)request.characteristic; // 转换成CBMutableCharacteristic才能写
+            vchar.value = request.value;
+            Byte *bytes = (Byte *)[vchar.value bytes];
+            NSString *strResult = [[NSString alloc] initWithBytes:bytes length:vchar.value.length encoding:NSUTF8StringEncoding];
+            NSLog(@"Get result: %@", strResult);
+
+            [hud hide:YES];
+
+            // 将字符串分割为2个元素的数组。
+            NSArray *array = [strResult componentsSeparatedByString:@","];
+            if (array == nil || array.count != 2) {
+                [self showWarningTip:@"配置失败，请重新搜索设备"];
+                return;
+            }
+            strResult = array[0];
+            // 出错了。
+            if (![strResult isEqualToString:@"OK"]) {
+                [self showWarningTip:@"配置失败，请重新搜索设备"];
+                return;
+            }
+
+            // 设备号以segoegg打头。
+            NSString *strNumber = array[1];
+            if ([strNumber hasPrefix:SEGOEGG_PREFIX]) {
+                isAccecptOk = YES;
+
+                // 取出设备号，更新界面。
+                strNumber = [strNumber substringFromIndex:SEGOEGG_PREFIX.length];
+                self.deviceNumberEdit.text = strNumber;
+                self.incodeEdit.text = @"123456";
+
+                // 使能绑定按钮。
+                [self enableBindButton];
+            }
+            // 出错了。
+            else {
+                [self showWarningTip:@"配置失败，请重新搜索设备"];
+                return;
+            }
+
+            [peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
         }
-
-        [peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
-    }else{
-        [peripheralManager respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
+        // 无写权限，拒绝之。
+        else {
+            [peripheralManager respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
+        }
     }
-    }else if(isAccectData == YES)
-    {
-        
-        
-        /**
-         *  不做任何事情
-         *
-         *  @return 
-         */
+    // 忽略多次收到的应答。
+    else {
     }
-    
 }
 
-//
-- (void)peripheralManagerIsReadyToUpdateSubscribers:(CBPeripheralManager *)peripheral{
+/**
+ *  蓝牙准备更新订阅者回调
+ *
+ *  @param peripheral 蓝牙周边管理器
+ */
+- (void)peripheralManagerIsReadyToUpdateSubscribers:(CBPeripheralManager *)peripheral {
     NSLog(@"peripheralManagerIsReadyToUpdateSubscribers");
-    
-}
-
-// 转换
-- (NSString*)dictionaryToJson:(NSDictionary *)dic
-
-{
-    
-    NSError *parseError = nil;
-    
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
-    
-    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    
-    [super viewWillDisappear:animated];
-     hud = nil;
-    [hud removeFromSuperview];
-    
 }
 
 @end

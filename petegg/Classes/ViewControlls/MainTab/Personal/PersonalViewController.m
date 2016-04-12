@@ -8,16 +8,17 @@
 
 #import "PersonalViewController.h"
 #import "personTableViewCell.h"
+#import "VideoViewController.h"
 #import <Accelerate/Accelerate.h>
+#import "FriendViewController.h"
+#import "FunnyCodeViewController.h"
+#import "BaseViewController.h"
 
 @interface PersonalViewController()
 
 {
     UIButton * _heandBtn;
     UILabel *  _nameLabel;
-    
-    
-    
     
 }
 
@@ -29,7 +30,16 @@
     [super viewDidLoad];
     self.view.backgroundColor =[UIColor whiteColor];
     [self setNavTitle: NSLocalizedString(@"tabPersonal", nil)];
+    self.dataSource =[NSMutableArray array];
+    self.dataSourceImage =[NSMutableArray array];
+    NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"逗豆",@"逗码",@"权限设置",@"修改密码",@"黑名单"];
+    
+    [self.dataSource addObjectsFromArray:arrName];
+    NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_attention.png",@"person_bean.png",@"person_code.png",@"person_control.png",@"person_pw.png"];
+    
+    [self.dataSourceImage addObjectsFromArray:arrImage];
 
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,6 +58,8 @@
 {
     
 }
+
+
 
 - (void)setupView
 {
@@ -85,27 +97,16 @@
     _nameLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:_nameLabel];
 
-    
- 
-  
-
    /**
     *  循环控件 3个12
     *
     */
     
-    
-    
-    
-    
-   
-    self.tableView.frame = CGRectMake(0, 60, SCREEN_WIDTH, SCREEN_HEIGHT-104);
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     self.tableView.tableHeaderView =_headView;
     self.tableView.tableFooterView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     
-    
-   
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
     }
@@ -114,15 +115,6 @@
         [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
     }
     [self showBarButton:NAV_RIGHT imageName:@"new_3point.png"];
-     NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"黑名单",@"逗币",@"逗码",@"权限设置",@"修改密码"];
-    [self.dataSource addObjectsFromArray:arrName];
-    NSArray * arrImage =@[@"person_videotape.png",@"person_photograph.png",@"person_balance.png",@"person_attention.png",@"blank_list.png",@"person_balance.png",@"person_code.png",@"person_rule.png",@"person_balance.png"];
-    [self.dataSourceImage addObjectsFromArray:arrImage];
-    
-    
-    
-
-    
     
 }
 // 头像点击
@@ -150,7 +142,7 @@
 
 {
     
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -167,13 +159,18 @@
             
         case 1:
             
-            return  4;
+            return  3;
             
             break;
             
         case 2:
             return 2;
             break;
+        case 3:
+            return 1;
+            break;
+            
+            
         default:
             
             return 0;
@@ -217,6 +214,11 @@
         case 2:
             return 18;
             break;
+        case 3:
+            return 18;
+            break;
+            
+            
         default:
             
             return 0;
@@ -245,6 +247,12 @@
     switch (indexPath.section) {
             
         case 0:
+            
+            if (indexPath.row == 0) {
+                cell.moneyLabel.hidden = NO;
+                cell.moneyLabel.text = @"2";
+            }
+           
             // Configure the cell.
             cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row]];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -262,6 +270,14 @@
             cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+7]];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.introduce.text= self.dataSource[indexPath.row+7];
+            break;
+            
+         case 3:
+            
+            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+8]];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.introduce.text= self.dataSource[indexPath.row+8];
+            
             break;
             
         default:
@@ -298,11 +314,15 @@
             
             if (indexPath.row == 0) {
                 NSLog(@"时光轴");
+                
+                FriendViewController * friendVC =[[FriendViewController alloc]initWithNibName:@"FriendViewController" bundle:nil];
+                [self.navigationController pushViewController:friendVC animated:YES];
             
             }
             if (indexPath.row == 1) {
                 NSLog(@"录像");
-                
+                VideoViewController * videoVC =[[VideoViewController alloc]initWithNibName:@"VideoViewController" bundle:nil];
+                [self.navigationController pushViewController:videoVC animated:YES];
                
                 
             }
@@ -312,27 +332,25 @@
                 
             }
             break;
+            
         case 1:
             if (indexPath.row == 0) {
                 
                 NSLog(@"00");
                
-                
+    
             }
             if (indexPath.row == 1) {
-              
+                
+                
             }
-            
             if (indexPath.row == 2) {
-                NSLog(@"11");
-               
+                
+                FunnyCodeViewController * funVC =[[FunnyCodeViewController alloc]initWithNibName:@"FunnyCodeViewController" bundle:nil];
+                [self.navigationController pushViewController:funVC animated:YES];
                 
             }
             
-            if (indexPath.row == 3) {
-               
-                
-            }
             break;
             
         case 2:
@@ -340,7 +358,6 @@
                 NSLog(@"000");
                 
             
-                
             }
             
             
@@ -349,9 +366,16 @@
                 
                 
             }
-            
-            
             break;
+            
+        case 3:
+            
+            if (indexPath.row ==0) {
+                
+            }
+           
+            break;
+            
         default:
             break;
     }
@@ -518,4 +542,16 @@
     //return [UIImage imageWithCGImage:imageRef];
 }
 
+
+/**
+ *  push 妈蛋不行啊
+ */
+
+- (void)pushViewContrller:(UIViewController *)conVC xlbName:(NSString *)str
+{
+
+    conVC =[[UIViewController alloc]initWithNibName:str bundle:nil];
+    [self.navigationController pushViewController:conVC animated:YES];
+    
+}
 @end

@@ -12,7 +12,7 @@
 //获取屏幕 宽度、高度
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
-
+#define MainScreen [UIScreen mainScreen].bounds.size
 //-------------------打印日志-------------------------
 
 //重写NSLog,Debug模式下打印日志和当前行数

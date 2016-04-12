@@ -61,5 +61,8 @@
 + (NSString *)getServerTest;
 
 + (UIViewController *)appTopViewController;
-
+/**
+ *  获取当前时间
+ */
++(NSString *)getNowTime;
 @end

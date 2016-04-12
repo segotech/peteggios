@@ -8,7 +8,7 @@
 
 //tab
 "tabSquare" = "广场";
-"tabNear" = "附近";
+"tabNear" = "发现";
 "tabEgg" = "不倒蛋";
 "tabRank" = "榜单";
 "tabPersonal" = "个人中心";
@@ -30,3 +30,17 @@
 "INFO_NetNoReachable" = "当前网络不可用";
 "INFO_ReachableViaWWAN"= "当前非WIFI环境";
 "bindDevice" = "绑定设备";
+
+// setting
+"settingViewTitle" = "设置";
+"wifiViewTitle" = "设置网络";
+"INFO_NetNoReachable" = "当前网络不可用";
+"INFO_ReachableViaWWAN"= "当前非WIFI环境";
+"bindDeviceViewTitle" = "绑定设备";
+// 个人中心
+"videoTitle" = "录像";
+"hadupdata" = "已上传";
+"willupdata" = "未上传";
+"tabFriend"  ="时光轴";
+"funTitle" = "逗码";
+

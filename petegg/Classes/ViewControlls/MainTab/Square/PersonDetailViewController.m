@@ -191,13 +191,10 @@ static NSString * cellId = @"personDetailCellId";
     }];
     
     
-    
-    
-    
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
+
 
 @end
