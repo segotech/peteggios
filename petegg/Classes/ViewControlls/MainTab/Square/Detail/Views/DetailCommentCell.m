@@ -112,8 +112,8 @@
     _ageLB.sd_layout.leftSpaceToView(_genderLB, 8).centerYEqualToView(_genderLB).widthIs(40).heightIs(20);
     _ageLB.sd_cornerRadiusFromWidthRatio = @(0.28);
     
-    _timeLB.sd_layout.leftEqualToView(_nameLB).topSpaceToView(_nameLB, 6).heightIs(30).autoHeightRatio(0);
-    [_timeLB setSingleLineAutoResizeWithMaxWidth:contentView.width * 0.5];
+    _timeLB.sd_layout.leftEqualToView(_nameLB).topSpaceToView(_nameLB, 6).heightIs(30).rightSpaceToView(contentView, 80);
+//    [_timeLB setSingleLineAutoResizeWithMaxWidth:contentView.width * 0.5];
     
     _replyBtn.sd_layout.centerYEqualToView(_timeLB).rightSpaceToView(contentView, 8).heightIs(30).widthIs(40);
     

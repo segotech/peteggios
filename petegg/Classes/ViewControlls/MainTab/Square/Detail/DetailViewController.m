@@ -133,7 +133,8 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
                     [[AFHttpClient sharedAFHttpClient] addCommentWithPid:[AccountManager sharedAccountManager].loginModel.mid bid:@"" wid:self.stid bcid:@"" ptype:@"m" action:@"p" content:text complete:^(BaseModel *model) {
                         
                         if (model) {
-                            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+                            self.pageIndex = START_PAGE_INDEX;
+                            [self loadDataSourceWithPage:self.pageIndex];
                         }
                     }];
                 }
@@ -326,7 +327,8 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
                         [[AFHttpClient sharedAFHttpClient] addCommentWithPid:[AccountManager sharedAccountManager].loginModel.mid bid:model.bid wid:self.stid bcid:model.bcid ptype:@"r" action:@"h" content:text complete:^(BaseModel *model) {
                             
                             if (model) {
-                                
+                                self.pageIndex = START_PAGE_INDEX;
+                                [self loadDataSourceWithPage:self.pageIndex];
                             }
                         }];
                     }
