@@ -66,4 +66,7 @@
  *  获取当前时间
  */
 +(NSString *)getNowTime;
+
++(NSString *)getCurrentTime;
+
 @end
