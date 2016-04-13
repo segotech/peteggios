@@ -54,7 +54,26 @@
 
 
 
+-(void)searcheSomeWithMid:(NSString *)mid condition:(NSString *)condtion pageIndex:(int)pageIndex pageSize:(int)pageSize complete:(void (^)(BaseModel *))completeBlock{
+     NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    params[@"common"] = @"searchPeople";
+    params[@"mid"] = mid;
+    params[@"condition"] = condtion;
+    params[@"page"] = @(pageIndex);
+    params[@"size"] = @(pageSize);
 
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        
+        if (model){
+            model.list = [NearbyModel arrayOfModelsFromDictionaries:model.list];
+        }
+        
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+
+}
 
 
 
