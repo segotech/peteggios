@@ -20,7 +20,7 @@
 
 @property (nonatomic, copy) NSString *age;
 
-@property (nonatomic, copy) NSString *bid;
+@property (nonatomic, copy) NSString *bid;  //
 
 @property (nonatomic, copy) NSString *opttime;
 
@@ -40,7 +40,7 @@
 
 @property (nonatomic, copy) NSString *wid;
 
-@property (nonatomic, strong) NSArray<CommentModel, Optional> *list;
+@property (nonatomic, strong) NSMutableArray<CommentModel, Optional> *list;
 
 @property (nonatomic, copy) NSString *pid;
 

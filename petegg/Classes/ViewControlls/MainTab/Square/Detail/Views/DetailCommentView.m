@@ -20,9 +20,15 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.commentLabelsArray = [NSMutableArray array];
     }
     return self;
+}
+
+- (NSMutableArray *)commentLabelsArray{
+    if (!_commentLabelsArray) {
+        _commentLabelsArray = [NSMutableArray array];
+    }
+    return _commentLabelsArray;
 }
 
 - (void)setCommentItemsArray:(NSArray *)commentItemsArray{
