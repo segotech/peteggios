@@ -91,7 +91,7 @@
         params[@"wid"] = wid;//如果评论的是文章就传stid，如果是回复评论人，就不传
     }
     
-    params[@"bcid"] = bcid;//被评论人的mid，也是在上一个街口能拿到
+    params[@"bcid"] = bcid;//cid
     params[@"ptype"] = ptype;//评论文章传m，回复人传r
     params[@"action"]  = action;//评论动作类型，文章，p。人，h。
     params[@"content"] = content;//回复内容
