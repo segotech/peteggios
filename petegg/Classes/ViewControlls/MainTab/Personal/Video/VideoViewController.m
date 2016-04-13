@@ -62,10 +62,10 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [super setupView];
     // 选择按钮
     isSelet = YES;
-    [self showBarButton:NAV_RIGHT imageName:@"select.png"];
+    [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
     
     // collection
-    self.collection.frame = CGRectMake(10, 100, SCREEN_WIDTH-20, SCREEN_HEIGHT-110);
+    self.collection.frame = CGRectMake(10, 110, SCREEN_WIDTH-20, SCREEN_HEIGHT-110);
     self.collection.showsHorizontalScrollIndicator = NO;
     self.collection.showsVerticalScrollIndicator   = NO;
     [self.collection registerClass:[MyVideoCollectionViewCell class] forCellWithReuseIdentifier:@"imageId"];
@@ -179,7 +179,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         cell.rightBtn.selected = NO;
         }
     }
-          [self showBarButton:NAV_RIGHT imageName:@"select.png"];
+          [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
         isSelet = YES;
         _deleteImageV.hidden = YES;
         
@@ -268,7 +268,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [super setupData];
     deleteOrUpdateArr =[[NSMutableArray alloc]init];
     statsIdentifi =@"0";
-    [self  data:statsIdentifi];
+   // [self  data:statsIdentifi];
     
 }
 
@@ -291,11 +291,10 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             [self.dataSource addObject:model];
             
         }
+        [self handleEndRefresh];
         NSLog(@"====%@",json);
         
         [self.collection reloadData];
-        
-
         
     } failure:^(NSError *error) {
         

@@ -20,7 +20,8 @@
         [self addSubview:_lineLabel];
         
         
-        _headBtn = [[UIButton alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 10 * W_Hight_Zoom, 40 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+        _headBtn = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 10 * W_Hight_Zoom, 40 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+        [_headBtn.layer setMasksToBounds:YES];
         _headBtn.layer.cornerRadius = _headBtn.width/2;
         _headBtn.backgroundColor = [UIColor blackColor];
         [self addSubview:_headBtn];

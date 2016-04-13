@@ -17,8 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    [self setNavTitle:@"找人"];
+    [self initTopView];
 }
+-(void)initTopView{
+    
 
+
+}
 
 
 @end

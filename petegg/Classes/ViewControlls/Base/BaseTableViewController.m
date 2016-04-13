@@ -58,7 +58,7 @@
             [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
         }else{
             [weakSelf.tableView.footer endRefreshing];
-            weakSelf.tableView.footer.hidden = YES;
+             weakSelf.tableView.footer.hidden = YES;
         }
     }];
     
