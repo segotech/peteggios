@@ -105,9 +105,9 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
             [self.dataSource addObjectsFromArray:model.list];
             
             if (model.list.count < REQUEST_PAGE_SIZE){
-                self.tableView.footer.hidden = YES;
+                self.tableView.mj_footer.hidden = YES;
             }else{
-                self.tableView.footer.hidden = NO;
+                self.tableView.mj_footer.hidden = NO;
             }
             
             [self.tableView reloadData];
