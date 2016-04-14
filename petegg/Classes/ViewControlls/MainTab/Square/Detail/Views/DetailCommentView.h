@@ -10,6 +10,8 @@
 
 @interface DetailCommentView : UIView
 
+@property (nonatomic, copy) void (^commentLableClickBlock)(int index);
+
 - (void)setupWithCommentItemsArray:(NSArray *)commentItemsArray;
 
 @end

@@ -14,4 +14,6 @@
 
 @property (nonatomic, copy) void (^replyBlock)();
 
+@property (nonatomic, copy) void (^commentLableClickBlock)(int index);
+
 @end

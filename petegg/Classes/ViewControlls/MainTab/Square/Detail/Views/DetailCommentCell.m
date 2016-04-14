@@ -34,6 +34,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setupView];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }
     return self;
 }
@@ -92,6 +93,11 @@
     _contentLB.numberOfLines = 0;
     
     _commentView = [DetailCommentView new];
+    _commentView.commentLableClickBlock = ^(int index){
+        if (self.commentLableClickBlock) {
+            self.commentLableClickBlock(index);
+        }
+    };
 
     [self.contentView sd_addSubviews:@[_iconIV, _nameLB, _typeLB, _genderLB, _ageLB, _timeLB, _contentLB, _replyBtn, _commentView]];
     
@@ -132,7 +138,7 @@
     
     self.typeLB.text = model.race;
     self.timeLB.text = model.opttime;
-     
+    
     self.contentLB.text = model.content;
     self.contentLB.sd_layout.maxHeightIs(MAXFLOAT);
     
@@ -147,12 +153,10 @@
     if (!model.list.count ) {
         self.commentView.fixedWidth = @0;
         self.commentView.fixedHeight = @0;
-        self.commentView.sd_layout.topSpaceToView(_contentLB, 8);
         bottomView = self.contentLB;
     } else {
         _commentView.fixedHeight = nil;
         _commentView.fixedWidth = nil;
-        _commentView.sd_layout.topSpaceToView(_contentLB, 10);
         bottomView = self.commentView;
     }
     
