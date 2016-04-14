@@ -12,6 +12,8 @@
 @interface FriendViewController : BaseTableViewController
 
 @property (nonatomic,strong)UIImageView * headImageView;
-@property (nonatomic,strong)UITableView * mytableView;
+@property (nonatomic,strong)UILabel * nameLabel;
+@property (nonatomic,strong)UIButton * message;
+
 
 @end

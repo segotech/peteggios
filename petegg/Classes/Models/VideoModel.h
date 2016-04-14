@@ -19,5 +19,7 @@
 @property (nonatomic,copy)NSString *vid;
 @property (nonatomic,copy)NSString * networkaddress;
 @property (nonatomic,copy)NSString * thumbnails;
+@property (nonatomic,copy)NSString * type;
+
 
 @end

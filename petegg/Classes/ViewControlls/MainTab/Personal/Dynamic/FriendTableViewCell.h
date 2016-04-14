@@ -10,4 +10,14 @@
 
 @interface FriendTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *tellLable;
+@property (strong, nonatomic) IBOutlet UIButton *deleteBtn;
+@property (strong, nonatomic) IBOutlet UIImageView *oneImagev;
+@property (strong, nonatomic) IBOutlet UILabel *timeLable;
+@property (strong, nonatomic) IBOutlet UILabel *commentsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *goodLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *twoOneImage;
+@property (strong, nonatomic) IBOutlet UIImageView *twotwoImage;
+
+
 @end
