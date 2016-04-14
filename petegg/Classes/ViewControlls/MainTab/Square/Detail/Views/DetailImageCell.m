@@ -10,6 +10,8 @@
 
 #import "UIImageView+WebCache.h"
 
+#import "UIView+TapBlocks.h"
+
 @interface DetailImageCell()
 
 @property (nonatomic, strong) UIImageView *iconIV;
@@ -49,9 +51,10 @@
             if (size.width >= self.width) {
                 
                 if (size.width < size.height) {
-                    self.iconIV.sd_layout.heightIs(size.height / (size.width / self.iconIV.width));
+                    
+                    self.iconIV.sd_layout.heightIs(size.height / (size.width / (self.width - 16)));
                 }else{
-                    self.iconIV.sd_layout.heightIs(self.iconIV.width * size.height / size.width);
+                    self.iconIV.sd_layout.heightIs((self.width - 16) * size.height / size.width);
                 }
                 
             }else{

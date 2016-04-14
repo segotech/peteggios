@@ -10,6 +10,7 @@
 
 @interface DetailImageCell : UITableViewCell
 
+
 @property (nonatomic, strong) NSString *model;
 
 @property (nonatomic, weak) UITableView* tableView;

@@ -17,7 +17,9 @@
 #import "DetailImageCell.h"
 #import "CommentInputView.h"
 
-@interface DetailViewController()
+#import "MWPhotoBrowser.h"
+
+@interface DetailViewController()<MWPhotoBrowserDelegate>
 {
     NSIndexPath *currentEditingIndexthPath;
 }
@@ -26,6 +28,8 @@
 @property (nonatomic, strong) UIView* contentView;
 @property (nonatomic, strong) UIView* toolView;
 
+@property (nonatomic, strong) UIImageView *tempImageView;
+
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UILabel *nameLabel;
 
@@ -33,6 +37,7 @@
 
 @property (nonatomic, strong) DetailModel* detailModel;
 @property (nonatomic, strong) NSMutableArray* resourcesArray;
+@property (nonatomic, strong) NSMutableArray* photoArray;
 
 @end
 
@@ -53,6 +58,7 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     [super setupData];
     
     self.resourcesArray = [NSMutableArray array];
+    self.photoArray = [NSMutableArray array];
     
     [self loadDetailInfo];
 }
@@ -72,6 +78,9 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     
     [self.view addSubview:self.commentInputView];
     
+    self.tempImageView = [UIImageView new];
+    [self.view addSubview:self.tempImageView];
+    
     [self initRefreshView];
 }
 
@@ -85,6 +94,10 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
             
             [self.resourcesArray removeAllObjects];
             self.resourcesArray = [[self.detailModel.resources componentsSeparatedByString:@","] mutableCopy];
+            
+            for (NSString* resources in self.resourcesArray) {
+                [self.photoArray addObject:[MWPhoto photoWithURL:[NSURL URLWithString:resources]]];
+            }
             
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,2)] withRowAnimation:UITableViewRowAnimationNone];
         }
@@ -105,7 +118,8 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
             
             self.tableView.mj_footer.hidden = model.list.count < REQUEST_PAGE_SIZE;
             
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadData];
+//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
     
@@ -290,7 +304,10 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
         case 0:
         {
             NSString* resources = self.resourcesArray[indexPath.row];
-            return [self.tableView cellHeightForIndexPath:indexPath model:resources keyPath:@"model" cellClass:[DetailImageCell class] contentViewWidth:SCREEN_WIDTH];
+            
+            CGFloat height = [self.tableView cellHeightForIndexPath:indexPath model:resources keyPath:@"model" cellClass:[DetailImageCell class] contentViewWidth:SCREEN_WIDTH];
+            
+            return height;
         }
         case 1:
             return [self.tableView cellHeightForIndexPath:indexPath model:self.detailModel keyPath:@"model" cellClass:[DetailContentCell class] contentViewWidth:SCREEN_WIDTH];
@@ -312,6 +329,7 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
             NSString* resources = self.resourcesArray[indexPath.row];
             
             DetailImageCell* cell = [tableView dequeueReusableCellWithIdentifier:kDetailImageCellID];
+            cell.tableView = tableView;
             
             [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
             
@@ -405,10 +423,28 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    switch (indexPath.section) {
+        case 0:
+        {
+            MWPhotoBrowser *browser=[[MWPhotoBrowser alloc]initWithDelegate:self];
+            browser.displayActionButton = YES;
+            browser.displayNavArrows = NO;
+            browser.displaySelectionButtons = NO;
+            browser.zoomPhotosToFill = YES;
+            browser.alwaysShowControls = NO;
+            browser.enableGrid = YES;
+            browser.startOnGrid = NO;
+            [browser setCurrentPhotoIndex:indexPath.row];
+            [self.navigationController pushViewController:browser animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
-- (void)keyboardNotification:(NSNotification *)notification
-{
+- (void)keyboardNotification:(NSNotification *)notification{
     NSDictionary *dict = notification.userInfo;
     CGRect rect = [dict[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
     
@@ -419,6 +455,22 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     
     self.commentInputView.frame = textFieldRect;
 }
+
+#pragma mark    图片浏览器协议
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
+{
+    return self.photoArray.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
+{
+    
+    if (index < self.photoArray.count){
+        return [self.photoArray objectAtIndex:index];
+    }
+    return nil;
+}
+
 
 
 @end
