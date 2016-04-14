@@ -86,8 +86,7 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
             [self.resourcesArray removeAllObjects];
             self.resourcesArray = [[self.detailModel.resources componentsSeparatedByString:@","] mutableCopy];
             
-            [self.tableView reloadData];
-//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,2)] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,2)] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
 }
@@ -104,14 +103,9 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
 
             [self.dataSource addObjectsFromArray:model.list];
             
-            if (model.list.count < REQUEST_PAGE_SIZE){
-                self.tableView.mj_footer.hidden = YES;
-            }else{
-                self.tableView.mj_footer.hidden = NO;
-            }
+            self.tableView.mj_footer.hidden = model.list.count < REQUEST_PAGE_SIZE;
             
-            [self.tableView reloadData];
-//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
     
@@ -339,12 +333,41 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
         {
             CommentModel* commentModel = self.dataSource[indexPath.row];
             DetailCommentCell* cell = [tableView dequeueReusableCellWithIdentifier:kDetailCommentCellID];
+            cell.commentLableClickBlock = ^(int index){
+                currentEditingIndexthPath = [self.tableView indexPathForCell:cell];
+                [self.commentInputView showWithSendCommentBlock:^(NSString *text) {
+                    if (text && text.length > 0) {
+                        
+                        //回复评论的model
+                        CommentModel* replayCommentModel = commentModel.list[index];
+                        
+                        [[AFHttpClient sharedAFHttpClient] addCommentWithPid:[AccountManager sharedAccountManager].loginModel.mid bid:replayCommentModel.pid wid:self.stid bcid:commentModel.cid ptype:@"r" action:@"h" content:text complete:^(BaseModel *model) {
+                            
+                            if (model) {
+                                CommentModel* addModel = [[CommentModel alloc] init];
+                                addModel.memname = [AccountManager sharedAccountManager].loginModel.nickname;
+                                addModel.content = text;
+                                addModel.opttime = [AppUtil getCurrentTime];
+                                addModel.wid = self.stid;
+                                addModel.cid = model.content;
+                                addModel.bcid = commentModel.cid;
+                                addModel.bmemname = replayCommentModel.memname;
+                                addModel.img = [AccountManager sharedAccountManager].loginModel.headportrait;
+                                addModel.pid = [AccountManager sharedAccountManager].loginModel.mid;
+                                
+                                [commentModel.list addObject:addModel];
+                                [self.tableView reloadRowsAtIndexPaths:@[currentEditingIndexthPath] withRowAnimation:UITableViewRowAnimationNone];
+                            }
+                        }];
+                    }
+                }];
+            };
             cell.replyBlock = ^(){
                 currentEditingIndexthPath = [self.tableView indexPathForCell:cell];
                 [self.commentInputView showWithSendCommentBlock:^(NSString *text) {
                     if (text && text.length > 0) {
                         
-                        [[AFHttpClient sharedAFHttpClient] addCommentWithPid:[AccountManager sharedAccountManager].loginModel.mid bid:commentModel.bid wid:self.stid bcid:commentModel.cid ptype:@"r" action:@"h" content:text complete:^(BaseModel *model) {
+                        [[AFHttpClient sharedAFHttpClient] addCommentWithPid:[AccountManager sharedAccountManager].loginModel.mid bid:commentModel.pid wid:self.stid bcid:commentModel.cid ptype:@"r" action:@"h" content:text complete:^(BaseModel *model) {
                             
                             if (model) {
                                 
@@ -358,7 +381,7 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
                                 addModel.img = [AccountManager sharedAccountManager].loginModel.headportrait;
                                 addModel.pid = [AccountManager sharedAccountManager].loginModel.mid;
                                 
-                                [commentModel.list insertObject:addModel atIndex:0];
+                                [commentModel.list addObject:addModel];
                                 [self.tableView reloadRowsAtIndexPaths:@[currentEditingIndexthPath] withRowAnimation:UITableViewRowAnimationNone];
                             }
                         }];
