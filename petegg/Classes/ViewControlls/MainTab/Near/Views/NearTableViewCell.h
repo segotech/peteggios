@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NearTableViewCell : UITableViewCell
-@property (nonatomic,strong)UIButton * headBtn;
+@property (nonatomic,strong)UIImageView * headBtn;
 @property (nonatomic,strong)UILabel * nameLabel;
 @property (nonatomic,strong)UILabel * signLabel;
 @property (nonatomic,strong)UIButton * rightBtn;

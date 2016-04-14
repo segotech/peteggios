@@ -10,5 +10,11 @@
 
 @implementation CommentModel
 
+- (instancetype)init{
+    if (self = [super init]) {
+        self.list = [NSMutableArray array];
+    }
+    return self;
+}
 
 @end

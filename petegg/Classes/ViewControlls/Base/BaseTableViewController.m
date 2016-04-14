@@ -40,38 +40,47 @@
 
 - (void)updateData
 {
-    [self.tableView.header beginRefreshing];
+    [self.tableView.mj_header beginRefreshing];
 }
 
+/**
+ *  初始化上拉下拉刷新block
+ */
 - (void)initRefreshView
 {
     __typeof (&*self) __weak weakSelf = self;
     
-    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.pageIndex = START_PAGE_INDEX;
         [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
     }];
     
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         if ((weakSelf.pageIndex )* REQUEST_PAGE_SIZE == weakSelf.dataSource.count) {
             weakSelf.pageIndex++;
             [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
         }else{
-            [weakSelf.tableView.footer endRefreshing];
-             weakSelf.tableView.footer.hidden = YES;
+            [weakSelf.tableView.mj_footer endRefreshing];
+             weakSelf.tableView.mj_footer.hidden = YES;
         }
     }];
     
-    self.tableView.footer.hidden = YES;
-    [self.tableView.header beginRefreshing];
+    self.tableView.mj_footer.hidden = YES;
+    [self.tableView.mj_header beginRefreshing];
 }
 
+/**
+ *  结束刷新
+ */
 -(void)handleEndRefresh{
     
-    [self.tableView.header endRefreshing];
-    [self.tableView.footer endRefreshing];
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
 }
 
+/**
+ *  加载分页方法，在子类重写
+ */
 - (void)loadDataSourceWithPage:(int)page {
     
 }

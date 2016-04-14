@@ -7,6 +7,7 @@
 //
 
 #import "DetailCommentView.h"
+#import "UIView+TapBlocks.h"
 
 @interface DetailCommentView()
 
@@ -14,15 +15,32 @@
 
 @property (nonatomic, strong) NSMutableArray *commentLabelsArray;
 
+@property (nonatomic, strong) UILabel *likeLabel;
+
 @end
 
 @implementation DetailCommentView
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.commentLabelsArray = [NSMutableArray array];
+        [self setupViews];
     }
     return self;
+}
+
+
+- (void)setupViews
+{
+    _likeLabel = [UILabel new];
+    [self addSubview:_likeLabel];
+
+}
+
+- (NSMutableArray *)commentLabelsArray{
+    if (!_commentLabelsArray) {
+        _commentLabelsArray = [NSMutableArray array];
+    }
+    return _commentLabelsArray;
 }
 
 - (void)setCommentItemsArray:(NSArray *)commentItemsArray{
@@ -34,7 +52,16 @@
     for (int i = 0; i < needsToAddCount; i++) {
         UILabel *label = [UILabel new];
         label.font = [UIFont systemFontOfSize:15];
+        label.userInteractionEnabled = YES;
+        label.tag = i;
         [self addSubview:label];
+        
+        [label addTapGestureWithBlock:^{
+            if (self.commentLableClickBlock) {
+                self.commentLableClickBlock(i);
+            }
+        }];
+        
         [self.commentLabelsArray addObject:label];
     }
     
@@ -56,7 +83,7 @@
         }];
     }
     
-    UIView *lastTopView ;
+    UIView *lastTopView = self.likeLabel;
     
     for (int i = 0; i < self.commentItemsArray.count; i++) {
         UILabel *label = (UILabel *)self.commentLabelsArray[i];
@@ -71,13 +98,16 @@
         lastTopView = label;
     }
     
-    [self setupAutoHeightWithBottomView:lastTopView bottomMargin:6];
+    if (lastTopView) {
+        [self setupAutoHeightWithBottomView:lastTopView bottomMargin:6];
+    }
 }
 
 - (NSMutableAttributedString *)generateAttributedStringWithCommentItemModel:(CommentModel *)model{
     NSString *text = model.memname;
+    NSString *replyStr = @"回复";
     if (model.bmemname.length) {
-        text = [text stringByAppendingString:[NSString stringWithFormat:@"回复%@", model.bmemname]];
+        text = [text stringByAppendingString:[NSString stringWithFormat:@"%@%@", replyStr, model.bmemname]];
     }
     text = [text stringByAppendingString:[NSString stringWithFormat:@"：%@", model.content]];
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:text];
@@ -85,7 +115,7 @@
     
     [attString addAttribute:NSForegroundColorAttributeName value:highLightColor range:[text rangeOfString:model.memname]];
     if (model.bmemname) {
-        [attString addAttribute:NSForegroundColorAttributeName value:highLightColor range:[text rangeOfString:model.bmemname]];
+        [attString addAttribute:NSForegroundColorAttributeName value:highLightColor range:NSMakeRange(model.memname.length + replyStr.length, model.bmemname.length)];
     }
     
     return attString;

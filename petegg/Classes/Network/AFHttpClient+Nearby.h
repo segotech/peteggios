@@ -16,4 +16,17 @@
                        complete:(void(^)(BaseModel *model))completeBlock;
 
 
+-(void)queriCanVisitWithMid:(NSString *)mid
+                        pageIndex:(int)pageIndex
+                        pageSize:(int)pageSize
+                        complete:(void(^)(BaseModel *model))completeBlock;
+
+
+
+-(void)searcheSomeWithMid:(NSString *)mid
+                      condition:(NSString *)condtion
+                      pageIndex:(int)pageIndex
+                      pageSize:(int)pageSize
+                      complete:(void(^)(BaseModel *model))completeBlock;
+
 @end
