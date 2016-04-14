@@ -116,6 +116,9 @@
 		7D1714421CBBA0AA0047FA70 /* DouYIDouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1714411CBBA0AA0047FA70 /* DouYIDouViewController.m */; };
 		7D1714451CBBA3670047FA70 /* NearTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1714441CBBA3670047FA70 /* NearTableViewCell.m */; };
 		7D1714481CBBB1EB0047FA70 /* SeachePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1714471CBBB1EB0047FA70 /* SeachePeopleViewController.m */; };
+		7D1763A41CBF733800579B4C /* AFHttpClient+Rank.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1763A31CBF733800579B4C /* AFHttpClient+Rank.m */; };
+		7D1763A61CBF864C00579B4C /* dianzanhou.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D1763A51CBF864C00579B4C /* dianzanhou.png */; };
+		7D1763A91CBF8DD100579B4C /* RankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1763A81CBF8DD100579B4C /* RankModel.m */; };
 		7D1EA05E1CB4ED6800328C2D /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */; };
 		7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA0661CB4F28500328C2D /* PersonDetailViewController.m */; };
 		7D2F81FA1CAE24CC0097820B /* egg_login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81F91CAE24CC0097820B /* egg_login.jpg */; };
@@ -395,6 +398,11 @@
 		7D1714441CBBA3670047FA70 /* NearTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearTableViewCell.m; sourceTree = "<group>"; };
 		7D1714461CBBB1EB0047FA70 /* SeachePeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeachePeopleViewController.h; sourceTree = "<group>"; };
 		7D1714471CBBB1EB0047FA70 /* SeachePeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeachePeopleViewController.m; sourceTree = "<group>"; };
+		7D1763A21CBF733800579B4C /* AFHttpClient+Rank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Rank.h"; sourceTree = "<group>"; };
+		7D1763A31CBF733800579B4C /* AFHttpClient+Rank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Rank.m"; sourceTree = "<group>"; };
+		7D1763A51CBF864C00579B4C /* dianzanhou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dianzanhou.png; sourceTree = "<group>"; };
+		7D1763A71CBF8DD100579B4C /* RankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankModel.h; sourceTree = "<group>"; };
+		7D1763A81CBF8DD100579B4C /* RankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankModel.m; sourceTree = "<group>"; };
 		7D1EA05C1CB4ED6800328C2D /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		7D1EA0651CB4F28500328C2D /* PersonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDetailViewController.h; sourceTree = "<group>"; };
@@ -606,6 +614,7 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				7D1763A51CBF864C00579B4C /* dianzanhou.png */,
 				7D9D769B1CBCF011004E45DE /* searche.png */,
 				7D17143B1CBB99300047FA70 /* jiantou.png */,
 				7D17142E1CBB4C620047FA70 /* DouYiDou.png */,
@@ -916,6 +925,8 @@
 			children = (
 				7D9D76981CBCCD24004E45DE /* NearbyModel.h */,
 				7D9D76991CBCCD24004E45DE /* NearbyModel.m */,
+				7D1763A71CBF8DD100579B4C /* RankModel.h */,
+				7D1763A81CBF8DD100579B4C /* RankModel.m */,
 				7DFF05AA1CB7A45800CF713E /* PersonDetailModel.h */,
 				7DFF05AB1CB7A45800CF713E /* PersonDetailModel.m */,
 				7DFF05A71CB7A26E00CF713E /* DetailModel.h */,
@@ -949,6 +960,8 @@
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
+				7D1763A21CBF733800579B4C /* AFHttpClient+Rank.h */,
+				7D1763A31CBF733800579B4C /* AFHttpClient+Rank.m */,
 				7D825CC61CBC9CB700F4E216 /* AFHttpClient+Nearby.h */,
 				7D825CC71CBC9CB700F4E216 /* AFHttpClient+Nearby.m */,
 				7DFF05951CB781F200CF713E /* AFHttpClient+Detailed.h */,
@@ -1558,6 +1571,7 @@
 				344F02C01CA2D8CE0076CE62 /* left_on.png in Resources */,
 				7D825D0B1CBCA65000F4E216 /* FriendViewController.xib in Resources */,
 				344F02C71CA2D9E70076CE62 /* behand_off.png in Resources */,
+				7D1763A61CBF864C00579B4C /* dianzanhou.png in Resources */,
 				7D2F82001CAE25030097820B /* egg_bigKuang.png in Resources */,
 				7D825CEC1CBCA57A00F4E216 /* WifiViewController.xib in Resources */,
 				344F025E1C9FEBDE0076CE62 /* line_background.png in Resources */,
@@ -1629,6 +1643,7 @@
 				7D30E8B81CA66C05004DE055 /* SCVideoConfiguration.m in Sources */,
 				7D30E8C91CA66C67004DE055 /* SCRecordSessionManager.m in Sources */,
 				7D8122861CBE2ED000F4F823 /* RankesTableViewCell.m in Sources */,
+				7D1763A41CBF733800579B4C /* AFHttpClient+Rank.m in Sources */,
 				7D30E8CA1CA66C67004DE055 /* WechatShortVideoController.m in Sources */,
 				7D81227F1CBDF5F200F4F823 /* WeekBangViewController.m in Sources */,
 				57462DA61CBA46270071047E /* CommentModel.m in Sources */,
@@ -1709,6 +1724,7 @@
 				344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */,
 				57666FA11C9689CC00A52DBA /* EggViewController.m in Sources */,
 				7D825D1B1CBCA69E00F4E216 /* BaseCollectionViewController.m in Sources */,
+				7D1763A91CBF8DD100579B4C /* RankModel.m in Sources */,
 				7D30E8A41CA66C05004DE055 /* SCFilter+UIImage.m in Sources */,
 				7D30E8A71CA66C05004DE055 /* SCFilterAnimation.m in Sources */,
 				7D0E23B21CA2709700061973 /* RecommendTableViewCell.m in Sources */,
