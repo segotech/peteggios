@@ -10,6 +10,11 @@
 #import "RankesTableViewCell.h"
 static NSString * cellId = @"ranksCellIdddd";
 @interface WeekBangViewController ()
+@property (nonatomic,strong)UIImageView * topHeadImage;
+@property (nonatomic,strong)UILabel * pinglunLabel;
+@property (nonatomic,strong)UILabel * aixinLabel;
+@property (nonatomic,strong)UILabel * rightLabel;
+
 
 @end
 
@@ -30,7 +35,29 @@ static NSString * cellId = @"ranksCellIdddd";
     [self.tableView registerClass:[RankesTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    self.tableView.tableHeaderView = topView;
+     self.tableView.tableHeaderView = topView;
+    
+    _topHeadImage = [[UIImageView alloc]initWithFrame:CGRectMake(125 * W_Wide_Zoom, 62.5 * W_Hight_Zoom, 125 * W_Wide_Zoom, 125 * W_Hight_Zoom)];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
 
@@ -48,13 +75,16 @@ static NSString * cellId = @"ranksCellIdddd";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60*W_Hight_Zoom;
+    return 65*W_Hight_Zoom;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     RankesTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    
+    
+    
     
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
