@@ -17,4 +17,8 @@
     return self;
 }
 
+- (NSString *)content{
+    return [_content replaceUnicode];
+}
+
 @end
