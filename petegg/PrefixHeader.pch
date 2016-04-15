@@ -24,6 +24,7 @@
 #import "UITableView+SDAutoTableViewCellHeight.h"
 #import "UIViewController+HUD.h"
 #import "UIButton+Blocks.h"
+#import "NSString+URLEncoding.h"
 
 #import "MBProgressHUD.h"
 

@@ -98,6 +98,7 @@
 		57666FE21C96BF4400A52DBA /* UIView+Sizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666FDF1C96BF4400A52DBA /* UIView+Sizes.m */; };
 		57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666FE11C96BF4400A52DBA /* UIViewController+HUD.m */; };
 		57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57666FE91C96C5AA00A52DBA /* AccountManager.m */; };
+		5778B3011CC08BBC00EC2D96 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5778B3001CC08BBC00EC2D96 /* NSString+URLEncoding.m */; };
 		578B9E5E1CA29A9E00CAC21D /* AFHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */; };
 		578B9E611CA29E5D00CAC21D /* AFHttpClient+Square.m in Sources */ = {isa = PBXBuildFile; fileRef = 578B9E601CA29E5D00CAC21D /* AFHttpClient+Square.m */; };
 		578B9E641CA2D78A00CAC21D /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 578B9E631CA2D78A00CAC21D /* BaseModel.m */; };
@@ -364,6 +365,8 @@
 		57666FE11C96BF4400A52DBA /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		57666FE81C96C5AA00A52DBA /* AccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
 		57666FE91C96C5AA00A52DBA /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
+		5778B2FF1CC08BBC00EC2D96 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		5778B3001CC08BBC00EC2D96 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		578B9E5C1CA29A9E00CAC21D /* AFHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHttpClient.h; sourceTree = "<group>"; };
 		578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttpClient.m; sourceTree = "<group>"; };
 		578B9E5F1CA29E5D00CAC21D /* AFHttpClient+Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Square.h"; sourceTree = "<group>"; };
@@ -871,6 +874,8 @@
 		57666F6B1C9686DE00A52DBA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				5778B2FF1CC08BBC00EC2D96 /* NSString+URLEncoding.h */,
+				5778B3001CC08BBC00EC2D96 /* NSString+URLEncoding.m */,
 				57666FDE1C96BF4400A52DBA /* UIView+Sizes.h */,
 				57666FDF1C96BF4400A52DBA /* UIView+Sizes.m */,
 				57666FE01C96BF4400A52DBA /* UIViewController+HUD.h */,
@@ -1643,6 +1648,7 @@
 				57666FA31C9689CC00A52DBA /* RankViewController.m in Sources */,
 				7D30E89B1CA66C05004DE055 /* CALayer+AddUIColor.m in Sources */,
 				7DFF05971CB781F200CF713E /* AFHttpClient+Detailed.m in Sources */,
+				5778B3011CC08BBC00EC2D96 /* NSString+URLEncoding.m in Sources */,
 				7D30E8AB1CA66C05004DE055 /* SCMediaTypeConfiguration.m in Sources */,
 				7D30E89E1CA66C05004DE055 /* NSURL+SCSaveToCameraRoll.m in Sources */,
 				57666FA71C968B1F00A52DBA /* LoginViewController.m in Sources */,
