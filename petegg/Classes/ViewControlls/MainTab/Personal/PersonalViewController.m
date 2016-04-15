@@ -13,6 +13,7 @@
 #import "FriendViewController.h"
 #import "FunnyCodeViewController.h"
 #import "BaseViewController.h"
+#import "PersonAttentionViewController.h"
 
 @interface PersonalViewController()
 
@@ -337,7 +338,8 @@
             if (indexPath.row == 0) {
                 
                 NSLog(@"00");
-               
+                PersonAttentionViewController * attentionVc = [[PersonAttentionViewController alloc]init];
+                [self.navigationController pushViewController:attentionVc animated:YES];
     
             }
             if (indexPath.row == 1) {
@@ -356,6 +358,7 @@
         case 2:
             if (indexPath.row ==0) {
                 NSLog(@"000");
+            
                 
             
             }
