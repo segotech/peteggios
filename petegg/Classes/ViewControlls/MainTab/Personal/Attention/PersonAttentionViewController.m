@@ -35,7 +35,7 @@
     UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, self.view.width, 40 * W_Hight_Zoom)];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
-    _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom , 5 * W_Hight_Zoom, 40 * W_Wide_Zoom , 30 * W_Hight_Zoom )];
+    _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(73.75 * W_Wide_Zoom , 5 * W_Hight_Zoom, 40 * W_Wide_Zoom , 30 * W_Hight_Zoom )];
     [_leftButton setTitle:@"关注" forState:UIControlStateNormal];
     _leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -45,11 +45,11 @@
     [_leftButton addTarget:self action:@selector(leftbuttonTouch) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:_leftButton];
     
-    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(138 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom)];
+    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(81.75 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom)];
     _lineLabel.backgroundColor = GREEN_COLOR;
     [topView addSubview:_lineLabel];
     
-    _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(200 * W_Wide_Zoom, 5 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(261.25 * W_Wide_Zoom, 5 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     [_rightButton setTitle:@"粉丝" forState:UIControlStateNormal];
     _rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -89,7 +89,7 @@
     _leftButton.selected = YES;
     _rightButton.selected = NO;
     [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(138 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
+        _lineLabel.frame = CGRectMake(81.75 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
     }];
     
     [self.pageViewController setViewControllers:@[self.viewControllers[0]] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
@@ -99,7 +99,7 @@
     _leftButton.selected = NO;
     _rightButton.selected = YES;
     [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(208 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
+        _lineLabel.frame = CGRectMake(269.25 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
         
     }];
     
