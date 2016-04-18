@@ -49,18 +49,25 @@
         [_textFieldes setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
         _textFieldes.tag = i + 33;
         
-        if (i>=3) {
-            UIButton * showBtn =[[UIButton alloc]initWithFrame:CGRectMake(320, 218+(i-3+50), 40, 40)];
-            [showBtn setImage:[UIImage imageNamed:@"showPs.png"] forState:UIControlStateNormal];
-            [self.view  addSubview:showBtn];
-            
-        }
         
         [self.view addSubview:_textFieldes];
         
     }
     
-    _securityButton = [[UIButton alloc]initWithFrame:CGRectMake(270 * W_Wide_Zoom, 118 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    
+    for (NSInteger i = 0 ; i<2; i++) {
+      
+            UIButton * showBtn =[[UIButton alloc]initWithFrame:CGRectMake(320, 171 +i*50, 25, 25)];
+            [showBtn setImage:[UIImage imageNamed:@"showPs.png"] forState:UIControlStateNormal];
+            showBtn.tag = 1000 +i;
+        [showBtn addTarget:self action:@selector(showPs:) forControlEvents:UIControlEventTouchUpInside];
+            [self.view addSubview:showBtn];
+    
+
+    }
+    
+    
+    _securityButton = [[UIButton alloc]initWithFrame:CGRectMake(250 * W_Wide_Zoom, 118 * W_Hight_Zoom, 110 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _securityButton.backgroundColor = GREEN_COLOR;
     [_securityButton setTitle:@"获取验证码" forState:UIControlStateNormal];
     _securityButton.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -104,6 +111,32 @@
 - (void)passwordCode:(UIButton *)sender
 {
     
+    [self proveCode];
+    __block int timeout=60; //倒计时时间
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0);     dispatch_source_set_event_handler(_timer, ^{
+        if(timeout<=0){ //倒计时结束，关闭
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_securityButton setTitle:@"发送验证码" forState:UIControlStateNormal];
+                _securityButton.userInteractionEnabled = YES;
+            });
+        }else{
+            int seconds = timeout % 60;
+            NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"————————%@",strTime);
+                [UIView beginAnimations:nil context:nil];
+                [UIView setAnimationDuration:1];
+                [_securityButton setTitle:[NSString stringWithFormat:@"%@秒后重新发送",strTime] forState:UIControlStateNormal];
+                [UIView commitAnimations];
+                _securityButton.userInteractionEnabled = NO;
+            });
+            timeout--;
+        }
+    });
+    dispatch_resume(_timer);
     
     
     
@@ -120,6 +153,80 @@
 {
     
     
+    NSString * str =@"clientAction.do?method=json&classes=appinterface&common=check";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:@"13540691705" forKey:@"phone"];
+    [dic setValue:@"268476" forKey:@"memberRegister"];
+    [dic setValue:@"123456" forKey:@"password"];
+    
+    
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
+
+        NSLog(@"====%@",json);
+        
+        [self showSuccessHudWithHint:@"注册成功"];
+        
+    } failure:^(NSError *error) {
+    }];
+
+    
+    
     
 }
+
+/**
+ *  密码显示
+ */
+
+- (void)showPs:(UIButton *)sender
+{
+    sender.selected =!sender.selected;
+    if (sender.tag == 1000 && sender.selected) {
+        
+        UITextField * textFL =(UITextField *)[self.view viewWithTag:35];
+        textFL.secureTextEntry = YES;
+    }else if (sender.tag ==1001 &&sender.selected){
+        UITextField * textFL =(UITextField *)[self.view viewWithTag:36];
+        textFL.secureTextEntry = YES;
+        
+    }
+    else if(!sender.selected){
+        UITextField * textFL =(UITextField *)[self.view viewWithTag:36];
+        textFL.secureTextEntry = NO;
+        UITextField * textFld =(UITextField *)[self.view viewWithTag:35];
+        textFld.secureTextEntry = NO;
+
+    }
+    
+    
+}
+
+
+/**
+ *  验证码
+ */
+
+- (void)proveCode
+{
+    
+    NSString * str =@"clientAction.do?method=json&classes=appinterface&common=check";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:@"13540691705" forKey:@"phone"];
+    [dic setValue:@"modifypassword" forKey:@"type"];
+    
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
+        NSMutableArray * arr =[[NSMutableArray alloc]init];
+        [arr addObjectsFromArray:json];
+        NSLog(@"====%@",json);
+        
+        
+    } failure:^(NSError *error) {
+    }];
+    
+}
+
+
 @end
+
