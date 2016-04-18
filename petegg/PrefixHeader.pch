@@ -34,5 +34,6 @@
 
 #import "AccountManager.h"
 #import "AFNetWorking.h"
+#import "UIImageView+WebCache.h"
 
 #endif /* PrefixHeader_pch */

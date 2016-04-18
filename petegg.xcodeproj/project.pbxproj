@@ -128,6 +128,11 @@
 		7D1763A91CBF8DD100579B4C /* RankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1763A81CBF8DD100579B4C /* RankModel.m */; };
 		7D1EA05E1CB4ED6800328C2D /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */; };
 		7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA0661CB4F28500328C2D /* PersonDetailViewController.m */; };
+		7D24EA771CC482DE004EB1E2 /* AFHttpClient+PersonAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D24EA761CC482DE004EB1E2 /* AFHttpClient+PersonAttention.m */; };
+		7D24EA841CC4D20D004EB1E2 /* manquan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D24EA801CC4D20D004EB1E2 /* manquan.png */; };
+		7D24EA851CC4D20D004EB1E2 /* miao.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D24EA811CC4D20D004EB1E2 /* miao.png */; };
+		7D24EA861CC4D20D004EB1E2 /* wang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D24EA821CC4D20D004EB1E2 /* wang.png */; };
+		7D24EA871CC4D20D004EB1E2 /* womanquan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D24EA831CC4D20D004EB1E2 /* womanquan.png */; };
 		7D2F3F7A1CC0871E0059116A /* PersonAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F3F791CC0871E0059116A /* PersonAttentionViewController.m */; };
 		7D2F3F7D1CC092790059116A /* PersonalFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F3F7C1CC092790059116A /* PersonalFansViewController.m */; };
 		7D2F3F801CC092930059116A /* PersonalAtnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F3F7F1CC092930059116A /* PersonalAtnViewController.m */; };
@@ -430,6 +435,12 @@
 		7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		7D1EA0651CB4F28500328C2D /* PersonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDetailViewController.h; sourceTree = "<group>"; };
 		7D1EA0661CB4F28500328C2D /* PersonDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDetailViewController.m; sourceTree = "<group>"; };
+		7D24EA751CC482DE004EB1E2 /* AFHttpClient+PersonAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PersonAttention.h"; sourceTree = "<group>"; };
+		7D24EA761CC482DE004EB1E2 /* AFHttpClient+PersonAttention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PersonAttention.m"; sourceTree = "<group>"; };
+		7D24EA801CC4D20D004EB1E2 /* manquan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manquan.png; sourceTree = "<group>"; };
+		7D24EA811CC4D20D004EB1E2 /* miao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miao.png; sourceTree = "<group>"; };
+		7D24EA821CC4D20D004EB1E2 /* wang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wang.png; sourceTree = "<group>"; };
+		7D24EA831CC4D20D004EB1E2 /* womanquan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womanquan.png; sourceTree = "<group>"; };
 		7D2F3F781CC0871E0059116A /* PersonAttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonAttentionViewController.h; sourceTree = "<group>"; };
 		7D2F3F791CC0871E0059116A /* PersonAttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonAttentionViewController.m; sourceTree = "<group>"; };
 		7D2F3F7B1CC092790059116A /* PersonalFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalFansViewController.h; sourceTree = "<group>"; };
@@ -658,6 +669,10 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				7D24EA801CC4D20D004EB1E2 /* manquan.png */,
+				7D24EA811CC4D20D004EB1E2 /* miao.png */,
+				7D24EA821CC4D20D004EB1E2 /* wang.png */,
+				7D24EA831CC4D20D004EB1E2 /* womanquan.png */,
 				7D1763A51CBF864C00579B4C /* dianzanhou.png */,
 				7D9D769B1CBCF011004E45DE /* searche.png */,
 				7D17143B1CBB99300047FA70 /* jiantou.png */,
@@ -1010,6 +1025,8 @@
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
+				7D24EA751CC482DE004EB1E2 /* AFHttpClient+PersonAttention.h */,
+				7D24EA761CC482DE004EB1E2 /* AFHttpClient+PersonAttention.m */,
 				7D1763A21CBF733800579B4C /* AFHttpClient+Rank.h */,
 				7D1763A31CBF733800579B4C /* AFHttpClient+Rank.m */,
 				7D825CC61CBC9CB700F4E216 /* AFHttpClient+Nearby.h */,
@@ -1589,6 +1606,7 @@
 				344F022B1C9FD6200076CE62 /* noDevice.png in Resources */,
 				57666FBC1C96979F00A52DBA /* tab_egg_press@3x.png in Resources */,
 				344F02731CA009DD0076CE62 /* 1.png in Resources */,
+				7D24EA871CC4D20D004EB1E2 /* womanquan.png in Resources */,
 				7D1714311CBB4C620047FA70 /* DouYiDou.png in Resources */,
 				7D825D2B1CBCA85A00F4E216 /* person_photograph.png.png in Resources */,
 				344F022D1C9FE02C0076CE62 /* new_egg_seting.png in Resources */,
@@ -1599,6 +1617,7 @@
 				344F02DB1CA3EA0B0076CE62 /* blank_list.png in Resources */,
 				57666FAF1C96947B00A52DBA /* Localizable.strings in Resources */,
 				3455BB531CAFD31200CA0D27 /* ceishi.jpg in Resources */,
+				7D24EA861CC4D20D004EB1E2 /* wang.png in Resources */,
 				344F02331C9FE0410076CE62 /* egg_offline.png in Resources */,
 				7D9D769C1CBCF011004E45DE /* searche.png in Resources */,
 				7D2F82011CAE25030097820B /* egg_eye.png in Resources */,
@@ -1616,6 +1635,7 @@
 				7D3DA5B91CA3D2C7005BD38B /* sego.png in Resources */,
 				344F02581C9FEBDE0076CE62 /* feed_off.png in Resources */,
 				7D825D3C1CBCA88D00F4E216 /* update.png in Resources */,
+				7D24EA851CC4D20D004EB1E2 /* miao.png in Resources */,
 				7D4A05B31CAA82090039DE5A /* addImage.png in Resources */,
 				7D825D281CBCA85A00F4E216 /* person_bean.png in Resources */,
 				7D825D2C1CBCA85A00F4E216 /* person_pw.png in Resources */,
@@ -1648,6 +1668,7 @@
 				344F02621C9FEBDE0076CE62 /* snap_off.png in Resources */,
 				7D825D151CBCA65000F4E216 /* VideoViewController.xib in Resources */,
 				7D825D111CBCA65000F4E216 /* HeaderViewCollection.xib in Resources */,
+				7D24EA841CC4D20D004EB1E2 /* manquan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1793,6 +1814,7 @@
 				7D30E8A01CA66C05004DE055 /* SCAssetExportSession.m in Sources */,
 				7D825CD71CBCA4C800F4E216 /* WasCallViewController.m in Sources */,
 				57666FC71C969B4800A52DBA /* AppUtil.m in Sources */,
+				7D24EA771CC482DE004EB1E2 /* AFHttpClient+PersonAttention.m in Sources */,
 				7D30E8BA1CA66C05004DE055 /* SCWeakSelectorTarget.m in Sources */,
 				7D03322B1CB5FA3900E923A9 /* PersonDataTableViewCell.m in Sources */,
 				57462DAE1CBB85D00071047E /* DetailCommentView.m in Sources */,
