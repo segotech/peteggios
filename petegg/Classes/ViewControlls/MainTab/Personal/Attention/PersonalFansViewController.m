@@ -97,7 +97,4 @@ static NSString * cellId = @"personAttentionCeliddd";
     return cell;
 }
 
-
-
-
 @end
