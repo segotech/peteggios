@@ -48,7 +48,6 @@
         [self.view addSubview:_textFieldes];
         
     }
-
     _securityButton = [[UIButton alloc]initWithFrame:CGRectMake(270 * W_Wide_Zoom, 118 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _securityButton.backgroundColor = GREEN_COLOR;
     [_securityButton setTitle:@"获取验证码" forState:UIControlStateNormal];
