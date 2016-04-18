@@ -14,6 +14,7 @@
 #import "FunnyCodeViewController.h"
 #import "BaseViewController.h"
 #import "PersonAttentionViewController.h"
+#import "SnapViewController.h"
 
 @interface PersonalViewController()
 
@@ -338,6 +339,9 @@
             }
             if (indexPath.row == 2) {
                 NSLog(@"抓拍");
+                SnapViewController * snapVC =[[SnapViewController alloc]initWithNibName:@"SnapViewController" bundle:nil];
+                [self.navigationController pushViewController:snapVC animated:YES];
+                
             
                 
             }
