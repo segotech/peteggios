@@ -50,7 +50,7 @@
 - (void)updateData
 {
     
-    [self.collection.header beginRefreshing];
+    [self.collection.mj_header beginRefreshing];
     
 }
 
@@ -58,18 +58,18 @@
 - (void)initRefreshView:(NSString *)stateNu
 {
      __typeof (&*self) __weak weakSelf = self;
-    self.collection.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.collection.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
          weakSelf.stateNum = stateNu;
         [weakSelf data:weakSelf.stateNum];
         
     }];
-    self.collection.footer.hidden = YES;
-    [self.collection.header beginRefreshing];
+    self.collection.mj_footer.hidden = YES;
+    [self.collection.mj_header beginRefreshing];
 }
 
 -(void)handleEndRefresh{
-    [self.collection.header endRefreshing];
-    [self.collection.footer endRefreshing];
+    [self.collection.mj_header endRefreshing];
+    [self.collection.mj_footer endRefreshing];
     
     
 }
