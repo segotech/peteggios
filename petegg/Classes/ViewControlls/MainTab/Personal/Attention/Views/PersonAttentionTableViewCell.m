@@ -32,9 +32,9 @@
         [self addSubview:_nameLabel];
         
         
-        _kindImage = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_nameLabel.frame), 14 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        _kindImage = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_nameLabel.frame), 14 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
         [_kindImage.layer setMasksToBounds:YES];
-       // _kindImage.image = [UIImage imageNamed:@"miao.png"];
+        _kindImage.image = [UIImage imageNamed:@"miao.png"];
         _kindImage.layer.cornerRadius = _kindImage.width/2;
         [self addSubview:_kindImage];
         
