@@ -72,6 +72,7 @@
 		34813FDE1CC4D7E0000DFE26 /* wang.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FDA1CC4D7E0000DFE26 /* wang.png */; };
 		34813FDF1CC4D7E0000DFE26 /* womanquan.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FDB1CC4D7E0000DFE26 /* womanquan.png */; };
 		34813FE21CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = 34813FE11CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m */; };
+		34813FE41CC4DE50000DFE26 /* showPs.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FE31CC4DE50000DFE26 /* showPs.png */; };
 		3481B3A61CBCB4A400A4344D /* selecting.png in Resources */ = {isa = PBXBuildFile; fileRef = 3481B3A51CBCB4A400A4344D /* selecting.png */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
@@ -340,6 +341,7 @@
 		34813FDB1CC4D7E0000DFE26 /* womanquan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womanquan.png; sourceTree = "<group>"; };
 		34813FE01CC4D80F000DFE26 /* AFHttpClient+PersonAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PersonAttention.h"; sourceTree = "<group>"; };
 		34813FE11CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PersonAttention.m"; sourceTree = "<group>"; };
+		34813FE31CC4DE50000DFE26 /* showPs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showPs.png; sourceTree = "<group>"; };
 		3481B3A51CBCB4A400A4344D /* selecting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selecting.png; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				34813FE31CC4DE50000DFE26 /* showPs.png */,
 				34144BE11CC48688007C4498 /* history_triangle.png */,
 				34813FD81CC4D7E0000DFE26 /* manquan.png */,
 				34813FD91CC4D7E0000DFE26 /* miao.png */,
@@ -1696,6 +1699,7 @@
 				7D2F82031CAE25030097820B /* egg_passtubiao.png in Resources */,
 				7D30E8CB1CA66C67004DE055 /* WechatShortVideoController.xib in Resources */,
 				34813FDF1CC4D7E0000DFE26 /* womanquan.png in Resources */,
+				34813FE41CC4DE50000DFE26 /* showPs.png in Resources */,
 				344F02C01CA2D8CE0076CE62 /* left_on.png in Resources */,
 				34813FDC1CC4D7E0000DFE26 /* manquan.png in Resources */,
 				7D825D0B1CBCA65000F4E216 /* FriendViewController.xib in Resources */,
