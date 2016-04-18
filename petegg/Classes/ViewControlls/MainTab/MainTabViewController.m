@@ -142,11 +142,12 @@
        PersonalViewController* vc = [[PersonalViewController alloc] init];
         // 明天写
         vc.messageCount = @"4";
+    
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabPersonal", nil)
                                       image:[[UIImage imageNamed:@"tab_personal_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_personal_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-
+            [self.tabBar showBadgeOnItemIndex:4];
         
        _navPersonalVC = [[UINavigationController alloc]initWithRootViewController:vc];
         
