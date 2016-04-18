@@ -10,4 +10,8 @@
 #import "BaseTableViewController.h"
 @interface PersonalViewController : BaseTableViewController
 
+// 信息量
+@property (nonatomic,strong)NSString * messageCount;
+
+
 @end

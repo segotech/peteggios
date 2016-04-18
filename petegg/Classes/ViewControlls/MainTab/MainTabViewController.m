@@ -19,6 +19,7 @@
 {
     
     dispatch_source_t timer3;
+  
     
     
 }
@@ -40,7 +41,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
+
     [self setupSubviews];
 }
 
@@ -134,18 +135,21 @@
 
 //个人中心
 - (UINavigationController *)navPersonalVC{
+    
+    [self isMessage];
     if (!_navPersonalVC) {
         
-        PersonalViewController* vc = [[PersonalViewController alloc] init];
+       PersonalViewController* vc = [[PersonalViewController alloc] init];
+        // 明天写
+        vc.messageCount = @"4";
+    
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabPersonal", nil)
                                       image:[[UIImage imageNamed:@"tab_personal_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_personal_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        // vc.tabBarItem.badgeValue =@"";
-        [self.tabBar showBadgeOnItemIndex:4];
+            [self.tabBar showBadgeOnItemIndex:4];
         
-        
-        _navPersonalVC = [[UINavigationController alloc]initWithRootViewController:vc];
+       _navPersonalVC = [[UINavigationController alloc]initWithRootViewController:vc];
         
     }
     
@@ -238,6 +242,38 @@
     int c=[[str substringWithRange:NSMakeRange(6, 2)] intValue];
     a= a*3600+b*60+c;
     return a;
+    
+}
+
+
+/**
+ *  消息提示
+ */
+
+- (void)isMessage
+{
+    
+    NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
+    [dicc setValue:@"MI16010000005868" forKey:@"mid"];
+    NSString * service =[NSString stringWithFormat:@"clientAction.do?common=trendTipCount&classes=appinterface&method=json"];
+    [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
+        json = [json objectForKey:@"jsondata"] ;
+        
+        if ([AppUtil isBlankString:json[@"content"]]) {
+           
+            
+        }else{
+            [self.tabBar showBadgeOnItemIndex:4];
+            
+        }
+        
+    } failure:^(NSError *error) {
+        
+       
+        
+    }];
+    
+
     
 }
 

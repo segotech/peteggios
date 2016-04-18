@@ -8,8 +8,6 @@
 
 #import "BaseCollectionViewController.h"
 
-static NSString *statsModel = @"0";
-static NSString *statsModelNoll = @"1";
 @interface BaseCollectionViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @end
@@ -49,8 +47,6 @@ static NSString *statsModelNoll = @"1";
 
 }
 
-
-
 - (void)updateData
 {
     
@@ -59,11 +55,11 @@ static NSString *statsModelNoll = @"1";
 }
 
 
-- (void)initRefreshView
+- (void)initRefreshView:(NSString *)stateNu
 {
      __typeof (&*self) __weak weakSelf = self;
     self.collection.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-         weakSelf.stateNum = statsModel;
+         weakSelf.stateNum = stateNu;
         [weakSelf data:weakSelf.stateNum];
         
     }];

@@ -66,6 +66,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     // collection
     self.collection.frame = CGRectMake(10, 110, SCREEN_WIDTH-20, SCREEN_HEIGHT-110);
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.collection.showsHorizontalScrollIndicator = NO;
     self.collection.showsVerticalScrollIndicator   = NO;
     [self.collection registerClass:[MyVideoCollectionViewCell class] forCellWithReuseIdentifier:@"imageId"];
@@ -150,7 +151,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [self.proAccuracy setProgress:0.0 animated:YES];
     [self.view addSubview:self.proAccuracy];
 
-    [self initRefreshView];
+    [self initRefreshView:@"0"];
     
 
 }
@@ -268,7 +269,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [super setupData];
     deleteOrUpdateArr =[[NSMutableArray alloc]init];
     statsIdentifi =@"0";
-   // [self  data:statsIdentifi];
+   
     
 }
 
@@ -337,9 +338,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)leftbuttonTouch
 {
+    [self initRefreshView:@"0"];
     [self.dataSource removeAllObjects];
     statsIdentifi = @"0";
-    [self data:statsIdentifi];
     _leftButton.selected = YES;
     _rightButton.selected = NO;
     [UIView animateWithDuration:0.3 animations:^{
@@ -351,8 +352,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)rightButtonTouch
 {
+   [self initRefreshView:@"1"];
     statsIdentifi = @"1";
-    [self data:statsIdentifi];
     [self.dataSource removeAllObjects];
     _leftButton.selected = NO;
     _rightButton.selected = YES;

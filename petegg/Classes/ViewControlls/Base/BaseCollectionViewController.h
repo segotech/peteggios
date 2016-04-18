@@ -18,7 +18,7 @@
 @property (nonatomic,strong)NSString * stateNum;
 
 
-- (void)initRefreshView;
+- (void)initRefreshView:(NSString *)stateNum;
 /**
  *  结束
  */

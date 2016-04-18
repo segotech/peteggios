@@ -37,11 +37,21 @@
     
     [self.dataSource addObjectsFromArray:arrName];
     NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_attention.png",@"person_bean.png",@"person_code.png",@"person_control.png",@"person_pw.png"];
-    
     [self.dataSourceImage addObjectsFromArray:arrImage];
+    
+    [self initData];
 
     
 }
+
+
+- (void)initData
+{
+    
+    
+    
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -140,9 +150,7 @@
 #pragma Marr ------ UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-
 {
-    
     return 4;
 }
 
@@ -251,7 +259,8 @@
             
             if (indexPath.row == 0) {
                 cell.moneyLabel.hidden = NO;
-                cell.moneyLabel.text = @"2";
+                cell.moneyLabel.text = self.messageCount;
+    
             }
            
             // Configure the cell.
