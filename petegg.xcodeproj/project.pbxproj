@@ -123,6 +123,10 @@
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
 		57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8361CA21E89005324DD /* RecommendViewController.m */; };
 		57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8391CA21EB1005324DD /* AttentionViewController.m */; };
+		7D0128E81CC5C8480009BF6B /* moveing.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D0128E71CC5C8480009BF6B /* moveing.png */; };
+		7D0128EB1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0128EA1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m */; };
+		7D0128EE1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0128ED1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m */; };
+		7D0128F11CC612E10009BF6B /* PersonAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0128F01CC612E10009BF6B /* PersonAttention.m */; };
 		7D03322B1CB5FA3900E923A9 /* PersonDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */; };
 		7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */; };
 		7D0E23B21CA2709700061973 /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */; };
@@ -200,6 +204,7 @@
 		7D3DA5BD1CA3EC5B005BD38B /* 点赞5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5BC1CA3EC5B005BD38B /* 点赞5.png */; };
 		7D3DA5BF1CA3EC67005BD38B /* MV.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5BE1CA3EC67005BD38B /* MV.png */; };
 		7D4A05B31CAA82090039DE5A /* addImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D4A05B21CAA82090039DE5A /* addImage.png */; };
+		7D5866A91CC635A700524608 /* WechatIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5866A81CC635A700524608 /* WechatIssueViewController.m */; };
 		7D81227F1CBDF5F200F4F823 /* WeekBangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D81227E1CBDF5F200F4F823 /* WeekBangViewController.m */; };
 		7D8122821CBDF60100F4F823 /* MonthBangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D8122811CBDF60100F4F823 /* MonthBangViewController.m */; };
 		7D8122861CBE2ED000F4F823 /* RankesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D8122851CBE2ED000F4F823 /* RankesTableViewCell.m */; };
@@ -435,6 +440,13 @@
 		57F2C8361CA21E89005324DD /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
 		57F2C8381CA21EB1005324DD /* AttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionViewController.h; sourceTree = "<group>"; };
 		57F2C8391CA21EB1005324DD /* AttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
+		7D0128E71CC5C8480009BF6B /* moveing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveing.png; sourceTree = "<group>"; };
+		7D0128E91CC5DA5D0009BF6B /* PersonNewAttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonNewAttentionViewController.h; sourceTree = "<group>"; };
+		7D0128EA1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonNewAttentionViewController.m; sourceTree = "<group>"; };
+		7D0128EC1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonNewAttentionTableViewCell.h; sourceTree = "<group>"; };
+		7D0128ED1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonNewAttentionTableViewCell.m; sourceTree = "<group>"; };
+		7D0128EF1CC612E10009BF6B /* PersonAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonAttention.h; sourceTree = "<group>"; };
+		7D0128F01CC612E10009BF6B /* PersonAttention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonAttention.m; sourceTree = "<group>"; };
 		7D0332291CB5FA3900E923A9 /* PersonDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonDataTableViewCell.h; path = ../PersonDataTableViewCell.h; sourceTree = "<group>"; };
 		7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonDataTableViewCell.m; path = ../PersonDataTableViewCell.m; sourceTree = "<group>"; };
 		7D03322C1CB6680F00E923A9 /* AFHttpClient+PersonDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PersonDate.h"; sourceTree = "<group>"; };
@@ -571,6 +583,8 @@
 		7D3DA5BC1CA3EC5B005BD38B /* 点赞5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点赞5.png"; sourceTree = "<group>"; };
 		7D3DA5BE1CA3EC67005BD38B /* MV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MV.png; sourceTree = "<group>"; };
 		7D4A05B21CAA82090039DE5A /* addImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addImage.png; sourceTree = "<group>"; };
+		7D5866A71CC635A700524608 /* WechatIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatIssueViewController.h; sourceTree = "<group>"; };
+		7D5866A81CC635A700524608 /* WechatIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WechatIssueViewController.m; sourceTree = "<group>"; };
 		7D81227D1CBDF5F200F4F823 /* WeekBangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekBangViewController.h; sourceTree = "<group>"; };
 		7D81227E1CBDF5F200F4F823 /* WeekBangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekBangViewController.m; sourceTree = "<group>"; };
 		7D8122801CBDF60100F4F823 /* MonthBangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthBangViewController.h; sourceTree = "<group>"; };
@@ -695,6 +709,7 @@
 			isa = PBXGroup;
 			children = (
 				7D24EA881CC4E74A004EB1E2 /* manquanquan.png */,
+				7D0128E71CC5C8480009BF6B /* moveing.png */,
 				7D24EA891CC4E74A004EB1E2 /* miaomiao.png */,
 				7D24EA8A1CC4E74A004EB1E2 /* wangwang.png */,
 				7D24EA8B1CC4E74A004EB1E2 /* womanquanquan.png */,
@@ -1016,6 +1031,8 @@
 			children = (
 				7D9D76981CBCCD24004E45DE /* NearbyModel.h */,
 				7D9D76991CBCCD24004E45DE /* NearbyModel.m */,
+				7D0128EF1CC612E10009BF6B /* PersonAttention.h */,
+				7D0128F01CC612E10009BF6B /* PersonAttention.m */,
 				7D1763A71CBF8DD100579B4C /* RankModel.h */,
 				7D1763A81CBF8DD100579B4C /* RankModel.m */,
 				7DFF05AA1CB7A45800CF713E /* PersonDetailModel.h */,
@@ -1234,6 +1251,8 @@
 				57F2C8391CA21EB1005324DD /* AttentionViewController.m */,
 				7D30E8521CA66622004DE055 /* IssuePinViewController.h */,
 				7D30E8531CA66622004DE055 /* IssuePinViewController.m */,
+				7D5866A71CC635A700524608 /* WechatIssueViewController.h */,
+				7D5866A81CC635A700524608 /* WechatIssueViewController.m */,
 				7D1EA05C1CB4ED6800328C2D /* InformationViewController.h */,
 				7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */,
 				7D1EA0651CB4F28500328C2D /* PersonDetailViewController.h */,
@@ -1329,6 +1348,8 @@
 			children = (
 				7D2F3F821CC096790059116A /* PersonAttentionTableViewCell.h */,
 				7D2F3F831CC096790059116A /* PersonAttentionTableViewCell.m */,
+				7D0128EC1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.h */,
+				7D0128ED1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1461,6 +1482,8 @@
 				7D2F3F7C1CC092790059116A /* PersonalFansViewController.m */,
 				7D2F3F7E1CC092930059116A /* PersonalAtnViewController.h */,
 				7D2F3F7F1CC092930059116A /* PersonalAtnViewController.m */,
+				7D0128E91CC5DA5D0009BF6B /* PersonNewAttentionViewController.h */,
+				7D0128EA1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m */,
 			);
 			path = Attention;
 			sourceTree = "<group>";
@@ -1607,6 +1630,7 @@
 				7D825CE61CBCA51B00F4E216 /* SettingViewController.xib in Resources */,
 				344F02631C9FEBDE0076CE62 /* snap_on.png in Resources */,
 				57666FC21C96979F00A52DBA /* tab_rank_press@3x.png in Resources */,
+				7D0128E81CC5C8480009BF6B /* moveing.png in Resources */,
 				344F02E41CA3EA0B0076CE62 /* while_good.png in Resources */,
 				57666FC11C96979F00A52DBA /* tab_rank_normal@3x.png in Resources */,
 				34144BD71CBFB1B3007C4498 /* MessageTableViewCell.xib in Resources */,
@@ -1787,8 +1811,10 @@
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
 				7DFF05A91CB7A26E00CF713E /* DetailModel.m in Sources */,
 				7D3A352E1CB3CAFA0037C616 /* ReDataViewController.m in Sources */,
+				7D0128EB1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m in Sources */,
 				34144BE51CC48C76007C4498 /* PhotoModel.m in Sources */,
 				7D1714421CBBA0AA0047FA70 /* DouYIDouViewController.m in Sources */,
+				7D5866A91CC635A700524608 /* WechatIssueViewController.m in Sources */,
 				578B9E641CA2D78A00CAC21D /* BaseModel.m in Sources */,
 				578B9E611CA29E5D00CAC21D /* AFHttpClient+Square.m in Sources */,
 				7D30E8B71CA66C05004DE055 /* SCSwipeableFilterView.m in Sources */,
@@ -1821,6 +1847,7 @@
 				7D30E8B01CA66C05004DE055 /* SCRecorderFocusTargetView.m in Sources */,
 				570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */,
 				578B9E671CA2D8CB00CAC21D /* SquareModel.m in Sources */,
+				7D0128EE1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m in Sources */,
 				34144BCC1CBFB156007C4498 /* MessageModel.m in Sources */,
 				7D30E8B11CA66C05004DE055 /* SCRecorderTools.m in Sources */,
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
@@ -1855,6 +1882,7 @@
 				57666FDB1C96BE6F00A52DBA /* UIAlertView+Blocks.m in Sources */,
 				7D30E89C1CA66C05004DE055 /* CIImageRendererUtils.m in Sources */,
 				7D825CC81CBC9CB700F4E216 /* AFHttpClient+Nearby.m in Sources */,
+				7D0128F11CC612E10009BF6B /* PersonAttention.m in Sources */,
 				7D30E8B61CA66C05004DE055 /* SCSaveToCameraRollOperation.m in Sources */,
 				7D30E8A31CA66C05004DE055 /* SCContext.m in Sources */,
 				7D825CCE1CBCA44600F4E216 /* AFNetWorking.m in Sources */,

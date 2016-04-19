@@ -15,6 +15,7 @@
 #import "PersonDetailModel.h"
 #import "NearbyModel.h"
 #import "RankModel.h"
+#import "PersonAttention.h"
 
 #define BASE_URL    @"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"
 

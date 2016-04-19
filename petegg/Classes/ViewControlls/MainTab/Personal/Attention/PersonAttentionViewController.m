@@ -9,6 +9,8 @@
 #import "PersonAttentionViewController.h"
 #import "PersonalAtnViewController.h"
 #import "PersonalFansViewController.h"
+#import "PersonNewAttentionViewController.h"
+
 
 @interface PersonAttentionViewController ()< UIScrollViewDelegate, UIPageViewControllerDelegate,UIPageViewControllerDataSource>//UIPageViewControllerDataSource
 @property(nonatomic,strong)UIButton * leftButton;
@@ -20,6 +22,7 @@
 @property (nonatomic, strong)NSArray *viewControllers;
 @property (nonatomic, strong)PersonalAtnViewController * atnVc;
 @property (nonatomic, strong)PersonalFansViewController * fansVc;
+@property (nonatomic, strong)UIButton * headButton;
 
 @end
 
@@ -68,8 +71,26 @@
     
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                                                                        options:nil];
-    _pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
+                           
+                                                    options:nil];
+    //64
+    _pageViewController.view.frame = CGRectMake(0, 94, self.view.frame.size.width, self.view.frame.size.height - 94);
+    
+    _headButton =[[UIButton alloc]initWithFrame:CGRectMake(117.5 * W_Wide_Zoom, 7 * W_Hight_Zoom, 140 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _headButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    [_headButton setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];
+    _headButton.backgroundColor = [UIColor blackColor];
+     [_headButton setTitle:@"新关注" forState:UIControlStateNormal];
+    _headButton.titleLabel.font =[UIFont systemFontOfSize:13];
+    _headButton.layer.cornerRadius = 5;
+    [_pageViewController.view addSubview:_headButton];
+    UILabel * hongdianLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 12,3, 3)];
+    hongdianLabel.backgroundColor = [UIColor redColor];
+    [_headButton addSubview:hongdianLabel];
+    [_headButton addTarget:self action:@selector(newGuanzhu) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
@@ -146,7 +167,12 @@
     }
 }
 
+-(void)newGuanzhu{
+    PersonNewAttentionViewController * newVc = [[PersonNewAttentionViewController alloc]init];
+    [self.navigationController pushViewController:newVc animated:YES];
 
+
+}
 
 
 @end
