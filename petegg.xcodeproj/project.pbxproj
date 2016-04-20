@@ -69,6 +69,12 @@
 		3455BB531CAFD31200CA0D27 /* ceishi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3455BB521CAFD31200CA0D27 /* ceishi.jpg */; };
 		34813FE21CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = 34813FE11CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m */; };
 		34813FE41CC4DE50000DFE26 /* showPs.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FE31CC4DE50000DFE26 /* showPs.png */; };
+		34813FE81CC5D4EE000DFE26 /* CompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34813FE61CC5D4EE000DFE26 /* CompletionViewController.m */; };
+		34813FE91CC5D4EE000DFE26 /* CompletionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34813FE71CC5D4EE000DFE26 /* CompletionViewController.xib */; };
+		34813FEE1CC5E039000DFE26 /* manAnimal.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FEA1CC5E039000DFE26 /* manAnimal.png */; };
+		34813FEF1CC5E039000DFE26 /* manSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FEB1CC5E039000DFE26 /* manSelect.png */; };
+		34813FF01CC5E039000DFE26 /* wanmenSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FEC1CC5E039000DFE26 /* wanmenSelect.png */; };
+		34813FF11CC5E039000DFE26 /* womenAnimal.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FED1CC5E039000DFE26 /* womenAnimal.png */; };
 		3481B3A61CBCB4A400A4344D /* selecting.png in Resources */ = {isa = PBXBuildFile; fileRef = 3481B3A51CBCB4A400A4344D /* selecting.png */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
@@ -338,6 +344,13 @@
 		34813FE01CC4D80F000DFE26 /* AFHttpClient+PersonAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PersonAttention.h"; sourceTree = "<group>"; };
 		34813FE11CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PersonAttention.m"; sourceTree = "<group>"; };
 		34813FE31CC4DE50000DFE26 /* showPs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showPs.png; sourceTree = "<group>"; };
+		34813FE51CC5D4EE000DFE26 /* CompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletionViewController.h; sourceTree = "<group>"; };
+		34813FE61CC5D4EE000DFE26 /* CompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletionViewController.m; sourceTree = "<group>"; };
+		34813FE71CC5D4EE000DFE26 /* CompletionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompletionViewController.xib; sourceTree = "<group>"; };
+		34813FEA1CC5E039000DFE26 /* manAnimal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manAnimal.png; sourceTree = "<group>"; };
+		34813FEB1CC5E039000DFE26 /* manSelect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manSelect.png; sourceTree = "<group>"; };
+		34813FEC1CC5E039000DFE26 /* wanmenSelect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wanmenSelect.png; sourceTree = "<group>"; };
+		34813FED1CC5E039000DFE26 /* womenAnimal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womenAnimal.png; sourceTree = "<group>"; };
 		3481B3A51CBCB4A400A4344D /* selecting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selecting.png; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -694,6 +707,10 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				34813FEA1CC5E039000DFE26 /* manAnimal.png */,
+				34813FEB1CC5E039000DFE26 /* manSelect.png */,
+				34813FEC1CC5E039000DFE26 /* wanmenSelect.png */,
+				34813FED1CC5E039000DFE26 /* womenAnimal.png */,
 				7D24EA881CC4E74A004EB1E2 /* manquanquan.png */,
 				7D24EA891CC4E74A004EB1E2 /* miaomiao.png */,
 				7D24EA8A1CC4E74A004EB1E2 /* wangwang.png */,
@@ -1176,6 +1193,9 @@
 				7D3A352A1CB3CAE00037C616 /* RegiestViewController.m */,
 				7D3A352C1CB3CAFA0037C616 /* ReDataViewController.h */,
 				7D3A352D1CB3CAFA0037C616 /* ReDataViewController.m */,
+				34813FE51CC5D4EE000DFE26 /* CompletionViewController.h */,
+				34813FE61CC5D4EE000DFE26 /* CompletionViewController.m */,
+				34813FE71CC5D4EE000DFE26 /* CompletionViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1604,6 +1624,7 @@
 			files = (
 				7D24EA8F1CC4E74A004EB1E2 /* womanquanquan.png in Resources */,
 				57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */,
+				34813FF11CC5E039000DFE26 /* womenAnimal.png in Resources */,
 				7D825CE61CBCA51B00F4E216 /* SettingViewController.xib in Resources */,
 				344F02631C9FEBDE0076CE62 /* snap_on.png in Resources */,
 				57666FC21C96979F00A52DBA /* tab_rank_press@3x.png in Resources */,
@@ -1614,6 +1635,7 @@
 				7D825CD81CBCA4C800F4E216 /* WasCallViewController.xib in Resources */,
 				344F025B1C9FEBDE0076CE62 /* juankfood_on.png in Resources */,
 				7D825D261CBCA85A00F4E216 /* person_attention.png.png in Resources */,
+				34813FEE1CC5E039000DFE26 /* manAnimal.png in Resources */,
 				344F02C31CA2D9720076CE62 /* right_off.png in Resources */,
 				7D825D391CBCA88D00F4E216 /* gou-xuan.png in Resources */,
 				57666FC01C96979F00A52DBA /* tab_personal_press@3x.png in Resources */,
@@ -1630,6 +1652,7 @@
 				57666F5F1C96619700A52DBA /* LaunchScreen.storyboard in Resources */,
 				344F02C41CA2D9720076CE62 /* right_on.png in Resources */,
 				344F02CE1CA39B9B0076CE62 /* new_3point.png in Resources */,
+				34813FEF1CC5E039000DFE26 /* manSelect.png in Resources */,
 				34144BE01CC485FF007C4498 /* time.png in Resources */,
 				57462DB01CBB95A20071047E /* button.xcassets in Resources */,
 				7D1714331CBB4C620047FA70 /* seacherkuang.png in Resources */,
@@ -1669,6 +1692,7 @@
 				344F02641C9FEBDE0076CE62 /* trun_off.png in Resources */,
 				7D17143C1CBB99300047FA70 /* jiantou.png in Resources */,
 				7D2F81FA1CAE24CC0097820B /* egg_login.jpg in Resources */,
+				34813FF01CC5E039000DFE26 /* wanmenSelect.png in Resources */,
 				344F02CB1CA2DA2C0076CE62 /* before_off.png in Resources */,
 				344F025A1C9FEBDE0076CE62 /* juankfood_off.png in Resources */,
 				344F02341C9FE0410076CE62 /* egg_online.png in Resources */,
@@ -1689,6 +1713,7 @@
 				7D825D381CBCA88D00F4E216 /* deleteOld.png in Resources */,
 				57666FBD1C96979F00A52DBA /* tab_near_normal@3x.png in Resources */,
 				57666F5C1C96619700A52DBA /* Assets.xcassets in Resources */,
+				34813FE91CC5D4EE000DFE26 /* CompletionViewController.xib in Resources */,
 				57666F5A1C96619700A52DBA /* Main.storyboard in Resources */,
 				34144BED1CC4BD01007C4498 /* LargeViewController.xib in Resources */,
 				7D825D2A1CBCA85A00F4E216 /* person_control.png in Resources */,
@@ -1782,6 +1807,7 @@
 				7D1763A41CBF733800579B4C /* AFHttpClient+Rank.m in Sources */,
 				7D30E8CA1CA66C67004DE055 /* WechatShortVideoController.m in Sources */,
 				7D81227F1CBDF5F200F4F823 /* WeekBangViewController.m in Sources */,
+				34813FE81CC5D4EE000DFE26 /* CompletionViewController.m in Sources */,
 				34144BD61CBFB1B3007C4498 /* MessageTableViewCell.m in Sources */,
 				57462DA61CBA46270071047E /* CommentModel.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,

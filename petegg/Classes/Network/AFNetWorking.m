@@ -20,6 +20,7 @@
     manger.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",nil];
     
     NSString *url = [NSString stringWithFormat:@"%@%@",[AppUtil getServerSego3],api];
+    
 
     [manger POST:url parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (success) {

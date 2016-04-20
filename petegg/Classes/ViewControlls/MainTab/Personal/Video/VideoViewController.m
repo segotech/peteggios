@@ -151,7 +151,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [self.proAccuracy setProgress:0.0 animated:YES];
     [self.view addSubview:self.proAccuracy];
 
-    [self initRefreshView:@"0"];
+    [self initRefreshView:@"1"];
     
 
 }
@@ -186,10 +186,10 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
 }
    
-    if ([statsIdentifi isEqualToString:@"0"]) {
+    if ([statsIdentifi isEqualToString:@"1"]) {
         [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
         
-    }else if ([statsIdentifi isEqualToString:@"1"]){
+    }else if ([statsIdentifi isEqualToString:@"0"]){
         [_deleteBtn setImage:[UIImage imageNamed:@"update.png"] forState:UIControlStateNormal];
         
     }
@@ -227,6 +227,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
        
        if([[dic1 objectForKey:@"retCode"] isEqualToString:@"0000"]){
         // 提取视频编号
+           [self showSuccessHudWithHint:[dic1 objectForKey:@"retDesc"]];
         NSString  * trdID = dic1[@"content"];
            // 检查视频上传状态
            timer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(checkVideoStats:) userInfo:trdID repeats:YES];
@@ -236,6 +237,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
        {
            
         // 上传命令 失败
+           NSString * str =[dic1 objectForKey:@"retDesc"];
+        [self showSuccessHudWithHint:str];
+
            
        }
        
@@ -268,7 +272,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 {
     [super setupData];
     deleteOrUpdateArr =[[NSMutableArray alloc]init];
-    statsIdentifi =@"0";
+    statsIdentifi =@"1";
    
     
 }
@@ -306,25 +310,49 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)checkVideoStats:(NSTimer *)tid
 {
-
+    
     self.proAccuracy.progress= self.proAccuracy.progress+0.1;
     NSString * service =[NSString stringWithFormat:@"clientAction.do?common=queryTask&classes=appinterface&method=json&tid=%@",tid.userInfo];
     [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
         json = [json objectForKey:@"jsondata"] ;
         
-        if ([[json objectForKey:@"content"] isEqualToString:@"0"]) {
-            // 正在上传
+        
+        NSString *date = [AppUtil getNowTime];
+        int dateOver = [self spare:date];
+        
+        NSUserDefaults *standDefus = [NSUserDefaults standardUserDefaults];
+        NSString *dateEnd = [standDefus objectForKey:@"endTime"];
+        int dateEndOver = [self spare:dateEnd];
+        // dateEndOver = (dateOver -dateEndOver)/60 + (dateOver -dateEndOver)%60;
+        dateEndOver = dateOver - dateEndOver;
+        
+        if(dateEndOver >300)
+        {
+            [self showSuccessHudWithHint:@"超时"];
             
-            NSLog(@"上传中");
-            
+        }else{
+
+        
+
+            if ([[json objectForKey:@"content"] isEqualToString:@"0"]) {
+                // 正在上传
+                NSLog(@"上传中")
+            }
+            if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
+                 NSLog(@"上传成功");
+                [self showSuccessHudWithHint:@"上传成功"];
+                
+                [timer setFireDate:[NSDate distantFuture]];
+                
+            }
+            if ([[json objectForKey:@"content"] isEqualToString:@"2"]) {
+                [self showSuccessHudWithHint:@"上传失败"];
+                [timer setFireDate:[NSDate distantFuture]];
+                
+            }
+        
         }
-        if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
-            // 正在上传
-            NSLog(@"上传成功");
-            [timer setFireDate:[NSDate distantFuture]];
-            
-        }
-    } failure:^(NSError *error) {
+           } failure:^(NSError *error) {
         
     }];
     
@@ -338,9 +366,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)leftbuttonTouch
 {
-    [self initRefreshView:@"0"];
+    [self initRefreshView:@"1"];
     [self.dataSource removeAllObjects];
-    statsIdentifi = @"0";
+    statsIdentifi = @"1";
     _leftButton.selected = YES;
     _rightButton.selected = NO;
     [UIView animateWithDuration:0.3 animations:^{
@@ -352,8 +380,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)rightButtonTouch
 {
-   [self initRefreshView:@"1"];
-    statsIdentifi = @"1";
+   [self initRefreshView:@"0"];
+    statsIdentifi = @"0";
     [self.dataSource removeAllObjects];
     _leftButton.selected = NO;
     _rightButton.selected = YES;
@@ -516,6 +544,16 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
         // 暂时不处理事情
     }
+    
+}
+
+- (int )spare:(NSString *)str
+{
+    int a =[[str substringWithRange:NSMakeRange(0, 2)] intValue];
+    int b =[[str substringWithRange:NSMakeRange(3, 2)] intValue];
+    int c=[[str substringWithRange:NSMakeRange(6, 2)] intValue];
+    a= a*3600+b*60+c;
+    return a;
     
 }
 
