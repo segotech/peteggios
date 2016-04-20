@@ -28,7 +28,23 @@
 }
     
 
-
+-(void)focusTipWithMid:(NSString *)mid complete:(void (^)(BaseModel *))completeBlock{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"common"] = @"focusTip";
+    params[@"mid"] = mid;
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        if (model){
+            model.list = [PersonAttention arrayOfModelsFromDictionaries:model.list];
+        }
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+    
+    
+    
+    
+}
 
 
 

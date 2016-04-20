@@ -1,65 +1,49 @@
 //
-//  PersonalFansViewController.m
+//  PersonNewAttentionViewController.m
 //  petegg
 //
-//  Created by czx on 16/4/15.
+//  Created by czx on 16/4/19.
 //  Copyright © 2016年 sego. All rights reserved.
 //
 
-#import "PersonalFansViewController.h"
-#import "PersonAttentionTableViewCell.h"
+#import "PersonNewAttentionViewController.h"
+#import "PersonNewAttentionTableViewCell.h"
 #import "AFHttpClient+PersonAttention.h"
-#import "NearbyModel.h"
+#import "PersonAttention.h"
+#import "PersonAttentionTableViewCell.h"
+static NSString * cellId = @"personNewAttentionTableViewCellidddd";
 
-static NSString * cellId = @"personAttentionCeliddd";
-@interface PersonalFansViewController ()
+@interface PersonNewAttentionViewController ()
 
 @end
 
-@implementation PersonalFansViewController
+@implementation PersonNewAttentionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self setNavTitle:@"新关注"];
 }
-
 -(void)setupView{
     [super setupView];
-    self.tableView.frame = CGRectMake(0, 40, self.view.width, 563 * W_Hight_Zoom);
-    //  [self.tableView registerClass:[PersonDataTableViewCell class] forCellReuseIdentifier:cellId];
+    self.tableView.frame = CGRectMake(0, 0, self.view.width, 667 * W_Hight_Zoom);
     [self.tableView registerClass:[PersonAttentionTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-      [self initRefreshView];
-
+    // [self initRefreshView];
+    self.tableView.mj_footer.hidden = YES;
 }
+
 
 -(void)setupData{
     [super setupData];
-
-}
-
--(void)loadDataSourceWithPage:(int)page{
-    [[AFHttpClient sharedAFHttpClient]queryFriendWithMid:[AccountManager sharedAccountManager].loginModel.mid ftype:@"fs" pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
-        if (page == START_PAGE_INDEX) {
-            [self.dataSource removeAllObjects];
-            [self.dataSource addObjectsFromArray:model.list];
-        } else {
-            [self.dataSource addObjectsFromArray:model.list];
-        }
-        
-        if (model.list.count < REQUEST_PAGE_SIZE){
-            self.tableView.mj_footer.hidden = YES;
-        }else{
-            self.tableView.mj_footer.hidden = NO;
-        }
-        
+    [[AFHttpClient sharedAFHttpClient]focusTipWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
+        [self.dataSource addObjectsFromArray:model.list];
         [self.tableView reloadData];
-        [self handleEndRefresh];
+
     }];
+    
+    
+    
 }
-
-
 #pragma mark - TableView的代理函数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -74,21 +58,20 @@ static NSString * cellId = @"personAttentionCeliddd";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60 * W_Hight_Zoom;
+    return 60*W_Hight_Zoom;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NearbyModel * model = self.dataSource[indexPath.row];
+    PersonAttention * model = self.dataSource[indexPath.row];
     PersonAttentionTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     cell.nameLabel.text = model.nickname;
-    
     NSString * imageStr = [NSString stringWithFormat:@"%@",model.headportrait];
     NSURL * imageUrl = [NSURL URLWithString:imageStr];
-    [cell.headImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
-    cell.sinaglLabel.text = model.signature;
+
     
+    [cell.headImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     if ([model.pet_race isEqualToString:@"汪"]) {
         cell.kindImage.image = [UIImage imageNamed:@"wangwang.png"];
     }else{
@@ -99,17 +82,13 @@ static NSString * cellId = @"personAttentionCeliddd";
     }else{
         cell.sexImage.image = [UIImage imageNamed:@"womanquanquan.png"];
     }
-    
     NSString * age = [NSString stringWithFormat:@"%@岁",model.pet_age];
     [cell.ageButton setTitle:age forState:UIControlStateNormal];
     
-    
-    
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    tableView.separatorStyle = UITableViewCellSelectionStyleNone;
-    
     return cell;
 }
+
+
+
 
 @end

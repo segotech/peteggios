@@ -9,6 +9,8 @@
 #import "PersonAttentionViewController.h"
 #import "PersonalAtnViewController.h"
 #import "PersonalFansViewController.h"
+#import "PersonNewAttentionViewController.h"
+
 
 @interface PersonAttentionViewController ()< UIScrollViewDelegate, UIPageViewControllerDelegate,UIPageViewControllerDataSource>//UIPageViewControllerDataSource
 @property(nonatomic,strong)UIButton * leftButton;
@@ -20,6 +22,7 @@
 @property (nonatomic, strong)NSArray *viewControllers;
 @property (nonatomic, strong)PersonalAtnViewController * atnVc;
 @property (nonatomic, strong)PersonalFansViewController * fansVc;
+@property (nonatomic, strong)UIButton * headButton;
 
 @end
 
@@ -35,7 +38,7 @@
     UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, self.view.width, 40 * W_Hight_Zoom)];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
-    _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom , 5 * W_Hight_Zoom, 40 * W_Wide_Zoom , 30 * W_Hight_Zoom )];
+    _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(73.75 * W_Wide_Zoom , 5 * W_Hight_Zoom, 40 * W_Wide_Zoom , 30 * W_Hight_Zoom )];
     [_leftButton setTitle:@"关注" forState:UIControlStateNormal];
     _leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -45,11 +48,11 @@
     [_leftButton addTarget:self action:@selector(leftbuttonTouch) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:_leftButton];
     
-    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(138 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom)];
+    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(81.75 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom)];
     _lineLabel.backgroundColor = GREEN_COLOR;
     [topView addSubview:_lineLabel];
     
-    _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(200 * W_Wide_Zoom, 5 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(261.25 * W_Wide_Zoom, 5 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     [_rightButton setTitle:@"粉丝" forState:UIControlStateNormal];
     _rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -68,8 +71,26 @@
     
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                                                                        options:nil];
-    _pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
+                           
+                                                    options:nil];
+    //64
+    _pageViewController.view.frame = CGRectMake(0, 94, self.view.frame.size.width, self.view.frame.size.height - 94);
+    
+    _headButton =[[UIButton alloc]initWithFrame:CGRectMake(117.5 * W_Wide_Zoom, 7 * W_Hight_Zoom, 140 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _headButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    [_headButton setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];
+    _headButton.backgroundColor = [UIColor blackColor];
+     [_headButton setTitle:@"新关注" forState:UIControlStateNormal];
+    _headButton.titleLabel.font =[UIFont systemFontOfSize:13];
+    _headButton.layer.cornerRadius = 5;
+    [_pageViewController.view addSubview:_headButton];
+    UILabel * hongdianLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 12,3, 3)];
+    hongdianLabel.backgroundColor = [UIColor redColor];
+    [_headButton addSubview:hongdianLabel];
+    [_headButton addTarget:self action:@selector(newGuanzhu) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
@@ -89,7 +110,7 @@
     _leftButton.selected = YES;
     _rightButton.selected = NO;
     [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(138 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
+        _lineLabel.frame = CGRectMake(81.75 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
     }];
     
     [self.pageViewController setViewControllers:@[self.viewControllers[0]] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
@@ -99,7 +120,7 @@
     _leftButton.selected = NO;
     _rightButton.selected = YES;
     [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(208 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
+        _lineLabel.frame = CGRectMake(269.25 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
         
     }];
     
@@ -146,7 +167,12 @@
     }
 }
 
+-(void)newGuanzhu{
+    PersonNewAttentionViewController * newVc = [[PersonNewAttentionViewController alloc]init];
+    [self.navigationController pushViewController:newVc animated:YES];
 
+
+}
 
 
 @end

@@ -119,7 +119,7 @@ static NSString * cellId = @"personDetailCellId";
     _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 100, self.view.width, 120 * W_Hight_Zoom)];
     _topView.backgroundColor = [UIColor whiteColor];
     
-    self.tableView.frame = CGRectMake(0, NAV_BAR_HEIGHT+STATUS_BAR_HEIGHT, self.view.width, self.view.height- NAV_BAR_HEIGHT- STATUS_BAR_HEIGHT);
+    self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height);
     [self.tableView registerClass:[PersonDataTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.tableView.tableHeaderView = _topView;
@@ -148,9 +148,9 @@ static NSString * cellId = @"personDetailCellId";
         }
         
         if (model.list.count < REQUEST_PAGE_SIZE){
-            self.tableView.footer.hidden = YES;
+            self.tableView.mj_footer.hidden = YES;
         }else{
-            self.tableView.footer.hidden = NO;
+            self.tableView.mj_footer.hidden = NO;
         }
         
         [self.tableView reloadData];

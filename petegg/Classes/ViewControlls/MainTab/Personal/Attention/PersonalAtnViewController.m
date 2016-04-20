@@ -89,9 +89,20 @@ static NSString * cellId = @"personAttentionCeliddd";
     NSURL * imageUrl = [NSURL URLWithString:imageStr];
     [cell.headImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     cell.sinaglLabel.text = model.signature;
-        
+    if ([model.pet_race isEqualToString:@"汪"]) {
+        cell.kindImage.image = [UIImage imageNamed:@"wangwang.png"];
+    }else{
+        cell.kindImage.image = [UIImage imageNamed:@"miaomiao.png"];
+    }
+    if ([model.pet_sex isEqualToString:@"公"]) {
+        cell.sexImage.image = [UIImage imageNamed:@"manquanquan.png"];
+    }else{
+        cell.sexImage.image = [UIImage imageNamed:@"womanquanquan.png"];
+    }
+
     
-    
+    NSString * age = [NSString stringWithFormat:@"%@岁",model.pet_age];
+    [cell.ageButton setTitle:age forState:UIControlStateNormal];
     
     
     

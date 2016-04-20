@@ -17,4 +17,8 @@
                       complete:(void(^)(BaseModel *model))completeBlock;
 
 
+
+-(void)focusTipWithMid:(NSString *)mid
+                   complete:(void(^)(BaseModel *model))completeBlock;
+
 @end

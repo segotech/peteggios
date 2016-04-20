@@ -32,11 +32,30 @@
         [self addSubview:_nameLabel];
         
         
-        _kindImage = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_nameLabel.frame), 14 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+        _kindImage = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_nameLabel.frame), 12 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
         [_kindImage.layer setMasksToBounds:YES];
-        _kindImage.image = [UIImage imageNamed:@"miao.png"];
+        _kindImage.image = [UIImage imageNamed:@"miaomiao.png"];
         _kindImage.layer.cornerRadius = _kindImage.width/2;
         [self addSubview:_kindImage];
+        
+        _sexImage = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_kindImage.frame) + 5, 12 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+        [_sexImage.layer setMasksToBounds:YES];
+        _sexImage.layer.cornerRadius = _sexImage.width/2;
+        _sexImage.image = [UIImage imageNamed:@"womanquanquan.png"];
+        [self addSubview:_sexImage];
+        
+        _ageButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_sexImage.frame) + 5, 13 * W_Hight_Zoom, 35 * W_Wide_Zoom, 18 * W_Hight_Zoom)];
+        _ageButton.layer.cornerRadius = 10;
+        _ageButton.layer.borderWidth = 1;
+        _ageButton.layer.borderColor = GREEN_COLOR.CGColor;
+        [_ageButton setTitle:@"1岁" forState:UIControlStateNormal];
+        [_ageButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+        _ageButton.titleLabel.font = [UIFont systemFontOfSize:12];
+        [self addSubview:_ageButton];
+        
+        
+        
+        
         
         
         
