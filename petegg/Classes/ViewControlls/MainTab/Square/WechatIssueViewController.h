@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface WechatIssueViewController : BaseViewController
+@property (nonatomic,strong)NSString * str;
+@property (nonatomic,strong)NSURL * urlstr;
 
 @end

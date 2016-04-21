@@ -7,6 +7,8 @@
 //
 
 #import "IssuePinViewController.h"
+#import "MWPhotoBrowser.h"
+#import "AFHttpClient+Issue.h"
 
 @interface IssuePinViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic,strong)UITextView * topTextView;
@@ -17,11 +19,18 @@
 @property(nonatomic,strong)UIImagePickerController * imagePicker;
 @property (nonatomic,strong)UIButton * imageButtones;
 
+
+
 @property(nonatomic,strong)UIView * bigView;
 
 @end
 
 @implementation IssuePinViewController
+
+{
+
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +38,7 @@
     _imagePicker =[[UIImagePickerController alloc]init];
     _imagePicker.delegate= self;
     [self setTitle:@"发布"];
-   
+    [self showBarButton:NAV_RIGHT title:@"发布" fontColor:[UIColor blackColor]];
 }
 -(void)setupView{
     [super setupData];
@@ -45,11 +54,49 @@
 
 -(void)setupData{
     [super setupData];
+    
+   
+    
+    
+    
+}
+-(void)doRightButtonTouch{
+    [_imageArray removeLastObject];
+    NSMutableString * stingArr =[[NSMutableString alloc]init];
+    NSDateFormatter * formater =[[NSDateFormatter alloc]init];
+    NSMutableArray * dataBaseArr =[[NSMutableArray alloc]init];
+    for (int i = 0 ; i < _imageArray.count; i ++) {
+        NSData * dataImage = UIImageJPEGRepresentation(_imageArray[i], 0.5);
+        NSString * dateBase64 =[dataImage base64EncodedStringWithOptions:0];
+        [dataBaseArr addObject:dateBase64];
+    }
+    [formater setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
+    [formater stringFromDate:[NSDate date]];
+    
+    NSString *picname1 = [NSString stringWithFormat:@"%@.jpg",[formater stringFromDate:[NSDate date]]];
+    [stingArr appendString:@"["];
+    for (int i = 0; i < _imageArray.count; i++) {
+        NSString * picstr =[NSString stringWithFormat:@"{\"%@\":\"%@\",\"%@\":\"%@\"}",@"name",picname1,@"content",dataBaseArr[i]];
+        [stingArr appendString:picstr];
+        
+        if (i != _imageArray.count-1) {
+            [stingArr appendString:@","];
+        }
+    }
+    [stingArr appendString:@"]"];
 
+    [self showHudInView:self.view hint:@"正在发布..."];
+    [[AFHttpClient sharedAFHttpClient]addSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid content:_topTextView.text type:@"p" resources:stingArr complete:^(BaseModel *model) {
+      //  NSLog(@"hahaaha:%@",model.retCode);
+        [self hideHud];
+        if ([model.retCode isEqualToString:@"0000"]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+    }];
 }
 
 -(void)addImageS{
-    
     _bigView = [[UIView alloc]initWithFrame:CGRectMake(0, 220, 375, 200)];
     _bigView.backgroundColor = self.view.backgroundColor;
     [self.view addSubview:_bigView];
@@ -68,7 +115,8 @@
     NSInteger i = _imageArray.count;
     if (i <= 1) {
         NSLog(@"如果删除完了，弹出来的是可以选择视频的界面");
-        [self openDownBigView];
+      //  [self openDownBigView];
+        [self openDownImageView];
     }else{
     if (sender.tag == i - 1 ) {
         if (_imageArray.count > 4) {
@@ -79,11 +127,12 @@
     }else{
         UIAlertController *  alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         
-          [alert addAction:[UIAlertAction actionWithTitle:@"预览" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-              
-              NSLog(@"预览");
-          }]];
-        
+//          [alert addAction:[UIAlertAction actionWithTitle:@"预览" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//              
+//              NSLog(@"预览");
+//
+//              
+//          }]];
         [alert addAction:[UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [sender removeFromSuperview];
             [_imageArray removeObjectAtIndex:sender.tag];
@@ -117,8 +166,6 @@
 
 -(void)openDownBigView{
     _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0, 667, 375, 160)];
-        
-
 }
 
 
@@ -152,8 +199,15 @@
         [_downWithView addSubview:downButtones];
         downButtones.tag = i;
         [downButtones addTarget:self action:@selector(imageButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
-        
     }
+    UIButton * quxiaoButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 375, 40)];
+    [quxiaoButton setTitle:@"取消" forState:UIControlStateNormal];
+    [quxiaoButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    quxiaoButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_littleDownView addSubview:quxiaoButton];
+    [quxiaoButton addTarget:self action:@selector(hideButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     
 }
 -(void)hideButton:(UIButton *)sender{
@@ -223,7 +277,5 @@
     [self addImageS];
     
 }
-
-
 
 @end

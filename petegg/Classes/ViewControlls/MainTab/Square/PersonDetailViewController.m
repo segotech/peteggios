@@ -41,8 +41,6 @@ static NSString * cellId = @"personDetailCellId";
 -(void)initUseTopView{
     
     PersonDetailModel * model = self.dataSource[0];
-    
-    
     _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 10 * W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
     [_headImage.layer setMasksToBounds:YES];
     _headImage.layer.cornerRadius = _headImage.width/2;

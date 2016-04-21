@@ -194,7 +194,7 @@ static NSString * cellId = @"recommeCellId";
     
     SquareModel * model = self.dataSource[i];
     NSString * mid = model.mid;
-
+    
    
     PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
     personVc.ddddd = mid;
