@@ -25,6 +25,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     NSMutableArray * deleteOrUpdateArr;
     
     NSTimer * timer;
+    AppDelegate *app;
 
 
     
@@ -60,6 +61,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 - (void)setupView
 {
     [super setupView];
+     app= (AppDelegate *)[UIApplication sharedApplication].delegate;
     // 选择按钮
     isSelet = YES;
     [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
@@ -133,25 +135,16 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     // 进度条
     
     self.proAccuracy=[[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleDefault];
-    //设置的高度对进度条的高度没影响，整个高度=进度条的高度，进度条也是个圆角矩形
-    //但slider滑动控件：设置的高度对slider也没影响，但整个高度=设置的高度，可以设置背景来检验
     self.proAccuracy.frame=CGRectMake(0, 65, 375, 100);
     self.proAccuracy.trackTintColor=[UIColor blackColor];
     self.proAccuracy.progress=0.0;
     self.proAccuracy.progressTintColor=GREEN_COLOR;
-    
-    /*
-    //self.proAccuracy进度条的背景图片
-    self.proAccuracy.trackImage=[[UIImage imageNamed:@"soundSlider.png"]resizableImageWithCapInsets:UIEdgeInsetsMake(3.0f, 3.0f, 3.0f, 3.0f)];
-    //设置进度条上进度的背景图片
-    self.proAccuracy.progressImage=[[UIImage imageNamed:@"ceishi.png"]resizableImageWithCapInsets:UIEdgeInsetsMake(3.0f, 3.0f, 3.0f, 3.0f)];
-    */
-    
+
     //设置进度值并动画显示
     [self.proAccuracy setProgress:0.0 animated:YES];
     [self.view addSubview:self.proAccuracy];
 
-    [self initRefreshView:@"0"];
+    [self initRefreshView:@"1"];
     
 
 }
@@ -163,6 +156,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
  */
 - (void)doRightButtonTouch
 {
+    
     [deleteOrUpdateArr removeAllObjects];
     if (isSelet) {
         [self showBarButton:NAV_RIGHT imageName:@"cancel.png"];
@@ -181,15 +175,15 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         }
     }
           [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
-        isSelet = YES;
+         isSelet = YES;
         _deleteImageV.hidden = YES;
         
 }
    
-    if ([statsIdentifi isEqualToString:@"0"]) {
+    if ([statsIdentifi isEqualToString:@"1"]) {
         [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
         
-    }else if ([statsIdentifi isEqualToString:@"1"]){
+    }else if ([statsIdentifi isEqualToString:@"0"]){
         [_deleteBtn setImage:[UIImage imageNamed:@"update.png"] forState:UIControlStateNormal];
         
     }
@@ -201,7 +195,14 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 -(void)onDeleBt:(UIButton *)sender
 {
-    
+    if (deleteOrUpdateArr.count ==1) {
+    NSUserDefaults * standDefauls =[NSUserDefaults standardUserDefaults];
+    if (![AppUtil isBlankString:[standDefauls objectForKey:@"content"]]) {
+        
+        
+        [self showMessageWarring:@"还有视频正在上传" view:app.window];
+        
+    }else{
     
     NSMutableString *deleStr = [[NSMutableString alloc]init];
     NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
@@ -217,9 +218,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         *  存取查询开始时间
         */
        NSDictionary *dic1 = [json objectForKey:@"jsondata"] ;
-       NSUserDefaults * standDefauls =[NSUserDefaults standardUserDefaults];
        [standDefauls setObject:[AppUtil getNowTime] forKey:@"endTime"];
        [standDefauls setObject:dic1[@"content"] forKey:@"content"];
+      
        
        
       [standDefauls synchronize];
@@ -227,15 +228,20 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
        
        if([[dic1 objectForKey:@"retCode"] isEqualToString:@"0000"]){
         // 提取视频编号
+           [self showSuccessHudWithHint:[dic1 objectForKey:@"retDesc"]];
         NSString  * trdID = dic1[@"content"];
            // 检查视频上传状态
            timer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(checkVideoStats:) userInfo:trdID repeats:YES];
            [timer setFireDate:[NSDate distantPast]];
            
+           
        }else
        {
            
         // 上传命令 失败
+           NSString * str =[dic1 objectForKey:@"retDesc"];
+        [self showSuccessHudWithHint:str];
+
            
        }
        
@@ -245,7 +251,25 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
        
    }];
     
-
+    }
+        isSelet = YES;
+        _deleteImageV.hidden = YES;
+        [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+        
+    }else if (deleteOrUpdateArr.count ==0)
+    {
+        
+    [self showMessageWarring:@"没有选择视频哦" view:app.window];
+        
+    }else
+    {
+        
+    [self showMessageWarring:@"一次只能选择一个视频上传哦" view:app.window];
+    }
+        
+   
+    
+    
     
 }
 
@@ -268,7 +292,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 {
     [super setupData];
     deleteOrUpdateArr =[[NSMutableArray alloc]init];
-    statsIdentifi =@"0";
+    statsIdentifi =@"1";
    
     
 }
@@ -306,25 +330,52 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)checkVideoStats:(NSTimer *)tid
 {
-
+  
+    
+    
     self.proAccuracy.progress= self.proAccuracy.progress+0.1;
     NSString * service =[NSString stringWithFormat:@"clientAction.do?common=queryTask&classes=appinterface&method=json&tid=%@",tid.userInfo];
     [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
         json = [json objectForKey:@"jsondata"] ;
         
-        if ([[json objectForKey:@"content"] isEqualToString:@"0"]) {
-            // 正在上传
-            
-            NSLog(@"上传中");
-            
-        }
-        if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
-            // 正在上传
-            NSLog(@"上传成功");
+        
+        NSString *date = [AppUtil getNowTime];
+        int dateOver = [self spare:date];
+        
+        NSUserDefaults *standDefus = [NSUserDefaults standardUserDefaults];
+        NSString *dateEnd = [standDefus objectForKey:@"endTime"];
+        int dateEndOver = [self spare:dateEnd];
+        // dateEndOver = (dateOver -dateEndOver)/60 + (dateOver -dateEndOver)%60;
+        dateEndOver = dateOver - dateEndOver;
+        
+        if(dateEndOver >600)
+        {
+            [self showMessageWarring:@"超时" view:app.window];
             [timer setFireDate:[NSDate distantFuture]];
+             [standDefus removeObjectForKey:@"content"];
             
+        }else{
+
+            if ([[json objectForKey:@"content"] isEqualToString:@"0"]) {
+                // 正在上传
+                NSLog(@"上传中")
+            }
+            if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
+                [self showMessageWarring:@"上传成功" view:app.window];
+                [standDefus removeObjectForKey:@"content"];
+                self.proAccuracy.progress =1.0;
+                [timer setFireDate:[NSDate distantFuture]];
+                
+            }
+            if ([[json objectForKey:@"content"] isEqualToString:@"2"]) {
+                 [self showMessageWarring:@"上传失败" view:app.window];
+                [timer setFireDate:[NSDate distantFuture]];
+                 [standDefus removeObjectForKey:@"content"];
+            }
+        
         }
-    } failure:^(NSError *error) {
+           } failure:^(NSError *error) {
+               
         
     }];
     
@@ -338,9 +389,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)leftbuttonTouch
 {
-    [self initRefreshView:@"0"];
+    [self initRefreshView:@"1"];
     [self.dataSource removeAllObjects];
-    statsIdentifi = @"0";
+    statsIdentifi = @"1";
     _leftButton.selected = YES;
     _rightButton.selected = NO;
     [UIView animateWithDuration:0.3 animations:^{
@@ -352,8 +403,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)rightButtonTouch
 {
-   [self initRefreshView:@"1"];
-    statsIdentifi = @"1";
+   [self initRefreshView:@"0"];
+    statsIdentifi = @"0";
     [self.dataSource removeAllObjects];
     _leftButton.selected = NO;
     _rightButton.selected = YES;
@@ -397,6 +448,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     return CGSizeMake(MainScreen.width/5+5, MainScreen.width/5+5);
 }
 
+
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
@@ -421,6 +473,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     cell.imageV.tag = 1000*(indexPath.section+1) +indexPath.row;
     cell.imageV.userInteractionEnabled = YES;
     cell.startImageV.hidden = NO;
+    cell.rightBtn.hidden = YES;
+    
 
     UITapGestureRecognizer *tapMYP = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onImageVVV:)];
     [cell.imageV addGestureRecognizer:tapMYP];
@@ -516,6 +570,16 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
         // 暂时不处理事情
     }
+    
+}
+
+- (int )spare:(NSString *)str
+{
+    int a =[[str substringWithRange:NSMakeRange(0, 2)] intValue];
+    int b =[[str substringWithRange:NSMakeRange(3, 2)] intValue];
+    int c=[[str substringWithRange:NSMakeRange(6, 2)] intValue];
+    a= a*3600+b*60+c;
+    return a;
     
 }
 

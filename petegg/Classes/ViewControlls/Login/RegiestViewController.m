@@ -7,7 +7,7 @@
 //
 
 #import "RegiestViewController.h"
-
+#import "CompletionViewController.h"
 @interface RegiestViewController ()
 @property (nonatomic,strong)UITextField * textFieldes;
 
@@ -153,6 +153,12 @@
 {
     
     
+    CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
+    [self.navigationController pushViewController:compleVC animated:YES];
+    
+    
+    
+    /*
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=check";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:@"13540691705" forKey:@"phone"];
@@ -170,7 +176,7 @@
     } failure:^(NSError *error) {
     }];
 
-    
+    */
     
     
 }

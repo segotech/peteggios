@@ -104,6 +104,27 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     [hud hide:YES afterDelay:2];
 }
 
+- (void)showMessageWarring:(NSString *)message view:(UIView *)view
+{
+    
+    if ([self HUD]) {
+        [self hideHud];
+    }
+    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:view];
+    HUD.customView =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"success.png"]];
+    HUD.mode =MBProgressHUDModeCustomView;
+    HUD.labelText = message;
+    HUD.yOffset = iPhone5?-100.f:-50.f;
+    [view addSubview:HUD];
+    [HUD show:YES];
+    [self setHUD:HUD];
+    [HUD hide:YES afterDelay:4];
+    
+    
+    
+}
+
+
 - (void)showFailureHudWithHint:(NSString *)hint
 {
     if ([self HUD]) {

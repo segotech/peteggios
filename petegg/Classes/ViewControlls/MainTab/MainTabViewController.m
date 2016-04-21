@@ -19,7 +19,8 @@
 {
     
     dispatch_source_t timer3;
-  
+    AppDelegate * app;
+    
     
     
 }
@@ -41,6 +42,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    app= (AppDelegate *)[UIApplication sharedApplication].delegate;
 
     [self setupSubviews];
 }
@@ -48,7 +50,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(check:) name:@"checkSatats" object:nil];
+    
+   // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(check:) name:@"checkSatats" object:nil];
+    
+      [self check];
+
+    
     
 }
 
@@ -156,7 +163,7 @@
     return _navPersonalVC;
 }
 
-- (void)check:(NSNotification *)sender
+- (void)check
 {
     
     NSTimeInterval period = 5.0; //设置时间间隔
@@ -201,37 +208,42 @@
          @"appinterface&method=json&tid=%@",
          [standDefus objectForKey:@"content"]];
         [AFNetWorking postWithApi:service
-                       parameters:nil
-                          success:^(id json) {
-                              json = [json objectForKey:@"jsondata"];
-                              if ([[json objectForKey:@"content"] isEqualToString:@"0"]) {
-                                  // 在对比时间 做出判断
-                                  if (dateEndOver >= 600) {
-                                      // 已经超时
-                                      dispatch_suspend(timer3);
-                                      
-                                  } else {
-                                      // 正在上传
-                                  }
-                              }
-                              if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
-                                  // 上传成功
-                                  
-                                  dispatch_suspend(timer3);
-                                  
-                              }
-                              if ([[json objectForKey:@"content"] isEqualToString:@"2"]) {
-                                  //  失败
-                                  // [timer setFireDate:[NSDate distantFuture]];
-                              }
-                              
-                          }
-         
-                          failure:^(NSError *error){
-                              
-                              // 网络错误
-                              
-                          }];
+            parameters:nil
+            success:^(id json) {
+              json = [json objectForKey:@"jsondata"];
+              if ([[json objectForKey:@"content"] isEqualToString:@"0"]) {
+                // 在对比时间 做出判断
+                if (dateEndOver >= 600) {
+                  // 已经超时
+                  dispatch_suspend(timer3);
+                    [self showMessageWarring:@"超时" view:app.window];
+                    
+                 [standDefus removeObjectForKey:@"content"];
+
+                } else {
+                 
+
+                }
+              }
+              if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
+                // 上传成功
+                [self showMessageWarring:@"上传成功" view:app.window];
+                [standDefus removeObjectForKey:@"content"];
+                dispatch_suspend(timer3);
+              }
+              if ([[json objectForKey:@"content"] isEqualToString:@"2"]) {
+                  dispatch_suspend(timer3);
+                  [self showMessageWarring:@"上传失败" view:app.window];
+                 [standDefus removeObjectForKey:@"content"];
+             
+            }
+
+            }
+
+            failure:^(NSError *error){
+               [self showMessageWarring:@"网络错误" view:app.window];
+                
+            }];
     }
 }
 

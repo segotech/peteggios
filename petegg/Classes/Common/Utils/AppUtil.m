@@ -20,11 +20,12 @@ static NSString* server = @"http://192.168.43.1:7766/rest/operate";
 //赛果三期 外网服务器
 static NSString * getServer3 =@"http://180.97.80.227:15102/";
 static NSString * getServerTest = @"http://180.97.80.227:15102/";
-static NSString * getServerTest1 = @"http://192.168.1.123:8080/sego_v3";
+static NSString * getServerTest1 = @"http://192.168.1.123:8080/sego_v3/";
+
 
 + (NSString *)getServerSego3
 {
-    return  getServer3;
+    return  getServerTest1;
 }
 
 +(NSString *)getServerTest{
