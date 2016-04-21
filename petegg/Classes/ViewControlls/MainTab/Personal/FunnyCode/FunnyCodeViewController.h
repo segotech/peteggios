@@ -11,5 +11,11 @@
 
 @interface FunnyCodeViewController : BaseViewController
 
-
+@property (strong, nonatomic) IBOutlet UILabel *onFunyCode;
+@property (strong, nonatomic) IBOutlet UILabel *onFunprice;
+@property (strong, nonatomic) IBOutlet UILabel *onFunfood;
+@property (strong, nonatomic) IBOutlet UILabel *onFuntime;
+@property (strong, nonatomic) IBOutlet UIButton *onFunCodeBtn;
+@property (strong, nonatomic) IBOutlet UIView *messageView;
+@property (strong, nonatomic) IBOutlet UIView *backView;
 @end

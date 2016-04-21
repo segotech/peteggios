@@ -46,6 +46,19 @@
     
     
 }
+/**
+ *
+ * 生成逗码
+ */
+- (IBAction)productMycode:(UIButton *)sender {
+    
+    self.messageView.hidden = NO;
+    self.backView.hidden  = NO;
+    [[UIApplication sharedApplication].keyWindow addSubview:self.messageView];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.backView];
+    
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
