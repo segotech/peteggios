@@ -33,6 +33,7 @@
 #import "SCRecordSessionManager.h"
 #import "MBProgressHUD.h"
 #import "IssuePinViewController.h"
+#import "WechatIssueViewController.h"
 
 @interface WechatShortVideoController () <SCRecorderDelegate, SCAssetExportSessionDelegate, MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UIView *scanPreviewView;
@@ -361,9 +362,10 @@
 //            NSLog(@"%@",str);
 //            rel.str = str;
 //            rel.strurl = url;
-            IssuePinViewController * isueVc = [[IssuePinViewController alloc]init];
-            [self.navigationController pushViewController:isueVc animated:YES];
-            
+            WechatIssueViewController * weVc = [[WechatIssueViewController alloc]init];
+            weVc.str = str;
+            weVc.urlstr = url;
+            [self.navigationController pushViewController:weVc animated:YES];
             
         } else {
             self.progressHUD.labelText = [NSString stringWithFormat:@"Failed to save\n%@", error.localizedDescription];
