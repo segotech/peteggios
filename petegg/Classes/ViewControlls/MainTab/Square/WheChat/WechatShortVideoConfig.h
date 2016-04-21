@@ -53,7 +53,7 @@
 #define OPERATE_CANCEL_TIP  @"松手取消"
 
 //Save btn title
-#define SAVE_BTN_TITLE      @"保存"
+#define SAVE_BTN_TITLE      @"上传"
 //Retake btn title
 #define RETAKE_BTN_TITLE    @"重录"
 //Record btn title
