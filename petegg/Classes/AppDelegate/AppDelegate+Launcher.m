@@ -34,15 +34,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:NotificationLoginStateChange object:nil];
     
     
-    NSUserDefaults * standDefus =[NSUserDefaults standardUserDefaults];
-    
-    if ([AppUtil isBlankString:[standDefus objectForKey:@"content"]]) {
-        
-    }else{
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"checkSatats"object:nil userInfo:[standDefus objectForKey:@"content"]];
-        
-    }
-    
+      
     
     
     
