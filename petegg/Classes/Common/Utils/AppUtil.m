@@ -28,7 +28,7 @@ static NSString * getServerTest1 = @"http://192.168.1.123:8080/sego_v3";
 }
 
 +(NSString *)getServerTest{
-    return getServerTest;
+    return getServerTest1;
 }
 
 + (NSString*) getServer{
