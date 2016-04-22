@@ -12,8 +12,8 @@
 #import "AttentionViewController.h"
 #import "IssuePinViewController.h"
 #import "WechatShortVideoController.h"
+#import "RepositoryViewController.h"
 
-#import "LoginViewController.h"
 
 @interface SquareViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource,WechatShortVideoDelegate>
 
@@ -189,8 +189,9 @@
     }else if (2 == sender.tag){
         NSLog(@"资源库");
          [self yincang:nil];
-        
-        
+        RepositoryViewController * rePositoryVc = [[RepositoryViewController alloc]init];
+        [self.navigationController pushViewController:rePositoryVc animated:YES];
+    
     }else if (3 == sender.tag){
         NSLog(@"小视频");
         [self takeChat];

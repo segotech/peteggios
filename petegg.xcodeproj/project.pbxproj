@@ -164,7 +164,6 @@
 		7D2F82021CAE25030097820B /* egg_hiddeneye.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81FD1CAE25030097820B /* egg_hiddeneye.png */; };
 		7D2F82031CAE25030097820B /* egg_passtubiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81FE1CAE25030097820B /* egg_passtubiao.png */; };
 		7D2F82041CAE25030097820B /* egg_usertubiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2F81FF1CAE25030097820B /* egg_usertubiao.png */; };
-		7D30E8541CA66622004DE055 /* IssuePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E8531CA66622004DE055 /* IssuePinViewController.m */; };
 		7D30E89B1CA66C05004DE055 /* CALayer+AddUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E8571CA66C05004DE055 /* CALayer+AddUIColor.m */; };
 		7D30E89C1CA66C05004DE055 /* CIImageRendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D30E85A1CA66C05004DE055 /* CIImageRendererUtils.m */; };
 		7D30E89D1CA66C05004DE055 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 7D30E85B1CA66C05004DE055 /* LICENSE */; };
@@ -211,7 +210,6 @@
 		7D3DA5BD1CA3EC5B005BD38B /* 点赞5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5BC1CA3EC5B005BD38B /* 点赞5.png */; };
 		7D3DA5BF1CA3EC67005BD38B /* MV.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3DA5BE1CA3EC67005BD38B /* MV.png */; };
 		7D4A05B31CAA82090039DE5A /* addImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D4A05B21CAA82090039DE5A /* addImage.png */; };
-		7D5866A91CC635A700524608 /* WechatIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5866A81CC635A700524608 /* WechatIssueViewController.m */; };
 		7D81227F1CBDF5F200F4F823 /* WeekBangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D81227E1CBDF5F200F4F823 /* WeekBangViewController.m */; };
 		7D8122821CBDF60100F4F823 /* MonthBangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D8122811CBDF60100F4F823 /* MonthBangViewController.m */; };
 		7D8122861CBE2ED000F4F823 /* RankesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D8122851CBE2ED000F4F823 /* RankesTableViewCell.m */; };
@@ -262,6 +260,11 @@
 		7D825D3C1CBCA88D00F4E216 /* update.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D825D341CBCA88D00F4E216 /* update.png */; };
 		7D825D3D1CBCA88D00F4E216 /* yi_xuan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D825D351CBCA88D00F4E216 /* yi_xuan.png */; };
 		7D825D3F1CBCA93D00F4E216 /* AppDelegate+Launcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D825D3E1CBCA93D00F4E216 /* AppDelegate+Launcher.m */; };
+		7D9819251CC9F58C00D0A6CC /* IssuePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9819201CC9F58C00D0A6CC /* IssuePinViewController.m */; };
+		7D9819261CC9F58C00D0A6CC /* RepositoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9819221CC9F58C00D0A6CC /* RepositoryViewController.m */; };
+		7D9819271CC9F58C00D0A6CC /* WechatIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9819241CC9F58C00D0A6CC /* WechatIssueViewController.m */; };
+		7D98192A1CC9F93000D0A6CC /* RepositoryVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9819291CC9F93000D0A6CC /* RepositoryVideoViewController.m */; };
+		7D98192D1CC9F95600D0A6CC /* RepositorySnapshotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D98192C1CC9F95600D0A6CC /* RepositorySnapshotViewController.m */; };
 		7D9D769A1CBCCD24004E45DE /* NearbyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D76991CBCCD24004E45DE /* NearbyModel.m */; };
 		7D9D769C1CBCF011004E45DE /* searche.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9D769B1CBCF011004E45DE /* searche.png */; };
 		7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D02F1CA535820098706C /* CycleScrollView.m */; };
@@ -508,8 +511,6 @@
 		7D2F81FD1CAE25030097820B /* egg_hiddeneye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_hiddeneye.png; sourceTree = "<group>"; };
 		7D2F81FE1CAE25030097820B /* egg_passtubiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_passtubiao.png; sourceTree = "<group>"; };
 		7D2F81FF1CAE25030097820B /* egg_usertubiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_usertubiao.png; sourceTree = "<group>"; };
-		7D30E8521CA66622004DE055 /* IssuePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuePinViewController.h; sourceTree = "<group>"; };
-		7D30E8531CA66622004DE055 /* IssuePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuePinViewController.m; sourceTree = "<group>"; };
 		7D30E8561CA66C05004DE055 /* CALayer+AddUIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+AddUIColor.h"; sourceTree = "<group>"; };
 		7D30E8571CA66C05004DE055 /* CALayer+AddUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+AddUIColor.m"; sourceTree = "<group>"; };
 		7D30E8581CA66C05004DE055 /* CIImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageRenderer.h; sourceTree = "<group>"; };
@@ -599,8 +600,6 @@
 		7D3DA5BC1CA3EC5B005BD38B /* 点赞5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点赞5.png"; sourceTree = "<group>"; };
 		7D3DA5BE1CA3EC67005BD38B /* MV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MV.png; sourceTree = "<group>"; };
 		7D4A05B21CAA82090039DE5A /* addImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addImage.png; sourceTree = "<group>"; };
-		7D5866A71CC635A700524608 /* WechatIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatIssueViewController.h; sourceTree = "<group>"; };
-		7D5866A81CC635A700524608 /* WechatIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WechatIssueViewController.m; sourceTree = "<group>"; };
 		7D81227D1CBDF5F200F4F823 /* WeekBangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekBangViewController.h; sourceTree = "<group>"; };
 		7D81227E1CBDF5F200F4F823 /* WeekBangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekBangViewController.m; sourceTree = "<group>"; };
 		7D8122801CBDF60100F4F823 /* MonthBangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthBangViewController.h; sourceTree = "<group>"; };
@@ -671,6 +670,16 @@
 		7D825D341CBCA88D00F4E216 /* update.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = update.png; sourceTree = "<group>"; };
 		7D825D351CBCA88D00F4E216 /* yi_xuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yi_xuan.png; sourceTree = "<group>"; };
 		7D825D3E1CBCA93D00F4E216 /* AppDelegate+Launcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Launcher.m"; sourceTree = "<group>"; };
+		7D98191F1CC9F58C00D0A6CC /* IssuePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuePinViewController.h; sourceTree = "<group>"; };
+		7D9819201CC9F58C00D0A6CC /* IssuePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuePinViewController.m; sourceTree = "<group>"; };
+		7D9819211CC9F58C00D0A6CC /* RepositoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryViewController.h; sourceTree = "<group>"; };
+		7D9819221CC9F58C00D0A6CC /* RepositoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryViewController.m; sourceTree = "<group>"; };
+		7D9819231CC9F58C00D0A6CC /* WechatIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatIssueViewController.h; sourceTree = "<group>"; };
+		7D9819241CC9F58C00D0A6CC /* WechatIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WechatIssueViewController.m; sourceTree = "<group>"; };
+		7D9819281CC9F93000D0A6CC /* RepositoryVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryVideoViewController.h; sourceTree = "<group>"; };
+		7D9819291CC9F93000D0A6CC /* RepositoryVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryVideoViewController.m; sourceTree = "<group>"; };
+		7D98192B1CC9F95600D0A6CC /* RepositorySnapshotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositorySnapshotViewController.h; sourceTree = "<group>"; };
+		7D98192C1CC9F95600D0A6CC /* RepositorySnapshotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositorySnapshotViewController.m; sourceTree = "<group>"; };
 		7D9D76981CBCCD24004E45DE /* NearbyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyModel.h; sourceTree = "<group>"; };
 		7D9D76991CBCCD24004E45DE /* NearbyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyModel.m; sourceTree = "<group>"; };
 		7D9D769B1CBCF011004E45DE /* searche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searche.png; sourceTree = "<group>"; };
@@ -1264,6 +1273,7 @@
 		57666F9E1C9689CC00A52DBA /* Square */ = {
 			isa = PBXGroup;
 			children = (
+				7D98191E1CC9F58C00D0A6CC /* Issue */,
 				572220D71CB66B7100C9C7D2 /* Detail */,
 				7D30E8BC1CA66C47004DE055 /* WheChat */,
 				7D30E8551CA66C05004DE055 /* SCRecorder */,
@@ -1274,10 +1284,6 @@
 				57F2C8361CA21E89005324DD /* RecommendViewController.m */,
 				57F2C8381CA21EB1005324DD /* AttentionViewController.h */,
 				57F2C8391CA21EB1005324DD /* AttentionViewController.m */,
-				7D30E8521CA66622004DE055 /* IssuePinViewController.h */,
-				7D30E8531CA66622004DE055 /* IssuePinViewController.m */,
-				7D5866A71CC635A700524608 /* WechatIssueViewController.h */,
-				7D5866A81CC635A700524608 /* WechatIssueViewController.m */,
 				7D1EA05C1CB4ED6800328C2D /* InformationViewController.h */,
 				7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */,
 				7D1EA0651CB4F28500328C2D /* PersonDetailViewController.h */,
@@ -1563,6 +1569,23 @@
 			path = Video;
 			sourceTree = "<group>";
 		};
+		7D98191E1CC9F58C00D0A6CC /* Issue */ = {
+			isa = PBXGroup;
+			children = (
+				7D98191F1CC9F58C00D0A6CC /* IssuePinViewController.h */,
+				7D9819201CC9F58C00D0A6CC /* IssuePinViewController.m */,
+				7D9819231CC9F58C00D0A6CC /* WechatIssueViewController.h */,
+				7D9819241CC9F58C00D0A6CC /* WechatIssueViewController.m */,
+				7D9819211CC9F58C00D0A6CC /* RepositoryViewController.h */,
+				7D9819221CC9F58C00D0A6CC /* RepositoryViewController.m */,
+				7D9819281CC9F93000D0A6CC /* RepositoryVideoViewController.h */,
+				7D9819291CC9F93000D0A6CC /* RepositoryVideoViewController.m */,
+				7D98192B1CC9F95600D0A6CC /* RepositorySnapshotViewController.h */,
+				7D98192C1CC9F95600D0A6CC /* RepositorySnapshotViewController.m */,
+			);
+			path = Issue;
+			sourceTree = "<group>";
+		};
 		7DC8D02D1CA535730098706C /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1846,7 +1869,6 @@
 				7D0128EB1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m in Sources */,
 				34144BE51CC48C76007C4498 /* PhotoModel.m in Sources */,
 				7D1714421CBBA0AA0047FA70 /* DouYIDouViewController.m in Sources */,
-				7D5866A91CC635A700524608 /* WechatIssueViewController.m in Sources */,
 				578B9E641CA2D78A00CAC21D /* BaseModel.m in Sources */,
 				578B9E611CA29E5D00CAC21D /* AFHttpClient+Square.m in Sources */,
 				7D30E8B71CA66C05004DE055 /* SCSwipeableFilterView.m in Sources */,
@@ -1867,9 +1889,11 @@
 				7D2F3F7A1CC0871E0059116A /* PersonAttentionViewController.m in Sources */,
 				7D8122821CBDF60100F4F823 /* MonthBangViewController.m in Sources */,
 				7D30E8A81CA66C05004DE055 /* SCFilterImageView.m in Sources */,
+				7D9819261CC9F58C00D0A6CC /* RepositoryViewController.m in Sources */,
 				7D30E8AE1CA66C05004DE055 /* SCProcessingQueue.m in Sources */,
 				7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */,
 				7D825D121CBCA65000F4E216 /* MyVideoCollectionViewCell.m in Sources */,
+				7D98192A1CC9F93000D0A6CC /* RepositoryVideoViewController.m in Sources */,
 				57666FE21C96BF4400A52DBA /* UIView+Sizes.m in Sources */,
 				7D825CE71CBCA51B00F4E216 /* SettingViewController.m in Sources */,
 				57666F861C9687E300A52DBA /* BaseViewController.m in Sources */,
@@ -1883,7 +1907,6 @@
 				34144BCC1CBFB156007C4498 /* MessageModel.m in Sources */,
 				7D30E8B11CA66C05004DE055 /* SCRecorderTools.m in Sources */,
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
-				7D30E8541CA66622004DE055 /* IssuePinViewController.m in Sources */,
 				7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */,
 				7D0116171CC7631000FEEF16 /* AFHttpClient+Issue.m in Sources */,
 				7D30E8A61CA66C05004DE055 /* SCFilter.m in Sources */,
@@ -1924,9 +1947,11 @@
 				7D30E8BB1CA66C05004DE055 /* UIImage+SCSaveToCameraRoll.m in Sources */,
 				7D30E8A01CA66C05004DE055 /* SCAssetExportSession.m in Sources */,
 				7D825CD71CBCA4C800F4E216 /* WasCallViewController.m in Sources */,
+				7D9819271CC9F58C00D0A6CC /* WechatIssueViewController.m in Sources */,
 				57666FC71C969B4800A52DBA /* AppUtil.m in Sources */,
 				7D30E8BA1CA66C05004DE055 /* SCWeakSelectorTarget.m in Sources */,
 				7D03322B1CB5FA3900E923A9 /* PersonDataTableViewCell.m in Sources */,
+				7D9819251CC9F58C00D0A6CC /* IssuePinViewController.m in Sources */,
 				57462DAE1CBB85D00071047E /* DetailCommentView.m in Sources */,
 				57666F511C96619700A52DBA /* main.m in Sources */,
 				344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */,
@@ -1953,6 +1978,7 @@
 				57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */,
 				7D825D141CBCA65000F4E216 /* VideoViewController.m in Sources */,
 				344F02BC1CA27E780076CE62 /* BePeripheralViewController.m in Sources */,
+				7D98192D1CC9F95600D0A6CC /* RepositorySnapshotViewController.m in Sources */,
 				7D825D081CBCA65000F4E216 /* FriendTableViewCell.m in Sources */,
 				57462DAB1CBB4AF30071047E /* DetailImageCell.m in Sources */,
 				7D9D769A1CBCCD24004E45DE /* NearbyModel.m in Sources */,
