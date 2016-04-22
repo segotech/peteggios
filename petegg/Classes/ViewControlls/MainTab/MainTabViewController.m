@@ -53,7 +53,7 @@
     
    // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(check:) name:@"checkSatats" object:nil];
     
-      [self check];
+   //   [self check];
 
     
     
