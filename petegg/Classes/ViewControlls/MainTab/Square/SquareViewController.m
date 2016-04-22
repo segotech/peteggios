@@ -189,9 +189,8 @@
     }else if (2 == sender.tag){
         NSLog(@"资源库");
          [self yincang:nil];
-        LoginViewController * loginVc = [[LoginViewController alloc]init];
-       // [self presentViewController:loginVc animated:YES completion:nil];
-        [self.navigationController pushViewController:loginVc animated:YES];
+        
+        
     }else if (3 == sender.tag){
         NSLog(@"小视频");
         [self takeChat];
