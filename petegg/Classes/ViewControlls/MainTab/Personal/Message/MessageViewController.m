@@ -50,7 +50,7 @@
     
     NSString * str =@"clientAction.do?method=json&common=trendTip&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:@"MI16010000005868" forKey:@"mid"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
         NSMutableArray * arr =[[NSMutableArray alloc]init];

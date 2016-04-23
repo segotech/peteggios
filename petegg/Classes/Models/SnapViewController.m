@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "LargeViewController.h"
 
+
 static NSString *headFootFlg = @"up";
 static NSString *kfooterIdentifier = @"footerIdentifier";
 static NSString *kheaderIdentifier = @"headerIdentifier";
@@ -127,9 +128,73 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 -(void)onDeleBt:(UIButton *)sender
 {
     
+    if (deleteArr.count>0) {//有所需要删除的数据
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"你确定要删除所选图片!" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        
+        [alert show];
+        
+    }else{
+        [self showSuccessHudWithHint:@"请选择要删除的照片"];
+    }
+
     
     
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        for (int i=0; i<self.dataSource.count; i++) {
+            PhotoModel *model = self.dataSource[i];
+            NSArray *imageA = [model.imagename componentsSeparatedByString:@","];
+            
+            for (int j=0; j<imageA.count; j++) {
+                MyVideoCollectionViewCell *cell = (MyVideoCollectionViewCell *)[self.collection cellForItemAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i]];
+                cell.rightBtn.hidden = YES;
+                cell.rightBtn.selected = NO;
+            }
+            
+        }
+        
+        _deleteImageV.hidden = YES;
+        
+        NSMutableString *deleStr = [[NSMutableString alloc]init];
+        NSString *str = [NSString stringWithFormat:@"%@",deleteArr[0]];
+        [deleStr appendFormat:@"%@",[str substringFromIndex:43]];
+        deleStr =[NSMutableString stringWithFormat:@"'%@'",deleStr];
+        
+        for (int i=1; i<deleteArr.count; i++) {
+            NSString *str = [NSString stringWithFormat:@"%@",deleteArr[i]];
+            [deleStr appendFormat:@",'%@'",[str substringFromIndex:51]];
+            
+        }
+        
+        NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
+        [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+        [dicc setValue:deleStr forKey:@"filename"];
+        NSString  *  service =[NSString stringWithFormat:@"clientAction.do?common=delPhotoGraph&classes=appinterface&method=json"];
+        [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
+            
+            json = [json objectForKey:@"jsondata"] ;
+            if([[json objectForKey:@"retCode"] isEqualToString:@"0000"]){
+                [self showSuccessHudWithHint:@"删除成功"];
+                 [self initRefreshView:@"0"];
+                 [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+                
+            }
+
+        } failure:^(NSError *error) {
+            
+        }];
+        
+        
+       
+    }
+}
+
+
+
 
 
 // 请求数据
@@ -138,15 +203,14 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     NSString * str =@"clientAction.do?method=json&common=getPhotoGraph&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:@"MI16010000004031" forKey:@"mid"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [dic setValue:headFootFlg forKey:@"type"];
     [dic setValue:@"10" forKey:@"size"];
     [dic setValue:@"1" forKey:@"page"];
    
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-        [self handleEndRefresh];
+        [self.dataSource removeAllObjects];
         json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
-        
         NSMutableArray * arr =[[NSMutableArray alloc]init];
         [arr addObjectsFromArray:json];
         for (NSDictionary *dic0 in arr) {
@@ -154,9 +218,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             [model setValuesForKeysWithDictionary:dic0];
             [self.dataSource addObject:model];
         }
-        [self handleEndRefresh];
         NSLog(@"====%@",json);
-        
+         [self handleEndRefresh];
         [self.collection reloadData];
         
     } failure:^(NSError *error) {
