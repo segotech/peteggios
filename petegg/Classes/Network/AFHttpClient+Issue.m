@@ -36,7 +36,7 @@
     params[@"mid"] = mid;
     [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
         if (model){
-            //  model.list = [PersonAttention arrayOfModelsFromDictionaries:model.list];
+              model.list = [IssueZiYuankuModel arrayOfModelsFromDictionaries:model.list];
         }
         if (completeBlock) {
             completeBlock(model);

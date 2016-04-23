@@ -92,7 +92,7 @@
         if ([model.retCode isEqualToString:@"0000"]) {
             [self.navigationController popViewControllerAnimated:YES];
         }
-        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
     }];
 }
 
