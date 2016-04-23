@@ -13,6 +13,12 @@
 #import "MessageViewController.h"
 @interface FriendViewController ()
 
+{
+    
+    NSInteger  h;
+    
+}
+
 @end
 
 @implementation FriendViewController
@@ -86,16 +92,26 @@
     NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
     [dicc setValue:@"1" forKey:@"page"];
     [dicc setValue:@"10" forKey:@"size"];
-    [dicc setValue:@"MI16010000005868" forKey:@"mid"];
+    [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
 
     NSString * service =[NSString stringWithFormat:@"clientAction.do?common=queryTrend&classes=appinterface&method=json"];
     [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
+        
+        if (page == START_PAGE_INDEX) {
+            [self.dataSource removeAllObjects];
+        }else
+        {
+            
+        }
+        
+        [self.dataSource removeAllObjects];
+
         json = [json objectForKey:@"jsondata"] ;
         NSArray * arrStr =[json[@"content"] componentsSeparatedByString:@","];
         [headImageView sd_setImageWithURL:[NSURL URLWithString:arrStr[0]] placeholderImage:[UIImage imageNamed:@"DouYiDou.png"]];
-        nameLabel.text = arrStr[1];
+          nameLabel.text = arrStr[1];
         
-            NSArray *array = [json objectForKey:@"list"];
+        NSArray *array = [json objectForKey:@"list"];
         
         if (array.count > 0) {
             for (NSDictionary *dic0 in array) {
@@ -108,15 +124,6 @@
             
             self.tableView.hidden = YES;
         }
-        
-        if (page == START_PAGE_INDEX) {
-         //   [self.dataSource removeAllObjects];
-        }else
-        {
-            
-        }
-      
-        
         [self.tableView reloadData];
         [self handleEndRefresh];
         
@@ -219,10 +226,14 @@
     }
     if (i ==1) { // 一张图
          //视频
-        if ([model.type isEqualToString:@"v"]) {
+        if ([model.type isEqualToString:@"pv"]) {
             [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
             
-        }else  // 图
+        }else if([model.type isEqualToString:@"v"])
+        {
+            [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
+        }
+        else  // 图
         {
               [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.resources] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
         }
@@ -254,11 +265,43 @@
 
 - (void)deleteImageBtn:(UIButton *)sender
 {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"确定删除？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+
+    h = [self.tableView indexPathForCell:((FriendTableViewCell*)sender.superview.superview)].row;
     
-   NSInteger  h = [self.tableView indexPathForCell:((FriendTableViewCell*)sender.superview.superview)].row;
     
     
     
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    
+    if (buttonIndex == 1) {
+        
+        TimeHistoryModel *model = self.dataSource[h];
+        NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
+        [dicc setValue:model.stid forKey:@"stid"];
+        [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+        
+        NSString * service =[NSString stringWithFormat:@"clientAction.do?common=delTrend&classes=appinterface&method=json"];
+        
+        [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
+            json =[json objectForKey:@"jsondata"];
+        if ([[json objectForKey:@"retCode"] isEqualToString:@"0000"]) {
+            [self showSuccessHudWithHint:@"删除成功"];
+            
+            [self.tableView.mj_header beginRefreshing];
+
+        }
+           
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

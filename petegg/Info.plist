@@ -28,9 +28,35 @@
 				<string>prefs</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>QQ41DF84D3</string>
+				<string>wb449565157</string>
+				<string>wx33a86d5926a50bdd</string>
+				<string>wb801307650</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>weibosdk</string>
+		<string>sinaweibohd</string>
+		<string>mqqapi</string>
+		<string>mqq</string>
+		<string>sinaweibo</string>
+		<string>weixin</string>
+		<string>wechat</string>
+		<string>mqzone</string>
+		<string>wtloginmqq2</string>
+		<string>mqqbrowser</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqqopensdkapiV3</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

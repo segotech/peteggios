@@ -16,9 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *onFunfood;
 @property (strong, nonatomic) IBOutlet UILabel *onFuntime;
 @property (strong, nonatomic) IBOutlet UIButton *onFunCodeBtn;
-@property (strong, nonatomic) IBOutlet UIView *messageView;
-@property (strong, nonatomic) IBOutlet UIView *backView;
-@property (strong, nonatomic) IBOutlet UITextField *priceTF;
-@property (strong, nonatomic) IBOutlet UITextField *foodNunTF;
+
 
 @end

@@ -76,6 +76,7 @@
 		34813FF01CC5E039000DFE26 /* wanmenSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FEC1CC5E039000DFE26 /* wanmenSelect.png */; };
 		34813FF11CC5E039000DFE26 /* womenAnimal.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FED1CC5E039000DFE26 /* womenAnimal.png */; };
 		3481B3A61CBCB4A400A4344D /* selecting.png in Resources */ = {isa = PBXBuildFile; fileRef = 3481B3A51CBCB4A400A4344D /* selecting.png */; };
+		34A210BD1CCA313B00BE7A80 /* doumashare.png in Resources */ = {isa = PBXBuildFile; fileRef = 34A210BC1CCA313B00BE7A80 /* doumashare.png */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		572220E01CB7541E00C9C7D2 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */; };
@@ -362,6 +363,7 @@
 		34813FEC1CC5E039000DFE26 /* wanmenSelect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wanmenSelect.png; sourceTree = "<group>"; };
 		34813FED1CC5E039000DFE26 /* womenAnimal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womenAnimal.png; sourceTree = "<group>"; };
 		3481B3A51CBCB4A400A4344D /* selecting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selecting.png; sourceTree = "<group>"; };
+		34A210BC1CCA313B00BE7A80 /* doumashare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doumashare.png; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -736,6 +738,7 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				34A210BC1CCA313B00BE7A80 /* doumashare.png */,
 				34813FEA1CC5E039000DFE26 /* manAnimal.png */,
 				34813FEB1CC5E039000DFE26 /* manSelect.png */,
 				34813FEC1CC5E039000DFE26 /* wanmenSelect.png */,
@@ -1713,6 +1716,7 @@
 				34813FEF1CC5E039000DFE26 /* manSelect.png in Resources */,
 				34144BE01CC485FF007C4498 /* time.png in Resources */,
 				57462DB01CBB95A20071047E /* button.xcassets in Resources */,
+				34A210BD1CCA313B00BE7A80 /* doumashare.png in Resources */,
 				7D1714331CBB4C620047FA70 /* seacherkuang.png in Resources */,
 				7D3DA5B71CA3D292005BD38B /* sego1.png in Resources */,
 				7D24EA8E1CC4E74A004EB1E2 /* wangwang.png in Resources */,
@@ -2111,7 +2115,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = petegg/PrefixHeader.pch;
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sego.petegg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2129,7 +2133,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = petegg/PrefixHeader.pch;
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sego.petegg;
 				PRODUCT_NAME = "$(TARGET_NAME)";

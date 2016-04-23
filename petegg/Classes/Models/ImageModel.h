@@ -12,4 +12,5 @@
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key;
 @property (nonatomic,copy)NSString *imagename;
+@property (nonatomic,copy)NSString * networkaddress;
 @end

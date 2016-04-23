@@ -306,7 +306,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [dic setValue:@"MI15120000001582" forKey:@"mid"];
     [dic setValue:stateNum forKey:@"status"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-        [self handleEndRefresh];
+        [self.dataSource removeAllObjects];
         json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
         NSMutableArray * arr =[[NSMutableArray alloc]init];
         [arr addObjectsFromArray:json];

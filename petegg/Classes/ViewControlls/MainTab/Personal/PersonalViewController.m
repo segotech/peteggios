@@ -114,6 +114,7 @@
     *
     */
     
+    
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     self.tableView.tableHeaderView =_headView;
