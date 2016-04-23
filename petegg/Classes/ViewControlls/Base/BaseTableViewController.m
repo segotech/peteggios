@@ -99,7 +99,7 @@
     //压缩图片
     CGSize newSize;
     CGImageRef imageRef = nil;
-    UIImageView *_headerView =[[UIImageView alloc]initWithFrame:CGRectMake(8*W_Wide_Zoom, 0*W_Hight_Zoom, 356*W_Wide_Zoom, 250*W_Hight_Zoom)];
+    UIImageView *_headerView =[[UIImageView alloc]initWithFrame:CGRectMake(8*W_Wide_Zoom, 0*W_Hight_Zoom, 375*W_Wide_Zoom, 370*W_Hight_Zoom)];
     
     if ((image.size.width / image.size.height) < (_headerView.bounds.size.width / _headerView.bounds.size.height)) {
         newSize.width = image.size.width;

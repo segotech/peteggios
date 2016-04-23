@@ -127,7 +127,7 @@ static NSString * cellId = @"personDetailCellId";
 -(void)setupData{
     [super setupData];
     
-    [[AFHttpClient sharedAFHttpClient]querPresenWithMid:@"MI16010000006219" friend:_ddddd complete:^(BaseModel *model) {
+    [[AFHttpClient sharedAFHttpClient]querPresenWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:_ddddd complete:^(BaseModel *model) {
         [self.dataSource addObjectsFromArray:model.list];
         [self initUseTopView];
     } failure:^{
