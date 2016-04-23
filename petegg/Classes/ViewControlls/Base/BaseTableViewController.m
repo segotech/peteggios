@@ -112,7 +112,6 @@
         newSize.width = image.size.height * _headerView.bounds.size.width / _headerView.bounds.size.height;
         
         imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(fabs(image.size.width - newSize.width) / 2, 0, newSize.width, newSize.height));
-        
     }
     UIImage * newnewimage = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);

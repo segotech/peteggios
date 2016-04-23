@@ -101,7 +101,7 @@ static NSString * cellId = @"111111111111";
     cell.rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
-
+    
     return cell;
 }
 

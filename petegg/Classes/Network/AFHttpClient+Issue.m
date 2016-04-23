@@ -11,7 +11,7 @@
 @implementation AFHttpClient (Issue)
 -(void)addSproutpetWithMid:(NSString *)mid content:(NSString *)content type:(NSString *)type resources:(NSMutableString *)resources complete:(void(^)(BaseModel *model))completeBlock
 {
-     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
     params[@"common"] = @"addSproutpet";
     params[@"content"] = content;
     params[@"type"] = type;
@@ -26,12 +26,22 @@
             completeBlock(model);
         }
     }];
+}
 
 
-
-
-
-
+-(void)getVideoWithMid:(NSString *)mid complete:(void (^)(BaseModel *))completeBlock{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"common"] = @"getVideo";
+    params[@"status"] = @"1";
+    params[@"mid"] = mid;
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        if (model){
+              model.list = [IssueZiYuankuModel arrayOfModelsFromDictionaries:model.list];
+        }
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
 
 }
 

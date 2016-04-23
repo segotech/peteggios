@@ -24,12 +24,20 @@ static NSString * cellId = @"recommeCellId";
 @end
 
 @implementation RecommendViewController
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dada) name:@"shuaxin" object:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor blackColor];
+}
+
+-(void)dada{
+    [self initRefreshView];
 }
 
 - (void)setupView{

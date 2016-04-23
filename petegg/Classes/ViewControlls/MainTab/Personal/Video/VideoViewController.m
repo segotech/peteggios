@@ -331,8 +331,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 - (void)checkVideoStats:(NSTimer *)tid
 {
   
-    
-    
     self.proAccuracy.progress= self.proAccuracy.progress+0.1;
     NSString * service =[NSString stringWithFormat:@"clientAction.do?common=queryTask&classes=appinterface&method=json&tid=%@",tid.userInfo];
     [AFNetWorking postWithApi:service parameters:nil success:^(id json) {

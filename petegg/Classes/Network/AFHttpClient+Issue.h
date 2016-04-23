@@ -9,8 +9,18 @@
 #import "AFHttpClient.h"
 
 @interface AFHttpClient (Issue)
--(void)addSproutpetWithMid:(NSString *)mid content:(NSString *)content type:(NSString *)type resources:(NSMutableString *)resources  complete:(void(^)(BaseModel *model))completeBlock;
 
+//点击发布的接口
+-(void)addSproutpetWithMid:(NSString *)mid
+                       content:(NSString *)content
+                       type:(NSString *)type
+                       resources:(NSMutableString *)resources
+                       complete:(void(^)(BaseModel *model))completeBlock;
+
+//资源库的接口
+//已上传的视频
+-(void)getVideoWithMid:(NSString *)mid
+                   complete:(void(^)(BaseModel *model))completeBlock;
 
 
 

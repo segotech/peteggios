@@ -331,11 +331,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
         NSArray *timeTtile =[model.pgtime componentsSeparatedByString:@","];
         label.text =timeTtile[indexPath.row];
-        
-        
-        
-        
-        
     }
     else if ([kind isEqualToString:UICollectionElementKindSectionFooter]){
         UILabel *label = (UILabel *)[view viewWithTag:1111];

@@ -55,9 +55,13 @@
     
     [resouceStr appendString:@".mov,"];
     [resouceStr appendString:self.str];
-    
+    [self showHudInView:self.view hint:@"正在发布..."];
     [[AFHttpClient sharedAFHttpClient]addSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid content:_topTextView.text type:@"pv" resources:resouceStr complete:^(BaseModel *model) {
-        
+        [self hideHud];
+        if ([model.retCode isEqualToString:@"0000"]) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
     }];
 
 
