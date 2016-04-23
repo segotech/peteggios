@@ -89,7 +89,7 @@
     [self.view addSubview:_headView];
     
     // 头像
-    _heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(_headView.center.x-40, self.view.origin.y+30, 80, 80)];
+    _heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(_headView.center.x-40, self.view.origin.y+20, 80, 80)];
     [_heandBtn setImage:[UIImage imageNamed:@"ceishi.jpg"] forState:UIControlStateNormal];
     [_heandBtn.layer setMasksToBounds:YES];
     [_heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
@@ -103,17 +103,42 @@
      */
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 20)];
     _nameLabel.text = @"我是余磊 我爱打麻将";
-    _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+160);
+    _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+90);
     _nameLabel.font = [UIFont systemFontOfSize:15];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.textColor = [UIColor whiteColor];
-    [self.view addSubview:_nameLabel];
+    [_headView addSubview:_nameLabel];
 
    /**
     *  循环控件 3个12
     *
     */
+    NSArray * arrName =@[@"帖子",@"关注",@"粉丝",@"点赞"];
     
+    for (NSInteger i = 0;i<4; i++) {
+        UILabel * numLb =[[UILabel alloc]initWithFrame:CGRectMake(50+i*70, _heandBtn.frame.origin.y+110, 80, 20)];
+        numLb.textAlignment = NSTextAlignmentCenter;
+        numLb.textColor =[UIColor whiteColor];
+        numLb.text =@"1000";
+        numLb.font =[UIFont boldSystemFontOfSize:13.0f];
+        
+        UILabel * wordLb =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
+        wordLb.center = CGPointMake(numLb.center.x+28, numLb.frame.origin.y+25);
+        wordLb.text =arrName[i];
+        wordLb.textColor =[UIColor whiteColor];
+        wordLb.font =[UIFont boldSystemFontOfSize:13.0f];
+        if (i<3) {
+            UILabel * lineLB =[[UILabel alloc]initWithFrame:CGRectMake(128 +i*70, _heandBtn.frame.origin.y+120, 1.5, 20)];
+            lineLB.backgroundColor =[UIColor whiteColor];
+            [_headView addSubview:lineLB];
+
+        }
+
+   
+        [_headView addSubview:wordLb];
+        [_headView addSubview:numLb];
+    
+    }
     
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
