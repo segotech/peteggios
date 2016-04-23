@@ -138,6 +138,7 @@
 		7D03322B1CB5FA3900E923A9 /* PersonDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */; };
 		7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */; };
 		7D05D8A81CCB21080081FB24 /* IssueZiYuankuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */; };
+		7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */; };
 		7D0E23B21CA2709700061973 /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */; };
 		7D1714311CBB4C620047FA70 /* DouYiDou.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D17142E1CBB4C620047FA70 /* DouYiDou.png */; };
 		7D1714321CBB4C620047FA70 /* nearPeople.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D17142F1CBB4C620047FA70 /* nearPeople.png */; };
@@ -475,6 +476,8 @@
 		7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PersonDate.m"; sourceTree = "<group>"; };
 		7D05D8A61CCB21080081FB24 /* IssueZiYuankuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueZiYuankuModel.h; sourceTree = "<group>"; };
 		7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueZiYuankuModel.m; sourceTree = "<group>"; };
+		7D05D8A91CCB850F0081FB24 /* AFHttpClient+IsfriendClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+IsfriendClient.h"; sourceTree = "<group>"; };
+		7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+IsfriendClient.m"; sourceTree = "<group>"; };
 		7D0E23B01CA2709700061973 /* RecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommendTableViewCell.h; path = ../RecommendTableViewCell.h; sourceTree = "<group>"; };
 		7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommendTableViewCell.m; path = ../RecommendTableViewCell.m; sourceTree = "<group>"; };
 		7D17142E1CBB4C620047FA70 /* DouYiDou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DouYiDou.png; sourceTree = "<group>"; };
@@ -1113,6 +1116,8 @@
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
+				7D05D8A91CCB850F0081FB24 /* AFHttpClient+IsfriendClient.h */,
+				7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */,
 				7D0116151CC7631000FEEF16 /* AFHttpClient+Issue.h */,
 				7D0116161CC7631000FEEF16 /* AFHttpClient+Issue.m */,
 				34813FE01CC4D80F000DFE26 /* AFHttpClient+PersonAttention.h */,
@@ -1927,6 +1932,7 @@
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
+				7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
 				7D825D0C1CBCA65000F4E216 /* FunnyCodeViewController.m in Sources */,
 				7D30E8B41CA66C05004DE055 /* SCRecordSessionSegment.m in Sources */,

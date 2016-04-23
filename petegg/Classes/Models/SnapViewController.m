@@ -207,7 +207,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [dic setValue:headFootFlg forKey:@"type"];
     [dic setValue:@"10" forKey:@"size"];
     [dic setValue:@"1" forKey:@"page"];
-   
+
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         [self.dataSource removeAllObjects];
         json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];

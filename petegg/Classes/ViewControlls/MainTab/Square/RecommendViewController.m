@@ -194,7 +194,7 @@ static NSString * cellId = @"recommeCellId";
 //关注按钮点击事件
 -(void)attentionTouch:(UIButton * )sender{
     sender.selected = !sender.selected;
-
+        
 }
 
 -(void)iconImageVTouch:(UIButton *)sender{
