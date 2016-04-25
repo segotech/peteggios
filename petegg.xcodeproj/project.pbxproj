@@ -386,6 +386,7 @@
 		7D98192D1CC9F95600D0A6CC /* RepositorySnapshotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D98192C1CC9F95600D0A6CC /* RepositorySnapshotViewController.m */; };
 		7D9D769A1CBCCD24004E45DE /* NearbyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D76991CBCCD24004E45DE /* NearbyModel.m */; };
 		7D9D769C1CBCF011004E45DE /* searche.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9D769B1CBCF011004E45DE /* searche.png */; };
+		7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */; };
 		7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D02F1CA535820098706C /* CycleScrollView.m */; };
 		7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
@@ -1348,6 +1349,8 @@
 		7D9D76981CBCCD24004E45DE /* NearbyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyModel.h; sourceTree = "<group>"; };
 		7D9D76991CBCCD24004E45DE /* NearbyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyModel.m; sourceTree = "<group>"; };
 		7D9D769B1CBCF011004E45DE /* searche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searche.png; sourceTree = "<group>"; };
+		7DB9E1891CCE3AE7009AB3A7 /* PersonInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInformationViewController.h; sourceTree = "<group>"; };
+		7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInformationViewController.m; sourceTree = "<group>"; };
 		7DC8D02E1CA535820098706C /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
 		7DC8D02F1CA535820098706C /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
 		7DC8D0311CA5358F0098706C /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
@@ -3050,6 +3053,8 @@
 				7D825CFC1CBCA65000F4E216 /* personTableViewCell.h */,
 				7D825CFD1CBCA65000F4E216 /* personTableViewCell.m */,
 				7D825CFE1CBCA65000F4E216 /* personTableViewCell.xib */,
+				7DB9E1891CCE3AE7009AB3A7 /* PersonInformationViewController.h */,
+				7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */,
 				7D825CFF1CBCA65000F4E216 /* Snap */,
 				7D825D001CBCA65000F4E216 /* Video */,
 			);
@@ -3499,6 +3504,7 @@
 				7D81227F1CBDF5F200F4F823 /* WeekBangViewController.m in Sources */,
 				34813FE81CC5D4EE000DFE26 /* CompletionViewController.m in Sources */,
 				34144BD61CBFB1B3007C4498 /* MessageTableViewCell.m in Sources */,
+				7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */,
 				57462DA61CBA46270071047E /* CommentModel.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
 				7D05D8A81CCB21080081FB24 /* IssueZiYuankuModel.m in Sources */,
