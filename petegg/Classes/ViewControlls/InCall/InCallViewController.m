@@ -82,6 +82,8 @@
 {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+   
+    
     
 }
 
