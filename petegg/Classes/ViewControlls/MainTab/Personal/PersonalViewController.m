@@ -21,6 +21,8 @@
 {
     UIButton * _heandBtn;
     UILabel *  _nameLabel;
+    UIImageView *bgImgView;
+    
     
 }
 
@@ -40,18 +42,52 @@
     NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_attention.png",@"person_bean.png",@"person_code.png",@"person_control.png",@"person_pw.png"];
     [self.dataSourceImage addObjectsFromArray:arrImage];
     
-    [self initData];
+   
 
     
 }
 
 
-- (void)initData
+- (void)setupData
 {
     
+    NSString * str =@"clientAction.do?method=json&common=queryPraises&classes=appinterface";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+          json = json[@"jsondata"][@"list"][0];
+            [_heandBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:json[@"headportrait"]]]] forState:UIControlStateNormal];
+            [self showLB:500 string:json[@"sprouts"]];
+            [self showLB:501 string:json[@"gz"]];
+            [self showLB:502 string:json[@"fs"]];
+            [self showLB:503 string:json[@"praises"]];
+            _nameLabel.text = json[@"nickname"];
+            [bgImgView sd_setImageWithURL:[NSURL URLWithString:json[@"headportrait"]] placeholderImage:[UIImage imageNamed:@"ceishi.jpg"]];
+            
+            bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"ceishi.jpg"]] withBlurLevel:0.2];
+            
+        }
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
     
     
 }
+
+
+- (void)showLB:(NSInteger )tag string:(NSString *)str
+{
+     UILabel *myLB = (UILabel *)[self.view viewWithTag:tag];
+     myLB.text = str;
+    
+    
+    
+}
+
 
 
 - (void)viewWillAppear:(BOOL)animated
@@ -79,7 +115,7 @@
     
     UIView  * _headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 375, 200)];
     _headView.backgroundColor = [UIColor whiteColor];
-    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,375,200)];
+    bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,375,200)];
     bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"ceishi.jpg"]] withBlurLevel:0.2];
     [_headView addSubview:bgImgView];
     [_headView sendSubviewToBack:bgImgView];
@@ -90,7 +126,6 @@
     
     // 头像
     _heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(_headView.center.x-40, self.view.origin.y+20, 80, 80)];
-    [_heandBtn setImage:[UIImage imageNamed:@"ceishi.jpg"] forState:UIControlStateNormal];
     [_heandBtn.layer setMasksToBounds:YES];
     [_heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
     _heandBtn.userInteractionEnabled = YES;
@@ -102,7 +137,7 @@
         点赞  名字
      */
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 20)];
-    _nameLabel.text = @"我是余磊 我爱打麻将";
+    _nameLabel.text = @"";
     _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+90);
     _nameLabel.font = [UIFont systemFontOfSize:15];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
@@ -117,16 +152,17 @@
     
     for (NSInteger i = 0;i<4; i++) {
         UILabel * numLb =[[UILabel alloc]initWithFrame:CGRectMake(50+i*70, _heandBtn.frame.origin.y+110, 80, 20)];
+        numLb.tag = 500+i;
         numLb.textAlignment = NSTextAlignmentCenter;
         numLb.textColor =[UIColor whiteColor];
         numLb.text =@"1000";
-        numLb.font =[UIFont boldSystemFontOfSize:13.0f];
+        numLb.font =[UIFont boldSystemFontOfSize:10.0f];
         
         UILabel * wordLb =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
         wordLb.center = CGPointMake(numLb.center.x+28, numLb.frame.origin.y+25);
         wordLb.text =arrName[i];
         wordLb.textColor =[UIColor whiteColor];
-        wordLb.font =[UIFont boldSystemFontOfSize:13.0f];
+        wordLb.font =[UIFont boldSystemFontOfSize:10.0f];
         if (i<3) {
             UILabel * lineLB =[[UILabel alloc]initWithFrame:CGRectMake(128 +i*70, _heandBtn.frame.origin.y+120, 1.5, 20)];
             lineLB.backgroundColor =[UIColor whiteColor];
