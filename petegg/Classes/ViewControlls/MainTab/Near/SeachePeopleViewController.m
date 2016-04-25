@@ -115,14 +115,31 @@ static NSString * cellId = @"seacherCelliddddd";
 
     [cell.rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     cell.rightBtn.layer.cornerRadius = 5;
-    [cell.rightBtn setTitle:@"+关注" forState:UIControlStateNormal];
-    cell.rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
+    cell.rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    if ([AppUtil isBlankString:model.isfriend]) {
+        cell.rightBtn.selected = YES;
+        [cell.rightBtn setTitle:@"+关注" forState:UIControlStateNormal];
+    }else{
+        cell.rightBtn.selected = NO;
+        [cell.rightBtn setTitle:@"已关注" forState:UIControlStateNormal];
+    }
+    cell.rightBtn.tag = indexPath.row + 222;
+    [cell.rightBtn addTarget:self action:@selector(headButtonTouchh:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
+}
+
+-(void)headButtonTouchh:(UIButton *)sender{
+    NSInteger i = sender.tag - 222;
+    NearbyModel * model = self.dataSource[i];
+
+    
+    
+    
 }
 
 
