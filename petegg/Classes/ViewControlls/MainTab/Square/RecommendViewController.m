@@ -58,7 +58,16 @@ static NSString * cellId = @"recommeCellId";
 
 -(void)setupData{
     [super setupData];
-    [self loadDataSourceWithPage:10];
+    //topview
+    [[AFHttpClient sharedAFHttpClient]queryRecommendWithcomplete:^(BaseModel *model) {
+        
+        [self.dataSourceImage addObjectsFromArray:model.list];
+        
+        [self initTopView];
+    } failure:^{
+        
+    }];
+    
 }
 
 - (void)loadDataSourceWithPage:(int)page {
@@ -84,14 +93,7 @@ static NSString * cellId = @"recommeCellId";
         [self handleEndRefresh];
     }];
     
-    [[AFHttpClient sharedAFHttpClient]queryRecommendWithcomplete:^(BaseModel *model) {
-        
-        [self.dataSourceImage addObjectsFromArray:model.list];
-       
-        [self initTopView];
-    } failure:^{
-        
-    }];
+   
     
 }
 
@@ -183,7 +185,6 @@ static NSString * cellId = @"recommeCellId";
     cell.rihttnumber.text = model.praises;
     
     if ([model.mid isEqualToString:[AccountManager sharedAccountManager].loginModel.mid]) {
-
         cell.aboutBtn.hidden = YES;
     }
 
@@ -216,13 +217,16 @@ static NSString * cellId = @"recommeCellId";
     
     if (sender.selected == YES) {
         [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:friendId type:@"cancel" complete:^(BaseModel *model) {
-            [self.tableView reloadData];
+            //提示
+            [[AppUtil appTopViewController] showHint:model.retDesc];
+            //刷新界面
+            [self loadDataSourceWithPage:1];
             
         }];
     }else{
    [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:friendId type:@"add" complete:^(BaseModel *model) {
-       [self.tableView reloadData];
-
+       [[AppUtil appTopViewController] showHint:model.retDesc];
+       [self loadDataSourceWithPage:1];
     }];
     }
 }

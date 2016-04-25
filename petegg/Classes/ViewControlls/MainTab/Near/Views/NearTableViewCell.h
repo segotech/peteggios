@@ -10,6 +10,7 @@
 
 @interface NearTableViewCell : UITableViewCell
 @property (nonatomic,strong)UIImageView * headBtn;
+@property (nonatomic,strong)UIButton * headTouchButton;
 @property (nonatomic,strong)UILabel * nameLabel;
 @property (nonatomic,strong)UILabel * signLabel;
 @property (nonatomic,strong)UIButton * rightBtn;

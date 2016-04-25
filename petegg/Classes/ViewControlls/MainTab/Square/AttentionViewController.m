@@ -42,16 +42,24 @@ static NSString * cellId = @"AttentionCellId";
 
 -(void)loadDataSourceWithPage:(int)page{
     [[AFHttpClient sharedAFHttpClient] querySproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
-        if (page == 1) {
-            [self.dataSource addObjectsFromArray:model.list];
-        }else{
+        if (page == START_PAGE_INDEX) {
             [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:model.list];
+        } else {
+            [self.dataSource addObjectsFromArray:model.list];
         }
+        
+        if (model.list.count < REQUEST_PAGE_SIZE){
+            self.tableView.mj_footer.hidden = YES;
+        }else{
+            self.tableView.mj_footer.hidden = NO;
+        }
+        
         [self.tableView reloadData];
         [self handleEndRefresh];
-    } failure:^{
         
+    } failure:^{
+        [self handleEndRefresh];
     }];
 
 }

@@ -26,6 +26,11 @@
         _headBtn.backgroundColor = [UIColor blackColor];
         [self addSubview:_headBtn];
         
+        _headTouchButton = [[UIButton alloc]initWithFrame:_headBtn.frame];
+        _headTouchButton.backgroundColor = [UIColor clearColor];
+        [self addSubview:_headTouchButton];
+        
+        
         _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(55 * W_Wide_Zoom, 10 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
         _nameLabel.font = [UIFont systemFontOfSize:14];
         _nameLabel.textColor = [UIColor blackColor];
