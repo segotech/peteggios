@@ -14,8 +14,8 @@
 @property (nonatomic,strong)UIButton * womanBtn;
 @property (nonatomic,strong)UITextField * nameTextField;
 @property (nonatomic,strong)UITextField * qqTextField;
-@property (nonatomic,strong)UIButton * onkuangbtn;
-@property (nonatomic,strong)UIButton * offkuangBtn;
+@property (nonatomic,strong)UIButton * leftkuangbtn;
+@property (nonatomic,strong)UIButton * rightkuangBtn;
 @property (nonatomic,strong)UITextField * addressTextField;
 @property (nonatomic,strong)UITextField * signTextField;
 
@@ -65,7 +65,34 @@
     _nameTextField.placeholder = @"请输入昵称";
     [self.view addSubview:_nameTextField];
     
-   // _qqTextField = [UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    _qqTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 285 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    //_qqTextField.backgroundColor = [UIColor blueColor];
+    _qqTextField.tintColor = GREEN_COLOR;
+    _qqTextField.font = [UIFont systemFontOfSize:13];
+    _qqTextField.placeholder = @"请输入qq";
+    [self.view addSubview:_qqTextField];
+    
+    
+    _leftkuangbtn = [[UIButton alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 337 * W_Hight_Zoom, 18 * W_Wide_Zoom, 17 * W_Hight_Zoom)];
+    [_leftkuangbtn setImage:[UIImage imageNamed:@"kuang_off.png"] forState:UIControlStateNormal];
+    [_leftkuangbtn setImage:[UIImage imageNamed:@"kuang_on.png"] forState:UIControlStateSelected];
+
+    [self.view addSubview:_leftkuangbtn];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }
