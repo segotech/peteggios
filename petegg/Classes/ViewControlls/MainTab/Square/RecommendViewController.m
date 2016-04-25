@@ -16,6 +16,8 @@
 #import "CycleScrollView.h"
 #import "DetailViewController.h"
 #import "PersonDetailViewController.h"
+#import "AFHttpClient+IsfriendClient.h"
+
 
 static NSString * cellId = @"recommeCellId";
 
@@ -56,6 +58,7 @@ static NSString * cellId = @"recommeCellId";
 
 -(void)setupData{
     [super setupData];
+    [self loadDataSourceWithPage:10];
 }
 
 - (void)loadDataSourceWithPage:(int)page {
@@ -82,8 +85,7 @@ static NSString * cellId = @"recommeCellId";
     }];
     
     [[AFHttpClient sharedAFHttpClient]queryRecommendWithcomplete:^(BaseModel *model) {
-      //  [self.dataSourceImage addObjectsFromArray:model.list];
-     //   NSLog(@"%@",self.dataSourceImage);
+        
         [self.dataSourceImage addObjectsFromArray:model.list];
        
         [self initTopView];
@@ -179,7 +181,22 @@ static NSString * cellId = @"recommeCellId";
     cell.timeLable.text = model.publishtime;
     cell.leftnumber.text = model.comments;
     cell.rihttnumber.text = model.praises;
+    
+    if ([model.mid isEqualToString:[AccountManager sharedAccountManager].loginModel.mid]) {
+
+        cell.aboutBtn.hidden = YES;
+    }
+
+    if ([AppUtil isBlankString:model.isfriend]) {
+        cell.aboutBtn.selected = NO;
+        [cell.aboutBtn setTitle:@"+关注" forState:UIControlStateNormal];
+        
+    }else{
+        cell.aboutBtn.selected = YES;
+        [cell.aboutBtn setTitle:@"已关注" forState:UIControlStateNormal];
+    }
     [cell.aboutBtn addTarget:self action:@selector(attentionTouch:) forControlEvents:UIControlEventTouchUpInside];
+    cell.aboutBtn.tag = indexPath.row + 12;
     
     //tabview隐藏点击效果和分割线
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -193,8 +210,21 @@ static NSString * cellId = @"recommeCellId";
 
 //关注按钮点击事件
 -(void)attentionTouch:(UIButton * )sender{
-    sender.selected = !sender.selected;
-        
+    NSInteger i = sender.tag - 12;
+    SquareModel * model = self.dataSource[i];
+    NSString * friendId = model.mid;
+    
+    if (sender.selected == YES) {
+        [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:friendId type:@"cancel" complete:^(BaseModel *model) {
+            [self.tableView reloadData];
+            
+        }];
+    }else{
+   [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:friendId type:@"add" complete:^(BaseModel *model) {
+       [self.tableView reloadData];
+
+    }];
+    }
 }
 
 -(void)iconImageVTouch:(UIButton *)sender{
@@ -202,8 +232,6 @@ static NSString * cellId = @"recommeCellId";
     
     SquareModel * model = self.dataSource[i];
     NSString * mid = model.mid;
-    
-   
     PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
     personVc.ddddd = mid;
     [self.navigationController pushViewController:personVc animated:YES];

@@ -89,13 +89,19 @@
         self.aboutBtn = [[UIButton alloc]initWithFrame:CGRectMake(305 * W_Wide_Zoom, 23 * W_Hight_Zoom, 60 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
         self.aboutBtn.backgroundColor = GREEN_COLOR;
         self.aboutBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [self.aboutBtn setTitle:@"+关注" forState:UIControlStateNormal];
-        [self.aboutBtn setTitle:@"已关注" forState:UIControlStateSelected];
+//        [self.aboutBtn setTitle:@"+关注" forState:UIControlStateNormal];
+//        [self.aboutBtn setTitle:@"已关注" forState:UIControlStateSelected];
         self.aboutBtn.layer.cornerRadius = 5;
         [self.aboutBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
         [self addSubview:self.aboutBtn];
         
+//        self.cancelAboutButton = [[UIButton alloc]initWithFrame:CGRectMake(305 * W_Wide_Zoom, 23 * W_Hight_Zoom, 60 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
+//        self.cancelAboutButton.backgroundColor = GREEN_COLOR;
+//        self.cancelAboutButton.titleLabel.font = [UIFont systemFontOfSize:14];
+//        [self.cancelAboutButton setTitle:@"已关注" forState:UIControlStateNormal];
+//        self.cancelAboutButton.layer.cornerRadius = 5;
+//        [self.cancelAboutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [self addSubview:self.cancelAboutButton];
         
         
         

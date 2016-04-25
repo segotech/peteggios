@@ -14,6 +14,8 @@
 @property (nonatomic, strong)  UIButton *ageBtn;
 
 @property (nonatomic, strong)  UIButton *aboutBtn; // 关注
+//@property (nonatomic,strong) UIButton * cancelAboutButton;//取消关注
+
 @property (nonatomic, strong)  UIImageView *wangImage;
 @property (nonatomic, strong)  UIImageView *sexImage;
 @property (nonatomic, strong)  UIImageView *photoView;// 相片
