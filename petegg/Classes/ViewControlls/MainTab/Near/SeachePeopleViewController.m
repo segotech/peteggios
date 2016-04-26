@@ -11,6 +11,8 @@
 #import "NearTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "NearbyModel.h"
+#import "AFHttpClient+IsfriendClient.h"
+#import "PersonDetailViewController.h"
 static NSString * cellId = @"seacherCelliddddd";
 
 @interface SeachePeopleViewController ()
@@ -39,7 +41,7 @@ static NSString * cellId = @"seacherCelliddddd";
     _seacherTsexField = [[UITextField alloc]initWithFrame:CGRectMake(22 * W_Wide_Zoom, 14 * W_Wide_Zoom, 300 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
     //_seacherTsexField.backgroundColor = [UIColor redColor];
     _seacherTsexField.placeholder = @"搜索";
-    _seacherTsexField.tintColor = [UIColor whiteColor];
+    _seacherTsexField.tintColor = GREEN_COLOR;
     _seacherTsexField.textAlignment = NSTextAlignmentLeft;
     [_seacherTsexField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     [_seacherTsexField setValue:GRAY_COLOR forKeyPath:@"_placeholderLabel.textColor"];
@@ -62,6 +64,15 @@ static NSString * cellId = @"seacherCelliddddd";
 
 -(void)loadDataSourceWithPage:(int)page{
     [[AFHttpClient sharedAFHttpClient]searcheSomeWithMid:[AccountManager sharedAccountManager].loginModel.mid condition:_seacherTsexField.text pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
+        if (model.list.count == 0) {
+            [self.tableView reloadData];
+            [self handleEndRefresh];
+            UIAlertController *  alert = [UIAlertController alertControllerWithTitle:@"没有您搜索的内容" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            [alert dismissViewControllerAnimated:YES  completion:nil];
+            
+        }else{
         if (page == START_PAGE_INDEX) {
             [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:model.list];
@@ -77,10 +88,14 @@ static NSString * cellId = @"seacherCelliddddd";
         
         [self.tableView reloadData];
         [self handleEndRefresh];
+        }
     }];
 
 }
 -(void)searchButtonTouch{
+    //点击的时候做的判断
+    [_seacherTsexField resignFirstResponder];
+    self.tableView.hidden = NO;
     [self initRefreshView];
 }
 #pragma mark - TableView的代理函数
@@ -127,6 +142,9 @@ static NSString * cellId = @"seacherCelliddddd";
     cell.rightBtn.tag = indexPath.row + 222;
     [cell.rightBtn addTarget:self action:@selector(headButtonTouchh:) forControlEvents:UIControlEventTouchUpInside];
     
+    cell.headTouchButton.tag = indexPath.row + 333;
+    [cell.headTouchButton addTarget:self action:@selector(headButtontouchhhh:) forControlEvents:UIControlEventTouchUpInside];
+
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
@@ -135,12 +153,33 @@ static NSString * cellId = @"seacherCelliddddd";
 
 -(void)headButtonTouchh:(UIButton *)sender{
     NSInteger i = sender.tag - 222;
-    NearbyModel * model = self.dataSource[i];
+    if (sender.selected == YES) {
+        NearbyModel * model = self.dataSource[i];
+        [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"add" complete:^(BaseModel *model) {
+            [[AppUtil appTopViewController] showHint:model.retDesc];
+            [self loadDataSourceWithPage:1];
+        }];
+    }else{
+        NearbyModel * model = self.dataSource[i];
+        [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"cancel" complete:^(BaseModel *model) {
+            [[AppUtil appTopViewController] showHint:model.retDesc];
+            [self loadDataSourceWithPage:1];
+        }];
+    }
+}
 
-    
+-(void)headButtontouchhhh:(UIButton *)sender{
+    NSInteger i = sender.tag - 333;
+    [_seacherTsexField resignFirstResponder];
+    NearbyModel * model = self.dataSource[i];
+    NSString * mid = model.mid;
+    PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
+    personVc.ddddd = mid;
+    [self.navigationController pushViewController:personVc animated:YES];
     
     
 }
+
 
 
 @end

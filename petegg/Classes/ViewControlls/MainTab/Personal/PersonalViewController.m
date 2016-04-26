@@ -15,7 +15,7 @@
 #import "BaseViewController.h"
 #import "PersonAttentionViewController.h"
 #import "SnapViewController.h"
-
+#import "PersonInformationViewController.h"
 @interface PersonalViewController()
 
 {
@@ -194,7 +194,8 @@
 // 头像点击
 - (void)headBtnClick:(UIButton *)sender
 {
-    
+    PersonInformationViewController * personinforVc = [[PersonInformationViewController alloc]init];
+    [self.navigationController pushViewController:personinforVc animated:YES];
     
     
 }
