@@ -9,6 +9,7 @@
 #import "EggViewController.h"
 #import "InCallViewController.h"
 #import "SettingViewController.h"
+#import "SephoneManager.h"
 
 @interface EggViewController ()
 {
@@ -30,7 +31,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
  
-  [self setNavTitle: NSLocalizedString(@"tabEgg", nil)];
+    [self setNavTitle: NSLocalizedString(@"tabEgg", nil)];
     
     UIButton * btnFb2 =[UIButton buttonWithType:UIButtonTypeCustom];
     btnFb2.frame=CGRectMake(0, 0, 18, 18) ;
@@ -39,6 +40,11 @@
     
     UIBarButtonItem * settings =[[UIBarButtonItem alloc]initWithCustomView:btnFb2];
     self.navigationItem.rightBarButtonItem = settings;
+    
+    // sip登陆。
+    
+      [SephoneManager addProxyConfig:@"15800000185" password:@"305193" domain:@"180.97.80.152"];
+    
 
     
    [self equipmentState];
@@ -236,75 +242,57 @@
          *   这里做一个模拟延迟的菊花 提高用户体验
          */
         
-        NSString * devico =[AccountManager sharedAccountManager].loginModel.deviceno;
-        NSString * devico1 =[_defaulte objectForKey:@"DEVICE_NUMBER"];
-        
-        if ([AppUtil isBlankString:devico]) {
-            [self sipCall:devico1 sipName:nil];
-        }else
-        {
-            [self sipCall:devico sipName:nil];
-        }
-        
-        
-        
         //时间
         NSDate *  senddate=[NSDate date];
         NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
         [dateformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         NSString *  locationString=[dateformatter stringFromDate:senddate];
     
-        NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
         
         // 使用记录
-        NSString * service =[AppUtil getServerSego3];
-        service = [service stringByAppendingString:@"clientAction.do?common=addDeviceUseRecord&classes=appinterface&method=json"];
+       
         NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
         // 自己开
         [dic setValue:@"self" forKey:@"object"];
+        NSString * devicLg =[AccountManager sharedAccountManager].loginModel.deviceno;
+        NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
+        NSString * devico1 =[_defaulte objectForKey:@"DEVICE_NUMBER"];
         
-        if ([AppUtil isBlankString:devico]) {
-            [dic setValue:devico forKey:@"deviceno"];
-            //
-        }
-        if ([AppUtil isBlankString:devico1]) {
+        if ([AppUtil isBlankString:devicLg]) {
+            [self sipCall:devico1 sipName:nil];
+             [dic setValue:devico1 forKey:@"deviceno"];
             
-            //
-            [dic setValue:devico1 forKey:@"deviceno"];
+        }else
+        {
+            [self sipCall:devicLg sipName:nil];
+            [dic setValue:devicLg forKey:@"deviceno"];
+
         }
         [dic setValue:mid forKey:@"belong"];
         [dic setValue:mid forKey:@"mid"];
         [dic setValue:locationString forKey:@"starttime"];
         [dic setValue:@"0" forKey:@"consumption"];
         
+        NSString * str =@"clientAction.do?common=addDeviceUseRecord&classes=appinterface&method=json";
         
-        AFHTTPRequestOperationManager *manager =  [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObject:@"text/html"];
-        
-        [manager POST:service parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            responseObject =[responseObject objectForKey:@"jsondata"];
-            NSString * buildID =[responseObject objectForKey:@"content"];
-            [_defaulte setValue:buildID forKey:@"otherbuildIDS"];
-            //  开启视频
-            
+        [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
             _isOpen = YES;
+            NSString * buildID = json[@"jsondata"][@"content"];
+            [_defaulte setValue:buildID forKey:@"otherbuildIDS"];
+            _incallVC =[[InCallViewController alloc]initWithNibName:@"InCallViewController" bundle:nil];
+            [self presentViewController:_incallVC animated:YES completion:nil];
+
+            
+        } failure:^(NSError *error) {
             
             
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
-            NSLog(@"%@",error.localizedDescription);
         }];
         
         
     }else
     {
-        
         // 测试
-        
-        _incallVC =[[InCallViewController alloc]initWithNibName:@"InCallViewController" bundle:nil];
-      [self presentViewController:_incallVC animated:YES completion:nil];
-        
-        
+    
         
     }
     
@@ -324,9 +312,8 @@
 - (void)sipCall:(NSString*)dialerNumber sipName:(NSString *)sipName
 {
     
-    
-//    NSString *  displayName  =nil;
-//    [[LinphoneManager instance] call:dialerNumber displayName:displayName transfer:FALSE];
+    NSString *  displayName  =nil;
+    [[SephoneManager instance] call:dialerNumber displayName:displayName transfer:FALSE];
     
 }
 

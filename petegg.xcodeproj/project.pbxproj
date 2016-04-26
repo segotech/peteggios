@@ -193,6 +193,9 @@
 		34A2186A1CCE151300ADD8FF /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */; };
 		34A2186C1CCE152E00ADD8FF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */; };
 		34A2186E1CCE15BC00ADD8FF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186D1CCE15BC00ADD8FF /* CoreData.framework */; };
+		34CC882C1CCF43070022A5E8 /* VideoZoomHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC882B1CCF43070022A5E8 /* VideoZoomHandler.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		34CC88341CCF8F2B0022A5E8 /* FounyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC88321CCF8F2B0022A5E8 /* FounyMoneyViewController.m */; };
+		34CC88351CCF8F2B0022A5E8 /* FounyMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34CC88331CCF8F2B0022A5E8 /* FounyMoneyViewController.xib */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		572220E01CB7541E00C9C7D2 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */; };
@@ -1023,6 +1026,11 @@
 		34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		34A2186D1CCE15BC00ADD8FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		34CC882A1CCF43070022A5E8 /* VideoZoomHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoZoomHandler.h; sourceTree = "<group>"; };
+		34CC882B1CCF43070022A5E8 /* VideoZoomHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoZoomHandler.m; sourceTree = "<group>"; };
+		34CC88311CCF8F2B0022A5E8 /* FounyMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FounyMoneyViewController.h; sourceTree = "<group>"; };
+		34CC88321CCF8F2B0022A5E8 /* FounyMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FounyMoneyViewController.m; sourceTree = "<group>"; };
+		34CC88331CCF8F2B0022A5E8 /* FounyMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FounyMoneyViewController.xib; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -2416,6 +2424,25 @@
 			path = rings;
 			sourceTree = "<group>";
 		};
+		34CC88291CCF43070022A5E8 /* handupView */ = {
+			isa = PBXGroup;
+			children = (
+				34CC882A1CCF43070022A5E8 /* VideoZoomHandler.h */,
+				34CC882B1CCF43070022A5E8 /* VideoZoomHandler.m */,
+			);
+			path = handupView;
+			sourceTree = "<group>";
+		};
+		34CC882D1CCF8EEA0022A5E8 /* funnyMoney */ = {
+			isa = PBXGroup;
+			children = (
+				34CC88311CCF8F2B0022A5E8 /* FounyMoneyViewController.h */,
+				34CC88321CCF8F2B0022A5E8 /* FounyMoneyViewController.m */,
+				34CC88331CCF8F2B0022A5E8 /* FounyMoneyViewController.xib */,
+			);
+			path = funnyMoney;
+			sourceTree = "<group>";
+		};
 		54F8349C273A2EB97EF3EBE0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2428,6 +2455,7 @@
 		570BA4F51CA25570009AA2FC /* InCall */ = {
 			isa = PBXGroup;
 			children = (
+				34CC88291CCF43070022A5E8 /* handupView */,
 				7D825CCF1CBCA4C800F4E216 /* InCallViewController.h */,
 				7D825CD01CBCA4C800F4E216 /* InCallViewController.m */,
 				7D825CD11CBCA4C800F4E216 /* InCallViewController.xib */,
@@ -3044,6 +3072,7 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				34CC882D1CCF8EEA0022A5E8 /* funnyMoney */,
 				34144BCF1CBFB1B3007C4498 /* Message */,
 				7D825CEE1CBCA65000F4E216 /* Attention */,
 				7D825CEF1CBCA65000F4E216 /* Dynamic */,
@@ -3224,7 +3253,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = ZMFX8728A9;
+						DevelopmentTeam = 4UKEB375ND;
 					};
 				};
 			};
@@ -3432,6 +3461,7 @@
 				34A218411CCDFF9700ADD8FF /* oldphone-mono.wav in Resources */,
 				34A2183A1CCDFF9700ADD8FF /* rootca.pem in Resources */,
 				34A218481CCDFF9700ADD8FF /* toy-mono.wav in Resources */,
+				34CC88351CCF8F2B0022A5E8 /* FounyMoneyViewController.xib in Resources */,
 				7D825D111CBCA65000F4E216 /* HeaderViewCollection.xib in Resources */,
 				34A218361CCDFF9700ADD8FF /* status-orange.png in Resources */,
 			);
@@ -3545,6 +3575,7 @@
 				7D825CD51CBCA4C800F4E216 /* InCallViewController.m in Sources */,
 				7D30E8A91CA66C05004DE055 /* SCImageView.m in Sources */,
 				7D30E8B01CA66C05004DE055 /* SCRecorderFocusTargetView.m in Sources */,
+				34CC88341CCF8F2B0022A5E8 /* FounyMoneyViewController.m in Sources */,
 				34A215DB1CCDFD6F00ADD8FF /* SephoneUtils.m in Sources */,
 				570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */,
 				578B9E671CA2D8CB00CAC21D /* SquareModel.m in Sources */,
@@ -3584,6 +3615,7 @@
 				57666FDB1C96BE6F00A52DBA /* UIAlertView+Blocks.m in Sources */,
 				7D30E89C1CA66C05004DE055 /* CIImageRendererUtils.m in Sources */,
 				7D825CC81CBC9CB700F4E216 /* AFHttpClient+Nearby.m in Sources */,
+				34CC882C1CCF43070022A5E8 /* VideoZoomHandler.m in Sources */,
 				7D0128F11CC612E10009BF6B /* PersonAttention.m in Sources */,
 				7D30E8B61CA66C05004DE055 /* SCSaveToCameraRollOperation.m in Sources */,
 				7D30E8A31CA66C05004DE055 /* SCContext.m in Sources */,
@@ -3781,7 +3813,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3832,7 +3864,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
