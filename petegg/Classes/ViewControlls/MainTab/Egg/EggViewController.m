@@ -41,8 +41,8 @@
     self.navigationItem.rightBarButtonItem = settings;
 
     
-  //[self equipmentState];
-    [self buttonOpen];
+   [self equipmentState];
+   [self buttonOpen];
     
     
 }
@@ -88,9 +88,8 @@
     _appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     _defaulte =[NSUserDefaults standardUserDefaults];
-    NSString * str =[_defaulte objectForKey:@"devicenumber"];
+    NSString * str =[AccountManager sharedAccountManager].loginModel.deviceno;
     NSString *DEVICE_NUMBER  = [_defaulte objectForKey:@"DEVICE_NUMBER"];
-    
     if ([AppUtil isBlankString:str]) {
         if ([AppUtil isBlankString:DEVICE_NUMBER]) {
             self.view.backgroundColor =[UIColor lightGrayColor];
@@ -127,8 +126,8 @@
      */
     
     NSString * bangdinDevico = [_defaulte objectForKey:@"DEVICE_NUMBER"];
-    NSString * mid =[_defaulte dictionaryForKey:@"segologinIs"][@"mid"];
-    NSString * devico =[_defaulte objectForKey:@"devicenumber"];
+    NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
+    NSString * devico =[AccountManager sharedAccountManager].loginModel.deviceno;
     NSString * service =[AppUtil getServerSego3];
     service = [service stringByAppendingString:@"clientAction.do?common=queryDeviceStatus&classes=appinterface&method=json"];
     
@@ -148,6 +147,7 @@
         [dic setValue:mid forKey:@"mid"];
         
     }
+    
     
     AFHTTPRequestOperationManager *manager =  [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObject:@"text/html"];
@@ -176,7 +176,7 @@
     int myInt = [status intValue];
     self.view.backgroundColor =[UIColor whiteColor];
 
-    _yesDeviceImageView =[[UIImageView alloc]initWithFrame:CGRectMake(35*W_Wide_Zoom, 60*W_Hight_Zoom, 300*W_Wide_Zoom, 300*W_Hight_Zoom)];
+    _yesDeviceImageView =[[UIImageView alloc]initWithFrame:CGRectMake(35*W_Wide_Zoom, 90*W_Hight_Zoom, 300*W_Wide_Zoom, 300*W_Hight_Zoom)];
     
     if ((myInt&(0x1 << 3)) != 0) {
         // 在线
@@ -207,7 +207,7 @@
 
 - (void)buttonOpen
 {
-    _isOpen = NO;
+    _isOpen = YES;
     [_noDeviceImageView removeFromSuperview];
     _openButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_openButton setTitle:NSLocalizedString(@"openButton", nil) forState:UIControlStateNormal];
@@ -220,7 +220,7 @@
     [_openButton.layer setMasksToBounds:YES];
     [_openButton.layer setCornerRadius:5.0];
     [_openButton addTarget:self action:@selector(btn_set:) forControlEvents:UIControlEventTouchUpInside];
-    _openButton.frame = CGRectMake(70*W_Wide_Zoom, 390*W_Hight_Zoom, 240*W_Wide_Zoom, 40*W_Hight_Zoom);
+    _openButton.frame = CGRectMake(70*W_Wide_Zoom, 420*W_Hight_Zoom, 240*W_Wide_Zoom, 40*W_Hight_Zoom);
     [self.view addSubview:_openButton];
 }
 
@@ -236,7 +236,7 @@
          *   这里做一个模拟延迟的菊花 提高用户体验
          */
         
-        NSString * devico =[_defaulte objectForKey:@"devicenumber"];
+        NSString * devico =[AccountManager sharedAccountManager].loginModel.deviceno;
         NSString * devico1 =[_defaulte objectForKey:@"DEVICE_NUMBER"];
         
         if ([AppUtil isBlankString:devico]) {
@@ -254,10 +254,7 @@
         [dateformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         NSString *  locationString=[dateformatter stringFromDate:senddate];
     
-        NSString * mid =[_defaulte dictionaryForKey:@"segologinIs"][@"mid"];
-        NSString * device =[_defaulte dictionaryForKey:@"segologinIs"][@"deviceno"];
-        NSString * device1 =[_defaulte dictionaryForKey:@"segologinIs"][@"devicenumber"];
-        
+        NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
         
         // 使用记录
         NSString * service =[AppUtil getServerSego3];
@@ -266,14 +263,14 @@
         // 自己开
         [dic setValue:@"self" forKey:@"object"];
         
-        if ([AppUtil isBlankString:device]) {
-            [dic setValue:device1 forKey:@"deviceno"];
+        if ([AppUtil isBlankString:devico]) {
+            [dic setValue:devico forKey:@"deviceno"];
             //
         }
-        if ([AppUtil isBlankString:device1]) {
+        if ([AppUtil isBlankString:devico1]) {
             
             //
-            [dic setValue:device forKey:@"deviceno"];
+            [dic setValue:devico1 forKey:@"deviceno"];
         }
         [dic setValue:mid forKey:@"belong"];
         [dic setValue:mid forKey:@"mid"];
