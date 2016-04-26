@@ -16,6 +16,8 @@
 #import "PersonAttentionViewController.h"
 #import "SnapViewController.h"
 #import "PersonInformationViewController.h"
+#import "ChangePasswordViewController.h"
+
 @interface PersonalViewController()
 
 {
@@ -50,13 +52,13 @@
 
 - (void)setupData
 {
-    
+    [super setupData];
     NSString * str =@"clientAction.do?method=json&common=queryPraises&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-          json = json[@"jsondata"][@"list"][0];
+            json = json[@"jsondata"][@"list"][0];
             [_heandBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:json[@"headportrait"]]]] forState:UIControlStateNormal];
             [self showLB:500 string:json[@"sprouts"]];
             [self showLB:501 string:json[@"gz"]];
@@ -64,28 +66,31 @@
             [self showLB:503 string:json[@"praises"]];
             _nameLabel.text = json[@"nickname"];
             [bgImgView sd_setImageWithURL:[NSURL URLWithString:json[@"headportrait"]] placeholderImage:[UIImage imageNamed:@"ceishi.jpg"]];
-            
-            bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"ceishi.jpg"]] withBlurLevel:0.2];
-            
+            UIImage * imagea = bgImgView.image;
+            bgImgView.image = [self blurryImage:[self cutImage:imagea] withBlurLevel:0.2];
         }
-        
         
     } failure:^(NSError *error) {
         
     }];
     
     
-    
 }
+
+-(void)initheadImage:(NSNotification *)nsnotifition{
+     UIImage * testImage =nsnotifition.object;
+    [_heandBtn setImage:testImage forState:UIControlStateNormal];
+    bgImgView.image = [self blurryImage:[self cutImage:testImage] withBlurLevel:0.2];
+    
+
+}
+
 
 
 - (void)showLB:(NSInteger )tag string:(NSString *)str
 {
      UILabel *myLB = (UILabel *)[self.view viewWithTag:tag];
      myLB.text = str;
-    
-    
-    
 }
 
 
@@ -93,6 +98,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initheadImage:) name:@"handImageText" object:nil];
     
 }
 
@@ -434,7 +440,9 @@
         case 2:
             if (indexPath.row ==0) {
                 NSLog(@"000");
-            
+                ChangePasswordViewController * changVc = [[ChangePasswordViewController alloc]init];
+                [self.navigationController pushViewController:changVc animated:YES];
+                
                 
             
             }

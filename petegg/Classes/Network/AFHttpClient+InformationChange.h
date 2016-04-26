@@ -18,7 +18,7 @@
 //修改
 -(void)modifyMemberWithMid:(NSString *)mid
                        nicname:(NSString * )nickname
-                       country:(NSString *)country
+                       qq:(NSString *)qq
                        address:(NSString *)address
                        signature:(NSString *)signature
                        pet_sex:(NSString *)pet_sex
