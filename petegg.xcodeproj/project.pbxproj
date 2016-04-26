@@ -1367,6 +1367,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				344F02B11CA2475A0076CE62 /* Foundation.framework in Frameworks */,
+				344F02AB1CA2473C0076CE62 /* UIKit.framework in Frameworks */,
 				34A2186E1CCE15BC00ADD8FF /* CoreData.framework in Frameworks */,
 				34A2186C1CCE152E00ADD8FF /* libsqlite3.0.tbd in Frameworks */,
 				34A2186A1CCE151300ADD8FF /* libz.1.1.3.tbd in Frameworks */,
@@ -1397,11 +1399,9 @@
 				34A2180B1CCDFF9700ADD8FF /* libspeexdsp.a in Frameworks */,
 				34A218111CCDFF9700ADD8FF /* libmsamr.a in Frameworks */,
 				34A218091CCDFF9700ADD8FF /* libSKP_SILK_SDK.a in Frameworks */,
-				344F02B11CA2475A0076CE62 /* Foundation.framework in Frameworks */,
 				34A217FA1CCDFF9700ADD8FF /* libbellesip.a in Frameworks */,
 				34A217FD1CCDFF9700ADD8FF /* libgsm.a in Frameworks */,
 				344F02AD1CA247450076CE62 /* CoreBluetooth.framework in Frameworks */,
-				344F02AB1CA2473C0076CE62 /* UIKit.framework in Frameworks */,
 				34A2180C1CCDFF9700ADD8FF /* libsrtp.a in Frameworks */,
 				34A217F91CCDFF9700ADD8FF /* libavutil.a in Frameworks */,
 				34A218131CCDFF9700ADD8FF /* libmsilbc.a in Frameworks */,
@@ -3755,6 +3755,7 @@
 					"\"${PODS_ROOT}/ShareSDK3/ShareSDK/Support/PlatformSDK/QQSDK\"",
 					"\"${PODS_ROOT}/ShareSDK3/ShareSDK/Support/Optional\"",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = petegg/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3772,7 +3773,6 @@
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 					"\"${PODS_ROOT}/Headers/Public/ShareSDK3\"",
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
-					/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include,
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -3806,6 +3806,7 @@
 					"\"${PODS_ROOT}/ShareSDK3/ShareSDK/Support/PlatformSDK/QQSDK\"",
 					"\"${PODS_ROOT}/ShareSDK3/ShareSDK/Support/Optional\"",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = petegg/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3823,7 +3824,6 @@
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 					"\"${PODS_ROOT}/Headers/Public/ShareSDK3\"",
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
-					/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include,
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
