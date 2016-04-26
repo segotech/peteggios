@@ -386,6 +386,7 @@
 		7D98192D1CC9F95600D0A6CC /* RepositorySnapshotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D98192C1CC9F95600D0A6CC /* RepositorySnapshotViewController.m */; };
 		7D9D769A1CBCCD24004E45DE /* NearbyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D76991CBCCD24004E45DE /* NearbyModel.m */; };
 		7D9D769C1CBCF011004E45DE /* searche.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9D769B1CBCF011004E45DE /* searche.png */; };
+		7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */; };
 		7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */; };
 		7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D02F1CA535820098706C /* CycleScrollView.m */; };
 		7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */; };
@@ -1349,6 +1350,8 @@
 		7D9D76981CBCCD24004E45DE /* NearbyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyModel.h; sourceTree = "<group>"; };
 		7D9D76991CBCCD24004E45DE /* NearbyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyModel.m; sourceTree = "<group>"; };
 		7D9D769B1CBCF011004E45DE /* searche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searche.png; sourceTree = "<group>"; };
+		7DB4F5B91CCF1195002918DA /* AFHttpClient+InformationChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+InformationChange.h"; sourceTree = "<group>"; };
+		7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+InformationChange.m"; sourceTree = "<group>"; };
 		7DB9E1891CCE3AE7009AB3A7 /* PersonInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInformationViewController.h; sourceTree = "<group>"; };
 		7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInformationViewController.m; sourceTree = "<group>"; };
 		7DC8D02E1CA535820098706C /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
@@ -2659,6 +2662,8 @@
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
+				7DB4F5B91CCF1195002918DA /* AFHttpClient+InformationChange.h */,
+				7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */,
 				7D05D8A91CCB850F0081FB24 /* AFHttpClient+IsfriendClient.h */,
 				7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */,
 				7D0116151CC7631000FEEF16 /* AFHttpClient+Issue.h */,
@@ -3553,6 +3558,7 @@
 				7D30E8B11CA66C05004DE055 /* SCRecorderTools.m in Sources */,
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
 				7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */,
+				7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */,
 				7D0116171CC7631000FEEF16 /* AFHttpClient+Issue.m in Sources */,
 				7D30E8A61CA66C05004DE055 /* SCFilter.m in Sources */,
 				7D3A351F1CB3AE790037C616 /* LoginModel.m in Sources */,
