@@ -389,6 +389,7 @@
 		7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */; };
 		7DB4F5BE1CCF3F35002918DA /* InformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BD1CCF3F35002918DA /* InformationModel.m */; };
 		7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5C11CCF849A002918DA /* ChangePasswordViewController.m */; };
+		7DB4F5C51CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5C41CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m */; };
 		7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */; };
 		7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D02F1CA535820098706C /* CycleScrollView.m */; };
 		7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */; };
@@ -1358,6 +1359,8 @@
 		7DB4F5BD1CCF3F35002918DA /* InformationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationModel.m; sourceTree = "<group>"; };
 		7DB4F5C01CCF849A002918DA /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		7DB4F5C11CCF849A002918DA /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		7DB4F5C31CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+ChangepasswordAndBlacklist.h"; sourceTree = "<group>"; };
+		7DB4F5C41CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+ChangepasswordAndBlacklist.m"; sourceTree = "<group>"; };
 		7DB9E1891CCE3AE7009AB3A7 /* PersonInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInformationViewController.h; sourceTree = "<group>"; };
 		7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInformationViewController.m; sourceTree = "<group>"; };
 		7DC8D02E1CA535820098706C /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
@@ -2670,6 +2673,8 @@
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
+				7DB4F5C31CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.h */,
+				7DB4F5C41CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m */,
 				7DB4F5B91CCF1195002918DA /* AFHttpClient+InformationChange.h */,
 				7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */,
 				7D05D8A91CCB850F0081FB24 /* AFHttpClient+IsfriendClient.h */,
@@ -3531,6 +3536,7 @@
 				57462DA61CBA46270071047E /* CommentModel.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
 				7D05D8A81CCB21080081FB24 /* IssueZiYuankuModel.m in Sources */,
+				7DB4F5C51CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m in Sources */,
 				7DFF05A91CB7A26E00CF713E /* DetailModel.m in Sources */,
 				7D3A352E1CB3CAFA0037C616 /* ReDataViewController.m in Sources */,
 				7D0128EB1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m in Sources */,
