@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AppDelegate+Launcher.h"
 #import "AppDelegate+ShareSDK.h"
+#import "AppDelegate+Sephone.h"
 #import "IQKeyboardManager.h"
 
 @interface AppDelegate ()
@@ -32,6 +33,8 @@
     
     //初始化启动流程
     [self launcherApplication:application didFinishLaunchingWithOptions:launchOptions];
+    [self initSephoneVoip:application didFinishLaunchingWithOptions:launchOptions];
+    
     
     return YES;
 }

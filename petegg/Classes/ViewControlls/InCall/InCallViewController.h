@@ -10,6 +10,9 @@
 
 @interface InCallViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UISlider *laserPen;
-
+- (void)setCall:(SephoneCall *)acall;
+@property (strong, nonatomic) IBOutlet UIView *videoView;
+@property (strong, nonatomic) IBOutlet UIButton *backBtn;
+@property (strong, nonatomic) IBOutlet UIImageView *backImageView;
+@property (strong, nonatomic) IBOutlet UISlider *penSd;
 @end
