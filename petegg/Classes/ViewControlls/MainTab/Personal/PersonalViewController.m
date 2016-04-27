@@ -42,7 +42,7 @@
     NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"逗豆",@"逗码",@"权限设置",@"修改密码",@"黑名单"];
     
     [self.dataSource addObjectsFromArray:arrName];
-    NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_attention.png",@"person_bean.png",@"person_code.png",@"person_control.png",@"person_pw.png"];
+    NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_bean.png",@"person_code.png",@"person_control.png",@"person_pw.png",@"blank_list.png"];
     [self.dataSourceImage addObjectsFromArray:arrImage];
     
    
@@ -348,9 +348,9 @@
             break;
             
         case 2:
-            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+7]];
+            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+6]];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.introduce.text= self.dataSource[indexPath.row+7];
+            cell.introduce.text= self.dataSource[indexPath.row+6];
             break;
             
          case 3:
