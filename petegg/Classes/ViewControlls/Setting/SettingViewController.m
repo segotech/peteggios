@@ -64,14 +64,16 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     NSUserDefaults *defults = [NSUserDefaults standardUserDefaults];
     strDeviceNo = [defults objectForKey:PREF_DEVICE_NUMBER];
     strConfigResult = [defults objectForKey:PREF_WIFI_CONFIGURED];
+    NSString * str = [AccountManager sharedAccountManager].loginModel.deviceno;
+    
 
     // 尚未绑定设备，则绑定设备。
-    if ([AppUtil isBlankString:strDeviceNo]) {
+    if ([AppUtil isBlankString:strDeviceNo] && [AppUtil isBlankString:str]) {
         [self updateUI:@"绑定设备" State:false];
     }
     // 已绑定设备，解除绑定。
     else {
-        deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", strDeviceNo];
+        deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", str];
         incodeEdit.text = [NSString stringWithFormat:@"  接入码:  ******"];
         [self updateUI:@"解除绑定" State:true];
     }
@@ -93,8 +95,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
  */
 - (void)doUnbindRequest {
     // 格式化参数。
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *mid = [userDefault objectForKey:@"segomid"];
+    NSString *mid = [AccountManager sharedAccountManager].loginModel.mid;
     if ([AppUtil isBlankString:mid]) {
         return;
     }
@@ -140,7 +141,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
  */
 - (IBAction)onUnbindButtonClicked:(id)sender {
     // 搜索设备并绑定。
-    if ([AppUtil isBlankString:strDeviceNo]) {
+    if ([AppUtil isBlankString:strDeviceNo] && [AppUtil isBlankString:[AccountManager sharedAccountManager].loginModel.deviceno]) {
         BindDeviceViewControler *bindView = [[BindDeviceViewControler alloc] initWithNibName:@"BindDeviceViewControler" bundle:nil];
         [self.navigationController pushViewController:bindView animated:YES];
     }

@@ -8,20 +8,27 @@
 
 #import "InCallViewController.h"
 
+@import CoreTelephony;
+
 @interface InCallViewController ()
 
 {
     NSTimer *updateTimer;
     NSTimer *hideControlsTimer;
     NSTimer * moveTimer;
+    NSTimer * timeShow;
+    
     
     int timeCompar;
     int doubleTime;
+    int couunt;
+    
     
     
     
     
 }
+@property (nonatomic, strong) CTCallCenter * center;
 @property (nonatomic, assign) SephoneCall *call;
 @end
 
@@ -29,6 +36,9 @@
 @synthesize penSd;
 @synthesize call;
 @synthesize videoView;
+@synthesize timeText;
+@synthesize pointView;
+
 
 
 
@@ -46,8 +56,15 @@
     // 视频
     sephone_core_set_native_video_window_id([SephoneManager getLc], (unsigned long)videoView);
     
+
+    
     // 创建定时器更新通话时间。
     updateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateViews) userInfo:nil repeats:YES];
+    
+    
+    // 创建时间显示
+    timeShow =[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(showUp) userInfo:nil repeats:YES];
+    
     
 }
 
@@ -67,6 +84,12 @@
         hideControlsTimer = nil;
     }
     
+    if (moveTimer !=nil) {
+        [moveTimer invalidate];
+        moveTimer = nil;
+        
+    }
+    
     // Clear windows
     //  必须清除，否则会因为arc导致再次视频通话时crash。
     sephone_core_set_native_video_window_id([SephoneManager getLc], (unsigned long)NULL);
@@ -78,7 +101,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[UIApplication sharedApplication].keyWindow addSubview:self.backBtn];
+
+        self.center = [[CTCallCenter alloc] init];
+        __weak InCallViewController *weakSelf = self;
+        self.center.callEventHandler = ^(CTCall * call)
+        {
+            //TODO:检测到来电后的处理
     
+            [weakSelf comeBack];
+            
+        };
     
     
     [self setupView];
@@ -268,6 +300,15 @@
 }
 
 
+- (void)comeBack
+{
+    
+    [SephoneManager terminateCurrentCallOrConference];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    
+}
+
 //  返回
 - (IBAction)backBtnClick:(UIButton *)sender {
     
@@ -330,9 +371,13 @@
 
 - (void)moveRobot:(NSString *)str
 {
-
+   
+    if (moveTimer != nil) {
+        [moveTimer invalidate];
+        moveTimer = nil;
+    }else{
     moveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(sendInfomation:) userInfo:str repeats:YES];
-
+    }
     
 }
 
@@ -360,17 +405,48 @@
 
 // 更新控件内容
 - (void)updateViews {
+    
     if (call == NULL) {
-        return;
+       return;
     }
+
+    
 }
 
+
+- (void)showUp
+{
+     SephoneCall *calltime= sephone_core_get_current_call([SephoneManager getLc]);
+    int duration = sephone_call_get_duration(calltime);
+    
+    NSLog(@"=========时间======%02i:%02i",(duration/60), (duration%60));
+    timeText.text =[NSString stringWithFormat:@"%02i:%02i", (duration/60), (duration%60), nil];
+    
+    if (couunt%2 ==1) {
+        pointView.hidden = NO;
+    }else
+    {
+        pointView.hidden = YES;
+        
+    }
+    if (duration >= 300) {
+        
+        [SephoneManager terminateCurrentCallOrConference];
+         NSLog(@"五分钟到时视频流自动断开");
+        
+        
+    }
+    
+    couunt ++;
+    
+}
 
 // 通话监听
 
 - (void)callUpdate:(SephoneCall *)call_ state:(SephoneCallState)state animated:(BOOL)animated {
-    SephoneCore *lc = [SephoneManager getLc];
+   
     
+
     // Fake call update
     if (call_ == NULL) {
         return;
@@ -404,8 +480,8 @@
 
 - (void)hideSpinnerIndicator:(SephoneCall *)call {
     
-   // videoWaitingForFirstImage.hidden = TRUE;
-   // 菊花图
+
+    
     
 }
 

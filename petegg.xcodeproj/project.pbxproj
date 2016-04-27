@@ -22,6 +22,9 @@
 		34144BEC1CC4BD01007C4498 /* LargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BEA1CC4BD01007C4498 /* LargeViewController.m */; };
 		34144BED1CC4BD01007C4498 /* LargeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34144BEB1CC4BD01007C4498 /* LargeViewController.xib */; };
 		34144BF01CC4BFB9007C4498 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BEF1CC4BFB9007C4498 /* ImageModel.m */; };
+		341AEDBE1CD099FB0051C42A /* FounyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 341AEDBC1CD099FB0051C42A /* FounyMoneyViewController.m */; };
+		341AEDBF1CD099FB0051C42A /* FounyMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 341AEDBD1CD099FB0051C42A /* FounyMoneyViewController.xib */; };
+		341AEDC11CD0D9310051C42A /* video_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 341AEDC01CD0D9310051C42A /* video_point.png */; };
 		344F022B1C9FD6200076CE62 /* noDevice.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F022A1C9FD6200076CE62 /* noDevice.png */; };
 		344F022D1C9FE02C0076CE62 /* new_egg_seting.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F022C1C9FE02C0076CE62 /* new_egg_seting.png */; };
 		344F02321C9FE0410076CE62 /* egg_calling.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F022E1C9FE0410076CE62 /* egg_calling.png */; };
@@ -430,6 +433,10 @@
 		34144BEB1CC4BD01007C4498 /* LargeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LargeViewController.xib; path = petegg/Classes/Models/LargeViewController.xib; sourceTree = SOURCE_ROOT; };
 		34144BEE1CC4BFB9007C4498 /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
 		34144BEF1CC4BFB9007C4498 /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
+		341AEDBB1CD099FB0051C42A /* FounyMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FounyMoneyViewController.h; sourceTree = "<group>"; };
+		341AEDBC1CD099FB0051C42A /* FounyMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FounyMoneyViewController.m; sourceTree = "<group>"; };
+		341AEDBD1CD099FB0051C42A /* FounyMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FounyMoneyViewController.xib; sourceTree = "<group>"; };
+		341AEDC01CD0D9310051C42A /* video_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_point.png; sourceTree = "<group>"; };
 		344F022A1C9FD6200076CE62 /* noDevice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noDevice.png; sourceTree = "<group>"; };
 		344F022C1C9FE02C0076CE62 /* new_egg_seting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_egg_seting.png; sourceTree = "<group>"; };
 		344F022E1C9FE0410076CE62 /* egg_calling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_calling.png; sourceTree = "<group>"; };
@@ -1470,9 +1477,20 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		341AEDBA1CD099FB0051C42A /* funnyMoney */ = {
+			isa = PBXGroup;
+			children = (
+				341AEDBB1CD099FB0051C42A /* FounyMoneyViewController.h */,
+				341AEDBC1CD099FB0051C42A /* FounyMoneyViewController.m */,
+				341AEDBD1CD099FB0051C42A /* FounyMoneyViewController.xib */,
+			);
+			path = funnyMoney;
+			sourceTree = "<group>";
+		};
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				341AEDC01CD0D9310051C42A /* video_point.png */,
 				7DF146F01CD057EF0046D726 /* addblack.png */,
 				34A210BC1CCA313B00BE7A80 /* doumashare.png */,
 				34813FEA1CC5E039000DFE26 /* manAnimal.png */,
@@ -3076,6 +3094,7 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				341AEDBA1CD099FB0051C42A /* funnyMoney */,
 				7DF146EC1CD054260046D726 /* BlackList */,
 				7DB4F5BF1CCF847C002918DA /* ChangePassWord */,
 				34144BCF1CBFB1B3007C4498 /* Message */,
@@ -3286,7 +3305,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = ZMFX8728A9;
+						DevelopmentTeam = 4UKEB375ND;
 					};
 				};
 			};
@@ -3468,6 +3487,7 @@
 				34A2181A1CCDFF9700ADD8FF /* call_status_incoming.png in Resources */,
 				7D2F82031CAE25030097820B /* egg_passtubiao.png in Resources */,
 				7D30E8CB1CA66C67004DE055 /* WechatShortVideoController.xib in Resources */,
+				341AEDBF1CD099FB0051C42A /* FounyMoneyViewController.xib in Resources */,
 				34A218161CCDFF9700ADD8FF /* nowebcamCIF.jpg in Resources */,
 				34813FE41CC4DE50000DFE26 /* showPs.png in Resources */,
 				7DF146F11CD057EF0046D726 /* addblack.png in Resources */,
@@ -3490,6 +3510,7 @@
 				34A2183B1CCDFF9700ADD8FF /* hello16000.wav in Resources */,
 				7D825D3A1CBCA88D00F4E216 /* soundSlider.png in Resources */,
 				344F02621C9FEBDE0076CE62 /* snap_off.png in Resources */,
+				341AEDC11CD0D9310051C42A /* video_point.png in Resources */,
 				34A2183C1CCDFF9700ADD8FF /* hello8000.wav in Resources */,
 				7D825D151CBCA65000F4E216 /* VideoViewController.xib in Resources */,
 				34A218411CCDFF9700ADD8FF /* oldphone-mono.wav in Resources */,
@@ -3602,6 +3623,7 @@
 				7D30E8AE1CA66C05004DE055 /* SCProcessingQueue.m in Sources */,
 				7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */,
 				7D825D121CBCA65000F4E216 /* MyVideoCollectionViewCell.m in Sources */,
+				341AEDBE1CD099FB0051C42A /* FounyMoneyViewController.m in Sources */,
 				7D98192A1CC9F93000D0A6CC /* RepositoryVideoViewController.m in Sources */,
 				57666FE21C96BF4400A52DBA /* UIView+Sizes.m in Sources */,
 				7D825CE71CBCA51B00F4E216 /* SettingViewController.m in Sources */,
@@ -3851,7 +3873,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3902,7 +3924,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
