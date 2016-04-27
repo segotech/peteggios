@@ -193,9 +193,6 @@
 		34A2186A1CCE151300ADD8FF /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */; };
 		34A2186C1CCE152E00ADD8FF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */; };
 		34A2186E1CCE15BC00ADD8FF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186D1CCE15BC00ADD8FF /* CoreData.framework */; };
-		34CC883A1CCF90BA0022A5E8 /* FounyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC88381CCF90BA0022A5E8 /* FounyMoneyViewController.m */; };
-		34CC883B1CCF90BA0022A5E8 /* FounyMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34CC88391CCF90BA0022A5E8 /* FounyMoneyViewController.xib */; };
-		34CC883D1CCF94E90022A5E8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34CC883C1CCF94E90022A5E8 /* StoreKit.framework */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		572220E01CB7541E00C9C7D2 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */; };
@@ -392,10 +389,15 @@
 		7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */; };
 		7DB4F5BE1CCF3F35002918DA /* InformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BD1CCF3F35002918DA /* InformationModel.m */; };
 		7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5C11CCF849A002918DA /* ChangePasswordViewController.m */; };
+		7DB4F5C51CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5C41CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m */; };
 		7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */; };
 		7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D02F1CA535820098706C /* CycleScrollView.m */; };
 		7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
+		7DF146EF1CD0544F0046D726 /* BalckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146EE1CD0544F0046D726 /* BalckListViewController.m */; };
+		7DF146F11CD057EF0046D726 /* addblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF146F01CD057EF0046D726 /* addblack.png */; };
+		7DF146F51CD064940046D726 /* BalckListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146F41CD064940046D726 /* BalckListTableViewCell.m */; };
+		7DF146F81CD068480046D726 /* BlackListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146F71CD068480046D726 /* BlackListModel.m */; };
 		7DFF05971CB781F200CF713E /* AFHttpClient+Detailed.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF05961CB781F200CF713E /* AFHttpClient+Detailed.m */; };
 		7DFF05A91CB7A26E00CF713E /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF05A81CB7A26E00CF713E /* DetailModel.m */; };
 		7DFF05AC1CB7A45800CF713E /* PersonDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF05AB1CB7A45800CF713E /* PersonDetailModel.m */; };
@@ -1029,10 +1031,6 @@
 		34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		34A2186D1CCE15BC00ADD8FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		34CC88371CCF90BA0022A5E8 /* FounyMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FounyMoneyViewController.h; sourceTree = "<group>"; };
-		34CC88381CCF90BA0022A5E8 /* FounyMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FounyMoneyViewController.m; sourceTree = "<group>"; };
-		34CC88391CCF90BA0022A5E8 /* FounyMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FounyMoneyViewController.xib; sourceTree = "<group>"; };
-		34CC883C1CCF94E90022A5E8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -1365,6 +1363,8 @@
 		7DB4F5BD1CCF3F35002918DA /* InformationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationModel.m; sourceTree = "<group>"; };
 		7DB4F5C01CCF849A002918DA /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		7DB4F5C11CCF849A002918DA /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		7DB4F5C31CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+ChangepasswordAndBlacklist.h"; sourceTree = "<group>"; };
+		7DB4F5C41CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+ChangepasswordAndBlacklist.m"; sourceTree = "<group>"; };
 		7DB9E1891CCE3AE7009AB3A7 /* PersonInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInformationViewController.h; sourceTree = "<group>"; };
 		7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInformationViewController.m; sourceTree = "<group>"; };
 		7DC8D02E1CA535820098706C /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
@@ -1372,6 +1372,13 @@
 		7DC8D0311CA5358F0098706C /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
 		7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
 		7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_new_issue@2x.png"; sourceTree = "<group>"; };
+		7DF146ED1CD0544F0046D726 /* BalckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalckListViewController.h; sourceTree = "<group>"; };
+		7DF146EE1CD0544F0046D726 /* BalckListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalckListViewController.m; sourceTree = "<group>"; };
+		7DF146F01CD057EF0046D726 /* addblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addblack.png; sourceTree = "<group>"; };
+		7DF146F31CD064940046D726 /* BalckListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalckListTableViewCell.h; sourceTree = "<group>"; };
+		7DF146F41CD064940046D726 /* BalckListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalckListTableViewCell.m; sourceTree = "<group>"; };
+		7DF146F61CD068480046D726 /* BlackListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackListModel.h; sourceTree = "<group>"; };
+		7DF146F71CD068480046D726 /* BlackListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackListModel.m; sourceTree = "<group>"; };
 		7DFF05951CB781F200CF713E /* AFHttpClient+Detailed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Detailed.h"; sourceTree = "<group>"; };
 		7DFF05961CB781F200CF713E /* AFHttpClient+Detailed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Detailed.m"; sourceTree = "<group>"; };
 		7DFF05A71CB7A26E00CF713E /* DetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailModel.h; sourceTree = "<group>"; };
@@ -1386,7 +1393,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34CC883D1CCF94E90022A5E8 /* StoreKit.framework in Frameworks */,
 				344F02B11CA2475A0076CE62 /* Foundation.framework in Frameworks */,
 				344F02AB1CA2473C0076CE62 /* UIKit.framework in Frameworks */,
 				34A2186E1CCE15BC00ADD8FF /* CoreData.framework in Frameworks */,
@@ -1467,6 +1473,7 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				7DF146F01CD057EF0046D726 /* addblack.png */,
 				34A210BC1CCA313B00BE7A80 /* doumashare.png */,
 				34813FEA1CC5E039000DFE26 /* manAnimal.png */,
 				34813FEB1CC5E039000DFE26 /* manSelect.png */,
@@ -2433,16 +2440,6 @@
 			path = rings;
 			sourceTree = "<group>";
 		};
-		34CC88361CCF90BA0022A5E8 /* funnyMoney */ = {
-			isa = PBXGroup;
-			children = (
-				34CC88371CCF90BA0022A5E8 /* FounyMoneyViewController.h */,
-				34CC88381CCF90BA0022A5E8 /* FounyMoneyViewController.m */,
-				34CC88391CCF90BA0022A5E8 /* FounyMoneyViewController.xib */,
-			);
-			path = funnyMoney;
-			sourceTree = "<group>";
-		};
 		54F8349C273A2EB97EF3EBE0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2639,6 +2636,8 @@
 			children = (
 				7D9D76981CBCCD24004E45DE /* NearbyModel.h */,
 				7D9D76991CBCCD24004E45DE /* NearbyModel.m */,
+				7DF146F61CD068480046D726 /* BlackListModel.h */,
+				7DF146F71CD068480046D726 /* BlackListModel.m */,
 				7DB4F5BC1CCF3F35002918DA /* InformationModel.h */,
 				7DB4F5BD1CCF3F35002918DA /* InformationModel.m */,
 				7D05D8A61CCB21080081FB24 /* IssueZiYuankuModel.h */,
@@ -2688,6 +2687,8 @@
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
+				7DB4F5C31CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.h */,
+				7DB4F5C41CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m */,
 				7DB4F5B91CCF1195002918DA /* AFHttpClient+InformationChange.h */,
 				7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */,
 				7D05D8A91CCB850F0081FB24 /* AFHttpClient+IsfriendClient.h */,
@@ -3075,7 +3076,7 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
-				34CC88361CCF90BA0022A5E8 /* funnyMoney */,
+				7DF146EC1CD054260046D726 /* BlackList */,
 				7DB4F5BF1CCF847C002918DA /* ChangePassWord */,
 				34144BCF1CBFB1B3007C4498 /* Message */,
 				7D825CEE1CBCA65000F4E216 /* Attention */,
@@ -3197,10 +3198,28 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7DF146EC1CD054260046D726 /* BlackList */ = {
+			isa = PBXGroup;
+			children = (
+				7DF146F21CD0645B0046D726 /* View */,
+				7DF146ED1CD0544F0046D726 /* BalckListViewController.h */,
+				7DF146EE1CD0544F0046D726 /* BalckListViewController.m */,
+			);
+			path = BlackList;
+			sourceTree = "<group>";
+		};
+		7DF146F21CD0645B0046D726 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7DF146F31CD064940046D726 /* BalckListTableViewCell.h */,
+				7DF146F41CD064940046D726 /* BalckListTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E5E56A0B5C5FC8A2D504C1A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				34CC883C1CCF94E90022A5E8 /* StoreKit.framework */,
 				34A2186D1CCE15BC00ADD8FF /* CoreData.framework */,
 				34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */,
 				34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */,
@@ -3451,6 +3470,7 @@
 				7D30E8CB1CA66C67004DE055 /* WechatShortVideoController.xib in Resources */,
 				34A218161CCDFF9700ADD8FF /* nowebcamCIF.jpg in Resources */,
 				34813FE41CC4DE50000DFE26 /* showPs.png in Resources */,
+				7DF146F11CD057EF0046D726 /* addblack.png in Resources */,
 				344F02C01CA2D8CE0076CE62 /* left_on.png in Resources */,
 				34A218351CCDFF9700ADD8FF /* status-offline.png in Resources */,
 				34A2181E1CCDFF9700ADD8FF /* chat_message_inprogress.png in Resources */,
@@ -3475,7 +3495,6 @@
 				34A218411CCDFF9700ADD8FF /* oldphone-mono.wav in Resources */,
 				34A2183A1CCDFF9700ADD8FF /* rootca.pem in Resources */,
 				34A218481CCDFF9700ADD8FF /* toy-mono.wav in Resources */,
-				34CC883B1CCF90BA0022A5E8 /* FounyMoneyViewController.xib in Resources */,
 				7D825D111CBCA65000F4E216 /* HeaderViewCollection.xib in Resources */,
 				34A218361CCDFF9700ADD8FF /* status-orange.png in Resources */,
 			);
@@ -3552,6 +3571,7 @@
 				57462DA61CBA46270071047E /* CommentModel.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
 				7D05D8A81CCB21080081FB24 /* IssueZiYuankuModel.m in Sources */,
+				7DB4F5C51CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m in Sources */,
 				7DFF05A91CB7A26E00CF713E /* DetailModel.m in Sources */,
 				7D3A352E1CB3CAFA0037C616 /* ReDataViewController.m in Sources */,
 				7D0128EB1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m in Sources */,
@@ -3574,6 +3594,7 @@
 				34813FE21CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m in Sources */,
 				34144BC91CBFB147007C4498 /* TimeHistoryModel.m in Sources */,
 				7D30E8B91CA66C05004DE055 /* SCVideoPlayerView.m in Sources */,
+				7DF146F51CD064940046D726 /* BalckListTableViewCell.m in Sources */,
 				7D2F3F7A1CC0871E0059116A /* PersonAttentionViewController.m in Sources */,
 				7D8122821CBDF60100F4F823 /* MonthBangViewController.m in Sources */,
 				7D30E8A81CA66C05004DE055 /* SCFilterImageView.m in Sources */,
@@ -3585,6 +3606,7 @@
 				57666FE21C96BF4400A52DBA /* UIView+Sizes.m in Sources */,
 				7D825CE71CBCA51B00F4E216 /* SettingViewController.m in Sources */,
 				57666F861C9687E300A52DBA /* BaseViewController.m in Sources */,
+				7DF146EF1CD0544F0046D726 /* BalckListViewController.m in Sources */,
 				7D825D3F1CBCA93D00F4E216 /* AppDelegate+Launcher.m in Sources */,
 				7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */,
 				7D825CD51CBCA4C800F4E216 /* InCallViewController.m in Sources */,
@@ -3630,6 +3652,7 @@
 				57666FDB1C96BE6F00A52DBA /* UIAlertView+Blocks.m in Sources */,
 				7D30E89C1CA66C05004DE055 /* CIImageRendererUtils.m in Sources */,
 				7D825CC81CBC9CB700F4E216 /* AFHttpClient+Nearby.m in Sources */,
+				7DF146F81CD068480046D726 /* BlackListModel.m in Sources */,
 				7D0128F11CC612E10009BF6B /* PersonAttention.m in Sources */,
 				7D30E8B61CA66C05004DE055 /* SCSaveToCameraRollOperation.m in Sources */,
 				7D30E8A31CA66C05004DE055 /* SCContext.m in Sources */,
@@ -3651,7 +3674,6 @@
 				57666FA11C9689CC00A52DBA /* EggViewController.m in Sources */,
 				7D825D1B1CBCA69E00F4E216 /* BaseCollectionViewController.m in Sources */,
 				7D1763A91CBF8DD100579B4C /* RankModel.m in Sources */,
-				34CC883A1CCF90BA0022A5E8 /* FounyMoneyViewController.m in Sources */,
 				7D30E8A41CA66C05004DE055 /* SCFilter+UIImage.m in Sources */,
 				7D30E8A71CA66C05004DE055 /* SCFilterAnimation.m in Sources */,
 				7D0E23B21CA2709700061973 /* RecommendTableViewCell.m in Sources */,
@@ -3829,7 +3851,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3880,7 +3902,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

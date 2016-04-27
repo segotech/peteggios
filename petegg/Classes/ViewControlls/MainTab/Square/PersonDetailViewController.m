@@ -13,7 +13,7 @@
 #import "PersonDetailModel.h"
 #import "DetailModel.h"
 #import "UIImageView+WebCache.h"
-
+#import "AFHttpClient+ChangepasswordAndBlacklist.h"
 static NSString * cellId = @"personDetailCellId";
 @interface PersonDetailViewController ()
 @property (nonatomic,strong)UIImageView * headImage; //头像
@@ -41,6 +41,14 @@ static NSString * cellId = @"personDetailCellId";
 -(void)initUseTopView{
     
     PersonDetailModel * model = self.dataSource[0];
+    
+    //判断是自己或者已被拉黑的人，不显示拉黑按钮
+    if ([model.mid isEqualToString:[AccountManager sharedAccountManager].loginModel.mid]|| [model.isinblacklist isEqualToString:@"1"]) {
+    
+    }else{
+        [self showBarButton:NAV_RIGHT imageName:@"addblack.png"];
+    }
+    
     _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 10 * W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
     [_headImage.layer setMasksToBounds:YES];
     _headImage.layer.cornerRadius = _headImage.width/2;
@@ -109,6 +117,34 @@ static NSString * cellId = @"personDetailCellId";
     [_topView addSubview:_autographLabel];
 
 }
+
+-(void)doRightButtonTouch{
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定要把ta拉入黑名单吗？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self addBlacklist];
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
+
+-(void)addBlacklist{
+     //PersonDetailModel * model = self.dataSource[0];
+    
+     [[AFHttpClient sharedAFHttpClient]addBlacklistWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:_ddddd complete:^(BaseModel *model)      {
+         
+         
+     }];
+    
+    
+    
+}
+
 
 -(void)setupView{
     [super setupView];
