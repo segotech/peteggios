@@ -18,6 +18,7 @@
 #import "PersonInformationViewController.h"
 #import "ChangePasswordViewController.h"
 #import "BalckListViewController.h"
+#import "PermissionViewController.h"
 
 @interface PersonalViewController()
 
@@ -443,12 +444,12 @@
         case 2:
             if (indexPath.row ==0) {
                 NSLog(@"000");
-               
+                PermissionViewController * perVc = [[PermissionViewController alloc]init];
+                [self.navigationController pushViewController:perVc animated:YES];
                 
                 
             
             }
-            
             
             if (indexPath.row  ==1) {
                 NSLog(@"111");

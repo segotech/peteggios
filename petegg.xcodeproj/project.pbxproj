@@ -398,6 +398,14 @@
 		7DF146F11CD057EF0046D726 /* addblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF146F01CD057EF0046D726 /* addblack.png */; };
 		7DF146F51CD064940046D726 /* BalckListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146F41CD064940046D726 /* BalckListTableViewCell.m */; };
 		7DF146F81CD068480046D726 /* BlackListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146F71CD068480046D726 /* BlackListModel.m */; };
+		7DF146FC1CD09B5E0046D726 /* PermissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146FB1CD09B5E0046D726 /* PermissionViewController.m */; };
+		7DF1470C1CD0AD1D0046D726 /* PermissTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF1470B1CD0AD1D0046D726 /* PermissTableViewCell.m */; };
+		7DF147131CD0BB740046D726 /* add_guize.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1470D1CD0BB740046D726 /* add_guize.png */; };
+		7DF147141CD0BB740046D726 /* delect_guize.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1470E1CD0BB740046D726 /* delect_guize.png */; };
+		7DF147151CD0BB740046D726 /* quan_guize.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1470F1CD0BB740046D726 /* quan_guize.png */; };
+		7DF147161CD0BB740046D726 /* xuan_guize.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF147101CD0BB740046D726 /* xuan_guize.png */; };
+		7DF147171CD0BB740046D726 /* xuanquan_guize.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF147111CD0BB740046D726 /* xuanquan_guize.png */; };
+		7DF147181CD0BB740046D726 /* xuanzhong_guize.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF147121CD0BB740046D726 /* xuanzhong_guize.png */; };
 		7DFF05971CB781F200CF713E /* AFHttpClient+Detailed.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF05961CB781F200CF713E /* AFHttpClient+Detailed.m */; };
 		7DFF05A91CB7A26E00CF713E /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF05A81CB7A26E00CF713E /* DetailModel.m */; };
 		7DFF05AC1CB7A45800CF713E /* PersonDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF05AB1CB7A45800CF713E /* PersonDetailModel.m */; };
@@ -1379,6 +1387,16 @@
 		7DF146F41CD064940046D726 /* BalckListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalckListTableViewCell.m; sourceTree = "<group>"; };
 		7DF146F61CD068480046D726 /* BlackListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackListModel.h; sourceTree = "<group>"; };
 		7DF146F71CD068480046D726 /* BlackListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackListModel.m; sourceTree = "<group>"; };
+		7DF146FA1CD09B5E0046D726 /* PermissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionViewController.h; sourceTree = "<group>"; };
+		7DF146FB1CD09B5E0046D726 /* PermissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissionViewController.m; sourceTree = "<group>"; };
+		7DF1470A1CD0AD1D0046D726 /* PermissTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissTableViewCell.h; sourceTree = "<group>"; };
+		7DF1470B1CD0AD1D0046D726 /* PermissTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissTableViewCell.m; sourceTree = "<group>"; };
+		7DF1470D1CD0BB740046D726 /* add_guize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_guize.png; sourceTree = "<group>"; };
+		7DF1470E1CD0BB740046D726 /* delect_guize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delect_guize.png; sourceTree = "<group>"; };
+		7DF1470F1CD0BB740046D726 /* quan_guize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quan_guize.png; sourceTree = "<group>"; };
+		7DF147101CD0BB740046D726 /* xuan_guize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xuan_guize.png; sourceTree = "<group>"; };
+		7DF147111CD0BB740046D726 /* xuanquan_guize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xuanquan_guize.png; sourceTree = "<group>"; };
+		7DF147121CD0BB740046D726 /* xuanzhong_guize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xuanzhong_guize.png; sourceTree = "<group>"; };
 		7DFF05951CB781F200CF713E /* AFHttpClient+Detailed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Detailed.h"; sourceTree = "<group>"; };
 		7DFF05961CB781F200CF713E /* AFHttpClient+Detailed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Detailed.m"; sourceTree = "<group>"; };
 		7DFF05A71CB7A26E00CF713E /* DetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailModel.h; sourceTree = "<group>"; };
@@ -1473,6 +1491,12 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				7DF1470D1CD0BB740046D726 /* add_guize.png */,
+				7DF1470E1CD0BB740046D726 /* delect_guize.png */,
+				7DF1470F1CD0BB740046D726 /* quan_guize.png */,
+				7DF147101CD0BB740046D726 /* xuan_guize.png */,
+				7DF147111CD0BB740046D726 /* xuanquan_guize.png */,
+				7DF147121CD0BB740046D726 /* xuanzhong_guize.png */,
 				7DF146F01CD057EF0046D726 /* addblack.png */,
 				34A210BC1CCA313B00BE7A80 /* doumashare.png */,
 				34813FEA1CC5E039000DFE26 /* manAnimal.png */,
@@ -3076,6 +3100,7 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				7DF146F91CD098170046D726 /* Permission */,
 				7DF146EC1CD054260046D726 /* BlackList */,
 				7DB4F5BF1CCF847C002918DA /* ChangePassWord */,
 				34144BCF1CBFB1B3007C4498 /* Message */,
@@ -3217,6 +3242,25 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7DF146F91CD098170046D726 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				7DF147091CD0A7AF0046D726 /* Views */,
+				7DF146FA1CD09B5E0046D726 /* PermissionViewController.h */,
+				7DF146FB1CD09B5E0046D726 /* PermissionViewController.m */,
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
+		7DF147091CD0A7AF0046D726 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7DF1470A1CD0AD1D0046D726 /* PermissTableViewCell.h */,
+				7DF1470B1CD0AD1D0046D726 /* PermissTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E5E56A0B5C5FC8A2D504C1A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3329,6 +3373,7 @@
 				34144BD71CBFB1B3007C4498 /* MessageTableViewCell.xib in Resources */,
 				3481B3A61CBCB4A400A4344D /* selecting.png in Resources */,
 				7D825CD81CBCA4C800F4E216 /* WasCallViewController.xib in Resources */,
+				7DF147161CD0BB740046D726 /* xuan_guize.png in Resources */,
 				34A2183D1CCDFF9700ADD8FF /* incoming_chat.wav in Resources */,
 				344F025B1C9FEBDE0076CE62 /* juankfood_on.png in Resources */,
 				7D825D261CBCA85A00F4E216 /* person_attention.png.png in Resources */,
@@ -3367,11 +3412,13 @@
 				34A218391CCDFF9700ADD8FF /* stopcall-small.png in Resources */,
 				7D3DA5B71CA3D292005BD38B /* sego1.png in Resources */,
 				34A218171CCDFF9700ADD8FF /* active_chat.png in Resources */,
+				7DF147131CD0BB740046D726 /* add_guize.png in Resources */,
 				7D24EA8E1CC4E74A004EB1E2 /* wangwang.png in Resources */,
 				57666FC41C96979F00A52DBA /* tab_square_press@3x.png in Resources */,
 				57666FC31C96979F00A52DBA /* tab_square_normal@3x.png in Resources */,
 				344F02591C9FEBDE0076CE62 /* feed_on.png in Resources */,
 				57666FBE1C96979F00A52DBA /* tab_near_press@3x.png in Resources */,
+				7DF147151CD0BB740046D726 /* quan_guize.png in Resources */,
 				34A218191CCDFF9700ADD8FF /* call.png in Resources */,
 				34A218201CCDFF9700ADD8FF /* composing_active_chat.png in Resources */,
 				7D825D2D1CBCA85A00F4E216 /* person_videotape.png.png in Resources */,
@@ -3431,12 +3478,14 @@
 				344F02581C9FEBDE0076CE62 /* feed_off.png in Resources */,
 				7D825D3C1CBCA88D00F4E216 /* update.png in Resources */,
 				34A215D31CCDFD6F00ADD8FF /* ring.wav in Resources */,
+				7DF147181CD0BB740046D726 /* xuanzhong_guize.png in Resources */,
 				7D4A05B31CAA82090039DE5A /* addImage.png in Resources */,
 				34A218321CCDFF9700ADD8FF /* startcall-green.png in Resources */,
 				7D825D281CBCA85A00F4E216 /* person_bean.png in Resources */,
 				34A218261CCDFF9700ADD8FF /* dialer.png in Resources */,
 				7D825D2C1CBCA85A00F4E216 /* person_pw.png in Resources */,
 				34A215D01CCDFD6F00ADD8FF /* msg.wav in Resources */,
+				7DF147141CD0BB740046D726 /* delect_guize.png in Resources */,
 				34A218291CCDFF9700ADD8FF /* hold_on.png in Resources */,
 				7D3DA5BB1CA3EC43005BD38B /* 评论.png in Resources */,
 				34A218231CCDFF9700ADD8FF /* contact_starred.png in Resources */,
@@ -3449,6 +3498,7 @@
 				7D825D101CBCA65000F4E216 /* personTableViewCell.xib in Resources */,
 				7D825D381CBCA88D00F4E216 /* deleteOld.png in Resources */,
 				34A2182F1CCDFF9700ADD8FF /* sephone.icns in Resources */,
+				7DF147171CD0BB740046D726 /* xuanquan_guize.png in Resources */,
 				57666FBD1C96979F00A52DBA /* tab_near_normal@3x.png in Resources */,
 				34A218281CCDFF9700ADD8FF /* hold_off.png in Resources */,
 				57666F5C1C96619700A52DBA /* Assets.xcassets in Resources */,
@@ -3666,6 +3716,7 @@
 				57666FC71C969B4800A52DBA /* AppUtil.m in Sources */,
 				7D30E8BA1CA66C05004DE055 /* SCWeakSelectorTarget.m in Sources */,
 				7D03322B1CB5FA3900E923A9 /* PersonDataTableViewCell.m in Sources */,
+				7DF1470C1CD0AD1D0046D726 /* PermissTableViewCell.m in Sources */,
 				7D9819251CC9F58C00D0A6CC /* IssuePinViewController.m in Sources */,
 				34A215D61CCDFD6F00ADD8FF /* SephoneManager.m in Sources */,
 				57462DAE1CBB85D00071047E /* DetailCommentView.m in Sources */,
@@ -3686,6 +3737,7 @@
 				344F02931CA23F790076CE62 /* Reachability.m in Sources */,
 				7DFF05AC1CB7A45800CF713E /* PersonDetailModel.m in Sources */,
 				57666FDD1C96BE6F00A52DBA /* UIView+TapBlocks.m in Sources */,
+				7DF146FC1CD09B5E0046D726 /* PermissionViewController.m in Sources */,
 				7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */,
 				7D17143F1CBBA0850047FA70 /* NearbyPeopleViewController.m in Sources */,
 				7DB4F5BE1CCF3F35002918DA /* InformationModel.m in Sources */,
