@@ -443,8 +443,7 @@
         case 2:
             if (indexPath.row ==0) {
                 NSLog(@"000");
-                ChangePasswordViewController * changVc = [[ChangePasswordViewController alloc]init];
-                [self.navigationController pushViewController:changVc animated:YES];
+               
                 
                 
             
@@ -453,8 +452,9 @@
             
             if (indexPath.row  ==1) {
                 NSLog(@"111");
-                BalckListViewController * black = [[BalckListViewController alloc]init];
-                [self.navigationController pushViewController:black animated:YES];
+                ChangePasswordViewController * changVc = [[ChangePasswordViewController alloc]init];
+                [self.navigationController pushViewController:changVc animated:YES];
+             
                 
             }
             break;
@@ -462,7 +462,8 @@
         case 3:
             
             if (indexPath.row ==0) {
-                
+                BalckListViewController * black = [[BalckListViewController alloc]init];
+                [self.navigationController pushViewController:black animated:YES];
             }
            
             break;
