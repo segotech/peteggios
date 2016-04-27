@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import <StoreKit/StoreKit.h>
 
-@interface FounyMoneyViewController : BaseViewController
+@interface FounyMoneyViewController : BaseViewController<SKPaymentTransactionObserver,SKProductsRequestDelegate>
 
 @end

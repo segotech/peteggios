@@ -193,6 +193,9 @@
 		34A2186A1CCE151300ADD8FF /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */; };
 		34A2186C1CCE152E00ADD8FF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */; };
 		34A2186E1CCE15BC00ADD8FF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186D1CCE15BC00ADD8FF /* CoreData.framework */; };
+		34CC883A1CCF90BA0022A5E8 /* FounyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC88381CCF90BA0022A5E8 /* FounyMoneyViewController.m */; };
+		34CC883B1CCF90BA0022A5E8 /* FounyMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34CC88391CCF90BA0022A5E8 /* FounyMoneyViewController.xib */; };
+		34CC883D1CCF94E90022A5E8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34CC883C1CCF94E90022A5E8 /* StoreKit.framework */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		572220E01CB7541E00C9C7D2 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */; };
@@ -1026,6 +1029,10 @@
 		34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		34A2186D1CCE15BC00ADD8FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		34CC88371CCF90BA0022A5E8 /* FounyMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FounyMoneyViewController.h; sourceTree = "<group>"; };
+		34CC88381CCF90BA0022A5E8 /* FounyMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FounyMoneyViewController.m; sourceTree = "<group>"; };
+		34CC88391CCF90BA0022A5E8 /* FounyMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FounyMoneyViewController.xib; sourceTree = "<group>"; };
+		34CC883C1CCF94E90022A5E8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -1379,6 +1386,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34CC883D1CCF94E90022A5E8 /* StoreKit.framework in Frameworks */,
 				344F02B11CA2475A0076CE62 /* Foundation.framework in Frameworks */,
 				344F02AB1CA2473C0076CE62 /* UIKit.framework in Frameworks */,
 				34A2186E1CCE15BC00ADD8FF /* CoreData.framework in Frameworks */,
@@ -2425,6 +2433,16 @@
 			path = rings;
 			sourceTree = "<group>";
 		};
+		34CC88361CCF90BA0022A5E8 /* funnyMoney */ = {
+			isa = PBXGroup;
+			children = (
+				34CC88371CCF90BA0022A5E8 /* FounyMoneyViewController.h */,
+				34CC88381CCF90BA0022A5E8 /* FounyMoneyViewController.m */,
+				34CC88391CCF90BA0022A5E8 /* FounyMoneyViewController.xib */,
+			);
+			path = funnyMoney;
+			sourceTree = "<group>";
+		};
 		54F8349C273A2EB97EF3EBE0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3057,6 +3075,7 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				34CC88361CCF90BA0022A5E8 /* funnyMoney */,
 				7DB4F5BF1CCF847C002918DA /* ChangePassWord */,
 				34144BCF1CBFB1B3007C4498 /* Message */,
 				7D825CEE1CBCA65000F4E216 /* Attention */,
@@ -3181,6 +3200,7 @@
 		E5E56A0B5C5FC8A2D504C1A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34CC883C1CCF94E90022A5E8 /* StoreKit.framework */,
 				34A2186D1CCE15BC00ADD8FF /* CoreData.framework */,
 				34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */,
 				34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */,
@@ -3455,6 +3475,7 @@
 				34A218411CCDFF9700ADD8FF /* oldphone-mono.wav in Resources */,
 				34A2183A1CCDFF9700ADD8FF /* rootca.pem in Resources */,
 				34A218481CCDFF9700ADD8FF /* toy-mono.wav in Resources */,
+				34CC883B1CCF90BA0022A5E8 /* FounyMoneyViewController.xib in Resources */,
 				7D825D111CBCA65000F4E216 /* HeaderViewCollection.xib in Resources */,
 				34A218361CCDFF9700ADD8FF /* status-orange.png in Resources */,
 			);
@@ -3630,6 +3651,7 @@
 				57666FA11C9689CC00A52DBA /* EggViewController.m in Sources */,
 				7D825D1B1CBCA69E00F4E216 /* BaseCollectionViewController.m in Sources */,
 				7D1763A91CBF8DD100579B4C /* RankModel.m in Sources */,
+				34CC883A1CCF90BA0022A5E8 /* FounyMoneyViewController.m in Sources */,
 				7D30E8A41CA66C05004DE055 /* SCFilter+UIImage.m in Sources */,
 				7D30E8A71CA66C05004DE055 /* SCFilterAnimation.m in Sources */,
 				7D0E23B21CA2709700061973 /* RecommendTableViewCell.m in Sources */,
@@ -3807,7 +3829,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3858,7 +3880,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

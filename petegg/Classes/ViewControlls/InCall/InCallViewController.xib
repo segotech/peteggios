@@ -24,7 +24,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="MPj-yo-ux3">
                     <rect key="frame" x="0.0" y="221" width="320" height="55"/>
                 </imageView>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Q5j-tu-GLJ">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="Q5j-tu-GLJ">
                     <rect key="frame" x="-2" y="232" width="324" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Rhh-38-slH"/>
@@ -92,6 +92,10 @@
                     </constraints>
                     <state key="normal" image="left_off.png"/>
                     <state key="highlighted" image="left_on.png"/>
+                    <connections>
+                        <action selector="left:" destination="-1" eventType="touchUpInside" id="Wkz-24-mdT"/>
+                        <action selector="leftStart:" destination="-1" eventType="touchDown" id="zcD-K3-sEK"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycV-il-bK5">
                     <rect key="frame" x="214" y="432" width="22" height="50"/>
@@ -100,6 +104,10 @@
                     </constraints>
                     <state key="normal" image="right_off.png"/>
                     <state key="highlighted" image="right_on.png"/>
+                    <connections>
+                        <action selector="right:" destination="-1" eventType="touchUpInside" id="O8C-vf-3hk"/>
+                        <action selector="rightstatr:" destination="-1" eventType="touchDown" id="kMh-B0-LWr"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EM1-1q-QiH">
                     <rect key="frame" x="136" y="507" width="50" height="22"/>
@@ -108,6 +116,10 @@
                     </constraints>
                     <state key="normal" title="Button" image="behand_off.png"/>
                     <state key="highlighted" image="behand_on.png"/>
+                    <connections>
+                        <action selector="down:" destination="-1" eventType="touchUpInside" id="ptG-SU-HuT"/>
+                        <action selector="downStart:" destination="-1" eventType="touchDown" id="hmj-Cy-Xez"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18：00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boD-YA-pgv">
                     <rect key="frame" x="28" y="334" width="42" height="21"/>
@@ -115,7 +127,7 @@
                         <constraint firstAttribute="width" secondItem="boD-YA-pgv" secondAttribute="height" multiplier="2:1" id="h7D-ET-7RO"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开灯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfK-vv-V6c">
@@ -124,7 +136,7 @@
                         <constraint firstAttribute="width" secondItem="AfK-vv-V6c" secondAttribute="height" multiplier="2:1" id="aOJ-WL-IFP"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="零食" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOV-n0-V8r">
@@ -133,7 +145,7 @@
                         <constraint firstAttribute="width" secondItem="uOV-n0-V8r" secondAttribute="height" multiplier="2:1" id="HQr-S3-li9"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i19-7n-9fb">
@@ -163,7 +175,7 @@
                         <constraint firstAttribute="width" secondItem="xv0-5q-JQB" secondAttribute="height" multiplier="2:1" id="SkV-sE-BXz"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPJ-u0-XsX">
@@ -177,6 +189,7 @@
                     <state key="highlighted" image="before_on.png"/>
                     <connections>
                         <action selector="beforBtnClick:" destination="-1" eventType="touchUpInside" id="XiJ-4z-lEH"/>
+                        <action selector="start:" destination="-1" eventType="touchDown" id="c2o-hY-9aF"/>
                     </connections>
                 </button>
             </subviews>

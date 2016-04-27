@@ -13,6 +13,12 @@
 {
     NSTimer *updateTimer;
     NSTimer *hideControlsTimer;
+    NSTimer * moveTimer;
+    
+    int timeCompar;
+    int doubleTime;
+    
+    
     
     
 }
@@ -118,20 +124,62 @@
     
     
     
+    
 }
 
 
 // 滑动红外线
 - (IBAction)moveBtnClick:(UISlider *)sender {
     
-    NSLog(@"%f",sender.value);
+
+    float valu = sender.value*100;
+    int str =(int)valu;
+    NSString * msg =[NSString stringWithFormat:@"control_pantilt,0,0,1,0,%d,%d",str,30];
+ 
+    doubleTime++;
+    if (doubleTime%2 ==0) {
+        
+        int timeComparSecond =[self getTimeNow];
+        if (timeComparSecond - timeCompar<100) {
+            
+            // 不执行
+        }else{
+            
+            
+            [self sendMessage:msg];
+        }
+
+    }else{
+        
+       timeCompar = [self getTimeNow];
+        [self sendMessage:msg];
+        
+    }
     
-    NSString * msg =[NSString stringWithFormat:@"control_pantilt,0,0,1,0,%d,%f",30,sender.value*100];
-    
-    [self sendMessage:msg];
+   
     
     
 }
+
+- (int )getTimeNow
+{
+    NSString* date;
+    
+    NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
+    [formatter setDateFormat:@"hh:mm:ss:SSS"];
+    date = [formatter stringFromDate:[NSDate date]];
+    NSString * timeNow = [[NSString alloc] initWithFormat:@"%@", date];
+    int a =[[timeNow substringWithRange:NSMakeRange(0, 2)] intValue];
+    int b =[[timeNow substringWithRange:NSMakeRange(3, 2)] intValue];
+    int c=[[timeNow substringWithRange:NSMakeRange(6, 2)] intValue];
+    int d =[[timeNow substringFromIndex:9]intValue];
+    a= a*3600000+b*60000+c*1000+d;
+    return a;
+    
+}
+
+
+
 
 //**************************外设控制**************************//
 
@@ -227,14 +275,88 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
-
 // 上
-- (IBAction)beforBtnClick:(UIButton *)sender {
+- (IBAction)start:(UIButton *)sender {
     
+    [self moveRobot:@"1"];
+}
+
+// 上结束
+- (IBAction)beforBtnClick:(UIButton *)sender {
+    [self overTime];
+}
+
+
+
+// 下
+- (IBAction)down:(UIButton *)sender {
+    
+    [self overTime];
+}
+
+- (IBAction)downStart:(UIButton *)sender {
+    
+        [self moveRobot:@"2"];
+    
+}
+
+
+
+
+// 左
+- (IBAction)leftStart:(UIButton *)sender {
+    
+    [self moveRobot:@"3"];
+}
+
+- (IBAction)left:(UIButton *)sender {
+    
+    [self overTime];
+    
+}
+
+// 右
+- (IBAction)right:(UIButton *)sender {
+    
+    [self overTime];
+}
+- (IBAction)rightstatr:(UIButton *)sender {
+    
+    
+    [self moveRobot:@"4"];
+    
+}
+
+
+- (void)moveRobot:(NSString *)str
+{
+
+    moveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(sendInfomation:) userInfo:str repeats:YES];
 
     
 }
 
+
+- (void)sendInfomation:(NSTimer *)sender
+{
+    
+    NSString * msg =[NSString stringWithFormat:@"control_servo,0,0,1,%d,200",[sender.userInfo intValue]];
+    [self sendMessage:msg];
+
+    
+}
+
+
+
+- (void)overTime
+{
+    if (moveTimer != nil) {
+        [moveTimer invalidate];
+        moveTimer = nil;
+    }
+
+    
+}
 
 // 更新控件内容
 - (void)updateViews {
