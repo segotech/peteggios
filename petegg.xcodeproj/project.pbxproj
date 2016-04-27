@@ -394,6 +394,10 @@
 		7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D02F1CA535820098706C /* CycleScrollView.m */; };
 		7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
+		7DF146EF1CD0544F0046D726 /* BalckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146EE1CD0544F0046D726 /* BalckListViewController.m */; };
+		7DF146F11CD057EF0046D726 /* addblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF146F01CD057EF0046D726 /* addblack.png */; };
+		7DF146F51CD064940046D726 /* BalckListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146F41CD064940046D726 /* BalckListTableViewCell.m */; };
+		7DF146F81CD068480046D726 /* BlackListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146F71CD068480046D726 /* BlackListModel.m */; };
 		7DFF05971CB781F200CF713E /* AFHttpClient+Detailed.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF05961CB781F200CF713E /* AFHttpClient+Detailed.m */; };
 		7DFF05A91CB7A26E00CF713E /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF05A81CB7A26E00CF713E /* DetailModel.m */; };
 		7DFF05AC1CB7A45800CF713E /* PersonDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF05AB1CB7A45800CF713E /* PersonDetailModel.m */; };
@@ -1368,6 +1372,13 @@
 		7DC8D0311CA5358F0098706C /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
 		7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
 		7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_new_issue@2x.png"; sourceTree = "<group>"; };
+		7DF146ED1CD0544F0046D726 /* BalckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalckListViewController.h; sourceTree = "<group>"; };
+		7DF146EE1CD0544F0046D726 /* BalckListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalckListViewController.m; sourceTree = "<group>"; };
+		7DF146F01CD057EF0046D726 /* addblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addblack.png; sourceTree = "<group>"; };
+		7DF146F31CD064940046D726 /* BalckListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalckListTableViewCell.h; sourceTree = "<group>"; };
+		7DF146F41CD064940046D726 /* BalckListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalckListTableViewCell.m; sourceTree = "<group>"; };
+		7DF146F61CD068480046D726 /* BlackListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackListModel.h; sourceTree = "<group>"; };
+		7DF146F71CD068480046D726 /* BlackListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackListModel.m; sourceTree = "<group>"; };
 		7DFF05951CB781F200CF713E /* AFHttpClient+Detailed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Detailed.h"; sourceTree = "<group>"; };
 		7DFF05961CB781F200CF713E /* AFHttpClient+Detailed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Detailed.m"; sourceTree = "<group>"; };
 		7DFF05A71CB7A26E00CF713E /* DetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailModel.h; sourceTree = "<group>"; };
@@ -1462,6 +1473,7 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				7DF146F01CD057EF0046D726 /* addblack.png */,
 				34A210BC1CCA313B00BE7A80 /* doumashare.png */,
 				34813FEA1CC5E039000DFE26 /* manAnimal.png */,
 				34813FEB1CC5E039000DFE26 /* manSelect.png */,
@@ -2624,6 +2636,8 @@
 			children = (
 				7D9D76981CBCCD24004E45DE /* NearbyModel.h */,
 				7D9D76991CBCCD24004E45DE /* NearbyModel.m */,
+				7DF146F61CD068480046D726 /* BlackListModel.h */,
+				7DF146F71CD068480046D726 /* BlackListModel.m */,
 				7DB4F5BC1CCF3F35002918DA /* InformationModel.h */,
 				7DB4F5BD1CCF3F35002918DA /* InformationModel.m */,
 				7D05D8A61CCB21080081FB24 /* IssueZiYuankuModel.h */,
@@ -3062,6 +3076,7 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				7DF146EC1CD054260046D726 /* BlackList */,
 				7DB4F5BF1CCF847C002918DA /* ChangePassWord */,
 				34144BCF1CBFB1B3007C4498 /* Message */,
 				7D825CEE1CBCA65000F4E216 /* Attention */,
@@ -3181,6 +3196,25 @@
 				7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7DF146EC1CD054260046D726 /* BlackList */ = {
+			isa = PBXGroup;
+			children = (
+				7DF146F21CD0645B0046D726 /* View */,
+				7DF146ED1CD0544F0046D726 /* BalckListViewController.h */,
+				7DF146EE1CD0544F0046D726 /* BalckListViewController.m */,
+			);
+			path = BlackList;
+			sourceTree = "<group>";
+		};
+		7DF146F21CD0645B0046D726 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7DF146F31CD064940046D726 /* BalckListTableViewCell.h */,
+				7DF146F41CD064940046D726 /* BalckListTableViewCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E5E56A0B5C5FC8A2D504C1A0 /* Frameworks */ = {
@@ -3436,6 +3470,7 @@
 				7D30E8CB1CA66C67004DE055 /* WechatShortVideoController.xib in Resources */,
 				34A218161CCDFF9700ADD8FF /* nowebcamCIF.jpg in Resources */,
 				34813FE41CC4DE50000DFE26 /* showPs.png in Resources */,
+				7DF146F11CD057EF0046D726 /* addblack.png in Resources */,
 				344F02C01CA2D8CE0076CE62 /* left_on.png in Resources */,
 				34A218351CCDFF9700ADD8FF /* status-offline.png in Resources */,
 				34A2181E1CCDFF9700ADD8FF /* chat_message_inprogress.png in Resources */,
@@ -3559,6 +3594,7 @@
 				34813FE21CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m in Sources */,
 				34144BC91CBFB147007C4498 /* TimeHistoryModel.m in Sources */,
 				7D30E8B91CA66C05004DE055 /* SCVideoPlayerView.m in Sources */,
+				7DF146F51CD064940046D726 /* BalckListTableViewCell.m in Sources */,
 				7D2F3F7A1CC0871E0059116A /* PersonAttentionViewController.m in Sources */,
 				7D8122821CBDF60100F4F823 /* MonthBangViewController.m in Sources */,
 				7D30E8A81CA66C05004DE055 /* SCFilterImageView.m in Sources */,
@@ -3570,6 +3606,7 @@
 				57666FE21C96BF4400A52DBA /* UIView+Sizes.m in Sources */,
 				7D825CE71CBCA51B00F4E216 /* SettingViewController.m in Sources */,
 				57666F861C9687E300A52DBA /* BaseViewController.m in Sources */,
+				7DF146EF1CD0544F0046D726 /* BalckListViewController.m in Sources */,
 				7D825D3F1CBCA93D00F4E216 /* AppDelegate+Launcher.m in Sources */,
 				7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */,
 				7D825CD51CBCA4C800F4E216 /* InCallViewController.m in Sources */,
@@ -3615,6 +3652,7 @@
 				57666FDB1C96BE6F00A52DBA /* UIAlertView+Blocks.m in Sources */,
 				7D30E89C1CA66C05004DE055 /* CIImageRendererUtils.m in Sources */,
 				7D825CC81CBC9CB700F4E216 /* AFHttpClient+Nearby.m in Sources */,
+				7DF146F81CD068480046D726 /* BlackListModel.m in Sources */,
 				7D0128F11CC612E10009BF6B /* PersonAttention.m in Sources */,
 				7D30E8B61CA66C05004DE055 /* SCSaveToCameraRollOperation.m in Sources */,
 				7D30E8A31CA66C05004DE055 /* SCContext.m in Sources */,

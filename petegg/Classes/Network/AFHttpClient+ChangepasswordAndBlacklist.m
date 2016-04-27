@@ -15,6 +15,17 @@
     params[@"mid"] = mid;
     params[@"password"]=  password;
     
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        if (model){
+            // model.list = [InformationModel arrayOfModelsFromDictionaries:model.list];
+        }
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+    
+    
+    
 
 }
 
@@ -24,6 +35,14 @@
     params[@"mid"] = mid;
     params[@"friend"] = friendId;
     
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        if (model){
+            // model.list = [InformationModel arrayOfModelsFromDictionaries:model.list];
+        }
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
 
 }
 
@@ -32,7 +51,14 @@
     params[@"common"] =@"queryBlacklist";
     params[@"mid"] = mid;
     
-    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        if (model){
+             model.list = [BlackListModel arrayOfModelsFromDictionaries:model.list];
+        }
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
 
 }
 
@@ -41,6 +67,17 @@
     params[@"common"] = @"delBlacklist";
     params[@"mid"] = mid;
     params[@"friend"] = friendId;
+    
+    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        if (model){
+            // model.list = [InformationModel arrayOfModelsFromDictionaries:model.list];
+        }
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+    
 
 }
 

@@ -17,6 +17,7 @@
 #import "SnapViewController.h"
 #import "PersonInformationViewController.h"
 #import "ChangePasswordViewController.h"
+#import "BalckListViewController.h"
 
 @interface PersonalViewController()
 
@@ -452,7 +453,8 @@
             
             if (indexPath.row  ==1) {
                 NSLog(@"111");
-                
+                BalckListViewController * black = [[BalckListViewController alloc]init];
+                [self.navigationController pushViewController:black animated:YES];
                 
             }
             break;

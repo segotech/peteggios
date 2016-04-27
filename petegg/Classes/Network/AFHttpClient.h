@@ -18,6 +18,7 @@
 #import "PersonAttention.h"
 #import "IssueZiYuankuModel.h"
 #import "InformationModel.h"
+#import "BlackListModel.h"
 
 #define BASE_URL    @"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"
 
