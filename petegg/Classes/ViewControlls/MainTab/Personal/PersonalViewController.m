@@ -20,6 +20,7 @@
 #import "BalckListViewController.h"
 #import "PermissionViewController.h"
 
+#import "FounyMoneyViewController.h"
 @interface PersonalViewController()
 
 {
@@ -428,6 +429,8 @@
             }
             if (indexPath.row == 1) {
                 
+                FounyMoneyViewController * funMoyVC =[[FounyMoneyViewController alloc]initWithNibName:@"FounyMoneyViewController" bundle:nil];
+                [self.navigationController pushViewController:funMoyVC animated:YES];
                 
                 
                 

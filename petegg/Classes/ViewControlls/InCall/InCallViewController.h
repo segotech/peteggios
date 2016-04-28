@@ -15,4 +15,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *backBtn;
 @property (strong, nonatomic) IBOutlet UIImageView *backImageView;
 @property (strong, nonatomic) IBOutlet UISlider *penSd;
+@property (strong, nonatomic) IBOutlet UIView *statsView;
+@property (strong, nonatomic) IBOutlet UILabel *timeText;
+@property (strong, nonatomic) IBOutlet UIImageView *pointView;
+
 @end

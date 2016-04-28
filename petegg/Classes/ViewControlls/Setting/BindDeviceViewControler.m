@@ -140,6 +140,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
  *  @param sender
  */
 - (IBAction)bindButtonClicked:(UIButton *)sender {
+    
     // 检查网络是否可用。
     BOOL hasNetwork = [self checkConnectionAvailable];
     if (!hasNetwork) {
@@ -273,6 +274,8 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
  */
 - (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error {
     NSLog(@"peripheralManagerDidStartAdvertisiong");
+    NSLog(@"%@",error);
+    
 }
 
 /**

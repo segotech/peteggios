@@ -95,6 +95,7 @@
     
     _defaulte =[NSUserDefaults standardUserDefaults];
     NSString * str =[AccountManager sharedAccountManager].loginModel.deviceno;
+    
     NSString *DEVICE_NUMBER  = [_defaulte objectForKey:@"DEVICE_NUMBER"];
     if ([AppUtil isBlankString:str]) {
         if ([AppUtil isBlankString:DEVICE_NUMBER]) {
@@ -135,6 +136,7 @@
     NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
     NSString * devico =[AccountManager sharedAccountManager].loginModel.deviceno;
     NSString * service =[AppUtil getServerSego3];
+    
     service = [service stringByAppendingString:@"clientAction.do?common=queryDeviceStatus&classes=appinterface&method=json"];
     
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];

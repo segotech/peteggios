@@ -11,10 +11,13 @@
 #import "AppDelegate+ShareSDK.h"
 #import "AppDelegate+Sephone.h"
 #import "IQKeyboardManager.h"
+#import <CoreTelephony/CTCallCenter.h>
 
 @interface AppDelegate ()
 
+//@property (nonatomic, strong) CTCallCenter * center;
 @end
+
 
 @implementation AppDelegate
 
@@ -40,8 +43,20 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    
+//        self.center = [[CTCallCenter alloc] init];
+//        __block InCallViewController *weakSelf = self;
+//        self.center.callEventHandler = ^(CTCall * call)
+//        {
+//            //TODO:检测到来电后的处理
+//    
+//    
+//            
+//        };
+    
+    
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
