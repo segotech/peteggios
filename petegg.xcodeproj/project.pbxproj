@@ -392,6 +392,9 @@
 		7DA2168D1CD2039100F6BCCB /* ZdFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA2168C1CD2039100F6BCCB /* ZdFriendViewController.m */; };
 		7DA216901CD20AB000F6BCCB /* ZdFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA2168F1CD20AB000F6BCCB /* ZdFriendModel.m */; };
 		7DA216931CD22ACE00F6BCCB /* ExchangePremissViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA216921CD22ACE00F6BCCB /* ExchangePremissViewController.m */; };
+		7DA216991CD2343700F6BCCB /* FounyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA216971CD2343700F6BCCB /* FounyMoneyViewController.m */; };
+		7DA2169A1CD2343700F6BCCB /* FounyMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DA216981CD2343700F6BCCB /* FounyMoneyViewController.xib */; };
+		7DA2169D1CD2358E00F6BCCB /* FeedSetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA2169C1CD2358E00F6BCCB /* FeedSetingViewController.m */; };
 		7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */; };
 		7DB4F5BE1CCF3F35002918DA /* InformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BD1CCF3F35002918DA /* InformationModel.m */; };
 		7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5C11CCF849A002918DA /* ChangePasswordViewController.m */; };
@@ -1383,6 +1386,11 @@
 		7DA2168F1CD20AB000F6BCCB /* ZdFriendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZdFriendModel.m; sourceTree = "<group>"; };
 		7DA216911CD22ACE00F6BCCB /* ExchangePremissViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangePremissViewController.h; sourceTree = "<group>"; };
 		7DA216921CD22ACE00F6BCCB /* ExchangePremissViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangePremissViewController.m; sourceTree = "<group>"; };
+		7DA216961CD2343700F6BCCB /* FounyMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FounyMoneyViewController.h; sourceTree = "<group>"; };
+		7DA216971CD2343700F6BCCB /* FounyMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FounyMoneyViewController.m; sourceTree = "<group>"; };
+		7DA216981CD2343700F6BCCB /* FounyMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FounyMoneyViewController.xib; sourceTree = "<group>"; };
+		7DA2169B1CD2358E00F6BCCB /* FeedSetingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedSetingViewController.h; sourceTree = "<group>"; };
+		7DA2169C1CD2358E00F6BCCB /* FeedSetingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedSetingViewController.m; sourceTree = "<group>"; };
 		7DB4F5B91CCF1195002918DA /* AFHttpClient+InformationChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+InformationChange.h"; sourceTree = "<group>"; };
 		7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+InformationChange.m"; sourceTree = "<group>"; };
 		7DB4F5BC1CCF3F35002918DA /* InformationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationModel.h; sourceTree = "<group>"; };
@@ -3124,6 +3132,7 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				7DA216951CD2343700F6BCCB /* funnyMoney */,
 				7DA216941CD233AB00F6BCCB /* FeedSeting */,
 				7DF146F91CD098170046D726 /* Permission */,
 				7DF146EC1CD054260046D726 /* BlackList */,
@@ -3231,8 +3240,20 @@
 		7DA216941CD233AB00F6BCCB /* FeedSeting */ = {
 			isa = PBXGroup;
 			children = (
+				7DA2169B1CD2358E00F6BCCB /* FeedSetingViewController.h */,
+				7DA2169C1CD2358E00F6BCCB /* FeedSetingViewController.m */,
 			);
 			path = FeedSeting;
+			sourceTree = "<group>";
+		};
+		7DA216951CD2343700F6BCCB /* funnyMoney */ = {
+			isa = PBXGroup;
+			children = (
+				7DA216961CD2343700F6BCCB /* FounyMoneyViewController.h */,
+				7DA216971CD2343700F6BCCB /* FounyMoneyViewController.m */,
+				7DA216981CD2343700F6BCCB /* FounyMoneyViewController.xib */,
+			);
+			path = funnyMoney;
 			sourceTree = "<group>";
 		};
 		7DB4F5BF1CCF847C002918DA /* ChangePassWord */ = {
@@ -3475,6 +3496,7 @@
 				344F022B1C9FD6200076CE62 /* noDevice.png in Resources */,
 				34A218451CCDFF9700ADD8FF /* sweet.wav in Resources */,
 				57666FBC1C96979F00A52DBA /* tab_egg_press@3x.png in Resources */,
+				7DA2169A1CD2343700F6BCCB /* FounyMoneyViewController.xib in Resources */,
 				344F02731CA009DD0076CE62 /* 1.png in Resources */,
 				34A218341CCDFF9700ADD8FF /* status-green.png in Resources */,
 				7D1714311CBB4C620047FA70 /* DouYiDou.png in Resources */,
@@ -3722,6 +3744,7 @@
 				7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
 				7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */,
+				7DA216991CD2343700F6BCCB /* FounyMoneyViewController.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
 				7D825D0C1CBCA65000F4E216 /* FunnyCodeViewController.m in Sources */,
 				7D30E8B41CA66C05004DE055 /* SCRecordSessionSegment.m in Sources */,
@@ -3766,6 +3789,7 @@
 				344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */,
 				57666FA11C9689CC00A52DBA /* EggViewController.m in Sources */,
 				7D825D1B1CBCA69E00F4E216 /* BaseCollectionViewController.m in Sources */,
+				7DA2169D1CD2358E00F6BCCB /* FeedSetingViewController.m in Sources */,
 				7D1763A91CBF8DD100579B4C /* RankModel.m in Sources */,
 				7D30E8A41CA66C05004DE055 /* SCFilter+UIImage.m in Sources */,
 				7D30E8A71CA66C05004DE055 /* SCFilterAnimation.m in Sources */,
