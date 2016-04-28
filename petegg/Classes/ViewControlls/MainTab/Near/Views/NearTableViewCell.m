@@ -47,6 +47,12 @@
         _rightBtn.backgroundColor = GREEN_COLOR;
         [self addSubview:_rightBtn];
     
+        
+        _zdRightBtn = [[UIButton alloc]initWithFrame:CGRectMake(330 * W_Wide_Zoom, 20 * W_Hight_Zoom, 17 * W_Wide_Zoom, 15 * W_Hight_Zoom)];
+        [_zdRightBtn setImage:[UIImage imageNamed:@"kuang_off.png"] forState:UIControlStateNormal];
+        [_zdRightBtn setImage:[UIImage imageNamed:@"kuang_on.png"] forState:UIControlStateSelected];
+        [self addSubview:_zdRightBtn];
+        
     
     }
     return self;

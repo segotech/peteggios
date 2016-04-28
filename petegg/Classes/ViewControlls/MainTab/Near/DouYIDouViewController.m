@@ -99,7 +99,7 @@ static NSString * cellId = @"douyidouCellId";
     NSURL * imageUrl = [NSURL URLWithString:imageStr];
     [cell.headBtn sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     cell.signLabel.text = model.signature;
-
+    cell.zdRightBtn.hidden = YES;
     
 
     cell.rightBtn.backgroundColor = [UIColor whiteColor];

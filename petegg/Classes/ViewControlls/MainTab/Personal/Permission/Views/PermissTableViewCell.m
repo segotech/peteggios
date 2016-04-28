@@ -21,6 +21,7 @@
         
         _quanBtn = [[UIButton alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 12 * W_Hight_Zoom, 23 * W_Wide_Zoom, 23 * W_Hight_Zoom)];
         [_quanBtn setImage:[UIImage imageNamed:@"quan_guize.png"] forState:UIControlStateNormal];
+        [_quanBtn setImage:[UIImage imageNamed:@"xuanquan_guize.png"] forState:UIControlStateSelected];
         [self addSubview:_quanBtn];
         
         

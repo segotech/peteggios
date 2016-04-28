@@ -99,7 +99,7 @@ static NSString * cellId = @"111111111111";
     
     cell.signLabel.text = model.signature;
     
-    
+    cell.zdRightBtn.hidden = YES;
     [cell.rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
      cell.rightBtn.layer.cornerRadius = 5;
     

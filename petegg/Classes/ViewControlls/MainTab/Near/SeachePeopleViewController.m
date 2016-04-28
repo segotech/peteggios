@@ -128,6 +128,7 @@ static NSString * cellId = @"seacherCelliddddd";
     [cell.headBtn sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     cell.signLabel.text = model.signature;
 
+    cell.zdRightBtn.hidden = YES;
     [cell.rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     cell.rightBtn.layer.cornerRadius = 5;
     

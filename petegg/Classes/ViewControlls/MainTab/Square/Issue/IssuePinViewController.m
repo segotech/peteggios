@@ -89,9 +89,9 @@
     [[AFHttpClient sharedAFHttpClient]addSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid content:_topTextView.text type:@"p" resources:stingArr complete:^(BaseModel *model) {
       //  NSLog(@"hahaaha:%@",model.retCode);
         [self hideHud];
-        if ([model.retCode isEqualToString:@"0000"]) {
+        //if ([model.retCode isEqualToString:@"0000"]) {
             [self.navigationController popViewControllerAnimated:YES];
-        }
+        //}
         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
     }];
 }
