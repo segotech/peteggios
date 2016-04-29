@@ -33,7 +33,7 @@ nortp_timeout=30
 
 [video]
 display=1
-capture=1
+capture=0
 show_local=0
 enabled=1
 size=qvga
