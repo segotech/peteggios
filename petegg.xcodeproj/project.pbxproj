@@ -202,6 +202,8 @@
 		34EDB5C01CD2F3CA001BB50C /* ExchangePremissViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5BB1CD2F3CA001BB50C /* ExchangePremissViewController.m */; };
 		34EDB5C11CD2F3CA001BB50C /* NewPremissViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5BD1CD2F3CA001BB50C /* NewPremissViewController.m */; };
 		34EDB5C21CD2F3CA001BB50C /* ZdFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5BF1CD2F3CA001BB50C /* ZdFriendViewController.m */; };
+		34EDB5C71CD33E45001BB50C /* OtherEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5C51CD33E45001BB50C /* OtherEggViewController.m */; };
+		34EDB5C81CD33E45001BB50C /* OtherEggViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34EDB5C61CD33E45001BB50C /* OtherEggViewController.xib */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		572220E01CB7541E00C9C7D2 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */; };
@@ -1064,6 +1066,9 @@
 		34EDB5BD1CD2F3CA001BB50C /* NewPremissViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPremissViewController.m; sourceTree = "<group>"; };
 		34EDB5BE1CD2F3CA001BB50C /* ZdFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZdFriendViewController.h; sourceTree = "<group>"; };
 		34EDB5BF1CD2F3CA001BB50C /* ZdFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZdFriendViewController.m; sourceTree = "<group>"; };
+		34EDB5C41CD33E45001BB50C /* OtherEggViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherEggViewController.h; sourceTree = "<group>"; };
+		34EDB5C51CD33E45001BB50C /* OtherEggViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherEggViewController.m; sourceTree = "<group>"; };
+		34EDB5C61CD33E45001BB50C /* OtherEggViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherEggViewController.xib; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -2500,6 +2505,16 @@
 			path = rings;
 			sourceTree = "<group>";
 		};
+		34EDB5C31CD33DF3001BB50C /* EggOther */ = {
+			isa = PBXGroup;
+			children = (
+				34EDB5C41CD33E45001BB50C /* OtherEggViewController.h */,
+				34EDB5C51CD33E45001BB50C /* OtherEggViewController.m */,
+				34EDB5C61CD33E45001BB50C /* OtherEggViewController.xib */,
+			);
+			path = EggOther;
+			sourceTree = "<group>";
+		};
 		54F8349C273A2EB97EF3EBE0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3142,6 +3157,7 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				34EDB5C31CD33DF3001BB50C /* EggOther */,
 				341AEDC21CD19E310051C42A /* funnyMoney */,
 				7DF146F91CD098170046D726 /* Permission */,
 				7DF146EC1CD054260046D726 /* BlackList */,
@@ -3578,6 +3594,7 @@
 				34A2181C1CCDFF9700ADD8FF /* chat.png in Resources */,
 				34A2181B1CCDFF9700ADD8FF /* call_status_outgoing.png in Resources */,
 				7D825D0B1CBCA65000F4E216 /* FriendViewController.xib in Resources */,
+				34EDB5C81CD33E45001BB50C /* OtherEggViewController.xib in Resources */,
 				344F02C71CA2D9E70076CE62 /* behand_off.png in Resources */,
 				34A2182D1CCDFF9700ADD8FF /* ok.png in Resources */,
 				34A218271CCDFF9700ADD8FF /* history-orange.png in Resources */,
@@ -3712,6 +3729,7 @@
 				7D825D3F1CBCA93D00F4E216 /* AppDelegate+Launcher.m in Sources */,
 				34EDB5C21CD2F3CA001BB50C /* ZdFriendViewController.m in Sources */,
 				7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */,
+				34EDB5C71CD33E45001BB50C /* OtherEggViewController.m in Sources */,
 				7D825CD51CBCA4C800F4E216 /* InCallViewController.m in Sources */,
 				34EDB5C11CD2F3CA001BB50C /* NewPremissViewController.m in Sources */,
 				7D30E8A91CA66C05004DE055 /* SCImageView.m in Sources */,
