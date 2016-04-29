@@ -30,7 +30,7 @@
 
 -(void)addFeedingtimeWithMid:(NSString *)mid type:(NSString *)type times:(NSString *)times complete:(void (^)(BaseModel *))completeBlock{
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
-    params[@"common"] = @"addFeedingtime";
+    params[@"common"] = @"updateFeedingtime";
     params[@"mid"] = mid;
     params[@"type"] = type;
     params[@"times"] = times;

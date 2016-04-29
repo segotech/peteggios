@@ -9,20 +9,25 @@
 #import "FeedSetingViewController.h"
 #import "AFHttpClient+FeedingClient.h"
 #import "FeedSetingTableViewCell.h"
+#import "FeddingModel.h"
 
-
+static NSString * cellId = @"fedseting2321313323231";
 @interface FeedSetingViewController ()
 @property (nonatomic,strong)UIButton * bigBtn;
 @property (nonatomic,strong)UIButton * oneDayButton;
 @property (nonatomic,strong)UIButton * twoDayButton;
 @property (nonatomic,strong)UIView * moveView;
+@property (nonatomic,assign)BOOL isOneOrTwo;
 
+@property (nonatomic,strong)NSMutableArray * ondedayArray;
+@property (nonatomic,strong)NSString * timeStr;
 @end
 
 @implementation FeedSetingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _ondedayArray = [[NSMutableArray alloc]init];
     [self setNavTitle:@"喂食设置"];
     self.view.backgroundColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1];
     
@@ -68,11 +73,16 @@
     _moveView.backgroundColor = GREEN_COLOR;
     [whiteView addSubview:_moveView];
     
+    _isOneOrTwo = YES;
     
-    self.tableView.frame = CGRectMake(0 * W_Wide_Zoom, 300 * W_Hight_Zoom, self.view.width, 400);
-   //[self.tableView registerClass:[PermissTableViewCell class] forCellReuseIdentifier:cellId];
-   // [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.tableView.frame = CGRectMake(0, 300 *W_Hight_Zoom, self.view.width, 400 * W_Hight_Zoom);
+    //  [self.tableView registerClass:[PersonDataTableViewCell class] forCellReuseIdentifier:cellId];
+    [self.tableView registerClass:[FeedSetingTableViewCell class] forCellReuseIdentifier:cellId];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
+    
+    
+    
     
     
 }
@@ -80,20 +90,24 @@
 -(void)onedayButtonTouch{
     _oneDayButton.selected = YES;
     _twoDayButton.selected = NO;
+    _isOneOrTwo = YES;
+    [self.tableView reloadData];
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame = CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
      [[AppUtil appTopViewController] showHint:@"启用一天模式"];
-    
+        
     }];
 }
 
 -(void)twoDayButtontouch{
     _oneDayButton.selected = NO;
     _twoDayButton.selected = YES;
+     _isOneOrTwo = NO;
+    [self.tableView reloadData];
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame = CGRectMake(42 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
          [[AppUtil appTopViewController] showHint:@"启用两天模式"];
-        
+       
     }];
 
 }
@@ -101,9 +115,63 @@
 -(void)setupData{
     [super setupData];
     [[AFHttpClient sharedAFHttpClient]queryFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
+        [self.dataSource addObjectsFromArray:model.list];
+      FeddingModel * model1 = self.dataSource[0];
+        _timeStr = model1.times;
+      //  _ondedayArray = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
+        NSArray * array = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
+        _ondedayArray = [NSMutableArray arrayWithArray:array];
         
+        [self.tableView reloadData];
     }];
 }
+
+
+
+#pragma mark - TableView的代理函数
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (_ondedayArray.count> 0) {
+        return _ondedayArray.count;
+    }else{
+         return 1;
+    }
+    
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60*W_Hight_Zoom;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    //FeddingModel * model = self.dataSource[0];
+    FeedSetingTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    cell.timeLabel.text = _ondedayArray[indexPath.row];
+    cell.rightLabel.text = [NSString stringWithFormat:@"t%ld",indexPath.row + 1];
+    
+    if (indexPath.row < 4) {
+        
+    }
+    
+    
+    
+    
+    
+    return cell;
+}
+
+
+
 
 
 @end
