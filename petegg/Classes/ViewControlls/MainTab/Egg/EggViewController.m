@@ -27,6 +27,8 @@
 
 @implementation EggViewController
 @synthesize _appdelegate;
+@synthesize otherArr;
+
 
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -41,6 +43,7 @@
     UIBarButtonItem * settings =[[UIBarButtonItem alloc]initWithCustomView:btnFb2];
     self.navigationItem.rightBarButtonItem = settings;
     
+    otherArr =[[NSMutableArray alloc]init];
     // sip登陆。
     
       [SephoneManager addProxyConfig:@"15800000185" password:@"305193" domain:@"180.97.80.152"];

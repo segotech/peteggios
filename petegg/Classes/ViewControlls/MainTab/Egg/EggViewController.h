@@ -11,5 +11,8 @@
 @interface EggViewController : BaseViewController
 
 @property (nonatomic,strong)AppDelegate *_appdelegate;
+@property (nonatomic,strong)NSMutableArray * otherArr;
+
+
 
 @end

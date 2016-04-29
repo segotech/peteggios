@@ -10,4 +10,7 @@
 
 @interface WasCallViewController : UIViewController
 
+@property (nonatomic,strong)NSString * playCode;
+
+
 @end

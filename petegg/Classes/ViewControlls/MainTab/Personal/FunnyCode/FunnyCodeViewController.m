@@ -19,6 +19,8 @@
     UITextField * _fangwentoushiTextField;
     NSTimer * _timer;
     int timeTF;
+    NSString * pcidStr;
+    
     
     
     
@@ -71,19 +73,26 @@
 - (void)doRightButtonTouch
 
 {
+    
+
+  
   // 1、创建分享参数
   NSArray *imageArray = @[ [UIImage imageNamed:@"ceishi.jpg"] ];
   //（注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数
   //images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
+  //逗码【PC12345678911】此逗码 2016/4/29 12:00:00 之前有效，复制这条信息，打开赛果不倒蛋软件，即可控制分享者的设备开启远程互动(软件下载地址：http://www.segopet.com/download.html  )
+    
+    
   if (imageArray) {
 
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams
-        SSDKSetupShareParamsByText:@"分享内容"
-                            images:imageArray
-                               url:[NSURL URLWithString:@"http://mob.com"]
-                             title:@"分享标题"
+     SSDKSetupShareParamsByText:[NSString stringWithFormat:@"赛果分享[%@]此逗码 2016/4/29 12:00:00 之前有效，复制这条信息，打开赛果不倒蛋软件，即可控制分享者的设备开启远程互动(软件下载地址：http://www.segopet.com/download.html)", self.onFunyCode.text]
+                            images:nil
+                               url:nil
+                             title:@"赛果逗码分享"
                               type:SSDKContentTypeAuto];
+      
     // 2、分享（可以弹出我们的分享菜单和编辑界面）
     [ShareSDK showShareActionSheet: nil items:nil shareParams:shareParams onShareStateChanged:^(
              SSDKResponseState state, SSDKPlatformType platformType,
@@ -144,7 +153,7 @@
     
     NSString * str =@"clientAction.do?method=json&common=queryPlayCodeTime&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:@"MI16010000005868" forKey:@"mid"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
         if ([[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"status"] isEqualToString:@"0"] || [[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"seconds"] isEqualToString:@"0"]){
@@ -160,6 +169,8 @@
             self.onFunfood.text =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"tsnum"];
             self.onFunprice.text =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"price"];
             self.onFuntime.text =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"seconds"];
+            pcidStr  =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"pcid"];
+            
             timeTF = [self.onFuntime.text intValue];
             _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
 
@@ -212,7 +223,7 @@
     
     NSString * str =@"clientAction.do?method=json&common=generatePlayCode&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:@"MI16010000005868" forKey:@"mid"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [dic setObject:_preiceNumberTexiField.text forKey:@"price"];
     [dic setObject:_fangwentoushiTextField.text forKey:@"tsnum"];
     

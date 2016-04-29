@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate+Launcher.h"
-#import "WasCallViewController.h"
+#import "OtherEggViewController.h"
 
 @interface AppDelegate()
 
@@ -102,14 +102,11 @@
     
     UIPasteboard *pboard = [UIPasteboard generalPasteboard];
     // 测试
-    if ([pboard.string  isEqualToString:@"123"]) {
-        NSLog(@"==========%@",pboard.string);
-        WasCallViewController * BeComeVC =[[WasCallViewController alloc]initWithNibName:@"WasCallViewController" bundle:nil];
-        [self.window.rootViewController presentViewController:BeComeVC animated:YES completion:nil];
-        // 也有可能自己开启自己
+    if ([[pboard.string substringWithRange:NSMakeRange(0, 4)]  isEqualToString:@"赛果分享"]) {
+       
+        NSString * strPLAYcode = [pboard.string substringWithRange:NSMakeRange(5,14 )];
+        [self checkPlayCode:strPLAYcode];
         pboard.string  =@"";
-        
-        
         
         
     }else
@@ -121,5 +118,35 @@
 }
 
 
+
+- (void)checkPlayCode:(NSString *)playStr
+{
+    
+    NSString * str =@"clientAction.do?method=json&common=queryPlayCodeRule&classes=appinterface";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+    [dic setValue:playStr forKey:@"playcode"];
+    
+    NSLog(@"==========%@",playStr);
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        NSMutableArray * arr =[NSMutableArray array];
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            arr = json[@"jsondata"][@"list"];
+            
+            OtherEggViewController * otherVC =[[OtherEggViewController alloc]initWithNibName:@"OtherEggViewController" bundle:nil];
+            [self.window.rootViewController presentViewController:otherVC animated:YES completion:nil];
+            
+        }
+        
+       
+        
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+   
+    
+}
 
 @end
