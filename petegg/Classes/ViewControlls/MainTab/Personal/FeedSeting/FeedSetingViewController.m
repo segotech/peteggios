@@ -7,6 +7,9 @@
 //
 
 #import "FeedSetingViewController.h"
+#import "AFHttpClient+FeedingClient.h"
+#import "FeedSetingTableViewCell.h"
+
 
 @interface FeedSetingViewController ()
 @property (nonatomic,strong)UIButton * bigBtn;
@@ -65,6 +68,13 @@
     _moveView.backgroundColor = GREEN_COLOR;
     [whiteView addSubview:_moveView];
     
+    
+    self.tableView.frame = CGRectMake(0 * W_Wide_Zoom, 300 * W_Hight_Zoom, self.view.width, 400);
+   //[self.tableView registerClass:[PermissTableViewCell class] forCellReuseIdentifier:cellId];
+   // [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+
+    
+    
 }
 
 -(void)onedayButtonTouch{
@@ -90,7 +100,9 @@
 
 -(void)setupData{
     [super setupData];
-
+    [[AFHttpClient sharedAFHttpClient]queryFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
+        
+    }];
 }
 
 
