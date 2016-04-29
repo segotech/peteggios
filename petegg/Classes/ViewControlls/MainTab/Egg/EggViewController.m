@@ -46,10 +46,7 @@
     otherArr =[[NSMutableArray alloc]init];
     // sip登陆。
     
-      [SephoneManager addProxyConfig:@"15800000185" password:@"305193" domain:@"180.97.80.152"];
-    
-        [self buttonOpen];
-    
+    [SephoneManager addProxyConfig:[AccountManager sharedAccountManager].loginModel.sipno password:[AccountManager sharedAccountManager].loginModel.sippw domain:@"180.97.80.152"];
     
 }
 
@@ -243,7 +240,6 @@
 
 - (void)buttonOpen
 {
-    _isOpen = YES;
     [_noDeviceImageView removeFromSuperview];
     _openButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_openButton setTitle:NSLocalizedString(@"openButton", nil) forState:UIControlStateNormal];

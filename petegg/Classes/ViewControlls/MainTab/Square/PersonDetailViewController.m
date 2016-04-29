@@ -115,7 +115,18 @@ static NSString * cellId = @"personDetailCellId";
     _autographLabel.textColor = [UIColor blackColor];
     _autographLabel.font = [UIFont systemFontOfSize:14];
     [_topView addSubview:_autographLabel];
+    
+    
+    UIButton * fanwenBtn =[[UIButton alloc]initWithFrame:CGRectMake(230, 60, 50, 50)];
+    [fanwenBtn setTitle:@"互动" forState:UIControlStateNormal];
+    
+    
+    [_topView addSubview:fanwenBtn];
+    
 
+    
+    
+    
 }
 
 -(void)doRightButtonTouch{
