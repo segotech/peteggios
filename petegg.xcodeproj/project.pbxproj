@@ -196,6 +196,12 @@
 		34A2186C1CCE152E00ADD8FF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */; };
 		34A2186E1CCE15BC00ADD8FF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186D1CCE15BC00ADD8FF /* CoreData.framework */; };
 		34EDB5B01CD1EB93001BB50C /* video_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 34EDB5AF1CD1EB93001BB50C /* video_point.png */; };
+		34EDB5B51CD2F350001BB50C /* PremissModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5B21CD2F350001BB50C /* PremissModel.m */; };
+		34EDB5B61CD2F350001BB50C /* ZdFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5B41CD2F350001BB50C /* ZdFriendModel.m */; };
+		34EDB5B91CD2F387001BB50C /* AFHttpClient+PremissClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5B81CD2F387001BB50C /* AFHttpClient+PremissClient.m */; };
+		34EDB5C01CD2F3CA001BB50C /* ExchangePremissViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5BB1CD2F3CA001BB50C /* ExchangePremissViewController.m */; };
+		34EDB5C11CD2F3CA001BB50C /* NewPremissViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5BD1CD2F3CA001BB50C /* NewPremissViewController.m */; };
+		34EDB5C21CD2F3CA001BB50C /* ZdFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5BF1CD2F3CA001BB50C /* ZdFriendViewController.m */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		572220E01CB7541E00C9C7D2 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */; };
@@ -1046,6 +1052,18 @@
 		34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		34A2186D1CCE15BC00ADD8FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		34EDB5AF1CD1EB93001BB50C /* video_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_point.png; sourceTree = "<group>"; };
+		34EDB5B11CD2F350001BB50C /* PremissModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PremissModel.h; sourceTree = "<group>"; };
+		34EDB5B21CD2F350001BB50C /* PremissModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PremissModel.m; sourceTree = "<group>"; };
+		34EDB5B31CD2F350001BB50C /* ZdFriendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZdFriendModel.h; sourceTree = "<group>"; };
+		34EDB5B41CD2F350001BB50C /* ZdFriendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZdFriendModel.m; sourceTree = "<group>"; };
+		34EDB5B71CD2F387001BB50C /* AFHttpClient+PremissClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PremissClient.h"; sourceTree = "<group>"; };
+		34EDB5B81CD2F387001BB50C /* AFHttpClient+PremissClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PremissClient.m"; sourceTree = "<group>"; };
+		34EDB5BA1CD2F3CA001BB50C /* ExchangePremissViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangePremissViewController.h; sourceTree = "<group>"; };
+		34EDB5BB1CD2F3CA001BB50C /* ExchangePremissViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangePremissViewController.m; sourceTree = "<group>"; };
+		34EDB5BC1CD2F3CA001BB50C /* NewPremissViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPremissViewController.h; sourceTree = "<group>"; };
+		34EDB5BD1CD2F3CA001BB50C /* NewPremissViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPremissViewController.m; sourceTree = "<group>"; };
+		34EDB5BE1CD2F3CA001BB50C /* ZdFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZdFriendViewController.h; sourceTree = "<group>"; };
+		34EDB5BF1CD2F3CA001BB50C /* ZdFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZdFriendViewController.m; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -2676,6 +2694,10 @@
 		57666F711C9686DE00A52DBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				34EDB5B11CD2F350001BB50C /* PremissModel.h */,
+				34EDB5B21CD2F350001BB50C /* PremissModel.m */,
+				34EDB5B31CD2F350001BB50C /* ZdFriendModel.h */,
+				34EDB5B41CD2F350001BB50C /* ZdFriendModel.m */,
 				7D9D76981CBCCD24004E45DE /* NearbyModel.h */,
 				7D9D76991CBCCD24004E45DE /* NearbyModel.m */,
 				7DF146F61CD068480046D726 /* BlackListModel.h */,
@@ -2727,6 +2749,8 @@
 			children = (
 				578B9E5C1CA29A9E00CAC21D /* AFHttpClient.h */,
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
+				34EDB5B71CD2F387001BB50C /* AFHttpClient+PremissClient.h */,
+				34EDB5B81CD2F387001BB50C /* AFHttpClient+PremissClient.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
 				7DB4F5C31CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.h */,
@@ -3267,6 +3291,12 @@
 				7DF147091CD0A7AF0046D726 /* Views */,
 				7DF146FA1CD09B5E0046D726 /* PermissionViewController.h */,
 				7DF146FB1CD09B5E0046D726 /* PermissionViewController.m */,
+				34EDB5BA1CD2F3CA001BB50C /* ExchangePremissViewController.h */,
+				34EDB5BB1CD2F3CA001BB50C /* ExchangePremissViewController.m */,
+				34EDB5BC1CD2F3CA001BB50C /* NewPremissViewController.h */,
+				34EDB5BD1CD2F3CA001BB50C /* NewPremissViewController.m */,
+				34EDB5BE1CD2F3CA001BB50C /* ZdFriendViewController.h */,
+				34EDB5BF1CD2F3CA001BB50C /* ZdFriendViewController.m */,
 			);
 			path = Permission;
 			sourceTree = "<group>";
@@ -3680,8 +3710,10 @@
 				57666F861C9687E300A52DBA /* BaseViewController.m in Sources */,
 				7DF146EF1CD0544F0046D726 /* BalckListViewController.m in Sources */,
 				7D825D3F1CBCA93D00F4E216 /* AppDelegate+Launcher.m in Sources */,
+				34EDB5C21CD2F3CA001BB50C /* ZdFriendViewController.m in Sources */,
 				7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */,
 				7D825CD51CBCA4C800F4E216 /* InCallViewController.m in Sources */,
+				34EDB5C11CD2F3CA001BB50C /* NewPremissViewController.m in Sources */,
 				7D30E8A91CA66C05004DE055 /* SCImageView.m in Sources */,
 				7D30E8B01CA66C05004DE055 /* SCRecorderFocusTargetView.m in Sources */,
 				34A215DB1CCDFD6F00ADD8FF /* SephoneUtils.m in Sources */,
@@ -3689,6 +3721,7 @@
 				578B9E671CA2D8CB00CAC21D /* SquareModel.m in Sources */,
 				7D0128EE1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m in Sources */,
 				34144BCC1CBFB156007C4498 /* MessageModel.m in Sources */,
+				34EDB5C01CD2F3CA001BB50C /* ExchangePremissViewController.m in Sources */,
 				7D30E8B11CA66C05004DE055 /* SCRecorderTools.m in Sources */,
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
 				7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */,
@@ -3701,6 +3734,7 @@
 				7D30E8AC1CA66C05004DE055 /* SCPhotoConfiguration.m in Sources */,
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */,
+				34EDB5B61CD2F350001BB50C /* ZdFriendModel.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
 				7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
@@ -3743,6 +3777,8 @@
 				34A215D61CCDFD6F00ADD8FF /* SephoneManager.m in Sources */,
 				57462DAE1CBB85D00071047E /* DetailCommentView.m in Sources */,
 				57666F511C96619700A52DBA /* main.m in Sources */,
+				34EDB5B51CD2F350001BB50C /* PremissModel.m in Sources */,
+				34EDB5B91CD2F387001BB50C /* AFHttpClient+PremissClient.m in Sources */,
 				344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */,
 				57666FA11C9689CC00A52DBA /* EggViewController.m in Sources */,
 				7D825D1B1CBCA69E00F4E216 /* BaseCollectionViewController.m in Sources */,
