@@ -8,6 +8,8 @@
 
 #import "FeedSetingViewController.h"
 
+#import "AFHttpClient+FeedingClient.h"
+
 @interface FeedSetingViewController ()
 @property (nonatomic,strong)UIButton * bigBtn;
 @property (nonatomic,strong)UIButton * oneDayButton;
@@ -65,6 +67,11 @@
     _moveView.backgroundColor = GREEN_COLOR;
     [whiteView addSubview:_moveView];
     
+    
+    
+    
+    
+    
 }
 
 -(void)onedayButtonTouch{
@@ -90,7 +97,9 @@
 
 -(void)setupData{
     [super setupData];
-
+    [[AFHttpClient sharedAFHttpClient]queryFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
+        
+    }];
 }
 
 

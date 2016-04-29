@@ -21,6 +21,8 @@
 #import "BlackListModel.h"
 #import "PremissModel.h"
 #import "ZdFriendModel.h"
+#import "FeddingModel.h"
+
 
 #define BASE_URL    @"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"
 

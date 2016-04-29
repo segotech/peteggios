@@ -402,6 +402,9 @@
 		7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */; };
 		7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D02F1CA535820098706C /* CycleScrollView.m */; };
 		7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */; };
+		7DEB3F141CD2FD0100502179 /* AFHttpClient+FeedingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEB3F131CD2FD0100502179 /* AFHttpClient+FeedingClient.m */; };
+		7DEB3F171CD30C9E00502179 /* FeddingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEB3F161CD30C9E00502179 /* FeddingModel.m */; };
+		7DEB3F1B1CD32F1700502179 /* FeedSetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEB3F1A1CD32F1700502179 /* FeedSetingTableViewCell.m */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
 		7DF146EF1CD0544F0046D726 /* BalckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146EE1CD0544F0046D726 /* BalckListViewController.m */; };
 		7DF146F11CD057EF0046D726 /* addblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF146F01CD057EF0046D726 /* addblack.png */; };
@@ -1405,6 +1408,12 @@
 		7DC8D02F1CA535820098706C /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
 		7DC8D0311CA5358F0098706C /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
 		7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
+		7DEB3F121CD2FD0100502179 /* AFHttpClient+FeedingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+FeedingClient.h"; sourceTree = "<group>"; };
+		7DEB3F131CD2FD0100502179 /* AFHttpClient+FeedingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+FeedingClient.m"; sourceTree = "<group>"; };
+		7DEB3F151CD30C9E00502179 /* FeddingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeddingModel.h; sourceTree = "<group>"; };
+		7DEB3F161CD30C9E00502179 /* FeddingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeddingModel.m; sourceTree = "<group>"; };
+		7DEB3F191CD32F1700502179 /* FeedSetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedSetingTableViewCell.h; sourceTree = "<group>"; };
+		7DEB3F1A1CD32F1700502179 /* FeedSetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedSetingTableViewCell.m; sourceTree = "<group>"; };
 		7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_new_issue@2x.png"; sourceTree = "<group>"; };
 		7DF146ED1CD0544F0046D726 /* BalckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalckListViewController.h; sourceTree = "<group>"; };
 		7DF146EE1CD0544F0046D726 /* BalckListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalckListViewController.m; sourceTree = "<group>"; };
@@ -2686,6 +2695,8 @@
 			children = (
 				7D9D76981CBCCD24004E45DE /* NearbyModel.h */,
 				7D9D76991CBCCD24004E45DE /* NearbyModel.m */,
+				7DEB3F151CD30C9E00502179 /* FeddingModel.h */,
+				7DEB3F161CD30C9E00502179 /* FeddingModel.m */,
 				7DA2168E1CD20AB000F6BCCB /* ZdFriendModel.h */,
 				7DA2168F1CD20AB000F6BCCB /* ZdFriendModel.m */,
 				7DA216881CD1B4A600F6BCCB /* PremissModel.h */,
@@ -2741,6 +2752,8 @@
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
+				7DEB3F121CD2FD0100502179 /* AFHttpClient+FeedingClient.h */,
+				7DEB3F131CD2FD0100502179 /* AFHttpClient+FeedingClient.m */,
 				7DA216851CD1A97F00F6BCCB /* AFHttpClient+PremissClient.h */,
 				7DA216861CD1A97F00F6BCCB /* AFHttpClient+PremissClient.m */,
 				7DB4F5C31CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.h */,
@@ -3240,6 +3253,7 @@
 		7DA216941CD233AB00F6BCCB /* FeedSeting */ = {
 			isa = PBXGroup;
 			children = (
+				7DEB3F181CD32EF300502179 /* Views */,
 				7DA2169B1CD2358E00F6BCCB /* FeedSetingViewController.h */,
 				7DA2169C1CD2358E00F6BCCB /* FeedSetingViewController.m */,
 			);
@@ -3272,6 +3286,15 @@
 				7DC8D02F1CA535820098706C /* CycleScrollView.m */,
 				7DC8D0311CA5358F0098706C /* NSTimer+Addition.h */,
 				7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7DEB3F181CD32EF300502179 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7DEB3F191CD32F1700502179 /* FeedSetingTableViewCell.h */,
+				7DEB3F1A1CD32F1700502179 /* FeedSetingTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3682,6 +3705,7 @@
 				57462DA61CBA46270071047E /* CommentModel.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
 				7D05D8A81CCB21080081FB24 /* IssueZiYuankuModel.m in Sources */,
+				7DEB3F141CD2FD0100502179 /* AFHttpClient+FeedingClient.m in Sources */,
 				7DB4F5C51CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m in Sources */,
 				7DFF05A91CB7A26E00CF713E /* DetailModel.m in Sources */,
 				7D3A352E1CB3CAFA0037C616 /* ReDataViewController.m in Sources */,
@@ -3709,6 +3733,7 @@
 				7D2F3F7A1CC0871E0059116A /* PersonAttentionViewController.m in Sources */,
 				7D8122821CBDF60100F4F823 /* MonthBangViewController.m in Sources */,
 				7D30E8A81CA66C05004DE055 /* SCFilterImageView.m in Sources */,
+				7DEB3F171CD30C9E00502179 /* FeddingModel.m in Sources */,
 				7D9819261CC9F58C00D0A6CC /* RepositoryViewController.m in Sources */,
 				7D30E8AE1CA66C05004DE055 /* SCProcessingQueue.m in Sources */,
 				7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */,
@@ -3752,6 +3777,7 @@
 				57462D9D1CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				7D825D0A1CBCA65000F4E216 /* FriendViewController.m in Sources */,
 				34144BE81CC4BCCA007C4498 /* QFTableView.m in Sources */,
+				7DEB3F1B1CD32F1700502179 /* FeedSetingTableViewCell.m in Sources */,
 				7D825D0F1CBCA65000F4E216 /* personTableViewCell.m in Sources */,
 				7D30E89F1CA66C05004DE055 /* README.md in Sources */,
 				7D30E8A51CA66C05004DE055 /* SCFilter+VideoComposition.m in Sources */,
