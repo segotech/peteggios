@@ -101,7 +101,13 @@
 {
     
     UIPasteboard *pboard = [UIPasteboard generalPasteboard];
-    // 测试
+    // 判断登录
+    
+    
+    // 判断是否是自己
+    
+    
+    
     if ([[pboard.string substringWithRange:NSMakeRange(0, 4)]  isEqualToString:@"赛果分享"]) {
        
         NSString * strPLAYcode = [pboard.string substringWithRange:NSMakeRange(5,14 )];
@@ -130,17 +136,10 @@
     NSLog(@"==========%@",playStr);
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         NSMutableArray * arr =[NSMutableArray array];
-        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             arr = json[@"jsondata"][@"list"];
-            
-            OtherEggViewController * otherVC =[[OtherEggViewController alloc]initWithNibName:@"OtherEggViewController" bundle:nil];
+        OtherEggViewController * otherVC =[[OtherEggViewController alloc]init];
+            otherVC.otherArr = arr;
             [self.window.rootViewController presentViewController:otherVC animated:YES completion:nil];
-            
-        }
-        
-       
-        
-        
         
     } failure:^(NSError *error) {
         

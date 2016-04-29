@@ -20,6 +20,7 @@
     NSTimer * _timer;
     int timeTF;
     NSString * pcidStr;
+    NSString * endTime;
     
     
     
@@ -87,7 +88,7 @@
 
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams
-     SSDKSetupShareParamsByText:[NSString stringWithFormat:@"赛果分享[%@]此逗码 2016/4/29 12:00:00 之前有效，复制这条信息，打开赛果不倒蛋软件，即可控制分享者的设备开启远程互动(软件下载地址：http://www.segopet.com/download.html)", self.onFunyCode.text]
+     SSDKSetupShareParamsByText:[NSString stringWithFormat:@"赛果分享[%@]此逗码%@之前有效，复制这条信息，打开赛果不倒蛋软件，即可控制分享者的设备开启远程互动(软件下载地址：http://www.segopet.com/download.html)", self.onFunyCode.text,endTime]
                             images:nil
                                url:nil
                              title:@"赛果逗码分享"
@@ -170,7 +171,7 @@
             self.onFunprice.text =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"price"];
             self.onFuntime.text =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"seconds"];
             pcidStr  =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"pcid"];
-            
+            endTime =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"endtime"];
             timeTF = [self.onFuntime.text intValue];
             _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
 
