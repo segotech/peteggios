@@ -17,4 +17,6 @@
 
 @property (nonatomic,strong)UILabel * lineLabel;
 
+@property (nonatomic,strong)UIButton * zdRightBtn;
+
 @end

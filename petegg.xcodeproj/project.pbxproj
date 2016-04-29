@@ -389,6 +389,12 @@
 		7D98192D1CC9F95600D0A6CC /* RepositorySnapshotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D98192C1CC9F95600D0A6CC /* RepositorySnapshotViewController.m */; };
 		7D9D769A1CBCCD24004E45DE /* NearbyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D76991CBCCD24004E45DE /* NearbyModel.m */; };
 		7D9D769C1CBCF011004E45DE /* searche.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9D769B1CBCF011004E45DE /* searche.png */; };
+		7DA216841CD1A77C00F6BCCB /* NewPremissViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA216831CD1A77C00F6BCCB /* NewPremissViewController.m */; };
+		7DA216871CD1A97F00F6BCCB /* AFHttpClient+PremissClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA216861CD1A97F00F6BCCB /* AFHttpClient+PremissClient.m */; };
+		7DA2168A1CD1B4A600F6BCCB /* PremissModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA216891CD1B4A600F6BCCB /* PremissModel.m */; };
+		7DA2168D1CD2039100F6BCCB /* ZdFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA2168C1CD2039100F6BCCB /* ZdFriendViewController.m */; };
+		7DA216901CD20AB000F6BCCB /* ZdFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA2168F1CD20AB000F6BCCB /* ZdFriendModel.m */; };
+		7DA216931CD22ACE00F6BCCB /* ExchangePremissViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA216921CD22ACE00F6BCCB /* ExchangePremissViewController.m */; };
 		7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */; };
 		7DB4F5BE1CCF3F35002918DA /* InformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BD1CCF3F35002918DA /* InformationModel.m */; };
 		7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5C11CCF849A002918DA /* ChangePasswordViewController.m */; };
@@ -1372,6 +1378,18 @@
 		7D9D76981CBCCD24004E45DE /* NearbyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyModel.h; sourceTree = "<group>"; };
 		7D9D76991CBCCD24004E45DE /* NearbyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyModel.m; sourceTree = "<group>"; };
 		7D9D769B1CBCF011004E45DE /* searche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searche.png; sourceTree = "<group>"; };
+		7DA216821CD1A77C00F6BCCB /* NewPremissViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPremissViewController.h; sourceTree = "<group>"; };
+		7DA216831CD1A77C00F6BCCB /* NewPremissViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPremissViewController.m; sourceTree = "<group>"; };
+		7DA216851CD1A97F00F6BCCB /* AFHttpClient+PremissClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PremissClient.h"; sourceTree = "<group>"; };
+		7DA216861CD1A97F00F6BCCB /* AFHttpClient+PremissClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PremissClient.m"; sourceTree = "<group>"; };
+		7DA216881CD1B4A600F6BCCB /* PremissModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PremissModel.h; sourceTree = "<group>"; };
+		7DA216891CD1B4A600F6BCCB /* PremissModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PremissModel.m; sourceTree = "<group>"; };
+		7DA2168B1CD2039100F6BCCB /* ZdFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZdFriendViewController.h; sourceTree = "<group>"; };
+		7DA2168C1CD2039100F6BCCB /* ZdFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZdFriendViewController.m; sourceTree = "<group>"; };
+		7DA2168E1CD20AB000F6BCCB /* ZdFriendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZdFriendModel.h; sourceTree = "<group>"; };
+		7DA2168F1CD20AB000F6BCCB /* ZdFriendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZdFriendModel.m; sourceTree = "<group>"; };
+		7DA216911CD22ACE00F6BCCB /* ExchangePremissViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangePremissViewController.h; sourceTree = "<group>"; };
+		7DA216921CD22ACE00F6BCCB /* ExchangePremissViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangePremissViewController.m; sourceTree = "<group>"; };
 		7DB4F5B91CCF1195002918DA /* AFHttpClient+InformationChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+InformationChange.h"; sourceTree = "<group>"; };
 		7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+InformationChange.m"; sourceTree = "<group>"; };
 		7DB4F5BC1CCF3F35002918DA /* InformationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationModel.h; sourceTree = "<group>"; };
@@ -2678,6 +2696,10 @@
 			children = (
 				7D9D76981CBCCD24004E45DE /* NearbyModel.h */,
 				7D9D76991CBCCD24004E45DE /* NearbyModel.m */,
+				7DA2168E1CD20AB000F6BCCB /* ZdFriendModel.h */,
+				7DA2168F1CD20AB000F6BCCB /* ZdFriendModel.m */,
+				7DA216881CD1B4A600F6BCCB /* PremissModel.h */,
+				7DA216891CD1B4A600F6BCCB /* PremissModel.m */,
 				7DF146F61CD068480046D726 /* BlackListModel.h */,
 				7DF146F71CD068480046D726 /* BlackListModel.m */,
 				7DB4F5BC1CCF3F35002918DA /* InformationModel.h */,
@@ -2729,6 +2751,8 @@
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
+				7DA216851CD1A97F00F6BCCB /* AFHttpClient+PremissClient.h */,
+				7DA216861CD1A97F00F6BCCB /* AFHttpClient+PremissClient.m */,
 				7DB4F5C31CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.h */,
 				7DB4F5C41CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m */,
 				7DB4F5B91CCF1195002918DA /* AFHttpClient+InformationChange.h */,
@@ -3118,7 +3142,11 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				341AEDC21CD19E310051C42A /* funnyMoney */,
+=======
+				7DA216941CD233AB00F6BCCB /* FeedSeting */,
+>>>>>>> 876e33856758ffb417ddbee9aaaa3a4016a2b17c
 				7DF146F91CD098170046D726 /* Permission */,
 				7DF146EC1CD054260046D726 /* BlackList */,
 				7DB4F5BF1CCF847C002918DA /* ChangePassWord */,
@@ -3222,6 +3250,13 @@
 			path = Issue;
 			sourceTree = "<group>";
 		};
+		7DA216941CD233AB00F6BCCB /* FeedSeting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FeedSeting;
+			sourceTree = "<group>";
+		};
 		7DB4F5BF1CCF847C002918DA /* ChangePassWord */ = {
 			isa = PBXGroup;
 			children = (
@@ -3267,6 +3302,12 @@
 				7DF147091CD0A7AF0046D726 /* Views */,
 				7DF146FA1CD09B5E0046D726 /* PermissionViewController.h */,
 				7DF146FB1CD09B5E0046D726 /* PermissionViewController.m */,
+				7DA216821CD1A77C00F6BCCB /* NewPremissViewController.h */,
+				7DA216831CD1A77C00F6BCCB /* NewPremissViewController.m */,
+				7DA216911CD22ACE00F6BCCB /* ExchangePremissViewController.h */,
+				7DA216921CD22ACE00F6BCCB /* ExchangePremissViewController.m */,
+				7DA2168B1CD2039100F6BCCB /* ZdFriendViewController.h */,
+				7DA2168C1CD2039100F6BCCB /* ZdFriendViewController.m */,
 			);
 			path = Permission;
 			sourceTree = "<group>";
@@ -3636,6 +3677,7 @@
 				7D1763A41CBF733800579B4C /* AFHttpClient+Rank.m in Sources */,
 				7D30E8CA1CA66C67004DE055 /* WechatShortVideoController.m in Sources */,
 				7D81227F1CBDF5F200F4F823 /* WeekBangViewController.m in Sources */,
+				7DA216871CD1A97F00F6BCCB /* AFHttpClient+PremissClient.m in Sources */,
 				34813FE81CC5D4EE000DFE26 /* CompletionViewController.m in Sources */,
 				34144BD61CBFB1B3007C4498 /* MessageTableViewCell.m in Sources */,
 				7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */,
@@ -3700,6 +3742,8 @@
 				572220ED1CB7829A00C9C7D2 /* DetailCommentCell.m in Sources */,
 				7D30E8AC1CA66C05004DE055 /* SCPhotoConfiguration.m in Sources */,
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
+				7DA216841CD1A77C00F6BCCB /* NewPremissViewController.m in Sources */,
+				7DA2168A1CD1B4A600F6BCCB /* PremissModel.m in Sources */,
 				7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
 				7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */,
@@ -3720,6 +3764,7 @@
 				578B9E5E1CA29A9E00CAC21D /* AFHttpClient.m in Sources */,
 				7D30E8A21CA66C05004DE055 /* SCAudioTools.m in Sources */,
 				7D1714451CBBA3670047FA70 /* NearTableViewCell.m in Sources */,
+				7DA2168D1CD2039100F6BCCB /* ZdFriendViewController.m in Sources */,
 				57462D9E1CB8DD480071047E /* UIView+SDAutoLayout.m in Sources */,
 				57666FDB1C96BE6F00A52DBA /* UIAlertView+Blocks.m in Sources */,
 				7D30E89C1CA66C05004DE055 /* CIImageRendererUtils.m in Sources */,
@@ -3755,6 +3800,7 @@
 				57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */,
 				57666FDA1C96BE6F00A52DBA /* UIActionSheet+Blocks.m in Sources */,
 				34A215B81CCDF51600ADD8FF /* AppDelegate+Sephone.m in Sources */,
+				7DA216931CD22ACE00F6BCCB /* ExchangePremissViewController.m in Sources */,
 				572220F61CB8A99100C9C7D2 /* DetailViewController.m in Sources */,
 				344F02931CA23F790076CE62 /* Reachability.m in Sources */,
 				7DFF05AC1CB7A45800CF713E /* PersonDetailModel.m in Sources */,
@@ -3768,6 +3814,7 @@
 				7D30E8B21CA66C05004DE055 /* SCRecorderToolsView.m in Sources */,
 				7D30E8A11CA66C05004DE055 /* SCAudioConfiguration.m in Sources */,
 				57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */,
+				7DA216901CD20AB000F6BCCB /* ZdFriendModel.m in Sources */,
 				7D825D141CBCA65000F4E216 /* VideoViewController.m in Sources */,
 				344F02BC1CA27E780076CE62 /* BePeripheralViewController.m in Sources */,
 				7D98192D1CC9F95600D0A6CC /* RepositorySnapshotViewController.m in Sources */,

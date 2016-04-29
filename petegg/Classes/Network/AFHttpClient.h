@@ -19,6 +19,8 @@
 #import "IssueZiYuankuModel.h"
 #import "InformationModel.h"
 #import "BlackListModel.h"
+#import "PremissModel.h"
+#import "ZdFriendModel.h"
 
 #define BASE_URL    @"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"
 
