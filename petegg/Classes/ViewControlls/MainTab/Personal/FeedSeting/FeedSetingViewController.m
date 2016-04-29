@@ -70,8 +70,8 @@
     
     
     self.tableView.frame = CGRectMake(0 * W_Wide_Zoom, 300 * W_Hight_Zoom, self.view.width, 400);
-    [self.tableView registerClass:[PermissTableViewCell class] forCellReuseIdentifier:cellId];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+   //[self.tableView registerClass:[PermissTableViewCell class] forCellReuseIdentifier:cellId];
+   // [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
     
     
