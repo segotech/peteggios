@@ -45,15 +45,7 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     
     
-//        self.center = [[CTCallCenter alloc] init];
-//        __block InCallViewController *weakSelf = self;
-//        self.center.callEventHandler = ^(CTCall * call)
-//        {
-//            //TODO:检测到来电后的处理
-//    
-//    
-//            
-//        };
+
     
     
     

@@ -13,7 +13,7 @@
 
 @interface EggViewController ()
 {
-    NSArray * _equipmentStateArr;
+    NSString * _equipmentStateArr;
     NSUserDefaults * _defaulte;
     UIImageView * _noDeviceImageView;
     UIImageView * _yesDeviceImageView;
@@ -45,10 +45,7 @@
     
       [SephoneManager addProxyConfig:@"15800000185" password:@"305193" domain:@"180.97.80.152"];
     
-
-    
-   [self equipmentState];
-   [self buttonOpen];
+        [self buttonOpen];
     
     
 }
@@ -74,6 +71,9 @@
 {
     [super  viewWillAppear:animated];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callUpdate:) name:kSephoneCallUpdate object:nil];
+    
+     [self equipmentState];
     
 }
 
@@ -81,16 +81,43 @@
 {
     
     [super viewWillDisappear:animated];
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:kSephoneCallUpdate object:nil];
     
-    
+}
+
+// 通话状态处理
+- (void)callUpdate:(NSNotification *)notif {
+    SephoneCall *call = [[notif.userInfo objectForKey:@"call"] pointerValue];
+    SephoneCallState state = [[notif.userInfo objectForKey:@"state"] intValue];
+
+    switch (state) {
+        case SephoneCallOutgoingInit:{
+            // 成功
+            _incallVC =[[InCallViewController alloc]initWithNibName:@"InCallViewController" bundle:nil];
+            [_incallVC setCall:call];
+            [self presentViewController:_incallVC animated:YES completion:nil];
+            
+      
+            break;
+        }
+            
+        case SephoneCallStreamsRunning: {
+            break;
+        }
+        case SephoneCallUpdatedByRemote: {
+            break;
+        }
+
+        default:
+            break;
+    }
 }
 
 
 // 判断用户有没有绑定设备
 - (void)equipmentState
 {
-    _equipmentStateArr =[[NSArray alloc]init];
-    
+   
     _appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     _defaulte =[NSUserDefaults standardUserDefaults];
@@ -135,9 +162,8 @@
     NSString * bangdinDevico = [_defaulte objectForKey:@"DEVICE_NUMBER"];
     NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
     NSString * devico =[AccountManager sharedAccountManager].loginModel.deviceno;
-    NSString * service =[AppUtil getServerSego3];
     
-    service = [service stringByAppendingString:@"clientAction.do?common=queryDeviceStatus&classes=appinterface&method=json"];
+   NSString * service = @"clientAction.do?common=queryDeviceStatus&classes=appinterface&method=json";
     
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:@"a" forKey:@"quantity"];
@@ -156,51 +182,50 @@
         
     }
     
+    [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            
+            _equipmentStateArr =json[@"jsondata"][@"retVal"][@"status"];
+            [self UIinitUseface:_equipmentStateArr];
     
-    AFHTTPRequestOperationManager *manager =  [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObject:@"text/html"];
-    
-    [manager POST:service parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        responseObject =[responseObject objectForKey:@"jsondata"];
-        if ([[responseObject objectForKey:@"retCode"] isEqualToString:@"0000"]) {
-            _equipmentStateArr =[responseObject objectForKey:@"list"];
-            [self UIinitUseface:_equipmentStateArr[0][@"status"]];
         }
         
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+    } failure:^(NSError *error) {
         NSLog(@"%@",error.localizedDescription);
+        
+        
     }];
-
+    
     
     
 }
 
 - (void)UIinitUseface:(NSString *)status
 {
-
-    int myInt = [status intValue];
+    _yesDeviceImageView.image = nil;
     self.view.backgroundColor =[UIColor whiteColor];
 
     _yesDeviceImageView =[[UIImageView alloc]initWithFrame:CGRectMake(35*W_Wide_Zoom, 90*W_Hight_Zoom, 300*W_Wide_Zoom, 300*W_Hight_Zoom)];
     
-    if ((myInt&(0x1 << 3)) != 0) {
+    if ([status isEqualToString:@"ds001"]) {
         // 在线
         _yesDeviceImageView.image =[UIImage imageNamed:@"egg_online.png"];
         [self buttonOpen];
     }
-    else if ((myInt&(0x1 << 16)) != 0) {
+    else if ([status isEqualToString:@"ds003"]) {
         //通话
         _yesDeviceImageView.image =[UIImage imageNamed:@"egg_calling.png"];
         [self buttonOpen];
         
     }
-    else if ((myInt&(0x1 << 17)) != 0) {
+    else if ([status isEqualToString:@"ds004"]) {
         //正在上传
         _yesDeviceImageView.image =[UIImage imageNamed:@"egg_upload.png"];
         [self buttonOpen];
+        
+    }else if([status isEqualToString:@"ds000"])
+    {
+        // 设备不存在
         
     }
     else {
@@ -281,9 +306,6 @@
             _isOpen = YES;
             NSString * buildID = json[@"jsondata"][@"content"];
             [_defaulte setValue:buildID forKey:@"otherbuildIDS"];
-            _incallVC =[[InCallViewController alloc]initWithNibName:@"InCallViewController" bundle:nil];
-            [self presentViewController:_incallVC animated:YES completion:nil];
-
             
         } failure:^(NSError *error) {
             

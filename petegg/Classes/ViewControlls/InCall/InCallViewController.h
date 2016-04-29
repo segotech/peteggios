@@ -18,5 +18,6 @@
 @property (strong, nonatomic) IBOutlet UIView *statsView;
 @property (strong, nonatomic) IBOutlet UILabel *timeText;
 @property (strong, nonatomic) IBOutlet UIImageView *pointView;
+@property (strong, nonatomic) IBOutlet UIView *waitView;
 
 @end

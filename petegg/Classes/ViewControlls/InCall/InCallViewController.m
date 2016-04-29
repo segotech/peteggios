@@ -40,7 +40,11 @@
 @synthesize pointView;
 
 
-
+- (void)setCall:(SephoneCall *)acall {
+    call = acall;
+    
+    
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -56,24 +60,27 @@
     // 视频
     sephone_core_set_native_video_window_id([SephoneManager getLc], (unsigned long)videoView);
     
-
-    
-    // 创建定时器更新通话时间。
+    // 创建定时器更新通话时间 (以及创建时间显示)
     updateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateViews) userInfo:nil repeats:YES];
     
-    
-    // 创建时间显示
-    timeShow =[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(showUp) userInfo:nil repeats:YES];
     
     
 }
 
+- (void)applicationWillResignActive:(NSNotification *)notification
+
+{
+    
+    [self RefreshCellForLiveId];
+
+    
+}
 
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.backBtn removeFromSuperview];
-   
+    
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     if (updateTimer != nil) {
         [updateTimer invalidate];
@@ -84,9 +91,9 @@
         hideControlsTimer = nil;
     }
     
-    if (moveTimer !=nil) {
-        [moveTimer invalidate];
-        moveTimer = nil;
+    if (timeShow !=nil) {
+        [timeShow invalidate];
+        timeShow = nil;
         
     }
     
@@ -107,23 +114,32 @@
         self.center.callEventHandler = ^(CTCall * call)
         {
             //TODO:检测到来电后的处理
-    
-            [weakSelf comeBack];
+            [weakSelf performSelectorOnMainThread:@selector(RefreshCellForLiveId)
+                                   withObject:nil
+                                waitUntilDone:NO];
+        
             
         };
     
     
+    // 后台
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationWillResignActive:)name:UIApplicationWillResignActiveNotification
+     object:[UIApplication sharedApplication]];
+    
+    [self callStream:call];
     [self setupView];
-    [self setupData];
+
+}
+
+- (void)RefreshCellForLiveId
+{
     
-   
+    [SephoneManager terminateCurrentCallOrConference];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     
 }
-// 设置当前通话
-- (void)setCall:(SephoneCall *)acall {
-    call = acall;
-}
+
 
 - (void)setupView
 {
@@ -134,27 +150,23 @@
     [penSd setThumbImage:thumbImage1 forState:UIControlStateHighlighted];
     [penSd setThumbImage:thumbImage forState:UIControlStateNormal];
     
-    if (![SephoneManager hasCall:call]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-        return;
-    }
-    
-    
-    if (call != NULL && sephone_call_params_get_used_video_codec(sephone_call_get_current_params(call))) {
-        sephone_call_set_next_video_frame_decoded_callback(call, hideSpinner, (__bridge void *)(self));
-    }
-
-  
-    
-    
-
     
 }
 
-- (void)setupData
+- (void)callStream:(SephoneCall *)calls
 {
     
+    if (calls != NULL) {
+        
+        sephone_call_set_next_video_frame_decoded_callback(calls, hideSpinner, (__bridge void *)(self));
+    }
     
+    
+    if (![SephoneManager hasCall:calls]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
+
     
     
 }
@@ -300,14 +312,7 @@
 }
 
 
-- (void)comeBack
-{
-    
-    [SephoneManager terminateCurrentCallOrConference];
-    [self dismissViewControllerAnimated:YES completion:nil];
 
-    
-}
 
 //  返回
 - (IBAction)backBtnClick:(UIButton *)sender {
@@ -406,21 +411,27 @@
 // 更新控件内容
 - (void)updateViews {
     
-    if (call == NULL) {
-       return;
+    SephoneCall *calltime= sephone_core_get_current_call([SephoneManager getLc]);
+    
+    if (calltime == NULL) {
+        return;
+    }else
+    {
+        int duration = sephone_call_get_duration(calltime);
+        
+        //NSLog(@"=========时间======%02i:%02i",(duration/60), (duration%60));
+        timeText.text =[NSString stringWithFormat:@"%02i:%02i", (duration/60), (duration%60), nil];
+        
+        if (duration >= 300) {
+            
+            [SephoneManager terminateCurrentCallOrConference];
+            NSLog(@"五分钟到时视频流自动断开");
+            
+            
+        }
+        
+        
     }
-
-    
-}
-
-
-- (void)showUp
-{
-     SephoneCall *calltime= sephone_core_get_current_call([SephoneManager getLc]);
-    int duration = sephone_call_get_duration(calltime);
-    
-    NSLog(@"=========时间======%02i:%02i",(duration/60), (duration%60));
-    timeText.text =[NSString stringWithFormat:@"%02i:%02i", (duration/60), (duration%60), nil];
     
     if (couunt%2 ==1) {
         pointView.hidden = NO;
@@ -429,17 +440,20 @@
         pointView.hidden = YES;
         
     }
-    if (duration >= 300) {
-        
-        [SephoneManager terminateCurrentCallOrConference];
-         NSLog(@"五分钟到时视频流自动断开");
-        
-        
-    }
     
     couunt ++;
+
+    
+    
+    if (call == NULL) {
+       return;
+    }
+
     
 }
+
+
+
 
 // 通话监听
 
@@ -480,7 +494,7 @@
 
 - (void)hideSpinnerIndicator:(SephoneCall *)call {
     
-
+    self.waitView.hidden = YES;
     
     
 }
