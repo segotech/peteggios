@@ -17,5 +17,5 @@
 @property (nonatomic,copy)NSString * content;
 @property (nonatomic,copy)NSString * type;
 @property (nonatomic,copy)NSString * nickname;
-@property (nonatomic,copy)NSString * stid;
+@property (nonatomic,copy)NSString * tid;
 @end

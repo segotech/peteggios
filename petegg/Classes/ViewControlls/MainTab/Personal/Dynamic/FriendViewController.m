@@ -26,7 +26,7 @@
 @synthesize headImageView;
 @synthesize nameLabel;
 @synthesize message;
-
+@synthesize messageCount;
 
 
 
@@ -73,7 +73,12 @@
     [message addTarget:self action:@selector(messageBtn:) forControlEvents:UIControlEventTouchUpInside];
      message.titleEdgeInsets = UIEdgeInsetsMake(0, -60, 0, 0);//设置title在button上的位
     [message setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];
-    [message setTitle:@"4条动态" forState:UIControlStateNormal];
+    
+    if ([AppUtil isBlankString:messageCount]) {
+        message.hidden = YES;
+    }else{
+    [message setTitle:[NSString stringWithFormat:@"%@条动态",messageCount] forState:UIControlStateNormal];
+    }
     [message setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     message.titleLabel.font =[UIFont systemFontOfSize:13];
     [self.view addSubview:message];
@@ -163,6 +168,9 @@
 {
     
     MessageViewController *messageVC =[[MessageViewController alloc]initWithNibName:@"MessageViewController" bundle:nil];
+    self.message.hidden = YES;
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"message" object:nil];
+    
     [self.navigationController pushViewController:messageVC animated:YES];
     
     

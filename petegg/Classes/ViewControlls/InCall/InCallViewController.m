@@ -381,7 +381,7 @@
         [moveTimer invalidate];
         moveTimer = nil;
     }else{
-    moveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(sendInfomation:) userInfo:str repeats:YES];
+    moveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0*0.2 target:self selector:@selector(sendInfomation:) userInfo:str repeats:YES];
     }
     
 }

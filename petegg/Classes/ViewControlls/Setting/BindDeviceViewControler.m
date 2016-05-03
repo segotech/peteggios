@@ -196,7 +196,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
  */
 - (void)setUpBleDevice {
     // bind请求的参数json对象。
-    NSString *strUserid = @"MI16030000012833";
+    NSString *strUserid = [AccountManager sharedAccountManager].loginModel.mid;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bind", @"action", strUserid, @"userid", nil];
     NSString *str = [self dictionaryToJson:params];
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
@@ -365,6 +365,11 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
                 // 取出设备号，更新界面。
                 strNumber = [strNumber substringFromIndex:SEGOEGG_PREFIX.length];
                 self.deviceNumberEdit.text = strNumber;
+                
+                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+                [defaults setObject:strNumber forKey:@"deviceNumber"];
+                [defaults synchronize];
+                
                 self.incodeEdit.text = @"123456";
 
                 // 使能绑定按钮。

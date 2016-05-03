@@ -58,6 +58,7 @@
 
 - (void)setupData
 {
+  
     [super setupData];
     NSString * str =@"clientAction.do?method=json&common=queryPraises&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
@@ -106,7 +107,31 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initheadImage:) name:@"handImageText" object:nil];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanMessage) name:@"message" object:nil];
+    
+    
 }
+
+/**
+ *  消息清除
+ 
+ */
+
+
+- (void)cleanMessage
+{
+
+       personTableViewCell * cell = (personTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        cell.moneyLabel.hidden = YES;
+    
+    // tab 上面的 两个要一起判断 红点（关注的没写 暂时不判断）
+    
+    
+    
+    
+    
+}
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -333,10 +358,16 @@
             
         case 0:
             
-            if (indexPath.row == 0) {
+            if (indexPath.row == 0 && ![self.messageCount isEqualToString:@"0"]) {
+    
                 cell.moneyLabel.hidden = NO;
                 cell.moneyLabel.text = self.messageCount;
-    
+
+            }else
+            {
+               
+                cell.moneyLabel.hidden  = YES;
+                
             }
            
             // Configure the cell.
@@ -402,6 +433,7 @@
                 NSLog(@"时光轴");
                 
                 FriendViewController * friendVC =[[FriendViewController alloc]initWithNibName:@"FriendViewController" bundle:nil];
+                friendVC.messageCount = self.messageCount;
                 [self.navigationController pushViewController:friendVC animated:YES];
             
             }

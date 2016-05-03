@@ -59,6 +59,10 @@
     encryptionListTab.tableFooterView = [[UIView alloc] init];
 
     self.okButton.backgroundColor = GREEN_COLOR;
+    
+    self.wifiNameEdit.text = [self fetchSSIDInfo];
+    
+    
 
     [self setNavTitle:NSLocalizedString(@"wifiViewTitle", nil)];
 }
@@ -190,8 +194,9 @@
     }
 
     // setwifi请求的参数json对象。
-    NSString *strUserid = @"MI16030000012833";
+    NSString *strUserid =[AccountManager sharedAccountManager].loginModel.mid;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"setwifi", @"action", wifiNameEdit.text, @"wifi", passwordEdit.text, @"pass", strUserid, @"userid", curEncryption, @"sec", nil];
+    
     NSString *str = [self dictionaryToJson:params];
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
 
@@ -326,9 +331,10 @@
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 [defaults setValue:@"1" forKey:PREF_WIFI_CONFIGURED];
                 [defaults synchronize];
-
-                // 返回上一级页面。
-                [self.navigationController popViewControllerAnimated:YES];
+                
+                [self bangdingSheBei];
+            
+                
             } else {
                 [self showWarningTip:@"配置失败，请重新设置网络"];
                 return;
@@ -467,6 +473,36 @@
     // 隐藏加密方式列表。
     self.encryptionListTab.hidden = YES;
     selectEncryptionButton.selected = NO;
+}
+
+
+- (void)bangdingSheBei
+{
+    
+    NSString * str =@"clientAction.do?common=addDevice&classes=appinterface&method=json";
+    NSUserDefaults *defults = [NSUserDefaults standardUserDefaults];
+    NSString * devicos = [defults objectForKey:@"deviceNumber"];
+    NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
+    
+    [dicc setValue: [AccountManager sharedAccountManager].loginModel.mid                forKey:@"mid"];
+    [dicc setValue:devicos   forKey:@"deviceno"];
+    
+    [AFNetWorking postWithApi:str parameters:dicc success:^(id json) {
+        
+        [self showSuccessHudWithHint:@"绑定成功"];
+        
+        // 返回上一级页面。
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    } failure:^(NSError *error) {
+        
+        [self showSuccessHudWithHint:@"绑定失败"];
+        
+        
+    }];
+    
+    
+    
 }
 
 @end
