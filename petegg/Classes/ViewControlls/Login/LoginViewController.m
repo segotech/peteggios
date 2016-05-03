@@ -12,7 +12,7 @@
 #import "RegiestViewController.h"
 #import "ReDataViewController.h"
 
-@interface LoginViewController()
+@interface LoginViewController()<UITextFieldDelegate>
 @property (nonatomic,strong)UIButton * loginButton;
 @property (nonatomic,strong)UITextField * accountTextField;
 @property (nonatomic,strong)UITextField * passwordTextField;
@@ -59,6 +59,7 @@
     [_accountTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     [_accountTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _accountTextField.textColor = [UIColor whiteColor];
+    _accountTextField.delegate = self;
     [self.view addSubview:_accountTextField];
     
     _passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(70, 190, 200, 40)];
@@ -66,6 +67,7 @@
     _passwordTextField.tintColor = [UIColor whiteColor];
     [_passwordTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     [_passwordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    _passwordTextField.delegate = self;
     [self.view addSubview:_passwordTextField];
     
     UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(100, 350, 100, 35)];
@@ -133,22 +135,44 @@
 //
 //    }];
     
-    [self showHudInView:self.view hint:@"正在登录..."];
+//    [self showHudInView:self.view hint:@"正在登录..."];
+//    
+//    [[AFHttpClient sharedAFHttpClient] loginWithUserName:self.accountTextField.text password:self.passwordTextField.text complete:^(BaseModel *model) {
+//        
+//        [self hideHud];
+//        
+//        if ([model.retCode integerValue] > 0) {
+//            
+//        }else{
+//            [[AccountManager sharedAccountManager] login:model.list[0]];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
+//        }
+//        
+//    } failure:^{
+//        [self hideHud];
+//    }];
     
-    [[AFHttpClient sharedAFHttpClient] loginWithUserName:self.accountTextField.text password:self.passwordTextField.text complete:^(BaseModel *model) {
-        
-        [self hideHud];
-        
-        if ([model.retCode integerValue] > 0) {
-            
-        }else{
+   
+    
+    
+    [self showHudInView:self.view hint:@"正在登录..."];
+    [[AFHttpClient sharedAFHttpClient]loginWithUserName:self.accountTextField.text password:self.passwordTextField.text complete:^(BaseModel *model) {
+        if ([model.retCode isEqualToString:@"0000"]) {
+            [[AppUtil appTopViewController] showHint:model.retDesc];
             [[AccountManager sharedAccountManager] login:model.list[0]];
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
+           [self hideHud];
+        }else{
+            [self hideHud];
+           // [[AppUtil appTopViewController] showHint:model.retDesc];
         }
         
-    } failure:^{
-        [self hideHud];
+        
+      
     }];
+    
+    
+    
     
     
 }
@@ -165,5 +189,13 @@
 
 
 }
+
+
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    textField.keyboardAppearance = UIKeyboardAppearanceAlert;
+    textField.keyboardType = UIKeyboardTypeDefault;
+}
+
 
 @end

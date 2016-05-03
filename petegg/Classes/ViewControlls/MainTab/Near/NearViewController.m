@@ -21,6 +21,9 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.title = NSLocalizedString(@"tabNear", nil);
+    self.view.backgroundColor = LIGHT_GRAY_COLOR;
+    
+    
     
 }
 

@@ -258,6 +258,7 @@
 		7D05D8A81CCB21080081FB24 /* IssueZiYuankuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */; };
 		7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */; };
 		7D0E23B21CA2709700061973 /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */; };
+		7D15E7C61CD842A9003A472C /* ThreePointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */; };
 		7D1714311CBB4C620047FA70 /* DouYiDou.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D17142E1CBB4C620047FA70 /* DouYiDou.png */; };
 		7D1714321CBB4C620047FA70 /* nearPeople.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D17142F1CBB4C620047FA70 /* nearPeople.png */; };
 		7D1714331CBB4C620047FA70 /* seacherkuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D1714301CBB4C620047FA70 /* seacherkuang.png */; };
@@ -1171,6 +1172,8 @@
 		7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+IsfriendClient.m"; sourceTree = "<group>"; };
 		7D0E23B01CA2709700061973 /* RecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommendTableViewCell.h; path = ../RecommendTableViewCell.h; sourceTree = "<group>"; };
 		7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommendTableViewCell.m; path = ../RecommendTableViewCell.m; sourceTree = "<group>"; };
+		7D15E7C41CD842A9003A472C /* ThreePointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreePointsViewController.h; sourceTree = "<group>"; };
+		7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreePointsViewController.m; sourceTree = "<group>"; };
 		7D17142E1CBB4C620047FA70 /* DouYiDou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DouYiDou.png; sourceTree = "<group>"; };
 		7D17142F1CBB4C620047FA70 /* nearPeople.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nearPeople.png; sourceTree = "<group>"; };
 		7D1714301CBB4C620047FA70 /* seacherkuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seacherkuang.png; sourceTree = "<group>"; };
@@ -3027,6 +3030,15 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		7D15E7C31CD8428D003A472C /* ThreePoints */ = {
+			isa = PBXGroup;
+			children = (
+				7D15E7C41CD842A9003A472C /* ThreePointsViewController.h */,
+				7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */,
+			);
+			path = ThreePoints;
+			sourceTree = "<group>";
+		};
 		7D1714341CBB86950047FA70 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -3161,6 +3173,7 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				7D15E7C31CD8428D003A472C /* ThreePoints */,
 				7DA216951CD2343700F6BCCB /* funnyMoney */,
 				7DA216941CD233AB00F6BCCB /* FeedSeting */,
 				7DF146F91CD098170046D726 /* Permission */,
@@ -3787,6 +3800,7 @@
 				7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
 				7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */,
+				7D15E7C61CD842A9003A472C /* ThreePointsViewController.m in Sources */,
 				7DA216991CD2343700F6BCCB /* FounyMoneyViewController.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
 				7D825D0C1CBCA65000F4E216 /* FunnyCodeViewController.m in Sources */,

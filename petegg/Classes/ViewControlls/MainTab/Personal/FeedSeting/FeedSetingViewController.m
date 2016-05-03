@@ -156,7 +156,7 @@ static NSString * cellId = @"fedseting2321313323231";
     
     //FeddingModel * model = self.dataSource[0];
     FeedSetingTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    cell.timeLabel.text = _ondedayArray[indexPath.row];
+    //cell.timeLabel.text = _ondedayArray[];
     cell.rightLabel.text = [NSString stringWithFormat:@"t%ld",indexPath.row + 1];
     
     if (indexPath.row < 4) {
