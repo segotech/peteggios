@@ -10,7 +10,7 @@
 
 @interface AFHttpClient (Account)
 
-- (void)loginWithUserName:(NSString*)userName password:(NSString*)password complete:(void(^)(BaseModel *model))completeBlock failure:(void(^)())failureBlock;
+
 
 - (void)loginWithUserName:(NSString*)userName password:(NSString*)password  complete:(void(^)(BaseModel *model))completeBlock;
 

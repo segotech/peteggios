@@ -7,7 +7,7 @@
 //
 
 #import "ThreePointsViewController.h"
-#import "LoginViewController.h"
+
 
 @interface ThreePointsViewController ()
 
@@ -24,18 +24,23 @@
 
 -(void)setupView{
     [super setupView];
-    UIButton * tuichu = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
-    tuichu.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:tuichu];
-    [tuichu addTarget:self action:@selector(loginOutButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+    UIImageView * tubiaobiao = [[UIImageView alloc]initWithFrame:CGRectMake(130.5 * W_Wide_Zoom, 100 * W_Hight_Zoom, 125 * W_Wide_Zoom, 125 * W_Hight_Zoom)];
+    tubiaobiao.image = [UIImage imageNamed:@"tubiaobiao.png"];
+    [self.view addSubview:tubiaobiao];
+
+    UILabel * banbenLabel = [[UILabel alloc]initWithFrame:CGRectMake(150 *W_Wide_Zoom, 240 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    
+    banbenLabel.text = @"SEGOV1.2";
+    banbenLabel.textColor = [UIColor grayColor];
+    banbenLabel.font = [UIFont systemFontOfSize:13];
+    [self.view addSubview:banbenLabel];
     
 
 }
 -(void)loginOutButtonTouch{
-    [[AccountManager sharedAccountManager]logout];
-    LoginViewController * loginVc = [[LoginViewController alloc]init];
-    [self presentViewController:loginVc animated:NO completion:nil];
-    
+    //退出登录
+      [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
+      [[AccountManager sharedAccountManager]logout];
 }
 
 

@@ -11,7 +11,7 @@
 #import "FeedSetingTableViewCell.h"
 #import "FeddingModel.h"
 
-static NSString * cellId = @"fedseting2321313323231";
+static NSString * cellId = @"fedseting2321232322313323231";
 @interface FeedSetingViewController ()
 @property (nonatomic,strong)UIButton * bigBtn;
 @property (nonatomic,strong)UIButton * oneDayButton;

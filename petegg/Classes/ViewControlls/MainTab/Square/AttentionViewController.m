@@ -129,9 +129,11 @@ static NSString * cellId = @"AttentionCellId";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     SquareModel * model = self.dataSource[indexPath.row];
-
+   //  NSString * stid = model.stid;
+    
     DetailViewController* viewController = [[DetailViewController alloc] init];
     viewController.hidesBottomBarWhenPushed = YES;
+    viewController.stid = model.stid;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
