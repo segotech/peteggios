@@ -253,11 +253,13 @@
 		7D0128EB1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0128EA1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m */; };
 		7D0128EE1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0128ED1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m */; };
 		7D0128F11CC612E10009BF6B /* PersonAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0128F01CC612E10009BF6B /* PersonAttention.m */; };
-		7D03322B1CB5FA3900E923A9 /* PersonDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */; };
 		7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */; };
 		7D05D8A81CCB21080081FB24 /* IssueZiYuankuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */; };
 		7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */; };
-		7D0E23B21CA2709700061973 /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */; };
+		7D15E7C61CD842A9003A472C /* ThreePointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */; };
+		7D15E7CC1CD8774A003A472C /* PersonDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7C91CD8774A003A472C /* PersonDataTableViewCell.m */; };
+		7D15E7CD1CD8774A003A472C /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7CB1CD8774A003A472C /* RecommendTableViewCell.m */; };
+		7D15E7CF1CD8A35B003A472C /* tubiaobiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D15E7CE1CD8A35B003A472C /* tubiaobiao.png */; };
 		7D1714311CBB4C620047FA70 /* DouYiDou.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D17142E1CBB4C620047FA70 /* DouYiDou.png */; };
 		7D1714321CBB4C620047FA70 /* nearPeople.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D17142F1CBB4C620047FA70 /* nearPeople.png */; };
 		7D1714331CBB4C620047FA70 /* seacherkuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D1714301CBB4C620047FA70 /* seacherkuang.png */; };
@@ -1161,16 +1163,19 @@
 		7D0128ED1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonNewAttentionTableViewCell.m; sourceTree = "<group>"; };
 		7D0128EF1CC612E10009BF6B /* PersonAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonAttention.h; sourceTree = "<group>"; };
 		7D0128F01CC612E10009BF6B /* PersonAttention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonAttention.m; sourceTree = "<group>"; };
-		7D0332291CB5FA3900E923A9 /* PersonDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonDataTableViewCell.h; path = ../PersonDataTableViewCell.h; sourceTree = "<group>"; };
-		7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonDataTableViewCell.m; path = ../PersonDataTableViewCell.m; sourceTree = "<group>"; };
 		7D03322C1CB6680F00E923A9 /* AFHttpClient+PersonDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PersonDate.h"; sourceTree = "<group>"; };
 		7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PersonDate.m"; sourceTree = "<group>"; };
 		7D05D8A61CCB21080081FB24 /* IssueZiYuankuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueZiYuankuModel.h; sourceTree = "<group>"; };
 		7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueZiYuankuModel.m; sourceTree = "<group>"; };
 		7D05D8A91CCB850F0081FB24 /* AFHttpClient+IsfriendClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+IsfriendClient.h"; sourceTree = "<group>"; };
 		7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+IsfriendClient.m"; sourceTree = "<group>"; };
-		7D0E23B01CA2709700061973 /* RecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommendTableViewCell.h; path = ../RecommendTableViewCell.h; sourceTree = "<group>"; };
-		7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommendTableViewCell.m; path = ../RecommendTableViewCell.m; sourceTree = "<group>"; };
+		7D15E7C41CD842A9003A472C /* ThreePointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreePointsViewController.h; sourceTree = "<group>"; };
+		7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreePointsViewController.m; sourceTree = "<group>"; };
+		7D15E7C81CD8774A003A472C /* PersonDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDataTableViewCell.h; sourceTree = "<group>"; };
+		7D15E7C91CD8774A003A472C /* PersonDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDataTableViewCell.m; sourceTree = "<group>"; };
+		7D15E7CA1CD8774A003A472C /* RecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendTableViewCell.h; sourceTree = "<group>"; };
+		7D15E7CB1CD8774A003A472C /* RecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendTableViewCell.m; sourceTree = "<group>"; };
+		7D15E7CE1CD8A35B003A472C /* tubiaobiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tubiaobiao.png; sourceTree = "<group>"; };
 		7D17142E1CBB4C620047FA70 /* DouYiDou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DouYiDou.png; sourceTree = "<group>"; };
 		7D17142F1CBB4C620047FA70 /* nearPeople.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nearPeople.png; sourceTree = "<group>"; };
 		7D1714301CBB4C620047FA70 /* seacherkuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seacherkuang.png; sourceTree = "<group>"; };
@@ -1531,6 +1536,7 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				7D15E7CE1CD8A35B003A472C /* tubiaobiao.png */,
 				34EDB5CD1CD3542A001BB50C /* opvideo.png */,
 				7DF1470D1CD0BB740046D726 /* add_guize.png */,
 				7DF1470E1CD0BB740046D726 /* delect_guize.png */,
@@ -2946,11 +2952,11 @@
 		57666F9E1C9689CC00A52DBA /* Square */ = {
 			isa = PBXGroup;
 			children = (
+				7D15E7C71CD8774A003A472C /* Views */,
 				7D98191E1CC9F58C00D0A6CC /* Issue */,
 				572220D71CB66B7100C9C7D2 /* Detail */,
 				7D30E8BC1CA66C47004DE055 /* WheChat */,
 				7D30E8551CA66C05004DE055 /* SCRecorder */,
-				7D1714341CBB86950047FA70 /* Views */,
 				57666F9F1C9689CC00A52DBA /* SquareViewController.h */,
 				57666FA01C9689CC00A52DBA /* SquareViewController.m */,
 				57F2C8351CA21E89005324DD /* RecommendViewController.h */,
@@ -3027,13 +3033,22 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
-		7D1714341CBB86950047FA70 /* Views */ = {
+		7D15E7C31CD8428D003A472C /* ThreePoints */ = {
 			isa = PBXGroup;
 			children = (
-				7D0E23B01CA2709700061973 /* RecommendTableViewCell.h */,
-				7D0E23B11CA2709700061973 /* RecommendTableViewCell.m */,
-				7D0332291CB5FA3900E923A9 /* PersonDataTableViewCell.h */,
-				7D03322A1CB5FA3900E923A9 /* PersonDataTableViewCell.m */,
+				7D15E7C41CD842A9003A472C /* ThreePointsViewController.h */,
+				7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */,
+			);
+			path = ThreePoints;
+			sourceTree = "<group>";
+		};
+		7D15E7C71CD8774A003A472C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7D15E7C81CD8774A003A472C /* PersonDataTableViewCell.h */,
+				7D15E7C91CD8774A003A472C /* PersonDataTableViewCell.m */,
+				7D15E7CA1CD8774A003A472C /* RecommendTableViewCell.h */,
+				7D15E7CB1CD8774A003A472C /* RecommendTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3161,6 +3176,7 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				7D15E7C31CD8428D003A472C /* ThreePoints */,
 				7DA216951CD2343700F6BCCB /* funnyMoney */,
 				7DA216941CD233AB00F6BCCB /* FeedSeting */,
 				7DF146F91CD098170046D726 /* Permission */,
@@ -3428,7 +3444,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4UKEB375ND;
+						DevelopmentTeam = ZMFX8728A9;
 					};
 				};
 			};
@@ -3569,6 +3585,7 @@
 				34A215D71CCDFD6F00ADD8FF /* sephonerc in Resources */,
 				34A2182B1CCDFF9700ADD8FF /* mic_muted.png in Resources */,
 				344F02341C9FE0410076CE62 /* egg_online.png in Resources */,
+				7D15E7CF1CD8A35B003A472C /* tubiaobiao.png in Resources */,
 				344F02C81CA2D9E70076CE62 /* behand_on.png in Resources */,
 				34A215CF1CCDFD6F00ADD8FF /* msg.caf in Resources */,
 				7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */,
@@ -3716,6 +3733,7 @@
 				7D30E8CA1CA66C67004DE055 /* WechatShortVideoController.m in Sources */,
 				7D81227F1CBDF5F200F4F823 /* WeekBangViewController.m in Sources */,
 				7DA216871CD1A97F00F6BCCB /* AFHttpClient+PremissClient.m in Sources */,
+				7D15E7CC1CD8774A003A472C /* PersonDataTableViewCell.m in Sources */,
 				34813FE81CC5D4EE000DFE26 /* CompletionViewController.m in Sources */,
 				34144BD61CBFB1B3007C4498 /* MessageTableViewCell.m in Sources */,
 				7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */,
@@ -3787,6 +3805,7 @@
 				7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
 				7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */,
+				7D15E7C61CD842A9003A472C /* ThreePointsViewController.m in Sources */,
 				7DA216991CD2343700F6BCCB /* FounyMoneyViewController.m in Sources */,
 				57666FE31C96BF4400A52DBA /* UIViewController+HUD.m in Sources */,
 				7D825D0C1CBCA65000F4E216 /* FunnyCodeViewController.m in Sources */,
@@ -3824,7 +3843,6 @@
 				7D9819271CC9F58C00D0A6CC /* WechatIssueViewController.m in Sources */,
 				57666FC71C969B4800A52DBA /* AppUtil.m in Sources */,
 				7D30E8BA1CA66C05004DE055 /* SCWeakSelectorTarget.m in Sources */,
-				7D03322B1CB5FA3900E923A9 /* PersonDataTableViewCell.m in Sources */,
 				7DF1470C1CD0AD1D0046D726 /* PermissTableViewCell.m in Sources */,
 				7D9819251CC9F58C00D0A6CC /* IssuePinViewController.m in Sources */,
 				34A215D61CCDFD6F00ADD8FF /* SephoneManager.m in Sources */,
@@ -3837,10 +3855,10 @@
 				7D1763A91CBF8DD100579B4C /* RankModel.m in Sources */,
 				7D30E8A41CA66C05004DE055 /* SCFilter+UIImage.m in Sources */,
 				7D30E8A71CA66C05004DE055 /* SCFilterAnimation.m in Sources */,
-				7D0E23B21CA2709700061973 /* RecommendTableViewCell.m in Sources */,
 				7D30E8B51CA66C05004DE055 /* SCSampleBufferHolder.m in Sources */,
 				7D30E8AA1CA66C05004DE055 /* SCIOPixelBuffers.m in Sources */,
 				57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */,
+				7D15E7CD1CD8774A003A472C /* RecommendTableViewCell.m in Sources */,
 				57666FDA1C96BE6F00A52DBA /* UIActionSheet+Blocks.m in Sources */,
 				34A215B81CCDF51600ADD8FF /* AppDelegate+Sephone.m in Sources */,
 				7DA216931CD22ACE00F6BCCB /* ExchangePremissViewController.m in Sources */,
@@ -4015,7 +4033,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4066,7 +4084,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -106,8 +106,6 @@
     
     // 判断是否是自己
     
-    
-    
     if ([[pboard.string substringWithRange:NSMakeRange(0, 4)]  isEqualToString:@"赛果分享"]) {
        
         NSString * strPLAYcode = [pboard.string substringWithRange:NSMakeRange(5,14 )];

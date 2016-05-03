@@ -14,12 +14,13 @@
 #import "DetailModel.h"
 #import "UIImageView+WebCache.h"
 #import "AFHttpClient+ChangepasswordAndBlacklist.h"
+#import "DetailViewController.h"
 static NSString * cellId = @"personDetailCellId";
 @interface PersonDetailViewController ()
 @property (nonatomic,strong)UIImageView * headImage; //头像
 @property (nonatomic,strong)UIImageView * typeImage; //种类
 @property (nonatomic,strong)UIImageView * sexImage;  //性别
-@property (nonatomic,strong)UIImageView * ageImage;  //年龄
+@property (nonatomic,strong)UIButton * ageImage;  //年龄
 @property (nonatomic,strong)UILabel * qqLabel;       //qq
 @property (nonatomic,strong)UILabel * attentionLabel;//关注数量
 @property (nonatomic,strong)UILabel * fansLabel;     //粉丝数量
@@ -57,19 +58,40 @@ static NSString * cellId = @"personDetailCellId";
     [_headImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     [_topView addSubview:_headImage];
     
-    _typeImage = [[UIImageView alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 10 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _typeImage.backgroundColor= [UIColor blackColor];
-    _typeImage.layer.cornerRadius = _typeImage.width/2;
+ 
+    
+    _typeImage = [[UIImageView alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 20 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    if ([model.pet_race isEqualToString:@"汪"]) {
+        _typeImage.image = [UIImage imageNamed:@"wangwang.png"];
+    }else{
+        _typeImage.image = [UIImage imageNamed:@"miaomiao.png"];
+    }
+    //  _typeImage.layer.cornerRadius = _typeImage.width/2;
     [_topView addSubview: _typeImage];
     
-    _sexImage = [[UIImageView alloc]initWithFrame:CGRectMake(140 * W_Wide_Zoom, 10 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _sexImage.backgroundColor = [UIColor blackColor];
-    _sexImage.layer.cornerRadius = _sexImage.width/2;
+    
+    
+    _sexImage = [[UIImageView alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 20 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    if ([model.pet_sex isEqualToString:@"公"]) {
+     _sexImage.image = [UIImage imageNamed:@"manquanquan.png"];
+    }else{
+    _sexImage.image = [UIImage imageNamed:@"womanquanquan.png"];
+    }
+  //  _sexImage.layer.cornerRadius = _sexImage.width/2;
     [_topView addSubview:_sexImage];
     
-    _ageImage = [[UIImageView alloc]initWithFrame:CGRectMake(180 * W_Wide_Zoom, 10 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _ageImage.backgroundColor = [UIColor blackColor];
-    _ageImage.layer.cornerRadius = _ageImage.width/2;
+    
+    
+    _ageImage = [[UIButton alloc]initWithFrame:CGRectMake(160 * W_Wide_Zoom, 20 * W_Hight_Zoom, 35 * W_Wide_Zoom, 18 * W_Hight_Zoom)];
+    _ageImage.layer.cornerRadius = 10;
+    _ageImage.layer.borderWidth = 1;
+    _ageImage.layer.borderColor = GREEN_COLOR.CGColor;
+    _ageImage.titleLabel.font = [UIFont systemFontOfSize:12];
+    [_ageImage setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+    NSString * age = [NSString stringWithFormat:@"%@岁",model.pet_age];
+    [_ageImage setTitle:age forState:UIControlStateNormal];
+    
+    
     [_topView addSubview: _ageImage];
     
     UILabel * qq = [[UILabel alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 40 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
@@ -145,11 +167,10 @@ static NSString * cellId = @"personDetailCellId";
 }
 
 -(void)addBlacklist{
-     //PersonDetailModel * model = self.dataSource[0];
-    
      [[AFHttpClient sharedAFHttpClient]addBlacklistWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:_ddddd complete:^(BaseModel *model)      {
-         
-         
+          [[AppUtil appTopViewController] showHint:model.retDesc];
+         [self.navigationController popViewControllerAnimated:YES];
+         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
      }];
     
     
@@ -235,11 +256,33 @@ static NSString * cellId = @"personDetailCellId";
         cell.bigImage.image =[self cutImage:image];
     }];
     
+    cell.dateLabel.text = model.publishtime;
+    cell.attentionLabel.text = model.content;
+    cell.pinglunLabel.text = model.comments;
+    cell.aixinLabel.text = model.praises;
+    
+    
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DetailModel * model = self.dataSourceImage[indexPath.row];
+
+    //  NSString * stid = model.stid;
+    DetailViewController* viewController = [[DetailViewController alloc] init];
+    viewController.hidesBottomBarWhenPushed = YES;
+    viewController.stid = model.stid;
+    [self.navigationController pushViewController:viewController animated:YES];
+
+}
+
+
+
+
 
 
 @end

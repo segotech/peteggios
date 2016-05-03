@@ -151,7 +151,7 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     // Configure for text only and offset down
     hud.mode = MBProgressHUDModeText;
     hud.detailsLabelText = NSLocalizedString(hint, nil);
-    hud.yOffset = - SCREEN_HEIGHT/2+100; //IS_IPHONE_5?-100.f:-50.f;
+    hud.yOffset = - SCREEN_HEIGHT/2+200; //IS_IPHONE_5?-100.f:-50.f;
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:2];
 }

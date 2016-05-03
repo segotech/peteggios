@@ -11,7 +11,7 @@
 #import "AFHttpClient+Rank.h"
 #import "RankModel.h"
 #import "UIImageView+WebCache.h"
-
+#import "PersonDetailViewController.h"
 
 static NSString * cellId = @"ranksCellIddddddd";
 @interface MonthBangViewController ()
@@ -46,6 +46,11 @@ static NSString * cellId = @"ranksCellIddddddd";
     _topHeadImage.backgroundColor = [UIColor blackColor];
     [topView addSubview:_topHeadImage];
     
+    UIButton * touchButton = [[UIButton alloc]initWithFrame:_topHeadImage.frame];
+    touchButton.backgroundColor = [UIColor clearColor];
+    [touchButton addTarget:self action:@selector(topImageTouch) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:touchButton];
+    
     
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(122.5 * W_Wide_Zoom, 175 * W_Hight_Zoom, 130 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
@@ -70,6 +75,16 @@ static NSString * cellId = @"ranksCellIddddddd";
     // _rightLabel.text = @"NO.1";
     [topView addSubview:_rightLabel];
 }
+
+-(void)topImageTouch{
+    RankModel * model = self.dataSource[0];
+    PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
+    personVc.ddddd = model.mid;
+    [self.navigationController pushViewController:personVc animated:YES];
+    
+}
+
+
 
 -(void)setupData{
     [super setupData];
@@ -120,6 +135,16 @@ static NSString * cellId = @"ranksCellIddddddd";
     NSString * imageStr = [NSString stringWithFormat:@"%@",model.headportrait];
     NSURL * imageUrl = [NSURL URLWithString:imageStr];
     [cell.headImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
+    
+    
+    
+    UIButton * touchButton = [[UIButton alloc]initWithFrame:cell.headImage.frame];
+    touchButton.backgroundColor = [UIColor clearColor];
+    [cell addSubview:touchButton];
+    touchButton.tag = indexPath.row + 110;
+    [touchButton addTarget:self action:@selector(cellTouchButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     cell.nameLabel.text = model.nickname;
     cell.aixinLabel.text = model.praises;
     cell.rightLabel.text = [NSString stringWithFormat:@"NO.%@",model.ranking];
@@ -133,5 +158,12 @@ static NSString * cellId = @"ranksCellIddddddd";
     return cell;
 }
 
-
+-(void)cellTouchButton:(UIButton *)sender{
+    NSInteger i = sender.tag - 110;
+    RankModel * model = self.dataSource[i + 1];
+    PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
+    personVc.ddddd = model.mid;
+    [self.navigationController pushViewController:personVc animated:YES];
+    
+}
 @end

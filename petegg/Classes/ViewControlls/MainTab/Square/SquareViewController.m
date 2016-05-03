@@ -51,9 +51,9 @@
 }
 
 -(void)initUserface{
-    UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
+    UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 200 * W_Wide_Zoom, 50 * W_Hight_Zoom)];
     // topView.backgroundColor =[UIColor whiteColor];
-    _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(50 , 10, 40 , 30 )];
+    _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(50 * W_Wide_Zoom , 10 * W_Hight_Zoom, 40 * W_Wide_Zoom , 30 * W_Hight_Zoom )];
     [_leftButton setTitle:NSLocalizedString(@"recommend", nil) forState:UIControlStateNormal];
     _leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -63,7 +63,7 @@
     [_leftButton addTarget:self action:@selector(leftbuttonTouch) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:_leftButton];
     
-    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(60, 40, 18, 1)];
+    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(60 * W_Wide_Zoom, 40 * W_Hight_Zoom, 18 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
     _lineLabel.backgroundColor = GREEN_COLOR;
     [topView addSubview:_lineLabel];
     
@@ -106,7 +106,7 @@
     _leftButton.selected = YES;
     _rightButton.selected = NO;
     [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(60, 40, 18, 1);
+        _lineLabel.frame = CGRectMake( 60 * W_Wide_Zoom, 40 * W_Hight_Zoom, 18 * W_Wide_Zoom, 1 * W_Hight_Zoom);
            }];
     
     [self.pageViewController setViewControllers:@[self.viewControllers[0]] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
@@ -116,7 +116,7 @@
     _leftButton.selected = NO;
     _rightButton.selected = YES;
     [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(120, 40, 18, 1);
+        _lineLabel.frame = CGRectMake(120 * W_Wide_Zoom, 40 * W_Hight_Zoom, 18 * W_Wide_Zoom, 1 * W_Hight_Zoom);
 
     }];
     
@@ -125,8 +125,8 @@
 
 -(void)yincang:(UIButton * )sender{
     [UIView animateWithDuration:0.3 animations:^{
-        _downWhiteView.frame = CGRectMake(0, 667, 375, 180);
-        _downView.frame = CGRectMake(0, 667, 375, 40);
+        _downWhiteView.frame = CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 180 * W_Hight_Zoom);
+        _downView.frame = CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom);
         
     }];
     if (900 == sender.tag) {
@@ -138,8 +138,8 @@
 
 -(void)doRightButtonTouch{
     
-    _downWhiteView = [[UIView alloc]initWithFrame:CGRectMake(0 , 667, 375, 160 )];
-    _downView = [[UIView alloc]initWithFrame:CGRectMake(0, 667, 375, 40)];
+    _downWhiteView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom , 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 160 * W_Hight_Zoom )];
+    _downView = [[UIView alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom , 667* W_Hight_Zoom, 375* W_Wide_Zoom , 40* W_Hight_Zoom)];
     _coverBtn = [[UIButton alloc]initWithFrame:self.view.bounds];
     _coverBtn.backgroundColor = [UIColor blackColor];
     _coverBtn.tag = 900;
@@ -148,15 +148,15 @@
     [_coverBtn addTarget:self action:@selector(yincang:) forControlEvents:UIControlEventTouchUpInside];
     
     [UIView animateWithDuration:0.3 animations:^{
-        _downWhiteView.frame = CGRectMake(0, 460, 375, 160);
+        _downWhiteView.frame = CGRectMake(0* W_Wide_Zoom , 460* W_Hight_Zoom, 375* W_Wide_Zoom , 160* W_Hight_Zoom);
         _downWhiteView.backgroundColor = [UIColor whiteColor];
         [[UIApplication sharedApplication].keyWindow addSubview:_downWhiteView];
         
-        _downView.frame = CGRectMake(0, 627, 375, 40);
+        _downView.frame = CGRectMake(0* W_Wide_Zoom , 627* W_Hight_Zoom, 375* W_Wide_Zoom , 40* W_Hight_Zoom);
         _downView.backgroundColor = [UIColor whiteColor];
         [[UIApplication sharedApplication].keyWindow addSubview:_downView];
               }];
-    UIButton * downBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 375, 40)];
+    UIButton * downBtn = [[UIButton alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom , 0* W_Hight_Zoom, 375* W_Wide_Zoom , 40* W_Hight_Zoom)];
     [downBtn setTitle:NSLocalizedString(@"cancel", nil) forState:UIControlStateNormal];
     [downBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     downBtn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -167,10 +167,10 @@
     
     NSArray * nameArray = @[NSLocalizedString(@"photograph", nil),NSLocalizedString(@"photoalbum", nil),NSLocalizedString(@"repository", nil),NSLocalizedString(@"lvideo", nil)];
     for (int i = 0 ; i < 4; i++ ) {
-        UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0 + 40 * i , 375, 1)];
+        UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom , 0 + 40 * i* W_Hight_Zoom , 375* W_Wide_Zoom , 1* W_Hight_Zoom)];
         lineLabel.backgroundColor = GRAY_COLOR;
         [_downWhiteView addSubview:lineLabel];
-        UIButton * buttones = [[UIButton alloc]initWithFrame:CGRectMake(0, 0 + 40 * i, 375, 40)];
+        UIButton * buttones = [[UIButton alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom , 0 + 40 * i* W_Hight_Zoom, 375* W_Wide_Zoom , 40* W_Hight_Zoom)];
         buttones.tag = i;
         [buttones setTitle:nameArray[i] forState:UIControlStateNormal];
         [buttones setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

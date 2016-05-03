@@ -23,6 +23,7 @@
 #import "FounyMoneyViewController.h"
 
 #import "FeedSetingViewController.h"
+#import "ThreePointsViewController.h"
 
 @interface PersonalViewController()
 
@@ -243,7 +244,8 @@
 {
     
     NSLog(@"1233");
-    
+    ThreePointsViewController * threepointVc = [[ThreePointsViewController alloc]init];
+    [self.navigationController pushViewController:threepointVc animated:YES];
     
 }
 

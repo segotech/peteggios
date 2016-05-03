@@ -26,6 +26,7 @@ static NSString * cellId = @"111111111111";
     self.title = @"附近";
     self.view.backgroundColor = [UIColor blackColor];
     
+    
 }
 
 -(void)setupView{

@@ -10,7 +10,9 @@
 
 @implementation AFHttpClient (Account)
 
-- (void)loginWithUserName:(NSString*)userName password:(NSString*)password complete:(void(^)(BaseModel *model))completeBlock failure:(void(^)())failureBlock{
+
+
+-(void)loginWithUserName:(NSString *)userName password:(NSString *)password complete:(void (^)(BaseModel *))completeBlock{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     
@@ -25,20 +27,21 @@
     params[@"imei"] = @"";
     params[@"imsi"] = @"";
     params[@"type"] = @"ios";
-    
-    [self POST:@"clientAction.do" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        if (model){
+        model.list = [LoginModel arrayOfModelsFromDictionaries:model.list];        }
         if (completeBlock) {
-            
-            BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:nil];
-            model.list = [LoginModel arrayOfModelsFromDictionaries:model.list];
-            
             completeBlock(model);
         }
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-        if (failureBlock) {
-            failureBlock();
-        }
     }];
+
+
+
+
+
 }
+
+
 
 @end
