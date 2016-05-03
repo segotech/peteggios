@@ -407,8 +407,6 @@
 		7DEB3F141CD2FD0100502179 /* AFHttpClient+FeedingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEB3F131CD2FD0100502179 /* AFHttpClient+FeedingClient.m */; };
 		7DEB3F171CD30C9E00502179 /* FeddingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEB3F161CD30C9E00502179 /* FeddingModel.m */; };
 		7DEB3F1B1CD32F1700502179 /* FeedSetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEB3F1A1CD32F1700502179 /* FeedSetingTableViewCell.m */; };
-		7DEB3F201CD3476700502179 /* OtherEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEB3F1E1CD3476700502179 /* OtherEggViewController.m */; };
-		7DEB3F211CD3476700502179 /* OtherEggViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DEB3F1F1CD3476700502179 /* OtherEggViewController.xib */; };
 		7DF068941CA0EBD5003BEE94 /* btn_new_issue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */; };
 		7DF146EF1CD0544F0046D726 /* BalckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF146EE1CD0544F0046D726 /* BalckListViewController.m */; };
 		7DF146F11CD057EF0046D726 /* addblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF146F01CD057EF0046D726 /* addblack.png */; };
@@ -1421,9 +1419,6 @@
 		7DEB3F161CD30C9E00502179 /* FeddingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeddingModel.m; sourceTree = "<group>"; };
 		7DEB3F191CD32F1700502179 /* FeedSetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedSetingTableViewCell.h; sourceTree = "<group>"; };
 		7DEB3F1A1CD32F1700502179 /* FeedSetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedSetingTableViewCell.m; sourceTree = "<group>"; };
-		7DEB3F1D1CD3476700502179 /* OtherEggViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherEggViewController.h; sourceTree = "<group>"; };
-		7DEB3F1E1CD3476700502179 /* OtherEggViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherEggViewController.m; sourceTree = "<group>"; };
-		7DEB3F1F1CD3476700502179 /* OtherEggViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherEggViewController.xib; sourceTree = "<group>"; };
 		7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_new_issue@2x.png"; sourceTree = "<group>"; };
 		7DF146ED1CD0544F0046D726 /* BalckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalckListViewController.h; sourceTree = "<group>"; };
 		7DF146EE1CD0544F0046D726 /* BalckListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalckListViewController.m; sourceTree = "<group>"; };
@@ -3166,7 +3161,6 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
-				7DEB3F1C1CD3476700502179 /* EggOther */,
 				7DA216951CD2343700F6BCCB /* funnyMoney */,
 				7DA216941CD233AB00F6BCCB /* FeedSeting */,
 				7DF146F91CD098170046D726 /* Permission */,
@@ -3321,16 +3315,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		7DEB3F1C1CD3476700502179 /* EggOther */ = {
-			isa = PBXGroup;
-			children = (
-				7DEB3F1D1CD3476700502179 /* OtherEggViewController.h */,
-				7DEB3F1E1CD3476700502179 /* OtherEggViewController.m */,
-				7DEB3F1F1CD3476700502179 /* OtherEggViewController.xib */,
-			);
-			path = EggOther;
-			sourceTree = "<group>";
-		};
 		7DF146EC1CD054260046D726 /* BlackList */ = {
 			isa = PBXGroup;
 			children = (
@@ -3444,7 +3428,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4UKEB375ND;
+						DevelopmentTeam = ZMFX8728A9;
 					};
 				};
 			};
@@ -3502,7 +3486,6 @@
 				7D825D0D1CBCA65000F4E216 /* FunnyCodeViewController.xib in Resources */,
 				57666FBB1C96979F00A52DBA /* tab_egg_normal@3x.png in Resources */,
 				7D1714321CBB4C620047FA70 /* nearPeople.png in Resources */,
-				7DEB3F211CD3476700502179 /* OtherEggViewController.xib in Resources */,
 				7D825D3B1CBCA88D00F4E216 /* timeLIst.png in Resources */,
 				7D24EA8D1CC4E74A004EB1E2 /* miaomiao.png in Resources */,
 				34A218441CCDFF9700ADD8FF /* rock.wav in Resources */,
@@ -3865,7 +3848,6 @@
 				344F02931CA23F790076CE62 /* Reachability.m in Sources */,
 				7DFF05AC1CB7A45800CF713E /* PersonDetailModel.m in Sources */,
 				57666FDD1C96BE6F00A52DBA /* UIView+TapBlocks.m in Sources */,
-				7DEB3F201CD3476700502179 /* OtherEggViewController.m in Sources */,
 				7DF146FC1CD09B5E0046D726 /* PermissionViewController.m in Sources */,
 				7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */,
 				7D17143F1CBBA0850047FA70 /* NearbyPeopleViewController.m in Sources */,
@@ -4033,7 +4015,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4084,7 +4066,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
