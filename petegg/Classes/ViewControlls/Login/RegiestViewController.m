@@ -9,6 +9,11 @@
 #import "RegiestViewController.h"
 #import "CompletionViewController.h"
 @interface RegiestViewController ()
+{
+    
+    NSString * registCode;
+    
+}
 @property (nonatomic,strong)UITextField * textFieldes;
 
 @property (nonatomic,strong)UIButton * securityButton;
@@ -82,6 +87,7 @@
     UIButton * registBtn =[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 250, 40)];
     registBtn.backgroundColor =GREEN_COLOR;
     registBtn.layer.cornerRadius =  6;
+    registBtn.tag = 10000;
     registBtn.center = self.view.center;
     [registBtn setTitle:@"注册" forState:UIControlStateNormal];
     registBtn.titleLabel.font =[UIFont systemFontOfSize:16];
@@ -151,32 +157,34 @@
 
 - (void)registBtn:(UIButton *)sender
 {
+     UITextField * text =  (UITextField *)[self.view viewWithTag:33];
+     UITextField * text2 =  (UITextField *)[self.view viewWithTag:35];
     
-    
-    CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
-    [self.navigationController pushViewController:compleVC animated:YES];
-    
-    
-    
-    /*
-    NSString * str =@"clientAction.do?method=json&classes=appinterface&common=check";
+    NSString * str =@"clientAction.do?method=json&classes=appinterface&common=memberRegister";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:@"13540691705" forKey:@"phone"];
-    [dic setValue:@"268476" forKey:@"memberRegister"];
-    [dic setValue:@"123456" forKey:@"password"];
+    [dic setValue:text.text forKey:@"phone"];
+    [dic setValue:text2.text forKey:@"password"];
     
     
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-        json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
+    
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            [self showSuccessHudWithHint:@"注册成功"];
+    
+            CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
+            compleVC.mid = json[@"jsondata"][@"content"];
+            [self.navigationController pushViewController:compleVC animated:YES];
 
+        }
+        
         NSLog(@"====%@",json);
         
-        [self showSuccessHudWithHint:@"注册成功"];
+       
         
     } failure:^(NSError *error) {
     }];
 
-    */
+    
     
     
 }
@@ -216,19 +224,27 @@
 - (void)proveCode
 {
     
+    UITextField * text =  (UITextField *)[self.view viewWithTag:33];
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=check";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:@"13540691705" forKey:@"phone"];
-    [dic setValue:@"modifypassword" forKey:@"type"];
+    [dic setValue:text.text forKey:@"phone"];
+    [dic setValue:@"register" forKey:@"type"];
     
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-        json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
-        NSMutableArray * arr =[[NSMutableArray alloc]init];
-        [arr addObjectsFromArray:json];
-        NSLog(@"====%@",json);
         
-        
-    } failure:^(NSError *error) {
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+             registCode =json[@"jsondata"][@"content"];
+        }
+        if ([json[@"jsondata"][@"retDesc"] isEqualToString:@"此手机号码已注册"]) {
+            NSString * str =[NSString stringWithFormat:@"%@",json[@"jsondata"][@"retDesc"]];
+            UIButton * btn =  (UIButton *)[self.view viewWithTag:10000];
+            btn.enabled = NO;
+    
+            [self showSuccessHudWithHint:str];
+
+            
+        }
+          } failure:^(NSError *error) {
     }];
     
 }

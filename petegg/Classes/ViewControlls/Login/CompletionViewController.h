@@ -16,4 +16,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *birthdayBtn;
 
 @property (strong, nonatomic) IBOutlet UITextField *nameTextF;
+@property (nonatomic,strong)NSString * mid;
+
 @end

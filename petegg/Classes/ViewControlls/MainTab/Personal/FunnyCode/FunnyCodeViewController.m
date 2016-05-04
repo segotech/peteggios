@@ -157,6 +157,8 @@
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
+        
+        
         if ([[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"status"] isEqualToString:@"0"] || [[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"seconds"] isEqualToString:@"0"]){
             self.onFunprice.text =@"暂无";
             self.onFunfood.text =@"暂无";
