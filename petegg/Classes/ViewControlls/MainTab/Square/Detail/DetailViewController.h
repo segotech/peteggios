@@ -12,5 +12,6 @@
 
 //萌宠秀的stid，接口里面有提到
 @property (nonatomic,copy)NSString * stid;
+@property (nonatomic,copy)NSString * type;
 
 @end

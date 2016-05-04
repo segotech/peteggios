@@ -54,6 +54,16 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    if ([self.type isEqualToString:@"p"]) {
+        //图片
+    }else{
+            //视频
+        
+    }
+    
+    
+    
+    
 }
 
 - (void)setupData{
