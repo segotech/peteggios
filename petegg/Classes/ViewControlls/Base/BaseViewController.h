@@ -16,6 +16,10 @@ typedef enum
 
 @interface BaseViewController : UIViewController
 
+// 信息量
+@property (nonatomic,strong)NSString * count;
+
+
 
 - (void)setupData;
 

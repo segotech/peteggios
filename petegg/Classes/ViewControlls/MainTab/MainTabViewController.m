@@ -46,7 +46,7 @@
     [super viewDidLoad];
     app= (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    [self isMessage];
+    [self setupSubviews];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -145,7 +145,7 @@
         
        PersonalViewController* vc = [[PersonalViewController alloc] init];
         // 明天写
-        vc.messageCount =messageCount;
+       // vc.messageCount =messageCount;
         
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabPersonal", nil)
@@ -252,39 +252,5 @@
     
 }
 
-
-/**
- *  消息提示
- */
-
-- (void)isMessage
-{
-    
-    NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
-    [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
-    NSString * service =[NSString stringWithFormat:@"clientAction.do?common=trendTipCount&classes=appinterface&method=json"];
-    [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
-        json = [json objectForKey:@"jsondata"] ;
-        
-        if ([json[@"content"] isEqualToString:@"0"]) {
-           
-            
-        }else{
-            
-            messageCount =json[@"content"];
-            [self.tabBar showBadgeOnItemIndex:4];
-        
-        }
-        [self setupSubviews];
-        
-    } failure:^(NSError *error) {
-        
-       
-        
-    }];
-    
-   
-    
-}
 
 @end

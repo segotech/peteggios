@@ -158,6 +158,17 @@
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
         
+        NSString * str =json[@"jsondata"][@"list"][0][@"mid"];
+        
+        
+        if ([AppUtil isBlankString:str]) {
+            self.onFunprice.text =@"暂无";
+            self.onFunfood.text =@"暂无";
+            self.onFuntime.text =@"暂无";
+            self.onFunyCode.text =@"暂无";
+            
+            
+        }else{
         
         if ([[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"status"] isEqualToString:@"0"] || [[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"seconds"] isEqualToString:@"0"]){
             self.onFunprice.text =@"暂无";
@@ -178,6 +189,8 @@
             _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
         }
         
+            
+}
     } failure:^(NSError *error) {
         
     }];

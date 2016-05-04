@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "UITabBar+Badge.h"
 @implementation BaseViewController
 
 - (void)viewDidLoad{
@@ -30,8 +30,54 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-     [self setLeftBackButton];
+    [self setLeftBackButton];
+    [self isMessage];
 
+}
+
+
+/**
+ *  消息提示
+ */
+
+- (void)isMessage
+{
+    
+    NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
+    [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+    NSString * service =[NSString stringWithFormat:@"clientAction.do?common=trendTipCount&classes=appinterface&method=json"];
+    [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
+        json = [json objectForKey:@"jsondata"] ;
+        
+        if ([json[@"content"] isEqualToString:@"0"]) {
+            
+            [self setValue:@"0"];
+        }else{
+            
+            [self setValue:json[@"content"]];
+            [self.tabBarController.tabBar showBadgeOnItemIndex:4];
+            
+        }
+    } failure:^(NSError *error) {
+        
+        
+        
+    }];
+    
+    
+    
+}
+
+
+
+- (void)setValue:(NSString * )str
+{
+    
+    NSUserDefaults * defeults =[NSUserDefaults standardUserDefaults];
+    [defeults setObject:str forKey:@"countMessage"];
+    [defeults synchronize];
+
+    
 }
 
 /**

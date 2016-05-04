@@ -145,12 +145,13 @@
     
     NSString * str =@"clientAction.do?method=json&common=isread&classes=appinterface";
      NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:model.tid forKey:@"objid"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [dic setValue:model.type forKey:@"type"];
     
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         DetailViewController * detailVC =[[DetailViewController alloc]init];
         detailVC.stid = model.tid;
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countMessage"];
         [self.navigationController pushViewController:detailVC animated:YES];
 
     } failure:^(NSError *error) {
