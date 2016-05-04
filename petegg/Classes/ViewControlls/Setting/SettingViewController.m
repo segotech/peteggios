@@ -73,7 +73,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     }
     // 已绑定设备，解除绑定。
     else {
-        deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", str];
+        deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", strDeviceNo];
         incodeEdit.text = [NSString stringWithFormat:@"  接入码:  ******"];
         [self updateUI:@"解除绑定" State:true];
     }
@@ -124,6 +124,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
                 // 清除设备号。
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_DEVICE_NUMBER];
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_WIFI_CONFIGURED];
+                [AccountManager sharedAccountManager].loginModel.deviceno = @"";
                 // 更新界面状态。
                 [self updateUI:@"绑定设备" State:false];
             }
@@ -137,7 +138,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
 /**
  *  绑定/解除绑定设备
  *
- *  @param sender <#sender description#>
+ *  @param sender
  */
 - (IBAction)onUnbindButtonClicked:(id)sender {
     // 搜索设备并绑定。
@@ -154,7 +155,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
 /**
  *  修改网络配置
  *
- *  @param sender <#sender description#>
+ *  @param sender
  */
 - (IBAction)onResolveButtonClicked:(id)sender {
     if ([AppUtil isBlankString:strDeviceNo]) {

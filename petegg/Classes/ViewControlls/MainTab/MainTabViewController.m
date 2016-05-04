@@ -20,6 +20,8 @@
     
     dispatch_source_t timer3;
     AppDelegate * app;
+    NSString * messageCount;
+    
     
     
     
@@ -43,8 +45,8 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     app= (AppDelegate *)[UIApplication sharedApplication].delegate;
-
-    [self setupSubviews];
+    
+    [self isMessage];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -139,19 +141,16 @@
 //个人中心
 - (UINavigationController *)navPersonalVC{
     
-    [self isMessage];
     if (!_navPersonalVC) {
         
        PersonalViewController* vc = [[PersonalViewController alloc] init];
         // 明天写
-        vc.messageCount = @"4";
-    
+        vc.messageCount =messageCount;
+        
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabPersonal", nil)
                                       image:[[UIImage imageNamed:@"tab_personal_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_personal_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-            [self.tabBar showBadgeOnItemIndex:4];
-        
        _navPersonalVC = [[UINavigationController alloc]initWithRootViewController:vc];
         
     }
@@ -262,18 +261,21 @@
 {
     
     NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
-    [dicc setValue:@"MI16010000005868" forKey:@"mid"];
+    [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     NSString * service =[NSString stringWithFormat:@"clientAction.do?common=trendTipCount&classes=appinterface&method=json"];
     [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
         json = [json objectForKey:@"jsondata"] ;
         
-        if ([AppUtil isBlankString:json[@"content"]]) {
+        if ([json[@"content"] isEqualToString:@"0"]) {
            
             
         }else{
-            [self.tabBar showBadgeOnItemIndex:4];
             
+            messageCount =json[@"content"];
+            [self.tabBar showBadgeOnItemIndex:4];
+        
         }
+        [self setupSubviews];
         
     } failure:^(NSError *error) {
         
@@ -281,7 +283,7 @@
         
     }];
     
-
+   
     
 }
 

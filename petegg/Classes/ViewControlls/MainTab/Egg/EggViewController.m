@@ -14,7 +14,7 @@
 @interface EggViewController ()
 {
     NSString * _equipmentStateArr;
-    NSUserDefaults * _defaulte;
+  //  NSUserDefaults * _defaulte;
     UIImageView * _noDeviceImageView;
     UIImageView * _yesDeviceImageView;
     BOOL _isOpen;
@@ -120,15 +120,19 @@
    
     _appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    _defaulte =[NSUserDefaults standardUserDefaults];
+    NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+    
     NSString * str =[AccountManager sharedAccountManager].loginModel.deviceno;
     
-    NSString *DEVICE_NUMBER  = [_defaulte objectForKey:@"DEVICE_NUMBER"];
+    NSString * devo  = [defaults objectForKey:PREF_DEVICE_NUMBER];
+ 
+    
     if ([AppUtil isBlankString:str]) {
-        if ([AppUtil isBlankString:DEVICE_NUMBER]) {
+        if ([AppUtil isBlankString:devo]) {
             self.view.backgroundColor =[UIColor lightGrayColor];
             // 没有绑定
             _noDeviceImageView =[[UIImageView alloc]initWithFrame:CGRectMake(50, 64, 280*W_Wide_Zoom, 400*W_Hight_Zoom)];
+            [_yesDeviceImageView removeFromSuperview];
             _noDeviceImageView.image =[UIImage imageNamed:@"noDevice.png"];
             [self.view addSubview:_noDeviceImageView];
             
@@ -159,7 +163,9 @@
      *  @devicenumber:这个是用户登录进来就有的设备号
      */
     
-    NSString * bangdinDevico = [_defaulte objectForKey:@"DEVICE_NUMBER"];
+    NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+    
+    NSString * bangdinDevico = [defaults objectForKey:PREF_DEVICE_NUMBER];
     NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
     NSString * devico =[AccountManager sharedAccountManager].loginModel.deviceno;
     
@@ -210,6 +216,7 @@
     if ([status isEqualToString:@"ds001"]) {
         // 在线
         _yesDeviceImageView.image =[UIImage imageNamed:@"egg_online.png"];
+        _isOpen = YES;
         [self buttonOpen];
     }
     else if ([status isEqualToString:@"ds003"]) {
@@ -275,6 +282,7 @@
         NSString *  locationString=[dateformatter stringFromDate:senddate];
     
         
+        NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
         // 使用记录
        
         NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
@@ -282,7 +290,7 @@
         [dic setValue:@"self" forKey:@"object"];
         NSString * devicLg =[AccountManager sharedAccountManager].loginModel.deviceno;
         NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
-        NSString * devico1 =[_defaulte objectForKey:@"DEVICE_NUMBER"];
+        NSString * devico1 =[defaults objectForKey:PREF_DEVICE_NUMBER];
         
         if ([AppUtil isBlankString:devicLg]) {
             [self sipCall:devico1 sipName:nil];
@@ -304,7 +312,7 @@
         [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
             _isOpen = YES;
             NSString * buildID = json[@"jsondata"][@"content"];
-            [_defaulte setValue:buildID forKey:@"otherbuildIDS"];
+            [defaults setValue:buildID forKey:@"otherbuildIDS"];
             
         } failure:^(NSError *error) {
             

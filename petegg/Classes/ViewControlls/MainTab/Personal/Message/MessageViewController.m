@@ -33,7 +33,7 @@
      self.tableView.frame =CGRectMake(0, 0, MainScreen.width, MainScreen.height);
      self.tableView.backgroundColor =[UIColor whiteColor];
      self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-     self.tableView.footer.hidden = YES;
+     self.tableView.mj_footer.hidden = YES;
      [self initRefreshView];
 }
 
@@ -52,14 +52,15 @@
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        [self.dataSource removeAllObjects];
         json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
         NSMutableArray * arr =[[NSMutableArray alloc]init];
         [arr addObjectsFromArray:json];
+        
         for (NSDictionary *dic0 in arr) {
             MessageModel *model = [[MessageModel alloc] init];
             [model setValuesForKeysWithDictionary:dic0];
             [self.dataSource addObject:model];
-            
         }
         
          NSLog(@"====%@",json);
@@ -141,9 +142,21 @@
     if (self.dataSource.count>0) {
         model = self.dataSource[indexPath.row];
     }
-    DetailViewController * detailVC =[[DetailViewController alloc]init];
-    detailVC.stid = model.stid;
-    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    NSString * str =@"clientAction.do?method=json&common=isread&classes=appinterface";
+     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:model.tid forKey:@"objid"];
+    [dic setValue:model.type forKey:@"type"];
+    
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        DetailViewController * detailVC =[[DetailViewController alloc]init];
+        detailVC.stid = model.tid;
+        [self.navigationController pushViewController:detailVC animated:YES];
+
+    } failure:^(NSError *error) {
+        
+    }];
+    
     
     
     
