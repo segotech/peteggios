@@ -70,7 +70,7 @@
     _passwordTextField.delegate = self;
     [self.view addSubview:_passwordTextField];
     
-    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(100, 350, 100, 35)];
+    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 350 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [regiestButton setTitle:@"新用户注册" forState:UIControlStateNormal];
     [regiestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     regiestButton.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -78,11 +78,11 @@
     [regiestButton addTarget:self action:@selector(regiestButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UILabel * shulineLabel = [[UILabel alloc]initWithFrame:CGRectMake(190, 360, 1, 12)];
+    UILabel * shulineLabel = [[UILabel alloc]initWithFrame:CGRectMake(190 * W_Wide_Zoom, 360 * W_Hight_Zoom, 1 * W_Wide_Zoom, 12 * W_Hight_Zoom)];
     shulineLabel.backgroundColor = GRAY_COLOR;
     [self.view addSubview:shulineLabel];
     
-    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(180, 350, 100, 35)];
+    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(180 * W_Wide_Zoom, 350 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [reDataButton setTitle:@"忘记密码?" forState:UIControlStateNormal];
     [reDataButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     reDataButton.titleLabel.font = [UIFont systemFontOfSize:14];

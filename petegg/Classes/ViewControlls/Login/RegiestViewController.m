@@ -158,7 +158,7 @@
     
     
     
-    /*
+    
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=check";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:@"13540691705" forKey:@"phone"];
@@ -176,7 +176,7 @@
     } failure:^(NSError *error) {
     }];
 
-    */
+    
     
     
 }
@@ -218,7 +218,7 @@
     
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=check";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:@"13540691705" forKey:@"phone"];
+    [dic setValue:_textFieldes.text forKey:@"phone"];
     [dic setValue:@"modifypassword" forKey:@"type"];
     
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {

@@ -22,7 +22,7 @@ static NSString * cellId = @"AttentionCellId";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = LIGHT_GRAY_COLOR;
     
 }
 
@@ -30,7 +30,7 @@ static NSString * cellId = @"AttentionCellId";
     [super setupView];
      self .tableView.frame =  CGRectMake(0, 0, self.view.width, self.view.height - STATUS_BAR_HEIGHT - NAV_BAR_HEIGHT - TAB_BAR_HEIGHT);
     [self.tableView registerClass:[RecommendTableViewCell class] forCellReuseIdentifier:cellId];
-    self.tableView.backgroundColor = GRAY_COLOR;
+    self.tableView.backgroundColor = LIGHT_GRAY_COLOR;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self initRefreshView];
     

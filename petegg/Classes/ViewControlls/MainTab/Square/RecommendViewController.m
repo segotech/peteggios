@@ -29,6 +29,9 @@ static NSString * cellId = @"recommeCellId";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dada) name:@"shuaxin" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dada2) name:@"dianzanbian" object:nil];
+    //dianzanbian
 }
 
 - (void)viewDidLoad {
@@ -41,7 +44,10 @@ static NSString * cellId = @"recommeCellId";
 -(void)dada{
     [self initRefreshView];
 }
+-(void)dada2{
+    [self loadDataSourceWithPage:1];
 
+}
 - (void)setupView{
     [super setupView];
     _topScrollView = [[CycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 150) animationDuration:3];
@@ -164,9 +170,7 @@ static NSString * cellId = @"recommeCellId";
     [touchButton addTarget:self action:@selector(iconImageVTouch:) forControlEvents:UIControlEventTouchUpInside];
     touchButton.tag = indexPath.row + 9;
     [cell addSubview:touchButton];
-    
-    
-    
+
     [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         cell.photoView.image =[self cutImage:image];
         

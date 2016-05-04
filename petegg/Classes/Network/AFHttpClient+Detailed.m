@@ -107,10 +107,39 @@
 
 
 
+-(void)queryBehaviorWithMid:(NSString *)mid objid:(NSString *)objid complete:(void (^)(BaseModel *))completeBlock{
+     NSMutableDictionary* params = [NSMutableDictionary dictionary];
+     params[@"common"] = @"queryBehavior";
+     params[@"mid"] = mid;
+     params[@"objid"] = objid;
+    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+                
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+
+}
 
 
+-(void)addBehaviorWithMid:(NSString *)mid objid:(NSString *)objid objcon:(NSString *)objcon complete:(void (^)(BaseModel *))completeBlock{
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    params[@"common"] = @"addBehavior";
+    params[@"mid"] = mid;
+    params[@"objid"] = objid;
+    params[@"objcon"] = objcon;
+    
+    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
 
-
+    
+}
 
 
 

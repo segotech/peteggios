@@ -174,13 +174,7 @@
             endTime =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"endtime"];
             timeTF = [self.onFuntime.text intValue];
             _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
-
-    
         }
-
-     
-        
-        
         
     } failure:^(NSError *error) {
         

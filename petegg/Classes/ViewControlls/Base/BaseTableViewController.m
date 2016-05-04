@@ -117,7 +117,7 @@
     UIImage * newnewimage = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     return newnewimage;
-    // return [UIImage imageWithCGImage:imageRef];
+
 }
 
 

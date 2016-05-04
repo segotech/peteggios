@@ -41,20 +41,19 @@
     [self.view addSubview:whiteView];
     
     NSArray * nameArray = @[@"功能介绍",@"投诉建议",@"注册协议"];
-    NSArray * bte = @[[UIColor blueColor],[UIColor blackColor],[UIColor redColor]];
     for (int i = 0 ; i < 3 ; i++) {
-        UILabel * linelabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 50 + i * 50 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
+        UILabel * linelabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 50 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         linelabel.backgroundColor = [UIColor grayColor];
         linelabel.alpha = 0.3;
         [whiteView addSubview:linelabel];
         
-        UILabel * namelabel = [[UILabel alloc]initWithFrame:CGRectMake(155.5 * W_Wide_Zoom, 10 + i * 50 * W_Hight_Zoom, 100 *W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        UILabel * namelabel = [[UILabel alloc]initWithFrame:CGRectMake(155.5 * W_Wide_Zoom, 10 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 100 *W_Wide_Zoom, 30 * W_Hight_Zoom)];
         namelabel.text = nameArray[i];
         namelabel.textColor = [UIColor lightGrayColor];
         namelabel.font = [UIFont systemFontOfSize:13];
         [whiteView addSubview:namelabel];
         
-        UIButton * touchBtn = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 + i * 50 * W_Hight_Zoom, 375 * W_Wide_Zoom, 50 * W_Hight_Zoom)];
+        UIButton * touchBtn = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 375 * W_Wide_Zoom, 50 * W_Hight_Zoom)];
         touchBtn.tag = i + 120;
         touchBtn.backgroundColor = [UIColor clearColor];
         [whiteView addSubview:touchBtn];

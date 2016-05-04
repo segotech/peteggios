@@ -34,7 +34,15 @@
                  content:(NSString *)content
                 complete:(void(^)(BaseModel *model))completeBlock;
 
-
+//查询是否点赞
+-(void)queryBehaviorWithMid:(NSString *)mid
+                        objid:(NSString *)objid
+                        complete:(void(^)(BaseModel *model))completeBlock;
+//添加点赞接口
+-(void)addBehaviorWithMid:(NSString *)mid
+                     objid:(NSString *)objid
+                     objcon:(NSString *)objcon
+                     complete:(void(^)(BaseModel *model))completeBlock;
 
 
 
