@@ -255,6 +255,7 @@ static NSString * cellId = @"recommeCellId";
 
     DetailViewController* viewController = [[DetailViewController alloc] init];
     viewController.stid = model.stid;
+    viewController.type = model.type;
     [self.navigationController pushViewController:viewController animated:YES];
     
 }
