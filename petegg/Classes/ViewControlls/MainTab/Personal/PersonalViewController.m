@@ -151,14 +151,13 @@
 {
     [super setupView];
     
-    UIView  * _headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 375, 200)];
+    UIView  * _headView = [[UIView alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 200 * W_Hight_Zoom)];
     _headView.backgroundColor = [UIColor whiteColor];
-    bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,375,200)];
+    bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0 * W_Wide_Zoom,0 * W_Hight_Zoom,375 * W_Wide_Zoom,200 * W_Hight_Zoom)];
     bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"ceishi.jpg"]] withBlurLevel:0.2];
     [_headView addSubview:bgImgView];
     [_headView sendSubviewToBack:bgImgView];
     
- 
     
     [self.view addSubview:_headView];
     
@@ -168,7 +167,6 @@
     [_heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
     _heandBtn.userInteractionEnabled = YES;
     [_heandBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
     [_headView addSubview:_heandBtn];
     
     /**

@@ -38,6 +38,8 @@
 @property (nonatomic, strong) DetailModel* detailModel;
 @property (nonatomic, strong) NSMutableArray* resourcesArray;
 @property (nonatomic, strong) NSMutableArray* photoArray;
+@property (nonatomic, strong) NSString * isdianzan;
+@property (nonatomic,assign)BOOL dianzanzan;
 
 @end
 
@@ -61,7 +63,11 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     self.photoArray = [NSMutableArray array];
     
     [self loadDetailInfo];
+  
 }
+
+
+
 
 - (void)setupView{
     self.bGroupView = YES;
@@ -80,7 +86,7 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     
     self.tempImageView = [UIImageView new];
     [self.view addSubview:self.tempImageView];
-    
+    _dianzanzan = NO;
     [self initRefreshView];
 }
 
@@ -103,6 +109,7 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
         }
     }];
 }
+
 
 - (void)loadDataSourceWithPage:(int)page{
     [[AFHttpClient sharedAFHttpClient]queryCommentWithWid:_stid pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
@@ -166,13 +173,32 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
                 }
             }];
         }];
-       
+        
         //赞
         UIButton* likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [likeBtn setImage:[UIImage imageNamed:@"likeBtn"] forState:UIControlStateNormal];
-        [likeBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        [[AFHttpClient sharedAFHttpClient]queryBehaviorWithMid:[AccountManager sharedAccountManager].loginModel.mid objid:self.stid complete:^(BaseModel *model) {
+            if (model) {
+                if ([model.content isEqualToString:@"0"]) {
+                     [likeBtn setImage:[UIImage imageNamed:@"likeBtn"] forState:UIControlStateNormal];
+                    [likeBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+                     //点赞借口
+                        [self isORdianzan:likeBtn];
+                       
+                    }];
+                }else{
+                     [likeBtn setImage:[UIImage imageNamed:@"dianzanhou.png"] forState:UIControlStateNormal];
+                    [likeBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+                        [[AppUtil appTopViewController] showHint:@"您已经点过赞了!"];
+                    }];
+                }
+            }else{
+                 [likeBtn setImage:[UIImage imageNamed:@"likeBtn"] forState:UIControlStateNormal];
+                [[AppUtil appTopViewController] showHint:model.retDesc];
+            }
             
         }];
+        
+       
         
         //警告
         UIButton* warningBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -193,6 +219,26 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     
     return _toolView;
 }
+//点赞
+-(void)isORdianzan:(UIButton *)sender{
+    
+    if (_dianzanzan == NO) {
+        [[AFHttpClient sharedAFHttpClient]addBehaviorWithMid:[AccountManager sharedAccountManager].loginModel.mid objid:self.stid objcon:@"m" complete:^(BaseModel *model) {
+            if (model) {
+                [[AppUtil appTopViewController] showHint:model.retDesc];
+                [sender setImage:[UIImage imageNamed:@"dianzanhou.png"] forState:UIControlStateNormal];
+                _dianzanzan = YES;
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"dianzanbian" object:nil];
+            }
+        }];
+    }else{
+    [[AppUtil appTopViewController] showHint:@"您已经点过赞了!"];
+    }
+}
+
+
+
+
 
 - (CommentInputView *)commentInputView{
     
@@ -375,6 +421,7 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
                                 
                                 [commentModel.list addObject:addModel];
                                 [self.tableView reloadRowsAtIndexPaths:@[currentEditingIndexthPath] withRowAnimation:UITableViewRowAnimationNone];
+                                
                             }
                         }];
                     }
@@ -401,6 +448,7 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
                                 
                                 [commentModel.list addObject:addModel];
                                 [self.tableView reloadRowsAtIndexPaths:@[currentEditingIndexthPath] withRowAnimation:UITableViewRowAnimationNone];
+                            
                             }
                         }];
                     }

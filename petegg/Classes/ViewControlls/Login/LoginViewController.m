@@ -32,19 +32,19 @@
     backImage.image = [UIImage imageNamed:@"egg_login.jpg"];
     [self.view addSubview:backImage];
     
-    UIImageView * shuruKuangImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 120, 375, 120)];
+    UIImageView * shuruKuangImage = [[UIImageView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 120 * W_Hight_Zoom, 375 * W_Wide_Zoom, 120 * W_Hight_Zoom)];
     shuruKuangImage.image = [UIImage imageNamed:@"egg_bigKuang.png"];
     [self.view addSubview:shuruKuangImage];
 
-    UIImageView * topIcon = [[UIImageView alloc]initWithFrame:CGRectMake(40, 15, 20, 23)];
+    UIImageView * topIcon = [[UIImageView alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 15 * W_Hight_Zoom, 20 * W_Wide_Zoom, 23 * W_Hight_Zoom)];
     topIcon.image = [UIImage imageNamed:@"egg_usertubiao.png"];
     [shuruKuangImage addSubview:topIcon];
     
-    UIImageView * downIcon = [[UIImageView alloc]initWithFrame:CGRectMake(40, 75, 20, 20)];
+    UIImageView * downIcon = [[UIImageView alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 75 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
     downIcon.image = [UIImage imageNamed:@"egg_passtubiao.png"];
     [shuruKuangImage addSubview:downIcon];
     
-    _loginButton = [[UIButton alloc]initWithFrame:CGRectMake(100, 320, 200, 35)];
+    _loginButton = [[UIButton alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 320 * W_Hight_Zoom, 200 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _loginButton.backgroundColor = GREEN_COLOR;
@@ -53,7 +53,7 @@
     [_loginButton addTarget:self action:@selector(loginTouch) forControlEvents:UIControlEventTouchUpInside];
     
     
-    _accountTextField = [[UITextField alloc]initWithFrame:CGRectMake(70, 130, 200, 40)];
+    _accountTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 130 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     _accountTextField.placeholder = @"请输入账号";
     _accountTextField.tintColor = [UIColor whiteColor];
     [_accountTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
@@ -62,7 +62,7 @@
     _accountTextField.delegate = self;
     [self.view addSubview:_accountTextField];
     
-    _passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(70, 190, 200, 40)];
+    _passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 190 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     _passwordTextField.placeholder = @"请输入密码";
     _passwordTextField.tintColor = [UIColor whiteColor];
     [_passwordTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
@@ -70,7 +70,7 @@
     _passwordTextField.delegate = self;
     [self.view addSubview:_passwordTextField];
     
-    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(100, 350, 100, 35)];
+    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 350 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [regiestButton setTitle:@"新用户注册" forState:UIControlStateNormal];
     [regiestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     regiestButton.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -78,11 +78,11 @@
     [regiestButton addTarget:self action:@selector(regiestButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UILabel * shulineLabel = [[UILabel alloc]initWithFrame:CGRectMake(190, 360, 1, 12)];
+    UILabel * shulineLabel = [[UILabel alloc]initWithFrame:CGRectMake(190 * W_Wide_Zoom, 360 * W_Hight_Zoom, 1 * W_Wide_Zoom, 12 * W_Hight_Zoom)];
     shulineLabel.backgroundColor = GRAY_COLOR;
     [self.view addSubview:shulineLabel];
     
-    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(180, 350, 100, 35)];
+    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(180 * W_Wide_Zoom, 350 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [reDataButton setTitle:@"忘记密码?" forState:UIControlStateNormal];
     [reDataButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     reDataButton.titleLabel.font = [UIFont systemFontOfSize:14];

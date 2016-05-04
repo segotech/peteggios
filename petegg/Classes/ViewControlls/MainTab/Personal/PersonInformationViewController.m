@@ -69,11 +69,11 @@
 -(void)initUserface{
     NSArray * nameArray = @[@"性别",@"昵称",@"QQ",@"家族",@"生日",@"地址",@"签名"];
     for (int i  = 0 ; i < 7 ; i ++) {
-        UILabel * lineLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 230 + 45 * i * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
+        UILabel * lineLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 230 * W_Hight_Zoom + 45 * W_Hight_Zoom * i , 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         lineLabeles.backgroundColor = [UIColor lightGrayColor];
         [self.view addSubview:lineLabeles];
         
-        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(55 * W_Wide_Zoom, 195 + 45 * i * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(55 * W_Wide_Zoom, 195 * W_Hight_Zoom + 45* W_Hight_Zoom * i , 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
         nameLabeles.font = [UIFont systemFontOfSize:15];
         nameLabeles.text = nameArray[i];
         nameLabeles.textColor = [UIColor blackColor];
@@ -200,16 +200,16 @@
 }
 
 -(void)headButtontouch:(UIButton *)sender{
-    _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0, 667, 375, 80)];
-    _littleDownView = [[UIView alloc]initWithFrame:CGRectMake(0, 667, 375, 40)];
-    _coverButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 375, 667)];
+    _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
+    _littleDownView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+    _coverButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 667 * W_Hight_Zoom)];
     _coverButton.backgroundColor = [UIColor blackColor];
     _coverButton.alpha = 0.4;
     [[UIApplication sharedApplication].keyWindow addSubview:_coverButton];
     [_coverButton addTarget:self action:@selector(hideButton:) forControlEvents:UIControlEventTouchUpInside];
     [UIView animateWithDuration:0.3 animations:^{
-        _downWithView.frame = CGRectMake(0, 543, 375, 80);
-        _littleDownView.frame = CGRectMake(0, 627, 375, 40);
+        _downWithView.frame = CGRectMake(0 * W_Wide_Zoom, 543 * W_Hight_Zoom, 375 * W_Wide_Zoom, 80 * W_Hight_Zoom);
+        _littleDownView.frame = CGRectMake(0 * W_Wide_Zoom, 627 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom);
         _littleDownView.backgroundColor = [UIColor whiteColor];
         _downWithView.backgroundColor = [UIColor whiteColor];
         [[UIApplication sharedApplication].keyWindow addSubview:_littleDownView];
@@ -217,11 +217,11 @@
     }];
     NSArray * nameArray = @[NSLocalizedString(@"photograph", nil),NSLocalizedString(@"photoalbum", nil)];
     for (int i = 0; i < 2; i++) {
-        UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0 + i * 40, 375, 1)];
+        UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 40 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         lineLabel.backgroundColor = GRAY_COLOR;
         [_downWithView addSubview:lineLabel];
         
-        UIButton * downButtones = [[UIButton alloc]initWithFrame:CGRectMake(0, 0 + i * 40, 375, 40)];
+        UIButton * downButtones = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 40 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
         [downButtones setTitle:nameArray[i] forState:UIControlStateNormal];
         [downButtones setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         downButtones.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -229,7 +229,7 @@
         downButtones.tag = i;
         [downButtones addTarget:self action:@selector(imageButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     }
-    UIButton * quxiaoButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 375, 40)];
+    UIButton * quxiaoButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     [quxiaoButton setTitle:@"取消" forState:UIControlStateNormal];
     [quxiaoButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     quxiaoButton.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -242,8 +242,8 @@
 -(void)hideButton:(UIButton *)sender{
     _coverButton.hidden = YES;
     [UIView animateWithDuration:0.3 animations:^{
-        _downWithView.frame = CGRectMake(0, 667, 375, 80);
-        _littleDownView.frame = CGRectMake(0, 667, 375, 40);
+        _downWithView.frame = CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 80 * W_Hight_Zoom);
+        _littleDownView.frame = CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom);
     }];
 }
 
