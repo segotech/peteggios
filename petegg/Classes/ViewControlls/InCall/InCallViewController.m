@@ -242,6 +242,8 @@
 //喂食
 - (IBAction)feedBtnClick:(UIButton *)sender {
     
+    
+    /*
     NSString * str =@"clientAction.do?common=queryFeedingtime&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
@@ -253,6 +255,21 @@
         
         
     }];
+     */
+    
+    NSString * str =@"clientAction.do?common=food&classes=appinterface&method=json";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+     [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        
+        NSLog(@"%@",json);
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+
 
     
     
@@ -299,7 +316,6 @@
     
     NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
     NSString * str =@"clientAction.do?common=feeding&classes=appinterface&method=json";
-    
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[defaults objectForKey:@"otherbuildIDS"] forKey:@"id"];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];

@@ -15,6 +15,8 @@
     
     UIButton * button0;
     UIImageView * imageStatus;
+    NSString * money;
+    
     
 }
 
@@ -225,8 +227,16 @@
     {
         //  付钱提示
         
-        NSString * money =[NSString stringWithFormat:@"确定支付%@￥",self.otherArr[0][@"price"]];
-        UIAlertView * slertShow =[[UIAlertView alloc]initWithTitle:nil message:money delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        if ([AppUtil isBlankString:self.otherArr[0][@"price"]]) {
+            
+            
+             money =[NSString stringWithFormat:@"确定支付￥%d",0];
+        }else{
+            
+           money =[NSString stringWithFormat:@"确定支付￥%@",self.otherArr[0][@"price"]];
+
+        }
+    UIAlertView * slertShow =[[UIAlertView alloc]initWithTitle:nil message:money delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         
         [slertShow show];
         
