@@ -35,7 +35,7 @@
     _iconIV.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView sd_addSubviews:@[_iconIV]];
     
-    _iconIV.sd_layout.topSpaceToView(self.contentView,8).leftSpaceToView(self.contentView, 8).rightSpaceToView(self.contentView, 8).heightIs(30);
+    _iconIV.sd_layout.topSpaceToView(self.contentView,8).leftSpaceToView(self.contentView, 8).rightSpaceToView(self.contentView, 8).heightIs(0);
 }
 
 - (void)setModel:(NSString *)model{

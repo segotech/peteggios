@@ -15,6 +15,7 @@
 #import "DetailContentCell.h"
 #import "DetailCommentCell.h"
 #import "DetailImageCell.h"
+#import "DetailVideoCell.h"
 #import "CommentInputView.h"
 
 #import "MWPhotoBrowser.h"
@@ -41,12 +42,15 @@
 @property (nonatomic, strong) NSString * isdianzan;
 @property (nonatomic,assign)BOOL dianzanzan;
 
+@property (nonatomic,assign)BOOL isVideo;
+
 @end
 
 const CGFloat contentLabelFontSize = 15;
 NSString * const kDetailContentCellID = @"DetailContentCell";
 NSString * const kDetailCommentCellID = @"DetailCommentCell";
 NSString * const kDetailImageCellID = @"DetailImageCell";
+NSString * const kDetailVideoCellID = @"DetailVideoCell";
 
 @implementation DetailViewController
 
@@ -54,15 +58,6 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    if ([self.type isEqualToString:@"p"]) {
-        //图片
-    }else{
-            //视频
-        
-    }
-    
-    
-    
     
 }
 
@@ -89,6 +84,7 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     [self.tableView registerClass:[DetailContentCell class] forCellReuseIdentifier:kDetailContentCellID];
     [self.tableView registerClass:[DetailCommentCell class] forCellReuseIdentifier:kDetailCommentCellID];
     [self.tableView registerClass:[DetailImageCell class] forCellReuseIdentifier:kDetailImageCellID];
+    [self.tableView registerClass:[DetailVideoCell class] forCellReuseIdentifier:kDetailVideoCellID];
     
     [self.view addSubview:self.toolView];
     
@@ -109,7 +105,14 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
             self.detailModel = model.list[0];
             
             [self.resourcesArray removeAllObjects];
-            self.resourcesArray = [[self.detailModel.resources componentsSeparatedByString:@","] mutableCopy];
+            
+            if ([self.detailModel.type isEqualToString:@"pv"]) {
+                self.isVideo = YES;
+                self.resourcesArray = [NSMutableArray arrayWithObject:self.detailModel.thumbnails];
+            }else{
+                self.isVideo = NO;
+                self.resourcesArray = [[self.detailModel.resources componentsSeparatedByString:@","] mutableCopy];
+            }
             
             for (NSString* resources in self.resourcesArray) {
                 [self.photoArray addObject:[MWPhoto photoWithURL:[NSURL URLWithString:resources]]];
@@ -360,8 +363,12 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
         case 0:
         {
             NSString* resources = self.resourcesArray[indexPath.row];
-            
-            CGFloat height = [self.tableView cellHeightForIndexPath:indexPath model:resources keyPath:@"model" cellClass:[DetailImageCell class] contentViewWidth:SCREEN_WIDTH];
+            CGFloat height;
+            if (self.isVideo) {
+                height = [self.tableView cellHeightForIndexPath:indexPath model:resources keyPath:@"model" cellClass:[DetailVideoCell class] contentViewWidth:SCREEN_WIDTH];
+            }else{
+                height = [self.tableView cellHeightForIndexPath:indexPath model:resources keyPath:@"model" cellClass:[DetailImageCell class] contentViewWidth:SCREEN_WIDTH];
+            }
             
             return height;
         }
@@ -384,13 +391,18 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
         {
             NSString* resources = self.resourcesArray[indexPath.row];
             
+            if (self.isVideo) {
+                DetailVideoCell* cell = [tableView dequeueReusableCellWithIdentifier:kDetailVideoCellID];
+                [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
+                
+                cell.model = resources;
+                return cell;
+            }
             DetailImageCell* cell = [tableView dequeueReusableCellWithIdentifier:kDetailImageCellID];
             cell.tableView = tableView;
             
             [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
-            
             cell.model = resources;
-            
             return cell;
         }
         case 1:
@@ -445,7 +457,7 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
                         [[AFHttpClient sharedAFHttpClient] addCommentWithPid:[AccountManager sharedAccountManager].loginModel.mid bid:commentModel.pid wid:self.stid bcid:commentModel.cid ptype:@"r" action:@"h" content:text complete:^(BaseModel *model) {
                             
                             if (model) {
-                                
+                               
                                 CommentModel* addModel = [[CommentModel alloc] init];
                                 addModel.memname = [AccountManager sharedAccountManager].loginModel.nickname;
                                 addModel.content = text;
@@ -484,16 +496,23 @@ NSString * const kDetailImageCellID = @"DetailImageCell";
     switch (indexPath.section) {
         case 0:
         {
-            MWPhotoBrowser *browser=[[MWPhotoBrowser alloc]initWithDelegate:self];
-            browser.displayActionButton = YES;
-            browser.displayNavArrows = NO;
-            browser.displaySelectionButtons = NO;
-            browser.zoomPhotosToFill = YES;
-            browser.alwaysShowControls = NO;
-            browser.enableGrid = YES;
-            browser.startOnGrid = NO;
-            [browser setCurrentPhotoIndex:indexPath.row];
-            [self.navigationController pushViewController:browser animated:YES];
+            if (self.isVideo) {
+                
+                //TODO 视频播放
+                
+            }else{
+                MWPhotoBrowser *browser=[[MWPhotoBrowser alloc]initWithDelegate:self];
+                browser.displayActionButton = YES;
+                browser.displayNavArrows = NO;
+                browser.displaySelectionButtons = NO;
+                browser.zoomPhotosToFill = YES;
+                browser.alwaysShowControls = NO;
+                browser.enableGrid = YES;
+                browser.startOnGrid = NO;
+                [browser setCurrentPhotoIndex:indexPath.row];
+                [self.navigationController pushViewController:browser animated:YES];     
+            }
+           
         }
             break;
             

@@ -248,6 +248,7 @@
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
 		57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8361CA21E89005324DD /* RecommendViewController.m */; };
 		57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8391CA21EB1005324DD /* AttentionViewController.m */; };
+		57F824E01CDAD6660026D597 /* DetailVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F824DF1CDAD6660026D597 /* DetailVideoCell.m */; };
 		7D0116171CC7631000FEEF16 /* AFHttpClient+Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0116161CC7631000FEEF16 /* AFHttpClient+Issue.m */; };
 		7D0128E81CC5C8480009BF6B /* moveing.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D0128E71CC5C8480009BF6B /* moveing.png */; };
 		7D0128EB1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0128EA1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m */; };
@@ -277,9 +278,6 @@
 		7D24EA8D1CC4E74A004EB1E2 /* miaomiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D24EA891CC4E74A004EB1E2 /* miaomiao.png */; };
 		7D24EA8E1CC4E74A004EB1E2 /* wangwang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D24EA8A1CC4E74A004EB1E2 /* wangwang.png */; };
 		7D24EA8F1CC4E74A004EB1E2 /* womanquanquan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D24EA8B1CC4E74A004EB1E2 /* womanquanquan.png */; };
-		7D2B57841CD9F89F00694084 /* IntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2B57831CD9F89F00694084 /* IntroduceViewController.m */; };
-		7D2B57871CD9F8B700694084 /* SuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2B57861CD9F8B700694084 /* SuggestViewController.m */; };
-		7D2B578A1CD9F94300694084 /* AgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2B57891CD9F94300694084 /* AgreementViewController.m */; };
 		7D2F3F7A1CC0871E0059116A /* PersonAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F3F791CC0871E0059116A /* PersonAttentionViewController.m */; };
 		7D2F3F7D1CC092790059116A /* PersonalFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F3F7C1CC092790059116A /* PersonalFansViewController.m */; };
 		7D2F3F801CC092930059116A /* PersonalAtnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F3F7F1CC092930059116A /* PersonalAtnViewController.m */; };
@@ -1157,6 +1155,8 @@
 		57F2C8361CA21E89005324DD /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
 		57F2C8381CA21EB1005324DD /* AttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionViewController.h; sourceTree = "<group>"; };
 		57F2C8391CA21EB1005324DD /* AttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
+		57F824DE1CDAD6660026D597 /* DetailVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVideoCell.h; sourceTree = "<group>"; };
+		57F824DF1CDAD6660026D597 /* DetailVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVideoCell.m; sourceTree = "<group>"; };
 		7D0116151CC7631000FEEF16 /* AFHttpClient+Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Issue.h"; sourceTree = "<group>"; };
 		7D0116161CC7631000FEEF16 /* AFHttpClient+Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Issue.m"; sourceTree = "<group>"; };
 		7D0128E71CC5C8480009BF6B /* moveing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveing.png; sourceTree = "<group>"; };
@@ -1204,12 +1204,6 @@
 		7D24EA891CC4E74A004EB1E2 /* miaomiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miaomiao.png; sourceTree = "<group>"; };
 		7D24EA8A1CC4E74A004EB1E2 /* wangwang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wangwang.png; sourceTree = "<group>"; };
 		7D24EA8B1CC4E74A004EB1E2 /* womanquanquan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womanquanquan.png; sourceTree = "<group>"; };
-		7D2B57821CD9F89F00694084 /* IntroduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroduceViewController.h; sourceTree = "<group>"; };
-		7D2B57831CD9F89F00694084 /* IntroduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroduceViewController.m; sourceTree = "<group>"; };
-		7D2B57851CD9F8B700694084 /* SuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestViewController.h; sourceTree = "<group>"; };
-		7D2B57861CD9F8B700694084 /* SuggestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestViewController.m; sourceTree = "<group>"; };
-		7D2B57881CD9F94300694084 /* AgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementViewController.h; sourceTree = "<group>"; };
-		7D2B57891CD9F94300694084 /* AgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementViewController.m; sourceTree = "<group>"; };
 		7D2F3F781CC0871E0059116A /* PersonAttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonAttentionViewController.h; sourceTree = "<group>"; };
 		7D2F3F791CC0871E0059116A /* PersonAttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonAttentionViewController.m; sourceTree = "<group>"; };
 		7D2F3F7B1CC092790059116A /* PersonalFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalFansViewController.h; sourceTree = "<group>"; };
@@ -2570,6 +2564,8 @@
 				572220EC1CB7829A00C9C7D2 /* DetailCommentCell.m */,
 				57462DA91CBB4AF30071047E /* DetailImageCell.h */,
 				57462DAA1CBB4AF30071047E /* DetailImageCell.m */,
+				57F824DE1CDAD6660026D597 /* DetailVideoCell.h */,
+				57F824DF1CDAD6660026D597 /* DetailVideoCell.m */,
 				57462DAC1CBB85D00071047E /* DetailCommentView.h */,
 				57462DAD1CBB85D00071047E /* DetailCommentView.m */,
 				57462DB11CBBABBA0071047E /* CommentInputView.h */,
@@ -3047,12 +3043,6 @@
 			children = (
 				7D15E7C41CD842A9003A472C /* ThreePointsViewController.h */,
 				7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */,
-				7D2B57821CD9F89F00694084 /* IntroduceViewController.h */,
-				7D2B57831CD9F89F00694084 /* IntroduceViewController.m */,
-				7D2B57851CD9F8B700694084 /* SuggestViewController.h */,
-				7D2B57861CD9F8B700694084 /* SuggestViewController.m */,
-				7D2B57881CD9F94300694084 /* AgreementViewController.h */,
-				7D2B57891CD9F94300694084 /* AgreementViewController.m */,
 			);
 			path = ThreePoints;
 			sourceTree = "<group>";
@@ -3459,7 +3449,6 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = ZMFX8728A9;
 					};
 				};
 			};
@@ -3772,14 +3761,13 @@
 				7D30E89B1CA66C05004DE055 /* CALayer+AddUIColor.m in Sources */,
 				7DFF05971CB781F200CF713E /* AFHttpClient+Detailed.m in Sources */,
 				5778B3011CC08BBC00EC2D96 /* NSString+URLEncoding.m in Sources */,
+				57F824E01CDAD6660026D597 /* DetailVideoCell.m in Sources */,
 				7D30E8AB1CA66C05004DE055 /* SCMediaTypeConfiguration.m in Sources */,
 				7D30E89E1CA66C05004DE055 /* NSURL+SCSaveToCameraRoll.m in Sources */,
 				57666FA71C968B1F00A52DBA /* LoginViewController.m in Sources */,
 				7D825CCB1CBCA41700F4E216 /* VideoModel.m in Sources */,
-				7D2B57871CD9F8B700694084 /* SuggestViewController.m in Sources */,
 				34813FE21CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m in Sources */,
 				34144BC91CBFB147007C4498 /* TimeHistoryModel.m in Sources */,
-				7D2B578A1CD9F94300694084 /* AgreementViewController.m in Sources */,
 				7D30E8B91CA66C05004DE055 /* SCVideoPlayerView.m in Sources */,
 				7DF146F51CD064940046D726 /* BalckListTableViewCell.m in Sources */,
 				7D2F3F7A1CC0871E0059116A /* PersonAttentionViewController.m in Sources */,
@@ -3885,7 +3873,6 @@
 				57666FDD1C96BE6F00A52DBA /* UIView+TapBlocks.m in Sources */,
 				7DF146FC1CD09B5E0046D726 /* PermissionViewController.m in Sources */,
 				7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */,
-				7D2B57841CD9F89F00694084 /* IntroduceViewController.m in Sources */,
 				7D17143F1CBBA0850047FA70 /* NearbyPeopleViewController.m in Sources */,
 				7DB4F5BE1CCF3F35002918DA /* InformationModel.m in Sources */,
 				7D2F3F7D1CC092790059116A /* PersonalFansViewController.m in Sources */,
@@ -4051,7 +4038,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4102,7 +4089,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

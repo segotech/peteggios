@@ -31,6 +31,9 @@
     UIButton * _heandBtn;
     UILabel *  _nameLabel;
     UIImageView *bgImgView;
+    NSUserDefaults * defauts;
+    // countMessage
+    
     
     
 }
@@ -109,6 +112,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initheadImage:) name:@"handImageText" object:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanMessage) name:@"message" object:nil];
+    [self.tableView reloadData];
     
     
 }
@@ -347,6 +351,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    defauts =[NSUserDefaults standardUserDefaults];
+    self.count = [defauts objectForKey:@"countMessage"];
+    
+    
     static NSString * showUserInfoCellIdentifier = @"ShowUserInfoCell123";
     personTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:showUserInfoCellIdentifier];
     if (cell == nil)
@@ -358,10 +366,11 @@
             
         case 0:
             
-            if (indexPath.row == 0 && ![self.messageCount isEqualToString:@"0"]) {
+            
+            if (indexPath.row == 0 && ![self.count isEqualToString:@"0"]) {
     
                 cell.moneyLabel.hidden = NO;
-                cell.moneyLabel.text = self.messageCount;
+                cell.moneyLabel.text = self.count;
 
             }else
             {
@@ -433,7 +442,6 @@
                 NSLog(@"时光轴");
                 
                 FriendViewController * friendVC =[[FriendViewController alloc]initWithNibName:@"FriendViewController" bundle:nil];
-                friendVC.messageCount = self.messageCount;
                 [self.navigationController pushViewController:friendVC animated:YES];
             
             }

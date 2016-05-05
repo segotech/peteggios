@@ -14,8 +14,6 @@
 @property (nonatomic,strong)UIImageView * headImageView;
 @property (nonatomic,strong)UILabel * nameLabel;
 @property (nonatomic,strong)UIButton * message;
-@property (nonatomic,strong)NSString * messageCount;
-
 
 
 @end
