@@ -18,4 +18,6 @@
 @property (nonatomic,copy)NSString * type;
 @property (nonatomic,copy)NSString * nickname;
 @property (nonatomic,copy)NSString * tid;
+@property (nonatomic,copy)NSString * mid;
+
 @end
