@@ -12,7 +12,7 @@
 #import "AFHttpClient+Nearby.h"
 #import "UIImageView+WebCache.h"
 #import "OtherEggViewController.h"
-
+#import "PersonDetailViewController.h"
 static NSString * cellId = @"douyidouCellId";
 @interface DouYIDouViewController ()
 
@@ -109,7 +109,10 @@ static NSString * cellId = @"douyidouCellId";
     [cell.rightBtn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
     cell.rightBtn.tag = indexPath.row + 120;
     cell.rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    
+  
+    [cell.headTouchButton addTarget:self action:@selector(headTouch:) forControlEvents:UIControlEventTouchUpInside];
+    cell.headTouchButton.tag = indexPath.row + 2013;
+
     
     [cell.rightBtn addTarget:self action:@selector(fangwen:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -120,6 +123,19 @@ static NSString * cellId = @"douyidouCellId";
     
     return cell;
 }
+
+-(void)headTouch:(UIButton *)sender{
+    NSInteger i = sender.tag - 2013;
+    NearbyModel * model = self.dataSource[i];
+    NSString * mid = model.mid;
+    PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
+    personVc.ddddd = mid;
+    [self.navigationController pushViewController:personVc animated:YES];
+    
+
+}
+
+
 
 /**
  *  互动
