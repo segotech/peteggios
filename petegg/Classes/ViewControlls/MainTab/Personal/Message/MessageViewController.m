@@ -153,7 +153,7 @@
         detailVC.stid = model.tid;
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countMessage"];
         [self.navigationController pushViewController:detailVC animated:YES];
-
+        
     } failure:^(NSError *error) {
         
     }];
