@@ -16,9 +16,12 @@
 // 资源
 @property (nonatomic,strong) NSMutableArray* dataSource;
 @property (nonatomic,strong)NSString * stateNum;
+@property (nonatomic,assign)int  pageIndex;
+
 
 
 - (void)initRefreshView:(NSString *)stateNum;
+
 /**
  *  结束
  */

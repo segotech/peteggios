@@ -79,7 +79,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.backBtn removeFromSuperview];
+//    [self.backBtn removeFromSuperview];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     if (updateTimer != nil) {
@@ -107,7 +107,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[UIApplication sharedApplication].keyWindow addSubview:self.backBtn];
+   // [[UIApplication sharedApplication].keyWindow addSubview:self.backBtn];
 
         self.center = [[CTCallCenter alloc] init];
         __weak InCallViewController *weakSelf = self;
@@ -243,7 +243,6 @@
 - (IBAction)feedBtnClick:(UIButton *)sender {
     
     NSString * str =@"clientAction.do?common=queryFeedingtime&classes=appinterface&method=json";
-    
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
@@ -260,8 +259,37 @@
 }
 
 
-// 开灯
+/**
+ *  开灯
+ *
+ *  @param sender  on  off
+ */
 - (IBAction)lightBtnClick:(UIButton *)sender {
+    NSString * str1;
+    doubleTime++;
+    if (doubleTime%2 ==0) {
+        str1 = @"off";
+    }else
+    {
+        
+        str1 =@"on";
+    }
+    
+    NSString * str =@"clientAction.do?common=SwitchLight&classes=appinterface&method=json";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
+    [dic setValue:str1 forKey:@"action"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        
+        NSLog(@"%@",json);
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+
+    
     
 }
 
