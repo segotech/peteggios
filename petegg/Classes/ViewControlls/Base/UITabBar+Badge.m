@@ -36,8 +36,8 @@
  */
 - (void)hideBadgeOnItemIndex:(int)index{
     
-    
     [self removeBadgeOnItemIndex:index];
+    
     
 }
 /**

@@ -68,6 +68,19 @@
 {
   
     [super setupData];
+    
+}
+
+/**
+ *  数据 头像实时
+ *
+ *  @param nsnotifition nil
+ */
+
+
+- (void)selfDataHand
+{
+    
     NSString * str =@"clientAction.do?method=json&common=queryPraises&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
@@ -89,6 +102,7 @@
         
     }];
     
+
     
 }
 
@@ -113,6 +127,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self selfDataHand];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initheadImage:) name:@"handImageText" object:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanMessage) name:@"message" object:nil];

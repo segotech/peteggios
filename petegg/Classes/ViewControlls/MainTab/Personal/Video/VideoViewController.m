@@ -314,7 +314,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
         NSMutableArray * arr =[[NSMutableArray alloc]init];
-        
         if (page == START_PAGE_INDEX) {
             [self.dataSource removeAllObjects];
             [arr addObjectsFromArray:json];
