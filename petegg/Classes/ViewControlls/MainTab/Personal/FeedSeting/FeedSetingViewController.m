@@ -75,27 +75,83 @@ static NSString * cellId = @"fedseting2321232322313323231";
     
     _isOneOrTwo = YES;
     
-    self.tableView.frame = CGRectMake(0, 300 *W_Hight_Zoom, self.view.width, 400 * W_Hight_Zoom);
-    //  [self.tableView registerClass:[PersonDataTableViewCell class] forCellReuseIdentifier:cellId];
-    [self.tableView registerClass:[FeedSetingTableViewCell class] forCellReuseIdentifier:cellId];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+//    self.tableView.frame = CGRectMake(0, 300 *W_Hight_Zoom, self.view.width, 300 * W_Hight_Zoom);
+//    //  [self.tableView registerClass:[PersonDataTableViewCell class] forCellReuseIdentifier:cellId];
+//    [self.tableView registerClass:[FeedSetingTableViewCell class] forCellReuseIdentifier:cellId];
+//    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
     
+    UIButton * sureBtn = [[UIButton alloc]initWithFrame:CGRectMake(20 * W_Wide_Zoom, 620 * W_Hight_Zoom, 335 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    sureBtn.backgroundColor = GREEN_COLOR;
+    [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:sureBtn];
     
-    
-    
+    [self onedayView];
     
 }
+
+
+-(void)onedayView{
+    UIView * bigView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 350 * W_Hight_Zoom, 375 * W_Wide_Zoom, 240 * W_Hight_Zoom)];
+    bigView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:bigView];
+    
+   // NSArray*tname = @[@"1",@"2",@"3",@"4"];
+    for (int i = 0 ; i < 4; i++) {
+     
+        
+        UIButton * bigBtn = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 60 * W_Hight_Zoom, 375 * W_Wide_Zoom, 60 * W_Hight_Zoom)];
+        bigBtn.userInteractionEnabled=NO;
+        bigBtn.backgroundColor = [UIColor whiteColor];
+        [bigView addSubview:bigBtn];
+        
+        UIButton * timeBtn = [[UIButton alloc]initWithFrame:CGRectMake(20 * W_Wide_Zoom, 15 * W_Hight_Zoom + i * 60 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        [timeBtn setTitle:@"00:00" forState:UIControlStateNormal];
+        [timeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        timeBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+        [bigView addSubview:timeBtn];
+        
+        
+        UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 59 * W_Hight_Zoom + i * 60 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
+        lineLabel.backgroundColor = LIGHT_GRAY_COLOR;
+        [bigView addSubview:lineLabel];
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -(void)onedayButtonTouch{
     _oneDayButton.selected = YES;
     _twoDayButton.selected = NO;
     _isOneOrTwo = YES;
-    [self.tableView reloadData];
+   // [self.tableView reloadData];
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame = CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
      [[AppUtil appTopViewController] showHint:@"启用一天模式"];
-        
+        _bigBtn.backgroundColor = [UIColor blueColor];
     }];
 }
 
@@ -103,81 +159,100 @@ static NSString * cellId = @"fedseting2321232322313323231";
     _oneDayButton.selected = NO;
     _twoDayButton.selected = YES;
      _isOneOrTwo = NO;
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame = CGRectMake(42 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
          [[AppUtil appTopViewController] showHint:@"启用两天模式"];
-       
+        _bigBtn.backgroundColor = [UIColor redColor];
     }];
 
 }
 
 -(void)setupData{
     [super setupData];
-    [[AFHttpClient sharedAFHttpClient]queryFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
-        [self.dataSource addObjectsFromArray:model.list];
-        if (self.dataSource.count > 0) {
-            FeddingModel * model1 = self.dataSource[0];
-            _timeStr = model1.times;
-            //  _ondedayArray = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
-            NSArray * array = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
-            _ondedayArray = [NSMutableArray arrayWithArray:array];
-        }
-    
-        
-        [self.tableView reloadData];
-    }];
+//    [[AFHttpClient sharedAFHttpClient]queryFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
+//        [self.dataSource addObjectsFromArray:model.list];
+//        if (self.dataSource.count > 0) {
+//            FeddingModel * model1 = self.dataSource[0];
+//            _timeStr = model1.times;
+//            //  _ondedayArray = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
+//            NSArray * array = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
+//            _ondedayArray = [NSMutableArray arrayWithArray:array];
+//        }
+//    
+//        
+//        [self.tableView reloadData];
+//    }];
 }
 
 
 
-#pragma mark - TableView的代理函数
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (_ondedayArray.count> 0) {
-        return _ondedayArray.count;
-    }else{
-         return 1;
-    }
-    
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 60*W_Hight_Zoom;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (_ondedayArray.count > 0) {
-        FeddingModel * model = _ondedayArray[0];
-    }else{
-        
-    }
-    FeedSetingTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    //cell.timeLabel.text = _ondedayArray[];
-    cell.rightLabel.text = [NSString stringWithFormat:@"t%ld",indexPath.row + 1];
-    
-    if (indexPath.row < 4) {
-        
-    }
-    
-    
-    
-    
-    
-    return cell;
-}
-
-
-
+//#pragma mark - TableView的代理函数
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 1;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+////    if (_ondedayArray.count> 0) {
+////        return _ondedayArray.count;
+////    }else{
+////         return 4;
+////    }
+//    
+//    if (_isOneOrTwo == YES) {
+//        return 4;
+//    }else{
+//        return 2;
+//    }
+//    
+//    
+//    
+//}
+//
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 60*W_Hight_Zoom;
+//}
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+////    if (_ondedayArray.count > 0) {
+////        FeddingModel * model = _ondedayArray[0];
+////    }else{
+////        
+////    }
+//    FeedSetingTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+//    //cell.timeLabel.text = _ondedayArray[];
+//    cell.rightLabel.text = [NSString stringWithFormat:@"t%ld",indexPath.row + 1];
+//    
+////    if (indexPath.row < 4) {
+////        
+////    }
+//    cell.delectBtn.tag = indexPath.row +300;
+//    [cell.delectBtn addTarget:self action:@selector(shanchucell:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    
+//    
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+//    return cell;
+//}
+//
+//
+//-(void)shanchucell:(UIButton *)sender{
+//    NSInteger i = sender.tag - 300;
+//    FeedSetingTableViewCell * cell = (FeedSetingTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+//  //  cell.timeBtn.hidden = YES;
+//    cell.backgroundColor = [UIColor grayColor];
+//
+//    
+//
+//
+//}
 
 
 @end
