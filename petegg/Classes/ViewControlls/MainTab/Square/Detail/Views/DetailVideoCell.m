@@ -13,7 +13,9 @@
 @interface DetailVideoCell()
 
 @property (nonatomic, strong) UIImageView *iconIV;
-@property (nonatomic,strong)SCPlayer *player;
+@property (nonatomic, strong) SCPlayer *player;
+@property (nonatomic, strong) SCVideoPlayerView *playerView;
+
 @end
 
 @implementation DetailVideoCell
@@ -39,21 +41,17 @@
     
     
     _player = [SCPlayer player];
-    SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
-    playerView.tag = 500;
-    playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    _playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
+    _playerView.tag = 500;
+    _playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     //playerView.frame = CGRectMake(0 * W_Wide_Zoom, 0* W_Hight_Zoom, 150 * W_Wide_Zoom, 150 * W_Hight_Zoom);
    // [self.view addSubview:playerView];
-    [self.contentView sd_addSubviews:@[playerView]];
-   playerView.sd_layout.topSpaceToView(self.contentView,8).leftSpaceToView(self.contentView, 8).rightSpaceToView(self.contentView, 8).autoHeightRatio(0.75);
+    [self.contentView sd_addSubviews:@[_playerView]];
+   
+    _playerView.sd_layout.topSpaceToView(self.contentView,8).leftSpaceToView(self.contentView, 8).rightSpaceToView(self.contentView, 8).autoHeightRatio(0.75);
     _player.loopEnabled = YES;
     
-    //[_player setItemByUrl:url];  //给赋值url
-    [_player play];    //播放
 
-    
-    
-    
     
 }
 
@@ -64,7 +62,10 @@
     [self.iconIV sd_setImageWithURL:[NSURL URLWithString:model] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
     }];
     
-    [self setupAutoHeightWithBottomView:self.iconIV bottomMargin:8];
+    [self.player setItemByUrl:[NSURL URLWithString:model]];  //给赋值url
+    [_player play];    //播放
+    
+    [self setupAutoHeightWithBottomView:self.playerView bottomMargin:8];
 }
 
 @end
