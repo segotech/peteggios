@@ -502,7 +502,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
                 
             }else{
                 MWPhotoBrowser *browser=[[MWPhotoBrowser alloc]initWithDelegate:self];
-                browser.displayActionButton = YES;
+                browser.displayActionButton = NO;
                 browser.displayNavArrows = NO;
                 browser.displaySelectionButtons = NO;
                 browser.zoomPhotosToFill = YES;
