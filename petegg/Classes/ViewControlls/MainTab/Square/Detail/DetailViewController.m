@@ -106,7 +106,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
             
             [self.resourcesArray removeAllObjects];
             
-            if ([self.detailModel.type isEqualToString:@"pv"]) {
+            if ([self.detailModel.type isEqualToString:@"pv"]|| [self.detailModel.type isEqualToString:@"v"]) {
                 self.isVideo = YES;
                 self.resourcesArray = [NSMutableArray arrayWithObject:self.detailModel.thumbnails];
             }else{
@@ -499,6 +499,11 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
             if (self.isVideo) {
                 
                 //TODO 视频播放
+                
+                
+                NSLog(@"haha");
+                
+                
                 
             }else{
                 MWPhotoBrowser *browser=[[MWPhotoBrowser alloc]initWithDelegate:self];

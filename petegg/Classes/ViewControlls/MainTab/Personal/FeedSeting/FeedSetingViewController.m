@@ -21,6 +21,10 @@ static NSString * cellId = @"fedseting2321232322313323231";
 
 @property (nonatomic,strong)NSMutableArray * ondedayArray;
 @property (nonatomic,strong)NSString * timeStr;
+
+
+
+@property (nonatomic,strong)UIButton * bigBtn11;
 @end
 
 @implementation FeedSetingViewController
@@ -99,12 +103,11 @@ static NSString * cellId = @"fedseting2321232322313323231";
     
    // NSArray*tname = @[@"1",@"2",@"3",@"4"];
     for (int i = 0 ; i < 4; i++) {
-     
-        
-        UIButton * bigBtn = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 60 * W_Hight_Zoom, 375 * W_Wide_Zoom, 60 * W_Hight_Zoom)];
-        bigBtn.userInteractionEnabled=NO;
-        bigBtn.backgroundColor = [UIColor whiteColor];
-        [bigView addSubview:bigBtn];
+        _bigBtn11 = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 60 * W_Hight_Zoom, 375 * W_Wide_Zoom, 60 * W_Hight_Zoom)];
+        _bigBtn11.userInteractionEnabled=NO;
+        _bigBtn11.backgroundColor = [UIColor whiteColor];
+        _bigBtn11.tag = i;
+        [bigView addSubview:_bigBtn11];
         
         UIButton * timeBtn = [[UIButton alloc]initWithFrame:CGRectMake(20 * W_Wide_Zoom, 15 * W_Hight_Zoom + i * 60 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
         [timeBtn setTitle:@"00:00" forState:UIControlStateNormal];
@@ -117,20 +120,29 @@ static NSString * cellId = @"fedseting2321232322313323231";
         lineLabel.backgroundColor = LIGHT_GRAY_COLOR;
         [bigView addSubview:lineLabel];
         
+        UIButton * delectBtn = [[UIButton alloc]initWithFrame:CGRectMake(200 * W_Wide_Zoom,17.5 * W_Hight_Zoom + i * 60 * W_Hight_Zoom , 25 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
+        [delectBtn setImage:[UIImage imageNamed:@"delect_guize.png"] forState:UIControlStateNormal];
+        [bigView addSubview:delectBtn];
+        delectBtn.tag = i + 1;
+        [delectBtn addTarget:self action:@selector(hehedada:) forControlEvents:UIControlEventTouchUpInside];
         
         
-        
-        
-        
-        
-        
-        
+        UILabel * tLabel = [[UILabel alloc]initWithFrame:CGRectMake(300 * W_Wide_Zoom, 15 * W_Hight_Zoom + i*60 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        tLabel.text = [NSString stringWithFormat:@"t%d",i+1];
+        tLabel.textColor = [UIColor blackColor];
+        tLabel.font = [UIFont systemFontOfSize:13];
+        [bigView addSubview:tLabel];
     }
-
-
 }
-
-
+-(void)hehedada:(UIButton *)sender{
+    if (sender.tag - 1 == _bigBtn11.tag) {
+        _bigBtn11.backgroundColor = [UIColor redColor];
+    }
+    
+    
+    
+    
+}
 
 
 
