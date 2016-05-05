@@ -116,11 +116,14 @@ static NSString * cellId = @"fedseting2321232322313323231";
     [super setupData];
     [[AFHttpClient sharedAFHttpClient]queryFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
         [self.dataSource addObjectsFromArray:model.list];
-      FeddingModel * model1 = self.dataSource[0];
-        _timeStr = model1.times;
-      //  _ondedayArray = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
-        NSArray * array = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
-        _ondedayArray = [NSMutableArray arrayWithArray:array];
+        if (self.dataSource.count > 0) {
+            FeddingModel * model1 = self.dataSource[0];
+            _timeStr = model1.times;
+            //  _ondedayArray = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
+            NSArray * array = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
+            _ondedayArray = [NSMutableArray arrayWithArray:array];
+        }
+    
         
         [self.tableView reloadData];
     }];
@@ -153,8 +156,11 @@ static NSString * cellId = @"fedseting2321232322313323231";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    //FeddingModel * model = self.dataSource[0];
+    if (_ondedayArray.count > 0) {
+        FeddingModel * model = _ondedayArray[0];
+    }else{
+        
+    }
     FeedSetingTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     //cell.timeLabel.text = _ondedayArray[];
     cell.rightLabel.text = [NSString stringWithFormat:@"t%ld",indexPath.row + 1];
