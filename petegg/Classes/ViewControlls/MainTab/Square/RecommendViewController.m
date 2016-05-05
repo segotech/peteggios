@@ -18,6 +18,7 @@
 #import "PersonDetailViewController.h"
 #import "AFHttpClient+IsfriendClient.h"
 
+#import "UIImage-Extensions.h"
 
 static NSString * cellId = @"recommeCellId";
 
@@ -172,8 +173,11 @@ static NSString * cellId = @"recommeCellId";
     [cell addSubview:touchButton];
 
     [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        cell.photoView.image =[self cutImage:image];
+//        cell.photoView.image =[self cutImage:image];
         
+        if (image) {
+            cell.photoView.image = [image imageByScalingProportionallyToSize:CGSizeMake(cell.width, CGFLOAT_MAX)];
+        }
     }];
     UIButton * photoViewBtn = [[UIButton alloc]initWithFrame:cell.photoView.frame];
     photoViewBtn.tag = indexPath.row + 11;
@@ -255,7 +259,6 @@ static NSString * cellId = @"recommeCellId";
 
     DetailViewController* viewController = [[DetailViewController alloc] init];
     viewController.stid = model.stid;
-    viewController.type = model.type;
     [self.navigationController pushViewController:viewController animated:YES];
     
 }

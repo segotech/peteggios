@@ -250,6 +250,8 @@
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
 		57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8361CA21E89005324DD /* RecommendViewController.m */; };
 		57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8391CA21EB1005324DD /* AttentionViewController.m */; };
+		57F824E01CDAD6660026D597 /* DetailVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F824DF1CDAD6660026D597 /* DetailVideoCell.m */; };
+		57F824E41CDAED3A0026D597 /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F824E31CDAED3A0026D597 /* UIImage-Extensions.m */; };
 		7D0116171CC7631000FEEF16 /* AFHttpClient+Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0116161CC7631000FEEF16 /* AFHttpClient+Issue.m */; };
 		7D0128E81CC5C8480009BF6B /* moveing.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D0128E71CC5C8480009BF6B /* moveing.png */; };
 		7D0128EB1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0128EA1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m */; };
@@ -401,6 +403,9 @@
 		7DA216991CD2343700F6BCCB /* FounyMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA216971CD2343700F6BCCB /* FounyMoneyViewController.m */; };
 		7DA2169A1CD2343700F6BCCB /* FounyMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DA216981CD2343700F6BCCB /* FounyMoneyViewController.xib */; };
 		7DA2169D1CD2358E00F6BCCB /* FeedSetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA2169C1CD2358E00F6BCCB /* FeedSetingViewController.m */; };
+		7DA4C4C11CDAE19C00ED6311 /* AgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA4C4BC1CDAE19C00ED6311 /* AgreementViewController.m */; };
+		7DA4C4C21CDAE19C00ED6311 /* IntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA4C4BE1CDAE19C00ED6311 /* IntroduceViewController.m */; };
+		7DA4C4C31CDAE19C00ED6311 /* SuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA4C4C01CDAE19C00ED6311 /* SuggestViewController.m */; };
 		7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */; };
 		7DB4F5BE1CCF3F35002918DA /* InformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5BD1CCF3F35002918DA /* InformationModel.m */; };
 		7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5C11CCF849A002918DA /* ChangePasswordViewController.m */; };
@@ -1158,6 +1163,10 @@
 		57F2C8361CA21E89005324DD /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
 		57F2C8381CA21EB1005324DD /* AttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionViewController.h; sourceTree = "<group>"; };
 		57F2C8391CA21EB1005324DD /* AttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
+		57F824DE1CDAD6660026D597 /* DetailVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVideoCell.h; sourceTree = "<group>"; };
+		57F824DF1CDAD6660026D597 /* DetailVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVideoCell.m; sourceTree = "<group>"; };
+		57F824E21CDAED3A0026D597 /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
+		57F824E31CDAED3A0026D597 /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
 		7D0116151CC7631000FEEF16 /* AFHttpClient+Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Issue.h"; sourceTree = "<group>"; };
 		7D0116161CC7631000FEEF16 /* AFHttpClient+Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Issue.m"; sourceTree = "<group>"; };
 		7D0128E71CC5C8480009BF6B /* moveing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveing.png; sourceTree = "<group>"; };
@@ -1408,6 +1417,12 @@
 		7DA216981CD2343700F6BCCB /* FounyMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FounyMoneyViewController.xib; sourceTree = "<group>"; };
 		7DA2169B1CD2358E00F6BCCB /* FeedSetingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedSetingViewController.h; sourceTree = "<group>"; };
 		7DA2169C1CD2358E00F6BCCB /* FeedSetingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedSetingViewController.m; sourceTree = "<group>"; };
+		7DA4C4BB1CDAE19C00ED6311 /* AgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementViewController.h; sourceTree = "<group>"; };
+		7DA4C4BC1CDAE19C00ED6311 /* AgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementViewController.m; sourceTree = "<group>"; };
+		7DA4C4BD1CDAE19C00ED6311 /* IntroduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroduceViewController.h; sourceTree = "<group>"; };
+		7DA4C4BE1CDAE19C00ED6311 /* IntroduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroduceViewController.m; sourceTree = "<group>"; };
+		7DA4C4BF1CDAE19C00ED6311 /* SuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestViewController.h; sourceTree = "<group>"; };
+		7DA4C4C01CDAE19C00ED6311 /* SuggestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestViewController.m; sourceTree = "<group>"; };
 		7DB4F5B91CCF1195002918DA /* AFHttpClient+InformationChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+InformationChange.h"; sourceTree = "<group>"; };
 		7DB4F5BA1CCF1195002918DA /* AFHttpClient+InformationChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+InformationChange.m"; sourceTree = "<group>"; };
 		7DB4F5BC1CCF3F35002918DA /* InformationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationModel.h; sourceTree = "<group>"; };
@@ -2567,6 +2582,8 @@
 				572220EC1CB7829A00C9C7D2 /* DetailCommentCell.m */,
 				57462DA91CBB4AF30071047E /* DetailImageCell.h */,
 				57462DAA1CBB4AF30071047E /* DetailImageCell.m */,
+				57F824DE1CDAD6660026D597 /* DetailVideoCell.h */,
+				57F824DF1CDAD6660026D597 /* DetailVideoCell.m */,
 				57462DAC1CBB85D00071047E /* DetailCommentView.h */,
 				57462DAD1CBB85D00071047E /* DetailCommentView.m */,
 				57462DB11CBBABBA0071047E /* CommentInputView.h */,
@@ -2673,6 +2690,7 @@
 		57666F6B1C9686DE00A52DBA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				57F824E11CDAED3A0026D597 /* UIImage-Extensions */,
 				34144BE61CC4BCCA007C4498 /* QFTableView.h */,
 				34144BE71CC4BCCA007C4498 /* QFTableView.m */,
 				5778B2FF1CC08BBC00EC2D96 /* NSString+URLEncoding.h */,
@@ -3039,11 +3057,26 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		57F824E11CDAED3A0026D597 /* UIImage-Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				57F824E21CDAED3A0026D597 /* UIImage-Extensions.h */,
+				57F824E31CDAED3A0026D597 /* UIImage-Extensions.m */,
+			);
+			path = "UIImage-Extensions";
+			sourceTree = "<group>";
+		};
 		7D15E7C31CD8428D003A472C /* ThreePoints */ = {
 			isa = PBXGroup;
 			children = (
 				7D15E7C41CD842A9003A472C /* ThreePointsViewController.h */,
 				7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */,
+				7DA4C4BB1CDAE19C00ED6311 /* AgreementViewController.h */,
+				7DA4C4BC1CDAE19C00ED6311 /* AgreementViewController.m */,
+				7DA4C4BD1CDAE19C00ED6311 /* IntroduceViewController.h */,
+				7DA4C4BE1CDAE19C00ED6311 /* IntroduceViewController.m */,
+				7DA4C4BF1CDAE19C00ED6311 /* SuggestViewController.h */,
+				7DA4C4C01CDAE19C00ED6311 /* SuggestViewController.m */,
 			);
 			path = ThreePoints;
 			sourceTree = "<group>";
@@ -3450,7 +3483,6 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4UKEB375ND;
 					};
 				};
 			};
@@ -3765,6 +3797,8 @@
 				7D30E89B1CA66C05004DE055 /* CALayer+AddUIColor.m in Sources */,
 				7DFF05971CB781F200CF713E /* AFHttpClient+Detailed.m in Sources */,
 				5778B3011CC08BBC00EC2D96 /* NSString+URLEncoding.m in Sources */,
+				7DA4C4C21CDAE19C00ED6311 /* IntroduceViewController.m in Sources */,
+				57F824E01CDAD6660026D597 /* DetailVideoCell.m in Sources */,
 				7D30E8AB1CA66C05004DE055 /* SCMediaTypeConfiguration.m in Sources */,
 				7D30E89E1CA66C05004DE055 /* NSURL+SCSaveToCameraRoll.m in Sources */,
 				57666FA71C968B1F00A52DBA /* LoginViewController.m in Sources */,
@@ -3791,6 +3825,7 @@
 				7D825CD51CBCA4C800F4E216 /* InCallViewController.m in Sources */,
 				7D30E8A91CA66C05004DE055 /* SCImageView.m in Sources */,
 				7D30E8B01CA66C05004DE055 /* SCRecorderFocusTargetView.m in Sources */,
+				7DA4C4C31CDAE19C00ED6311 /* SuggestViewController.m in Sources */,
 				34A215DB1CCDFD6F00ADD8FF /* SephoneUtils.m in Sources */,
 				34EDB5CC1CD34279001BB50C /* OtherEggViewController.m in Sources */,
 				570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */,
@@ -3798,6 +3833,7 @@
 				7D0128EE1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m in Sources */,
 				34144BCC1CBFB156007C4498 /* MessageModel.m in Sources */,
 				7D30E8B11CA66C05004DE055 /* SCRecorderTools.m in Sources */,
+				7DA4C4C11CDAE19C00ED6311 /* AgreementViewController.m in Sources */,
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
 				7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */,
 				7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */,
@@ -3810,6 +3846,7 @@
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				7DA216841CD1A77C00F6BCCB /* NewPremissViewController.m in Sources */,
 				7DA2168A1CD1B4A600F6BCCB /* PremissModel.m in Sources */,
+				57F824E41CDAED3A0026D597 /* UIImage-Extensions.m in Sources */,
 				7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
 				7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */,

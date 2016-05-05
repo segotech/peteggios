@@ -7,6 +7,9 @@
 //
 
 #import "ThreePointsViewController.h"
+#import "IntroduceViewController.h"
+#import "SuggestViewController.h"
+#import "AgreementViewController.h"
 
 
 @interface ThreePointsViewController ()
@@ -40,7 +43,7 @@
     whiteView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:whiteView];
     
-    NSArray * nameArray = @[@"功能介绍",@"投诉建议",@"注册协议"];
+    NSArray * nameArray = @[@"功能介绍",@"意见反馈",@"注册协议"];
     for (int i = 0 ; i < 3 ; i++) {
         UILabel * linelabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 50 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         linelabel.backgroundColor = [UIColor grayColor];
@@ -103,13 +106,16 @@
 
 -(void)someTouchcc:(UIButton *)sender{
     if (sender.tag == 120) {
-        NSLog(@"hah");
+        IntroduceViewController * introlVc = [[IntroduceViewController alloc]init];
+        [self.navigationController pushViewController:introlVc animated:YES];
     }else if (sender.tag == 121){
-        NSLog(@"jj");
+        SuggestViewController * suggVc = [[SuggestViewController alloc]init];
+        [self.navigationController pushViewController:suggVc animated:YES];
     }else if (sender.tag == 122){
-        NSLog(@"vv");
+        AgreementViewController * agreeVc = [[AgreementViewController alloc]init];
+        [self.navigationController pushViewController:agreeVc animated:YES];
     }
-
+    
 }
 
 -(void)setupData{

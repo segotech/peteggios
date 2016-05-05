@@ -14,5 +14,7 @@
 @property (nonatomic,strong)UILabel * rightLabel;
 @property (nonatomic,strong)UILabel * lineLabel;
 
+@property (nonatomic,strong)UIButton * timeBtn;
+
 
 @end

@@ -29,11 +29,14 @@
 }
 
 
--(void)getVideoWithMid:(NSString *)mid complete:(void (^)(BaseModel *))completeBlock{
+-(void)getVideoWithMid:(NSString *)mid
+                pageIndex:(int)pageIndex
+                 complete:(void (^)(BaseModel *))completeBlock{
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
     params[@"common"] = @"getVideo";
     params[@"status"] = @"1";
     params[@"mid"] = mid;
+    params[@"page"] = @(pageIndex);
     [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
         if (model){
               model.list = [IssueZiYuankuModel arrayOfModelsFromDictionaries:model.list];

@@ -94,7 +94,7 @@
     params[@"bcid"] = bcid;//cid
     params[@"ptype"] = ptype;//评论文章传m，回复人传r
     params[@"action"]  = action;//评论动作类型，文章，p。人，h。
-    params[@"content"] = [content utf8ToUnicode] ;//回复内容
+    params[@"content"] = content;//回复内容
     params[@"type"] = @"m";
     
     [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {

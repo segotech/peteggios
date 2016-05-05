@@ -57,8 +57,6 @@
     
    
     
-    
-    
 }
 -(void)doRightButtonTouch{
     [_imageArray removeLastObject];

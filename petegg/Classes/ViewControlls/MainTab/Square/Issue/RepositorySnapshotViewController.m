@@ -42,12 +42,12 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 
 - (void)data:(NSString *)stateNum
 {
-    [[AFHttpClient sharedAFHttpClient]getVideoWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
-        [self.dataSource removeAllObjects];
-        [self.dataSource addObjectsFromArray:model.list];
-        [self handleEndRefresh];
-        [self.collection reloadData];
-    }];
+//    [[AFHttpClient sharedAFHttpClient]getVideoWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
+//        [self.dataSource removeAllObjects];
+//        [self.dataSource addObjectsFromArray:model.list];
+//        [self handleEndRefresh];
+//        [self.collection reloadData];
+//    }];
     
 }
 

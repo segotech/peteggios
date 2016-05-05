@@ -40,6 +40,8 @@
         
         self.photoView =[[UIImageView alloc]initWithFrame:CGRectMake(0*W_Wide_Zoom, 65*W_Hight_Zoom, 375*W_Wide_Zoom, 250*W_Hight_Zoom)];
         self.photoView.backgroundColor =[UIColor clearColor];
+        self.photoView.contentMode = UIViewContentModeCenter;
+        self.photoView.layer.masksToBounds = YES;
         [self addSubview:self.photoView];
     
         // 图片张数
