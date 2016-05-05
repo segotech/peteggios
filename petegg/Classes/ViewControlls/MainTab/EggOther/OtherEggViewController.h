@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface OtherEggViewController : UIViewController
+@interface OtherEggViewController : BaseViewController
 
 @property (nonatomic,strong)NSMutableArray * otherArr;
 

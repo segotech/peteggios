@@ -193,6 +193,8 @@
 		34A2186A1CCE151300ADD8FF /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */; };
 		34A2186C1CCE152E00ADD8FF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */; };
 		34A2186E1CCE15BC00ADD8FF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186D1CCE15BC00ADD8FF /* CoreData.framework */; };
+		34DB51371CDB28AE0032CF39 /* video_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DB51361CDB28AE0032CF39 /* video_point.png */; };
+		34DB51391CDB2E740032CF39 /* light_on_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DB51381CDB2E740032CF39 /* light_on_on.png */; };
 		34EDB5CC1CD34279001BB50C /* OtherEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5CB1CD34279001BB50C /* OtherEggViewController.m */; };
 		34EDB5CE1CD3542A001BB50C /* opvideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34EDB5CD1CD3542A001BB50C /* opvideo.png */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
@@ -1060,6 +1062,8 @@
 		34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		34A2186D1CCE15BC00ADD8FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		34DB51361CDB28AE0032CF39 /* video_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_point.png; sourceTree = "<group>"; };
+		34DB51381CDB2E740032CF39 /* light_on_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_on_on.png; sourceTree = "<group>"; };
 		34EDB5CA1CD34279001BB50C /* OtherEggViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherEggViewController.h; sourceTree = "<group>"; };
 		34EDB5CB1CD34279001BB50C /* OtherEggViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherEggViewController.m; sourceTree = "<group>"; };
 		34EDB5CD1CD3542A001BB50C /* opvideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opvideo.png; sourceTree = "<group>"; };
@@ -1551,6 +1555,8 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				34DB51381CDB2E740032CF39 /* light_on_on.png */,
+				34DB51361CDB28AE0032CF39 /* video_point.png */,
 				7D15E7CE1CD8A35B003A472C /* tubiaobiao.png */,
 				34EDB5CD1CD3542A001BB50C /* opvideo.png */,
 				7DF1470D1CD0BB740046D726 /* add_guize.png */,
@@ -3519,6 +3525,7 @@
 				34144BD71CBFB1B3007C4498 /* MessageTableViewCell.xib in Resources */,
 				3481B3A61CBCB4A400A4344D /* selecting.png in Resources */,
 				7D825CD81CBCA4C800F4E216 /* WasCallViewController.xib in Resources */,
+				34DB51371CDB28AE0032CF39 /* video_point.png in Resources */,
 				7DF147161CD0BB740046D726 /* xuan_guize.png in Resources */,
 				34A2183D1CCDFF9700ADD8FF /* incoming_chat.wav in Resources */,
 				344F025B1C9FEBDE0076CE62 /* juankfood_on.png in Resources */,
@@ -3644,6 +3651,7 @@
 				7D24EA8C1CC4E74A004EB1E2 /* manquanquan.png in Resources */,
 				344F02651C9FEBDE0076CE62 /* turn_on.png in Resources */,
 				7D825D101CBCA65000F4E216 /* personTableViewCell.xib in Resources */,
+				34DB51391CDB2E740032CF39 /* light_on_on.png in Resources */,
 				7D825D381CBCA88D00F4E216 /* deleteOld.png in Resources */,
 				34A2182F1CCDFF9700ADD8FF /* sephone.icns in Resources */,
 				7DF147171CD0BB740046D726 /* xuanquan_guize.png in Resources */,

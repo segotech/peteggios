@@ -58,12 +58,18 @@
 - (void)initRefreshView:(NSString *)stateNu
 {
      __typeof (&*self) __weak weakSelf = self;
+    
     self.collection.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
          weakSelf.stateNum = stateNu;
-        [weakSelf data:weakSelf.stateNum];
-        
+         weakSelf.pageIndex = START_PAGE_INDEX;
+        [weakSelf data:weakSelf.stateNum pageNum:weakSelf.pageIndex];
     }];
-    self.collection.mj_footer.hidden = YES;
+    
+    self.collection.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            weakSelf.pageIndex++;
+             weakSelf.stateNum = stateNu;
+            [weakSelf data:weakSelf.stateNum pageNum:weakSelf.pageIndex];
+    }];
     [self.collection.mj_header beginRefreshing];
 }
 
@@ -74,7 +80,7 @@
     
 }
 
-- (void)data:(NSString *)stateNum
+- (void)data:(NSString *)stateNum pageNum:(int)page
 {
     
     

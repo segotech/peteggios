@@ -47,7 +47,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     isSelet = YES;
      [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
-    self.collection.frame = CGRectMake(10, 65, SCREEN_WIDTH-20, SCREEN_HEIGHT-110);
+    self.collection.frame = CGRectMake(10, 65, SCREEN_WIDTH-20, SCREEN_HEIGHT-70);
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.collection.showsHorizontalScrollIndicator = NO;
     self.collection.showsVerticalScrollIndicator   = NO;
@@ -196,31 +196,46 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 
 
-
 // 请求数据
-- (void)data:(NSString *)stateNum
+- (void)data:(NSString *)stateNum pageNum:(int)page
 {
+    
     
     NSString * str =@"clientAction.do?method=json&common=getPhotoGraph&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
-    [dic setValue:headFootFlg forKey:@"type"];
-    [dic setValue:@"10" forKey:@"size"];
-    [dic setValue:@"1" forKey:@"page"];
-    
+    [dic setValue:@(page) forKey:@"page"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-        [self.dataSource removeAllObjects];
-        json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
-        NSMutableArray * arr =[[NSMutableArray alloc]init];
-        [arr addObjectsFromArray:json];
-        for (NSDictionary *dic0 in arr) {
-            PhotoModel *model = [[PhotoModel alloc] init];
-            [model setValuesForKeysWithDictionary:dic0];
-            [self.dataSource addObject:model];
+        
+          json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
+          NSMutableArray * arr =[[NSMutableArray alloc]init];
+        
+        if (page == START_PAGE_INDEX) {
+            [self.dataSource removeAllObjects];
+            [arr addObjectsFromArray:json];
+            for (NSDictionary *dic0 in arr) {
+                 PhotoModel *model = [[PhotoModel alloc] init];
+                [model setValuesForKeysWithDictionary:dic0];
+                [self.dataSource addObject:model];
+            }
+
+           
+         } else {
+            [arr addObjectsFromArray:json];
+            for (NSDictionary *dic0 in arr) {
+                PhotoModel *model = [[PhotoModel alloc] init];
+                [model setValuesForKeysWithDictionary:dic0];
+                [self.dataSource addObject:model];
+            }
+
+           
         }
-        NSLog(@"====%@",json);
+
+        
+        
+        
          [self handleEndRefresh];
-        [self.collection reloadData];
+         [self.collection reloadData];
         
     } failure:^(NSError *error) {
         
