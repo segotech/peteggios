@@ -20,6 +20,7 @@
 //资源库的接口
 //已上传的视频
 -(void)getVideoWithMid:(NSString *)mid
+                pageIndex:(int)pageIndex
                    complete:(void(^)(BaseModel *model))completeBlock;
 
 

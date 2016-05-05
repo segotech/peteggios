@@ -19,6 +19,8 @@
 -(void)addFeedingtimeWithMid:(NSString *)mid
                          type:(NSString *)type
                          times:(NSString *)times
+                         deviceno:(NSString *)deviceno
+                         termid:(NSString *)termid
                          complete:(void(^)(BaseModel *model))completeBlock;
 
 
