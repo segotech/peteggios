@@ -7,7 +7,7 @@
 //
 
 #import "ChangePasswordViewController.h"
-
+#import "AFHttpClient+ChangepasswordAndBlacklist.h"
 @interface ChangePasswordViewController ()
 @property (nonatomic,strong)UITextField * oldPasswordTextfield;
 @property (nonatomic,strong)UITextField * newpassWordTextfield;
@@ -75,8 +75,41 @@
 
 }
 -(void)sureButtonTouch{
-  
+    NSString * str = [AccountManager sharedAccountManager].loginModel.showpwd;
+    if (![_oldPasswordTextfield.text isEqualToString:str]) {
+        [[AppUtil appTopViewController] showHint:@"您输入的旧密码有误"];
+        return;
+    }
+    
+    if (![_newpassWordTextfield.text isEqualToString:_surePassworeTextfield.text]) {
+        [[AppUtil appTopViewController] showHint:@"两次输入密码不一致"];
+        return;
+    }
+    
+    if ([AppUtil isBlankString:_newpassWordTextfield.text]) {
+         [[AppUtil appTopViewController] showHint:@"请输入新密码"];
+        return;
+    }
+    
 
+    [[AFHttpClient sharedAFHttpClient]modifyPasswordWithMid:[AccountManager sharedAccountManager].loginModel.mid password:_newpassWordTextfield.text complete:^(BaseModel *model) {
+         [[AppUtil appTopViewController] showHint:model.retDesc];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
+        [[AccountManager sharedAccountManager]logout];
+        // 清除plist
+        NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
+        NSDictionary *dictionary = [userDefatluts dictionaryRepresentation];
+        for(NSString* key in [dictionary allKeys]){
+            [userDefatluts removeObjectForKey:key];
+            [userDefatluts synchronize];
+        }
+
+    }];
+    
+    
+    
+    
+    
 
 }
 

@@ -89,6 +89,14 @@
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
         [[AccountManager sharedAccountManager]logout];
+        // 清除plist
+        NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
+        NSDictionary *dictionary = [userDefatluts dictionaryRepresentation];
+        for(NSString* key in [dictionary allKeys]){
+            [userDefatluts removeObjectForKey:key];
+            [userDefatluts synchronize];
+        }
+
 
     }]];
     

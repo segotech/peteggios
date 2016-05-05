@@ -28,11 +28,39 @@
 
 @implementation PersonAttentionViewController
 
+
+-(void)cleanTip{
+     _pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
+    _headButton.hidden = YES;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+  [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanTip) name:@"isreaddd" object:nil];
+    self.tabBarController.tabBar.hidden= NO;
+    NSArray *array = self.navigationController.viewControllers;
+    self.navigationItem.backBarButtonItem= nil;
+    if (array.count > 1) {
+        UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+        leftbutton.frame = CGRectMake(0, 0, 30, 30);
+        [leftbutton setTitleEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
+        [leftbutton setImageEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
+        
+        [leftbutton setImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+        self.tabBarController.tabBar.hidden= YES;
+        
+        [self showBarButton:NAV_LEFT button:leftbutton];
+    }
+
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setNavTitle:@"关注"];
     [self initTopView];
+   
 }
 -(void)initTopView{
     UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, self.view.width, 40 * W_Hight_Zoom)];
@@ -68,30 +96,28 @@
     [super setupView];
    
    //如果有新消息，pageviecontroller的位置要发生改变，看了消息之后，还要发送通知让它变回来
-    
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-                                                          navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                           
+                                                    navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                     options:nil];
+    if (self.isredTip == NO) {
+          _pageViewController.view.frame = CGRectMake(0, 94, self.view.frame.size.width, self.view.frame.size.height - 94);
+        _headButton =[[UIButton alloc]initWithFrame:CGRectMake(117.5 * W_Wide_Zoom, 7 * W_Hight_Zoom, 140 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        _headButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        [_headButton setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];
+        _headButton.backgroundColor = [UIColor blackColor];
+        [_headButton setTitle:@"新关注" forState:UIControlStateNormal];
+        _headButton.titleLabel.font =[UIFont systemFontOfSize:13];
+        _headButton.layer.cornerRadius = 5;
+        [_pageViewController.view addSubview:_headButton];
+        UILabel * hongdianLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 12,3, 3)];
+        hongdianLabel.backgroundColor = [UIColor redColor];
+        [_headButton addSubview:hongdianLabel];
+        [_headButton addTarget:self action:@selector(newGuanzhu) forControlEvents:UIControlEventTouchUpInside];
+    }else{
+        _pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
+        
+    }
     //64
-    _pageViewController.view.frame = CGRectMake(0, 94, self.view.frame.size.width, self.view.frame.size.height - 94);
-    
-    _headButton =[[UIButton alloc]initWithFrame:CGRectMake(117.5 * W_Wide_Zoom, 7 * W_Hight_Zoom, 140 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _headButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    [_headButton setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];
-    _headButton.backgroundColor = [UIColor blackColor];
-     [_headButton setTitle:@"新关注" forState:UIControlStateNormal];
-    _headButton.titleLabel.font =[UIFont systemFontOfSize:13];
-    _headButton.layer.cornerRadius = 5;
-    [_pageViewController.view addSubview:_headButton];
-    UILabel * hongdianLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 12,3, 3)];
-    hongdianLabel.backgroundColor = [UIColor redColor];
-    [_headButton addSubview:hongdianLabel];
-    [_headButton addTarget:self action:@selector(newGuanzhu) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    
-    
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     

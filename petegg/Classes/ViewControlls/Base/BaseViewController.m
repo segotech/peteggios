@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "UITabBar+Badge.h"
+#import "AFHttpClient+PersonAttention.h"
 @implementation BaseViewController
 
 - (void)viewDidLoad{
@@ -32,8 +33,30 @@
     [super viewWillAppear:animated];
     [self setLeftBackButton];
     [self isMessage];
+    [self isfouceTip];
 
 }
+
+//是否有人关注
+-(void)isfouceTip{
+        [[AFHttpClient sharedAFHttpClient]focusTipCountWithMid:[AccountManager sharedAccountManager].loginModel.mid  complete:^(BaseModel *model) {
+            if (model) {
+                if ([model.content isEqualToString:@"0"]) {
+                    NSUserDefaults * defeults =[NSUserDefaults standardUserDefaults];
+                    [defeults setObject:model.content forKey:@"countfoucetip"];
+                    [defeults synchronize];
+                }else{
+                    NSUserDefaults * defeults =[NSUserDefaults standardUserDefaults];
+                    [defeults setObject:model.content forKey:@"countfoucetip"];
+                    [defeults synchronize];
+                    [self.tabBarController.tabBar showBadgeOnItemIndex:4];
+                }
+
+            }
+        }];
+
+}
+
 
 
 /**
@@ -42,7 +65,6 @@
 
 - (void)isMessage
 {
-    
     NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
     [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     NSString * service =[NSString stringWithFormat:@"clientAction.do?common=trendTipCount&classes=appinterface&method=json"];
@@ -59,12 +81,7 @@
             
         }
     } failure:^(NSError *error) {
-        
-        
-        
     }];
-    
-    
     
 }
 
