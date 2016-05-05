@@ -249,6 +249,7 @@
 		57F2C8371CA21E89005324DD /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8361CA21E89005324DD /* RecommendViewController.m */; };
 		57F2C83A1CA21EB1005324DD /* AttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F2C8391CA21EB1005324DD /* AttentionViewController.m */; };
 		57F824E01CDAD6660026D597 /* DetailVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F824DF1CDAD6660026D597 /* DetailVideoCell.m */; };
+		57F824E41CDAED3A0026D597 /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F824E31CDAED3A0026D597 /* UIImage-Extensions.m */; };
 		7D0116171CC7631000FEEF16 /* AFHttpClient+Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0116161CC7631000FEEF16 /* AFHttpClient+Issue.m */; };
 		7D0128E81CC5C8480009BF6B /* moveing.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D0128E71CC5C8480009BF6B /* moveing.png */; };
 		7D0128EB1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0128EA1CC5DA5D0009BF6B /* PersonNewAttentionViewController.m */; };
@@ -1157,6 +1158,8 @@
 		57F2C8391CA21EB1005324DD /* AttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionViewController.m; sourceTree = "<group>"; };
 		57F824DE1CDAD6660026D597 /* DetailVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVideoCell.h; sourceTree = "<group>"; };
 		57F824DF1CDAD6660026D597 /* DetailVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVideoCell.m; sourceTree = "<group>"; };
+		57F824E21CDAED3A0026D597 /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
+		57F824E31CDAED3A0026D597 /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
 		7D0116151CC7631000FEEF16 /* AFHttpClient+Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Issue.h"; sourceTree = "<group>"; };
 		7D0116161CC7631000FEEF16 /* AFHttpClient+Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Issue.m"; sourceTree = "<group>"; };
 		7D0128E71CC5C8480009BF6B /* moveing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveing.png; sourceTree = "<group>"; };
@@ -2672,6 +2675,7 @@
 		57666F6B1C9686DE00A52DBA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				57F824E11CDAED3A0026D597 /* UIImage-Extensions */,
 				34144BE61CC4BCCA007C4498 /* QFTableView.h */,
 				34144BE71CC4BCCA007C4498 /* QFTableView.m */,
 				5778B2FF1CC08BBC00EC2D96 /* NSString+URLEncoding.h */,
@@ -3036,6 +3040,15 @@
 				57666FE91C96C5AA00A52DBA /* AccountManager.m */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		57F824E11CDAED3A0026D597 /* UIImage-Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				57F824E21CDAED3A0026D597 /* UIImage-Extensions.h */,
+				57F824E31CDAED3A0026D597 /* UIImage-Extensions.m */,
+			);
+			path = "UIImage-Extensions";
 			sourceTree = "<group>";
 		};
 		7D15E7C31CD8428D003A472C /* ThreePoints */ = {
@@ -3807,6 +3820,7 @@
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				7DA216841CD1A77C00F6BCCB /* NewPremissViewController.m in Sources */,
 				7DA2168A1CD1B4A600F6BCCB /* PremissModel.m in Sources */,
+				57F824E41CDAED3A0026D597 /* UIImage-Extensions.m in Sources */,
 				7D3A352B1CB3CAE00037C616 /* RegiestViewController.m in Sources */,
 				7D30E8C71CA66C67004DE055 /* CALayer+AddUIColor.m in Sources */,
 				7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */,
