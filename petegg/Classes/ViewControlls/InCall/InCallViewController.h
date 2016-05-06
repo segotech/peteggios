@@ -20,4 +20,14 @@
 @property (strong, nonatomic) IBOutlet UIImageView *pointView;
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 
+
+// 别人
+
+@property(nonatomic,strong)NSString * deviceoOth;
+@property(nonatomic,strong)NSString * termidOth;
+@property(nonatomic,assign)BOOL isOth;
+
+
+
+
 @end

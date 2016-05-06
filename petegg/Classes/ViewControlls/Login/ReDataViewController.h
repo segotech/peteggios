@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ReDataViewController : UIViewController
+#import "BaseViewController.h"
+@interface ReDataViewController : BaseViewController
 
 @end
