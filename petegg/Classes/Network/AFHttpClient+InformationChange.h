@@ -31,6 +31,15 @@
                          picture:(NSString *)picture
                          complete:(void(^)(BaseModel *model))completeBlock;
 
+//修改qq显示状态
+-(void)modifyQqStatusWithMid:(NSString *)mid
+                         object:(NSString *)object
+                         complete:(void(^)(BaseModel *model))completeBlock;
+
+
+
+
+
 
 
 @end

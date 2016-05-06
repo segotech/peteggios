@@ -12,13 +12,14 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 #import "AFHttpClient+Issue.h"
 #import "MyVideoCollectionViewCell.h"
 #import "IssueZiYuankuModel.h"
-
+#import "WechatIssueViewController.h"
 @interface RepositoryVideoViewController ()
 
 {
     
     
     NSMutableArray * deleteOrUpdateArr;
+    NSMutableArray * thumbnailsAry;
     UIImageView * _deleteImageV;
     UIButton * _deleteBtn;
     
@@ -47,7 +48,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     [self.collection registerNib:[UINib nibWithNibName:@"HeaderViewCollection" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kheaderIdentifier];
     self.collection.backgroundColor =[UIColor whiteColor];
     
-    
     _deleteImageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, MainScreen.height-105, MainScreen.width, 45)];
     _deleteImageV.userInteractionEnabled = YES;
     _deleteImageV.hidden = YES;
@@ -59,7 +59,10 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     
     _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _deleteBtn.frame = CGRectMake(_deleteImageV.center.x-15, 5, 30, 30);
-    [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
+//    [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
+    [_deleteBtn setTitle:@"完成" forState:UIControlStateNormal];
+    [_deleteBtn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+    _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [_deleteBtn addTarget:self action:@selector(onDeleBt:) forControlEvents:UIControlEventTouchUpInside];
     [_deleteImageV addSubview:_deleteBtn];
     
@@ -80,8 +83,14 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     
     if (deleteOrUpdateArr.count>1) {
         // 这里只能上传一个（提示）
-        [self showSuccessHudWithHint:@"只能选择一个视频上传"];
-        
+        [self showSuccessHudWithHint:@"只能选择一个视频发布"];
+    }else if (deleteOrUpdateArr.count == 1){
+        NSLog(@"haha");
+        WechatIssueViewController * vc = [[WechatIssueViewController alloc]init];
+        vc.ziyuanshipArray = deleteOrUpdateArr;
+        vc.thumbArry = thumbnailsAry;
+        vc.wechatOrziyuanku = @"ziyuankuship";
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
     
@@ -90,7 +99,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 -(void)setupData{
     [super setupData];
     deleteOrUpdateArr =[[NSMutableArray alloc]init];
-    
+    thumbnailsAry = [[NSMutableArray alloc]init];
 
 }
 
@@ -173,24 +182,30 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
      NSInteger i = imageSender.view.tag/1000;//分区
         int j = imageSender.view.tag%1000;//每个分区的分组
         IssueZiYuankuModel *model = self.dataSource[i-1];
-        NSArray *imageA = [model.filename componentsSeparatedByString:@","];
-        
+    
+        NSArray *imageA = [model.networkaddress componentsSeparatedByString:@","];
+    
+        NSArray * thumAr = [model.thumbnails componentsSeparatedByString:@","];
+    
         MyVideoCollectionViewCell *cell = (MyVideoCollectionViewCell *)[self.collection cellForItemAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i-1]];
         
         if (cell.rightBtn.hidden == YES) {
             cell.rightBtn.hidden = NO;
             cell.rightBtn.selected = YES;
             [deleteOrUpdateArr addObject:imageA[j]];//把要删除的图片加入删除数组
-            
+            [thumbnailsAry addObject:thumAr[j]];
         }else{
             cell.rightBtn.hidden = YES;
             cell.rightBtn.selected = NO;
             [deleteOrUpdateArr removeObject:imageA[j]];//把要删除的图片从删除数组中删除
+            [thumbnailsAry removeObject:thumAr[j]];
         }
     
     if (deleteOrUpdateArr.count>=1) {
         _deleteImageV.hidden = NO;
     
+    }else{
+        _deleteImageV.hidden = YES;
     }
         
        

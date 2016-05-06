@@ -365,6 +365,7 @@
             WechatIssueViewController * weVc = [[WechatIssueViewController alloc]init];
             weVc.str = str;
             weVc.urlstr = url;
+            weVc.wechatOrziyuanku = @"wechat";
             [self.navigationController pushViewController:weVc animated:YES];
             
         } else {
@@ -379,8 +380,8 @@
     SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:_recorder.session.assetRepresentingSegments];
     //改了一下，试一试
     
-    exportSession.videoConfiguration.preset = SCPresetLowQuality;
-    exportSession.audioConfiguration.preset = SCPresetLowQuality;
+    exportSession.videoConfiguration.preset = SCPresetMediumQuality;
+    exportSession.audioConfiguration.preset = SCPresetMediumQuality;
     
     exportSession.videoConfiguration.maxFrameRate = 35;
     exportSession.outputUrl = VIDEO_OUTPUTFILE;

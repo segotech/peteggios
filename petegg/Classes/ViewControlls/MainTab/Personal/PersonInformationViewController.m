@@ -36,6 +36,7 @@
 @property(nonatomic,strong)UIImagePickerController * imagePicker;
 @property (nonatomic,strong)NSString * picstr;
 
+@property (nonatomic,strong)UIButton * publicBtn;
 @end
 
 @implementation PersonInformationViewController
@@ -131,6 +132,24 @@
     [self.view addSubview:_qqTextField];
     _qqTextField.text = model.qq;
     
+    
+    _publicBtn = [[UIButton alloc]initWithFrame:CGRectMake(280 * W_Wide_Zoom, 285 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Wide_Zoom)];
+   // [_publicBtn setTitle:@"公开" forState:UIControlStateNormal];
+    [_publicBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _publicBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [self.view addSubview:_publicBtn];
+    [_publicBtn addTarget:self action:@selector(gongkaiButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+    if ([model.qqshowpurview isEqualToString:@"all"]) {
+        [_publicBtn setTitle:@"公开" forState:UIControlStateNormal];
+    }else if ([model.qqshowpurview isEqualToString:@"self"]){
+        [_publicBtn setTitle:@"仅自己" forState:UIControlStateNormal];
+    }else if ([model.qqshowpurview isEqualToString:@"friend"]){
+        [_publicBtn setTitle:@"仅好友" forState:UIControlStateNormal];
+    }
+    
+    
+    
+    
     _leftkuangbtn = [[UIButton alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 337 * W_Hight_Zoom, 18 * W_Wide_Zoom, 17 * W_Hight_Zoom)];
     [_leftkuangbtn setImage:[UIImage imageNamed:@"kuang_off.png"] forState:UIControlStateNormal];
     [_leftkuangbtn setImage:[UIImage imageNamed:@"kuang_on.png"] forState:UIControlStateSelected];
@@ -195,9 +214,75 @@
     sureButton.layer.cornerRadius = 5;
     [self.view addSubview:sureButton];
     [sureButton addTarget:self action:@selector(sureButtonTouch) forControlEvents:UIControlEventTouchUpInside];
-
+}
+-(void)gongkaiButtonTouch:(UIButton *)sender{
+    _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 120 * W_Hight_Zoom)];
+    _littleDownView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+    _coverButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 667 * W_Hight_Zoom)];
+    _coverButton.backgroundColor = [UIColor blackColor];
+    _coverButton.alpha = 0.4;
+    [[UIApplication sharedApplication].keyWindow addSubview:_coverButton];
+    [_coverButton addTarget:self action:@selector(hideButton:) forControlEvents:UIControlEventTouchUpInside];
+    [UIView animateWithDuration:0.3 animations:^{
+        _downWithView.frame = CGRectMake(0 * W_Wide_Zoom, 503 * W_Hight_Zoom, 375 * W_Wide_Zoom, 120 * W_Hight_Zoom);
+        _littleDownView.frame = CGRectMake(0 * W_Wide_Zoom, 627 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom);
+        _littleDownView.backgroundColor = [UIColor whiteColor];
+        _downWithView.backgroundColor = [UIColor whiteColor];
+        [[UIApplication sharedApplication].keyWindow addSubview:_littleDownView];
+        [[UIApplication sharedApplication].keyWindow addSubview:_downWithView];
+    }];
+    NSArray * nameArray = @[@"所有人",@"好友",@"仅自己",];
+    for (int i = 0; i < 3; i++) {
+        UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 40 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
+        lineLabel.backgroundColor = GRAY_COLOR;
+        [_downWithView addSubview:lineLabel];
+        
+        UIButton * downButtones = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 40 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+        [downButtones setTitle:nameArray[i] forState:UIControlStateNormal];
+        [downButtones setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        downButtones.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_downWithView addSubview:downButtones];
+        downButtones.tag = i;
+        [downButtones addTarget:self action:@selector(gongkai:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    UIButton * quxiaoButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+    [quxiaoButton setTitle:@"取消" forState:UIControlStateNormal];
+    [quxiaoButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    quxiaoButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_littleDownView addSubview:quxiaoButton];
+    [quxiaoButton addTarget:self action:@selector(hideButton:) forControlEvents:UIControlEventTouchUpInside];
 
 }
+
+
+
+-(void)gongkai:(UIButton *)sender{
+    NSString * objectStr = @"";
+    if (sender.tag == 0) {
+        objectStr = @"all";
+        [_publicBtn setTitle:@"公开" forState:UIControlStateNormal];
+    }else if (sender.tag == 1){
+        objectStr = @"friend";
+        [_publicBtn setTitle:@"仅好友" forState:UIControlStateNormal];
+    }else if (sender.tag == 2){
+        objectStr = @"self";
+        [_publicBtn setTitle:@"仅自己" forState:UIControlStateNormal];
+    }
+    [[AFHttpClient sharedAFHttpClient]modifyQqStatusWithMid:[AccountManager sharedAccountManager].loginModel.mid object:objectStr complete:^(BaseModel *model) {
+        if (model) {
+            [[AppUtil appTopViewController] showHint:@"修改成功"];
+        }else{
+            [[AppUtil appTopViewController] showHint:model.retDesc];
+        }
+    }];
+    
+    
+    
+    [self hideButton:nil];
+}
+
+
+
 
 -(void)headButtontouch:(UIButton *)sender{
     _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 80 * W_Hight_Zoom)];

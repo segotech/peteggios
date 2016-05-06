@@ -448,7 +448,22 @@ static NSString * cellId = @"fedseting2321232322313323231";
             
             
         }else{
-            [[AppUtil appTopViewController] showHint:model.retDesc];
+            
+             [self onedayView];
+            [_timeBtn1 setTitle:@"00:00" forState:UIControlStateNormal];
+            [_timeBtn2 setTitle:@"00:00" forState:UIControlStateNormal];
+            [_timeBtn3 setTitle:@"00:00" forState:UIControlStateNormal];
+            [_timeBtn4 setTitle:@"00:00" forState:UIControlStateNormal];
+
+            _oneDayButton.selected = YES;
+            _twoDayButton.selected = NO;
+            _isOneOrTwo = YES;
+            _moveView.frame = CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
+            //[[AppUtil appTopViewController] showHint:@"启用一天模式"];
+            _bigBtn.backgroundColor = [UIColor blueColor];
+           // [self onedayView];
+
+          //  [[AppUtil appTopViewController] showHint:model.retDesc];
         }
     }];
 

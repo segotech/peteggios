@@ -12,6 +12,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 #import "AFHttpClient+Issue.h"
 #import "MyVideoCollectionViewCell.h"
 #import "GetPhotoGraphModel.h"
+#import "WechatIssueViewController.h"
 @interface RepositorySnapshotViewController ()
 {
     
@@ -54,7 +55,10 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     
     _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _deleteBtn.frame = CGRectMake(_deleteImageV.center.x-15, 5, 30, 30);
-    [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
+    //    [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
+    [_deleteBtn setTitle:@"完成" forState:UIControlStateNormal];
+    [_deleteBtn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+    _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [_deleteBtn addTarget:self action:@selector(onDeleBt:) forControlEvents:UIControlEventTouchUpInside];
     [_deleteImageV addSubview:_deleteBtn];
 
@@ -74,6 +78,11 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     
     if (deleteOrUpdateArr.count>4) {
         [self showSuccessHudWithHint:@"只能上传四张图片"];
+    }else{
+        WechatIssueViewController * vc = [[WechatIssueViewController alloc]init];
+        vc.wechatOrziyuanku = @"tupianpian";
+        vc.imageArrayy = deleteOrUpdateArr;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
     
@@ -82,7 +91,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 -(void)setupData{
     [super setupData];
     deleteOrUpdateArr =[[NSMutableArray alloc]init];
-
+   
 }
 
 - (void)data:(NSString *)stateNum pageNum:(int)page
@@ -171,7 +180,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     int j = imageSender.view.tag%1000;//每个分区的分组
     GetPhotoGraphModel *model = self.dataSource[i-1];
     NSArray *imageA = [model.networkaddress componentsSeparatedByString:@","];
-    
+
     MyVideoCollectionViewCell *cell = (MyVideoCollectionViewCell *)[self.collection cellForItemAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i-1]];
     
     if (cell.rightBtn.hidden == YES) {

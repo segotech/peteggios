@@ -11,5 +11,9 @@
 @interface WechatIssueViewController : BaseViewController
 @property (nonatomic,strong)NSString * str;
 @property (nonatomic,strong)NSURL * urlstr;
+@property (nonatomic,strong)NSString * wechatOrziyuanku;
+@property (nonatomic,strong)NSMutableArray * ziyuanshipArray;
+@property (nonatomic,strong)NSMutableArray * thumbArry;
 
+@property (nonatomic,strong)NSMutableArray * imageArrayy;
 @end
