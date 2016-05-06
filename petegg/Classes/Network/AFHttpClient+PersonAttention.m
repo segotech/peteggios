@@ -41,10 +41,48 @@
         }
     }];
     
-    
-    
-    
 }
+
+-(void)isreadWithMid:(NSString *)mid type:(NSString *)type complete:(void (^)(BaseModel *))completeBlock{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"common"] = @"isread";
+    params[@"mid"] = mid;
+    params[@"type"] = type;
+    
+    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+      
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+    
+
+
+}
+
+
+-(void)focusTipCountWithMid:(NSString *)mid complete:(void (^)(BaseModel *))completeBlock{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"common"] = @"focusTipCount";
+    params[@"mid"] = mid;
+    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+
+    
+
+
+}
+
+
+
+
+
 
 
 

@@ -24,6 +24,7 @@
 
 #import "FeedSetingViewController.h"
 #import "ThreePointsViewController.h"
+#import "UITabBar+Badge.h"
 
 @interface PersonalViewController()
 
@@ -33,7 +34,8 @@
     UIImageView *bgImgView;
     NSUserDefaults * defauts;
     // countMessage
-    
+    BOOL redpoint;
+    BOOL dongtai;
     
     
 }
@@ -45,6 +47,8 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.view.backgroundColor =[UIColor whiteColor];
+    redpoint = NO;
+    dongtai = NO;
     [self setNavTitle: NSLocalizedString(@"tabPersonal", nil)];
     self.dataSource =[NSMutableArray array];
     self.dataSourceImage =[NSMutableArray array];
@@ -127,28 +131,40 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initheadImage:) name:@"handImageText" object:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanMessage) name:@"message" object:nil];
+    
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanTip) name:@"isreaddd" object:nil];
+    
+    
     [self.tableView reloadData];
     
-    
+    [self hiddenRedpoint];
 }
 
 /**
  *  消息清除
 */
 
-
+-(void)cleanTip{
+    personTableViewCell * cell = (personTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    cell.redpoint.hidden = YES;
+    redpoint = YES;
+    [self hiddenRedpoint];
+}
 
 - (void)cleanMessage
 {
+    personTableViewCell * cell = (personTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    cell.moneyLabel.hidden = YES;
+    
+    dongtai = YES;
+    [self hiddenRedpoint];
+}
 
-       personTableViewCell * cell = (personTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        cell.moneyLabel.hidden = YES;
-    
-    // tab 上面的 两个要一起判断 红点（关注的没写 暂时不判断）
-    
-    
-    
-    
+-(void)hiddenRedpoint{
+    // tab 上面的 两个要一起判断 红点
+    if (dongtai ==YES && redpoint == YES) {
+        [self.tabBarController.tabBar hideBadgeOnItemIndex:4];
+    }
     
 }
 
@@ -370,6 +386,10 @@
     self.count = [defauts objectForKey:@"countMessage"];
     
     
+    NSUserDefaults * tipUser = [NSUserDefaults standardUserDefaults];
+    NSString * tipstr = [tipUser objectForKey:@"countfoucetip"];
+    
+    
     static NSString * showUserInfoCellIdentifier = @"ShowUserInfoCell123";
     personTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:showUserInfoCellIdentifier];
     if (cell == nil)
@@ -380,16 +400,14 @@
     switch (indexPath.section) {
             
         case 0:
-            
-            
             if (indexPath.row == 0 && ![self.count isEqualToString:@"0"]) {
-    
+                dongtai = NO;
                 cell.moneyLabel.hidden = NO;
                 cell.moneyLabel.text = self.count;
 
             }else
             {
-               
+                dongtai = YES;
                 cell.moneyLabel.hidden  = YES;
                 
             }
@@ -401,6 +419,16 @@
             break;
             
         case 1:
+            if (indexPath.row == 0) {
+                if (![tipstr isEqualToString:@"0"]) {
+                    redpoint = NO;
+                    cell.redpoint.hidden = NO;
+                }else{
+                    redpoint = YES;
+                    cell.redpoint.hidden  = YES;
+                }
+            }
+        
             cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+3]];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.introduce.text= self.dataSource[indexPath.row+3];
@@ -482,6 +510,7 @@
                 
                 NSLog(@"00");
                 PersonAttentionViewController * attentionVc = [[PersonAttentionViewController alloc]init];
+                attentionVc.isredTip = redpoint;
                 [self.navigationController pushViewController:attentionVc animated:YES];
     
             }

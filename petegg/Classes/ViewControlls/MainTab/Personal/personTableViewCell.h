@@ -12,4 +12,5 @@
 @property (nonatomic,strong)UIImageView * imageCell;
 @property (nonatomic,strong)UILabel * introduce;
 @property (nonatomic,strong)UILabel * moneyLabel;
+@property (nonatomic,strong)UILabel * redpoint;
 @end

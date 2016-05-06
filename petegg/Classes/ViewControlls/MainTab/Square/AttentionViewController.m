@@ -112,11 +112,16 @@ static NSString * cellId = @"AttentionCellId";
     NSURL * imageUrl = [NSURL URLWithString:imageStr];
     [cell.iconImageV sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     cell.iconImageV.layer.cornerRadius = cell.iconImageV.bounds.size.width/2;
-    [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        if (image) {
-            cell.photoView.image = [image imageByScalingProportionallyToSize:CGSizeMake(cell.width, CGFLOAT_MAX)];
-        }
-    }];
+    if (model.cutImage) {
+        cell.photoView.image = model.cutImage;
+    }else{
+        [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if (image) {
+                cell.photoView.image = [image imageByScalingProportionallyToSize:CGSizeMake(self.tableView.width, CGFLOAT_MAX)];
+                model.cutImage = cell.photoView.image;
+            }
+        }];
+    }
     cell.introduceLable.text = model.content;
     
     cell.timeLable.text = model.publishtime;

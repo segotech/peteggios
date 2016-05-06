@@ -172,13 +172,16 @@ static NSString * cellId = @"recommeCellId";
     touchButton.tag = indexPath.row + 9;
     [cell addSubview:touchButton];
 
-    [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        cell.photoView.image =[self cutImage:image];
-        
-        if (image) {
-            cell.photoView.image = [image imageByScalingProportionallyToSize:CGSizeMake(cell.width, CGFLOAT_MAX)];
-        }
-    }];
+    if (model.cutImage) {
+        cell.photoView.image = model.cutImage;
+    }else{
+        [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if (image) {
+                cell.photoView.image = [image imageByScalingProportionallyToSize:CGSizeMake(self.tableView.width, CGFLOAT_MAX)];
+                model.cutImage = cell.photoView.image;
+            }
+        }];
+    }
     UIButton * photoViewBtn = [[UIButton alloc]initWithFrame:cell.photoView.frame];
     photoViewBtn.tag = indexPath.row + 11;
     [photoViewBtn addTarget:self action:@selector(photoButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
@@ -194,8 +197,8 @@ static NSString * cellId = @"recommeCellId";
     
     if ([model.mid isEqualToString:[AccountManager sharedAccountManager].loginModel.mid]) {
         cell.aboutBtn.hidden = YES;
-    }
-
+    }else{
+        cell.aboutBtn.hidden = NO;
     if ([AppUtil isBlankString:model.isfriend]) {
         cell.aboutBtn.selected = NO;
         [cell.aboutBtn setTitle:@"+关注" forState:UIControlStateNormal];
@@ -203,6 +206,7 @@ static NSString * cellId = @"recommeCellId";
     }else{
         cell.aboutBtn.selected = YES;
         [cell.aboutBtn setTitle:@"已关注" forState:UIControlStateNormal];
+    }
     }
     [cell.aboutBtn addTarget:self action:@selector(attentionTouch:) forControlEvents:UIControlEventTouchUpInside];
     cell.aboutBtn.tag = indexPath.row + 12;
@@ -213,9 +217,7 @@ static NSString * cellId = @"recommeCellId";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   
-}
+
 
 //关注按钮点击事件
 -(void)attentionTouch:(UIButton * )sender{

@@ -40,9 +40,15 @@
         self.moneyLabel.backgroundColor =[UIColor redColor];
         [self.moneyLabel.layer setMasksToBounds:YES];
         self.moneyLabel.layer.cornerRadius = self.moneyLabel.bounds.size.width/2;
-        
-        
         [self addSubview:self.moneyLabel];
+        
+        self.redpoint = [[UILabel alloc]initWithFrame:CGRectMake(310 * W_Wide_Zoom, 30 * W_Hight_Zoom, 3 * W_Wide_Zoom, 3 * W_Hight_Zoom)];
+        self.redpoint.backgroundColor = [UIColor redColor];
+        self.redpoint.hidden = YES;
+        self.redpoint.layer.cornerRadius = self.redpoint.width/2;
+        [self addSubview:self.redpoint];
+        
+        
         
         
         
