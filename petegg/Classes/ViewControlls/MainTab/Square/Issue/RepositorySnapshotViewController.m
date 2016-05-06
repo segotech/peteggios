@@ -11,7 +11,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 #import "RepositorySnapshotViewController.h"
 #import "AFHttpClient+Issue.h"
 #import "MyVideoCollectionViewCell.h"
-#import "IssueZiYuankuModel.h"
+#import "GetPhotoGraphModel.h"
 @interface RepositorySnapshotViewController ()
 
 @end
@@ -40,14 +40,23 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 
 }
 
-- (void)data:(NSString *)stateNum
+- (void)data:(NSString *)stateNum pageNum:(int)page
 {
-//    [[AFHttpClient sharedAFHttpClient]getVideoWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
-//        [self.dataSource removeAllObjects];
-//        [self.dataSource addObjectsFromArray:model.list];
-//        [self handleEndRefresh];
-//        [self.collection reloadData];
-//    }];
+    
+        [[AFHttpClient sharedAFHttpClient]getPhotoGraphWithMid:[AccountManager sharedAccountManager].loginModel.mid pageIndex:page complete:^(BaseModel *model) {
+            if (page ==1) {
+                [self.dataSource removeAllObjects];
+                [self.dataSource addObjectsFromArray:model.list];
+            }else
+            {
+                 [self.dataSource addObjectsFromArray:model.list];
+            }
+            [self handleEndRefresh];
+            [self.collection reloadData];
+
+            
+        }];
+    
     
 }
 
@@ -56,11 +65,11 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    IssueZiYuankuModel *model;
+    GetPhotoGraphModel *model;
     if (self.dataSource.count>0) {
         model = self.dataSource[section];
     }
-    NSArray *imageA = [model.thumbnails componentsSeparatedByString:@","];
+    NSArray *imageA = [model.networkaddress componentsSeparatedByString:@","];
     
     return imageA.count;
 }
@@ -84,9 +93,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    IssueZiYuankuModel * model = self.dataSource[indexPath.section];
+    GetPhotoGraphModel * model = self.dataSource[indexPath.section];
     MyVideoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imageId" forIndexPath:indexPath];
-    NSArray *imageA = [model.thumbnails componentsSeparatedByString:@","];
+    NSArray *imageA = [model.networkaddress componentsSeparatedByString:@","];
     NSString *urlstr = @"";
     if(![AppUtil isBlankString:imageA[indexPath.row]]){
         urlstr = imageA[indexPath.row];
@@ -130,12 +139,12 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
         UILabel *label = (UILabel *)[view viewWithTag:2222];
         view.backgroundColor =[UIColor whiteColor];
         
-        IssueZiYuankuModel *model;
+        GetPhotoGraphModel *model;
         if (self.dataSource.count>0) {
             model = self.dataSource[indexPath.section];
         }
         
-        NSArray *timeTtile =[model.opttime componentsSeparatedByString:@","];
+        NSArray *timeTtile =[model.pgtime componentsSeparatedByString:@","];
         label.text =timeTtile[indexPath.row];
     }
     else if ([kind isEqualToString:UICollectionElementKindSectionFooter]){

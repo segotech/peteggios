@@ -24,5 +24,9 @@
                    complete:(void(^)(BaseModel *model))completeBlock;
 
 
+-(void)getPhotoGraphWithMid:(NSString *)mid
+                  pageIndex:(int)pageIndex
+                    complete:(void(^)(BaseModel *model))completeBlock;
+
 
 @end

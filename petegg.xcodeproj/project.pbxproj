@@ -195,6 +195,7 @@
 		34A2186E1CCE15BC00ADD8FF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186D1CCE15BC00ADD8FF /* CoreData.framework */; };
 		34DB51371CDB28AE0032CF39 /* video_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DB51361CDB28AE0032CF39 /* video_point.png */; };
 		34DB51391CDB2E740032CF39 /* light_on_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DB51381CDB2E740032CF39 /* light_on_on.png */; };
+		34DB513C1CDC68520032CF39 /* GetPhotoGraphModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DB513B1CDC68510032CF39 /* GetPhotoGraphModel.m */; };
 		34EDB5CC1CD34279001BB50C /* OtherEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5CB1CD34279001BB50C /* OtherEggViewController.m */; };
 		34EDB5CE1CD3542A001BB50C /* opvideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34EDB5CD1CD3542A001BB50C /* opvideo.png */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
@@ -1064,6 +1065,8 @@
 		34A2186D1CCE15BC00ADD8FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		34DB51361CDB28AE0032CF39 /* video_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_point.png; sourceTree = "<group>"; };
 		34DB51381CDB2E740032CF39 /* light_on_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_on_on.png; sourceTree = "<group>"; };
+		34DB513A1CDC68510032CF39 /* GetPhotoGraphModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPhotoGraphModel.h; sourceTree = "<group>"; };
+		34DB513B1CDC68510032CF39 /* GetPhotoGraphModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPhotoGraphModel.m; sourceTree = "<group>"; };
 		34EDB5CA1CD34279001BB50C /* OtherEggViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherEggViewController.h; sourceTree = "<group>"; };
 		34EDB5CB1CD34279001BB50C /* OtherEggViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherEggViewController.m; sourceTree = "<group>"; };
 		34EDB5CD1CD3542A001BB50C /* opvideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opvideo.png; sourceTree = "<group>"; };
@@ -2752,6 +2755,8 @@
 				7DB4F5BD1CCF3F35002918DA /* InformationModel.m */,
 				7D05D8A61CCB21080081FB24 /* IssueZiYuankuModel.h */,
 				7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */,
+				34DB513A1CDC68510032CF39 /* GetPhotoGraphModel.h */,
+				34DB513B1CDC68510032CF39 /* GetPhotoGraphModel.m */,
 				7D0128EF1CC612E10009BF6B /* PersonAttention.h */,
 				7D0128F01CC612E10009BF6B /* PersonAttention.m */,
 				7D1763A71CBF8DD100579B4C /* RankModel.h */,
@@ -3836,6 +3841,7 @@
 				7DA4C4C11CDAE19C00ED6311 /* AgreementViewController.m in Sources */,
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
 				7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */,
+				34DB513C1CDC68520032CF39 /* GetPhotoGraphModel.m in Sources */,
 				7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */,
 				7D0116171CC7631000FEEF16 /* AFHttpClient+Issue.m in Sources */,
 				7D30E8A61CA66C05004DE055 /* SCFilter.m in Sources */,

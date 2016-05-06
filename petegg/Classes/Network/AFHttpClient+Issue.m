@@ -47,7 +47,21 @@
     }];
 
 }
+-(void)getPhotoGraphWithMid:(NSString *)mid pageIndex:(int)pageIndex complete:(void (^)(BaseModel *))completeBlock{
+     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"common"] = @"getPhotoGraph";
+    params[@"mid"] = mid;
+    params[@"page"] = @(pageIndex);
 
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        if (model){
+            model.list = [GetPhotoGraphModel arrayOfModelsFromDictionaries:model.list];
+        }
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+}
 
 
 @end

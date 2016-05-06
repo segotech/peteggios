@@ -35,7 +35,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     [self.collection registerNib:[UINib nibWithNibName:@"SQSupplementaryView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kfooterIdentifier];
     [self.collection registerNib:[UINib nibWithNibName:@"HeaderViewCollection" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kheaderIdentifier];
     self.collection.backgroundColor =[UIColor whiteColor];
-    [self initRefreshView:@"0"];
+    [self initRefreshView:@"1"];
 }
 
 -(void)setupData{
@@ -44,10 +44,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 
 }
 
-- (void)data:(NSString *)stateNum
+- (void)data:(NSString *)stateNum pageNum:(int)page
 {
-    self.collection.mj_footer.hidden = NO;
-    int page = 1;
+    
     [[AFHttpClient sharedAFHttpClient]getVideoWithMid:[AccountManager sharedAccountManager].loginModel.mid pageIndex:page complete:^(BaseModel *model) {
         if (page == 1) {
             [self.dataSource removeAllObjects];
@@ -57,7 +56,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
         }
         
         [self handleEndRefresh];
-       [self.collection reloadData];
+        [self.collection reloadData];
     }];
     
 }

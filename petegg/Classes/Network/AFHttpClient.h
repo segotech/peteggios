@@ -22,7 +22,7 @@
 #import "PremissModel.h"
 #import "ZdFriendModel.h"
 #import "FeddingModel.h"
-
+#import "GetPhotoGraphModel.h"
 
 #define BASE_URL    @"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"
 
