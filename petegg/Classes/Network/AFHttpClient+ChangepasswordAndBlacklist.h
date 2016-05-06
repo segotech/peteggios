@@ -40,7 +40,8 @@
                       fphone:(NSString *)fphone
                       complete:(void(^)(BaseModel *model))completeBlock;
 
-
-
+//交易明细(也写在这里算了)
+-(void)getTransactionRecordWithMid:(NSString *)mid
+                           complete:(void(^)(BaseModel *model))completeBlock;
 
 @end

@@ -23,6 +23,7 @@
 #import "ZdFriendModel.h"
 #import "FeddingModel.h"
 #import "GetPhotoGraphModel.h"
+#import "TransactionRecordModel.h"
 
 #define BASE_URL    @"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"
 
