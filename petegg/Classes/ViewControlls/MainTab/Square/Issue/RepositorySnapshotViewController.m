@@ -13,6 +13,14 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 #import "MyVideoCollectionViewCell.h"
 #import "GetPhotoGraphModel.h"
 @interface RepositorySnapshotViewController ()
+{
+    
+    UIImageView * _deleteImageV;
+    UIButton * _deleteBtn;
+    NSMutableArray * deleteOrUpdateArr;
+    
+    
+}
 
 @end
 
@@ -25,7 +33,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 -(void)setupView{
     [super setupView];
     [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
-    self.collection.frame = CGRectMake(10, 65, SCREEN_WIDTH-20, SCREEN_HEIGHT-110);
+    self.collection.frame = CGRectMake(10, 40, SCREEN_WIDTH-20, SCREEN_HEIGHT-110);
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.collection.showsHorizontalScrollIndicator = NO;
     self.collection.showsVerticalScrollIndicator   = NO;
@@ -33,10 +41,47 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     [self.collection registerNib:[UINib nibWithNibName:@"SQSupplementaryView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kfooterIdentifier];
     [self.collection registerNib:[UINib nibWithNibName:@"HeaderViewCollection" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kheaderIdentifier];
     self.collection.backgroundColor =[UIColor whiteColor];
+    
+    
+    _deleteImageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, MainScreen.height-105, MainScreen.width, 45)];
+    _deleteImageV.userInteractionEnabled = YES;
+    _deleteImageV.hidden = YES;
+    _deleteImageV.backgroundColor =[UIColor whiteColor];
+    _deleteImageV.layer.borderWidth =1;
+    _deleteImageV.layer.borderColor =GRAY_COLOR.CGColor;
+    
+    [self.view addSubview:_deleteImageV];
+    
+    _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _deleteBtn.frame = CGRectMake(_deleteImageV.center.x-15, 5, 30, 30);
+    [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
+    [_deleteBtn addTarget:self action:@selector(onDeleBt:) forControlEvents:UIControlEventTouchUpInside];
+    [_deleteImageV addSubview:_deleteBtn];
+
+    
+    
+    
     [self initRefreshView:@"0"];
 }
+
+
+/**
+ *  删除或上传
+ */
+
+- (void)onDeleBt:(UIButton *)sender
+{
+    
+    if (deleteOrUpdateArr.count>4) {
+        [self showSuccessHudWithHint:@"只能上传四张图片"];
+    }
+    
+    
+}
+
 -(void)setupData{
     [super setupData];
+    deleteOrUpdateArr =[[NSMutableArray alloc]init];
 
 }
 
@@ -101,10 +146,51 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
         urlstr = imageA[indexPath.row];
     }
     [cell.imageV sd_setImageWithURL:[NSURL URLWithString:urlstr] placeholderImage:[UIImage imageNamed:@"sego.png"]];
-    
+    cell.imageV.tag = 1000*(indexPath.section+1) +indexPath.row;
+    cell.imageV.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapMYP = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onVideo:)];
+    [cell.imageV addGestureRecognizer:tapMYP];
+
     
     
     return cell;
+}
+
+
+
+/**
+ *  图片点击
+ */
+
+- (void)onVideo:(UITapGestureRecognizer *)imageSender
+{
+    
+    
+    
+    NSInteger i = imageSender.view.tag/1000;//分区
+    int j = imageSender.view.tag%1000;//每个分区的分组
+    GetPhotoGraphModel *model = self.dataSource[i-1];
+    NSArray *imageA = [model.networkaddress componentsSeparatedByString:@","];
+    
+    MyVideoCollectionViewCell *cell = (MyVideoCollectionViewCell *)[self.collection cellForItemAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i-1]];
+    
+    if (cell.rightBtn.hidden == YES) {
+        cell.rightBtn.hidden = NO;
+        cell.rightBtn.selected = YES;
+        [deleteOrUpdateArr addObject:imageA[j]];//把要删除的图片加入删除数组
+        
+    }else{
+        cell.rightBtn.hidden = YES;
+        cell.rightBtn.selected = NO;
+        [deleteOrUpdateArr removeObject:imageA[j]];//把要删除的图片从删除数组中删除
+    }
+    
+    if (deleteOrUpdateArr.count>=1) {
+        _deleteImageV.hidden = NO;
+        
+    }
+    
+    
 }
 
 //头部
