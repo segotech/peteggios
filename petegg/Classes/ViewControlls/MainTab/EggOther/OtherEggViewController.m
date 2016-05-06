@@ -59,6 +59,9 @@
         case SephoneCallOutgoingInit:{
             // 成功
             InCallViewController * incall =[[InCallViewController alloc]initWithNibName:@"InCallViewController" bundle:nil];
+            incall.deviceoOth =self.otherArr[0][@"deviceno"];
+            incall.termidOth = self.otherArr[0][@"termid"];
+            incall.isOth = YES;
             [incall setCall:call];
             [self presentViewController:incall animated:YES completion:nil];
             
@@ -257,7 +260,7 @@
         NSString *  locationString=[dateformatter stringFromDate:senddate];
         NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
         // 使用记录
-       NSString * service =@"clientAction.do?common=addDeviceUseRecord&classes=appinterface&method=json";
+        NSString * service =@"clientAction.do?common=addDeviceUseRecord&classes=appinterface&method=json";
         NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
         [dic setValue:@"other" forKey:@"object"];
         [dic setValue:self.otherArr[0][@"deviceno"] forKey:@"deviceno"];
@@ -267,7 +270,14 @@
         [dic setValue:self.otherArr[0][@"price"] forKey:@"consumption"];
         
         [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
+            
+            NSString * buildID = json[@"jsondata"][@"content"];
+            NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+            [defaults setValue:buildID forKey:@"othID"];
+            [defaults synchronize];
+            
             NSString * deveOther=self.otherArr[0][@"deviceno"];
+            
             [self sipCall:deveOther sipName:nil];
             
         } failure:^(NSError *error) {

@@ -565,6 +565,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     int j = imageSender.view.tag%1000;//每个分区的分组
     
     VideoModel *model = self.dataSource[i-1];
+        
     NSArray *imageA = [model.filename componentsSeparatedByString:@","];
     
     MyVideoCollectionViewCell *cell = (MyVideoCollectionViewCell *)[self.collection cellForItemAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i-1]];

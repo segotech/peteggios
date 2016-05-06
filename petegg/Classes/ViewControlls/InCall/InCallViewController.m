@@ -23,6 +23,10 @@
     int doubleTime;
     int couunt;
     
+    // 别人
+    
+    
+    
     
     
     
@@ -38,6 +42,9 @@
 @synthesize videoView;
 @synthesize timeText;
 @synthesize pointView;
+@synthesize isOth;
+@synthesize termidOth;
+@synthesize deviceoOth;
 
 
 - (void)setCall:(SephoneCall *)acall {
@@ -243,24 +250,17 @@
 - (IBAction)feedBtnClick:(UIButton *)sender {
     
     
-    /*
-    NSString * str =@"clientAction.do?common=queryFeedingtime&classes=appinterface&method=json";
-    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
-    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-        
-        NSLog(@"%@",json);
-        
-    } failure:^(NSError *error) {
-        
-        
-    }];
-     */
-    
     NSString * str =@"clientAction.do?common=food&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    
+    if (isOth) {
+        [dic setValue:deviceoOth forKey:@"deviceno"];
+        [dic setValue:termidOth forKey:@"termid"];
+        
+    }else{
     [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
      [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
+    }
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
         NSLog(@"%@",json);
@@ -294,9 +294,19 @@
     
     NSString * str =@"clientAction.do?common=SwitchLight&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
+    
+    if (isOth) {
+        [dic setValue:deviceoOth forKey:@"deviceno"];
+        [dic setValue:termidOth forKey:@"termid"];
+    }else
+    {
+        
+        [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
+        [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+    }
+   
     [dic setValue:str1 forKey:@"action"];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+    
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
         NSLog(@"%@",json);
@@ -318,9 +328,17 @@
     NSString * str =@"clientAction.do?common=feeding&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[defaults objectForKey:@"otherbuildIDS"] forKey:@"id"];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
     
+    if (isOth) {
+        [dic setValue:deviceoOth forKey:@"deviceno"];
+        [dic setValue:termidOth forKey:@"termid"];
+    }else
+    {
+        
+        [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
+        [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+    }
+
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
         NSLog(@"%@",json);
@@ -340,9 +358,17 @@
     NSString * str =@"clientAction.do?common=photoGraph&classes=appinterface&method=json";
     
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
     
+    if (isOth) {
+        [dic setValue:deviceoOth forKey:@"deviceno"];
+        [dic setValue:termidOth forKey:@"termid"];
+    }else
+    {
+        
+        [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
+        [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+    }
+   
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
         NSLog(@"%@",json);
@@ -360,7 +386,7 @@
 
 //  返回
 - (IBAction)backBtnClick:(UIButton *)sender {
-    
+    [self videoEnd];
     [SephoneManager terminateCurrentCallOrConference];
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -470,7 +496,7 @@
             
             [SephoneManager terminateCurrentCallOrConference];
             NSLog(@"五分钟到时视频流自动断开");
-            
+            [self videoEnd];
             
         }
         
@@ -532,6 +558,47 @@
 
 
 
+/**
+ *  结束设备使用记录
+ */
+
+
+- (void)videoEnd
+{
+    
+    NSUserDefaults * defau =[NSUserDefaults standardUserDefaults];
+    NSString *  otherBulidId =[defau objectForKey:@"otherBulidId"];
+    NSString *  selfID =[defau objectForKey:@"othID"];
+    
+    /*
+    NSDate *  senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *  locationString=[dateformatter stringFromDate:senddate];
+     */
+    NSString * service = @"clientAction.do?common=updateDeviceUseRecord&classes=appinterface&method=json";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    
+    if ([AppUtil isBlankString:otherBulidId]) {
+        [dic setValue:selfID forKey:@"id"];
+    }else
+    {
+        [dic setValue:otherBulidId forKey:@"id"];
+        
+    }
+    [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+    
+    
+    
+
+    
+}
 
 
 // 用户体验设置

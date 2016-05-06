@@ -207,6 +207,7 @@
             case SKPaymentTransactionStatePurchased:
                 NSLog(@"交易完成");
                 
+                [self RechargeSucces];
                 break;
             case SKPaymentTransactionStatePurchasing:
                 NSLog(@"商品添加进列表");
@@ -226,7 +227,57 @@
     }
 }
 
+/**
+ * button 点击
+ */
 
+// 1
+- (IBAction)oneBtn:(id)sender {
+    
+    [self buy:ProductID_IAP0p18];
+
+}
+
+// 2
+- (IBAction)twoBtn:(id)sender {
+     [self buy:ProductID_IAP0p25];
+}
+//3
+- (IBAction)threeBtn:(id)sender {
+    
+    [self buy:ProductID_IAP0p30];
+}
+//4
+- (IBAction)fourBtn:(id)sender {
+     [self buy:ProductID_IAP0p40];
+}
+
+// 5
+- (IBAction)fiveBtn:(id)sender {
+    
+     [self buy:ProductID_IAP0p50];
+}
+
+// 6
+- (IBAction)sixBTN:(id)sender {
+    [self buy:ProductID_IAP0p60];
+}
+
+// 7
+- (IBAction)servenBtn:(id)sender {
+     [self buy:ProductID_IAP0p73];
+}
+
+// 8
+- (IBAction)eightBtn:(id)sender {
+    [self buy:ProductID_IAP0p88];
+
+}
+// 9
+- (IBAction)nineBtn:(id)sender {
+    [self buy:ProductID_IAP0p93];
+    
+}
 //交易结束
 - (void)completeTransaction:(SKPaymentTransaction *)transaction{
     NSLog(@"交易结束");
@@ -234,6 +285,24 @@
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
 
+
+- (void)RechargeSucces
+{
+    
+    NSString * str = @"clientAction.do?method=json&common=recharge&classes=appinterface";
+    NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+    [dic setValue:@"" forKey:@"money"];
+
+    [AFNetWorking postWithApi:nil parameters:nil success:^(id json) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+    
+}
 
 
 @end
