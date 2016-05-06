@@ -15,8 +15,17 @@
 #import "UIImageView+WebCache.h"
 #import "AFHttpClient+ChangepasswordAndBlacklist.h"
 #import "DetailViewController.h"
+#import "OtherEggViewController.h"
+
 static NSString * cellId = @"personDetailCellId";
 @interface PersonDetailViewController ()
+
+{
+    
+    UIButton * fanwenBtn;
+     NSMutableArray * askRuleArr;
+}
+
 @property (nonatomic,strong)UIImageView * headImage; //头像
 @property (nonatomic,strong)UIImageView * typeImage; //种类
 @property (nonatomic,strong)UIImageView * sexImage;  //性别
@@ -34,8 +43,13 @@ static NSString * cellId = @"personDetailCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-   // [self initUseTopView];
-    
+    askRuleArr =[[NSMutableArray alloc]init];
+  
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
 }
 
@@ -139,10 +153,11 @@ static NSString * cellId = @"personDetailCellId";
     [_topView addSubview:_autographLabel];
     
     
-    UIButton * fanwenBtn =[[UIButton alloc]initWithFrame:CGRectMake(230, 60, 50, 50)];
+    fanwenBtn =[[UIButton alloc]initWithFrame:CGRectMake(310, 25, 50, 50)];
     [fanwenBtn setTitle:@"互动" forState:UIControlStateNormal];
-    
-    
+    [fanwenBtn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+    fanwenBtn.titleLabel.font =[UIFont systemFontOfSize:15];
+    [fanwenBtn addTarget:self action:@selector(fangwen:) forControlEvents:UIControlEventTouchUpInside];
     [_topView addSubview:fanwenBtn];
     
 
@@ -150,6 +165,85 @@ static NSString * cellId = @"personDetailCellId";
     
     
 }
+
+
+/**
+ *  是否可以访问
+ */
+
+
+- (void)openVideo
+{
+    
+    NSString * str = @"clientAction.do?method=json&common=getHomePage&classes=appinterface";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:self.ddddd forKey:@"friend"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+    if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+        if ([json[@"jsondata"][@"list"][0][@"openvideo"] isEqualToString:@"1"]) {
+           // 允许
+           fanwenBtn.hidden = NO;
+            
+        }else
+        {
+            // 不允许
+            fanwenBtn.hidden = YES;
+            
+            
+        }
+       
+        
+    }
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+
+}
+
+
+/**
+ *  访问数据
+ */
+
+- (void)fangwen:(UIButton *)sender
+{
+    // 查询是否可以访问
+    
+    NSString * str =  @"clientAction.do?method=json&common=queryByRule&classes=appinterface";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:self.ddddd forKey:@"friend"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            // 可以访问显示访问按钮
+            fanwenBtn.hidden  = NO;
+            askRuleArr =json[@"jsondata"][@"list"];
+            
+            OtherEggViewController * other =[[OtherEggViewController alloc]init];
+            other.otherArr = askRuleArr;
+            [self.navigationController pushViewController:other animated:YES];
+            
+            
+        }
+        
+
+    } failure:^(NSError *error) {
+        
+    }];
+    
+ 
+
+    
+}
+
+/**
+ *  访问
+ */
 
 -(void)doRightButtonTouch{
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定要把ta拉入黑名单吗？" preferredStyle:UIAlertControllerStyleAlert];
@@ -198,6 +292,7 @@ static NSString * cellId = @"personDetailCellId";
     [[AFHttpClient sharedAFHttpClient]querPresenWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:_ddddd complete:^(BaseModel *model) {
         [self.dataSource addObjectsFromArray:model.list];
         [self initUseTopView];
+        [self openVideo];
     } failure:^{
         
     }];

@@ -365,10 +365,6 @@
 
 }
 
-
-
-
-
 //生日按钮点击
 -(void)brithdayButtontouch{
     _bigButton = [[UIButton alloc]initWithFrame:self.view.bounds];

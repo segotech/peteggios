@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface PersonAttentionViewController : BaseViewController
+@property (nonatomic,assign)BOOL isredTip;
 
 @end

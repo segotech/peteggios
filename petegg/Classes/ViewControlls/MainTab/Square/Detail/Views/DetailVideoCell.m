@@ -24,28 +24,29 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setupView];
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
+         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dada111) name:@"shuaxin11232" object:nil];
+
+        
     }
     return self;
 }
+-(void)dada111{
+     [_player pause];
+}
 
 - (void)setupView{
-    
     _iconIV = [UIImageView new];
     _iconIV.contentMode = UIViewContentModeCenter;
     _iconIV.layer.masksToBounds = YES;
-   // [self.contentView sd_addSubviews:@[_iconIV]];
+    // [self.contentView sd_addSubviews:@[_iconIV]];
     
     _iconIV.sd_layout.topSpaceToView(self.contentView,8).leftSpaceToView(self.contentView, 8).rightSpaceToView(self.contentView, 8).autoHeightRatio(0.75);
-    
-    
     
     _player = [SCPlayer player];
     _playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
     _playerView.tag = 500;
     _playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    //playerView.frame = CGRectMake(0 * W_Wide_Zoom, 0* W_Hight_Zoom, 150 * W_Wide_Zoom, 150 * W_Hight_Zoom);
-   // [self.view addSubview:playerView];
     [self.contentView sd_addSubviews:@[_playerView]];
    
     _playerView.sd_layout.topSpaceToView(self.contentView,8).leftSpaceToView(self.contentView, 8).rightSpaceToView(self.contentView, 8).autoHeightRatio(0.75);
@@ -67,5 +68,12 @@
     
     [self setupAutoHeightWithBottomView:self.playerView bottomMargin:8];
 }
+
+
+
+
+
+
+
 
 @end

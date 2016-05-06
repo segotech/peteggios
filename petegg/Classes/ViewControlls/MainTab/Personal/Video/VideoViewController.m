@@ -208,7 +208,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
     [deleStr appendFormat:@"%@",str];
     NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
-    NSString * service =[NSString stringWithFormat:@"clientAction.do?common=uploadVideo&classes=appinterface&method=json&filename=%@&mid=%@&termid=%@&deviceno=%@",deleStr,@"MI15120000001582",@"216",@"73000020097"];
+    NSString * service =[NSString stringWithFormat:@"clientAction.do?common=uploadVideo&classes=appinterface&method=json&filename=%@&mid=%@&termid=%@&deviceno=%@",deleStr,[AccountManager sharedAccountManager].loginModel.mid,[AccountManager sharedAccountManager].loginModel.termid,[AccountManager sharedAccountManager].loginModel.deviceno];
     
    [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
        
@@ -298,22 +298,40 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 }
 
 // 请求数据
-- (void)data:(NSString *)stateNum
+- (void)data:(NSString *)stateNum pageNum:(int)page
 {
     
     NSString * str =@"clientAction.do?method=json&common=getVideo&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:@"MI15120000001582" forKey:@"mid"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [dic setValue:stateNum forKey:@"status"];
+    if ([stateNum isEqualToString:@"0"]) {
+        [dic setValue:@"1" forKey:@"page"];
+
+    }else{
+    [dic setValue:@(page) forKey:@"page"];
+    }
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-        [self.dataSource removeAllObjects];
         json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
         NSMutableArray * arr =[[NSMutableArray alloc]init];
-        [arr addObjectsFromArray:json];
-        for (NSDictionary *dic0 in arr) {
-            VideoModel *model = [[VideoModel alloc] init];
-            [model setValuesForKeysWithDictionary:dic0];
-            [self.dataSource addObject:model];
+        if (page == START_PAGE_INDEX) {
+            [self.dataSource removeAllObjects];
+            [arr addObjectsFromArray:json];
+            for (NSDictionary *dic0 in arr) {
+                VideoModel *model = [[VideoModel alloc] init];
+                [model setValuesForKeysWithDictionary:dic0];
+                [self.dataSource addObject:model];
+            }
+            
+            
+        } else {
+            [arr addObjectsFromArray:json];
+            for (NSDictionary *dic0 in arr) {
+                VideoModel *model = [[VideoModel alloc] init];
+                [model setValuesForKeysWithDictionary:dic0];
+                [self.dataSource addObject:model];
+            }
+            
             
         }
         [self handleEndRefresh];

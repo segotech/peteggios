@@ -46,11 +46,18 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 
 - (void)data:(NSString *)stateNum
 {
-    [[AFHttpClient sharedAFHttpClient]getVideoWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
-        [self.dataSource removeAllObjects];
-        [self.dataSource addObjectsFromArray:model.list];
+    self.collection.mj_footer.hidden = NO;
+    int page = 1;
+    [[AFHttpClient sharedAFHttpClient]getVideoWithMid:[AccountManager sharedAccountManager].loginModel.mid pageIndex:page complete:^(BaseModel *model) {
+        if (page == 1) {
+            [self.dataSource removeAllObjects];
+            [self.dataSource addObjectsFromArray:model.list];
+        }else{
+            [self.dataSource addObjectsFromArray:model.list];
+        }
+        
         [self handleEndRefresh];
-        [self.collection reloadData];
+       [self.collection reloadData];
     }];
     
 }

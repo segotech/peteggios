@@ -555,4 +555,14 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
 
 
 
+
+-(void)doLeftButtonTouch{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin11232" object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+
+
+}
+
+
 @end

@@ -145,7 +145,7 @@
         
        PersonalViewController* vc = [[PersonalViewController alloc] init];
         // 明天写
-       // vc.messageCount =messageCount;
+        // vc.messageCount =messageCount;
         
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabPersonal", nil)

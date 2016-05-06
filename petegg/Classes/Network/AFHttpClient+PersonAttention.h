@@ -21,4 +21,14 @@
 -(void)focusTipWithMid:(NSString *)mid
                    complete:(void(^)(BaseModel *model))completeBlock;
 
+
+-(void)isreadWithMid:(NSString *)mid
+                  type:(NSString *)type
+                 complete:(void(^)(BaseModel *model))completeBlock;
+
+
+-(void)focusTipCountWithMid:(NSString *)mid
+                    complete:(void(^)(BaseModel *model))completeBlock;
+
+
 @end

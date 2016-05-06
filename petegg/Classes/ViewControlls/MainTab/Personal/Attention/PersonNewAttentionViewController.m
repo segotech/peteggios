@@ -33,17 +33,29 @@ static NSString * cellId = @"personNewAttentionTableViewCellidddd";
 }
 
 
+
+
 -(void)setupData{
     [super setupData];
+
     [[AFHttpClient sharedAFHttpClient]focusTipWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
         [self.dataSource addObjectsFromArray:model.list];
         [self.tableView reloadData];
-
+        [self isread];
     }];
-    
-    
-    
+
 }
+
+-(void)isread{
+    [[AFHttpClient sharedAFHttpClient]isreadWithMid:[AccountManager sharedAccountManager].loginModel.mid type:@"f" complete:^(BaseModel *model) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"isreaddd" object:nil];
+    }];
+
+
+}
+
+
+
 #pragma mark - TableView的代理函数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

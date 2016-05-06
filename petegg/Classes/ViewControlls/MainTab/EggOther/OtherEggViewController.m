@@ -14,6 +14,9 @@
 {
     
     UIButton * button0;
+    UIImageView * imageStatus;
+    NSString * money;
+    
     
 }
 
@@ -136,7 +139,6 @@
             
             NSString * str = json[@"jsondata"][@"retVal"][@"status"];
             [self UIinitUseface:str];
-            
         }
         
     } failure:^(NSError *error) {
@@ -148,27 +150,29 @@
 
 - (void)UIinitUseface:(NSString *)status
 {
+    imageStatus.image = nil;
+    
 
-    UIImageView * image =[[UIImageView alloc]initWithFrame:CGRectMake(35*W_Wide_Zoom, 80*W_Hight_Zoom, 300*W_Wide_Zoom, 300*W_Hight_Zoom)];
+    imageStatus =[[UIImageView alloc]initWithFrame:CGRectMake(35*W_Wide_Zoom, 80*W_Hight_Zoom, 300*W_Wide_Zoom, 300*W_Hight_Zoom)];
     
     // isOpenVideoStart
     if ([status isEqualToString:@"ds001"]) {
         // 在线
-        image.image =[UIImage imageNamed:@"egg_online.png"];
+        imageStatus.image =[UIImage imageNamed:@"egg_online.png"];
         [self btn_select];
         
       
     }
     else if ([status isEqualToString:@"ds003"]) {
         //通话
-       image.image =[UIImage imageNamed:@"egg_calling.png"];
+       imageStatus.image =[UIImage imageNamed:@"egg_calling.png"];
         [self btn_select];
 
         
     }
     else if ([status isEqualToString:@"ds004"]) {
         //正在上传
-        image.image =[UIImage imageNamed:@"egg_upload.png"];
+        imageStatus.image =[UIImage imageNamed:@"egg_upload.png"];
         [self btn_select];
 
         
@@ -179,14 +183,14 @@
     }
     else {
         // 离线
-        image.image =[UIImage imageNamed:@"egg_offline.png"];
+        imageStatus.image =[UIImage imageNamed:@"egg_offline.png"];
     
 
     }
 
     
     
-    [self.view addSubview:image];
+    [self.view addSubview:imageStatus];
     
 }
 
@@ -223,8 +227,16 @@
     {
         //  付钱提示
         
-        NSString * money =[NSString stringWithFormat:@"确定支付%@￥",self.otherArr[0][@"price"]];
-        UIAlertView * slertShow =[[UIAlertView alloc]initWithTitle:nil message:money delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        if ([AppUtil isBlankString:self.otherArr[0][@"price"]]) {
+            
+            
+             money =[NSString stringWithFormat:@"确定支付￥%d",0];
+        }else{
+            
+           money =[NSString stringWithFormat:@"确定支付￥%@",self.otherArr[0][@"price"]];
+
+        }
+    UIAlertView * slertShow =[[UIAlertView alloc]initWithTitle:nil message:money delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         
         [slertShow show];
         

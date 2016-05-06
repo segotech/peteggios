@@ -28,15 +28,25 @@
 }
 
 
--(void)addFeedingtimeWithMid:(NSString *)mid type:(NSString *)type times:(NSString *)times complete:(void (^)(BaseModel *))completeBlock{
+-(void)addFeedingtimeWithMid:(NSString *)mid type:(NSString *)type times:(NSString *)times deviceno:(NSString *)deviceno termid:(NSString *)termid complete:(void (^)(BaseModel *))completeBlock{
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
-    params[@"common"] = @"updateFeedingtime";
+    params[@"common"] = @"setFeedingtime";
     params[@"mid"] = mid;
     params[@"type"] = type;
     params[@"times"] = times;
+    params[@"deviceno"] = deviceno;
+    params[@"termid"] = termid;
     
-    
-    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+
+        if (model){
+//            model.list = [FeddingModel arrayOfModelsFromDictionaries:model.list];
+        }
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+
     
     
     

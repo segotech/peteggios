@@ -157,11 +157,8 @@
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
-        
-        NSString * str =json[@"jsondata"][@"list"][0][@"mid"];
-        
-        
-        if ([AppUtil isBlankString:str]) {
+        NSMutableArray * arr =json[@"jsondata"][@"list"];
+        if (arr.count == 0) {
             self.onFunprice.text =@"暂无";
             self.onFunfood.text =@"暂无";
             self.onFuntime.text =@"暂无";

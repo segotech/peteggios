@@ -197,8 +197,8 @@ static NSString * cellId = @"recommeCellId";
     
     if ([model.mid isEqualToString:[AccountManager sharedAccountManager].loginModel.mid]) {
         cell.aboutBtn.hidden = YES;
-    }
-
+    }else{
+        cell.aboutBtn.hidden = NO;
     if ([AppUtil isBlankString:model.isfriend]) {
         cell.aboutBtn.selected = NO;
         [cell.aboutBtn setTitle:@"+关注" forState:UIControlStateNormal];
@@ -206,6 +206,7 @@ static NSString * cellId = @"recommeCellId";
     }else{
         cell.aboutBtn.selected = YES;
         [cell.aboutBtn setTitle:@"已关注" forState:UIControlStateNormal];
+    }
     }
     [cell.aboutBtn addTarget:self action:@selector(attentionTouch:) forControlEvents:UIControlEventTouchUpInside];
     cell.aboutBtn.tag = indexPath.row + 12;
@@ -216,9 +217,7 @@ static NSString * cellId = @"recommeCellId";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   
-}
+
 
 //关注按钮点击事件
 -(void)attentionTouch:(UIButton * )sender{
