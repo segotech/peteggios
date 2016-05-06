@@ -264,6 +264,7 @@
 		7D0E13641CDC35A800F9BAD5 /* TransactiondetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E13631CDC35A800F9BAD5 /* TransactiondetailViewController.m */; };
 		7D0E13681CDC3FA500F9BAD5 /* TransaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E13671CDC3FA500F9BAD5 /* TransaceTableViewCell.m */; };
 		7D0E136B1CDC71EA00F9BAD5 /* TransactionRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E136A1CDC71EA00F9BAD5 /* TransactionRecordModel.m */; };
+		7D0E136E1CDC9DE900F9BAD5 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E136D1CDC9DE900F9BAD5 /* ReportViewController.m */; };
 		7D15E7C61CD842A9003A472C /* ThreePointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */; };
 		7D15E7CC1CD8774A003A472C /* PersonDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7C91CD8774A003A472C /* PersonDataTableViewCell.m */; };
 		7D15E7CD1CD8774A003A472C /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7CB1CD8774A003A472C /* RecommendTableViewCell.m */; };
@@ -1194,6 +1195,8 @@
 		7D0E13671CDC3FA500F9BAD5 /* TransaceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransaceTableViewCell.m; sourceTree = "<group>"; };
 		7D0E13691CDC71EA00F9BAD5 /* TransactionRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionRecordModel.h; sourceTree = "<group>"; };
 		7D0E136A1CDC71EA00F9BAD5 /* TransactionRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionRecordModel.m; sourceTree = "<group>"; };
+		7D0E136C1CDC9DE900F9BAD5 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
+		7D0E136D1CDC9DE900F9BAD5 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 		7D15E7C41CD842A9003A472C /* ThreePointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreePointsViewController.h; sourceTree = "<group>"; };
 		7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreePointsViewController.m; sourceTree = "<group>"; };
 		7D15E7C81CD8774A003A472C /* PersonDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDataTableViewCell.h; sourceTree = "<group>"; };
@@ -2581,6 +2584,8 @@
 				572220DB1CB750FA00C9C7D2 /* Views */,
 				572220D81CB66BE000C9C7D2 /* DetailViewController.h */,
 				572220D91CB66BE000C9C7D2 /* DetailViewController.m */,
+				7D0E136C1CDC9DE900F9BAD5 /* ReportViewController.h */,
+				7D0E136D1CDC9DE900F9BAD5 /* ReportViewController.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -3803,6 +3808,7 @@
 				7D81227F1CBDF5F200F4F823 /* WeekBangViewController.m in Sources */,
 				7DA216871CD1A97F00F6BCCB /* AFHttpClient+PremissClient.m in Sources */,
 				7D15E7CC1CD8774A003A472C /* PersonDataTableViewCell.m in Sources */,
+				7D0E136E1CDC9DE900F9BAD5 /* ReportViewController.m in Sources */,
 				34813FE81CC5D4EE000DFE26 /* CompletionViewController.m in Sources */,
 				34144BD61CBFB1B3007C4498 /* MessageTableViewCell.m in Sources */,
 				7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */,
