@@ -8,6 +8,7 @@
 
 #import "RegiestViewController.h"
 #import "CompletionViewController.h"
+#import "AgreementViewController.h"
 @interface RegiestViewController ()
 {
     
@@ -95,10 +96,39 @@
     [self.view addSubview:registBtn];
     
     
+    UILabel * labelXieyi =[[UILabel alloc]initWithFrame:CGRectMake(60, 350, 250, 30)];
+    labelXieyi.text =@"点击'注册'按钮,代表已阅读并同意";
+    labelXieyi.font =[UIFont systemFontOfSize:13];
+    [self.view addSubview:labelXieyi];
+    
+    UIButton * xieyiBtn =[[UIButton alloc]initWithFrame:CGRectMake(250, 350, 60, 30)];
+    [xieyiBtn setTitle:@"注册协议" forState:UIControlStateNormal];
+    xieyiBtn.titleLabel.font =[UIFont systemFontOfSize:13];
+    [xieyiBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [xieyiBtn addTarget:self action:@selector(zhuceixiyi) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:xieyiBtn];
+    
+    
+    
+    
+    
     
     
 }
 
+
+/**
+ *  注册协议
+ */
+
+- (void)zhuceixiyi
+{
+    
+    AgreementViewController * agreeVC =[[AgreementViewController alloc]init];
+    [self.navigationController pushViewController:agreeVC animated:YES];
+    
+    
+}
 
 - (void)setupData
 {
