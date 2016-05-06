@@ -11,48 +11,133 @@
 #import "SCRecordSessionManager.h"
 #import "AFHttpClient+Issue.h"
 
-@interface WechatIssueViewController ()
+@interface WechatIssueViewController ()<UITextViewDelegate>
 @property (nonatomic,strong)SCPlayer *player;
-@property (nonatomic,strong)UITextField * topTextView;
+@property (nonatomic,strong)UITextView * topTextView;
+@property (nonatomic,strong)UILabel * placeholderLabel;
 @end
 
 @implementation WechatIssueViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+     self.automaticallyAdjustsScrollViewInsets = NO;
     
 }
 -(void)setupView{
     [super setupView];
     [self setNavTitle:@"发布"];
     [self showBarButton:NAV_RIGHT title:@"发布" fontColor:[UIColor blackColor]];
-//    _topTextView = [[UITextView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 10 * W_Hight_Zoom, 375 * W_Wide_Zoom, 200 * W_Hight_Zoom)];
-//    _topTextView.backgroundColor = [UIColor whiteColor];
-//    [self.view addSubview:_topTextView];
-    _topTextView = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 375, 200)];
-    
-     _topTextView.backgroundColor= [UIColor whiteColor];
-    _topTextView.tintColor = [UIColor whiteColor];
-    _topTextView.placeholder = @"请输入内容";
+    self.view.backgroundColor = LIGHT_GRAY_COLOR;
+
+    _topTextView = [[UITextView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, 375 * W_Wide_Zoom, 150 * W_Hight_Zoom)];
+    _topTextView.textAlignment = NSTextAlignmentLeft;
+    _topTextView.backgroundColor = [UIColor whiteColor];
+    _topTextView.delegate = self;
+    _topTextView.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:_topTextView];
+
     
-    _player = [SCPlayer player];
-    SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
-    playerView.tag = 500;
-    playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    playerView.frame = CGRectMake(0 * W_Wide_Zoom, 210* W_Hight_Zoom, 150 * W_Wide_Zoom, 150 * W_Hight_Zoom);
-    [self.view addSubview:playerView];
-    _player.loopEnabled = YES;
-    [_player setItemByUrl:self.urlstr];
-    [_player play];
+    _placeholderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+    _placeholderLabel.textColor = [UIColor grayColor];
+    _placeholderLabel.backgroundColor = [UIColor clearColor];
+    _placeholderLabel.text = @"请输入内容";
+    _placeholderLabel.font = _topTextView.font;
+    _placeholderLabel.layer.cornerRadius = 5;
+    [self.view addSubview:_placeholderLabel];
+
+    
+    
+    
+    if ([_wechatOrziyuanku isEqualToString:@"wechat"]) {
+        _player = [SCPlayer player];
+        SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
+        playerView.tag = 500;
+        playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        playerView.frame = CGRectMake(0 * W_Wide_Zoom, 210* W_Hight_Zoom, 150 * W_Wide_Zoom, 150 * W_Hight_Zoom);
+        [self.view addSubview:playerView];
+        _player.loopEnabled = YES;
+        [_player setItemByUrl:self.urlstr];
+        [_player play];
+    }else if([_wechatOrziyuanku isEqualToString:@"ziyuankuship"]){
+        NSLog(@"%@",_ziyuanshipArray);
+        NSLog(@"%@",_thumbArry);
+        NSString * imageStr = [_thumbArry componentsJoinedByString:@","];
+        NSURL *imagUrl = [NSURL URLWithString:imageStr];
+        UIImageView * image = [[UIImageView alloc]init];
+        image.frame = CGRectMake(0 * W_Wide_Zoom, 210* W_Hight_Zoom, 150 * W_Wide_Zoom, 150 * W_Hight_Zoom);
+        [image sd_setImageWithURL:imagUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
+        [self.view addSubview:image];
+    }else if ([_wechatOrziyuanku isEqualToString:@"tupianpian"]){
+       
+        for (int i = 0 ; i <  _imageArrayy.count; i++) {
+            UIImageView * image = [[UIImageView alloc]initWithFrame:CGRectMake(12.5 * W_Wide_Zoom + 90 * i * W_Wide_Zoom , 210* W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
+            [image sd_setImageWithURL:[NSURL URLWithString:_imageArrayy[i]] placeholderImage:[UIImage imageNamed:@"sego1.png"]];
+            
+            [self.view addSubview:image];
+            
+        }
+
+    }
     
 }
 
 -(void)doRightButtonTouch{
+    if ([_wechatOrziyuanku isEqualToString:@"wechat"]) {
+        [self wechatIssue];
+    }else if([_wechatOrziyuanku isEqualToString:@"ziyuankuship"]){
+        [self ziyuankuissue];
     
+    }else if ([_wechatOrziyuanku isEqualToString:@"tupianpian"]){
+    
+        [self tupianpianfabu];
+    }
+}
+
+-(void)tupianpianfabu{
+    NSString * resouce = [_imageArrayy componentsJoinedByString:@","];
+    NSMutableString * str = [NSMutableString stringWithString:resouce];
+    [self showHudInView:self.view hint:@"正在发布..."];
+    [[AFHttpClient sharedAFHttpClient]addSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid content:_topTextView.text type:@"s" resources:str complete:^(BaseModel *model) {
+        [self hideHud];
+        if ([model.retCode isEqualToString:@"0000"]) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
+    }];
+
+
+}
+
+
+
+
+
+
+
+
+
+-(void)ziyuankuissue{
+    NSString * thresouceStr = [[NSString alloc]init];
+    thresouceStr  = [_thumbArry componentsJoinedByString:@","];
+    NSString * shipresouce = [[NSString alloc]init];
+    shipresouce = [_ziyuanshipArray componentsJoinedByString:@","];
+    thresouceStr = [thresouceStr stringByAppendingString:@","];
+    thresouceStr = [thresouceStr stringByAppendingString:shipresouce];
+    NSMutableString * resoucesstr = [NSMutableString stringWithString:thresouceStr];
+    
+    [self showHudInView:self.view hint:@"正在发布..."];
+    [[AFHttpClient sharedAFHttpClient]addSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid content:_topTextView.text type:@"v" resources:resoucesstr complete:^(BaseModel *model) {
+        [self hideHud];
+        if ([model.retCode isEqualToString:@"0000"]) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
+    }];
+}
+
+-(void)wechatIssue{
     NSMutableString * resouceStr = [[NSMutableString alloc]init];
-    
     [resouceStr appendString:@".mov,"];
     [resouceStr appendString:self.str];
     [self showHudInView:self.view hint:@"正在发布..."];
@@ -61,12 +146,9 @@
         if ([model.retCode isEqualToString:@"0000"]) {
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
-         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
     }];
-
-
 }
-
 
 
 -(void)setupData{
@@ -93,6 +175,19 @@
 
 }
 
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    _placeholderLabel.text = @"";
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView{
+    if (_topTextView.text.length == 0) {
+        _placeholderLabel.text = @"请输入内容";
+    }else{
+        _placeholderLabel.text = @"";
+    }
+    
+    
+}
 
 
 @end

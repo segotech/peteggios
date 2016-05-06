@@ -10,4 +10,5 @@
 
 @interface IssuePinViewController : BaseViewController
 @property (nonatomic,strong)UIImage * firstImage;
+
 @end

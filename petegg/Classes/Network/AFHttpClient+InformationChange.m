@@ -65,7 +65,25 @@
     
 }
 
+-(void)modifyQqStatusWithMid:(NSString *)mid object:(NSString *)object complete:(void (^)(BaseModel *))completeBlock{
+     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"common"] = @"modifyQqStatus";
+    params[@"mid"] = mid;
+    params[@"object"] = object;
+    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        if (model){
+            // model.list = [InformationModel arrayOfModelsFromDictionaries:model.list];
+        }
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
 
+
+
+
+}
 
 
 @end
