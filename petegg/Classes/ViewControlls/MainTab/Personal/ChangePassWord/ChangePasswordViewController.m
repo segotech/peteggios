@@ -90,12 +90,10 @@
          [[AppUtil appTopViewController] showHint:@"请输入新密码"];
         return;
     }
-    
-
+    [self showHudInView:self.view hint:@"正在修改..."];
     [[AFHttpClient sharedAFHttpClient]modifyPasswordWithMid:[AccountManager sharedAccountManager].loginModel.mid password:_newpassWordTextfield.text complete:^(BaseModel *model) {
-         [[AppUtil appTopViewController] showHint:model.retDesc];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
-        [[AccountManager sharedAccountManager]logout];
+        [self hideHud];
+        [[AppUtil appTopViewController] showHint:model.retDesc];
         // 清除plist
         NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
         NSDictionary *dictionary = [userDefatluts dictionaryRepresentation];
@@ -103,6 +101,9 @@
             [userDefatluts removeObjectForKey:key];
             [userDefatluts synchronize];
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
+        [[AccountManager sharedAccountManager]logout];
+      
 
     }];
     

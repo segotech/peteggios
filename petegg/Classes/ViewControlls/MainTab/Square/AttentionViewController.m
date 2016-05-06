@@ -112,11 +112,17 @@ static NSString * cellId = @"AttentionCellId";
     NSURL * imageUrl = [NSURL URLWithString:imageStr];
     [cell.iconImageV sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     cell.iconImageV.layer.cornerRadius = cell.iconImageV.bounds.size.width/2;
+    
     [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        //        cell.photoView.image =[self cutImage:image];
+        
         if (image) {
             cell.photoView.image = [image imageByScalingProportionallyToSize:CGSizeMake(cell.width, CGFLOAT_MAX)];
         }
     }];
+
+    
+    
     cell.introduceLable.text = model.content;
     
     cell.timeLable.text = model.publishtime;

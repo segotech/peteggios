@@ -19,6 +19,7 @@
 
 
 #import "FounyMoneyViewController.h"
+#import "TransactiondetailViewController.h"
 
 @interface FounyMoneyViewController ()
 {
@@ -60,7 +61,8 @@
 // 明细
 - (void)doRightButtonTouch
 {
-    
+    TransactiondetailViewController * transacVc = [[TransactiondetailViewController alloc]init];
+    [self.navigationController pushViewController:transacVc animated:YES];
     
     
 }
