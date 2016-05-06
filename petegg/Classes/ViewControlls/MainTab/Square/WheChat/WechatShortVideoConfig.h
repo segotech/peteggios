@@ -39,7 +39,7 @@
 #import "CALayer+AddUIColor.h"
 
 //Video file time length limitation (Maximum Seconds)
-#define VIDEO_MAX_TIME       30.0
+#define VIDEO_MAX_TIME       10.0
 //Video file time length limitation (Minimum Seconds)
 #define VIDEO_VALID_MINTIME  0.8
 //Video filename

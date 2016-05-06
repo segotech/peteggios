@@ -10,7 +10,7 @@
 #import "MWPhotoBrowser.h"
 #import "AFHttpClient+Issue.h"
 
-@interface IssuePinViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface IssuePinViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate>
 @property (nonatomic,strong)UITextView * topTextView;
 @property (nonatomic,strong)UIView * downWithView;
 @property (nonatomic,strong)UIButton * coverButton;
@@ -18,8 +18,7 @@
 @property (nonatomic,strong)NSMutableArray * imageArray;
 @property(nonatomic,strong)UIImagePickerController * imagePicker;
 @property (nonatomic,strong)UIButton * imageButtones;
-
-
+@property (nonatomic,strong)UILabel * placeholderLabel;
 
 @property(nonatomic,strong)UIView * bigView;
 
@@ -38,13 +37,29 @@
     _imagePicker =[[UIImagePickerController alloc]init];
     _imagePicker.delegate= self;
     [self setTitle:@"发布"];
+     self.automaticallyAdjustsScrollViewInsets = NO;
     [self showBarButton:NAV_RIGHT title:@"发布" fontColor:[UIColor blackColor]];
+    self.view.backgroundColor = LIGHT_GRAY_COLOR;
 }
 -(void)setupView{
     [super setupData];
-    _topTextView = [[UITextView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 10 * W_Hight_Zoom, 375 * W_Wide_Zoom, 200 * W_Hight_Zoom)];
+    _topTextView = [[UITextView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, 375 * W_Wide_Zoom, 150 * W_Hight_Zoom)];
+    _topTextView.textAlignment = NSTextAlignmentLeft;
     _topTextView.backgroundColor = [UIColor whiteColor];
+    _topTextView.delegate = self;
+    _topTextView.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:_topTextView];
+    
+    _placeholderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+    _placeholderLabel.textColor = [UIColor grayColor];
+    _placeholderLabel.backgroundColor = [UIColor clearColor];
+    _placeholderLabel.text = @"请输入内容";
+    _placeholderLabel.font = _topTextView.font;
+    _placeholderLabel.layer.cornerRadius = 5;
+    [self.view addSubview:_placeholderLabel];
+
+    
+    
     _imageArray = [[NSMutableArray alloc]init];
     [_imageArray addObject:_firstImage];
   
@@ -95,12 +110,12 @@
 }
 
 -(void)addImageS{
-    _bigView = [[UIView alloc]initWithFrame:CGRectMake(0, 220, 375, 200)];
-    _bigView.backgroundColor = self.view.backgroundColor;
+    _bigView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 220 * W_Hight_Zoom, 375 * W_Wide_Zoom, 200 * W_Hight_Zoom)];
+    _bigView.backgroundColor = LIGHT_GRAY_COLOR;
     [self.view addSubview:_bigView];
     [_imageArray addObject:[UIImage imageNamed:@"addImage.png"]];
         for (int i = 0 ; i < _imageArray.count; i++) {
-            _imageButtones = [[UIButton alloc]initWithFrame:CGRectMake(12.5 + i * 90, 0, 80, 80)];
+            _imageButtones = [[UIButton alloc]initWithFrame:CGRectMake(12.5 * W_Wide_Zoom + i * 90 * W_Wide_Zoom, 0 * W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
             [_imageButtones setImage:_imageArray[i] forState:UIControlStateNormal];
             [_bigView addSubview:_imageButtones];
             _imageButtones.tag = i;
@@ -149,11 +164,11 @@
 //删除照片后重新排序
 -(void)paixuImageButton{
 
-    _bigView = [[UIView alloc]initWithFrame:CGRectMake(0, 220, 375, 200)];
-    _bigView.backgroundColor = self.view.backgroundColor;
+    _bigView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 220 * W_Hight_Zoom, 375 * W_Wide_Zoom, 200 * W_Hight_Zoom)];
+    _bigView.backgroundColor = LIGHT_GRAY_COLOR;
     [self.view addSubview:_bigView];
     for (int i = 0 ; i < _imageArray.count; i++) {
-        _imageButtones = [[UIButton alloc]initWithFrame:CGRectMake(12.5 + i * 90, 220, 80, 80)];
+        _imageButtones = [[UIButton alloc]initWithFrame:CGRectMake(12.5 * W_Wide_Zoom + i * 90 * W_Wide_Zoom, 220 * W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
         [_imageButtones setImage:_imageArray[i] forState:UIControlStateNormal];
         [self.view addSubview:_imageButtones];
         _imageButtones.tag = i;
@@ -163,22 +178,22 @@
 }
 
 -(void)openDownBigView{
-    _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0, 667, 375, 160)];
+    _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 160 * W_Hight_Zoom)];
 }
 
 
 
 -(void)openDownImageView{
-    _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0, 667, 375, 80)];
-    _littleDownView = [[UIView alloc]initWithFrame:CGRectMake(0, 667, 375, 40)];
-    _coverButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 375, 667)];
+    _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
+    _littleDownView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+    _coverButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 667 * W_Hight_Zoom)];
     _coverButton.backgroundColor = [UIColor blackColor];
     _coverButton.alpha = 0.4;
     [[UIApplication sharedApplication].keyWindow addSubview:_coverButton];
     [_coverButton addTarget:self action:@selector(hideButton:) forControlEvents:UIControlEventTouchUpInside];
     [UIView animateWithDuration:0.3 animations:^{
-        _downWithView.frame = CGRectMake(0, 530, 375, 80);
-        _littleDownView.frame = CGRectMake(0, 627, 375, 40);
+        _downWithView.frame = CGRectMake(0 * W_Wide_Zoom, 540 * W_Hight_Zoom, 375 * W_Wide_Zoom, 80 * W_Hight_Zoom);
+        _littleDownView.frame = CGRectMake(0 * W_Wide_Zoom, 627 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom);
         _littleDownView.backgroundColor = [UIColor whiteColor];
         _downWithView.backgroundColor = [UIColor whiteColor];
         [[UIApplication sharedApplication].keyWindow addSubview:_littleDownView];
@@ -186,11 +201,11 @@
     }];
     NSArray * nameArray = @[NSLocalizedString(@"photograph", nil),NSLocalizedString(@"photoalbum", nil)];
     for (int i = 0; i < 2; i++) {
-        UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0 + i * 40, 375, 1)];
+        UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 40 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         lineLabel.backgroundColor = GRAY_COLOR;
         [_downWithView addSubview:lineLabel];
         
-        UIButton * downButtones = [[UIButton alloc]initWithFrame:CGRectMake(0, 0 + i * 40, 375, 40)];
+        UIButton * downButtones = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 40 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
         [downButtones setTitle:nameArray[i] forState:UIControlStateNormal];
         [downButtones setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         downButtones.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -198,7 +213,7 @@
         downButtones.tag = i;
         [downButtones addTarget:self action:@selector(imageButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     }
-    UIButton * quxiaoButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 375, 40)];
+    UIButton * quxiaoButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     [quxiaoButton setTitle:@"取消" forState:UIControlStateNormal];
     [quxiaoButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     quxiaoButton.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -211,8 +226,8 @@
 -(void)hideButton:(UIButton *)sender{
     _coverButton.hidden = YES;
     [UIView animateWithDuration:0.3 animations:^{
-        _downWithView.frame = CGRectMake(0, 667, 375, 80);
-        _littleDownView.frame = CGRectMake(0, 667, 375, 40);
+        _downWithView.frame = CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 80 * W_Hight_Zoom);
+        _littleDownView.frame = CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom);
     }];
 }
 
@@ -275,5 +290,17 @@
     [self addImageS];
     
 }
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    _placeholderLabel.text = @"";
+}
 
+-(void)textViewDidEndEditing:(UITextView *)textView{
+    if (_topTextView.text.length == 0) {
+        _placeholderLabel.text = @"请输入内容";
+    }else{
+        _placeholderLabel.text = @"";
+    }
+    
+    
+}
 @end

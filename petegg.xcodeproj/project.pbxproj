@@ -261,6 +261,8 @@
 		7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */; };
 		7D05D8A81CCB21080081FB24 /* IssueZiYuankuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */; };
 		7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */; };
+		7D0E13641CDC35A800F9BAD5 /* TransactiondetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E13631CDC35A800F9BAD5 /* TransactiondetailViewController.m */; };
+		7D0E13681CDC3FA500F9BAD5 /* TransaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E13671CDC3FA500F9BAD5 /* TransaceTableViewCell.m */; };
 		7D15E7C61CD842A9003A472C /* ThreePointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */; };
 		7D15E7CC1CD8774A003A472C /* PersonDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7C91CD8774A003A472C /* PersonDataTableViewCell.m */; };
 		7D15E7CD1CD8774A003A472C /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7CB1CD8774A003A472C /* RecommendTableViewCell.m */; };
@@ -1185,6 +1187,10 @@
 		7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueZiYuankuModel.m; sourceTree = "<group>"; };
 		7D05D8A91CCB850F0081FB24 /* AFHttpClient+IsfriendClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+IsfriendClient.h"; sourceTree = "<group>"; };
 		7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+IsfriendClient.m"; sourceTree = "<group>"; };
+		7D0E13621CDC35A800F9BAD5 /* TransactiondetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactiondetailViewController.h; sourceTree = "<group>"; };
+		7D0E13631CDC35A800F9BAD5 /* TransactiondetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactiondetailViewController.m; sourceTree = "<group>"; };
+		7D0E13661CDC3FA500F9BAD5 /* TransaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransaceTableViewCell.h; sourceTree = "<group>"; };
+		7D0E13671CDC3FA500F9BAD5 /* TransaceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransaceTableViewCell.m; sourceTree = "<group>"; };
 		7D15E7C41CD842A9003A472C /* ThreePointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreePointsViewController.h; sourceTree = "<group>"; };
 		7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreePointsViewController.m; sourceTree = "<group>"; };
 		7D15E7C81CD8774A003A472C /* PersonDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDataTableViewCell.h; sourceTree = "<group>"; };
@@ -3071,6 +3077,15 @@
 			path = "UIImage-Extensions";
 			sourceTree = "<group>";
 		};
+		7D0E13651CDC3F8800F9BAD5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7D0E13661CDC3FA500F9BAD5 /* TransaceTableViewCell.h */,
+				7D0E13671CDC3FA500F9BAD5 /* TransaceTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7D15E7C31CD8428D003A472C /* ThreePoints */ = {
 			isa = PBXGroup;
 			children = (
@@ -3339,9 +3354,12 @@
 		7DA216951CD2343700F6BCCB /* funnyMoney */ = {
 			isa = PBXGroup;
 			children = (
+				7D0E13651CDC3F8800F9BAD5 /* Views */,
 				7DA216961CD2343700F6BCCB /* FounyMoneyViewController.h */,
 				7DA216971CD2343700F6BCCB /* FounyMoneyViewController.m */,
 				7DA216981CD2343700F6BCCB /* FounyMoneyViewController.xib */,
+				7D0E13621CDC35A800F9BAD5 /* TransactiondetailViewController.h */,
+				7D0E13631CDC35A800F9BAD5 /* TransactiondetailViewController.m */,
 			);
 			path = funnyMoney;
 			sourceTree = "<group>";
@@ -3488,6 +3506,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = ZMFX8728A9;
 					};
 				};
 			};
@@ -3836,6 +3855,7 @@
 				570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */,
 				578B9E671CA2D8CB00CAC21D /* SquareModel.m in Sources */,
 				7D0128EE1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m in Sources */,
+				7D0E13681CDC3FA500F9BAD5 /* TransaceTableViewCell.m in Sources */,
 				34144BCC1CBFB156007C4498 /* MessageModel.m in Sources */,
 				7D30E8B11CA66C05004DE055 /* SCRecorderTools.m in Sources */,
 				7DA4C4C11CDAE19C00ED6311 /* AgreementViewController.m in Sources */,
@@ -3906,6 +3926,7 @@
 				7D1763A91CBF8DD100579B4C /* RankModel.m in Sources */,
 				7D30E8A41CA66C05004DE055 /* SCFilter+UIImage.m in Sources */,
 				7D30E8A71CA66C05004DE055 /* SCFilterAnimation.m in Sources */,
+				7D0E13641CDC35A800F9BAD5 /* TransactiondetailViewController.m in Sources */,
 				7D30E8B51CA66C05004DE055 /* SCSampleBufferHolder.m in Sources */,
 				7D30E8AA1CA66C05004DE055 /* SCIOPixelBuffers.m in Sources */,
 				57666FEA1C96C5AA00A52DBA /* AccountManager.m in Sources */,
@@ -4084,7 +4105,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4135,7 +4156,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -19,6 +19,7 @@
 
 
 #import "FounyMoneyViewController.h"
+#import "TransactiondetailViewController.h"
 
 @interface FounyMoneyViewController ()
 {
@@ -49,18 +50,20 @@
 -(void)setupView
 {
     [super setupView];
-    [self showBarButton:NAV_RIGHT imageName:@"doumashare.png"];
+    //[self showBarButton:NAV_RIGHT imageName:@"doumashare.png"];
+    
+    [self showBarButton:NAV_RIGHT  title:@"明细" fontColor:[UIColor blackColor]];
     dataSoureArr =[NSMutableArray array];
     
 
-    
 }
 
 
 // 明细
 - (void)doRightButtonTouch
 {
-    
+    TransactiondetailViewController * transacVc = [[TransactiondetailViewController alloc]init];
+    [self.navigationController pushViewController:transacVc animated:YES];
     
     
 }
