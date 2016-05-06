@@ -95,10 +95,30 @@
             completeBlock(model);
         }
     }];
+}
 
 
+-(void)getTransactionRecordWithMid:(NSString *)mid complete:(void (^)(BaseModel *))completeBlock{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"common"] = @"getTransactionRecord";
+    params[@"mid"] = mid;
+    
+    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {        
+        if (model){
+             model.list = [TransactionRecordModel arrayOfModelsFromDictionaries:model.list];
+        }
+
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+    
 
 }
+
+
+
 
 
 @end

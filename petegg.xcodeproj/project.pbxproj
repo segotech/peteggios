@@ -263,6 +263,7 @@
 		7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */; };
 		7D0E13641CDC35A800F9BAD5 /* TransactiondetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E13631CDC35A800F9BAD5 /* TransactiondetailViewController.m */; };
 		7D0E13681CDC3FA500F9BAD5 /* TransaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E13671CDC3FA500F9BAD5 /* TransaceTableViewCell.m */; };
+		7D0E136B1CDC71EA00F9BAD5 /* TransactionRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E136A1CDC71EA00F9BAD5 /* TransactionRecordModel.m */; };
 		7D15E7C61CD842A9003A472C /* ThreePointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */; };
 		7D15E7CC1CD8774A003A472C /* PersonDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7C91CD8774A003A472C /* PersonDataTableViewCell.m */; };
 		7D15E7CD1CD8774A003A472C /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15E7CB1CD8774A003A472C /* RecommendTableViewCell.m */; };
@@ -1191,6 +1192,8 @@
 		7D0E13631CDC35A800F9BAD5 /* TransactiondetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactiondetailViewController.m; sourceTree = "<group>"; };
 		7D0E13661CDC3FA500F9BAD5 /* TransaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransaceTableViewCell.h; sourceTree = "<group>"; };
 		7D0E13671CDC3FA500F9BAD5 /* TransaceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransaceTableViewCell.m; sourceTree = "<group>"; };
+		7D0E13691CDC71EA00F9BAD5 /* TransactionRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionRecordModel.h; sourceTree = "<group>"; };
+		7D0E136A1CDC71EA00F9BAD5 /* TransactionRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionRecordModel.m; sourceTree = "<group>"; };
 		7D15E7C41CD842A9003A472C /* ThreePointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreePointsViewController.h; sourceTree = "<group>"; };
 		7D15E7C51CD842A9003A472C /* ThreePointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreePointsViewController.m; sourceTree = "<group>"; };
 		7D15E7C81CD8774A003A472C /* PersonDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDataTableViewCell.h; sourceTree = "<group>"; };
@@ -2764,6 +2767,8 @@
 				7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */,
 				34DB513A1CDC68510032CF39 /* GetPhotoGraphModel.h */,
 				34DB513B1CDC68510032CF39 /* GetPhotoGraphModel.m */,
+				7D0E13691CDC71EA00F9BAD5 /* TransactionRecordModel.h */,
+				7D0E136A1CDC71EA00F9BAD5 /* TransactionRecordModel.m */,
 				7D0128EF1CC612E10009BF6B /* PersonAttention.h */,
 				7D0128F01CC612E10009BF6B /* PersonAttention.m */,
 				7D1763A71CBF8DD100579B4C /* RankModel.h */,
@@ -3816,6 +3821,7 @@
 				7D30E8B71CA66C05004DE055 /* SCSwipeableFilterView.m in Sources */,
 				7D2F3F841CC096790059116A /* PersonAttentionTableViewCell.m in Sources */,
 				57666FA41C9689CC00A52DBA /* SquareViewController.m in Sources */,
+				7D0E136B1CDC71EA00F9BAD5 /* TransactionRecordModel.m in Sources */,
 				34144BEC1CC4BD01007C4498 /* LargeViewController.m in Sources */,
 				57666FA31C9689CC00A52DBA /* RankViewController.m in Sources */,
 				7D30E89B1CA66C05004DE055 /* CALayer+AddUIColor.m in Sources */,
