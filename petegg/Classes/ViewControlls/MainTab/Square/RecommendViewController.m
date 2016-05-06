@@ -172,13 +172,16 @@ static NSString * cellId = @"recommeCellId";
     touchButton.tag = indexPath.row + 9;
     [cell addSubview:touchButton];
 
-    [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        cell.photoView.image =[self cutImage:image];
-        
-        if (image) {
-            cell.photoView.image = [image imageByScalingProportionallyToSize:CGSizeMake(cell.width, CGFLOAT_MAX)];
-        }
-    }];
+    if (model.cutImage) {
+        cell.photoView.image = model.cutImage;
+    }else{
+        [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if (image) {
+                cell.photoView.image = [image imageByScalingProportionallyToSize:CGSizeMake(self.tableView.width, CGFLOAT_MAX)];
+                model.cutImage = cell.photoView.image;
+            }
+        }];
+    }
     UIButton * photoViewBtn = [[UIButton alloc]initWithFrame:cell.photoView.frame];
     photoViewBtn.tag = indexPath.row + 11;
     [photoViewBtn addTarget:self action:@selector(photoButtonTouch:) forControlEvents:UIControlEventTouchUpInside];

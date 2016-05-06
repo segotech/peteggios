@@ -58,6 +58,9 @@
 @property (nonatomic, copy) NSString<Optional> *title;
 
 @property (nonatomic, copy) NSString<Optional> *aid;
+
+@property (nonatomic, strong) UIImage<Optional> *cutImage;
+
 @end
 
 
