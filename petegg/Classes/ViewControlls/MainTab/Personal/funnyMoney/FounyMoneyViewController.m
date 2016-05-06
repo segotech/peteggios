@@ -50,11 +50,12 @@
 -(void)setupView
 {
     [super setupView];
-    [self showBarButton:NAV_RIGHT imageName:@"doumashare.png"];
+    //[self showBarButton:NAV_RIGHT imageName:@"doumashare.png"];
+    
+    [self showBarButton:NAV_RIGHT  title:@"明细" fontColor:[UIColor blackColor]];
     dataSoureArr =[NSMutableArray array];
     
 
-    
 }
 
 
