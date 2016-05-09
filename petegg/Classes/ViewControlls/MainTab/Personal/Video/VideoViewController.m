@@ -308,6 +308,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [dic setValue:stateNum forKey:@"status"];
     if ([stateNum isEqualToString:@"0"]) {
         [dic setValue:@"1" forKey:@"page"];
+        page = 1;
+        
 
     }else{
     [dic setValue:@(page) forKey:@"page"];
