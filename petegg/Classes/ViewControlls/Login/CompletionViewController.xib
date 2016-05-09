@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DouYiDou.png" translatesAutoresizingMaskIntoConstraints="NO" id="X4x-bL-9cu">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sego1.png" translatesAutoresizingMaskIntoConstraints="NO" id="X4x-bL-9cu">
                     <rect key="frame" x="110" y="99" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="Wum-Vm-Gte"/>
@@ -104,10 +104,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="2003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sr-gr-dFW">
-                    <rect key="frame" x="110" y="218" width="25" height="28"/>
+                    <rect key="frame" x="110" y="218" width="20" height="23"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="25" id="WOT-sK-KaB"/>
-                        <constraint firstAttribute="height" constant="28" id="Zu5-JW-NK4"/>
+                        <constraint firstAttribute="width" constant="20" id="WOT-sK-KaB"/>
+                        <constraint firstAttribute="height" constant="23" id="Zu5-JW-NK4"/>
                     </constraints>
                     <state key="normal" title="Button" image="manAnimal.png"/>
                     <state key="disabled" image="manSelect.png"/>
@@ -118,9 +118,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="2004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clI-Kd-0kb">
-                    <rect key="frame" x="177" y="218" width="30" height="30"/>
+                    <rect key="frame" x="177" y="218" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="WnJ-2s-AD3"/>
+                        <constraint firstAttribute="width" constant="25" id="WnJ-2s-AD3"/>
                     </constraints>
                     <state key="normal" image="womenAnimal.png"/>
                     <state key="selected" image="wanmenSelect.png"/>
@@ -236,7 +236,7 @@
                         <constraint firstItem="PPr-RA-lR4" firstAttribute="centerX" secondItem="073-iu-WDa" secondAttribute="centerX" id="vmY-k4-4UD"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="我是余磊" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Coj-WT-XFk">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入昵称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Coj-WT-XFk">
                     <rect key="frame" x="102" y="262" width="194" height="39"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -244,10 +244,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="EB3-7E-ToI" firstAttribute="top" secondItem="8sr-gr-dFW" secondAttribute="bottom" constant="8" symbolic="YES" id="0N9-zi-4u8"/>
+                <constraint firstItem="EB3-7E-ToI" firstAttribute="top" secondItem="8sr-gr-dFW" secondAttribute="bottom" constant="13" id="0N9-zi-4u8"/>
                 <constraint firstItem="ePO-C0-4CL" firstAttribute="leading" secondItem="TE5-vP-ffq" secondAttribute="leading" id="4Dv-1i-N2T"/>
                 <constraint firstItem="Cwp-X6-RLY" firstAttribute="leading" secondItem="7ze-vQ-suj" secondAttribute="trailing" constant="8" symbolic="YES" id="76g-01-2mY"/>
-                <constraint firstItem="clI-Kd-0kb" firstAttribute="leading" secondItem="8sr-gr-dFW" secondAttribute="trailing" constant="42" id="9VB-5R-lAG"/>
+                <constraint firstItem="clI-Kd-0kb" firstAttribute="leading" secondItem="8sr-gr-dFW" secondAttribute="trailing" constant="47" id="9VB-5R-lAG"/>
                 <constraint firstItem="AYT-4e-NOC" firstAttribute="leading" secondItem="7Ao-2e-fiq" secondAttribute="trailing" constant="8" symbolic="YES" id="ASe-hR-NOr"/>
                 <constraint firstItem="AYT-4e-NOC" firstAttribute="centerY" secondItem="Cwp-X6-RLY" secondAttribute="centerY" id="BRW-GU-jQQ"/>
                 <constraint firstItem="Coj-WT-XFk" firstAttribute="centerY" secondItem="iMc-ZU-LZ1" secondAttribute="centerY" id="Bnh-vD-Dxv"/>
@@ -261,7 +261,7 @@
                 <constraint firstItem="H8O-25-1WS" firstAttribute="trailing" secondItem="ePO-C0-4CL" secondAttribute="trailing" id="MgW-Pk-RE3"/>
                 <constraint firstItem="TE5-vP-ffq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Mus-pj-i4h"/>
                 <constraint firstItem="Cwp-X6-RLY" firstAttribute="top" secondItem="ePO-C0-4CL" secondAttribute="bottom" constant="15" id="Oa1-wQ-xNF"/>
-                <constraint firstItem="EB3-7E-ToI" firstAttribute="top" secondItem="clI-Kd-0kb" secondAttribute="bottom" constant="6" id="OnU-S4-FQW"/>
+                <constraint firstItem="EB3-7E-ToI" firstAttribute="top" secondItem="clI-Kd-0kb" secondAttribute="bottom" constant="11" id="OnU-S4-FQW"/>
                 <constraint firstItem="clI-Kd-0kb" firstAttribute="top" secondItem="8sr-gr-dFW" secondAttribute="top" id="Ry8-85-3LU"/>
                 <constraint firstItem="Cwp-X6-RLY" firstAttribute="top" secondItem="AYT-4e-NOC" secondAttribute="top" id="S6z-ca-S3k"/>
                 <constraint firstItem="8fe-MN-Zmi" firstAttribute="top" secondItem="Ibw-ha-NGq" secondAttribute="bottom" constant="46" id="V92-a7-Ieo"/>
@@ -293,7 +293,7 @@
                 <constraint firstItem="7ze-vQ-suj" firstAttribute="leading" secondItem="OGg-NC-WiP" secondAttribute="trailing" constant="29" id="sWR-gt-Z8U"/>
                 <constraint firstItem="Lfo-A6-Tbf" firstAttribute="top" secondItem="H8O-25-1WS" secondAttribute="bottom" constant="15" id="sXV-hu-MBx"/>
                 <constraint firstItem="7Ao-2e-fiq" firstAttribute="bottom" secondItem="Cwp-X6-RLY" secondAttribute="bottom" id="sYQ-qc-5Jh"/>
-                <constraint firstItem="Coj-WT-XFk" firstAttribute="centerX" secondItem="clI-Kd-0kb" secondAttribute="centerX" constant="7" id="tLy-A7-p9T"/>
+                <constraint firstItem="Coj-WT-XFk" firstAttribute="centerX" secondItem="clI-Kd-0kb" secondAttribute="centerX" constant="9.5" id="tLy-A7-p9T"/>
                 <constraint firstItem="7ze-vQ-suj" firstAttribute="top" secondItem="7Ao-2e-fiq" secondAttribute="top" id="utv-Y4-y7A"/>
                 <constraint firstItem="EB3-7E-ToI" firstAttribute="top" secondItem="hGo-7Y-1ud" secondAttribute="bottom" constant="8" symbolic="YES" id="uyC-qR-eNE"/>
                 <constraint firstItem="ePO-C0-4CL" firstAttribute="top" secondItem="iMc-ZU-LZ1" secondAttribute="bottom" constant="9" id="vrU-vC-OuA"/>
@@ -307,11 +307,11 @@
         </view>
     </objects>
     <resources>
-        <image name="DouYiDou.png" width="158" height="158"/>
         <image name="kuang_off.png" width="35" height="33"/>
         <image name="kuang_on.png" width="34" height="30"/>
         <image name="manAnimal.png" width="64" height="64"/>
         <image name="manSelect.png" width="64" height="64"/>
+        <image name="sego1.png" width="288" height="289"/>
         <image name="wanmenSelect.png" width="64" height="64"/>
         <image name="womenAnimal.png" width="64" height="64"/>
     </resources>
