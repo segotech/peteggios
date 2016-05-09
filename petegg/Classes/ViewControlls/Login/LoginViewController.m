@@ -26,6 +26,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     //self.navigationController.navigationBarHidden = YES;
     [self initUserFace];
+
 }
 -(void)initUserFace{
     UIImageView * backImage = [[UIImageView alloc]initWithFrame:self.view.frame];
@@ -152,8 +153,7 @@
 //        [self hideHud];
 //    }];
     
-   
-    
+
     
     [self showHudInView:self.view hint:@"正在登录..."];
     [[AFHttpClient sharedAFHttpClient]loginWithUserName:self.accountTextField.text password:self.passwordTextField.text complete:^(BaseModel *model) {

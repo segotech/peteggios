@@ -11,6 +11,7 @@
 #import "AFHttpClient+PersonAttention.h"
 #import "PersonAttention.h"
 #import "PersonAttentionTableViewCell.h"
+#import "PersonDetailViewController.h"
 static NSString * cellId = @"personNewAttentionTableViewCellidddd";
 
 @interface PersonNewAttentionViewController ()
@@ -84,6 +85,15 @@ static NSString * cellId = @"personNewAttentionTableViewCellidddd";
 
     
     [cell.headImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
+    UIButton * touBtn = [[UIButton alloc]initWithFrame:cell.headImage.frame];
+    touBtn.backgroundColor = [UIColor clearColor];
+    touBtn.tag = indexPath.row + 110001;
+    
+    [cell addSubview:touBtn];
+    [touBtn addTarget:self action:@selector(headButtonTOuch:) forControlEvents:UIControlEventTouchUpInside];
+    
+
+    
     if ([model.pet_race isEqualToString:@"汪"]) {
         cell.kindImage.image = [UIImage imageNamed:@"wangwang.png"];
     }else{
@@ -99,6 +109,16 @@ static NSString * cellId = @"personNewAttentionTableViewCellidddd";
     
     return cell;
 }
+
+-(void)headButtonTOuch:(UIButton *)sender{
+    NSInteger i =sender.tag - 110001;
+    NearbyModel * model = self.dataSource[i];
+    PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
+    personVc.ddddd = model.mid;
+    [self.navigationController pushViewController:personVc animated:YES];
+    
+}
+
 
 
 

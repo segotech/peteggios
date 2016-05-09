@@ -10,6 +10,8 @@
 #import "PersonAttentionTableViewCell.h"
 #import "AFHttpClient+PersonAttention.h"
 #import "NearbyModel.h"
+#import "PersonDetailViewController.h"
+
 
 static NSString * cellId = @"personAttentionCeliddd";
 @interface PersonalFansViewController ()
@@ -89,6 +91,15 @@ static NSString * cellId = @"personAttentionCeliddd";
     [cell.headImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     cell.sinaglLabel.text = model.signature;
     
+    UIButton * touBtn = [[UIButton alloc]initWithFrame:cell.headImage.frame];
+    touBtn.backgroundColor = [UIColor clearColor];
+    touBtn.tag = indexPath.row + 199;
+    
+    [cell addSubview:touBtn];
+    [touBtn addTarget:self action:@selector(headButtonTOuch:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
     if ([model.pet_race isEqualToString:@"汪"]) {
         cell.kindImage.image = [UIImage imageNamed:@"wangwang.png"];
     }else{
@@ -111,5 +122,25 @@ static NSString * cellId = @"personAttentionCeliddd";
     
     return cell;
 }
+
+
+
+-(void)headButtonTOuch:(UIButton *)sender{
+    NSInteger i =sender.tag - 199;
+    NearbyModel * model = self.dataSource[i];
+    PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
+    personVc.ddddd = model.mid;
+    [self.navigationController pushViewController:personVc animated:YES];
+
+    
+    
+    
+
+
+}
+
+
+
+
 
 @end

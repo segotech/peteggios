@@ -66,7 +66,8 @@ static NSString * getServerTest1 = @"http://192.168.1.127:8080/sego_v3/";
 + (BOOL) isValidateMobile:(NSString *)mobile
 {
     //手机号以13， 15，18开头，八个 \d 数字字符
-    NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";
+    //NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";
+    NSString *phoneRegex = @"^1[34578]\\d{9}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
     //    NSLog(@"phoneTest is %@",phoneTest);
     return [phoneTest evaluateWithObject:mobile];
