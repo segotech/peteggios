@@ -25,10 +25,10 @@
     
     if (self  =  [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        self.imageCell =[[UIImageView alloc]initWithFrame:CGRectMake(5*W_Wide_Zoom, 7*W_Hight_Zoom, 28*W_Wide_Zoom, 28*W_Hight_Zoom)];
+        self.imageCell =[[UIImageView alloc]initWithFrame:CGRectMake(5*W_Wide_Zoom, 12*W_Hight_Zoom, 28*W_Wide_Zoom, 28*W_Hight_Zoom)];
         [self addSubview:self.imageCell];
         
-        self.introduce =[[UILabel alloc]initWithFrame:CGRectMake(40*W_Wide_Zoom, 0, 180*W_Wide_Zoom, 45*W_Hight_Zoom)];
+        self.introduce =[[UILabel alloc]initWithFrame:CGRectMake(40*W_Wide_Zoom, 7 * W_Hight_Zoom, 180*W_Wide_Zoom, 45*W_Hight_Zoom)];
         
         [self addSubview:self.introduce];
         
@@ -42,7 +42,7 @@
         self.moneyLabel.layer.cornerRadius = self.moneyLabel.bounds.size.width/2;
         [self addSubview:self.moneyLabel];
         
-        self.redpoint = [[UILabel alloc]initWithFrame:CGRectMake(310 * W_Wide_Zoom, 30 * W_Hight_Zoom, 3 * W_Wide_Zoom, 3 * W_Hight_Zoom)];
+        self.redpoint = [[UIButton alloc]initWithFrame:CGRectMake(310 * W_Wide_Zoom, 25 * W_Hight_Zoom, 8 * W_Wide_Zoom, 8 * W_Hight_Zoom)];
         self.redpoint.backgroundColor = [UIColor redColor];
         self.redpoint.hidden = YES;
         self.redpoint.layer.cornerRadius = self.redpoint.width/2;

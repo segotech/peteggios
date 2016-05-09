@@ -23,12 +23,14 @@
     [super setupView];
    // NSLog(@"%ld",self.number);
     UIWebView * web = [[UIWebView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 727 * W_Hight_Zoom)];
-    NSString * str =  [AppUtil getServerTest];
-    
+ //   NSString * str =  [AppUtil getServerTest];
+     NSString * str = @"";
     if ([self.number isEqualToString: @"2"]) {
-        str = [str stringByAppendingString:@"s/recommend/article.jsp?aid=2&access=inside"];
+        //str = [str stringByAppendingString:@"s/recommend/article.jsp?aid=2&access=inside"];
+        str = @"http://180.97.81.213:15101/clientAction.do?method=client&aid=2&nextPage=/s/recommend/article.jsp&access=inside";
     }else if([self.number isEqualToString: @"3"]){
-        str = [str stringByAppendingString:@"s/recommend/article.jsp?aid=3&access=inside"];
+
+        str = @"http://180.97.81.213:15101/clientAction.do?method=client&aid=3&nextPage=/s/recommend/article.jsp&access=inside";
     }
     
     NSURL * url = [NSURL URLWithString:str];

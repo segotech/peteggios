@@ -110,6 +110,10 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
         if (page == 1) {
             [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:model.list];
+            _deleteImageV.hidden = YES;
+            [deleteOrUpdateArr removeAllObjects];
+            [thumbnailsAry removeAllObjects];
+            
         }else{
             [self.dataSource addObjectsFromArray:model.list];
         }
