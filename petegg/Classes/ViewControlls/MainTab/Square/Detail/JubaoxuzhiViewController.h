@@ -1,5 +1,5 @@
 //
-//  ReportViewController.h
+//  JubaoxuzhiViewController.h
 //  petegg
 //
 //  Created by czx on 16/5/6.
@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface ReportViewController : BaseViewController
-@property (nonatomic,strong)NSString * stid;
+@interface JubaoxuzhiViewController : BaseViewController
+
 @end

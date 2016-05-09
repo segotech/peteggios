@@ -10,7 +10,6 @@
 #import "IntroduceViewController.h"
 #import "SuggestViewController.h"
 #import "AgreementViewController.h"
-#import "ReportViewController.h"
 
 @interface ThreePointsViewController ()
 
@@ -120,12 +119,10 @@
         SuggestViewController * suggVc = [[SuggestViewController alloc]init];
         [self.navigationController pushViewController:suggVc animated:YES];
     }else if (sender.tag == 122){
-        //测试举报
-        ReportViewController * report = [[ReportViewController alloc]init];
-        [self.navigationController pushViewController:report animated:YES];
+        
 
-//        AgreementViewController * agreeVc = [[AgreementViewController alloc]init];
-//        [self.navigationController pushViewController:agreeVc animated:YES];
+        AgreementViewController * agreeVc = [[AgreementViewController alloc]init];
+        [self.navigationController pushViewController:agreeVc animated:YES];
     }
     
 }

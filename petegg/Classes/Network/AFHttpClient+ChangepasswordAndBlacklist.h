@@ -44,4 +44,11 @@
 -(void)getTransactionRecordWithMid:(NSString *)mid
                            complete:(void(^)(BaseModel *model))completeBlock;
 
+
+//举报
+-(void)addreportWithMid:(NSString *)mid stid:(NSString *)stid content:(NSString *)content reporttype:(NSString *)reporttype objtype:(NSString *)objtype  complete:(void(^)(BaseModel *model))completeBlock;
+
+
+
+
 @end

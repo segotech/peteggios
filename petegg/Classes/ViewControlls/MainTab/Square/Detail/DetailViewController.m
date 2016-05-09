@@ -21,7 +21,7 @@
 #import "MWPhotoBrowser.h"
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
-
+#import "ReportViewController.h"
 @interface DetailViewController()<MWPhotoBrowserDelegate>
 {
     NSIndexPath *currentEditingIndexthPath;
@@ -58,7 +58,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
+    [self setNavTitle:@"萌宠秀详情"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
 }
@@ -223,6 +223,10 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
         UIButton* warningBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [warningBtn setImage:[UIImage imageNamed:@"warningBtn"] forState:UIControlStateNormal];
         [warningBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+            ReportViewController * report = [[ReportViewController alloc]init];
+            report.stid = self.stid;
+            [self.navigationController pushViewController:report animated:YES];
+
             
         }];
         

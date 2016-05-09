@@ -7,10 +7,14 @@
 //
 
 #import "ReportViewController.h"
+#import "AFHttpClient+ChangepasswordAndBlacklist.h"
+#import "JubaoxuzhiViewController.h"
 
 @interface ReportViewController ()
 @property (nonatomic,strong)UIButton *button1;
 @property (nonatomic,strong)NSMutableArray * datas;
+@property (nonatomic,strong)UITextView * textView;
+@property (nonatomic,strong)NSMutableString * dongdongstr;
 
 @end
 
@@ -20,7 +24,7 @@
     [super viewDidLoad];
     [self setNavTitle:@"举报"];
     self.view.backgroundColor = LIGHT_GRAY_COLOR;
-   
+    [self showBarButton:NAV_RIGHT title:@"提交" fontColor:[UIColor blackColor]];
 }
 -(void)setupView{
     [super setupView];
@@ -33,31 +37,75 @@
         [touchBtn addTarget:self action:@selector(gogogogogo:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:touchBtn];
         
-        UILabel * labels = [[UILabel alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 73 * W_Hight_Zoom + i * 30 * W_Hight_Zoom, 280 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        UILabel * labels = [[UILabel alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 73 * W_Hight_Zoom + i * 30 * W_Hight_Zoom, 280 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
         labels.text = self.datas[i];
-       // labels.backgroundColor = [UIColor blackColor];
         labels.font = [UIFont systemFontOfSize:13];
         labels.textColor = [UIColor blackColor];
         [self.view addSubview:labels];
     }
 
+    _textView = [[UITextView alloc]initWithFrame:CGRectMake(20 * W_Wide_Zoom, 300 * W_Hight_Zoom, 335 * W_Wide_Zoom, 150 * W_Hight_Zoom)];
+    _textView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_textView];
+    
+    UIButton * jubaoxuzhiBtn = [[UIButton alloc]initWithFrame:CGRectMake(137.5 * W_Wide_Zoom, 500 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    [jubaoxuzhiBtn setTitle:@"举报须知" forState:UIControlStateNormal];
+    [jubaoxuzhiBtn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+    jubaoxuzhiBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    [self.view addSubview:jubaoxuzhiBtn];
+    
+    [jubaoxuzhiBtn addTarget:self action:@selector(jubaoxuzhiButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+    
+
 }
+
+-(void)jubaoxuzhiButtonTouch{
+    JubaoxuzhiViewController * jubao = [[JubaoxuzhiViewController alloc]init];
+    [self.navigationController pushViewController:jubao animated:YES];
+
+
+}
+
+
+
 
 -(void)gogogogogo:(UIButton *)sender{
     for (int i=0; i<self.datas.count; i++) {
         
         _button1 = (UIButton *)[self.view viewWithTag:i+900001];
+        
         if (_button1.tag == sender.tag) {
-            
+            _dongdongstr = self.datas[_button1.tag-900001];
             _button1.selected = YES;
         }else {
             _button1.selected = NO;
         }
         
     }
+}
 
+-(void)doRightButtonTouch{
+    if (!_button1.tag) {
+        [[AppUtil appTopViewController] showHint:@"您还没有勾选"];
+        return;
+    }
+    
+    NSLog(@"%@",_dongdongstr);
+
+    [[AFHttpClient sharedAFHttpClient]addreportWithMid:[AccountManager sharedAccountManager].loginModel.mid stid:self.stid content:_textView.text reporttype:_dongdongstr objtype:@"m" complete:^(BaseModel *model) {
+        if (model) {
+             [[AppUtil appTopViewController] showHint:model.retDesc];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+             [[AppUtil appTopViewController] showHint:model.retDesc];
+        }
+        
+    }];
+    
 
 }
+
+
 
 
 

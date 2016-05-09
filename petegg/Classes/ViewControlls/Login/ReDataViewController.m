@@ -17,9 +17,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setNavTitle: NSLocalizedString(@"repaceWD", nil)];
+    [self setNavTitle:@"忘记密码"];
 
 }
+-(void)setupView{
+    [super setupView];
+    
+    
+}
+
+-(void)setupData{
+    [super setupData];
+    
+    
+}
+
+
+
+
 
 
 
