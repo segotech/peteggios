@@ -159,6 +159,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     cell.imageV.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapMYP = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onVideo:)];
     [cell.imageV addGestureRecognizer:tapMYP];
+    cell.rightBtn.hidden = YES;
 
     
     

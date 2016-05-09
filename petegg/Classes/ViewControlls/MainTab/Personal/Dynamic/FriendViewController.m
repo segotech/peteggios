@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "TimeHistoryModel.h"
 #import "MessageViewController.h"
+#import "DetailViewController.h"
 @interface FriendViewController ()
 
 {
@@ -256,6 +257,10 @@
         {
               [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.resources] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
         }
+        UITapGestureRecognizer *tapIcon = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapIcon:)];
+        cell.oneImagev.userInteractionEnabled = YES;
+        [cell.oneImagev addGestureRecognizer:tapIcon];
+
         
     }else if (i>=2)// 两张图
     {
@@ -264,8 +269,15 @@
         
             [cell.twotwoImage sd_setImageWithURL:[NSURL URLWithString:array[1]] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
         
+         UITapGestureRecognizer *tapIcon = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapIcon:)];
+         cell.twoOneImage.userInteractionEnabled = YES;
+         [cell.twotwoImage addGestureRecognizer:tapIcon];
+
+
+        
         
     }
+    
     
     
 
@@ -328,6 +340,19 @@
     
     NSLog(@"%@",self.dataSource[indexPath.row]);
     
+    
+    
+}
+
+
+- (void)onTapIcon :(UITapGestureRecognizer *)sender
+{
+    
+    NSInteger i = [self.tableView indexPathForCell:((FriendTableViewCell*)sender.view.superview.superview)].row;
+    TimeHistoryModel * model = self.dataSource[i];
+    DetailViewController * statVC =[[DetailViewController alloc]init];
+    statVC.stid = model.stid;
+    [self.navigationController pushViewController:statVC animated:NO];
     
     
 }

@@ -164,7 +164,6 @@
      */
     
     NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-    
     NSString * bangdinDevico = [defaults objectForKey:PREF_DEVICE_NUMBER];
     NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
     NSString * devico =[AccountManager sharedAccountManager].loginModel.deviceno;

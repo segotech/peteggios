@@ -68,15 +68,27 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     
 
     // 尚未绑定设备，则绑定设备。
-    if ([AppUtil isBlankString:strDeviceNo] && [AppUtil isBlankString:str]) {
-        [self updateUI:@"绑定设备" State:false];
+    if ([AppUtil isBlankString:str]) {
+        if ([AppUtil isBlankString:strDeviceNo]) {
+            [self updateUI:@"绑定设备" State:false];
+
+        }else
+        {
+            deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", strDeviceNo];
+            incodeEdit.text = [NSString stringWithFormat:@"  接入码:  ******"];
+            [self updateUI:@"解除绑定" State:true];
+            
+        }
     }
     // 已绑定设备，解除绑定。
     else {
-        deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", strDeviceNo];
+        deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", str];
         incodeEdit.text = [NSString stringWithFormat:@"  接入码:  ******"];
         [self updateUI:@"解除绑定" State:true];
     }
+    
+    
+    
 }
 
 /**
