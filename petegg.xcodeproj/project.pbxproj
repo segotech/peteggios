@@ -286,6 +286,7 @@
 		7D1763A41CBF733800579B4C /* AFHttpClient+Rank.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1763A31CBF733800579B4C /* AFHttpClient+Rank.m */; };
 		7D1763A61CBF864C00579B4C /* dianzanhou.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D1763A51CBF864C00579B4C /* dianzanhou.png */; };
 		7D1763A91CBF8DD100579B4C /* RankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1763A81CBF8DD100579B4C /* RankModel.m */; };
+		7D1968B91CE08683009A63BB /* FeaturedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1968B81CE08683009A63BB /* FeaturedViewController.m */; };
 		7D1EA05E1CB4ED6800328C2D /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */; };
 		7D1EA0671CB4F28500328C2D /* PersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA0661CB4F28500328C2D /* PersonDetailViewController.m */; };
 		7D24EA8C1CC4E74A004EB1E2 /* manquanquan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D24EA881CC4E74A004EB1E2 /* manquanquan.png */; };
@@ -1235,6 +1236,8 @@
 		7D1763A51CBF864C00579B4C /* dianzanhou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dianzanhou.png; sourceTree = "<group>"; };
 		7D1763A71CBF8DD100579B4C /* RankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankModel.h; sourceTree = "<group>"; };
 		7D1763A81CBF8DD100579B4C /* RankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankModel.m; sourceTree = "<group>"; };
+		7D1968B71CE08683009A63BB /* FeaturedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturedViewController.h; sourceTree = "<group>"; };
+		7D1968B81CE08683009A63BB /* FeaturedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeaturedViewController.m; sourceTree = "<group>"; };
 		7D1EA05C1CB4ED6800328C2D /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		7D1EA0651CB4F28500328C2D /* PersonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDetailViewController.h; sourceTree = "<group>"; };
@@ -3032,6 +3035,8 @@
 				7D1EA05D1CB4ED6800328C2D /* InformationViewController.m */,
 				7D1EA0651CB4F28500328C2D /* PersonDetailViewController.h */,
 				7D1EA0661CB4F28500328C2D /* PersonDetailViewController.m */,
+				7D1968B71CE08683009A63BB /* FeaturedViewController.h */,
+				7D1968B81CE08683009A63BB /* FeaturedViewController.m */,
 			);
 			path = Square;
 			sourceTree = "<group>";
@@ -3825,6 +3830,7 @@
 				7D1714481CBBB1EB0047FA70 /* SeachePeopleViewController.m in Sources */,
 				7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */,
 				57666FA21C9689CC00A52DBA /* NearViewController.m in Sources */,
+				7D1968B91CE08683009A63BB /* FeaturedViewController.m in Sources */,
 				7D30E8B81CA66C05004DE055 /* SCVideoConfiguration.m in Sources */,
 				7D30E8C91CA66C67004DE055 /* SCRecordSessionManager.m in Sources */,
 				7D8122861CBE2ED000F4F823 /* RankesTableViewCell.m in Sources */,

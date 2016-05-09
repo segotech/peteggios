@@ -19,6 +19,7 @@
 #import "AFHttpClient+IsfriendClient.h"
 
 #import "UIImage-Extensions.h"
+#import "FeaturedViewController.h"
 
 static NSString * cellId = @"recommeCellId";
 
@@ -116,7 +117,7 @@ static NSString * cellId = @"recommeCellId";
         //[textList addObject:_imageArr[i][@"title"]];
         [textList addObject:model.title];
         [arrList addObject:pImageView1];
-        [aidList addObject:model.aid] ;
+        [aidList addObject:model.aid];
     }
     _topScrollView.textArr = textList;
     _topScrollView.fetchContentViewAtIndex=  ^UIView *(NSInteger pageIndex){
@@ -130,7 +131,13 @@ static NSString * cellId = @"recommeCellId";
     _topScrollView.TapActionBlock = ^(NSInteger pagIndex){
     
         //这里写点击事件
-        NSLog(@"%@",aidList[pagIndex]);
+       // NSLog(@"%@",aidList[pagIndex]);
+        FeaturedViewController * featureVc = [[FeaturedViewController alloc]init];
+      //  NSInteger i  = (NSInteger)aidList[pagIndex];
+        NSString * i = aidList[pagIndex];
+        featureVc.number = i;
+        [self.navigationController pushViewController:featureVc animated:YES];
+        
     };
 
 }
