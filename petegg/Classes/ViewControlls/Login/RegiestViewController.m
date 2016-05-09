@@ -85,7 +85,7 @@
     
     //注册
     
-    UIButton * registBtn =[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 250, 40)];
+    UIButton * registBtn =[[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 250 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     registBtn.backgroundColor =GREEN_COLOR;
     registBtn.layer.cornerRadius =  6;
     registBtn.tag = 10000;
@@ -96,12 +96,12 @@
     [self.view addSubview:registBtn];
     
     
-    UILabel * labelXieyi =[[UILabel alloc]initWithFrame:CGRectMake(60, 350, 250, 30)];
+    UILabel * labelXieyi =[[UILabel alloc]initWithFrame:CGRectMake(60 * W_Wide_Zoom, 350 * W_Hight_Zoom, 250 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     labelXieyi.text =@"点击'注册'按钮,代表已阅读并同意";
     labelXieyi.font =[UIFont systemFontOfSize:13];
     [self.view addSubview:labelXieyi];
     
-    UIButton * xieyiBtn =[[UIButton alloc]initWithFrame:CGRectMake(250, 350, 60, 30)];
+    UIButton * xieyiBtn =[[UIButton alloc]initWithFrame:CGRectMake(250 * W_Wide_Zoom, 350 * W_Hight_Zoom, 60 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     [xieyiBtn setTitle:@"注册协议" forState:UIControlStateNormal];
     xieyiBtn.titleLabel.font =[UIFont systemFontOfSize:13];
     [xieyiBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -146,6 +146,15 @@
 
 - (void)passwordCode:(UIButton *)sender
 {
+    UITextField * text =  (UITextField *)[self.view viewWithTag:33];
+    if ([AppUtil isBlankString:text.text]) {
+        [[AppUtil appTopViewController] showHint:@"请输入手机号码"];
+        return;
+    }
+    if (![AppUtil isValidateMobile:text.text]) {
+        [[AppUtil appTopViewController] showHint:@"请输入正确格式的手机号码"];
+        return;
+    }
     
     [self proveCode];
     __block int timeout=60; //倒计时时间
@@ -157,6 +166,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_securityButton setTitle:@"发送验证码" forState:UIControlStateNormal];
                 _securityButton.userInteractionEnabled = YES;
+                _securityButton.backgroundColor = GREEN_COLOR;
             });
         }else{
             int seconds = timeout % 60;
@@ -168,6 +178,7 @@
                 [_securityButton setTitle:[NSString stringWithFormat:@"%@秒后重新发送",strTime] forState:UIControlStateNormal];
                 [UIView commitAnimations];
                 _securityButton.userInteractionEnabled = NO;
+                _securityButton.backgroundColor = [UIColor grayColor];
             });
             timeout--;
         }
@@ -188,13 +199,35 @@
 - (void)registBtn:(UIButton *)sender
 {
      UITextField * text =  (UITextField *)[self.view viewWithTag:33];
+     UITextField * text1 =  (UITextField *)[self.view viewWithTag:34];
      UITextField * text2 =  (UITextField *)[self.view viewWithTag:35];
+     UITextField * text3 =  (UITextField *)[self.view viewWithTag:36];
+    
+    if ([AppUtil isBlankString:text.text]) {
+         [[AppUtil appTopViewController] showHint:@"请输入帐号"];
+        return;
+    }
+    if ([AppUtil isBlankString:text1.text]) {
+         [[AppUtil appTopViewController] showHint:@"请输入验证码"];
+        return;
+    }
+    if ([AppUtil isBlankString:text2.text]) {
+         [[AppUtil appTopViewController] showHint:@"请输入密码"];
+        return;
+    }
+    if (![text2.text isEqualToString:text3.text]) {
+         [[AppUtil appTopViewController] showHint:@"两次输入密码不一致"];
+        return;
+    }
+    if (![text1.text isEqualToString:registCode]) {
+        [[AppUtil appTopViewController] showHint:@"请输入正确的验证码"];
+        return;
+    }
     
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=memberRegister";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:text.text forKey:@"phone"];
     [dic setValue:text2.text forKey:@"password"];
-    
     
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
     
@@ -233,7 +266,6 @@
     }else if (sender.tag ==1001 &&sender.selected){
         UITextField * textFL =(UITextField *)[self.view viewWithTag:36];
         textFL.secureTextEntry = YES;
-        
     }
     else if(!sender.selected){
         UITextField * textFL =(UITextField *)[self.view viewWithTag:36];
@@ -242,7 +274,6 @@
         textFld.secureTextEntry = NO;
 
     }
-    
     
 }
 

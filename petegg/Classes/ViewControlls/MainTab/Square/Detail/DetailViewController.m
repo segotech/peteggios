@@ -100,10 +100,11 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
 
 - (void)loadDetailInfo{
     //萌宠秀详情的接口
+     [self showHudInView:self.view hint:@"正在加载..."];
     [[AFHttpClient sharedAFHttpClient] querDetailWithStid:self.stid complete:^(BaseModel *model) {
         
         if (model && model.list && model.list.count > 0) {
-            
+            [self hideHud];
             self.detailModel = model.list[0];
             
             [self.resourcesArray removeAllObjects];
@@ -121,6 +122,9 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
             }
             
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,2)] withRowAnimation:UITableViewRowAnimationNone];
+        }else{
+            [self hideHud];
+            
         }
     }];
 }
