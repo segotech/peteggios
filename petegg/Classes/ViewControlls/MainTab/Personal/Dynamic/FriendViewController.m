@@ -75,16 +75,20 @@
     self.count =[defaults objectForKey:@"countMessage"];
     
     
-    message =[[UIButton alloc]initWithFrame:CGRectMake(170, 80, 140, 30)];
+    message =[[UIButton alloc]initWithFrame:CGRectMake(130, 80, 110, 35)];
     [message addTarget:self action:@selector(messageBtn:) forControlEvents:UIControlEventTouchUpInside];
-     message.titleEdgeInsets = UIEdgeInsetsMake(0, -60, 0, 0);//设置title在button上的位
+    // message.titleEdgeInsets = UIEdgeInsetsMake(0, -60, 0, 0);//设置title在button上的位
+    message.contentHorizontalAlignment =UIControlContentHorizontalAlignmentCenter;
+    
     [message setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];
     
     if ([self.count isEqualToString:@"0"]) {
         message.hidden = YES;
     }else{
-    [message setTitle:[NSString stringWithFormat:@"%@条动态",self.count] forState:UIControlStateNormal];
+    [message setTitle:[NSString stringWithFormat:@"%d条动态",6] forState:UIControlStateNormal];
     }
+    
+    
     [message setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     message.titleLabel.font =[UIFont systemFontOfSize:13];
     [self.view addSubview:message];

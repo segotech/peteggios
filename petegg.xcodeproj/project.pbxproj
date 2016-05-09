@@ -193,6 +193,11 @@
 		34A2186A1CCE151300ADD8FF /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */; };
 		34A2186C1CCE152E00ADD8FF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */; };
 		34A2186E1CCE15BC00ADD8FF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A2186D1CCE15BC00ADD8FF /* CoreData.framework */; };
+		34D27AE71CE0444D00244333 /* nopattion.png in Resources */ = {isa = PBXBuildFile; fileRef = 34D27AE61CE0444D00244333 /* nopattion.png */; };
+		34D27AEA1CE067C500244333 /* ViewControllerss.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D27AE91CE067C500244333 /* ViewControllerss.m */; };
+		34D27AED1CE06B8E00244333 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 34D27AEB1CE06B8E00244333 /* play.png */; };
+		34D27AEE1CE06B8E00244333 /* play2.png in Resources */ = {isa = PBXBuildFile; fileRef = 34D27AEC1CE06B8E00244333 /* play2.png */; };
+		34D27AF01CE06BB800244333 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 34D27AEF1CE06BB800244333 /* 2.png */; };
 		34DB51371CDB28AE0032CF39 /* video_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DB51361CDB28AE0032CF39 /* video_point.png */; };
 		34DB51391CDB2E740032CF39 /* light_on_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DB51381CDB2E740032CF39 /* light_on_on.png */; };
 		34DB513C1CDC68520032CF39 /* GetPhotoGraphModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DB513B1CDC68510032CF39 /* GetPhotoGraphModel.m */; };
@@ -1068,6 +1073,12 @@
 		34A218691CCE151300ADD8FF /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		34A2186B1CCE152E00ADD8FF /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		34A2186D1CCE15BC00ADD8FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		34D27AE61CE0444D00244333 /* nopattion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopattion.png; sourceTree = "<group>"; };
+		34D27AE81CE067C500244333 /* ViewControllerss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerss.h; sourceTree = "<group>"; };
+		34D27AE91CE067C500244333 /* ViewControllerss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerss.m; sourceTree = "<group>"; };
+		34D27AEB1CE06B8E00244333 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		34D27AEC1CE06B8E00244333 /* play2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play2.png; sourceTree = "<group>"; };
+		34D27AEF1CE06BB800244333 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		34DB51361CDB28AE0032CF39 /* video_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_point.png; sourceTree = "<group>"; };
 		34DB51381CDB2E740032CF39 /* light_on_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_on_on.png; sourceTree = "<group>"; };
 		34DB513A1CDC68510032CF39 /* GetPhotoGraphModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPhotoGraphModel.h; sourceTree = "<group>"; };
@@ -1573,6 +1584,7 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				34D27AE61CE0444D00244333 /* nopattion.png */,
 				34DB51381CDB2E740032CF39 /* light_on_on.png */,
 				34DB51361CDB28AE0032CF39 /* video_point.png */,
 				7D15E7CE1CD8A35B003A472C /* tubiaobiao.png */,
@@ -1655,6 +1667,9 @@
 		344F02281C9FD5BC0076CE62 /* nav */ = {
 			isa = PBXGroup;
 			children = (
+				34D27AEF1CE06BB800244333 /* 2.png */,
+				34D27AEB1CE06B8E00244333 /* play.png */,
+				34D27AEC1CE06B8E00244333 /* play2.png */,
 				344F02CD1CA39B9B0076CE62 /* new_3point.png */,
 				57F2C8301CA10FB8005324DD /* btn_back@2x.png */,
 				344F022C1C9FE02C0076CE62 /* new_egg_seting.png */,
@@ -3328,6 +3343,8 @@
 		7D825D001CBCA65000F4E216 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				34D27AE81CE067C500244333 /* ViewControllerss.h */,
+				34D27AE91CE067C500244333 /* ViewControllerss.m */,
 				7D825D011CBCA65000F4E216 /* HeaderViewCollection.xib */,
 				7D825D021CBCA65000F4E216 /* MyVideoCollectionViewCell.h */,
 				7D825D031CBCA65000F4E216 /* MyVideoCollectionViewCell.m */,
@@ -3521,7 +3538,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = ZMFX8728A9;
+						DevelopmentTeam = 4UKEB375ND;
 					};
 				};
 			};
@@ -3564,6 +3581,7 @@
 				34144BD71CBFB1B3007C4498 /* MessageTableViewCell.xib in Resources */,
 				3481B3A61CBCB4A400A4344D /* selecting.png in Resources */,
 				7D825CD81CBCA4C800F4E216 /* WasCallViewController.xib in Resources */,
+				34D27AE71CE0444D00244333 /* nopattion.png in Resources */,
 				34DB51371CDB28AE0032CF39 /* video_point.png in Resources */,
 				7DF147161CD0BB740046D726 /* xuan_guize.png in Resources */,
 				34A2183D1CCDFF9700ADD8FF /* incoming_chat.wav in Resources */,
@@ -3683,6 +3701,7 @@
 				34A218291CCDFF9700ADD8FF /* hold_on.png in Resources */,
 				7D3DA5BB1CA3EC43005BD38B /* 评论.png in Resources */,
 				34A218231CCDFF9700ADD8FF /* contact_starred.png in Resources */,
+				34D27AF01CE06BB800244333 /* 2.png in Resources */,
 				344F02BF1CA2D8CE0076CE62 /* left_off.png in Resources */,
 				344F02711CA009A30076CE62 /* 2.png in Resources */,
 				34A218241CCDFF9700ADD8FF /* contact_unstarred.png in Resources */,
@@ -3705,6 +3724,8 @@
 				34A218211CCDFF9700ADD8FF /* composing_chat.png in Resources */,
 				344F02611C9FEBDE0076CE62 /* round.png in Resources */,
 				7D825D271CBCA85A00F4E216 /* person_balance.png.png in Resources */,
+				34D27AEE1CE06B8E00244333 /* play2.png in Resources */,
+				34D27AED1CE06B8E00244333 /* play.png in Resources */,
 				7D30E89D1CA66C05004DE055 /* LICENSE in Resources */,
 				7D2F82041CAE25030097820B /* egg_usertubiao.png in Resources */,
 				57666FBF1C96979F00A52DBA /* tab_personal_normal@3x.png in Resources */,
@@ -3971,6 +3992,7 @@
 				7D98192D1CC9F95600D0A6CC /* RepositorySnapshotViewController.m in Sources */,
 				7D825D081CBCA65000F4E216 /* FriendTableViewCell.m in Sources */,
 				57462DAB1CBB4AF30071047E /* DetailImageCell.m in Sources */,
+				34D27AEA1CE067C500244333 /* ViewControllerss.m in Sources */,
 				7D9D769A1CBCCD24004E45DE /* NearbyModel.m in Sources */,
 				7D1EA05E1CB4ED6800328C2D /* InformationViewController.m in Sources */,
 				7D2F3F801CC092930059116A /* PersonalAtnViewController.m in Sources */,
@@ -4123,7 +4145,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4174,7 +4196,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

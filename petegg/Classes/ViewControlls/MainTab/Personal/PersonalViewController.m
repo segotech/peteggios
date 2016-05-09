@@ -37,6 +37,9 @@
     BOOL redpoint;
     BOOL dongtai;
     
+    UIImage * cachedImage;
+    
+    
     
 }
 
@@ -93,9 +96,10 @@
             [self showLB:502 string:json[@"fs"]];
             [self showLB:503 string:json[@"praises"]];
             _nameLabel.text = json[@"nickname"];
-            [bgImgView sd_setImageWithURL:[NSURL URLWithString:json[@"headportrait"]] placeholderImage:[UIImage imageNamed:@"ceishi.jpg"]];
-            UIImage * imagea = bgImgView.image;
-            bgImgView.image = [self blurryImage:[self cutImage:imagea] withBlurLevel:0.2];
+
+    
+            cachedImage =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:json[@"headportrait"]]]];
+            bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
         }
         
     } failure:^(NSError *error) {
@@ -103,6 +107,29 @@
     }];
     
 
+    
+}
+
+/**
+ * 处理背景
+ */
+
+
+- (void)doBgView:(NSString * )headportrait
+{
+    
+    dispatch_queue_t  queue= dispatch_queue_create("", NULL);
+    
+    dispatch_async(queue, ^{
+         cachedImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:headportrait];
+        
+    });
+    dispatch_async(queue, ^{
+        
+        bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
+    
+    });
+    
     
 }
 
@@ -276,7 +303,7 @@
 - (void)doRightButtonTouch
 {
     
-    NSLog(@"1233");
+
     ThreePointsViewController * threepointVc = [[ThreePointsViewController alloc]init];
     [self.navigationController pushViewController:threepointVc animated:YES];
     
