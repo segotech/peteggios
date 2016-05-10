@@ -56,7 +56,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
 /**
  *  视图显示前处理
  *
- *  @param animated <#animated description#>
+ *  @param animated 
  */
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

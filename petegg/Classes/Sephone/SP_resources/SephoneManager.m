@@ -1360,6 +1360,18 @@ static SephoneCoreVTable sephonec_vtable = {
 		}
 
 	}
+    {
+        PayloadType *pt=sephone_core_find_payload_type(theSephoneCore,"vp8",90000,-1);
+        if (pt) {
+            sephone_core_enable_payload_type(theSephoneCore,pt,FALSE);
+        }
+    }
+    {
+        PayloadType *pt=sephone_core_find_payload_type(theSephoneCore,"h264",90000,-1);
+        if (pt) {
+            sephone_core_enable_payload_type(theSephoneCore,pt,TRUE);
+        }
+    }
 
 	if (![SephoneManager isNotIphone3G]){
 		PayloadType *pt=sephone_core_find_payload_type(theSephoneCore,"SILK",24000,-1);

@@ -332,7 +332,7 @@
                 [defaults setValue:@"1" forKey:PREF_WIFI_CONFIGURED];
                 [defaults synchronize];
                 
-                [self bangdingSheBei];
+               // [self bangdingSheBei];
             
                 
             } else {

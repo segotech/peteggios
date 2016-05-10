@@ -159,8 +159,14 @@
     [[AFHttpClient sharedAFHttpClient]loginWithUserName:self.accountTextField.text password:self.passwordTextField.text complete:^(BaseModel *model) {
         if ([model.retCode isEqualToString:@"0000"]) {
             [[AppUtil appTopViewController] showHint:model.retDesc];
+            
             [[AccountManager sharedAccountManager] login:model.list[0]];
+            
+           
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
+            
+         
+            
            [self hideHud];
         }else{
             [self hideHud];
