@@ -576,6 +576,7 @@
     [dateformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *  locationString=[dateformatter stringFromDate:senddate];
      */
+    
     NSString * service = @"clientAction.do?common=updateDeviceUseRecord&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     

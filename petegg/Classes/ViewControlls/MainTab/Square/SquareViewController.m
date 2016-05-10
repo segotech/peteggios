@@ -67,7 +67,7 @@
     _lineLabel.backgroundColor = GREEN_COLOR;
     [topView addSubview:_lineLabel];
     
-    _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(110, 10, 40, 30)];
+    _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(110 * W_Wide_Zoom, 10 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     [_rightButton setTitle:NSLocalizedString(@"sprout", nil) forState:UIControlStateNormal];
     _rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

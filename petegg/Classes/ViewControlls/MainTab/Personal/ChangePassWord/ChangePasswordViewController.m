@@ -93,17 +93,29 @@
     [self showHudInView:self.view hint:@"正在修改..."];
     [[AFHttpClient sharedAFHttpClient]modifyPasswordWithMid:[AccountManager sharedAccountManager].loginModel.mid password:_newpassWordTextfield.text complete:^(BaseModel *model) {
         [self hideHud];
-        [[AppUtil appTopViewController] showHint:model.retDesc];
-        // 清除plist
-        NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
-        NSDictionary *dictionary = [userDefatluts dictionaryRepresentation];
-        for(NSString* key in [dictionary allKeys]){
-            [userDefatluts removeObjectForKey:key];
-            [userDefatluts synchronize];
+        if (model) {
+            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"修改成功，请重新登录" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+                
+                NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
+                NSDictionary *dictionary = [userDefatluts dictionaryRepresentation];
+                for(NSString* key in [dictionary allKeys]){
+                    [userDefatluts removeObjectForKey:key];
+                    [userDefatluts synchronize];
+                }
+                [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
+                [[AccountManager sharedAccountManager]logout];
+                
+            }];
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }else{
+            [[AppUtil appTopViewController] showHint:model.retDesc];
+            
         }
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
-        [[AccountManager sharedAccountManager]logout];
-      
+        
+       
 
     }];
     

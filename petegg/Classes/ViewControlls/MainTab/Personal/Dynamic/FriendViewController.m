@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "TimeHistoryModel.h"
 #import "MessageViewController.h"
+#import "DetailViewController.h"
 @interface FriendViewController ()
 
 {
@@ -75,16 +76,20 @@
     self.count =[defaults objectForKey:@"countMessage"];
     
     
-    message =[[UIButton alloc]initWithFrame:CGRectMake(170, 80, 140, 30)];
+    message =[[UIButton alloc]initWithFrame:CGRectMake(130, 80, 110, 35)];
     [message addTarget:self action:@selector(messageBtn:) forControlEvents:UIControlEventTouchUpInside];
-     message.titleEdgeInsets = UIEdgeInsetsMake(0, -60, 0, 0);//设置title在button上的位
+    // message.titleEdgeInsets = UIEdgeInsetsMake(0, -60, 0, 0);//设置title在button上的位
+    message.contentHorizontalAlignment =UIControlContentHorizontalAlignmentCenter;
+    
     [message setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];
     
     if ([self.count isEqualToString:@"0"]) {
         message.hidden = YES;
     }else{
-    [message setTitle:[NSString stringWithFormat:@"%@条动态",self.count] forState:UIControlStateNormal];
+    [message setTitle:[NSString stringWithFormat:@"%d条动态",6] forState:UIControlStateNormal];
     }
+    
+    
     [message setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     message.titleLabel.font =[UIFont systemFontOfSize:13];
     [self.view addSubview:message];
@@ -252,6 +257,10 @@
         {
               [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.resources] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
         }
+        UITapGestureRecognizer *tapIcon = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapIcon:)];
+        cell.oneImagev.userInteractionEnabled = YES;
+        [cell.oneImagev addGestureRecognizer:tapIcon];
+
         
     }else if (i>=2)// 两张图
     {
@@ -260,8 +269,15 @@
         
             [cell.twotwoImage sd_setImageWithURL:[NSURL URLWithString:array[1]] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
         
+         UITapGestureRecognizer *tapIcon = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapIcon:)];
+         cell.twoOneImage.userInteractionEnabled = YES;
+         [cell.twotwoImage addGestureRecognizer:tapIcon];
+
+
+        
         
     }
+    
     
     
 
@@ -324,6 +340,19 @@
     
     NSLog(@"%@",self.dataSource[indexPath.row]);
     
+    
+    
+}
+
+
+- (void)onTapIcon :(UITapGestureRecognizer *)sender
+{
+    
+    NSInteger i = [self.tableView indexPathForCell:((FriendTableViewCell*)sender.view.superview.superview)].row;
+    TimeHistoryModel * model = self.dataSource[i];
+    DetailViewController * statVC =[[DetailViewController alloc]init];
+    statVC.stid = model.stid;
+    [self.navigationController pushViewController:statVC animated:NO];
     
     
 }

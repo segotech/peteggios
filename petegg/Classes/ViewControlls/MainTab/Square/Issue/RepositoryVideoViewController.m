@@ -110,6 +110,10 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
         if (page == 1) {
             [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:model.list];
+            _deleteImageV.hidden = YES;
+            [deleteOrUpdateArr removeAllObjects];
+            [thumbnailsAry removeAllObjects];
+            
         }else{
             [self.dataSource addObjectsFromArray:model.list];
         }
@@ -164,6 +168,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     cell.imageV.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapMYP = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onVideo:)];
     [cell.imageV addGestureRecognizer:tapMYP];
+    cell.rightBtn.hidden = YES;
 
     
     return cell;

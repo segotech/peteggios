@@ -11,7 +11,6 @@
 #import "SuggestViewController.h"
 #import "AgreementViewController.h"
 
-
 @interface ThreePointsViewController ()
 
 @end
@@ -120,6 +119,8 @@
         SuggestViewController * suggVc = [[SuggestViewController alloc]init];
         [self.navigationController pushViewController:suggVc animated:YES];
     }else if (sender.tag == 122){
+        
+
         AgreementViewController * agreeVc = [[AgreementViewController alloc]init];
         [self.navigationController pushViewController:agreeVc animated:YES];
     }

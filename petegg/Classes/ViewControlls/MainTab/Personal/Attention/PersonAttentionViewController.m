@@ -30,7 +30,7 @@
 
 
 -(void)cleanTip{
-     _pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
+     _pageViewController.view.frame = CGRectMake(0 * W_Wide_Zoom, 64 * W_Hight_Zoom, self.view.frame.size.width, self.view.frame.size.height * W_Hight_Zoom - 64 * W_Hight_Zoom);
     _headButton.hidden = YES;
 }
 
@@ -100,21 +100,21 @@
                                                     navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                     options:nil];
     if (self.isredTip == NO) {
-          _pageViewController.view.frame = CGRectMake(0, 94, self.view.frame.size.width, self.view.frame.size.height - 94);
+          _pageViewController.view.frame = CGRectMake(0 * W_Wide_Zoom, 94 * W_Hight_Zoom, self.view.frame.size.width, self.view.frame.size.height * W_Hight_Zoom - 94 * W_Hight_Zoom );
         _headButton =[[UIButton alloc]initWithFrame:CGRectMake(117.5 * W_Wide_Zoom, 7 * W_Hight_Zoom, 140 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-        _headButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        _headButton.titleEdgeInsets = UIEdgeInsetsMake(0 , 0, 0 , 0);
         [_headButton setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];
         _headButton.backgroundColor = [UIColor blackColor];
         [_headButton setTitle:@"新关注" forState:UIControlStateNormal];
         _headButton.titleLabel.font =[UIFont systemFontOfSize:13];
         _headButton.layer.cornerRadius = 5;
         [_pageViewController.view addSubview:_headButton];
-        UILabel * hongdianLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 12,3, 3)];
+        UILabel * hongdianLabel = [[UILabel alloc]initWithFrame:CGRectMake(20 * W_Wide_Zoom, 12 * W_Hight_Zoom,3 *W_Wide_Zoom, 3 * W_Hight_Zoom)];
         hongdianLabel.backgroundColor = [UIColor redColor];
         [_headButton addSubview:hongdianLabel];
         [_headButton addTarget:self action:@selector(newGuanzhu) forControlEvents:UIControlEventTouchUpInside];
     }else{
-        _pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
+        _pageViewController.view.frame = CGRectMake(0 * W_Wide_Zoom, 64 * W_Hight_Zoom, self.view.frame.size.width, self.view.frame.size.height * W_Hight_Zoom - 64 * W_Hight_Zoom);
         
     }
     //64

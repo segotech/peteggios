@@ -14,7 +14,6 @@
 @interface EggViewController ()
 {
     NSString * _equipmentStateArr;
-  //  NSUserDefaults * _defaulte;
     UIImageView * _noDeviceImageView;
     UIImageView * _yesDeviceImageView;
     BOOL _isOpen;
@@ -44,9 +43,12 @@
     self.navigationItem.rightBarButtonItem = settings;
     
     otherArr =[[NSMutableArray alloc]init];
+    
     // sip登陆。
     
     [SephoneManager addProxyConfig:[AccountManager sharedAccountManager].loginModel.sipno password:[AccountManager sharedAccountManager].loginModel.sippw domain:@"180.97.80.152"];
+    
+    
     
 }
 
@@ -72,6 +74,7 @@
     [super  viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callUpdate:) name:kSephoneCallUpdate object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(registrationUpdate:) name:kSephoneRegistrationUpdate object:nil];
     
      [self equipmentState];
     
@@ -83,7 +86,33 @@
     [super viewWillDisappear:animated];
      [[NSNotificationCenter defaultCenter] removeObserver:self name:kSephoneCallUpdate object:nil];
     
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:kSephoneRegistrationUpdate object:nil];
+    
+    
 }
+
+
+// 注册消息处理
+- (void)registrationUpdate:(NSNotification *)notif {
+    SephoneRegistrationState state = [[notif.userInfo objectForKey:@"state"] intValue];
+    SephoneProxyConfig *cfg = [[notif.userInfo objectForKey:@"cfg"] pointerValue];
+    // Only report bad credential issue
+    
+    switch (state) {
+        case SephoneRegistrationOk:
+            
+            NSLog(@"=======成功");
+            break;
+        case SephoneRegistrationFailed:
+            NSLog(@"========OK 以外都是失败");
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
 
 // 通话状态处理
 - (void)callUpdate:(NSNotification *)notif {
@@ -164,7 +193,6 @@
      */
     
     NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-    
     NSString * bangdinDevico = [defaults objectForKey:PREF_DEVICE_NUMBER];
     NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
     NSString * devico =[AccountManager sharedAccountManager].loginModel.deviceno;

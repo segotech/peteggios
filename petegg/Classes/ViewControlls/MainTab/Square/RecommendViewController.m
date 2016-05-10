@@ -19,6 +19,7 @@
 #import "AFHttpClient+IsfriendClient.h"
 
 #import "UIImage-Extensions.h"
+#import "FeaturedViewController.h"
 
 static NSString * cellId = @"recommeCellId";
 
@@ -51,7 +52,7 @@ static NSString * cellId = @"recommeCellId";
 }
 - (void)setupView{
     [super setupView];
-    _topScrollView = [[CycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 150) animationDuration:3];
+    _topScrollView = [[CycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 170 * W_Hight_Zoom) animationDuration:3];
     
     self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height - STATUS_BAR_HEIGHT - NAV_BAR_HEIGHT - TAB_BAR_HEIGHT);
     [self.tableView registerClass:[RecommendTableViewCell class] forCellReuseIdentifier:cellId];
@@ -111,12 +112,12 @@ static NSString * cellId = @"recommeCellId";
     
     for (int i = 0 ; i < self.dataSourceImage.count; i++) {
        SquareModel * model  = self.dataSourceImage[i];
-        UIImageView * pImageView1 =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 150)];
+        UIImageView * pImageView1 =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 170 * W_Hight_Zoom)];
         [pImageView1 sd_setImageWithURL:[NSURL URLWithString:model.frontcover] placeholderImage:[UIImage imageNamed:@"segouploade.png"]];
         //[textList addObject:_imageArr[i][@"title"]];
         [textList addObject:model.title];
         [arrList addObject:pImageView1];
-        [aidList addObject:model.aid] ;
+        [aidList addObject:model.aid];
     }
     _topScrollView.textArr = textList;
     _topScrollView.fetchContentViewAtIndex=  ^UIView *(NSInteger pageIndex){
@@ -130,7 +131,13 @@ static NSString * cellId = @"recommeCellId";
     _topScrollView.TapActionBlock = ^(NSInteger pagIndex){
     
         //这里写点击事件
-        NSLog(@"%@",aidList[pagIndex]);
+       // NSLog(@"%@",aidList[pagIndex]);
+        FeaturedViewController * featureVc = [[FeaturedViewController alloc]init];
+      //  NSInteger i  = (NSInteger)aidList[pagIndex];
+        NSString * i = aidList[pagIndex];
+        featureVc.number = i;
+        [self.navigationController pushViewController:featureVc animated:YES];
+        
     };
 
 }
@@ -160,7 +167,14 @@ static NSString * cellId = @"recommeCellId";
     //把数据给model
     SquareModel * model = self.dataSource[indexPath.row];
 
-    //cell赋值
+   //cell赋值
+    if ([model.type isEqualToString:@"pv"] || [model.type isEqualToString:@"v"]) {
+        cell.mvImageview.hidden = NO;
+    }else{
+        cell.mvImageview.hidden = YES;
+    }
+    
+    
     cell.nameLabel.text = model.nickname;
     [cell.iconImageV.layer setMasksToBounds:YES];
     NSString * imageStr = [NSString stringWithFormat:@"%@",model.headportrait];

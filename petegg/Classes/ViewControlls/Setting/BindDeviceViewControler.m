@@ -40,6 +40,8 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+   
 }
 
 /**
@@ -58,11 +60,14 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     // 创建蓝牙从机。
     peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
     serviceNum = 0;
     isAccecptOk = NO;
+    
+    
+    
 }
 
 /**
@@ -162,6 +167,50 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
     // 返回上级页面。
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+/**
+ *  设备使用记录
+ */
+- (void)deviceMemer:(NSString *)strdec
+{
+    
+    NSString * str =@"clientAction.do?common=addDevice&classes=appinterface&method=json";
+    NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
+    
+    [dicc setValue: [AccountManager sharedAccountManager].loginModel.mid                forKey:@"mid"];
+    [dicc setValue:strdec   forKey:@"deviceno"];
+    
+    [AFNetWorking postWithApi:str parameters:dicc success:^(id json) {
+        
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            [self showSuccessHudWithHint:@"绑定成功"];
+            self.deviceNumberEdit.text = strdec;
+            NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+            [defaults setObject:strdec forKey:@"deviceNumber"];
+            [defaults synchronize];
+            self.incodeEdit.text = @"123456";
+            
+            // 使能绑定按钮。
+            [self enableBindButton];
+            
+        }else
+        {
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } failure:^(NSError *error) {
+        
+        [self showSuccessHudWithHint:@"绑定失败"];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        
+    }];
+
+}
+
+
+
 
 /**
  *  显示警告提示
@@ -364,16 +413,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
 
                 // 取出设备号，更新界面。
                 strNumber = [strNumber substringFromIndex:SEGOEGG_PREFIX.length];
-                self.deviceNumberEdit.text = strNumber;
-                
-                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-                [defaults setObject:strNumber forKey:@"deviceNumber"];
-                [defaults synchronize];
-                
-                self.incodeEdit.text = @"123456";
-
-                // 使能绑定按钮。
-                [self enableBindButton];
+                [self deviceMemer:strNumber];
             }
             // 出错了。
             else {

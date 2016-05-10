@@ -106,6 +106,12 @@ static NSString * cellId = @"AttentionCellId";
     SquareModel * model = self.dataSource[indexPath.row];
     
     //cell赋值
+    if ([model.type isEqualToString:@"pv"] || [model.type isEqualToString:@"v"]) {
+        cell.mvImageview.hidden = NO;
+    }else{
+        cell.mvImageview.hidden = YES;
+    }
+    
     cell.nameLabel.text = model.nickname;
     [cell.iconImageV.layer setMasksToBounds:YES];
     NSString * imageStr = [NSString stringWithFormat:@"%@",model.headportrait];

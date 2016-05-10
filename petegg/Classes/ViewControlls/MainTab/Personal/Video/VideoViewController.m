@@ -11,6 +11,7 @@
 #import "VideoModel.h"
 #import "AFNetWorking.h"
 #import "UIImageView+WebCache.h"
+#import "ViewControllerss.h"
 
 
 static NSString *kfooterIdentifier = @"footerIdentifier";
@@ -307,6 +308,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [dic setValue:stateNum forKey:@"status"];
     if ([stateNum isEqualToString:@"0"]) {
         [dic setValue:@"1" forKey:@"page"];
+        page = 1;
+        
 
     }else{
     [dic setValue:@(page) forKey:@"page"];
@@ -584,8 +587,22 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     }else
     {
         
-
-        // 暂时不处理事情
+        if ([statsIdentifi isEqualToString:@"0"]) {
+            
+        }else
+        {
+        // 播放视频
+        NSInteger i =imageSender.view.tag/1000;
+        int j = imageSender.view.tag%1000;
+        VideoModel *model = self.dataSource[i-1];
+        ViewControllerss * vcPlay =[[ViewControllerss alloc]init];
+        // 拼接
+        NSString * str = model.networkaddress;
+        NSArray * arrNetWorking =[str componentsSeparatedByString:@","];
+        vcPlay.playUrl  = arrNetWorking[j];
+        [self.navigationController pushViewController:vcPlay animated:NO];
+        }
+        
     }
     
 }

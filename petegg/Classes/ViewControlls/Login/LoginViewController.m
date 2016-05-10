@@ -26,6 +26,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     //self.navigationController.navigationBarHidden = YES;
     [self initUserFace];
+
 }
 -(void)initUserFace{
     UIImageView * backImage = [[UIImageView alloc]initWithFrame:self.view.frame];
@@ -36,15 +37,15 @@
     shuruKuangImage.image = [UIImage imageNamed:@"egg_bigKuang.png"];
     [self.view addSubview:shuruKuangImage];
 
-    UIImageView * topIcon = [[UIImageView alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 15 * W_Hight_Zoom, 20 * W_Wide_Zoom, 23 * W_Hight_Zoom)];
+    UIImageView * topIcon = [[UIImageView alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 20 * W_Hight_Zoom, 20 * W_Wide_Zoom, 23 * W_Hight_Zoom)];
     topIcon.image = [UIImage imageNamed:@"egg_usertubiao.png"];
     [shuruKuangImage addSubview:topIcon];
     
-    UIImageView * downIcon = [[UIImageView alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 75 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    UIImageView * downIcon = [[UIImageView alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 80 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
     downIcon.image = [UIImage imageNamed:@"egg_passtubiao.png"];
     [shuruKuangImage addSubview:downIcon];
     
-    _loginButton = [[UIButton alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 320 * W_Hight_Zoom, 200 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+    _loginButton = [[UIButton alloc]initWithFrame:CGRectMake(37.5 * W_Wide_Zoom, 320 * W_Hight_Zoom, 300 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _loginButton.backgroundColor = GREEN_COLOR;
@@ -52,8 +53,8 @@
     [self.view addSubview:_loginButton];
     [_loginButton addTarget:self action:@selector(loginTouch) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    _accountTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 130 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+
+    _accountTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 133 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     _accountTextField.placeholder = @"请输入账号";
     _accountTextField.tintColor = [UIColor whiteColor];
     [_accountTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
@@ -62,35 +63,41 @@
     _accountTextField.delegate = self;
     [self.view addSubview:_accountTextField];
     
-    _passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 190 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+    _passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 193 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     _passwordTextField.placeholder = @"请输入密码";
     _passwordTextField.tintColor = [UIColor whiteColor];
+    _passwordTextField.secureTextEntry = YES;
     [_passwordTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     [_passwordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _passwordTextField.delegate = self;
     [self.view addSubview:_passwordTextField];
     
-    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 350 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+    //查看密码的键
+    UIButton * secureBtn = [[UIButton alloc]initWithFrame:CGRectMake(300 * W_Wide_Zoom, 203 * W_Hight_Zoom, 18 * W_Wide_Zoom, 18 * W_Hight_Zoom)];
+    [secureBtn setImage:[UIImage imageNamed:@"showPs.png"] forState:UIControlStateNormal];
+    [secureBtn addTarget:self action:@selector(secureButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:secureBtn];
+    
+    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(77.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [regiestButton setTitle:@"新用户注册" forState:UIControlStateNormal];
     [regiestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     regiestButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:regiestButton];
     [regiestButton addTarget:self action:@selector(regiestButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    UILabel * shulineLabel = [[UILabel alloc]initWithFrame:CGRectMake(190 * W_Wide_Zoom, 360 * W_Hight_Zoom, 1 * W_Wide_Zoom, 12 * W_Hight_Zoom)];
+    UILabel * shulineLabel = [[UILabel alloc]initWithFrame:CGRectMake(187.5 * W_Wide_Zoom, 390 * W_Hight_Zoom, 1 * W_Wide_Zoom, 12 * W_Hight_Zoom)];
     shulineLabel.backgroundColor = GRAY_COLOR;
     [self.view addSubview:shulineLabel];
     
-    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(180 * W_Wide_Zoom, 350 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(197.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [reDataButton setTitle:@"忘记密码?" forState:UIControlStateNormal];
     [reDataButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     reDataButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:reDataButton];
     [reDataButton addTarget:self action:@selector(reDataButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
 
-    _accountTextField.text = @"18380476512";
-    _passwordTextField.text = @"123456";
+//    _accountTextField.text = @"18380476512";
+//    _passwordTextField.text = @"123456";
 }
 
 -(void)regiestButtonTouch:(UIButton *)sender{
@@ -103,7 +110,13 @@
     [self.navigationController pushViewController:reDataVc animated:YES];
 
 }
+-(void)secureButtonTouch:(UIButton *)sender{
 
+    _passwordTextField.secureTextEntry = !_passwordTextField.secureTextEntry;
+    
+    
+    
+}
 
 
 
@@ -152,15 +165,20 @@
 //        [self hideHud];
 //    }];
     
-   
-    
+
     
     [self showHudInView:self.view hint:@"正在登录..."];
     [[AFHttpClient sharedAFHttpClient]loginWithUserName:self.accountTextField.text password:self.passwordTextField.text complete:^(BaseModel *model) {
         if ([model.retCode isEqualToString:@"0000"]) {
             [[AppUtil appTopViewController] showHint:model.retDesc];
+            
             [[AccountManager sharedAccountManager] login:model.list[0]];
+            
+           
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
+            
+         
+            
            [self hideHud];
         }else{
             [self hideHud];

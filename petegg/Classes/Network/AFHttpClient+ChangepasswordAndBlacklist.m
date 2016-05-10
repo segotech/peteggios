@@ -118,7 +118,27 @@
 }
 
 
+-(void)addreportWithMid:(NSString *)mid stid:(NSString *)stid content:(NSString *)content reporttype:(NSString *)reporttype objtype:(NSString *)objtype complete:(void (^)(BaseModel *))completeBlock{
 
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"common"] = @"addreport";
+    params[@"mid"] = mid;
+    params[@"stid"] = stid;
+    params[@"content"] = content;
+    params[@"reporttype"] = reporttype;
+    params[@"objtype"] = objtype;
+    
+    
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
+
+
+
+}
 
 
 @end
