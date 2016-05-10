@@ -106,7 +106,10 @@
 //        [self addSubview:self.cancelAboutButton];
         
         
-        
+        self.mvImageview = [[UIImageView alloc]initWithFrame:CGRectMake(167.5 * W_Wide_Zoom, 165 * W_Hight_Zoom, 40 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+        [self.mvImageview setImage:[UIImage imageNamed:@"MV.png"]];
+        self.mvImageview.hidden = YES;
+        [self addSubview:self.mvImageview];
         
     }
 

@@ -62,7 +62,8 @@ static NSString * cellId = @"fedseting2321232322313323231";
 -(void)setupView{
     [super setupView];
     _bigBtn = [[UIButton alloc]initWithFrame:CGRectMake(87.5 * W_Wide_Zoom, 80 * W_Hight_Zoom , 200 * W_Wide_Zoom, 200 * W_Hight_Zoom)];
-    _bigBtn.backgroundColor = [UIColor blueColor];
+    //_bigBtn.backgroundColor = [UIColor blueColor];
+    [_bigBtn setImage:[UIImage imageNamed:@"weishi_onday.png"] forState:UIControlStateNormal];
     _bigBtn.layer.cornerRadius = _bigBtn.width/2;
     [self.view addSubview:_bigBtn];
     
@@ -351,7 +352,8 @@ static NSString * cellId = @"fedseting2321232322313323231";
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame = CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
      [[AppUtil appTopViewController] showHint:@"启用一天模式"];
-        _bigBtn.backgroundColor = [UIColor blueColor];
+       // _bigBtn.backgroundColor = [UIColor blueColor];
+         [_bigBtn setImage:[UIImage imageNamed:@"weishi_onday.png"] forState:UIControlStateNormal];
     }];
 }
 
@@ -365,7 +367,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame = CGRectMake(42 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
          [[AppUtil appTopViewController] showHint:@"启用两天模式"];
-        _bigBtn.backgroundColor = [UIColor redColor];
+         [_bigBtn setImage:[UIImage imageNamed:@"weishi_twoday.png"] forState:UIControlStateNormal];
     }];
 
 }

@@ -58,7 +58,7 @@
     NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"逗豆",@"逗码",@"权限设置",@"修改密码",@"黑名单",@"喂食设置"];
     
     [self.dataSource addObjectsFromArray:arrName];
-    NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_bean.png",@"person_code.png",@"person_control.png",@"person_pw.png",@"blank_list.png",@"blank_list.png"];
+    NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_bean.png",@"person_code.png",@"person_control.png",@"person_pw.png",@"blank_list.png",@"person_weishi.png"];
     [self.dataSourceImage addObjectsFromArray:arrImage];
     
    
@@ -164,7 +164,7 @@
     
     [self.tableView reloadData];
     
-    [self hiddenRedpoint];
+   // [self hiddenRedpoint];
 }
 
 /**
