@@ -375,6 +375,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
     
     if (!_commentInputView) {
         _commentInputView = [[CommentInputView alloc] initWithFrame:CGRectMake(0, self.view.height - [CommentInputView defaultHeight], self.view.width, [CommentInputView defaultHeight])];
+        _commentInputView.viewController = self;
     }
     
     return _commentInputView;
@@ -625,7 +626,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
                 
             }else{
                 MWPhotoBrowser *browser=[[MWPhotoBrowser alloc]initWithDelegate:self];
-                browser.displayActionButton = NO;
+                browser.displayActionButton = YES;
                 browser.displayNavArrows = NO;
                 browser.displaySelectionButtons = NO;
                 browser.zoomPhotosToFill = YES;

@@ -10,6 +10,8 @@
 
 @interface CommentInputView : UIView
 
+@property (nonatomic, weak) UIViewController *viewController;
+
 @property (strong, nonatomic) UITextView *inputTextView;
 
 -(void)showWithSendCommentBlock:(void(^)(NSString *text))sendCommentBlock;
