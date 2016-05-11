@@ -86,7 +86,7 @@
     if ([self.count isEqualToString:@"0"]) {
         message.hidden = YES;
     }else{
-    [message setTitle:[NSString stringWithFormat:@"%d条动态",6] forState:UIControlStateNormal];
+    [message setTitle:[NSString stringWithFormat:@"%@条动态", self.count] forState:UIControlStateNormal];
     }
     
     

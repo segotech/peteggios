@@ -217,7 +217,11 @@
     UIView  * _headView = [[UIView alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 200 * W_Hight_Zoom)];
     _headView.backgroundColor = [UIColor whiteColor];
     bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0 * W_Wide_Zoom,0 * W_Hight_Zoom,375 * W_Wide_Zoom,200 * W_Hight_Zoom)];
+<<<<<<< HEAD
     //bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"sego1.png"]] withBlurLevel:0.2];
+=======
+    //bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"ceishi.jpg"]] withBlurLevel:0.2];
+>>>>>>> 99626e050a14e084667de791580ceed5923120c8
     [_headView addSubview:bgImgView];
     [_headView sendSubviewToBack:bgImgView];
     

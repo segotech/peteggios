@@ -159,10 +159,6 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
 
     // TODO 实现设备http绑定。
 
-    // 保存之。
-    NSUserDefaults *defults = [NSUserDefaults standardUserDefaults];
-    [defults setObject:strNumber forKey:PREF_DEVICE_NUMBER];
-    [defults synchronize];
 
     // 返回上级页面。
     [self.navigationController popViewControllerAnimated:YES];
@@ -187,7 +183,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
             [self showSuccessHudWithHint:@"绑定成功"];
             self.deviceNumberEdit.text = strdec;
             NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-            [defaults setObject:strdec forKey:@"deviceNumber"];
+            [defaults setObject:strdec forKey:PREF_DEVICE_NUMBER];
             [defaults synchronize];
             self.incodeEdit.text = @"123456";
             
