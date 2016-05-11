@@ -49,6 +49,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [self selfDataHand];
     self.view.backgroundColor =[UIColor whiteColor];
     redpoint = NO;
     dongtai = NO;
@@ -154,7 +155,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self selfDataHand];
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initheadImage:) name:@"handImageText" object:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanMessage) name:@"message" object:nil];
@@ -216,7 +217,7 @@
     UIView  * _headView = [[UIView alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 200 * W_Hight_Zoom)];
     _headView.backgroundColor = [UIColor whiteColor];
     bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0 * W_Wide_Zoom,0 * W_Hight_Zoom,375 * W_Wide_Zoom,200 * W_Hight_Zoom)];
-    bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"sego1.png"]] withBlurLevel:0.2];
+    //bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"sego1.png"]] withBlurLevel:0.2];
     [_headView addSubview:bgImgView];
     [_headView sendSubviewToBack:bgImgView];
     
