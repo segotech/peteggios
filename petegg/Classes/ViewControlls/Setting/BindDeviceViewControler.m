@@ -181,9 +181,11 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
         
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             [self showSuccessHudWithHint:@"绑定成功"];
+            NSString * srt =json[@"jsondata"][@"content"];
             self.deviceNumberEdit.text = strdec;
             NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
             [defaults setObject:strdec forKey:PREF_DEVICE_NUMBER];
+            [defaults setObject:srt forKey:TERMID_DEVICNUMER];
             [defaults synchronize];
             self.incodeEdit.text = @"123456";
             

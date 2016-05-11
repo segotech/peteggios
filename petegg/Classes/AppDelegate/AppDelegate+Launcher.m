@@ -106,8 +106,9 @@
     
     // 判断是否是自己
     
+    
+    
     if ([pboard.string length]>4  &&  [[pboard.string substringWithRange:NSMakeRange(0, 4)]  isEqualToString:@"赛果分享"]) {
-        
         NSString * strPLAYcode = [pboard.string substringWithRange:NSMakeRange(5,14 )];
         [self checkPlayCode:strPLAYcode];
         pboard.string  =@"";
