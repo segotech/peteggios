@@ -68,6 +68,8 @@
         [self.tableView reloadData];
         [self handleEndRefresh];
         
+         [[NSNotificationCenter defaultCenter]postNotificationName:@"message123" object:nil];
+        
     } failure:^(NSError *error) {
         
         [self handleEndRefresh];

@@ -181,7 +181,7 @@
     MessageViewController *messageVC =[[MessageViewController alloc]initWithNibName:@"MessageViewController" bundle:nil];
     self.message.hidden = YES;
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"message" object:nil];
+   
     
     [self.navigationController pushViewController:messageVC animated:YES];
     

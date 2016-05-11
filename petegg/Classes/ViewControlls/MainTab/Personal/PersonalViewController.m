@@ -49,6 +49,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [self selfDataHand];
     self.view.backgroundColor =[UIColor whiteColor];
     redpoint = NO;
     dongtai = NO;
@@ -154,10 +155,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self selfDataHand];
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initheadImage:) name:@"handImageText" object:nil];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanMessage) name:@"message" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanMessage) name:@"message123" object:nil];
     
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanTip) name:@"isreaddd" object:nil];
     
@@ -175,7 +176,10 @@
     personTableViewCell * cell = (personTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
     cell.redpoint.hidden = YES;
     redpoint = YES;
-    [self hiddenRedpoint];
+  //  [self hiddenRedpoint];
+    if (dongtai == YES) {
+         [self.tabBarController.tabBar hideBadgeOnItemIndex:4];
+    }
 }
 
 - (void)cleanMessage
@@ -184,16 +188,20 @@
     cell.moneyLabel.hidden = YES;
     
     dongtai = YES;
-    [self hiddenRedpoint];
+  //  [self hiddenRedpoint];
+   // if (redpoint == YES) {
+        [self.tabBarController.tabBar hideBadgeOnItemIndex:4];
+
+    //}
 }
 
--(void)hiddenRedpoint{
-    // tab 上面的 两个要一起判断 红点
-    if (dongtai ==YES && redpoint == YES) {
-        [self.tabBarController.tabBar hideBadgeOnItemIndex:4];
-    }
-    
-}
+//-(void)hiddenRedpoint{
+//    // tab 上面的 两个要一起判断 红点
+//    if (dongtai ==YES && redpoint == YES) {
+//        [self.tabBarController.tabBar hideBadgeOnItemIndex:4];
+//    }
+//    
+//}
 
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -216,7 +224,11 @@
     UIView  * _headView = [[UIView alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 200 * W_Hight_Zoom)];
     _headView.backgroundColor = [UIColor whiteColor];
     bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0 * W_Wide_Zoom,0 * W_Hight_Zoom,375 * W_Wide_Zoom,200 * W_Hight_Zoom)];
+
+    //bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"sego1.png"]] withBlurLevel:0.2];
+
     //bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"ceishi.jpg"]] withBlurLevel:0.2];
+
     [_headView addSubview:bgImgView];
     [_headView sendSubviewToBack:bgImgView];
     
@@ -427,16 +439,18 @@
     switch (indexPath.section) {
             
         case 0:
-            if (indexPath.row == 0 && ![self.count isEqualToString:@"0"]) {
-                dongtai = NO;
-                cell.moneyLabel.hidden = NO;
-                cell.moneyLabel.text = self.count;
-
-            }else
-            {
-                dongtai = YES;
-                cell.moneyLabel.hidden  = YES;
-                
+            if (indexPath.row == 0) {
+                //&&
+                if (![self.count isEqualToString:@"0"]) {
+                    dongtai = NO;
+                    cell.moneyLabel.hidden = NO;
+                    cell.moneyLabel.text = self.count;
+                }
+                else
+                {
+                    dongtai = YES;
+                    cell.moneyLabel.hidden  = YES;
+                }
             }
            
             // Configure the cell.
