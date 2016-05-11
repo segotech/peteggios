@@ -13,6 +13,7 @@
 
 //查询喂食设置
 -(void)queryFeedingtimeWithMid:(NSString *)mid
+                        status:(NSString *)status
                            complete:(void(^)(BaseModel *model))completeBlock;
 
 //添加喂食
@@ -22,6 +23,12 @@
                          deviceno:(NSString *)deviceno
                          termid:(NSString *)termid
                          complete:(void(^)(BaseModel *model))completeBlock;
+
+//删除喂食
+-(void)cancelFeedingtimeWithbrid:(NSString *)brid
+                            complete:(void(^)(BaseModel *model))completeBlock;
+
+
 
 
 

@@ -49,7 +49,7 @@
         linelabel.alpha = 0.3;
         [whiteView addSubview:linelabel];
         
-        UILabel * namelabel = [[UILabel alloc]initWithFrame:CGRectMake(155.5 * W_Wide_Zoom, 10 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 100 *W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        UILabel * namelabel = [[UILabel alloc]initWithFrame:CGRectMake(160.5 * W_Wide_Zoom, 10 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 100 *W_Wide_Zoom, 30 * W_Hight_Zoom)];
         namelabel.text = nameArray[i];
         namelabel.textColor = [UIColor lightGrayColor];
         namelabel.font = [UIFont systemFontOfSize:13];

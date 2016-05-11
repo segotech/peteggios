@@ -3552,7 +3552,6 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4UKEB375ND;
 					};
 				};
 			};
@@ -4172,7 +4171,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4232,7 +4231,7 @@
 					"\"$(SRCROOT)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = petegg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -9,6 +9,7 @@
 #import "DetailImageCell.h"
 
 #import "UIImageView+WebCache.h"
+#import "UIImage-Extensions.h"
 
 #import "UIView+TapBlocks.h"
 
@@ -35,7 +36,7 @@
     _iconIV.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView sd_addSubviews:@[_iconIV]];
     
-    _iconIV.sd_layout.topSpaceToView(self.contentView,8).leftSpaceToView(self.contentView, 8).rightSpaceToView(self.contentView, 8).heightIs(0);
+    _iconIV.sd_layout.topSpaceToView(self.contentView,8).leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).heightIs(0);
 }
 
 - (void)setModel:(NSString *)model{
@@ -46,20 +47,24 @@
         
         if (image && self.iconIV.width > 0) {
             
-            CGSize size = image.size;
+            UIImage* resultImage = [image imageByScalingProportionallyToSize:CGSizeMake(self.iconIV.width, CGFLOAT_MAX)];
             
-            if (size.width >= self.width) {
-                
-                if (size.width < size.height) {
-                    
-                    self.iconIV.sd_layout.heightIs(size.height / (size.width / (self.width - 16)));
-                }else{
-                    self.iconIV.sd_layout.heightIs((self.width - 16) * size.height / size.width);
-                }
-                
-            }else{
-                self.iconIV.sd_layout.heightIs(size.height);
-            }
+            CGSize size = resultImage.size;
+            
+            self.iconIV.sd_layout.heightIs(size.height);
+            
+//            if (size.width >= self.width) {
+//                
+//                if (size.width < size.height) {
+//                    
+//                    self.iconIV.sd_layout.heightIs(size.height / (size.width / (self.width - 16)));
+//                }else{
+//                    self.iconIV.sd_layout.heightIs((self.width - 16) * size.height / size.width);
+//                }
+//                
+//            }else{
+//                self.iconIV.sd_layout.heightIs(size.height);
+//            }
         }
     }];
     

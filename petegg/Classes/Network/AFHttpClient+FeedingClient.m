@@ -10,7 +10,7 @@
 
 @implementation AFHttpClient (FeedingClient)
 
--(void)queryFeedingtimeWithMid:(NSString *)mid complete:(void (^)(BaseModel *))completeBlock{
+-(void)queryFeedingtimeWithMid:(NSString *)mid status:(NSString *)status complete:(void (^)(BaseModel *))completeBlock{
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
     params[@"common"] = @"queryFeedingtime";
     params[@"mid"] = mid;

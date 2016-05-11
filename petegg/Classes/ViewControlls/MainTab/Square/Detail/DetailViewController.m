@@ -82,6 +82,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
     
     self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height - 50);
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1)];
+    self.tableView.separatorStyle = NO;
     
     [self.tableView registerClass:[DetailContentCell class] forCellReuseIdentifier:kDetailContentCellID];
     [self.tableView registerClass:[DetailCommentCell class] forCellReuseIdentifier:kDetailCommentCellID];
