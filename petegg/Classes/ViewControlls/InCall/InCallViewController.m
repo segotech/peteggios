@@ -157,7 +157,7 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     self.view.backgroundColor =[UIColor whiteColor];
     UIImage *thumbImage =[UIImage imageNamed:@"1.png"];
-    UIImage *thumbImage1 =[UIImage imageNamed:@"2.png"];
+    UIImage *thumbImage1 =[UIImage imageNamed:@"22.png"];
     [penSd setThumbImage:thumbImage1 forState:UIControlStateHighlighted];
     [penSd setThumbImage:thumbImage forState:UIControlStateNormal];
     
