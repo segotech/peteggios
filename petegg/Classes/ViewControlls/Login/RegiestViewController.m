@@ -52,9 +52,13 @@
         _textFieldes = [[UITextField alloc]initWithFrame:CGRectMake(90 * W_Wide_Zoom,  68 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
         _textFieldes.placeholder = placeArray[i];
         [_textFieldes setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-       // _textFieldes.secureTextEntry = YES;
+         // _textFieldes.secureTextEntry = YES;
         [_textFieldes setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
         _textFieldes.tag = i + 33;
+        if (_textFieldes.tag == 33 || _textFieldes.tag == 34) {
+            _textFieldes.keyboardType = UIKeyboardTypeNumberPad;
+        }
+        
         if (_textFieldes.tag == 35 || _textFieldes.tag == 36) {
             _textFieldes.secureTextEntry = YES;
         }
@@ -67,6 +71,8 @@
     for (NSInteger i = 0 ; i<2; i++) {
             UIButton * showBtn =[[UIButton alloc]initWithFrame:CGRectMake(320 * W_Wide_Zoom, 176 * W_Hight_Zoom +i*50 * W_Hight_Zoom, 18 * W_Wide_Zoom, 18 * W_Hight_Zoom)];
             [showBtn setImage:[UIImage imageNamed:@"showPs.png"] forState:UIControlStateNormal];
+        [showBtn setImage:[UIImage imageNamed:@"noshowpass.png"] forState:UIControlStateSelected];
+        showBtn.selected = YES;
             showBtn.tag = 1000 +i;
         [showBtn addTarget:self action:@selector(showPs:) forControlEvents:UIControlEventTouchUpInside];
             [self.view addSubview:showBtn];
@@ -98,14 +104,14 @@
     [self.view addSubview:registBtn];
     
     
-    UILabel * labelXieyi =[[UILabel alloc]initWithFrame:CGRectMake(68 * W_Wide_Zoom, 350 * W_Hight_Zoom, 250 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    UILabel * labelXieyi =[[UILabel alloc]initWithFrame:CGRectMake(68 * W_Wide_Zoom, 360 * W_Hight_Zoom, 250 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     labelXieyi.text =@"点击'注册'按钮,代表已阅读并同意";
-    labelXieyi.font =[UIFont systemFontOfSize:13];
+    labelXieyi.font =[UIFont systemFontOfSize:12];
     [self.view addSubview:labelXieyi];
     
-    UIButton * xieyiBtn =[[UIButton alloc]initWithFrame:CGRectMake(252 * W_Wide_Zoom, 350 * W_Hight_Zoom, 60 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    UIButton * xieyiBtn =[[UIButton alloc]initWithFrame:CGRectMake(252 * W_Wide_Zoom, 360 * W_Hight_Zoom, 60 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     [xieyiBtn setTitle:@"注册协议" forState:UIControlStateNormal];
-    xieyiBtn.titleLabel.font =[UIFont systemFontOfSize:13];
+    xieyiBtn.titleLabel.font =[UIFont systemFontOfSize:12];
     [xieyiBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [xieyiBtn addTarget:self action:@selector(zhuceixiyi) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:xieyiBtn];
@@ -201,7 +207,7 @@
 - (void)registBtn:(UIButton *)sender
 {
     
-  
+    
      UITextField * text =  (UITextField *)[self.view viewWithTag:33];
      UITextField * text1 =  (UITextField *)[self.view viewWithTag:34];
      UITextField * text2 =  (UITextField *)[self.view viewWithTag:35];
@@ -209,6 +215,10 @@
     
     if ([AppUtil isBlankString:text.text]) {
          [[AppUtil appTopViewController] showHint:@"请输入帐号"];
+        return;
+    }
+    if (![AppUtil isValidateMobile:text.text]) {
+        [[AppUtil appTopViewController] showHint:@"请输入正确格式的手机号码"];
         return;
     }
     if ([AppUtil isBlankString:text1.text]) {
@@ -262,21 +272,25 @@
 
 - (void)showPs:(UIButton *)sender
 {
-    sender.selected =!sender.selected;
-    if (sender.tag == 1000 && sender.selected) {
-        UITextField * textFL =(UITextField *)[self.view viewWithTag:35];
-        textFL.secureTextEntry = YES;
-    }else if (sender.tag ==1001 &&sender.selected){
-        UITextField * textFL =(UITextField *)[self.view viewWithTag:36];
-        textFL.secureTextEntry = YES;
-    }
-    else if(!sender.selected){
-        UITextField * textFL =(UITextField *)[self.view viewWithTag:36];
-        textFL.secureTextEntry = NO;
-        UITextField * textFld =(UITextField *)[self.view viewWithTag:35];
-        textFld.secureTextEntry = NO;
 
+    
+    UIButton * btn1 = (UIButton *)[self.view viewWithTag:1000];
+    UIButton * btn2 = (UIButton *)[self.view viewWithTag:1001];
+    UITextField * textFL =(UITextField *)[self.view viewWithTag:35];
+    UITextField * textFL2 =(UITextField *)[self.view viewWithTag:36];
+    btn1.selected = !btn1.selected;
+    btn2.selected = !btn2.selected;
+    
+    if (sender.selected == YES) {
+        textFL.secureTextEntry = YES;
+        textFL2.secureTextEntry = YES;
+    }else{
+        textFL.secureTextEntry = NO;
+        textFL2.secureTextEntry = NO;
     }
+   
+    
+    
     
 }
 

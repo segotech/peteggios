@@ -57,6 +57,7 @@
     _accountTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 133 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     _accountTextField.placeholder = @"请输入账号";
     _accountTextField.tintColor = [UIColor whiteColor];
+    _accountTextField.keyboardType = UIKeyboardTypeNumberPad;
     [_accountTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     [_accountTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _accountTextField.textColor = [UIColor whiteColor];
@@ -66,7 +67,9 @@
     _passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 193 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     _passwordTextField.placeholder = @"请输入密码";
     _passwordTextField.tintColor = [UIColor whiteColor];
+    _passwordTextField.keyboardType = UIKeyboardTypeDefault;
     _passwordTextField.secureTextEntry = YES;
+    _passwordTextField.textColor = [UIColor whiteColor];
     [_passwordTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     [_passwordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _passwordTextField.delegate = self;
@@ -75,6 +78,8 @@
     //查看密码的键
     UIButton * secureBtn = [[UIButton alloc]initWithFrame:CGRectMake(300 * W_Wide_Zoom, 203 * W_Hight_Zoom, 18 * W_Wide_Zoom, 18 * W_Hight_Zoom)];
     [secureBtn setImage:[UIImage imageNamed:@"showPs.png"] forState:UIControlStateNormal];
+    [secureBtn setImage:[UIImage imageNamed:@"noshowpass.png"] forState:UIControlStateSelected];
+    secureBtn.selected = YES;
     [secureBtn addTarget:self action:@selector(secureButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:secureBtn];
     
@@ -113,7 +118,7 @@
 -(void)secureButtonTouch:(UIButton *)sender{
 
     _passwordTextField.secureTextEntry = !_passwordTextField.secureTextEntry;
-    
+    sender.selected = !sender.selected;
     
     
 }
@@ -169,7 +174,7 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     textField.keyboardAppearance = UIKeyboardAppearanceAlert;
-    textField.keyboardType = UIKeyboardTypeDefault;
+   // textField.keyboardType = UIKeyboardTypeDefault;
 }
 
 
