@@ -24,7 +24,8 @@
     int doubleTime;
     int couunt;
     
-    // 别人
+    // 投食次数
+    NSInteger feeding;
     
     // 自己
     NSString * termidSelf;
@@ -333,13 +334,19 @@
     
     
     NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+     NSString * tsm =[defaults objectForKey:@"tsm"];
     NSString * str =@"clientAction.do?common=feeding&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[defaults objectForKey:@"otherbuildIDS"] forKey:@"id"];
-    
     if (isOth) {
+        feeding++;
+        if ([tsm intValue]<feeding) {
+            [self showSuccessHudWithHint:@"达到最大投食次数了"];
+            return;
+        }else{
         [dic setValue:deviceoOth forKey:@"deviceno"];
         [dic setValue:termidOth forKey:@"termid"];
+        }
     }else
     {
         [self dowithID];
@@ -364,7 +371,6 @@
     
     
     NSString * str =@"clientAction.do?common=photoGraph&classes=appinterface&method=json";
-    
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     
     if (isOth) {
@@ -522,9 +528,6 @@
     }
     
     couunt ++;
-
-    
-    
     if (call == NULL) {
        return;
     }
@@ -623,8 +626,8 @@
             //没有设备
             
         }else{
-            termidSelf = devo;
-            deviceoSelf = termid;
+            termidSelf = termid;
+            deviceoSelf = devo;
         }
     }else{
         termidSelf = termidLG;

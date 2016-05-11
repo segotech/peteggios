@@ -231,8 +231,6 @@
         //  付钱提示
         
         if ([AppUtil isBlankString:self.otherArr[0][@"price"]]) {
-            
-            
              money =[NSString stringWithFormat:@"确定支付￥%d",0];
         }else{
             
@@ -274,6 +272,7 @@
             NSString * buildID = json[@"jsondata"][@"content"];
             NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
             [defaults setValue:buildID forKey:@"othID"];
+             [defaults setValue:self.otherArr[0][@"tsnum"] forKey:@"tsm"];
             [defaults synchronize];
             
             NSString * deveOther=self.otherArr[0][@"deviceno"];

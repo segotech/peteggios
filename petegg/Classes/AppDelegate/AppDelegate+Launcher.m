@@ -134,9 +134,17 @@
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         NSMutableArray * arr =[NSMutableArray array];
             arr = json[@"jsondata"][@"list"];
-        OtherEggViewController * otherVC =[[OtherEggViewController alloc]init];
+        if ([arr[0][@"status"] isEqualToString:@"0"]) {
+            
+            [self.window.rootViewController showSuccessHudWithHint:@"此逗码已经失效"];
+        }else
+        {
+            
+            OtherEggViewController * otherVC =[[OtherEggViewController alloc]init];
             otherVC.otherArr = arr;
             [self.window.rootViewController presentViewController:otherVC animated:YES completion:nil];
+        }
+        
         
     } failure:^(NSError *error) {
         
