@@ -56,7 +56,7 @@
     [self setNavTitle: NSLocalizedString(@"tabPersonal", nil)];
     self.dataSource =[NSMutableArray array];
     self.dataSourceImage =[NSMutableArray array];
-    NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"逗豆",@"逗码",@"喂食设置",@"权限设置",@"修改密码",@"黑名单"];
+    NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"逗币",@"逗码",@"喂食设置",@"权限设置",@"修改密码",@"黑名单"];
     
     [self.dataSource addObjectsFromArray:arrName];
     NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_bean.png",@"person_code.png",@"person_weishi.png",@"person_control.png",@"person_pw.png",@"blank_list.png"];
