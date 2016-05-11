@@ -90,7 +90,7 @@
         return;
     }
     
-    NSLog(@"%@",_dongdongstr);
+   // NSLog(@"%@",_dongdongstr);
 
     [[AFHttpClient sharedAFHttpClient]addreportWithMid:[AccountManager sharedAccountManager].loginModel.mid stid:self.stid content:_textView.text reporttype:_dongdongstr objtype:@"m" complete:^(BaseModel *model) {
         if (model) {

@@ -106,7 +106,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
 //    //  [self.tableView registerClass:[PersonDataTableViewCell class] forCellReuseIdentifier:cellId];
 //    [self.tableView registerClass:[FeedSetingTableViewCell class] forCellReuseIdentifier:cellId];
 //    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    UIButton * sureBtn = [[UIButton alloc]initWithFrame:CGRectMake(20 * W_Wide_Zoom, 620 * W_Hight_Zoom, 335 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    UIButton * sureBtn = [[UIButton alloc]initWithFrame:CGRectMake(221.25 * W_Wide_Zoom, 620 * W_Hight_Zoom, 120 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     sureBtn.backgroundColor = GREEN_COLOR;
     [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -114,7 +114,16 @@ static NSString * cellId = @"fedseting2321232322313323231";
     [sureBtn addTarget:self action:@selector(hahahahaha) forControlEvents:UIControlEventTouchUpInside];
     
     
-    //[self onedayView];
+    UIButton * sureBtn2 = [[UIButton alloc]initWithFrame:CGRectMake(33.75 * W_Wide_Zoom, 620 * W_Hight_Zoom, 120 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    sureBtn2.backgroundColor = GREEN_COLOR;
+    [sureBtn2 setTitle:@"停用" forState:UIControlStateNormal];
+    [sureBtn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:sureBtn2];
+    
+    
+    
+    
+    
 
 }
 
@@ -348,11 +357,9 @@ static NSString * cellId = @"fedseting2321232322313323231";
     _isOneOrTwo = YES;
     [_bigView2 removeFromSuperview];
     [self onedayView];
-   // [self.tableView reloadData];
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame = CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
-     [[AppUtil appTopViewController] showHint:@"启用一天模式"];
-       // _bigBtn.backgroundColor = [UIColor blueColor];
+    [[AppUtil appTopViewController] showHint:@"启用一天模式"];
          [_bigBtn setImage:[UIImage imageNamed:@"weishi_onday.png"] forState:UIControlStateNormal];
     }];
 }
@@ -411,6 +418,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
     NSLog(@"%@",_dataArray);
 }
 
+//查询
 -(void)querWeishi{
     [_timeBtn1 setTitle:@"" forState:UIControlStateNormal];
     [_timeBtn2 setTitle:@"" forState:UIControlStateNormal];
@@ -419,7 +427,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
     [_timeBtn5 setTitle:@"" forState:UIControlStateNormal];
     [_timeBtn6 setTitle:@"" forState:UIControlStateNormal];
     [self.dataSource removeAllObjects];
-    [[AFHttpClient sharedAFHttpClient]queryFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid  complete:^(BaseModel *model) {
+    [[AFHttpClient sharedAFHttpClient]queryFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid status:@"1" complete:^(BaseModel *model) {
         if (model.list.count > 0 ) {
             [self.dataSource addObjectsFromArray:model.list];
             FeddingModel * model = self.dataSource[0];
@@ -475,19 +483,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
 
 -(void)setupData{
     [super setupData];
-//    [[AFHttpClient sharedAFHttpClient]queryFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
-//        [self.dataSource addObjectsFromArray:model.list];
-//        if (self.dataSource.count > 0) {
-//            FeddingModel * model1 = self.dataSource[0];
-//            _timeStr = model1.times;
-//            //  _ondedayArray = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
-//            NSArray * array = [_timeStr componentsSeparatedByString:NSLocalizedString(@",", nil)];
-//            _ondedayArray = [NSMutableArray arrayWithArray:array];
-//        }
-//    
-//        
-//        [self.tableView reloadData];
-//    }];
+
 }
 
 

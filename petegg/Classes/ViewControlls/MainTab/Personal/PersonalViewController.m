@@ -55,10 +55,10 @@
     [self setNavTitle: NSLocalizedString(@"tabPersonal", nil)];
     self.dataSource =[NSMutableArray array];
     self.dataSourceImage =[NSMutableArray array];
-    NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"逗豆",@"逗码",@"权限设置",@"修改密码",@"黑名单",@"喂食设置"];
+    NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"逗豆",@"逗码",@"喂食设置",@"权限设置",@"修改密码",@"黑名单"];
     
     [self.dataSource addObjectsFromArray:arrName];
-    NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_bean.png",@"person_code.png",@"person_control.png",@"person_pw.png",@"blank_list.png",@"person_weishi.png"];
+    NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_bean.png",@"person_code.png",@"person_weishi.png",@"person_control.png",@"person_pw.png",@"blank_list.png"];
     [self.dataSourceImage addObjectsFromArray:arrImage];
     
    
@@ -336,10 +336,10 @@
             break;
             
         case 2:
-            return 2;
+            return 3;
             break;
         case 3:
-            return 2;
+            return 1;
             break;
             
             
@@ -470,9 +470,9 @@
             
          case 3:
             
-            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+8]];
+            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+9]];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.introduce.text= self.dataSource[indexPath.row+8];
+            cell.introduce.text= self.dataSource[indexPath.row+9];
             
             break;
             
@@ -559,22 +559,26 @@
             break;
             
         case 2:
-            if (indexPath.row ==0) {
+            if (indexPath.row ==1) {
                 NSLog(@"000");
                 PermissionViewController * perVc = [[PermissionViewController alloc]init];
                 [self.navigationController pushViewController:perVc animated:YES];
                 
-                
-            
             }
             
-            if (indexPath.row  ==1) {
+            if (indexPath.row  ==2) {
                 NSLog(@"111");
                 ChangePasswordViewController * changVc = [[ChangePasswordViewController alloc]init];
                 [self.navigationController pushViewController:changVc animated:YES];
              
-                
             }
+            
+            if (indexPath.row ==0) {
+                FeedSetingViewController * feed = [[FeedSetingViewController alloc]init];
+                [self.navigationController pushViewController:feed animated:YES];
+            }
+            
+            
             break;
             
         case 3:
@@ -584,10 +588,7 @@
                 [self.navigationController pushViewController:black animated:YES];
             }
            
-            if (indexPath.row ==1) {
-                FeedSetingViewController * feed = [[FeedSetingViewController alloc]init];
-                [self.navigationController pushViewController:feed animated:YES];
-            }
+        
             
             
             
