@@ -263,6 +263,9 @@
     }else{
         
      [self dowithID];
+        [dic setValue:deviceoSelf forKey:@"deviceno"];
+        [dic setValue:termidSelf forKey:@"termid"];
+        
         
     }
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
@@ -306,6 +309,8 @@
     {
         
         [self dowithID];
+        [dic setValue:deviceoSelf forKey:@"deviceno"];
+        [dic setValue:termidSelf forKey:@"termid"];
     }
    
     [dic setValue:str1 forKey:@"action"];
@@ -338,6 +343,8 @@
     }else
     {
         [self dowithID];
+        [dic setValue:deviceoSelf forKey:@"deviceno"];
+        [dic setValue:termidSelf forKey:@"termid"];
     }
 
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
@@ -367,6 +374,8 @@
     {
         
         [self dowithID];
+        [dic setValue:deviceoSelf forKey:@"deviceno"];
+        [dic setValue:termidSelf forKey:@"termid"];
         
     }
    
