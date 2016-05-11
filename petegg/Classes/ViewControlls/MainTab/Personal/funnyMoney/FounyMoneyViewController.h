@@ -11,4 +11,5 @@
 
 @interface FounyMoneyViewController : BaseViewController<SKPaymentTransactionObserver,SKProductsRequestDelegate>
 
+@property (strong, nonatomic) IBOutlet UILabel *overLB;
 @end

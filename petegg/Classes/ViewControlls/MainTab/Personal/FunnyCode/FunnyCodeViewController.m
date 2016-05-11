@@ -61,11 +61,6 @@
     
 }
 
-- (void)setupData
-{
-    
-    
-}
 
 
 /**
@@ -141,6 +136,7 @@
         _centerView.hidden = NO;
     }else{
         [self.onFunCodeBtn setTitle:@"立即失效" forState:UIControlStateNormal];
+        [self lostData];
     }
     
     
@@ -183,6 +179,7 @@
             pcidStr  =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"pcid"];
             endTime =[[json objectForKey:@"jsondata"]objectForKey:@"list"][0][@"endtime"];
             self.onFuntime.text =endTime;
+            [self.onFunCodeBtn setTitle:@"立即失效" forState:UIControlStateNormal];
             
 //            timeTF = [self.onFuntime.text intValue];
 //            _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
@@ -241,6 +238,8 @@
         if ([[[json objectForKey:@"jsondata"]objectForKey:@"retCode"] isEqualToString:@"0000"]) {
             [self checkMessage];
             [self.onFunCodeBtn setTitle:@"立即失效" forState:UIControlStateNormal];
+            self.onFunCodeBtn.enabled = YES;
+            
             
         }
         
@@ -322,6 +321,39 @@
     [rightquxiaoButton addTarget:self action:@selector(cancelBtn:) forControlEvents:UIControlEventTouchUpInside];
     
 
+}
+
+/**
+ *  失效
+ */
+
+
+- (void)lostData
+{
+    NSString * str =@"clientAction.do?method=json&common=delPlayCode&classes=appinterface";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:self.onFunyCode.text forKey:@"playcode"];
+  [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+      if ([[[json objectForKey:@"jsondata"]objectForKey:@"retCode"] isEqualToString:@"0000"]) {
+          
+          //成功
+          [self.onFunCodeBtn setTitle:@"生成我的逗码" forState:UIControlStateNormal];
+          self.onFunprice.text =@"暂无";
+          self.onFunfood.text =@"暂无";
+          self.onFuntime.text =@"暂无";
+          self.onFunyCode.text =@"暂无";
+
+          
+          
+      }
+
+      
+  } failure:^(NSError *error) {
+      
+  }];
+    
+
+    
 }
 
 
