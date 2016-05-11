@@ -53,7 +53,6 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     // 功能按钮默认不可用。
     resolveButton.backgroundColor = GRAY_COLOR;
     resolveButton.enabled = FALSE;
-
     [self setNavTitle:NSLocalizedString(@"settingViewTitle", nil)];
 }
 
@@ -74,7 +73,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     // 尚未绑定设备，则绑定设备。
     if ([AppUtil isBlankString:str]) {
         if ([AppUtil isBlankString:strDeviceNo]) {
-            [self updateUI:@"绑定设备" State:false];
+            [self updateUI:@"搜索设备" State:false];
 
         }else
         {
@@ -142,7 +141,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_WIFI_CONFIGURED];
                 [AccountManager sharedAccountManager].loginModel.deviceno = @"";
                 // 更新界面状态。
-                [self updateUI:@"绑定设备" State:false];
+                [self updateUI:@"搜索设备" State:false];
             }
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
