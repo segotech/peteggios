@@ -55,8 +55,6 @@
 // 设置
 - (void)settings:(UIButton *)sender
 {
-    NSLog(@"hha");
-    
     SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
     [self.navigationController pushViewController:setVC animated:YES];
     
@@ -72,7 +70,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super  viewWillAppear:animated];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callUpdate:) name:kSephoneCallUpdate object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(registrationUpdate:) name:kSephoneRegistrationUpdate object:nil];
     
@@ -125,8 +122,6 @@
             _incallVC =[[InCallViewController alloc]initWithNibName:@"InCallViewController" bundle:nil];
             [_incallVC setCall:call];
             [self presentViewController:_incallVC animated:YES completion:nil];
-            
-      
             break;
         }
             
@@ -159,7 +154,9 @@
     if ([AppUtil isBlankString:str]) {
         if ([AppUtil isBlankString:devo]) {
             self.view.backgroundColor =[UIColor lightGrayColor];
+            [_noDeviceImageView removeFromSuperview];
             // 没有绑定
+            [_openButton removeFromSuperview];
             _noDeviceImageView =[[UIImageView alloc]initWithFrame:CGRectMake(50, 64, 280*W_Wide_Zoom, 400*W_Hight_Zoom)];
             [_yesDeviceImageView removeFromSuperview];
             _noDeviceImageView.image =[UIImage imageNamed:@"noDevice.png"];
@@ -262,6 +259,7 @@
     {
         // 设备不存在
         
+        
     }
     else {
         // 离线
@@ -276,6 +274,7 @@
 - (void)buttonOpen
 {
     [_noDeviceImageView removeFromSuperview];
+    [_openButton removeFromSuperview];
     _openButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_openButton setTitle:NSLocalizedString(@"openButton", nil) forState:UIControlStateNormal];
     [_openButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

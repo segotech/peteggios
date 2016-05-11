@@ -4150,6 +4150,9 @@
 					"COCOAPODS=1",
 					VIDEO_ENABLED,
 					HAVE_OPENH264,
+					"HAVE-SILK",
+					HAVE_SSL,
+					IN_SEPHONE,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4207,6 +4210,9 @@
 					"COCOAPODS=1",
 					VIDEO_ENABLED,
 					HAVE_OPENH264,
+					HAVE_SILK,
+					HAVE_SSL,
+					IN_SEPHONE,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
