@@ -7,6 +7,7 @@
 //
 
 #import "InCallViewController.h"
+#import "SettingViewController.h"
 
 @import CoreTelephony;
 
@@ -25,7 +26,9 @@
     
     // 别人
     
-    
+    // 自己
+    NSString * termidSelf;
+    NSString * deviceoSelf;
     
     
     
@@ -258,8 +261,9 @@
         [dic setValue:termidOth forKey:@"termid"];
         
     }else{
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
-     [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
+        
+     [self dowithID];
+        
     }
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
@@ -292,7 +296,7 @@
         str1 =@"on";
     }
     
-    NSString * str =@"clientAction.do?common=SwitchLight&classes=appinterface&method=json";
+    NSString * str =@"clientAction.do?common=switchLight&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     
     if (isOth) {
@@ -301,8 +305,7 @@
     }else
     {
         
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+        [self dowithID];
     }
    
     [dic setValue:str1 forKey:@"action"];
@@ -334,9 +337,7 @@
         [dic setValue:termidOth forKey:@"termid"];
     }else
     {
-        
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+        [self dowithID];
     }
 
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
@@ -365,8 +366,8 @@
     }else
     {
         
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+        [self dowithID];
+        
     }
    
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
@@ -567,9 +568,10 @@
 {
     
     NSUserDefaults * defau =[NSUserDefaults standardUserDefaults];
-    NSString *  otherBulidId =[defau objectForKey:@"otherBulidId"];
+    NSString *  otherBulidId =[defau objectForKey:@"otherbuildIDS"];
     NSString *  selfID =[defau objectForKey:@"othID"];
     
+    // otherbuildIDS
     /*
     NSDate *  senddate=[NSDate date];
     NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
@@ -589,16 +591,43 @@
     }
     [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
         
+        
     } failure:^(NSError *error) {
         
     }];
     
-    
-    
-    
-    
+}
 
+
+
+- (void)dowithID
+{
     
+    NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+    NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
+    NSString * termidLG = [AccountManager sharedAccountManager].loginModel.termid;
+    NSString * devo  = [defaults objectForKey:PREF_DEVICE_NUMBER];
+    NSString * termid = [defaults objectForKey:TERMID_DEVICNUMER];
+    
+    if ([AppUtil isBlankString:devoLG]) {
+        if ([AppUtil isBlankString:devo]) {
+            //没有设备
+            
+        }else{
+            termidSelf = devo;
+            deviceoSelf = termid;
+        }
+    }else{
+        termidSelf = termidLG;
+        deviceoSelf = devoLG;
+        
+        
+    }
+    
+    
+    
+    
+ 
 }
 
 

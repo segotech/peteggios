@@ -311,7 +311,6 @@
         
         NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
         // 使用记录
-       
         NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
         // 自己开
         [dic setValue:@"self" forKey:@"object"];
