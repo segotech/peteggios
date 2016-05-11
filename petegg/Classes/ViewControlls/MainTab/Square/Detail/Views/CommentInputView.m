@@ -18,6 +18,7 @@
     CGFloat _previousTextViewContentHeight;
 }
 
+@property (nonatomic, strong) UIView *fadeView ;
 @property (nonatomic) CGFloat maxTextInputViewHeight;
 @property (nonatomic, copy) void (^sendCommentBlock)(NSString *text);
 
@@ -52,6 +53,9 @@
     CGFloat allButtonWidth = 0.0;
     CGFloat textViewLeftMargin = 6.0;
     
+    _fadeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _fadeView.backgroundColor = [UIColor clearColor];
+    
     // 输入框的高度和宽度
     CGFloat width = CGRectGetWidth(self.bounds) - (allButtonWidth ? allButtonWidth : (textViewLeftMargin * 2));
     // 初始化输入框
@@ -72,6 +76,7 @@
     _previousTextViewContentHeight = [self getTextViewContentH:_inputTextView];
     
     [self addSubview:self.inputTextView];
+    
     
     self.backgroundColor = RGB(248, 249, 250);
     self.layer.borderColor = RGB(223, 224, 226).CGColor;
@@ -148,9 +153,12 @@
 }
 
 -(void)showWithSendCommentBlock:(void(^)(NSString *text))sendCommentBlock{
+    
     self.sendCommentBlock = sendCommentBlock;
     self.hidden = NO;
     [_inputTextView becomeFirstResponder];
+    
+    [self.superview addSubview:self.fadeView];
 }
 
 - (void)hide{
@@ -158,6 +166,8 @@
     self.height = [CommentInputView defaultHeight];
     _previousTextViewContentHeight = [self getTextViewContentH:_inputTextView];
     self.hidden = YES;
+    
+    [self.fadeView removeFromSuperview];
 }
 
 + (CGFloat)defaultHeight
