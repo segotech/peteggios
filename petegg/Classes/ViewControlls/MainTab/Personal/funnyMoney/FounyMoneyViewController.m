@@ -32,12 +32,17 @@
     NSString * productNum;
     NSMutableArray * dataSoureArr;
     
+   // preice
+    NSString * preiceNum;
+    
+    
     
 }
 
 @end
 
 @implementation FounyMoneyViewController
+@synthesize overLB;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,7 +59,7 @@
     
     [self showBarButton:NAV_RIGHT  title:@"明细" fontColor:[UIColor blackColor]];
     dataSoureArr =[NSMutableArray array];
-    
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
 
 }
 
@@ -104,7 +109,10 @@
     NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-       dataSoureArr = json[@"jsondata"][@"list"];
+        dataSoureArr = json[@"jsondata"][@"list"];
+        overLB.text = dataSoureArr[0][@"over"];
+        
+        
         
         
         NSLog(@"%@",json);
@@ -167,7 +175,7 @@
     }
     
     NSLog(@"productID:%@", response.invalidProductIdentifiers);
-    NSLog(@"产品付费数量:%d",[product count]);
+    NSLog(@"产品付费数量:%lu",(unsigned long)[product count]);
     
     SKProduct *p = nil;
     for (SKProduct *pro in product) {
@@ -181,9 +189,7 @@
             p = pro;
         }
     }
-    
     SKPayment *payment = [SKPayment paymentWithProduct:p];
-    
     NSLog(@"发送购买请求");
     [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
@@ -195,7 +201,7 @@
 }
 
 - (void)requestDidFinish:(SKRequest *)request{
-    NSLog(@"------------反馈信息结束-----------------");
+    NSLog(@"------------反馈信息结束-----------------%@",request);
 }
 
 
@@ -235,47 +241,60 @@
 - (IBAction)oneBtn:(id)sender {
     
     [self buy:ProductID_IAP0p18];
+    preiceNum = @"18";
+    
 
 }
 
 // 2
 - (IBAction)twoBtn:(id)sender {
      [self buy:ProductID_IAP0p25];
+    preiceNum = @"25";
+    
 }
 //3
 - (IBAction)threeBtn:(id)sender {
     
     [self buy:ProductID_IAP0p30];
+    preiceNum = @"30";
 }
 //4
 - (IBAction)fourBtn:(id)sender {
      [self buy:ProductID_IAP0p40];
+    preiceNum = @"40";
+    
 }
 
 // 5
 - (IBAction)fiveBtn:(id)sender {
     
      [self buy:ProductID_IAP0p50];
+    preiceNum = @"50";
 }
 
 // 6
 - (IBAction)sixBTN:(id)sender {
     [self buy:ProductID_IAP0p60];
+    preiceNum = @"60";
 }
 
 // 7
 - (IBAction)servenBtn:(id)sender {
      [self buy:ProductID_IAP0p73];
+    preiceNum = @"73";
+    
 }
 
 // 8
 - (IBAction)eightBtn:(id)sender {
     [self buy:ProductID_IAP0p88];
+    preiceNum = @"88";
 
 }
 // 9
 - (IBAction)nineBtn:(id)sender {
     [self buy:ProductID_IAP0p93];
+    preiceNum =@"93";
     
 }
 //交易结束
@@ -292,9 +311,9 @@
     NSString * str = @"clientAction.do?method=json&common=recharge&classes=appinterface";
     NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
-    [dic setValue:@"" forKey:@"money"];
+    [dic setValue:preiceNum forKey:@"money"];
 
-    [AFNetWorking postWithApi:nil parameters:nil success:^(id json) {
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
     } failure:^(NSError *error) {
         

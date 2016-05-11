@@ -9,6 +9,7 @@
 #import "DetailImageCell.h"
 
 #import "UIImageView+WebCache.h"
+#import "UIImage-Extensions.h"
 
 #import "UIView+TapBlocks.h"
 
@@ -46,20 +47,24 @@
         
         if (image && self.iconIV.width > 0) {
             
-            CGSize size = image.size;
+            UIImage* resultImage = [image imageByScalingProportionallyToSize:CGSizeMake(self.iconIV.width, CGFLOAT_MAX)];
             
-            if (size.width >= self.width) {
-                
-                if (size.width < size.height) {
-                    
-                    self.iconIV.sd_layout.heightIs(size.height / (size.width / (self.width - 16)));
-                }else{
-                    self.iconIV.sd_layout.heightIs((self.width - 16) * size.height / size.width);
-                }
-                
-            }else{
-                self.iconIV.sd_layout.heightIs(size.height);
-            }
+            CGSize size = resultImage.size;
+            
+            self.iconIV.sd_layout.heightIs(size.height);
+            
+//            if (size.width >= self.width) {
+//                
+//                if (size.width < size.height) {
+//                    
+//                    self.iconIV.sd_layout.heightIs(size.height / (size.width / (self.width - 16)));
+//                }else{
+//                    self.iconIV.sd_layout.heightIs((self.width - 16) * size.height / size.width);
+//                }
+//                
+//            }else{
+//                self.iconIV.sd_layout.heightIs(size.height);
+//            }
         }
     }];
     
