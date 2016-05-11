@@ -59,7 +59,7 @@
     NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"逗币",@"逗码",@"喂食设置",@"权限设置",@"修改密码",@"黑名单"];
     
     [self.dataSource addObjectsFromArray:arrName];
-    NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"message.png",@"person_bean.png",@"person_code.png",@"person_weishi.png",@"person_control.png",@"person_pw.png",@"blank_list.png"];
+    NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"nopointattention.png",@"person_bean.png",@"person_code.png",@"person_weishi.png",@"person_control.png",@"person_pw.png",@"blank_list.png"];
     [self.dataSourceImage addObjectsFromArray:arrImage];
     
    
@@ -84,12 +84,14 @@
 
 - (void)selfDataHand
 {
-    
+ 
+    [self showHudInView:self.view hint:@"正在加载..."];
     NSString * str =@"clientAction.do?method=json&common=queryPraises&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            
             json = json[@"jsondata"][@"list"][0];
             [_heandBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:json[@"headportrait"]]]] forState:UIControlStateNormal];
             [self showLB:500 string:json[@"sprouts"]];
@@ -101,10 +103,11 @@
     
             cachedImage =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:json[@"headportrait"]]]];
             bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
+            [self hideHud];
         }
         
     } failure:^(NSError *error) {
-        
+        [self hideHud];
     }];
     
 
@@ -134,6 +137,13 @@
     
 }
 
+-(void)changeName:(NSNotification *)nsnotifition{
+    NSString * str = nsnotifition.object;
+    _nameLabel.text = str;
+
+}
+
+
 -(void)initheadImage:(NSNotification *)nsnotifition{
      UIImage * testImage =nsnotifition.object;
     [_heandBtn setImage:testImage forState:UIControlStateNormal];
@@ -161,6 +171,11 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanMessage) name:@"message123" object:nil];
     
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanTip) name:@"isreaddd" object:nil];
+    
+    
+    //changeNameText
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeName:) name:@"changeNameText" object:nil];
+
     
     
     [self.tableView reloadData];
