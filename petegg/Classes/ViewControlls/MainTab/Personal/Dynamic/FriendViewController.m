@@ -86,7 +86,7 @@
     if ([self.count isEqualToString:@"0"]) {
         message.hidden = YES;
     }else{
-    [message setTitle:[NSString stringWithFormat:@"%d条动态",6] forState:UIControlStateNormal];
+    [message setTitle:[NSString stringWithFormat:@"%@条动态", self.count] forState:UIControlStateNormal];
     }
     
     
@@ -181,7 +181,7 @@
     MessageViewController *messageVC =[[MessageViewController alloc]initWithNibName:@"MessageViewController" bundle:nil];
     self.message.hidden = YES;
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"message" object:nil];
+   
     
     [self.navigationController pushViewController:messageVC animated:YES];
     

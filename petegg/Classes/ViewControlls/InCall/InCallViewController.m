@@ -7,6 +7,7 @@
 //
 
 #import "InCallViewController.h"
+#import "SettingViewController.h"
 
 @import CoreTelephony;
 
@@ -23,9 +24,12 @@
     int doubleTime;
     int couunt;
     
-    // 别人
+    // 投食次数
+    NSInteger feeding;
     
-    
+    // 自己
+    NSString * termidSelf;
+    NSString * deviceoSelf;
     
     
     
@@ -153,7 +157,7 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     self.view.backgroundColor =[UIColor whiteColor];
     UIImage *thumbImage =[UIImage imageNamed:@"1.png"];
-    UIImage *thumbImage1 =[UIImage imageNamed:@"2.png"];
+    UIImage *thumbImage1 =[UIImage imageNamed:@"22.png"];
     [penSd setThumbImage:thumbImage1 forState:UIControlStateHighlighted];
     [penSd setThumbImage:thumbImage forState:UIControlStateNormal];
     
@@ -258,8 +262,12 @@
         [dic setValue:termidOth forKey:@"termid"];
         
     }else{
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
-     [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
+        
+     [self dowithID];
+        [dic setValue:deviceoSelf forKey:@"deviceno"];
+        [dic setValue:termidSelf forKey:@"termid"];
+        
+        
     }
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
@@ -292,7 +300,7 @@
         str1 =@"on";
     }
     
-    NSString * str =@"clientAction.do?common=SwitchLight&classes=appinterface&method=json";
+    NSString * str =@"clientAction.do?common=switchLight&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     
     if (isOth) {
@@ -301,8 +309,9 @@
     }else
     {
         
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+        [self dowithID];
+        [dic setValue:deviceoSelf forKey:@"deviceno"];
+        [dic setValue:termidSelf forKey:@"termid"];
     }
    
     [dic setValue:str1 forKey:@"action"];
@@ -325,18 +334,28 @@
     
     
     NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+    NSString * tsm =[defaults objectForKey:@"tsm"];
+    NSString * otherID =[defaults objectForKey:@"othID"];
+    NSString * selfID =[defaults objectForKey:@"otherbuildIDS"];
     NSString * str =@"clientAction.do?common=feeding&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:[defaults objectForKey:@"otherbuildIDS"] forKey:@"id"];
-    
     if (isOth) {
+        feeding++;
+        if ([tsm intValue]<feeding) {
+            [self showSuccessHudWithHint:@"达到最大投食次数了"];
+            return;
+        }else{
+        [dic setValue:otherID forKey:@"id"];
         [dic setValue:deviceoOth forKey:@"deviceno"];
         [dic setValue:termidOth forKey:@"termid"];
+        
+        }
     }else
     {
-        
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+        [self dowithID];
+        [dic setValue:selfID forKey:@"id"];
+        [dic setValue:deviceoSelf forKey:@"deviceno"];
+        [dic setValue:termidSelf forKey:@"termid"];
     }
 
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
@@ -356,7 +375,6 @@
     
     
     NSString * str =@"clientAction.do?common=photoGraph&classes=appinterface&method=json";
-    
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     
     if (isOth) {
@@ -365,8 +383,10 @@
     }else
     {
         
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.termid forKey:@"termid"];
-        [dic setValue:[AccountManager sharedAccountManager].loginModel.deviceno forKey:@"deviceno"];
+        [self dowithID];
+        [dic setValue:deviceoSelf forKey:@"deviceno"];
+        [dic setValue:termidSelf forKey:@"termid"];
+        
     }
    
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
@@ -512,9 +532,6 @@
     }
     
     couunt ++;
-
-    
-    
     if (call == NULL) {
        return;
     }
@@ -567,9 +584,10 @@
 {
     
     NSUserDefaults * defau =[NSUserDefaults standardUserDefaults];
-    NSString *  otherBulidId =[defau objectForKey:@"otherBulidId"];
+    NSString *  otherBulidId =[defau objectForKey:@"otherbuildIDS"];
     NSString *  selfID =[defau objectForKey:@"othID"];
     
+    // otherbuildIDS
     /*
     NSDate *  senddate=[NSDate date];
     NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
@@ -589,16 +607,43 @@
     }
     [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
         
+        
     } failure:^(NSError *error) {
         
     }];
     
-    
-    
-    
-    
+}
 
+
+
+- (void)dowithID
+{
     
+    NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+    NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
+    NSString * termidLG = [AccountManager sharedAccountManager].loginModel.termid;
+    NSString * devo  = [defaults objectForKey:PREF_DEVICE_NUMBER];
+    NSString * termid = [defaults objectForKey:TERMID_DEVICNUMER];
+    
+    if ([AppUtil isBlankString:devoLG]) {
+        if ([AppUtil isBlankString:devo]) {
+            //没有设备
+            
+        }else{
+            termidSelf = termid;
+            deviceoSelf = devo;
+        }
+    }else{
+        termidSelf = termidLG;
+        deviceoSelf = devoLG;
+        
+        
+    }
+    
+    
+    
+    
+ 
 }
 
 

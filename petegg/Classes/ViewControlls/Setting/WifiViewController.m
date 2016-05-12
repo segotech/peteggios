@@ -126,7 +126,7 @@
 /**
  *  获取当前连接WIFI的名称
  *
- *  @return <#return value description#>
+ *  @return 
  */
 - (NSString *)fetchSSIDInfo {
     NSArray *ifs = (__bridge id)CNCopySupportedInterfaces();
@@ -331,8 +331,7 @@
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 [defaults setValue:@"1" forKey:PREF_WIFI_CONFIGURED];
                 [defaults synchronize];
-                
-               // [self bangdingSheBei];
+                [self.navigationController popViewControllerAnimated:YES];
             
                 
             } else {

@@ -25,6 +25,8 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
     CBPeripheralManager *peripheralManager;
     int serviceNum;   // 添加成功的service数量
     BOOL isAccecptOk; // 是否接收结果成功
+    NSString * deviceoNum;
+    
 }
 
 @end
@@ -146,7 +148,9 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
  */
 - (IBAction)bindButtonClicked:(UIButton *)sender {
     
-    // 检查网络是否可用。
+    
+    
+        // 检查网络是否可用。
     BOOL hasNetwork = [self checkConnectionAvailable];
     if (!hasNetwork) {
         return;
@@ -156,16 +160,9 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
         [self showWarningTip:@"设备号不存在"];
         return;
     }
+    [self deviceMemer:deviceoNum];
 
-    // TODO 实现设备http绑定。
-
-    // 保存之。
-    NSUserDefaults *defults = [NSUserDefaults standardUserDefaults];
-    [defults setObject:strNumber forKey:PREF_DEVICE_NUMBER];
-    [defults synchronize];
-
-    // 返回上级页面。
-    [self.navigationController popViewControllerAnimated:YES];
+  
 }
 
 
@@ -180,19 +177,20 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
     
     [dicc setValue: [AccountManager sharedAccountManager].loginModel.mid                forKey:@"mid"];
     [dicc setValue:strdec   forKey:@"deviceno"];
-    
     [AFNetWorking postWithApi:str parameters:dicc success:^(id json) {
         
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             [self showSuccessHudWithHint:@"绑定成功"];
-            self.deviceNumberEdit.text = strdec;
+            NSString * srt =json[@"jsondata"][@"content"];
             NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-            [defaults setObject:strdec forKey:@"deviceNumber"];
+            [defaults setObject:srt forKey:TERMID_DEVICNUMER];
             [defaults synchronize];
-            self.incodeEdit.text = @"123456";
+            // TODO 实现设备http绑定。
             
-            // 使能绑定按钮。
-            [self enableBindButton];
+            
+            // 返回上级页面。
+            [self.navigationController popViewControllerAnimated:YES];
+           
             
         }else
         {
@@ -412,8 +410,15 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
                 isAccecptOk = YES;
 
                 // 取出设备号，更新界面。
-                strNumber = [strNumber substringFromIndex:SEGOEGG_PREFIX.length];
-                [self deviceMemer:strNumber];
+                deviceoNum = [strNumber substringFromIndex:SEGOEGG_PREFIX.length];
+                self.deviceNumberEdit.text = deviceoNum;
+                self.incodeEdit.text = @"123456";
+                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+                [defaults setObject:deviceoNum forKey:PREF_DEVICE_NUMBER];
+                [defaults synchronize];
+                [self enableBindButton];
+                
+               // [self deviceMemer:strNumber];
             }
             // 出错了。
             else {

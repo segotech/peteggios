@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34024DD11CE33976000E3723 /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = 34024DD01CE33976000E3723 /* 22.png */; };
 		34144BC91CBFB147007C4498 /* TimeHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BC81CBFB147007C4498 /* TimeHistoryModel.m */; };
 		34144BCC1CBFB156007C4498 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BCB1CBFB156007C4498 /* MessageModel.m */; };
 		34144BD61CBFB1B3007C4498 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BD11CBFB1B3007C4498 /* MessageTableViewCell.m */; };
@@ -40,7 +41,6 @@
 		344F02631C9FEBDE0076CE62 /* snap_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F024F1C9FEBDE0076CE62 /* snap_on.png */; };
 		344F02641C9FEBDE0076CE62 /* trun_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02501C9FEBDE0076CE62 /* trun_off.png */; };
 		344F02651C9FEBDE0076CE62 /* turn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02511C9FEBDE0076CE62 /* turn_on.png */; };
-		344F02711CA009A30076CE62 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02701CA009A30076CE62 /* 2.png */; };
 		344F02731CA009DD0076CE62 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02721CA009DD0076CE62 /* 1.png */; };
 		344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 344F02841CA12E3C0076CE62 /* CALayer+XibConfiguration.m */; };
 		344F02881CA143AC0076CE62 /* kuang_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02861CA143AC0076CE62 /* kuang_off.png */; };
@@ -452,6 +452,7 @@
 
 /* Begin PBXFileReference section */
 		12B3F5078F1D20378D19682F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		34024DD01CE33976000E3723 /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
 		34144BC71CBFB147007C4498 /* TimeHistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeHistoryModel.h; sourceTree = "<group>"; };
 		34144BC81CBFB147007C4498 /* TimeHistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeHistoryModel.m; sourceTree = "<group>"; };
 		34144BCA1CBFB155007C4498 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -1679,6 +1680,7 @@
 		344F02281C9FD5BC0076CE62 /* nav */ = {
 			isa = PBXGroup;
 			children = (
+				34024DD01CE33976000E3723 /* 22.png */,
 				34D27AEF1CE06BB800244333 /* 2.png */,
 				34D27AEB1CE06B8E00244333 /* play.png */,
 				34D27AEC1CE06B8E00244333 /* play2.png */,
@@ -3552,6 +3554,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 4UKEB375ND;
 					};
 				};
 			};
@@ -3585,6 +3588,7 @@
 				7D825CE61CBCA51B00F4E216 /* SettingViewController.xib in Resources */,
 				34A218371CCDFF9700ADD8FF /* status-red.png in Resources */,
 				344F02631C9FEBDE0076CE62 /* snap_on.png in Resources */,
+				34024DD11CE33976000E3723 /* 22.png in Resources */,
 				34A215DC1CCDFD6F00ADD8FF /* shortring.caf in Resources */,
 				57666FC21C96979F00A52DBA /* tab_rank_press@3x.png in Resources */,
 				7D0128E81CC5C8480009BF6B /* moveing.png in Resources */,
@@ -3719,7 +3723,6 @@
 				34A218231CCDFF9700ADD8FF /* contact_starred.png in Resources */,
 				34D27AF01CE06BB800244333 /* 2.png in Resources */,
 				344F02BF1CA2D8CE0076CE62 /* left_off.png in Resources */,
-				344F02711CA009A30076CE62 /* 2.png in Resources */,
 				34A218241CCDFF9700ADD8FF /* contact_unstarred.png in Resources */,
 				34A218331CCDFF9700ADD8FF /* startcall-small.png in Resources */,
 				7D24EA8C1CC4E74A004EB1E2 /* manquanquan.png in Resources */,
@@ -4149,6 +4152,9 @@
 					"COCOAPODS=1",
 					VIDEO_ENABLED,
 					HAVE_OPENH264,
+					"HAVE-SILK",
+					HAVE_SSL,
+					IN_SEPHONE,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4175,7 +4181,7 @@
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib",
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpetopt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -4206,6 +4212,9 @@
 					"COCOAPODS=1",
 					VIDEO_ENABLED,
 					HAVE_OPENH264,
+					HAVE_SILK,
+					HAVE_SSL,
+					IN_SEPHONE,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4232,7 +4241,7 @@
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib",
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpetopt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

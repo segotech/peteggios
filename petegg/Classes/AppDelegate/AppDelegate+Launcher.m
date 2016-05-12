@@ -8,6 +8,7 @@
 
 #import "AppDelegate+Launcher.h"
 #import "OtherEggViewController.h"
+#import "EggViewController.h"
 
 @interface AppDelegate()
 
@@ -106,13 +107,12 @@
     
     // 判断是否是自己
     
-    if ([[pboard.string substringWithRange:NSMakeRange(0, 4)]  isEqualToString:@"赛果分享"]) {
-       
+    
+    
+    if ([pboard.string length]>4  &&  [[pboard.string substringWithRange:NSMakeRange(0, 4)]  isEqualToString:@"赛果分享"]) {
         NSString * strPLAYcode = [pboard.string substringWithRange:NSMakeRange(5,14 )];
         [self checkPlayCode:strPLAYcode];
         pboard.string  =@"";
-        
-        
     }else
     {
         // 正常情况
@@ -135,9 +135,30 @@
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         NSMutableArray * arr =[NSMutableArray array];
             arr = json[@"jsondata"][@"list"];
-        OtherEggViewController * otherVC =[[OtherEggViewController alloc]init];
+        
+        if ([arr[0][@"mid"] isEqualToString:[AccountManager sharedAccountManager].loginModel.mid]) {
+            // 如果是自己
+            
+         
+         
+            
+            
+            
+            
+        }else
+        {
+        
+        if ([arr[0][@"status"] isEqualToString:@"0"]) {
+            [self.window.rootViewController showSuccessHudWithHint:@"此逗码已经失效"];
+        }else
+        {
+            
+            OtherEggViewController * otherVC =[[OtherEggViewController alloc]init];
             otherVC.otherArr = arr;
             [self.window.rootViewController presentViewController:otherVC animated:YES completion:nil];
+        }
+       
+        }
         
     } failure:^(NSError *error) {
         

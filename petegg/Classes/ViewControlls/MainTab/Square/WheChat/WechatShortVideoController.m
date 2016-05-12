@@ -369,7 +369,7 @@
             [self.navigationController pushViewController:weVc animated:YES];
             
         } else {
-            self.progressHUD.labelText = [NSString stringWithFormat:@"Failed to save\n%@", error.localizedDescription];
+            self.progressHUD.labelText = [NSString stringWithFormat:@"上传失败，请重新录取\n%@", error.localizedDescription];
             self.progressHUD.mode = MBProgressHUDModeCustomView;
             [self.progressHUD hide:YES afterDelay:3];
         }

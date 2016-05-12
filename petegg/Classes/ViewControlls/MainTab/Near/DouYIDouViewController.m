@@ -145,13 +145,13 @@ static NSString * cellId = @"douyidouCellId";
 {
     NSInteger i =sender.tag - 120;
     NearbyModel * model = self.dataSource[i];
-    NSMutableDictionary * dic =[self dictionaryWithModel:model];
-    NSMutableArray * arr =[[NSMutableArray alloc]init];
-    [arr addObject:dic];
-    OtherEggViewController * otherVC =[[OtherEggViewController alloc]init];
-    otherVC.otherArr = arr;
-    [self.navigationController pushViewController:otherVC animated:YES];
+//    NSMutableDictionary * dic =[self dictionaryWithModel:model];
+//    NSMutableArray * arr =[[NSMutableArray alloc]init];
+//    [arr addObject:dic];
     
+            OtherEggViewController * other =[[OtherEggViewController alloc]init];
+            other.otherMid = model.mid;
+            [self.navigationController pushViewController:other animated:YES];
     
 }
 

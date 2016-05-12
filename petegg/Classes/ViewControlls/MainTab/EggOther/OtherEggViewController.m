@@ -44,7 +44,7 @@
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callUpdate:) name:kSephoneCallUpdate object:nil];
-
+    [self getotherInformation];
     [self queryDevice];
     
 }
@@ -101,7 +101,6 @@
     titelLabel.textColor = [UIColor blackColor];
     titelLabel.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:titelLabel];
-
 
 }
 
@@ -198,6 +197,35 @@
 }
 
 
+/**
+ *  查询投食 价格
+ */
+
+- (void)getotherInformation
+{
+    
+    
+    NSString * str =  @"clientAction.do?method=json&common=queryByRule&classes=appinterface";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:self.otherMid forKey:@"friend"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+    
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            // 可以访问显示访问按钮
+            otherArr =json[@"jsondata"][@"list"];
+        }
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
+    
+}
+
+
+
 - (void)btn_select
 
 {
@@ -231,8 +259,6 @@
         //  付钱提示
         
         if ([AppUtil isBlankString:self.otherArr[0][@"price"]]) {
-            
-            
              money =[NSString stringWithFormat:@"确定支付￥%d",0];
         }else{
             
@@ -274,8 +300,8 @@
             NSString * buildID = json[@"jsondata"][@"content"];
             NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
             [defaults setValue:buildID forKey:@"othID"];
+             [defaults setValue:self.otherArr[0][@"tsnum"] forKey:@"tsm"];
             [defaults synchronize];
-            
             NSString * deveOther=self.otherArr[0][@"deviceno"];
             
             [self sipCall:deveOther sipName:nil];
