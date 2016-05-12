@@ -12,4 +12,6 @@
 
 @interface MainTabViewController : UITabBarController
 
+- (void)pushViewController:(UIViewController*)viewController;
+
 @end
