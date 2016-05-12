@@ -253,4 +253,17 @@
 }
 
 
+- (void)pushViewController:(UIViewController*)viewController {
+    
+    if ([self.selectedViewController isKindOfClass:[UINavigationController class]]) {
+        
+        viewController.hidesBottomBarWhenPushed = YES;
+    
+        [((UINavigationController*)self.selectedViewController) pushViewController:viewController animated:YES];
+        
+    }
+    
+}
+
+
 @end
