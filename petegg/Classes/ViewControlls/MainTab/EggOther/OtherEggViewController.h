@@ -12,5 +12,7 @@
 @interface OtherEggViewController : BaseViewController
 
 @property (nonatomic,strong)NSMutableArray * otherArr;
+@property (nonatomic,strong)NSString * otherMid;
+
 
 @end

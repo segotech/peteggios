@@ -149,28 +149,9 @@ static NSString * cellId = @"douyidouCellId";
 //    NSMutableArray * arr =[[NSMutableArray alloc]init];
 //    [arr addObject:dic];
     
-    NSString * str =  @"clientAction.do?method=json&common=queryByRule&classes=appinterface";
-    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:model.mid forKey:@"friend"];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
-    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-            NSMutableArray * arr =[[NSMutableArray alloc]init];
-            arr =json[@"jsondata"][@"list"];
             OtherEggViewController * other =[[OtherEggViewController alloc]init];
-            other.otherArr = arr;
+            other.otherMid = model.mid;
             [self.navigationController pushViewController:other animated:YES];
-            
-            
-        }
-        
-        
-    } failure:^(NSError *error) {
-        
-    }];
-
-   
-    
     
 }
 

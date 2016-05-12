@@ -57,6 +57,8 @@
   
 }
 
+
+
 - (void)setupSubviews
 {
     self.tabBar.backgroundColor=[UIColor whiteColor];
@@ -249,6 +251,19 @@
     int c=[[str substringWithRange:NSMakeRange(6, 2)] intValue];
     a= a*3600+b*60+c;
     return a;
+    
+}
+
+
+- (void)pushViewController:(UIViewController*)viewController {
+    
+    if ([self.selectedViewController isKindOfClass:[UINavigationController class]]) {
+        
+        viewController.hidesBottomBarWhenPushed = YES;
+    
+        [((UINavigationController*)self.selectedViewController) pushViewController:viewController animated:YES];
+        
+    }
     
 }
 

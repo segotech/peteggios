@@ -213,30 +213,13 @@ static NSString * cellId = @"personDetailCellId";
 {
     // 查询是否可以访问
     
-    NSString * str =  @"clientAction.do?method=json&common=queryByRule&classes=appinterface";
-    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:self.ddddd forKey:@"friend"];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
-
-    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-            // 可以访问显示访问按钮
-            fanwenBtn.hidden  = NO;
-            askRuleArr =json[@"jsondata"][@"list"];
             
             OtherEggViewController * other =[[OtherEggViewController alloc]init];
-            other.otherArr = askRuleArr;
+            other.otherMid = self.ddddd;
             [self.navigationController pushViewController:other animated:YES];
             
             
-        }
-        
-
-    } failure:^(NSError *error) {
-        
-    }];
-    
- 
+      
 
     
 }
