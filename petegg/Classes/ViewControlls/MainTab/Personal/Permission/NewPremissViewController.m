@@ -54,7 +54,7 @@
         
     }
     UILabel * rightLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(330 * W_Wide_Zoom,  65 * W_Hight_Zoom, 50 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
-    rightLabel1.text = @"逗点";
+    rightLabel1.text = @"逗币";
     rightLabel1.textColor = [UIColor blackColor];
     rightLabel1.font = [UIFont systemFontOfSize:14];
     [topView addSubview:rightLabel1];
