@@ -142,6 +142,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     self.proAccuracy.frame=CGRectMake(0, 65, 375, 100);
     self.proAccuracy.trackTintColor=[UIColor blackColor];
     self.proAccuracy.progress=0.0;
+    self.proAccuracy.hidden  = YES;
     self.proAccuracy.progressTintColor=GREEN_COLOR;
 
     //设置进度值并动画显示
@@ -242,6 +243,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
     }else{
     if (deleteOrUpdateArr.count ==1) {
+        self.proAccuracy.hidden = NO;
         NSUserDefaults * standDefauls =[NSUserDefaults standardUserDefaults];
         NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
         NSString * termidLG = [AccountManager sharedAccountManager].loginModel.termid;

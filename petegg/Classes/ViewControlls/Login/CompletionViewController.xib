@@ -181,18 +181,10 @@
                         <action selector="overBtn:" destination="-1" eventType="touchUpInside" id="0Ah-UU-v5a"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="unB-Md-MTa">
-                    <rect key="frame" x="67" y="360" width="131" height="25"/>
-                    <state key="normal">
-                        <attributedString key="attributedTitle">
-                            <fragment content="2012-8-14">
-                                <attributes>
-                                    <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    <font key="NSFont" size="18" name="HelveticaNeue"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unB-Md-MTa">
+                    <rect key="frame" x="47" y="360" width="218" height="25"/>
+                    <state key="normal" title="请选择baby的生日">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="brithdayBtn:" destination="-1" eventType="touchUpInside" id="Cow-4u-ep0"/>
@@ -257,7 +249,7 @@
                 <constraint firstItem="8fe-MN-Zmi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="48" id="Ieu-Tf-icm"/>
                 <constraint firstItem="OGg-NC-WiP" firstAttribute="top" secondItem="ePO-C0-4CL" secondAttribute="bottom" constant="17" id="Iyg-Qt-Bbm"/>
                 <constraint firstItem="ePO-C0-4CL" firstAttribute="trailing" secondItem="EB3-7E-ToI" secondAttribute="trailing" id="K2p-LB-yNy"/>
-                <constraint firstAttribute="trailing" secondItem="unB-Md-MTa" secondAttribute="trailing" constant="122" id="Lqc-JY-vZK"/>
+                <constraint firstAttribute="trailing" secondItem="unB-Md-MTa" secondAttribute="trailing" constant="55" id="Lqc-JY-vZK"/>
                 <constraint firstItem="H8O-25-1WS" firstAttribute="trailing" secondItem="ePO-C0-4CL" secondAttribute="trailing" id="MgW-Pk-RE3"/>
                 <constraint firstItem="TE5-vP-ffq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Mus-pj-i4h"/>
                 <constraint firstItem="Cwp-X6-RLY" firstAttribute="top" secondItem="ePO-C0-4CL" secondAttribute="bottom" constant="15" id="Oa1-wQ-xNF"/>
@@ -276,7 +268,7 @@
                 <constraint firstItem="8sr-gr-dFW" firstAttribute="leading" secondItem="hGo-7Y-1ud" secondAttribute="trailing" constant="45" id="cWm-KL-n3a"/>
                 <constraint firstItem="EB3-7E-ToI" firstAttribute="leading" secondItem="ePO-C0-4CL" secondAttribute="leading" id="cwL-Gd-E1p"/>
                 <constraint firstItem="8sr-gr-dFW" firstAttribute="leading" secondItem="X4x-bL-9cu" secondAttribute="leading" id="d4e-lQ-pNi"/>
-                <constraint firstItem="unB-Md-MTa" firstAttribute="leading" secondItem="Lfo-A6-Tbf" secondAttribute="trailing" constant="2" id="dQJ-Kg-TaS"/>
+                <constraint firstItem="unB-Md-MTa" firstAttribute="leading" secondItem="Lfo-A6-Tbf" secondAttribute="trailing" constant="-18" id="dQJ-Kg-TaS"/>
                 <constraint firstItem="Cwp-X6-RLY" firstAttribute="baseline" secondItem="OGg-NC-WiP" secondAttribute="firstBaseline" id="dbd-Sz-95U"/>
                 <constraint firstItem="8fe-MN-Zmi" firstAttribute="centerX" secondItem="Ibw-ha-NGq" secondAttribute="centerX" id="gyI-CT-KMX"/>
                 <constraint firstItem="H8O-25-1WS" firstAttribute="leading" secondItem="ePO-C0-4CL" secondAttribute="leading" id="hZ3-FA-h2O"/>

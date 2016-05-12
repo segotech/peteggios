@@ -34,7 +34,8 @@
                         <constraint firstAttribute="width" secondItem="E3l-XL-QyW" secondAttribute="height" multiplier="1:1" id="9mZ-sO-YUf"/>
                     </constraints>
                     <state key="normal" image="feed_off.png"/>
-                    <state key="highlighted" image="feed_on.png"/>
+                    <state key="selected" image="feeding_on_on.png"/>
+                    <state key="highlighted" image="feeding_on_on.png"/>
                     <connections>
                         <action selector="feedBtnClick:" destination="-1" eventType="touchUpInside" id="QeI-H2-EHc"/>
                     </connections>
@@ -44,8 +45,8 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="1w6-4H-qXq" secondAttribute="height" multiplier="1:1" id="G97-w0-efY"/>
                     </constraints>
-                    <state key="normal" image="trun_off.png"/>
-                    <state key="selected" image="trun_on.png"/>
+                    <state key="normal" image="light_off_off.png"/>
+                    <state key="selected" image="light_on_on_on.png"/>
                     <state key="highlighted" image="turn_on.png"/>
                     <connections>
                         <action selector="lightBtnClick:" destination="-1" eventType="touchUpInside" id="Mqu-T3-YYC"/>
@@ -57,7 +58,8 @@
                         <constraint firstAttribute="width" secondItem="G36-9l-A16" secondAttribute="height" multiplier="1:1" id="dFm-lP-U2p"/>
                     </constraints>
                     <state key="normal" image="juankfood_off.png"/>
-                    <state key="highlighted" image="juankfood_on.png"/>
+                    <state key="selected" image="junkfoot_on.png"/>
+                    <state key="highlighted" image="junkfoot_on.png"/>
                     <connections>
                         <action selector="juankFootBtnClick:" destination="-1" eventType="touchUpInside" id="aeG-zS-fxz"/>
                     </connections>
@@ -68,7 +70,8 @@
                         <constraint firstAttribute="width" secondItem="QKH-NF-sJ3" secondAttribute="height" multiplier="1:1" id="Nuj-EU-nMt"/>
                     </constraints>
                     <state key="normal" image="snap_off.png"/>
-                    <state key="highlighted" image="snap_on.png"/>
+                    <state key="selected" image="catchPH_on_on.png"/>
+                    <state key="highlighted" image="catchPH_on_on.png"/>
                     <connections>
                         <action selector="photoBtnClick:" destination="-1" eventType="touchUpInside" id="mNE-xc-6Je"/>
                     </connections>
@@ -317,20 +320,20 @@
         <image name="behand_off.png" width="62" height="27"/>
         <image name="behand_on.png" width="62" height="27"/>
         <image name="btn_back.png" width="18" height="18"/>
+        <image name="catchPH_on_on.png" width="99" height="99"/>
         <image name="feed_off.png" width="99" height="99"/>
-        <image name="feed_on.png" width="99" height="99"/>
+        <image name="feeding_on_on.png" width="99" height="99"/>
         <image name="juankfood_off.png" width="99" height="99"/>
-        <image name="juankfood_on.png" width="99" height="99"/>
+        <image name="junkfoot_on.png" width="99" height="99"/>
         <image name="left_off.png" width="27" height="62"/>
         <image name="left_on.png" width="27" height="62"/>
+        <image name="light_off_off.png" width="99" height="99"/>
+        <image name="light_on_on_on.png" width="99" height="99"/>
         <image name="line_background.png" width="720" height="78"/>
         <image name="right_off.png" width="28" height="62"/>
         <image name="right_on.png" width="28" height="62"/>
         <image name="round.png" width="382" height="382"/>
         <image name="snap_off.png" width="99" height="99"/>
-        <image name="snap_on.png" width="99" height="99"/>
-        <image name="trun_off.png" width="99" height="99"/>
-        <image name="trun_on.png" width="720" height="78"/>
         <image name="turn_on.png" width="99" height="99"/>
         <image name="video_point.png" width="16" height="16"/>
     </resources>

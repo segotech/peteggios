@@ -38,7 +38,14 @@
     self.view.backgroundColor =[UIColor whiteColor];
     [self setNavTitle: NSLocalizedString(@"funTitle", nil)];
     
-  
+    self.view.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
+    
+    [self.view addGestureRecognizer:singleTap];
+    
+    
+    
     /**
      *  查询
      */
@@ -88,6 +95,7 @@
                                url:nil
                              title:@"赛果逗码分享"
                               type:SSDKContentTypeAuto];
+    
       
     // 2、分享（可以弹出我们的分享菜单和编辑界面）
     [ShareSDK showShareActionSheet: nil items:nil shareParams:shareParams onShareStateChanged:^(
@@ -374,6 +382,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+-(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer
+
+{
+    [self.view endEditing:YES];
+    
+}
+
 
 
 

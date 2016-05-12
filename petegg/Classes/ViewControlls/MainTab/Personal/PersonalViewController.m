@@ -276,7 +276,7 @@
     NSArray * arrName =@[@"帖子",@"关注",@"粉丝",@"点赞"];
     
     for (NSInteger i = 0;i<4; i++) {
-        UILabel * numLb =[[UILabel alloc]initWithFrame:CGRectMake(50+i*70, _heandBtn.frame.origin.y+110, 80, 20)];
+        UILabel * numLb =[[UILabel alloc]initWithFrame:CGRectMake(46+i*70, _heandBtn.frame.origin.y+110, 80, 20)];
         numLb.tag = 500+i;
         numLb.textAlignment = NSTextAlignmentCenter;
         numLb.textColor =[UIColor whiteColor];
@@ -284,15 +284,14 @@
         numLb.font =[UIFont boldSystemFontOfSize:10.0f];
         
         UILabel * wordLb =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
-        wordLb.center = CGPointMake(numLb.center.x+28, numLb.frame.origin.y+25);
+        wordLb.center = CGPointMake(numLb.center.x+30, numLb.frame.origin.y+25);
         wordLb.text =arrName[i];
         wordLb.textColor =[UIColor whiteColor];
         wordLb.font =[UIFont boldSystemFontOfSize:10.0f];
         if (i<3) {
-            UILabel * lineLB =[[UILabel alloc]initWithFrame:CGRectMake(128 +i*70, _heandBtn.frame.origin.y+120, 1.5, 20)];
+            UILabel * lineLB =[[UILabel alloc]initWithFrame:CGRectMake(119 +i*70, _heandBtn.frame.origin.y+120, 1.5, 20)];
             lineLB.backgroundColor =[UIColor whiteColor];
             [_headView addSubview:lineLB];
-
         }
 
    
@@ -304,6 +303,9 @@
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     self.tableView.tableHeaderView =_headView;
+    self.tableView.showsVerticalScrollIndicator   = NO;
+    self.tableView.showsHorizontalScrollIndicator = NO;
+
     self.tableView.tableFooterView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
