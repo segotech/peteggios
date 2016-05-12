@@ -105,7 +105,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
     [[AFHttpClient sharedAFHttpClient] querDetailWithStid:self.stid complete:^(BaseModel *model) {
         
         if (model && model.list && model.list.count > 0) {
-            [self hideHud];
+            
             self.detailModel = model.list[0];
             
             [self.resourcesArray removeAllObjects];
@@ -114,6 +114,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
                 self.isVideo = YES;
                 self.resourcesArray = [NSMutableArray arrayWithObject:self.detailModel.resources];
             }else{
+                
                 self.isVideo = NO;
                 self.resourcesArray = [[self.detailModel.resources componentsSeparatedByString:@","] mutableCopy];
             }
@@ -123,6 +124,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
             }
             
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,2)] withRowAnimation:UITableViewRowAnimationNone];
+            [self hideHud];
         }else{
             [self hideHud];
             

@@ -113,6 +113,8 @@ static NSString * cellId = @"fedseting2321232322313323231";
     sureBtn.backgroundColor = GREEN_COLOR;
     [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    sureBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    sureBtn.layer.cornerRadius = 5;
     [self.view addSubview:sureBtn];
     [sureBtn addTarget:self action:@selector(hahahahaha) forControlEvents:UIControlEventTouchUpInside];
     
@@ -121,6 +123,8 @@ static NSString * cellId = @"fedseting2321232322313323231";
     _sureBtn2.backgroundColor = GREEN_COLOR;
     [_sureBtn2 setTitle:@"停用" forState:UIControlStateNormal];
     [_sureBtn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _sureBtn2.titleLabel.font = [UIFont systemFontOfSize:13];
+    _sureBtn2.layer.cornerRadius = 5;
     [self.view addSubview:_sureBtn2];
     [_sureBtn2 addTarget:self action:@selector(stopWeishi) forControlEvents:UIControlEventTouchUpInside];
     

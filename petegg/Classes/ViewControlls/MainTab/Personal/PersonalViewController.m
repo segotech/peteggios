@@ -579,9 +579,15 @@
                 
             }
             if (indexPath.row == 2) {
-                
+                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+                NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
+                NSString * devo  = [defaults objectForKey:@"deviceNumber"];
+                if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
+                 [[AppUtil appTopViewController] showHint:@"请绑定设备才能使用此功能"];
+                }else{
                 FunnyCodeViewController * funVC =[[FunnyCodeViewController alloc]initWithNibName:@"FunnyCodeViewController" bundle:nil];
                 [self.navigationController pushViewController:funVC animated:YES];
+                }
                 
             }
             
@@ -590,9 +596,15 @@
         case 2:
             if (indexPath.row ==1) {
                 NSLog(@"000");
+                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+                NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
+                NSString * devo  = [defaults objectForKey:@"deviceNumber"];
+                if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
+                    [[AppUtil appTopViewController] showHint:@"请绑定设备才能使用此功能"];
+                }else{
                 PermissionViewController * perVc = [[PermissionViewController alloc]init];
                 [self.navigationController pushViewController:perVc animated:YES];
-                
+                }
             }
             
             if (indexPath.row  ==2) {
@@ -603,8 +615,16 @@
             }
             
             if (indexPath.row ==0) {
+                
+                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+                NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
+                NSString * devo  = [defaults objectForKey:@"deviceNumber"];
+                if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
+                    [[AppUtil appTopViewController] showHint:@"请绑定设备才能使用此功能"];
+                }else{
                 FeedSetingViewController * feed = [[FeedSetingViewController alloc]init];
                 [self.navigationController pushViewController:feed animated:YES];
+                }
             }
             
             
