@@ -334,22 +334,26 @@
     
     
     NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-     NSString * tsm =[defaults objectForKey:@"tsm"];
+    NSString * tsm =[defaults objectForKey:@"tsm"];
+    NSString * otherID =[defaults objectForKey:@"othID"];
+    NSString * selfID =[defaults objectForKey:@"otherbuildIDS"];
     NSString * str =@"clientAction.do?common=feeding&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:[defaults objectForKey:@"otherbuildIDS"] forKey:@"id"];
     if (isOth) {
         feeding++;
         if ([tsm intValue]<feeding) {
             [self showSuccessHudWithHint:@"达到最大投食次数了"];
             return;
         }else{
+        [dic setValue:otherID forKey:@"id"];
         [dic setValue:deviceoOth forKey:@"deviceno"];
         [dic setValue:termidOth forKey:@"termid"];
+        
         }
     }else
     {
         [self dowithID];
+        [dic setValue:selfID forKey:@"id"];
         [dic setValue:deviceoSelf forKey:@"deviceno"];
         [dic setValue:termidSelf forKey:@"termid"];
     }
