@@ -41,6 +41,12 @@ static NSString * cellId = @"ranksCellIdddd";
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
      self.tableView.tableHeaderView = topView;
     
+    UIImageView * huangguan = [[UIImageView alloc]initWithFrame:CGRectMake(213 * W_Wide_Zoom, 11 * W_Hight_Zoom, 45 * W_Wide_Zoom, 45 * W_Hight_Zoom)];
+    huangguan.image= [ UIImage imageNamed:@"new_huangguan.png"];
+    [topView addSubview:huangguan];
+    
+    
+    
     _topHeadImage = [[UIImageView alloc]initWithFrame:CGRectMake(122.5 * W_Wide_Zoom, 40 * W_Hight_Zoom, 130 * W_Wide_Zoom, 130 * W_Hight_Zoom)];
     [_topHeadImage.layer setMasksToBounds:YES];
     _topHeadImage.layer.cornerRadius = _topHeadImage.width/2;

@@ -18,8 +18,9 @@
         _backView.alpha = 0.2;
         [self addSubview:_backView];
         
-        _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 64 * W_Hight_Zoom, 355 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
+        _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 64.5 * W_Hight_Zoom, 355 * W_Wide_Zoom, 0.5 * W_Hight_Zoom)];
         _lineLabel.backgroundColor = GRAY_COLOR;
+        _lineLabel.alpha = 0.7;
         [self addSubview:_lineLabel];
         
         _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(50 * W_Wide_Zoom, 10 * W_Hight_Zoom, 45 * W_Wide_Zoom, 45 * W_Hight_Zoom)];
