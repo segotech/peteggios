@@ -184,10 +184,13 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
             NSString * srt =json[@"jsondata"][@"content"];
             NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
             [defaults setObject:srt forKey:TERMID_DEVICNUMER];
+            [defaults setObject:deviceoNum forKey:PREF_DEVICE_NUMBER];
             [defaults synchronize];
             // TODO 实现设备http绑定。
             
-            
+          
+          
+          
             // 返回上级页面。
             [self.navigationController popViewControllerAnimated:YES];
            
@@ -413,9 +416,6 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
                 deviceoNum = [strNumber substringFromIndex:SEGOEGG_PREFIX.length];
                 self.deviceNumberEdit.text = deviceoNum;
                 self.incodeEdit.text = @"123456";
-                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-                [defaults setObject:deviceoNum forKey:PREF_DEVICE_NUMBER];
-                [defaults synchronize];
                 [self enableBindButton];
                 
                // [self deviceMemer:strNumber];

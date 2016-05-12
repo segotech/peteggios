@@ -24,6 +24,7 @@
 
 @implementation OtherEggViewController
 @synthesize otherArr;
+@synthesize IScode;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,7 +36,6 @@
     [SephoneManager addProxyConfig:[AccountManager sharedAccountManager].loginModel.sipno password:[AccountManager sharedAccountManager].loginModel.sippw domain:@"180.97.80.152"];
     
     [self initUserface];
-    [self initUserData];
     
 }
 
@@ -44,8 +44,16 @@
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callUpdate:) name:kSephoneCallUpdate object:nil];
-    [self getotherInformation];
-    [self queryDevice];
+    
+    if (IScode) {
+        IScode = NO;
+        [self queryDevice];
+    }else{
+        
+        [self getotherInformation];
+    }
+    
+    
     
 }
 
@@ -104,13 +112,6 @@
 
 }
 
-
-- (void)initUserData
-{
-    
-    
-    
-}
 
 
 /**
@@ -214,6 +215,7 @@
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             // 可以访问显示访问按钮
             otherArr =json[@"jsondata"][@"list"];
+            [self queryDevice];
         }
         
         

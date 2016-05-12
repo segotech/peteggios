@@ -63,6 +63,12 @@
             [self.dataSource addObject:model];
         }
         
+        if (arr.count>0) {
+            
+            [self messageClean];
+            
+        }
+        
          NSLog(@"====%@",json);
         
         [self.tableView reloadData];
@@ -77,6 +83,28 @@
 
     
 }
+
+
+/**
+ *  清楚消息
+ */
+
+- (void)messageClean
+{
+    
+    NSString * str =@"clientAction.do?method=json&common=isread&classes=appinterface";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+    [dic setValue:@"c" forKey:@"type"];
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countMessage"];
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -144,24 +172,10 @@
     if (self.dataSource.count>0) {
         model = self.dataSource[indexPath.row];
     }
-    
-    NSString * str =@"clientAction.do?method=json&common=isread&classes=appinterface";
-     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
-    [dic setValue:model.type forKey:@"type"];
-    
-    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         DetailViewController * detailVC =[[DetailViewController alloc]init];
         detailVC.stid = model.tid;
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countMessage"];
         [self.navigationController pushViewController:detailVC animated:YES];
         
-    } failure:^(NSError *error) {
-        
-    }];
-    
-    
-    
     
 }
 

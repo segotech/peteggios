@@ -12,6 +12,7 @@
 #import "AFNetWorking.h"
 #import "UIImageView+WebCache.h"
 #import "ViewControllerss.h"
+#import "SettingViewController.h"
 
 
 static NSString *kfooterIdentifier = @"footerIdentifier";
@@ -21,12 +22,14 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     BOOL isSelet;
     NSString *statsIdentifi;
-    
     // 选择上传或者删除数组
     NSMutableArray * deleteOrUpdateArr;
-    
     NSTimer * timer;
     AppDelegate *app;
+    
+    //
+  NSString *  termidSelf ;
+  NSString *  deviceoSelf ;
 
 
     
@@ -196,11 +199,68 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 -(void)onDeleBt:(UIButton *)sender
 {
+    if ([statsIdentifi isEqualToString:@"1"]) {
+        NSMutableString *deleStr = [[NSMutableString alloc]init];
+        
+       
+
+        if (deleteOrUpdateArr.count==1) {
+            NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
+            [deleStr appendFormat:@"'%@'",str];
+        }else
+        {
+            for (NSInteger i = 0; i<deleteOrUpdateArr.count; i++) {
+                NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[i]];
+                if (i == deleteOrUpdateArr.count-1) {
+                    [deleStr appendFormat:@"'%@'",str];
+                }else{
+                [deleStr appendFormat:@"'%@',",str];
+                    
+                }
+
+            }
+        }
+        NSString * service =[NSString stringWithFormat:@"clientAction.do?common=delVideo&classes=appinterface&method=json&filename=%@&mid=%@",deleStr,[AccountManager sharedAccountManager].loginModel.mid];
+        [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
+            
+          NSString * str   =json[@"jsondata"][@"retCode"];
+            if([str isEqualToString:@"0000"]){
+                [self showSuccessHudWithHint:@"删除成功"];
+                [self initRefreshView:@"1"];
+                [deleteOrUpdateArr removeAllObjects];
+                _deleteImageV.hidden  = YES;
+                [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+            }
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
+        
+        
+        
+        
+    }else{
     if (deleteOrUpdateArr.count ==1) {
-    NSUserDefaults * standDefauls =[NSUserDefaults standardUserDefaults];
+        NSUserDefaults * standDefauls =[NSUserDefaults standardUserDefaults];
+        NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
+        NSString * termidLG = [AccountManager sharedAccountManager].loginModel.termid;
+        NSString * devo  = [standDefauls objectForKey:PREF_DEVICE_NUMBER];
+        NSString * termid = [standDefauls objectForKey:TERMID_DEVICNUMER];
+        
+        if ([AppUtil isBlankString:devoLG]) {
+            if ([AppUtil isBlankString:devo]) {
+                //没有设备
+                
+            }else{
+                termidSelf = termid;
+                deviceoSelf = devo;
+            }
+        }else{
+            termidSelf = termidLG;
+            deviceoSelf = devoLG;
+        }
     if (![AppUtil isBlankString:[standDefauls objectForKey:@"content"]]) {
-        
-        
         [self showMessageWarring:@"还有视频正在上传" view:app.window];
         
     }else{
@@ -208,10 +268,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     NSMutableString *deleStr = [[NSMutableString alloc]init];
     NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
     [deleStr appendFormat:@"%@",str];
-    NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
-    NSString * service =[NSString stringWithFormat:@"clientAction.do?common=uploadVideo&classes=appinterface&method=json&filename=%@&mid=%@&termid=%@&deviceno=%@",deleStr,[AccountManager sharedAccountManager].loginModel.mid,[AccountManager sharedAccountManager].loginModel.termid,[AccountManager sharedAccountManager].loginModel.deviceno];
     
-   [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
+    NSString * service =[NSString stringWithFormat:@"clientAction.do?common=uploadVideo&classes=appinterface&method=json&filename=%@&mid=%@&termid=%@&deviceno=%@",deleStr,[AccountManager sharedAccountManager].loginModel.mid,termidSelf,deviceoSelf];
+   [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
        
        NSLog(@"%@",json);
        
@@ -221,12 +280,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
        NSDictionary *dic1 = [json objectForKey:@"jsondata"] ;
        [standDefauls setObject:[AppUtil getNowTime] forKey:@"endTime"];
        [standDefauls setObject:dic1[@"content"] forKey:@"content"];
-      
-       
-       
-      [standDefauls synchronize];
-       
-       
+       [standDefauls synchronize];
        if([[dic1 objectForKey:@"retCode"] isEqualToString:@"0000"]){
         // 提取视频编号
            [self showSuccessHudWithHint:[dic1 objectForKey:@"retDesc"]];
@@ -238,7 +292,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
            
        }else
        {
-           
         // 上传命令 失败
            NSString * str =[dic1 objectForKey:@"retDesc"];
         [self showSuccessHudWithHint:str];
@@ -270,7 +323,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
    
     
-    
+    }
     
 }
 
@@ -382,6 +435,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
                 [self showMessageWarring:@"上传成功" view:app.window];
                 [standDefus removeObjectForKey:@"content"];
+                [self initRefreshView:@"0"];
                 self.proAccuracy.progress =1.0;
                 [timer setFireDate:[NSDate distantFuture]];
                 
@@ -408,6 +462,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)leftbuttonTouch
 {
+    
+    [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
+    
     [self initRefreshView:@"1"];
     [self.dataSource removeAllObjects];
     statsIdentifi = @"1";
@@ -422,6 +479,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)rightButtonTouch
 {
+    [_deleteBtn setImage:[UIImage imageNamed:@"update.png"] forState:UIControlStateNormal];
+
    [self initRefreshView:@"0"];
     statsIdentifi = @"0";
     [self.dataSource removeAllObjects];
