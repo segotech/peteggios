@@ -382,6 +382,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
                 [self showMessageWarring:@"上传成功" view:app.window];
                 [standDefus removeObjectForKey:@"content"];
+                [self initRefreshView:@"0"];
                 self.proAccuracy.progress =1.0;
                 [timer setFireDate:[NSDate distantFuture]];
                 
