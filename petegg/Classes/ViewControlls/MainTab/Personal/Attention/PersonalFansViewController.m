@@ -11,7 +11,7 @@
 #import "AFHttpClient+PersonAttention.h"
 #import "NearbyModel.h"
 #import "PersonDetailViewController.h"
-
+#import "AFHttpClient+IsfriendClient.h"
 
 static NSString * cellId = @"personAttentionCeliddd";
 @interface PersonalFansViewController ()
@@ -111,6 +111,10 @@ static NSString * cellId = @"personAttentionCeliddd";
         cell.sexImage.image = [UIImage imageNamed:@"womanquanquan.png"];
     }
     
+    [cell.rightButton setTitle:@"加关注" forState:UIControlStateNormal];
+    cell.rightButton.tag = indexPath.row + 179;
+    [cell.rightButton addTarget:self action:@selector(addGuanzhubtnTouch:) forControlEvents:UIControlEventTouchUpInside];
+    
     NSString * age = [NSString stringWithFormat:@"%@岁",model.pet_age];
     [cell.ageButton setTitle:age forState:UIControlStateNormal];
     
@@ -123,8 +127,6 @@ static NSString * cellId = @"personAttentionCeliddd";
     return cell;
 }
 
-
-
 -(void)headButtonTOuch:(UIButton *)sender{
     NSInteger i =sender.tag - 199;
     NearbyModel * model = self.dataSource[i];
@@ -132,14 +134,19 @@ static NSString * cellId = @"personAttentionCeliddd";
     personVc.ddddd = model.mid;
     [self.navigationController pushViewController:personVc animated:YES];
 
-    
-    
-    
+}
+
+-(void)addGuanzhubtnTouch:(UIButton *)sender{
+    NSInteger i = sender.tag - 179;
+     NearbyModel * model = self.dataSource[i];
+    [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"add" complete:^(BaseModel *model) {
+        [[AppUtil appTopViewController] showHint:model.retDesc];
+        [self loadDataSourceWithPage:1];
+    }];
+
 
 
 }
-
-
 
 
 

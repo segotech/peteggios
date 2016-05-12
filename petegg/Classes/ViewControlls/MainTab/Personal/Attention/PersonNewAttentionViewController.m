@@ -12,6 +12,7 @@
 #import "PersonAttention.h"
 #import "PersonAttentionTableViewCell.h"
 #import "PersonDetailViewController.h"
+#import "AFHttpClient+IsfriendClient.h"
 static NSString * cellId = @"personNewAttentionTableViewCellidddd";
 
 @interface PersonNewAttentionViewController ()
@@ -104,6 +105,18 @@ static NSString * cellId = @"personNewAttentionTableViewCellidddd";
     }else{
         cell.sexImage.image = [UIImage imageNamed:@"womanquanquan.png"];
     }
+    
+    
+    if ([AppUtil isBlankString:model.isfriend]) {
+        [cell.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
+    }else{
+        [cell.rightButton setTitle:@"互相关注" forState:UIControlStateNormal];
+    }
+    cell.rightButton.tag = indexPath.row + 176;
+    [cell.rightButton addTarget:self action:@selector(quxiaoGuanzhubtnTouch:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
     NSString * age = [NSString stringWithFormat:@"%@岁",model.pet_age];
     [cell.ageButton setTitle:age forState:UIControlStateNormal];
     
@@ -119,8 +132,17 @@ static NSString * cellId = @"personNewAttentionTableViewCellidddd";
     
 }
 
-
-
-
-
+-(void)quxiaoGuanzhubtnTouch:(UIButton *)sender{
+    NSInteger i = sender.tag - 176;
+    NSLog(@"%ld",i);
+    NearbyModel * model = self.dataSource[i];
+    [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"cancel" complete:^(BaseModel *model) {
+        //提示
+        [[AppUtil appTopViewController] showHint:model.retDesc];
+        //刷新界面
+        [self loadDataSourceWithPage:1];
+        
+    }];
+    
+}
 @end

@@ -11,6 +11,7 @@
 #import "AFHttpClient+PersonAttention.h"
 #import "NearbyModel.h"
 #import "PersonDetailViewController.h"
+#import "AFHttpClient+IsfriendClient.h"
 static NSString * cellId = @"personAttentionCeliddd";
 @interface PersonalAtnViewController ()
 
@@ -110,6 +111,16 @@ static NSString * cellId = @"personAttentionCeliddd";
     }
 
     
+    
+    if ([AppUtil isBlankString:model.isfriend]) {
+        [cell.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
+    }else{
+        [cell.rightButton setTitle:@"互相关注" forState:UIControlStateNormal];
+    }
+    cell.rightButton.tag = indexPath.row + 178;
+    [cell.rightButton addTarget:self action:@selector(quxiaoGuanzhubtnTouch:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     NSString * age = [NSString stringWithFormat:@"%@岁",model.pet_age];
     [cell.ageButton setTitle:age forState:UIControlStateNormal];
     
@@ -130,6 +141,20 @@ static NSString * cellId = @"personAttentionCeliddd";
     
 }
 
+-(void)quxiaoGuanzhubtnTouch:(UIButton *)sender{
+    NSInteger i = sender.tag - 178;
+    NSLog(@"%ld",i);
+     NearbyModel * model = self.dataSource[i];
+    [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"cancel" complete:^(BaseModel *model) {
+        //提示
+        [[AppUtil appTopViewController] showHint:model.retDesc];
+        //刷新界面
+        [self loadDataSourceWithPage:1];
+        
+    }];
 
+    
+
+}
 
 @end

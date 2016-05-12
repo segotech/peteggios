@@ -43,7 +43,14 @@
         [_textFieldes setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
         [_textFieldes setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
         _textFieldes.tag = i + 36;
+        if (_textFieldes.tag == 36 || _textFieldes.tag == 37) {
+            _textFieldes.keyboardType = UIKeyboardTypeNumberPad;
+        }
         
+        
+        if (_textFieldes.tag == 38 || _textFieldes.tag == 39) {
+            _textFieldes.secureTextEntry = YES;
+        }
         
         [self.view addSubview:_textFieldes];
         
@@ -59,9 +66,19 @@
     [self.view addSubview:_securityButton];
     
     
+    for (NSInteger i = 0 ; i<2; i++) {
+        UIButton * showBtn =[[UIButton alloc]initWithFrame:CGRectMake(320 * W_Wide_Zoom, 176 * W_Hight_Zoom +i*50 * W_Hight_Zoom, 18 * W_Wide_Zoom, 18 * W_Hight_Zoom)];
+        [showBtn setImage:[UIImage imageNamed:@"showPs.png"] forState:UIControlStateNormal];
+        [showBtn setImage:[UIImage imageNamed:@"noshowpass.png"] forState:UIControlStateSelected];
+        showBtn.selected = YES;
+        showBtn.tag = 1200 +i;
+        [showBtn addTarget:self action:@selector(showPs:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:showBtn];
+        
+        
+    }
     
     //完成
-    
     UIButton * registBtn =[[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 250 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     registBtn.backgroundColor =GREEN_COLOR;
     registBtn.layer.cornerRadius =  6;
@@ -73,6 +90,30 @@
     [self.view addSubview:registBtn];
     
 }
+-(void)showPs:(UIButton *)sender{
+    UITextField * text2 =  (UITextField *)[self.view viewWithTag:38];
+    UITextField * text3 =  (UITextField *)[self.view viewWithTag:39];
+    
+    UIButton * btn1 = (UIButton *)[self.view viewWithTag:1200];
+    UIButton * btn2 = (UIButton *)[self.view viewWithTag:1201];
+    
+    btn1.selected = !btn1.selected;
+    btn2.selected = !btn2.selected;
+
+    if (sender.selected == YES) {
+        text2.secureTextEntry = YES;
+        text3.secureTextEntry = YES;
+    }else{
+        text2.secureTextEntry = NO;
+        text3.secureTextEntry = NO;
+    }
+
+    
+    
+}
+
+
+
 
 -(void)setupData{
     [super setupData];

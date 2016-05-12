@@ -444,6 +444,7 @@
             [self hideHud];
             [[AppUtil appTopViewController] showHint:@"修改成功"];
         
+              [[NSNotificationCenter defaultCenter]postNotificationName:@"changeNameText" object:_nameTextField.text];
             [self.navigationController popViewControllerAnimated:YES];
     }];
 
@@ -475,9 +476,6 @@
     [[UIApplication sharedApplication].keyWindow addSubview:_wanchengBtn];
     [_wanchengBtn addTarget:self action:@selector(wanchengButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
 
-    
-    
-    
 }
 -(void)wanchengButtonTouch:(UIButton *)sender{
    

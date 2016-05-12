@@ -76,7 +76,7 @@
     self.count =[defaults objectForKey:@"countMessage"];
     
     
-    message =[[UIButton alloc]initWithFrame:CGRectMake(130, 80, 110, 35)];
+    message =[[UIButton alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 80 * W_Hight_Zoom, 110 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [message addTarget:self action:@selector(messageBtn:) forControlEvents:UIControlEventTouchUpInside];
     // message.titleEdgeInsets = UIEdgeInsetsMake(0, -60, 0, 0);//设置title在button上的位
     message.contentHorizontalAlignment =UIControlContentHorizontalAlignmentCenter;
@@ -180,8 +180,6 @@
     
     MessageViewController *messageVC =[[MessageViewController alloc]initWithNibName:@"MessageViewController" bundle:nil];
     self.message.hidden = YES;
-    
-   
     
     [self.navigationController pushViewController:messageVC animated:YES];
     
