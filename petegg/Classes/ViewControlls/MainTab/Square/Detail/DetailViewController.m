@@ -461,7 +461,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     switch (section) {
         case 1:
-            return 16;
+            return 10;
             
         default:
             break;

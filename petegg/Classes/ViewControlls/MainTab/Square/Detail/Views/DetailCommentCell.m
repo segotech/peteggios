@@ -22,6 +22,7 @@
 @property (nonatomic, strong) UILabel* ageLB; //年龄
 @property (nonatomic, strong) UIButton* replyBtn; //回复
 @property (nonatomic, strong) UILabel* contentLB; //评论内容
+@property (nonatomic, strong) UIView* lineView; //线
 
 @property (nonatomic, strong) DetailCommentView *commentView;
 
@@ -40,6 +41,8 @@
 }
 
 - (void)setupView{
+    _lineView = [[UILabel alloc] init];
+    _lineView.backgroundColor = [ UIColor lightGrayColor];
     
     _iconIV = [[UIImageView alloc] init];
     _iconIV.backgroundColor = [UIColor redColor];
@@ -99,9 +102,11 @@
         }
     };
 
-    [self.contentView sd_addSubviews:@[_iconIV, _nameLB, _typeLB, _genderLB, _ageLB, _timeLB, _contentLB, _replyBtn, _commentView]];
+    [self.contentView sd_addSubviews:@[_lineView, _iconIV, _nameLB, _typeLB, _genderLB, _ageLB, _timeLB, _contentLB, _replyBtn, _commentView]];
     
     UIView *contentView = self.contentView;
+    
+    _lineView.sd_layout.heightIs(1).topSpaceToView(contentView, 0).leftSpaceToView(contentView, 0).rightSpaceToView(contentView, 0);
 
     _iconIV.sd_layout.widthIs(50).heightEqualToWidth().leftSpaceToView(contentView, 8).topSpaceToView(contentView, 8);
     _iconIV.sd_cornerRadiusFromWidthRatio = @(0.5);
