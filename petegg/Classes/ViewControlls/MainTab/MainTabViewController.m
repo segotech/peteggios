@@ -71,6 +71,10 @@
                              self.navPersonalVC
                              ];
     
+    self.tabBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.tabBar.layer.shadowOffset = CGSizeMake(0, -1);
+    self.tabBar.layer.shadowOpacity = 0.4;
+    self.tabBar.layer.shadowRadius = 2;
 }
 
 //广场
