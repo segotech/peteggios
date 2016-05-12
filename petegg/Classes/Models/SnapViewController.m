@@ -161,12 +161,12 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
         NSMutableString *deleStr = [[NSMutableString alloc]init];
         NSString *str = [NSString stringWithFormat:@"%@",deleteArr[0]];
-        [deleStr appendFormat:@"%@",[str substringFromIndex:43]];
+        [deleStr appendFormat:@"%@",[str substringFromIndex:42]];
         deleStr =[NSMutableString stringWithFormat:@"'%@'",deleStr];
         
         for (int i=1; i<deleteArr.count; i++) {
             NSString *str = [NSString stringWithFormat:@"%@",deleteArr[i]];
-            [deleStr appendFormat:@",'%@'",[str substringFromIndex:51]];
+            [deleStr appendFormat:@",'%@'",[str substringFromIndex:42]];
             
         }
         

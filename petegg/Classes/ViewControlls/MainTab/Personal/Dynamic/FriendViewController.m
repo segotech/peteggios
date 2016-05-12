@@ -40,6 +40,13 @@
 }
 
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:animated];
+}
+
 - (void)setupData
 {
     
@@ -49,22 +56,46 @@
 {
     [super setupView];
     
-    headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 70, 60, 60)];
+    defaults =[NSUserDefaults standardUserDefaults];
+    self.count =[defaults objectForKey:@"countMessage"];
+    
+    message =[[UIButton alloc]initWithFrame:CGRectMake(135, 90, 110, 35)];
+    [message addTarget:self action:@selector(messageBtn:) forControlEvents:UIControlEventTouchUpInside];
+    // message.titleEdgeInsets = UIEdgeInsetsMake(0, -60, 0, 0);//设置title在button上的位
+    message.contentHorizontalAlignment =UIControlContentHorizontalAlignmentCenter;
+    [message setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];
+    [message setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    message.titleLabel.font =[UIFont systemFontOfSize:13];
+    
+    if ([self.count isEqualToString:@"0"]) {
+        message.hidden = YES;
+         headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 70, 60, 60)];
+        self.tableView.frame =CGRectMake(20, 130,MainScreen.width-25, MainScreen.height-130);
+         nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(80, 90, 200, 30)];
+        
+    }else{
+        [message setTitle:[NSString stringWithFormat:@"%@条动态", self.count] forState:UIControlStateNormal];
+        headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 130, 60, 60)];
+        self.tableView.frame =CGRectMake(20, 190,MainScreen.width-25, MainScreen.height-130);
+        nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(80, 150, 200, 30)];
+        
+    }
+
     headImageView.image =[UIImage imageNamed:@"DouYiDou.png"];
     [headImageView.layer setMasksToBounds:YES];
     [headImageView.layer setCornerRadius:30.0]; //设置矩形四个圆角半径
     headImageView.userInteractionEnabled  = YES;
-    [self.view addSubview:headImageView];
+   
     UITapGestureRecognizer *tapIcon = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handButton:)];
     headImageView.userInteractionEnabled = YES;
     [headImageView addGestureRecognizer:tapIcon];
     
-    nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(80, 90, 200, 30)];
+   
     nameLabel.text =@"Mr.Nobody";
     nameLabel.font =[UIFont boldSystemFontOfSize:15];
-    [self.view addSubview:nameLabel];
+  
     
-    self.tableView.frame =CGRectMake(20, 130,MainScreen.width-25, MainScreen.height-130);
+    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor =[UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -72,28 +103,9 @@
     
     // message
     
-    defaults =[NSUserDefaults standardUserDefaults];
-    self.count =[defaults objectForKey:@"countMessage"];
-    
-    
-    message =[[UIButton alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 80 * W_Hight_Zoom, 110 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
-    [message addTarget:self action:@selector(messageBtn:) forControlEvents:UIControlEventTouchUpInside];
-    // message.titleEdgeInsets = UIEdgeInsetsMake(0, -60, 0, 0);//设置title在button上的位
-    message.contentHorizontalAlignment =UIControlContentHorizontalAlignmentCenter;
-    
-    [message setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];
-    
-    if ([self.count isEqualToString:@"0"]) {
-        message.hidden = YES;
-    }else{
-    [message setTitle:[NSString stringWithFormat:@"%@条动态", self.count] forState:UIControlStateNormal];
-    }
-    
-    
-    [message setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    message.titleLabel.font =[UIFont systemFontOfSize:13];
     [self.view addSubview:message];
-    
+    [self.view addSubview:headImageView];
+    [self.view addSubview:nameLabel];
     
     [self initRefreshView];
     
@@ -119,7 +131,6 @@
         {
             
         }
-        
         [self.dataSource removeAllObjects];
 
         json = [json objectForKey:@"jsondata"] ;
@@ -177,12 +188,14 @@
 
 - (void)messageBtn:(UIButton *)sender
 {
-    
     MessageViewController *messageVC =[[MessageViewController alloc]initWithNibName:@"MessageViewController" bundle:nil];
-    self.message.hidden = YES;
-    
+    message.hidden = YES;
+    headImageView.frame  =CGRectMake(10, 70, 60, 60);
+    self.tableView.frame =CGRectMake(20, 130,MainScreen.width-25, MainScreen.height-130);
+    nameLabel.frame =CGRectMake(80, 90, 200, 30);
     [self.navigationController pushViewController:messageVC animated:YES];
     
+   
     
 }
 
