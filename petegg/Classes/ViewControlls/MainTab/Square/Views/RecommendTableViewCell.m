@@ -17,14 +17,14 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     
         
-        self.lineLable =[[UILabel alloc]initWithFrame:CGRectMake(0, 369 * W_Hight_Zoom , 375 * W_Wide_Zoom, 1)];
+        self.lineLable =[[UILabel alloc]initWithFrame:CGRectMake(0, 369.5 * W_Hight_Zoom , 375 * W_Wide_Zoom, 0.5 * W_Hight_Zoom)];
         self.lineLable.backgroundColor =GRAY_COLOR;
-        
+        self.lineLable.alpha = 0.7;
         [self addSubview:self.lineLable];
         
         
         // 头像
-        self.iconImageV =[[UIImageView alloc]initWithFrame:CGRectMake(8*W_Wide_Zoom, 12*W_Hight_Zoom, 50*W_Wide_Zoom, 50*W_Hight_Zoom)];
+        self.iconImageV =[[UIImageView alloc]initWithFrame:CGRectMake(8*W_Wide_Zoom, 17.5*W_Hight_Zoom, 40*W_Wide_Zoom, 40*W_Hight_Zoom)];
         [self addSubview:self.iconImageV];
         
         // 名字

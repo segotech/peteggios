@@ -169,6 +169,7 @@
     for (int i = 0 ; i < 4; i++ ) {
         UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom , 0 + 40 * i* W_Hight_Zoom , 375* W_Wide_Zoom , 1* W_Hight_Zoom)];
         lineLabel.backgroundColor = GRAY_COLOR;
+        lineLabel.alpha = 0.6;
         [_downWhiteView addSubview:lineLabel];
         UIButton * buttones = [[UIButton alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom , 0 + 40 * i* W_Hight_Zoom, 375* W_Wide_Zoom , 40* W_Hight_Zoom)];
         buttones.tag = i;

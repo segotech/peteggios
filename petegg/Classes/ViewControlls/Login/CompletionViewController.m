@@ -120,8 +120,8 @@
 //上传头像
 - (void)submitAvatarImage:(NSData *)imageData
 {
-  
-    NSString *base64str = [imageData base64Encoding];
+  //base64EncodedStringWithOptions:0
+    NSString *base64str = [imageData base64EncodedStringWithOptions:0];
     NSString *picstr = [NSString stringWithFormat:@"[{\"%@\":\"%@\",\"%@\":\"%@\"}]",@"name",@"avatar.jpg",@"content",base64str];
     NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
     [dicc setValue:self.mid forKey:@"mid"];
@@ -182,15 +182,15 @@
 - (IBAction)dateTimePicker:(UIDatePicker *)sender {
     
     
-//    NSDate*selected = [self.timeSelect date];
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-//     NSString *destDateString = [dateFormatter stringFromDate:selected];
-//     NSString *message =  [NSString stringWithFormat: @"您选择的日期和时间是：%@",
-//                 destDateString];
-  //  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"日期和时间" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-  //        [alert show];
-             
+    NSDate*selected = [self.timeSelect date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+     NSString *destDateString = [dateFormatter stringFromDate:selected];
+     NSString *message =  [NSString stringWithFormat: @"您选择的日期和时间是：%@",
+                 destDateString];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"日期和时间" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//          [alert show];
+    
      
     
     

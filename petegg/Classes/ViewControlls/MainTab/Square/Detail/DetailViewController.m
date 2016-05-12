@@ -105,7 +105,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
     [[AFHttpClient sharedAFHttpClient] querDetailWithStid:self.stid complete:^(BaseModel *model) {
         
         if (model && model.list && model.list.count > 0) {
-            [self hideHud];
+            
             self.detailModel = model.list[0];
             
             [self.resourcesArray removeAllObjects];
@@ -114,6 +114,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
                 self.isVideo = YES;
                 self.resourcesArray = [NSMutableArray arrayWithObject:self.detailModel.resources];
             }else{
+                
                 self.isVideo = NO;
                 self.resourcesArray = [[self.detailModel.resources componentsSeparatedByString:@","] mutableCopy];
             }
@@ -123,6 +124,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
             }
             
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,2)] withRowAnimation:UITableViewRowAnimationNone];
+            [self hideHud];
         }else{
             [self hideHud];
             
@@ -395,9 +397,9 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
 
 - (UIView *)userInfoView{
     if (!_userInfoView) {
-        _userInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 82)];
+        _userInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 76)];
         
-        UIView* bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 16, self.tableView.width, 66)];
+        UIView* bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, self.tableView.width, 66)];
         bgView.backgroundColor = [UIColor whiteColor];
         [_userInfoView addSubview:bgView];
         
@@ -459,7 +461,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     switch (section) {
         case 1:
-            return 16;
+            return 10;
             
         default:
             break;

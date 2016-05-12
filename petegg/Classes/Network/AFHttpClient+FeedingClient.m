@@ -47,14 +47,28 @@
         }
     }];
 
-    
-    
-    
-
-
 }
 
 
+-(void)cancelFeedingtimeWithbrid:(NSString *)brid complete:(void (^)(BaseModel *))completeBlock{
+     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"common"] = @"cancelFeedingtime";
+    params[@"brid"] = brid;
+    [self POST:@"clientAction.do" parameters:params result:^(BaseModel *model) {
+        
+        if (model){
+            //            model.list = [FeddingModel arrayOfModelsFromDictionaries:model.list];
+        }
+        if (completeBlock) {
+            completeBlock(model);
+        }
+    }];
 
+
+
+
+
+
+}
 
 @end

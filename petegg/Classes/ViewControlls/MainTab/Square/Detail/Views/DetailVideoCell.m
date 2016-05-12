@@ -65,7 +65,6 @@
         
     [self.player setItemByUrl:[NSURL URLWithString:model]];  //给赋值url
     [_player play];    //播放
-    
     [self setupAutoHeightWithBottomView:self.playerView bottomMargin:8];
 }
 

@@ -70,7 +70,7 @@
         [self addSubview:_rightLabel];
         
         _ge = [[UILabel alloc]initWithFrame:CGRectMake(298 * W_Wide_Zoom, 42 * W_Hight_Zoom, 50 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
-        _ge.text = @"个";
+        _ge.text = @"次";
         _ge.textColor = [UIColor blackColor];
         _ge.font = [UIFont systemFontOfSize:13];
         [self addSubview:_ge];

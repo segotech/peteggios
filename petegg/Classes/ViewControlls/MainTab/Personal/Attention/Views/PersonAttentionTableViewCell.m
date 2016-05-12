@@ -13,8 +13,9 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 59 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
+        _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 59.5 * W_Hight_Zoom, 375 * W_Wide_Zoom, 0.5 * W_Hight_Zoom)];
         _lineLabel.backgroundColor = GRAY_COLOR;
+        _lineLabel.alpha = 0.7;
         [self addSubview:_lineLabel];
         
         _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 10 * W_Hight_Zoom, 40 * W_Wide_Zoom, 40 * W_Wide_Zoom)];
@@ -53,19 +54,17 @@
         _ageButton.titleLabel.font = [UIFont systemFontOfSize:12];
         [self addSubview:_ageButton];
         
-        
-        
-        
-        
-        
-        
         _sinaglLabel = [[UILabel alloc]initWithFrame:CGRectMake(60 * W_Wide_Zoom, 30 * W_Hight_Zoom, 200 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
         _sinaglLabel.font = [UIFont systemFontOfSize:12];
         _sinaglLabel.textColor = [UIColor blackColor];
-        //_sinaglLabel.text = @"陈大侠是个大帅比";
         [self addSubview:_sinaglLabel];
         
-        
+        _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(280 * W_Wide_Zoom, 15 * W_Hight_Zoom, 70 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        _rightButton.backgroundColor = GREEN_COLOR;
+        [_rightButton setTitle:@"互相关注" forState:UIControlStateNormal];
+        _rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
+        _rightButton.layer.cornerRadius = 5;
+        [self addSubview:_rightButton];
         
         
         

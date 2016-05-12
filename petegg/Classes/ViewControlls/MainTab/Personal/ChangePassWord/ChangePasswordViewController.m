@@ -80,6 +80,10 @@
         [[AppUtil appTopViewController] showHint:@"您输入的旧密码有误"];
         return;
     }
+    if ([str isEqualToString:_newpassWordTextfield.text]) {
+        [[AppUtil appTopViewController] showHint:@"新密码不能与旧密码一致"];
+        return;
+    }
     
     if (![_newpassWordTextfield.text isEqualToString:_surePassworeTextfield.text]) {
         [[AppUtil appTopViewController] showHint:@"两次输入密码不一致"];

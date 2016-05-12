@@ -266,6 +266,9 @@
 		7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D03322D1CB6680F00E923A9 /* AFHttpClient+PersonDate.m */; };
 		7D05D8A81CCB21080081FB24 /* IssueZiYuankuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */; };
 		7D05D8AB1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */; };
+		7D072B1D1CE4658100CAED11 /* new_huangguan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D072B1C1CE4658100CAED11 /* new_huangguan.png */; };
+		7D072B201CE468D100CAED11 /* nopointattention.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D072B1E1CE468D100CAED11 /* nopointattention.png */; };
+		7D072B211CE468D100CAED11 /* noshowpass.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D072B1F1CE468D100CAED11 /* noshowpass.png */; };
 		7D0E13641CDC35A800F9BAD5 /* TransactiondetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E13631CDC35A800F9BAD5 /* TransactiondetailViewController.m */; };
 		7D0E13681CDC3FA500F9BAD5 /* TransaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E13671CDC3FA500F9BAD5 /* TransaceTableViewCell.m */; };
 		7D0E136B1CDC71EA00F9BAD5 /* TransactionRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E136A1CDC71EA00F9BAD5 /* TransactionRecordModel.m */; };
@@ -1206,6 +1209,9 @@
 		7D05D8A71CCB21080081FB24 /* IssueZiYuankuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueZiYuankuModel.m; sourceTree = "<group>"; };
 		7D05D8A91CCB850F0081FB24 /* AFHttpClient+IsfriendClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+IsfriendClient.h"; sourceTree = "<group>"; };
 		7D05D8AA1CCB850F0081FB24 /* AFHttpClient+IsfriendClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+IsfriendClient.m"; sourceTree = "<group>"; };
+		7D072B1C1CE4658100CAED11 /* new_huangguan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_huangguan.png; sourceTree = "<group>"; };
+		7D072B1E1CE468D100CAED11 /* nopointattention.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopointattention.png; sourceTree = "<group>"; };
+		7D072B1F1CE468D100CAED11 /* noshowpass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noshowpass.png; sourceTree = "<group>"; };
 		7D0E13621CDC35A800F9BAD5 /* TransactiondetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactiondetailViewController.h; sourceTree = "<group>"; };
 		7D0E13631CDC35A800F9BAD5 /* TransactiondetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactiondetailViewController.m; sourceTree = "<group>"; };
 		7D0E13661CDC3FA500F9BAD5 /* TransaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransaceTableViewCell.h; sourceTree = "<group>"; };
@@ -1594,6 +1600,9 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				7D072B1E1CE468D100CAED11 /* nopointattention.png */,
+				7D072B1F1CE468D100CAED11 /* noshowpass.png */,
+				7D072B1C1CE4658100CAED11 /* new_huangguan.png */,
 				7D1968BC1CE0906B009A63BB /* weishi_onday.png */,
 				7D1968BD1CE0906B009A63BB /* weishi_twoday.png */,
 				7D1968BA1CE09018009A63BB /* person_weishi.png */,
@@ -3600,6 +3609,7 @@
 				34D27AE71CE0444D00244333 /* nopattion.png in Resources */,
 				34DB51371CDB28AE0032CF39 /* video_point.png in Resources */,
 				7DF147161CD0BB740046D726 /* xuan_guize.png in Resources */,
+				7D072B1D1CE4658100CAED11 /* new_huangguan.png in Resources */,
 				34A2183D1CCDFF9700ADD8FF /* incoming_chat.wav in Resources */,
 				344F025B1C9FEBDE0076CE62 /* juankfood_on.png in Resources */,
 				7D825D261CBCA85A00F4E216 /* person_attention.png.png in Resources */,
@@ -3651,6 +3661,7 @@
 				34A218191CCDFF9700ADD8FF /* call.png in Resources */,
 				34A218201CCDFF9700ADD8FF /* composing_active_chat.png in Resources */,
 				7D825D2D1CBCA85A00F4E216 /* person_videotape.png.png in Resources */,
+				7D072B201CE468D100CAED11 /* nopointattention.png in Resources */,
 				7D3DA5BF1CA3EC67005BD38B /* MV.png in Resources */,
 				34A215D91CCDFD6F00ADD8FF /* sephonerc-factory~ipad in Resources */,
 				34A215D21CCDFD6F00ADD8FF /* ring.caf in Resources */,
@@ -3742,6 +3753,7 @@
 				34A218211CCDFF9700ADD8FF /* composing_chat.png in Resources */,
 				344F02611C9FEBDE0076CE62 /* round.png in Resources */,
 				7D825D271CBCA85A00F4E216 /* person_balance.png.png in Resources */,
+				7D072B211CE468D100CAED11 /* noshowpass.png in Resources */,
 				34D27AEE1CE06B8E00244333 /* play2.png in Resources */,
 				34D27AED1CE06B8E00244333 /* play.png in Resources */,
 				7D30E89D1CA66C05004DE055 /* LICENSE in Resources */,
