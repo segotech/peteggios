@@ -62,9 +62,10 @@
     
     [self.iconIV sd_setImageWithURL:[NSURL URLWithString:model] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
     }];
-        
+    
     [self.player setItemByUrl:[NSURL URLWithString:model]];  //给赋值url
     [_player play];    //播放
+            
     [self setupAutoHeightWithBottomView:self.playerView bottomMargin:8];
 }
 

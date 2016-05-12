@@ -29,7 +29,7 @@
         
         // 名字
         
-        self.nameLabel =[[UILabel alloc]initWithFrame:CGRectMake(60*W_Wide_Zoom, 30*W_Hight_Zoom, 100*W_Wide_Zoom, 20)];
+        self.nameLabel =[[UILabel alloc]initWithFrame:CGRectMake(60*W_Wide_Zoom, 28*W_Hight_Zoom, 100*W_Wide_Zoom, 20)];
         self.nameLabel.font =[UIFont systemFontOfSize:13];
         [self addSubview:self.nameLabel];
         
@@ -50,7 +50,7 @@
         [self.photoView addSubview:self.numberLabel];
         
         // 时间
-        self.timeLable =[[UILabel alloc]initWithFrame:CGRectMake(8*W_Wide_Zoom, 345*W_Hight_Zoom, 200*W_Wide_Zoom, 30*W_Hight_Zoom)];
+        self.timeLable =[[UILabel alloc]initWithFrame:CGRectMake(8*W_Wide_Zoom, 335*W_Hight_Zoom, 200*W_Wide_Zoom, 30*W_Hight_Zoom)];
         self.timeLable.font =[UIFont systemFontOfSize:10];
         self.timeLable.textColor =[UIColor grayColor];
         [self addSubview:self.timeLable];
@@ -88,7 +88,7 @@
         self.topView.alpha = 0.1;
         [self addSubview:self.topView];
         
-        self.aboutBtn = [[UIButton alloc]initWithFrame:CGRectMake(305 * W_Wide_Zoom, 23 * W_Hight_Zoom, 60 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
+        self.aboutBtn = [[UIButton alloc]initWithFrame:CGRectMake(305 * W_Wide_Zoom, 25 * W_Hight_Zoom, 60 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
         self.aboutBtn.backgroundColor = GREEN_COLOR;
         self.aboutBtn.titleLabel.font = [UIFont systemFontOfSize:14];
 //        [self.aboutBtn setTitle:@"+关注" forState:UIControlStateNormal];

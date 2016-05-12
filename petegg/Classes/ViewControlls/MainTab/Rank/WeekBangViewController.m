@@ -68,11 +68,11 @@ static NSString * cellId = @"ranksCellIdddd";
     [topView addSubview:_nameLabel];
     
     
-    UIImageView * aixinImage = [[UIImageView alloc]initWithFrame:CGRectMake(160 * W_Wide_Zoom, 206 * W_Hight_Zoom, 12 * W_Wide_Zoom, 12 * W_Hight_Zoom)];
+    UIImageView * aixinImage = [[UIImageView alloc]initWithFrame:CGRectMake(165 * W_Wide_Zoom, 206 * W_Hight_Zoom, 12 * W_Wide_Zoom, 12 * W_Hight_Zoom)];
     aixinImage.image = [UIImage imageNamed:@"dianzanhou.png"];
     [topView addSubview:aixinImage];
     
-    _aixinLabel = [[UILabel alloc]initWithFrame:CGRectMake(180 * W_Wide_Zoom, 202 * W_Hight_Zoom, 100 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    _aixinLabel = [[UILabel alloc]initWithFrame:CGRectMake(185 * W_Wide_Zoom, 202 * W_Hight_Zoom, 100 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
     _aixinLabel.text = @"100";
     _aixinLabel.font = [UIFont systemFontOfSize:12];
     [topView addSubview:_aixinLabel];
