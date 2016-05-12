@@ -395,9 +395,9 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
 
 - (UIView *)userInfoView{
     if (!_userInfoView) {
-        _userInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 82)];
+        _userInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 66)];
         
-        UIView* bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 16, self.tableView.width, 66)];
+        UIView* bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 66)];
         bgView.backgroundColor = [UIColor whiteColor];
         [_userInfoView addSubview:bgView];
         

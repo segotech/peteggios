@@ -426,6 +426,8 @@
 		7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5C11CCF849A002918DA /* ChangePasswordViewController.m */; };
 		7DB4F5C51CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4F5C41CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m */; };
 		7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */; };
+		7DBE36311CE33FF10009C41F /* nopointattention.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBE362F1CE33FF10009C41F /* nopointattention.png */; };
+		7DBE36321CE33FF10009C41F /* noshowpass.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBE36301CE33FF10009C41F /* noshowpass.png */; };
 		7DC8D0301CA535820098706C /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D02F1CA535820098706C /* CycleScrollView.m */; };
 		7DC8D0331CA5358F0098706C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8D0321CA5358F0098706C /* NSTimer+Addition.m */; };
 		7DEB3F141CD2FD0100502179 /* AFHttpClient+FeedingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEB3F131CD2FD0100502179 /* AFHttpClient+FeedingClient.m */; };
@@ -1472,6 +1474,8 @@
 		7DB4F5C41CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+ChangepasswordAndBlacklist.m"; sourceTree = "<group>"; };
 		7DB9E1891CCE3AE7009AB3A7 /* PersonInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInformationViewController.h; sourceTree = "<group>"; };
 		7DB9E18A1CCE3AE7009AB3A7 /* PersonInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInformationViewController.m; sourceTree = "<group>"; };
+		7DBE362F1CE33FF10009C41F /* nopointattention.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopointattention.png; sourceTree = "<group>"; };
+		7DBE36301CE33FF10009C41F /* noshowpass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noshowpass.png; sourceTree = "<group>"; };
 		7DC8D02E1CA535820098706C /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
 		7DC8D02F1CA535820098706C /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
 		7DC8D0311CA5358F0098706C /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
@@ -1594,6 +1598,8 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				7DBE362F1CE33FF10009C41F /* nopointattention.png */,
+				7DBE36301CE33FF10009C41F /* noshowpass.png */,
 				7D1968BC1CE0906B009A63BB /* weishi_onday.png */,
 				7D1968BD1CE0906B009A63BB /* weishi_twoday.png */,
 				7D1968BA1CE09018009A63BB /* person_weishi.png */,
@@ -3554,7 +3560,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4UKEB375ND;
+						DevelopmentTeam = ZMFX8728A9;
 					};
 				};
 			};
@@ -3599,6 +3605,7 @@
 				3481B3A61CBCB4A400A4344D /* selecting.png in Resources */,
 				7D825CD81CBCA4C800F4E216 /* WasCallViewController.xib in Resources */,
 				34D27AE71CE0444D00244333 /* nopattion.png in Resources */,
+				7DBE36321CE33FF10009C41F /* noshowpass.png in Resources */,
 				34DB51371CDB28AE0032CF39 /* video_point.png in Resources */,
 				7DF147161CD0BB740046D726 /* xuan_guize.png in Resources */,
 				34A2183D1CCDFF9700ADD8FF /* incoming_chat.wav in Resources */,
@@ -3722,6 +3729,7 @@
 				7D3DA5BB1CA3EC43005BD38B /* 评论.png in Resources */,
 				34A218231CCDFF9700ADD8FF /* contact_starred.png in Resources */,
 				34D27AF01CE06BB800244333 /* 2.png in Resources */,
+				7DBE36311CE33FF10009C41F /* nopointattention.png in Resources */,
 				344F02BF1CA2D8CE0076CE62 /* left_off.png in Resources */,
 				34A218241CCDFF9700ADD8FF /* contact_unstarred.png in Resources */,
 				34A218331CCDFF9700ADD8FF /* startcall-small.png in Resources */,
