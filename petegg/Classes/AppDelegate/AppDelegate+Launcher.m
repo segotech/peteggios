@@ -138,13 +138,9 @@
         
         if ([arr[0][@"mid"] isEqualToString:[AccountManager sharedAccountManager].loginModel.mid]) {
             // 如果是自己
-            
-         
-         
-            
-            
-            
-            
+            EggViewController * eggVC = [[EggViewController alloc]init];
+            [self.mainTabVC pushViewController:eggVC];
+        
         }else
         {
         
@@ -155,6 +151,7 @@
             
             OtherEggViewController * otherVC =[[OtherEggViewController alloc]init];
             otherVC.otherArr = arr;
+            otherVC.IScode = YES;
             [self.window.rootViewController presentViewController:otherVC animated:YES completion:nil];
         }
        

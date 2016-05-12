@@ -13,6 +13,8 @@
 
 @property (nonatomic,strong)NSMutableArray * otherArr;
 @property (nonatomic,strong)NSString * otherMid;
+@property (nonatomic,assign)BOOL IScode;
+
 
 
 @end
