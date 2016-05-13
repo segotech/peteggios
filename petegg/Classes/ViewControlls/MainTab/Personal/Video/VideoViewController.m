@@ -432,7 +432,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
             if ([[json objectForKey:@"content"] isEqualToString:@"0"]) {
                 // 正在上传
-                NSLog(@"上传中")
+                NSLog(@"上传中");
             }
             if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
                 [self showMessageWarring:@"上传成功" view:app.window];
