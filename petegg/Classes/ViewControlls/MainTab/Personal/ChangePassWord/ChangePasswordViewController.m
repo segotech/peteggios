@@ -29,11 +29,11 @@
 
     NSArray * nameArray = @[@"旧密码:",@"新密码:",@"确认密码:"];
     for (int i = 0 ; i < 3; i ++) {
-        UILabel * lineLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 120 + 60 * i * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
+        UILabel * lineLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 120 *W_Hight_Zoom + 60 * i * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         lineLabeles.backgroundColor = GRAY_COLOR;
         [self.view addSubview:lineLabeles];
         
-        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(30 * W_Wide_Zoom, 75 + i * 60 * W_Hight_Zoom, 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(30 * W_Wide_Zoom, 75*W_Hight_Zoom + i * 60 * W_Hight_Zoom, 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
         nameLabeles.text = nameArray[i];
         nameLabeles.font = [UIFont systemFontOfSize:15];
         nameLabeles.textAlignment = NSTextAlignmentRight;

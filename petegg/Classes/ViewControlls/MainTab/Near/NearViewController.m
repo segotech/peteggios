@@ -29,7 +29,7 @@
 
 -(void)setupView{
     [super setupView];
-    _seacherBtn = [[UIButton alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom,NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT + 5 , 355 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
+    _seacherBtn = [[UIButton alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom,69 *W_Hight_Zoom , 355 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
     [_seacherBtn setImage:[UIImage imageNamed:@"seacherkuang.png"] forState:UIControlStateNormal];
     [self.view addSubview:_seacherBtn];
     [_seacherBtn addTarget:self action:@selector(seacherTouch) forControlEvents:UIControlEventTouchUpInside];

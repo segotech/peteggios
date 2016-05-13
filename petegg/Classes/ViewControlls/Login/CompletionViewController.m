@@ -16,6 +16,9 @@
     NSString * catOrDog;
     NSUInteger sourceType;
     
+    NSString * birstyStr;
+    
+    
     
     
 }
@@ -181,7 +184,7 @@
 
 - (IBAction)dateTimePicker:(UIDatePicker *)sender {
     
-    
+    /*
     NSDate*selected = [self.timeSelect date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -190,6 +193,7 @@
                  destDateString];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"日期和时间" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
           [alert show];
+     */
     
      
     
@@ -202,26 +206,25 @@
     NSDate*selected = [self.timeSelect date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *destDateString = [dateFormatter stringFromDate:selected];
-    self.birthdayBtn.titleLabel.text = [NSString stringWithFormat:@"%@",destDateString];
+    birstyStr = [dateFormatter stringFromDate:selected];
+    [self.birthdayBtn setTitle:birstyStr forState:UIControlStateNormal];
     
 }
 
 // 点击完成
 - (IBAction)overBtn:(UIButton *)sender {
     
-    
+    [self.birthdayBtn setTitle:birstyStr forState:UIControlStateNormal];
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=writeData";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:self.nameTextF.text forKey:@"nickname"];
-    [dic setValue:self.birthdayBtn.titleLabel.text forKey:@"pet_birthday"];
+    [dic setValue:birstyStr forKey:@"pet_birthday"];
     [dic setValue:catOrDog forKey:@"pet_race"];
     [dic setValue:girlOrBoy forKey:@"pet_sex"];
     [dic setValue:self.mid forKey:@"mid"];
     
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-            
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
         
