@@ -503,6 +503,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
                 [self hideHud];
             }else{
                 height = [self.tableView cellHeightForIndexPath:indexPath model:resources keyPath:@"model" cellClass:[DetailImageCell class] contentViewWidth:SCREEN_WIDTH];
+                [self hideHud];
             }
             
             return height;
