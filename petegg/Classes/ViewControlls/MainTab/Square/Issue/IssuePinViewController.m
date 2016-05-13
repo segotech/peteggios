@@ -103,7 +103,7 @@
       //  NSLog(@"hahaaha:%@",model.retCode);
         [self hideHud];
         //if ([model.retCode isEqualToString:@"0000"]) {
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:NO];
         //}
         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
     }];

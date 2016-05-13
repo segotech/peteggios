@@ -63,7 +63,7 @@ static NSString * cellId = @"personDetailCellId";
     }else{
         [self showBarButton:NAV_RIGHT imageName:@"addblack.png"];
     }
-    
+      [self setNavTitle:model.nickname];
     _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 10 * W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
     [_headImage.layer setMasksToBounds:YES];
     _headImage.layer.cornerRadius = _headImage.width/2;
@@ -258,7 +258,7 @@ static NSString * cellId = @"personDetailCellId";
 -(void)setupView{
     [super setupView];
     //这里后面要改成这用户的名字
-    [self setNavTitle:@"个人中心"];
+  
     _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 100, self.view.width, 120 * W_Hight_Zoom)];
     _topView.backgroundColor = [UIColor whiteColor];
     

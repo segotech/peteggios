@@ -14,7 +14,7 @@
 #import "UIImage-Extensions.h"
 
 #import "DetailViewController.h"
-
+#import "PersonDetailViewController.h"
 static NSString * cellId = @"AttentionCellId";
 @interface AttentionViewController ()
 
@@ -118,6 +118,13 @@ static NSString * cellId = @"AttentionCellId";
     NSURL * imageUrl = [NSURL URLWithString:imageStr];
     [cell.iconImageV sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     cell.iconImageV.layer.cornerRadius = cell.iconImageV.bounds.size.width/2;
+    UIButton * touchButton = [[UIButton alloc]initWithFrame:cell.iconImageV.frame];
+    [touchButton addTarget:self action:@selector(iconImageVTouch:) forControlEvents:UIControlEventTouchUpInside];
+    touchButton.tag = indexPath.row + 651;
+    [cell addSubview:touchButton];
+    
+    
+    
     if (model.cutImage) {
         cell.photoView.image = model.cutImage;
     }else{
@@ -128,6 +135,13 @@ static NSString * cellId = @"AttentionCellId";
             }
         }];
     }
+    UIButton * photoViewBtn = [[UIButton alloc]initWithFrame:cell.photoView.frame];
+    photoViewBtn.tag = indexPath.row + 652;
+    [photoViewBtn addTarget:self action:@selector(photoButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:photoViewBtn];
+    
+
+    
     cell.introduceLable.text = model.content;
     
     cell.timeLable.text = model.publishtime;
@@ -141,15 +155,29 @@ static NSString * cellId = @"AttentionCellId";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+-(void)iconImageVTouch:(UIButton *)sender{
+    NSInteger i = sender.tag - 651;
     
-    SquareModel * model = self.dataSource[indexPath.row];
-   //  NSString * stid = model.stid;
+    SquareModel * model = self.dataSource[i];
+    NSString * mid = model.mid;
+    PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
+    personVc.ddddd = mid;
+    [self.navigationController pushViewController:personVc animated:NO];
+    
+}
+
+-(void)photoButtonTouch:(UIButton *)sender{
+    NSInteger i = sender.tag -652;
+    
+    SquareModel * model = self.dataSource[i];
+    NSString * stid = model.stid;
+    NSLog(@"%@",stid);
     
     DetailViewController* viewController = [[DetailViewController alloc] init];
-    viewController.hidesBottomBarWhenPushed = YES;
     viewController.stid = model.stid;
     [self.navigationController pushViewController:viewController animated:YES];
+    
 }
 
 
