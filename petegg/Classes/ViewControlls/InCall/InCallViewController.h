@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeText;
 @property (strong, nonatomic) IBOutlet UIImageView *pointView;
 @property (strong, nonatomic) IBOutlet UIView *waitView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *flowerUI;
 
 
 // 别人

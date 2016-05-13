@@ -77,15 +77,10 @@
 
 {
     
-
-  
   // 1、创建分享参数
   NSArray *imageArray = @[ [UIImage imageNamed:@"ceishi.jpg"] ];
   //（注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数
-  //images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
-  //逗码【PC12345678911】此逗码 2016/4/29 12:00:00 之前有效，复制这条信息，打开赛果不倒蛋软件，即可控制分享者的设备开启远程互动(软件下载地址：http://www.segopet.com/download.html  )
-    
-    
+
   if (imageArray) {
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams
@@ -96,14 +91,11 @@
                               type:SSDKContentTypeAuto];
     
       
-    
     // 2、分享（可以弹出我们的分享菜单和编辑界面）
     [ShareSDK showShareActionSheet: nil items:nil shareParams:shareParams onShareStateChanged:^(
              SSDKResponseState state, SSDKPlatformType platformType,
              NSDictionary *userData, SSDKContentEntity *contentEntity,
              NSError *error, BOOL end) {
-             
-
            switch (state) {
            case SSDKResponseStateSuccess: {
              UIAlertView *alertView =
@@ -113,6 +105,8 @@
                                   cancelButtonTitle:@"确定"
                                   otherButtonTitles:nil];
              [alertView show];
+         [[[UIApplication sharedApplication] keyWindow] resignFirstResponder];
+               
              break;
            }
            case SSDKResponseStateFail: {
@@ -122,13 +116,17 @@
                           delegate:nil
                  cancelButtonTitle:@"OK"
                  otherButtonTitles:nil, nil];
+               
              [alert show];
+            [[[UIApplication sharedApplication] keyWindow] resignFirstResponder];
+
              break;
            }
            default:
              break;
            }
-         }];
+    }];
+      
   }
 }
 /**
@@ -147,9 +145,6 @@
         [self lostData];
     }
     
-    
-    
-
 }
 
 
