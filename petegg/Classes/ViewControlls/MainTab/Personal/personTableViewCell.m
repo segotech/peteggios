@@ -25,15 +25,15 @@
     
     if (self  =  [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        self.imageCell =[[UIImageView alloc]initWithFrame:CGRectMake(5*W_Wide_Zoom, 12*W_Hight_Zoom, 28*W_Wide_Zoom, 28*W_Hight_Zoom)];
+        self.imageCell =[[UIImageView alloc]initWithFrame:CGRectMake(13*W_Wide_Zoom, 12*W_Hight_Zoom, 28*W_Wide_Zoom, 28*W_Hight_Zoom)];
         [self addSubview:self.imageCell];
         
-        self.introduce =[[UILabel alloc]initWithFrame:CGRectMake(40*W_Wide_Zoom, 7 * W_Hight_Zoom, 180*W_Wide_Zoom, 45*W_Hight_Zoom)];
+        self.introduce =[[UILabel alloc]initWithFrame:CGRectMake(45*W_Wide_Zoom, 4 * W_Hight_Zoom, 180*W_Wide_Zoom, 45*W_Hight_Zoom)];
         
         [self addSubview:self.introduce];
         
         
-        self.moneyLabel =[[UILabel alloc]initWithFrame:CGRectMake(310*W_Wide_Zoom, 15, 20*W_Wide_Zoom, 20*W_Hight_Zoom)];
+        self.moneyLabel =[[UILabel alloc]initWithFrame:CGRectMake(310*W_Wide_Zoom, 16, 20*W_Wide_Zoom, 20*W_Hight_Zoom)];
         self.moneyLabel.textColor=[UIColor whiteColor];
         self.moneyLabel.hidden = YES;
         self.moneyLabel.textAlignment = NSTextAlignmentCenter;

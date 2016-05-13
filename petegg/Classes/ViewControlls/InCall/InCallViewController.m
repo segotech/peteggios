@@ -253,7 +253,7 @@
 //喂食
 - (IBAction)feedBtnClick:(UIButton *)sender {
     
-    
+   
     NSString * str =@"clientAction.do?common=food&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     
@@ -290,6 +290,8 @@
  *  @param sender  on  off
  */
 - (IBAction)lightBtnClick:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
     NSString * str1;
     doubleTime++;
     if (doubleTime%2 ==0) {
@@ -332,7 +334,7 @@
 // 零食
 - (IBAction)juankFootBtnClick:(UIButton *)sender {
     
-    
+   
     NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
     NSString * tsm =[defaults objectForKey:@"tsm"];
     NSString * otherID =[defaults objectForKey:@"othID"];
@@ -372,6 +374,7 @@
 }
 //抓拍
 - (IBAction)photoBtnClick:(UIButton *)sender {
+    
     
     
     NSString * str =@"clientAction.do?common=photoGraph&classes=appinterface&method=json";

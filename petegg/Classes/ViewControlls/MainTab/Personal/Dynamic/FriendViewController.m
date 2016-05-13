@@ -98,6 +98,8 @@
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor =[UIColor whiteColor];
+    self.tableView.showsVerticalScrollIndicator   = NO;
+    self.tableView.showsHorizontalScrollIndicator = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     
@@ -217,7 +219,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 205;
+    return 250;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -258,18 +260,36 @@
     if (i ==1) { // 一张图
          //视频
         if ([model.type isEqualToString:@"pv"]) {
-            [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
+            
+            
+            [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego1.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                
+                cell.oneImagev.image =[self cutImage:image];
+                
+            }];
             
         }else if([model.type isEqualToString:@"v"])
         {
-            [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
+            
+            [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego1.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                
+                cell.oneImagev.image =[self cutImage:image];
+                
+            }];
+            
         }
         else  // 图
         {
-              [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.resources] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
+            
+            [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.resources] placeholderImage:[UIImage imageNamed:@"sego1.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                
+                cell.oneImagev.image =[self cutImage:image];
+                
+            }];
+            
         }
         UITapGestureRecognizer *tapIcon = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapIcon:)];
-        cell.oneImagev.userInteractionEnabled = YES;
+         cell.oneImagev.userInteractionEnabled = YES;
         [cell.oneImagev addGestureRecognizer:tapIcon];
 
         
@@ -353,6 +373,40 @@
     
     
     
+}
+
+
+/**
+ *  处理图片
+ *
+ *  @param sender
+ */
+
+
+- (UIImage *)cutImage:(UIImage*)image
+{
+    
+    CGSize newSize;
+    CGImageRef imageRef = nil;
+    UIImageView *_headerView =[[UIImageView alloc]initWithFrame:CGRectMake(8*W_Wide_Zoom, 84*W_Hight_Zoom, 356*W_Wide_Zoom, 250*W_Hight_Zoom)];
+    
+    if ((image.size.width / image.size.height) < (_headerView.bounds.size.width / _headerView.bounds.size.height)) {
+        newSize.width = image.size.width;
+        newSize.height = image.size.width * _headerView.bounds.size.height / _headerView.bounds.size.width;
+        
+        imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, fabs(image.size.height - newSize.height) / 2, newSize.width, newSize.height));
+        
+    } else {
+        newSize.height = image.size.height;
+        newSize.width = image.size.height * _headerView.bounds.size.width / _headerView.bounds.size.height;
+        
+        imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(fabs(image.size.width - newSize.width) / 2, 0, newSize.width, newSize.height));
+        
+    }
+    UIImage * newnewimage = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    return newnewimage;
+    //return [UIImage imageWithCGImage:imageRef];
 }
 
 

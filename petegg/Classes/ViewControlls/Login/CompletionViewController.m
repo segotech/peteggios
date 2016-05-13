@@ -188,8 +188,8 @@
      NSString *destDateString = [dateFormatter stringFromDate:selected];
      NSString *message =  [NSString stringWithFormat: @"您选择的日期和时间是：%@",
                  destDateString];
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"日期和时间" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//          [alert show];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"日期和时间" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+          [alert show];
     
      
     
@@ -203,7 +203,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *destDateString = [dateFormatter stringFromDate:selected];
-    self.birthdayBtn.titleLabel.text = destDateString;
+    self.birthdayBtn.titleLabel.text = [NSString stringWithFormat:@"%@",destDateString];
     
 }
 
