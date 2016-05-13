@@ -80,7 +80,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
     self.bGroupView = YES;
     [super setupView];
     
-    self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height - 50);
+    self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height - 49);
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1)];
     self.tableView.separatorStyle = NO;
     
@@ -159,6 +159,10 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
     if (!_toolView) {
         _toolView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height - 49, self.tableView.width, 49)];
         _toolView.backgroundColor = LIGHT_GRAY_COLOR;
+        _toolView.layer.shadowColor = [UIColor blackColor].CGColor;
+        _toolView.layer.shadowOffset = CGSizeMake(0, -1);
+        _toolView.layer.shadowOpacity = 0.4;
+        _toolView.layer.shadowRadius = 2;
         
         //分享
         UIButton* shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -666,7 +670,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
     NSDictionary *dict = notification.userInfo;
     CGRect rect = [dict[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
     
-    CGRect textFieldRect = CGRectMake(0, rect.origin.y - self.commentInputView.height, rect.size.width, self.commentInputView.height);
+    CGRect textFieldRect = CGRectMake(0, rect.origin.y - self.commentInputView.height , rect.size.width, self.commentInputView.height);
     if (rect.origin.y == [UIScreen mainScreen].bounds.size.height) {
         textFieldRect = rect;
     }
