@@ -12,7 +12,8 @@
 // PRIVATE DEFINITION
 /////////////////////
 
-@interface SCVideoPlayerView() {
+@interface SCVideoPlayerView()<SCPlayerDelegate>
+{
     BOOL _holdPlayer;
     UITapGestureRecognizer *_tapToPauseGesture;
 }
@@ -123,11 +124,25 @@
 - (void)setPlayer:(SCPlayer *)player {
     if (player != _player) {
         _player = player;
+        _player.delegate = self;
         
         _playerLayer.player = player;
         
         _holdPlayer = NO;
     }
+}
+
+
+- (void)player:(SCPlayer *__nonnull)player didPlay:(CMTime)currentTime loopsCount:(NSInteger)loopsCount {
+    
+    NSLog(@"didPlay");
+    
+}
+
+- (void)player:(SCPlayer *__nonnull)player itemReadyToPlay:(AVPlayerItem *__nonnull)item {
+    
+    NSLog(@"itemReadyToPlay");
+    
 }
 
 static BOOL _autoCreatePlayerWhenNeeded = YES;
