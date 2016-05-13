@@ -37,22 +37,28 @@
     self.view.backgroundColor =[UIColor whiteColor];
      [self setNavTitle: NSLocalizedString(@"completion", nil)];
     handImage.userInteractionEnabled = YES;
-    
-    
+    [self.nameTextF setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
 }
-
 
 - (void)setupView{
     [super setupView];
-    
     UITapGestureRecognizer* singleRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom:)];
     [handImage addGestureRecognizer:singleRecognizer];
-    
-  
-    
-    
-}
 
+}
+-(void)doLeftButtonTouch{
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有填写确认您的信息，确认返回?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+        // 点击按钮后的方法直接在这里面写
+         [self.navigationController popToRootViewControllerAnimated:YES];    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+        NSLog(@"取消");
+    }];
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 /**
  *  头像点击
  */
@@ -219,9 +225,13 @@
     
     if (!isHand) {
         
-        [self showSuccessHudWithHint:@"请选择头像"];
-    }else
-    {
+        [[AppUtil appTopViewController] showHint:@"请选择头像"];
+        return;
+    }
+    if ([AppUtil isBlankString:self.nameTextF.text]) {
+        [[AppUtil appTopViewController] showHint:@"请输入姓名"];
+        return;
+    }
     [self.birthdayBtn setTitle:birstyStr forState:UIControlStateNormal];
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=writeData";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
@@ -240,7 +250,7 @@
     } failure:^(NSError *error) {
     }];
 
-    }
+    
     
 }
 

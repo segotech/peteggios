@@ -36,7 +36,8 @@
     self.view.backgroundColor = [UIColor grayColor];
     _imagePicker =[[UIImagePickerController alloc]init];
     _imagePicker.delegate= self;
-    [self setTitle:@"发布"];
+    //[self setTitle:@"发布"];
+    [self setNavTitle:@"发布萌宠秀"];
      self.automaticallyAdjustsScrollViewInsets = NO;
     [self showBarButton:NAV_RIGHT title:@"发布" fontColor:[UIColor blackColor]];
     self.view.backgroundColor = LIGHT_GRAY_COLOR;
@@ -73,6 +74,23 @@
    
     
 }
+-(void)doLeftButtonTouch{
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有发布内容，是否要退出？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+        // 点击按钮后的方法直接在这里面写
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+        NSLog(@"取消");
+    }];
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+
+}
+
+
 -(void)doRightButtonTouch{
     [_imageArray removeLastObject];
     NSMutableString * stingArr =[[NSMutableString alloc]init];

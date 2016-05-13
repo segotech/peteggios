@@ -130,6 +130,10 @@
         [[AppUtil appTopViewController] showHint:@"请输入账号"];
         return;
     }
+    if (![AppUtil isValidateMobile:text.text]) {
+        [[AppUtil appTopViewController] showHint:@"请输入正确格式的手机号码"];
+        return;
+    }
     if ([AppUtil isBlankString:text1.text]) {
         [[AppUtil appTopViewController] showHint:@"请输入验证码"];
         return;
@@ -147,14 +151,16 @@
         [[AppUtil appTopViewController] showHint:@"请输入正确的验证码"];
         return;
     }
-    
+    [self showHudInView:self.view hint:@"正在修改..."];
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=forgetPassword";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:text.text forKey:@"phone"];
     [dic setValue:text2.text forKey:@"password"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        [self hideHud];
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
              [[AppUtil appTopViewController] showHint:@"修改成功"];
+            [self.navigationController popViewControllerAnimated:YES];
         }else{
              [[AppUtil appTopViewController] showHint:json[@"jsondata"][@"retDesc"]];
         }
@@ -230,7 +236,7 @@
         }else{
             [[AppUtil appTopViewController] showHint:json[@"jsondata"][@"retDesc"]];
             UIButton * btn =  (UIButton *)[self.view viewWithTag:10000];
-                        btn.enabled = NO;
+            btn.enabled = NO;
         }
         
         

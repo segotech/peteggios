@@ -26,7 +26,7 @@
 }
 -(void)setupView{
     [super setupView];
-    [self setNavTitle:@"发布"];
+    [self setNavTitle:@"发布萌宠秀"];
     [self showBarButton:NAV_RIGHT title:@"发布" fontColor:[UIColor blackColor]];
     self.view.backgroundColor = LIGHT_GRAY_COLOR;
 
