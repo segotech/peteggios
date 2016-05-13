@@ -214,6 +214,9 @@
 // 点击完成
 - (IBAction)overBtn:(UIButton *)sender {
     
+    
+    self.birthdayBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.birthdayBtn.titleEdgeInsets = UIEdgeInsetsMake(-50, -50, -50, -50);
     [self.birthdayBtn setTitle:birstyStr forState:UIControlStateNormal];
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=writeData";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
