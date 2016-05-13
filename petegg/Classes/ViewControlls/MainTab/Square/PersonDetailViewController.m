@@ -64,7 +64,7 @@ static NSString * cellId = @"personDetailCellId";
         [self showBarButton:NAV_RIGHT imageName:@"addblack.png"];
     }
       [self setNavTitle:model.nickname];
-    _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 10 * W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
+    _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 15 * W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
     [_headImage.layer setMasksToBounds:YES];
     _headImage.layer.cornerRadius = _headImage.width/2;
     NSString * imageStr = [NSString stringWithFormat:@"%@",model.headportrait];
@@ -74,7 +74,7 @@ static NSString * cellId = @"personDetailCellId";
     
  
     
-    _typeImage = [[UIImageView alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 20 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    _typeImage = [[UIImageView alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 22 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
     if ([model.pet_race isEqualToString:@"汪"]) {
         _typeImage.image = [UIImage imageNamed:@"wangwang.png"];
     }else{
@@ -85,7 +85,7 @@ static NSString * cellId = @"personDetailCellId";
     
     
     
-    _sexImage = [[UIImageView alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 20 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    _sexImage = [[UIImageView alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 22 * W_Hight_Zoom, 20 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
     if ([model.pet_sex isEqualToString:@"公"]) {
      _sexImage.image = [UIImage imageNamed:@"manquanquan.png"];
     }else{
@@ -96,7 +96,7 @@ static NSString * cellId = @"personDetailCellId";
     
     
     
-    _ageImage = [[UIButton alloc]initWithFrame:CGRectMake(160 * W_Wide_Zoom, 20 * W_Hight_Zoom, 35 * W_Wide_Zoom, 18 * W_Hight_Zoom)];
+    _ageImage = [[UIButton alloc]initWithFrame:CGRectMake(160 * W_Wide_Zoom, 22 * W_Hight_Zoom, 35 * W_Wide_Zoom, 18 * W_Hight_Zoom)];
     _ageImage.layer.cornerRadius = 10;
     _ageImage.layer.borderWidth = 1;
     _ageImage.layer.borderColor = GREEN_COLOR.CGColor;
@@ -108,39 +108,39 @@ static NSString * cellId = @"personDetailCellId";
     
     [_topView addSubview: _ageImage];
     
-    UILabel * qq = [[UILabel alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 40 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    UILabel * qq = [[UILabel alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 42 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     qq.text = @"QQ:";
     qq.font = [UIFont systemFontOfSize:14];
     qq.textColor = [UIColor blackColor];
     [_topView addSubview:qq];
     
-    _qqLabel = [[UILabel alloc]initWithFrame:CGRectMake(140 * W_Wide_Zoom, 40 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _qqLabel = [[UILabel alloc]initWithFrame:CGRectMake(140 * W_Wide_Zoom, 42 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _qqLabel.text = model.qq;
     _qqLabel.font = [UIFont systemFontOfSize:14];
     _qqLabel.textColor = [UIColor blackColor];
     [_topView addSubview:_qqLabel];
     
     
-    UILabel * guanzhu = [[UILabel alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 60 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    UILabel * guanzhu = [[UILabel alloc]initWithFrame:CGRectMake(100 * W_Wide_Zoom, 67 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     guanzhu.text = @"关注:";
     guanzhu.textColor = [UIColor blackColor];
     guanzhu.font = [UIFont systemFontOfSize:14];
     [_topView addSubview:guanzhu];
     
-    _attentionLabel = [[UILabel alloc]initWithFrame:CGRectMake(140 * W_Wide_Zoom, 60 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _attentionLabel = [[UILabel alloc]initWithFrame:CGRectMake(140 * W_Wide_Zoom, 67 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _attentionLabel.text = model.gznum;
     _attentionLabel.textColor = [UIColor blackColor];
     _attentionLabel.font = [UIFont systemFontOfSize:14];
     [_topView addSubview:_attentionLabel];
     
     
-    UILabel * fensi = [[UILabel alloc]initWithFrame:CGRectMake(170 * W_Wide_Zoom, 60 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    UILabel * fensi = [[UILabel alloc]initWithFrame:CGRectMake(170 * W_Wide_Zoom, 67 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     fensi.text = @"粉丝:";
     fensi.textColor = [UIColor blackColor];
     fensi.font = [UIFont systemFontOfSize:14];
     [_topView addSubview:fensi];
     
-    _fansLabel = [[UILabel alloc]initWithFrame:CGRectMake(210 * W_Wide_Zoom, 60 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _fansLabel = [[UILabel alloc]initWithFrame:CGRectMake(210 * W_Wide_Zoom, 67 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _fansLabel.text = model.fsnum;
     _fansLabel.textColor = [UIColor blackColor];
     _fansLabel.font = [UIFont systemFontOfSize:14];
@@ -153,7 +153,7 @@ static NSString * cellId = @"personDetailCellId";
     [_topView addSubview:_autographLabel];
     
     
-    fanwenBtn =[[UIButton alloc]initWithFrame:CGRectMake(310, 25, 50, 50)];
+    fanwenBtn =[[UIButton alloc]initWithFrame:CGRectMake(310 * W_Wide_Zoom, 33 * W_Hight_Zoom, 50 * W_Wide_Zoom, 50 * W_Hight_Zoom)];
     [fanwenBtn setTitle:@"互动" forState:UIControlStateNormal];
     [fanwenBtn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
     fanwenBtn.titleLabel.font =[UIFont systemFontOfSize:15];
