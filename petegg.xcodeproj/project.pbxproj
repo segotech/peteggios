@@ -14,6 +14,9 @@
 		34024DD91CE492E8000E3723 /* catchPH_on_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 34024DD81CE492E8000E3723 /* catchPH_on_on.png */; };
 		34024DDB1CE492F5000E3723 /* feeding_on_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 34024DDA1CE492F5000E3723 /* feeding_on_on.png */; };
 		34024DDD1CE4930B000E3723 /* junkfoot_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 34024DDC1CE4930B000E3723 /* junkfoot_on.png */; };
+		34024DE11CE5712B000E3723 /* PopStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34024DE01CE5712B000E3723 /* PopStartView.m */; };
+		34024DE41CE5745F000E3723 /* 引导页ok-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 34024DE21CE5745F000E3723 /* 引导页ok-3.png */; };
+		34024DE51CE5745F000E3723 /* 引导页ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 34024DE31CE5745F000E3723 /* 引导页ok.png */; };
 		34144BC91CBFB147007C4498 /* TimeHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BC81CBFB147007C4498 /* TimeHistoryModel.m */; };
 		34144BCC1CBFB156007C4498 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BCB1CBFB156007C4498 /* MessageModel.m */; };
 		34144BD61CBFB1B3007C4498 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BD11CBFB1B3007C4498 /* MessageTableViewCell.m */; };
@@ -468,6 +471,10 @@
 		34024DD81CE492E8000E3723 /* catchPH_on_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catchPH_on_on.png; sourceTree = "<group>"; };
 		34024DDA1CE492F5000E3723 /* feeding_on_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feeding_on_on.png; sourceTree = "<group>"; };
 		34024DDC1CE4930B000E3723 /* junkfoot_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = junkfoot_on.png; sourceTree = "<group>"; };
+		34024DDF1CE5712B000E3723 /* PopStartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopStartView.h; sourceTree = "<group>"; };
+		34024DE01CE5712B000E3723 /* PopStartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopStartView.m; sourceTree = "<group>"; };
+		34024DE21CE5745F000E3723 /* 引导页ok-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页ok-3.png"; sourceTree = "<group>"; };
+		34024DE31CE5745F000E3723 /* 引导页ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页ok.png"; sourceTree = "<group>"; };
 		34144BC71CBFB147007C4498 /* TimeHistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeHistoryModel.h; sourceTree = "<group>"; };
 		34144BC81CBFB147007C4498 /* TimeHistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeHistoryModel.m; sourceTree = "<group>"; };
 		34144BCA1CBFB155007C4498 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -1595,6 +1602,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34024DDE1CE5707A000E3723 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				34024DDF1CE5712B000E3723 /* PopStartView.h */,
+				34024DE01CE5712B000E3723 /* PopStartView.m */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
 		34144BCF1CBFB1B3007C4498 /* Message */ = {
 			isa = PBXGroup;
 			children = (
@@ -1611,6 +1627,8 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				34024DE21CE5745F000E3723 /* 引导页ok-3.png */,
+				34024DE31CE5745F000E3723 /* 引导页ok.png */,
 				34024DDC1CE4930B000E3723 /* junkfoot_on.png */,
 				34024DDA1CE492F5000E3723 /* feeding_on_on.png */,
 				34024DD81CE492E8000E3723 /* catchPH_on_on.png */,
@@ -2919,6 +2937,7 @@
 		57666F751C9686DE00A52DBA /* ViewControlls */ = {
 			isa = PBXGroup;
 			children = (
+				34024DDE1CE5707A000E3723 /* Guide */,
 				570BA4F51CA25570009AA2FC /* InCall */,
 				344F027A1CA0DE8A0076CE62 /* Bluetooth */,
 				344F02741CA0DB120076CE62 /* Setting */,
@@ -3579,7 +3598,6 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = ZMFX8728A9;
 					};
 				};
 			};
@@ -3759,6 +3777,7 @@
 				7D24EA8C1CC4E74A004EB1E2 /* manquanquan.png in Resources */,
 				344F02651C9FEBDE0076CE62 /* turn_on.png in Resources */,
 				7D825D101CBCA65000F4E216 /* personTableViewCell.xib in Resources */,
+				34024DE51CE5745F000E3723 /* 引导页ok.png in Resources */,
 				34DB51391CDB2E740032CF39 /* light_on_on.png in Resources */,
 				7D825D381CBCA88D00F4E216 /* deleteOld.png in Resources */,
 				34A2182F1CCDFF9700ADD8FF /* sephone.icns in Resources */,
@@ -3800,6 +3819,7 @@
 				34A218271CCDFF9700ADD8FF /* history-orange.png in Resources */,
 				34024DD41CE491DC000E3723 /* light_on_on_on.png in Resources */,
 				7D1763A61CBF864C00579B4C /* dianzanhou.png in Resources */,
+				34024DE41CE5745F000E3723 /* 引导页ok-3.png in Resources */,
 				34144BDE1CC480C1007C4498 /* SnapViewController.xib in Resources */,
 				34144BE21CC48688007C4498 /* history_triangle.png in Resources */,
 				34A2181F1CCDFF9700ADD8FF /* chat_message_not_delivered.png in Resources */,
@@ -3946,6 +3966,7 @@
 				34EDB5CC1CD34279001BB50C /* OtherEggViewController.m in Sources */,
 				570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */,
 				578B9E671CA2D8CB00CAC21D /* SquareModel.m in Sources */,
+				34024DE11CE5712B000E3723 /* PopStartView.m in Sources */,
 				7D0128EE1CC5DD5F0009BF6B /* PersonNewAttentionTableViewCell.m in Sources */,
 				7D0E13681CDC3FA500F9BAD5 /* TransaceTableViewCell.m in Sources */,
 				34144BCC1CBFB156007C4498 /* MessageModel.m in Sources */,
@@ -4215,7 +4236,7 @@
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib",
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpetop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -4228,7 +4249,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4275,7 +4296,7 @@
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib",
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpetop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
