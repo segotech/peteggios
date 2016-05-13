@@ -102,6 +102,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
 - (void)loadDetailInfo{
     //萌宠秀详情的接口
      [self showHudInView:self.view hint:@"正在加载..."];
+    //[self showHint:@"正在加载" afterTime:7];
     [[AFHttpClient sharedAFHttpClient] querDetailWithStid:self.stid complete:^(BaseModel *model) {
         
         if (model && model.list && model.list.count > 0) {
@@ -124,9 +125,9 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
             }
             
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,2)] withRowAnimation:UITableViewRowAnimationNone];
-            [self hideHud];
+           // [self hideHud];
         }else{
-            [self hideHud];
+            //[self hideHud];
             
         }
     }];
@@ -499,8 +500,10 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
             CGFloat height;
             if (self.isVideo) {
                 height = [self.tableView cellHeightForIndexPath:indexPath model:resources keyPath:@"model" cellClass:[DetailVideoCell class] contentViewWidth:SCREEN_WIDTH];
+                [self hideHud];
             }else{
                 height = [self.tableView cellHeightForIndexPath:indexPath model:resources keyPath:@"model" cellClass:[DetailImageCell class] contentViewWidth:SCREEN_WIDTH];
+                [self hideHud];
             }
             
             return height;

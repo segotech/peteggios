@@ -40,7 +40,7 @@ static NSString * cellId = @"recommeCellId";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 -(void)dada{
@@ -55,6 +55,12 @@ static NSString * cellId = @"recommeCellId";
     _topScrollView = [[CycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 170 * W_Hight_Zoom) animationDuration:3];
     
     self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height - STATUS_BAR_HEIGHT - NAV_BAR_HEIGHT - TAB_BAR_HEIGHT);
+ 
+    
+    
+    
+    
+    
     [self.tableView registerClass:[RecommendTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     

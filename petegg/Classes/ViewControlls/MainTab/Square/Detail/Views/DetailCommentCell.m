@@ -42,7 +42,8 @@
 
 - (void)setupView{
     _lineView = [[UILabel alloc] init];
-    _lineView.backgroundColor = [ UIColor lightGrayColor];
+    _lineView.backgroundColor = [UIColor lightGrayColor];
+    _lineView.alpha = 0.7;
     
     _iconIV = [[UIImageView alloc] init];
     _iconIV.backgroundColor = [UIColor redColor];
@@ -106,7 +107,7 @@
     
     UIView *contentView = self.contentView;
     
-    _lineView.sd_layout.heightIs(1).topSpaceToView(contentView, 0).leftSpaceToView(contentView, 0).rightSpaceToView(contentView, 0);
+    _lineView.sd_layout.heightIs(0.5).topSpaceToView(contentView, 0).leftSpaceToView(contentView, 0).rightSpaceToView(contentView, 0);
 
     _iconIV.sd_layout.widthIs(50).heightEqualToWidth().leftSpaceToView(contentView, 8).topSpaceToView(contentView, 8);
     _iconIV.sd_cornerRadiusFromWidthRatio = @(0.5);
