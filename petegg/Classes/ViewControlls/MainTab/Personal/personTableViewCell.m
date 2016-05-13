@@ -49,13 +49,10 @@
         [self addSubview:self.redpoint];
         
         
-        
-        
-        
-        
+
     }
     return self;
-    
+        
     
 }
 
