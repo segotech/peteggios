@@ -181,7 +181,7 @@
 
 - (IBAction)dateTimePicker:(UIDatePicker *)sender {
     
-    
+    /*
     NSDate*selected = [self.timeSelect date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -190,6 +190,7 @@
                  destDateString];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"日期和时间" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
           [alert show];
+     */
     
      
     

@@ -12,8 +12,8 @@
 #import "AppDelegate+Sephone.h"
 #import "IQKeyboardManager.h"
 #import <CoreTelephony/CTCallCenter.h>
-
-@interface AppDelegate ()
+#import "PopStartView.h"
+@interface AppDelegate ()<GetScrollVDelegate>
 
 //@property (nonatomic, strong) CTCallCenter * center;
 @end
@@ -30,10 +30,27 @@
     [[IQKeyboardManager sharedManager]setShouldResignOnTouchOutside:YES];
     //影藏键盘上的自定义工具栏
     [[IQKeyboardManager sharedManager]setEnableAutoToolbar:NO];
+        
+//     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+//    if (![[userdefaults objectForKey:@"STARTFLAG"] isEqualToString:@"1"]) {//第一次启动软件
+//        
+//        [userdefaults setObject:@"1" forKey:@"STARTFLAG"];
+//        [userdefaults synchronize];
+//        PopStartView *popStartV = [[PopStartView alloc]initWithFrame:self.window.bounds];
+//        popStartV.delegate = self;
+//        popStartV.ParentView = self.window;
+//        [self.window addSubview:popStartV];
+//        
+//    }else {//不是第一次启动软件
     
+        //初始化启动流程
+        [self launcherApplication:application didFinishLaunchingWithOptions:launchOptions];
+
+    //}
+
     //初始化分享
-    [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
     
+    [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
     //初始化启动流程
     [self launcherApplication:application didFinishLaunchingWithOptions:launchOptions];
     [self initSephoneVoip:application didFinishLaunchingWithOptions:launchOptions];
@@ -41,6 +58,17 @@
     
     return YES;
 }
+
+
+
+//代理函数
+- (void)getScrollV:(NSString *)popScroll
+{
+    
+    
+    
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     
