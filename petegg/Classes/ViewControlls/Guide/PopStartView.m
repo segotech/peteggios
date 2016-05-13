@@ -26,7 +26,7 @@
         _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width-100)/2, [UIScreen mainScreen].bounds.size.height-90, 100, 60)];
         [self addSubview:_pageControl];
         
-        _PicArray = @[@"引导页ok.png",@"引导页ok-3.png"];
+        _PicArray = @[@"guide1.jpg",@"guide2.jpg",@"guide3.jpg"];
         _pageControl.numberOfPages = _PicArray.count;
         _pageControl.currentPage = 0;
         _pageControl.pageIndicatorTintColor = [[UIColor blackColor] colorWithAlphaComponent: 0.3f];

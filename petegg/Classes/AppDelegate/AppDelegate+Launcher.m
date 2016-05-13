@@ -9,8 +9,9 @@
 #import "AppDelegate+Launcher.h"
 #import "OtherEggViewController.h"
 #import "EggViewController.h"
+#import "PopStartView.h"
 
-@interface AppDelegate()
+@interface AppDelegate()<GetScrollVDelegate>
 
 @end
 
@@ -57,9 +58,37 @@
     if (loginSuccess) {
         [self enterMainTabVC];
     }else{
-        [self enterLoginVC];
+        
+         NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+         if (![[userdefaults objectForKey:@"STARTFLAG"] isEqualToString:@"1"]) {//第一次启动软件
+         [self.window makeKeyAndVisible];
+         [userdefaults setObject:@"1" forKey:@"STARTFLAG"];
+         [userdefaults synchronize];
+         PopStartView *popStartV = [[PopStartView alloc]initWithFrame:self.window.bounds];
+         popStartV.delegate = self;
+         popStartV.ParentView = self.window;
+        [self.window addSubview:popStartV];
+         
+         }else {//不是第一次启动软件
+          [self enterLoginVC];
+             
+         }
+       
+        
+        
     }
 }
+
+
+//代理函数
+- (void)getScrollV:(NSString *)popScroll
+{
+    
+    [self enterLoginVC];
+
+    
+}
+
 
 /**
  *  进入主界面
@@ -93,6 +122,10 @@
     
     [self.window makeKeyAndVisible];
 }
+
+
+
+
 
 /**
  *  粘贴快捷

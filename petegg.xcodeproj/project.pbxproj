@@ -76,6 +76,9 @@
 		3455BB4D1CAFC98E00CA0D27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3455BB4C1CAFC98E00CA0D27 /* QuartzCore.framework */; };
 		3455BB4F1CAFC99B00CA0D27 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3455BB4E1CAFC99B00CA0D27 /* Accelerate.framework */; };
 		3455BB531CAFD31200CA0D27 /* ceishi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3455BB521CAFD31200CA0D27 /* ceishi.jpg */; };
+		3466DBBB1CE5B0060023393E /* guide1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBB81CE5B0060023393E /* guide1.jpg */; };
+		3466DBBC1CE5B0060023393E /* guide2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBB91CE5B0060023393E /* guide2.jpg */; };
+		3466DBBD1CE5B0060023393E /* guide3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBBA1CE5B0060023393E /* guide3.jpg */; };
 		34813FE21CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = 34813FE11CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m */; };
 		34813FE41CC4DE50000DFE26 /* showPs.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FE31CC4DE50000DFE26 /* showPs.png */; };
 		34813FE81CC5D4EE000DFE26 /* CompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34813FE61CC5D4EE000DFE26 /* CompletionViewController.m */; };
@@ -546,6 +549,9 @@
 		3455BB4C1CAFC98E00CA0D27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3455BB4E1CAFC99B00CA0D27 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		3455BB521CAFD31200CA0D27 /* ceishi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ceishi.jpg; path = Resources/Images/ceishi.jpg; sourceTree = "<group>"; };
+		3466DBB81CE5B0060023393E /* guide1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide1.jpg; sourceTree = "<group>"; };
+		3466DBB91CE5B0060023393E /* guide2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide2.jpg; sourceTree = "<group>"; };
+		3466DBBA1CE5B0060023393E /* guide3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide3.jpg; sourceTree = "<group>"; };
 		34813FE01CC4D80F000DFE26 /* AFHttpClient+PersonAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PersonAttention.h"; sourceTree = "<group>"; };
 		34813FE11CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PersonAttention.m"; sourceTree = "<group>"; };
 		34813FE31CC4DE50000DFE26 /* showPs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showPs.png; sourceTree = "<group>"; };
@@ -1627,6 +1633,9 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				3466DBB81CE5B0060023393E /* guide1.jpg */,
+				3466DBB91CE5B0060023393E /* guide2.jpg */,
+				3466DBBA1CE5B0060023393E /* guide3.jpg */,
 				34024DE21CE5745F000E3723 /* 引导页ok-3.png */,
 				34024DE31CE5745F000E3723 /* 引导页ok.png */,
 				34024DDC1CE4930B000E3723 /* junkfoot_on.png */,
@@ -3639,6 +3648,7 @@
 				34A218311CCDFF9700ADD8FF /* speaker.png in Resources */,
 				344F02E41CA3EA0B0076CE62 /* while_good.png in Resources */,
 				57666FC11C96979F00A52DBA /* tab_rank_normal@3x.png in Resources */,
+				3466DBBB1CE5B0060023393E /* guide1.jpg in Resources */,
 				34144BD71CBFB1B3007C4498 /* MessageTableViewCell.xib in Resources */,
 				3481B3A61CBCB4A400A4344D /* selecting.png in Resources */,
 				7D825CD81CBCA4C800F4E216 /* WasCallViewController.xib in Resources */,
@@ -3770,6 +3780,7 @@
 				7DF147141CD0BB740046D726 /* delect_guize.png in Resources */,
 				34A218291CCDFF9700ADD8FF /* hold_on.png in Resources */,
 				7D3DA5BB1CA3EC43005BD38B /* 评论.png in Resources */,
+				3466DBBD1CE5B0060023393E /* guide3.jpg in Resources */,
 				34A218231CCDFF9700ADD8FF /* contact_starred.png in Resources */,
 				34D27AF01CE06BB800244333 /* 2.png in Resources */,
 				344F02BF1CA2D8CE0076CE62 /* left_off.png in Resources */,
@@ -3814,6 +3825,7 @@
 				34024DD91CE492E8000E3723 /* catchPH_on_on.png in Resources */,
 				34A2181C1CCDFF9700ADD8FF /* chat.png in Resources */,
 				34A2181B1CCDFF9700ADD8FF /* call_status_outgoing.png in Resources */,
+				3466DBBC1CE5B0060023393E /* guide2.jpg in Resources */,
 				7D825D0B1CBCA65000F4E216 /* FriendViewController.xib in Resources */,
 				344F02C71CA2D9E70076CE62 /* behand_off.png in Resources */,
 				34A2182D1CCDFF9700ADD8FF /* ok.png in Resources */,
