@@ -7,6 +7,8 @@
 //
 
 #import "CommentInputView.h"
+#import "IQKeyboardManager.h"
+#import "UIView+TapBlocks.h"
 
 #define kInputTextViewMinHeight 36
 #define kInputTextViewMaxHeight 200
@@ -55,6 +57,9 @@
     
     _fadeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     _fadeView.backgroundColor = [UIColor clearColor];
+    [_fadeView addTapGestureWithBlock:^{
+        [self.inputTextView resignFirstResponder];
+    }];
     
     // 输入框的高度和宽度
     CGFloat width = CGRectGetWidth(self.bounds) - (allButtonWidth ? allButtonWidth : (textViewLeftMargin * 2));
@@ -153,6 +158,7 @@
 }
 
 -(void)showWithSendCommentBlock:(void(^)(NSString *text))sendCommentBlock{
+    [[IQKeyboardManager sharedManager] setEnable:NO];
     
     self.sendCommentBlock = sendCommentBlock;
     self.hidden = NO;
@@ -162,6 +168,7 @@
 }
 
 - (void)hide{
+    [[IQKeyboardManager sharedManager] setEnable:YES];
     _inputTextView.text = @"";
     self.height = [CommentInputView defaultHeight];
     _previousTextViewContentHeight = [self getTextViewContentH:_inputTextView];
