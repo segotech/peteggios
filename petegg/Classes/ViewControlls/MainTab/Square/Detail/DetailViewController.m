@@ -21,6 +21,7 @@
 #import "MWPhotoBrowser.h"
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "ReportViewController.h"
 @interface DetailViewController()<MWPhotoBrowserDelegate>
 {
@@ -113,7 +114,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
             
             if ([self.detailModel.type isEqualToString:@"pv"]|| [self.detailModel.type isEqualToString:@"v"]) {
                 self.isVideo = YES;
-                self.resourcesArray = [NSMutableArray arrayWithObject:self.detailModel.resources];
+                self.resourcesArray = [NSMutableArray arrayWithObject:self.detailModel.thumbnails];
             }else{
                 
                 self.isVideo = NO;
@@ -639,12 +640,11 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
             if (self.isVideo) {
                 
                 //TODO 视频播放
-                
-                
-                NSLog(@"haha");
-                
-                
-                
+                MPMoviePlayerViewController * vc = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:self.detailModel.resources]];
+                AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+                NSError *err = nil;
+                [audioSession setCategory :AVAudioSessionCategoryPlayback error:&err];
+                [self presentMoviePlayerViewControllerAnimated:vc];
             }else{
                 MWPhotoBrowser *browser=[[MWPhotoBrowser alloc]initWithDelegate:self];
                 browser.displayActionButton = YES;
