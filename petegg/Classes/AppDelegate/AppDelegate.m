@@ -30,30 +30,38 @@
     [[IQKeyboardManager sharedManager]setShouldResignOnTouchOutside:YES];
     //影藏键盘上的自定义工具栏
     [[IQKeyboardManager sharedManager]setEnableAutoToolbar:NO];
+    
+   // self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+   //  self.window.rootViewController = [UIViewController new];
+   //  [self.window makeKeyAndVisible];
+    
+    /*
+      NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+     if (![[userdefaults objectForKey:@"STARTFLAG"] isEqualToString:@"1"]) {//第一次启动软件
         
-//     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-//    if (![[userdefaults objectForKey:@"STARTFLAG"] isEqualToString:@"1"]) {//第一次启动软件
-//        
-//        [userdefaults setObject:@"1" forKey:@"STARTFLAG"];
-//        [userdefaults synchronize];
-//        PopStartView *popStartV = [[PopStartView alloc]initWithFrame:self.window.bounds];
-//        popStartV.delegate = self;
-//        popStartV.ParentView = self.window;
-//        [self.window addSubview:popStartV];
-//        
-//    }else {//不是第一次启动软件
+        [userdefaults setObject:@"1" forKey:@"STARTFLAG"];
+        [userdefaults synchronize];
+        PopStartView *popStartV = [[PopStartView alloc]initWithFrame:self.window.bounds];
+        popStartV.delegate = self;
+        popStartV.ParentView = self.window;
+        [self.window addSubview:popStartV];
+        
+    }else {//不是第一次启动软件
     
         //初始化启动流程
-        [self launcherApplication:application didFinishLaunchingWithOptions:launchOptions];
+       // [self launcherApplication:application didFinishLaunchingWithOptions:launchOptions];
 
-    //}
+    }
+     */
 
     //初始化分享
-    
     [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
     //初始化启动流程
     [self launcherApplication:application didFinishLaunchingWithOptions:launchOptions];
     [self initSephoneVoip:application didFinishLaunchingWithOptions:launchOptions];
+    
+
+   
     
     
     return YES;
@@ -78,6 +86,7 @@
     
     
 }
+
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
