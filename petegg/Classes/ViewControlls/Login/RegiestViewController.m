@@ -207,6 +207,7 @@
 - (void)registBtn:(UIButton *)sender
 {
     
+
    
      UITextField * text =  (UITextField *)[self.view viewWithTag:33];
      UITextField * text1 =  (UITextField *)[self.view viewWithTag:34];
@@ -261,8 +262,7 @@
     } failure:^(NSError *error) {
     }];
 
-    
-    
+
     
 }
 
