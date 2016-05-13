@@ -300,9 +300,9 @@
         
             [cell.twotwoImage sd_setImageWithURL:[NSURL URLWithString:array[1]] placeholderImage:[UIImage imageNamed:@"默认头像2副本.png"]];
         
-         UITapGestureRecognizer *tapIcon = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapIcon:)];
-         cell.twoOneImage.userInteractionEnabled = YES;
-         [cell.twotwoImage addGestureRecognizer:tapIcon];
+           UITapGestureRecognizer *tapIcon = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapIcon:)];
+           cell.twoOneImage.userInteractionEnabled = YES;
+           [cell.twoOneImage addGestureRecognizer:tapIcon];
 
 
         

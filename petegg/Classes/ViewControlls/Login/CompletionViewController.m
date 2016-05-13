@@ -17,6 +17,8 @@
     NSUInteger sourceType;
     
     NSString * birstyStr;
+    BOOL isHand;
+    
     
     
     
@@ -131,7 +133,7 @@
     [dicc setValue:picstr forKey:@"picture"];
     NSString * str = @"clientAction.do?common=modifyHeadportrait&classes=appinterface&method=json";
     [AFNetWorking postWithApi:str parameters:dicc success:^(id json) {
-        
+        isHand = YES;
         
     } failure:^(NSError *error) {
         
@@ -215,8 +217,11 @@
 - (IBAction)overBtn:(UIButton *)sender {
     
     
-    self.birthdayBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    self.birthdayBtn.titleEdgeInsets = UIEdgeInsetsMake(-50, -50, -50, -50);
+    if (!isHand) {
+        
+        [self showSuccessHudWithHint:@"请选择头像"];
+    }else
+    {
     [self.birthdayBtn setTitle:birstyStr forState:UIControlStateNormal];
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=writeData";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
@@ -230,12 +235,12 @@
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
-        
-        
+    
         
     } failure:^(NSError *error) {
     }];
 
+    }
     
 }
 
