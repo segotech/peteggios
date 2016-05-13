@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="backBtn" destination="l3X-9d-Ejb" id="sRb-Iu-c5s"/>
                 <outlet property="backImageView" destination="MPj-yo-ux3" id="cQk-SR-Fjv"/>
+                <outlet property="flowerUI" destination="vgc-Mt-UnQ" id="31b-5e-Myo"/>
                 <outlet property="penSd" destination="Q5j-tu-GLJ" id="ekr-sW-ajx"/>
                 <outlet property="pointView" destination="ezY-K0-WOh" id="Aq2-Fk-65r"/>
                 <outlet property="statsView" destination="EgM-iQ-nrP" id="1Jz-Fk-H9v"/>

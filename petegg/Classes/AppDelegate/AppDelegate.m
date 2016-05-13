@@ -12,6 +12,9 @@
 #import "AppDelegate+Sephone.h"
 #import "IQKeyboardManager.h"
 #import <CoreTelephony/CTCallCenter.h>
+#import "WeiboSDK.h"
+
+
 
 @interface AppDelegate ()
 

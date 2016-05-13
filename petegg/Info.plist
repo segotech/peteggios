@@ -48,18 +48,28 @@
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>weibosdk</string>
 		<string>sinaweibohd</string>
+		<string>sinaweibo</string>
+		<string>sinaweibohdsso</string>
+		<string>sinaweibosso</string>
+		<string>weibosdk2.5</string>
+		<string>mqqopensdkapiV3</string>
+		<string>mqzoneopensdk</string>
+		<string>mqzoneopensdkapi</string>
+		<string>mqzoneopensdkapi19</string>
+		<string>mqzoneopensdkapiV2</string>
+		<string>mqzone</string>
 		<string>mqqapi</string>
 		<string>mqq</string>
-		<string>sinaweibo</string>
+		<string>mqzonev2</string>
+		<string>mqzoneshare</string>
 		<string>weixin</string>
 		<string>wechat</string>
-		<string>mqzone</string>
+		<string>wtloginmqq</string>
 		<string>wtloginmqq2</string>
 		<string>mqqbrowser</string>
-		<string>mqqopensdkapiV2</string>
-		<string>mqqopensdkapiV3</string>
+		<string>weibosdk</string>
+		<string>mttbrowser</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
