@@ -10,7 +10,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 
-@interface FunnyCodeViewController ()
+@interface FunnyCodeViewController ()<UITextFieldDelegate>
 {
     
     UIButton * _bigButton;
@@ -30,11 +30,15 @@
 @end
 
 @implementation FunnyCodeViewController
+@synthesize ceishi;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-
+    
+    ceishi.delegate = self;
+   
     self.view.backgroundColor =[UIColor whiteColor];
     [self setNavTitle: NSLocalizedString(@"funTitle", nil)];
     
@@ -105,8 +109,19 @@
                                   cancelButtonTitle:@"确定"
                                   otherButtonTitles:nil];
              [alertView show];
-         [[[UIApplication sharedApplication] keyWindow] resignFirstResponder];
-               
+               [ceishi becomeFirstResponder];
+
+//               NSLog(@"22222");
+//               __weak FunnyCodeViewController *weakSelf = self;
+//               dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0/*延迟执行时间*/ * NSEC_PER_SEC));
+//               
+//            
+//               
+//               dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+//                   
+//                  
+//                   [weakSelf yanchi];
+//               });
              break;
            }
            case SSDKResponseStateFail: {
@@ -129,6 +144,12 @@
       
   }
 }
+
+
+
+   
+
+
 /**
  *
  * 生成逗码
@@ -391,5 +412,12 @@
     //
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+    
+}
 
 @end

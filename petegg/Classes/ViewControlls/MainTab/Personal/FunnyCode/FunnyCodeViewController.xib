@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FunnyCodeViewController">
             <connections>
+                <outlet property="ceishi" destination="WEH-hx-2ib" id="Nfq-sX-6iH"/>
                 <outlet property="onFunCodeBtn" destination="Q7j-gv-t2F" id="obk-xw-2iA"/>
                 <outlet property="onFunfood" destination="NIc-Tq-IvU" id="tQO-UE-xlQ"/>
                 <outlet property="onFunprice" destination="b8w-2K-N7R" id="Hex-Yi-Z8C"/>
@@ -172,6 +173,12 @@
                         <action selector="productMycode:" destination="-1" eventType="touchUpInside" id="Phy-Cf-2Zm"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WEH-hx-2ib">
+                    <rect key="frame" x="298" y="85" width="1" height="1"/>
+                    <color key="textColor" red="0.8960306187" green="0.8960306187" blue="0.8960306187" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

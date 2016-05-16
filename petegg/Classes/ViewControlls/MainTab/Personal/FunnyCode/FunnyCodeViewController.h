@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *onFunfood;
 @property (strong, nonatomic) IBOutlet UILabel *onFuntime;
 @property (strong, nonatomic) IBOutlet UIButton *onFunCodeBtn;
+@property (strong, nonatomic) IBOutlet UITextField *ceishi;
 
 
 @end
