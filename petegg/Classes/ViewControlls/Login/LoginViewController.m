@@ -11,7 +11,8 @@
 #import "AFHttpClient+Account.h"
 #import "RegiestViewController.h"
 #import "ReDataViewController.h"
-
+#import "LoginModel.h"
+#import "CompletionViewController.h"
 @interface LoginViewController()<UITextFieldDelegate>
 @property (nonatomic,strong)UIButton * loginButton;
 @property (nonatomic,strong)UITextField * accountTextField;
@@ -128,24 +129,35 @@
 
 -(void)loginTouch{
     NSLog(@"登录");
-
-
+    if ([AppUtil isBlankString:self.accountTextField.text]) {
+        [[AppUtil appTopViewController] showHint:@"请输入帐号"];
+        return;
+    }
+    if ([AppUtil isBlankString:self.passwordTextField.text]) {
+        [[AppUtil appTopViewController] showHint:@"请输入密码"];
+        return;
+        
+    }
     [self showHudInView:self.view hint:@"正在登录..."];
     [[AFHttpClient sharedAFHttpClient]loginWithUserName:self.accountTextField.text password:self.passwordTextField.text complete:^(BaseModel *model) {
         if ([model.retCode isEqualToString:@"0000"]) {
             [[AppUtil appTopViewController] showHint:model.retDesc];
-            
+            NSMutableArray * listAry = [[NSMutableArray alloc]init];
+            [listAry addObjectsFromArray:model.list];
+            LoginModel * model1 = listAry[0];
+            if ([AppUtil isBlankString:model1.headportrait]) {
+                 [[AppUtil appTopViewController] showHint:@"请补全个人信息哦"];
+                CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
+                compleVC.mid = model1.mid;
+                [self.navigationController pushViewController:compleVC animated:YES];
+            }else{
             [[AccountManager sharedAccountManager] login:model.list[0]];
-            
-           
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
-            
-         
-            
+            }
            [self hideHud];
         }else{
             [self hideHud];
-           // [[AppUtil appTopViewController] showHint:model.retDesc];
+        
         }
         
         

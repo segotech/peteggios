@@ -350,7 +350,7 @@
 
 - (void)saveCapture {
     [_player pause];
-    
+    [self showHudInView:self.view hint:@"正在上传..."];
     void(^completionHandler)(NSURL *url, NSError *error) = ^(NSURL *url, NSError *error) {
         if (error == nil) {
             [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -367,7 +367,7 @@
             weVc.urlstr = url;
             weVc.wechatOrziyuanku = @"wechat";
             [self.navigationController pushViewController:weVc animated:YES];
-            
+            [self hideHud];
         } else {
             self.progressHUD.labelText = [NSString stringWithFormat:@"上传失败，请重新录取\n%@", error.localizedDescription];
             self.progressHUD.mode = MBProgressHUDModeCustomView;
@@ -388,9 +388,9 @@
     exportSession.outputFileType = AVFileTypeAppleM4V;
     exportSession.delegate = self;
     
-    self.progressHUD = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-    self.progressHUD.delegate = self;
-    self.progressHUD.mode = MBProgressHUDModeDeterminate;
+//    self.progressHUD = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+//    self.progressHUD.delegate = self;
+//    self.progressHUD.mode = MBProgressHUDModeIndeterminate;
     
     CFTimeInterval time = CACurrentMediaTime();
     [exportSession exportAsynchronouslyWithCompletionHandler:^{

@@ -85,7 +85,7 @@ static NSString * cellId = @"ranksCellIddddddd";
     RankModel * model = self.dataSource[0];
     PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
     personVc.ddddd = model.mid;
-    [self.navigationController pushViewController:personVc animated:YES];
+    [self.navigationController pushViewController:personVc animated:NO];
     
 }
 
@@ -168,7 +168,7 @@ static NSString * cellId = @"ranksCellIddddddd";
     RankModel * model = self.dataSource[i + 1];
     PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
     personVc.ddddd = model.mid;
-    [self.navigationController pushViewController:personVc animated:YES];
+    [self.navigationController pushViewController:personVc animated:NO];
     
 }
 @end

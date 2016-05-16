@@ -26,7 +26,7 @@
 }
 -(void)setupView{
     [super setupView];
-    [self setNavTitle:@"发布"];
+    [self setNavTitle:@"发布萌宠秀"];
     [self showBarButton:NAV_RIGHT title:@"发布" fontColor:[UIColor blackColor]];
     self.view.backgroundColor = LIGHT_GRAY_COLOR;
 
@@ -101,7 +101,7 @@
     [[AFHttpClient sharedAFHttpClient]addSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid content:_topTextView.text type:@"s" resources:str complete:^(BaseModel *model) {
         [self hideHud];
         if ([model.retCode isEqualToString:@"0000"]) {
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
     }];
@@ -130,7 +130,7 @@
     [[AFHttpClient sharedAFHttpClient]addSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid content:_topTextView.text type:@"v" resources:resoucesstr complete:^(BaseModel *model) {
         [self hideHud];
         if ([model.retCode isEqualToString:@"0000"]) {
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
     }];
@@ -144,7 +144,7 @@
     [[AFHttpClient sharedAFHttpClient]addSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid content:_topTextView.text type:@"pv" resources:resouceStr complete:^(BaseModel *model) {
         [self hideHud];
         if ([model.retCode isEqualToString:@"0000"]) {
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
     }];

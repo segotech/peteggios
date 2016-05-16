@@ -14,8 +14,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _backView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Wide_Zoom, 375 * W_Wide_Zoom, 65 * W_Wide_Zoom)];
-        _backView.backgroundColor = [UIColor yellowColor];
-        _backView.alpha = 0.1;
+        _backView.backgroundColor = [UIColor colorWithRed:246/255.0 green:244/255.0 blue:241/255.0 alpha:1];
+       // _backView.alpha = 0.1;
         [self addSubview:_backView];
         
         _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 64.5 * W_Hight_Zoom, 355 * W_Wide_Zoom, 0.5 * W_Hight_Zoom)];

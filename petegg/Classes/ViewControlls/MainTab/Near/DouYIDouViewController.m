@@ -130,7 +130,7 @@ static NSString * cellId = @"douyidouCellId";
     NSString * mid = model.mid;
     PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
     personVc.ddddd = mid;
-    [self.navigationController pushViewController:personVc animated:YES];
+    [self.navigationController pushViewController:personVc animated:NO];
     
 
 }

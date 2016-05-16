@@ -128,7 +128,7 @@ static NSString * cellId = @"personNewAttentionTableViewCellidddd";
     NearbyModel * model = self.dataSource[i];
     PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
     personVc.ddddd = model.mid;
-    [self.navigationController pushViewController:personVc animated:YES];
+    [self.navigationController pushViewController:personVc animated:NO];
     
 }
 

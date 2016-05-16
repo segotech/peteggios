@@ -95,7 +95,7 @@
             [userDefatluts removeObjectForKey:key];
             [userDefatluts synchronize];
         }
-
+        [userDefatluts setObject:@"1" forKey:@"STARTFLAG"];
 
     }]];
     
