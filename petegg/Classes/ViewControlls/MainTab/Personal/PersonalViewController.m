@@ -91,20 +91,27 @@
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-            
-            json = json[@"jsondata"][@"list"][0];
-            [_heandBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:json[@"headportrait"]]]] forState:UIControlStateNormal];
-            [self showLB:500 string:json[@"sprouts"]];
-            [self showLB:501 string:json[@"gz"]];
-            [self showLB:502 string:json[@"fs"]];
-            [self showLB:503 string:json[@"praises"]];
-            _nameLabel.text = json[@"nickname"];
+            NSArray * jsondata = json[@"jsondata"][@"list"];
+            if (jsondata.count > 0 ) {
+                [_heandBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:jsondata[0][@"headportrait"]]]] forState:UIControlStateNormal];
+                [self showLB:500 string:jsondata[0][@"sprouts"]];
+                [self showLB:501 string:jsondata[0][@"gz"]];
+                [self showLB:502 string:jsondata[0][@"fs"]];
+                [self showLB:503 string:jsondata[0][@"praises"]];
+                _nameLabel.text = jsondata[0][@"nickname"];
+                
+                
+                cachedImage =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:jsondata[0][@"headportrait"]]]];
+                bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
+                [self hideHud];
 
-    
-            cachedImage =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:json[@"headportrait"]]]];
-            bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
-            [self hideHud];
-        }
+            }else{
+                
+                [self hideHud];
+            }
+            
+
+    }
         
     } failure:^(NSError *error) {
         [self hideHud];

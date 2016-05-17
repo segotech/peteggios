@@ -21,7 +21,7 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@",[AppUtil getServerTest],api];
     
-
+    
     [manger POST:url parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (success) {
             success(responseObject);
