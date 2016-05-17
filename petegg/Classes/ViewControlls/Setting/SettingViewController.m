@@ -118,45 +118,68 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
  */
 - (void)doUnbindRequest {
     // 格式化参数。
-    NSString *mid = [AccountManager sharedAccountManager].loginModel.mid;
-    if ([AppUtil isBlankString:mid]) {
-        return;
-    }
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:mid forKey:@"mid"];
-
-    NSString *service = [AppUtil getServerSego3];
-    service = [service stringByAppendingString:@"clientAction.do?common=delDevice&classes=appinterface&method=json"];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-
-    // 创建进度提示窗。
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"正在解除绑定设备，请等待...";
-
-    // 执行http请求。
-    [manager POST:service
-        parameters:params
-        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"JSON: %@", responseObject);
-            [hud hide:YES];
-
-            // 解析执行结果。
-            NSDictionary *result = [responseObject objectForKey:@"jsondata"];
-            if ([[result objectForKey:@"retCode"] isEqualToString:@"0000"]) {
-                // 清除设备号。
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_DEVICE_NUMBER];
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_WIFI_CONFIGURED];
-                [AccountManager sharedAccountManager].loginModel.deviceno = @"";
-                // 更新界面状态。
-                [self updateUI:@"搜索设备" State:false];
-            }
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定要停用自动喂食吗？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+       
+        
+        NSString *mid = [AccountManager sharedAccountManager].loginModel.mid;
+        if ([AppUtil isBlankString:mid]) {
+            return;
         }
-        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Unbind device failed: %@", error);
-            [self showWarningTip:@"执行失败，请检查网络是否正常"];
-        }];
-}
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        [params setValue:mid forKey:@"mid"];
+        
+        NSString *service = [AppUtil getServerSego3];
+        service = [service stringByAppendingString:@"clientAction.do?common=delDevice&classes=appinterface&method=json"];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+        
+        // 创建进度提示窗。
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"正在解除绑定设备，请等待...";
+        
+        // 执行http请求。
+        [manager POST:service
+           parameters:params
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  NSLog(@"JSON: %@", responseObject);
+                  [hud hide:YES];
+                  
+                  // 解析执行结果。
+                  NSDictionary *result = [responseObject objectForKey:@"jsondata"];
+                  if ([[result objectForKey:@"retCode"] isEqualToString:@"0000"]) {
+                      // 清除设备号。
+                      [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_DEVICE_NUMBER];
+                      [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_WIFI_CONFIGURED];
+                      [AccountManager sharedAccountManager].loginModel.deviceno = @"";
+                      // 更新界面状态。
+                      [self updateUI:@"搜索设备" State:false];
+                  }
+              }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  NSLog(@"Unbind device failed: %@", error);
+                  [self showWarningTip:@"执行失败，请检查网络是否正常"];
+              }];
+
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ }
 
 /**
  *  绑定/解除绑定设备
