@@ -101,7 +101,7 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     [self.view addSubview:hud];
     [hud show:YES];
     [self setHUD:hud];
-    [hud hide:YES afterDelay:2];
+    [hud hide:YES afterDelay:3];
 }
 
 - (void)showMessageWarring:(NSString *)message view:(UIView *)view

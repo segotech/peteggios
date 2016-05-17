@@ -82,7 +82,7 @@
 {
     
   // 1、创建分享参数
-  NSArray *imageArray = @[ [UIImage imageNamed:@"sego1.png"] ];
+  NSArray *imageArray = @[ [UIImage imageNamed:@"segoColor.jpg"] ];
   //（注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数
 
     

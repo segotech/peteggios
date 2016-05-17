@@ -259,7 +259,7 @@
     [self.view addSubview:_headView];
     
     // 头像
-    _heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(_headView.center.x-40, self.view.origin.y+30, 80, 80)];
+    _heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(_headView.center.x-40*W_Wide_Zoom, self.view.origin.y+30*W_Hight_Zoom, 80, 80)];
     [_heandBtn.layer setMasksToBounds:YES];
     [_heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
     _heandBtn.userInteractionEnabled = YES;
@@ -269,9 +269,9 @@
     /**
         点赞  名字
      */
-    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 20)];
+    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200*W_Wide_Zoom, 20*W_Hight_Zoom)];
     _nameLabel.text = @"";
-    _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+90);
+    _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+90*W_Hight_Zoom);
     _nameLabel.font = [UIFont systemFontOfSize:15];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.textColor = [UIColor whiteColor];
@@ -284,20 +284,20 @@
     NSArray * arrName =@[@"帖子",@"关注",@"粉丝",@"点赞"];
     
     for (NSInteger i = 0;i<4; i++) {
-        UILabel * numLb =[[UILabel alloc]initWithFrame:CGRectMake(46+i*70, _heandBtn.frame.origin.y+110, 80, 20)];
+        UILabel * numLb =[[UILabel alloc]initWithFrame:CGRectMake(46+i*70*W_Hight_Zoom, _heandBtn.frame.origin.y+110*W_Hight_Zoom, 80*W_Wide_Zoom, 20*W_Hight_Zoom)];
         numLb.tag = 500+i;
         numLb.textAlignment = NSTextAlignmentCenter;
         numLb.textColor =[UIColor whiteColor];
         numLb.text =@"1000";
         numLb.font =[UIFont boldSystemFontOfSize:10.0f];
         
-        UILabel * wordLb =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
-        wordLb.center = CGPointMake(numLb.center.x+30, numLb.frame.origin.y+25);
+        UILabel * wordLb =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80*W_Wide_Zoom, 20*W_Hight_Zoom)];
+        wordLb.center = CGPointMake(numLb.center.x+30*W_Wide_Zoom, numLb.frame.origin.y+25*W_Hight_Zoom);
         wordLb.text =arrName[i];
         wordLb.textColor =[UIColor whiteColor];
         wordLb.font =[UIFont boldSystemFontOfSize:10.0f];
         if (i<3) {
-            UILabel * lineLB =[[UILabel alloc]initWithFrame:CGRectMake(119 +i*70, _heandBtn.frame.origin.y+120, 1.5, 20)];
+            UILabel * lineLB =[[UILabel alloc]initWithFrame:CGRectMake(119*W_Wide_Zoom +i*70, _heandBtn.frame.origin.y+120*W_Hight_Zoom, 1.5, 20)];
             lineLB.backgroundColor =[UIColor whiteColor];
             [_headView addSubview:lineLB];
         }
