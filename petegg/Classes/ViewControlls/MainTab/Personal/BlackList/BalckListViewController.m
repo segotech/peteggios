@@ -34,8 +34,11 @@ static NSString * cellId = @"balack12232132131";
 -(void)setupData{
     [super setupData];
     [[AFHttpClient sharedAFHttpClient]queryBlacklistWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
-        [self.dataSource addObjectsFromArray:model.list];
-        [self.tableView reloadData];
+        if (model) {
+            [self.dataSource addObjectsFromArray:model.list];
+            [self.tableView reloadData];
+        }
+        
     }];
 
 }

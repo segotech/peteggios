@@ -15,7 +15,9 @@
 @end
 
 @implementation ReDataViewController
-
+{
+     NSString * totalrecords;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -151,6 +153,14 @@
         [[AppUtil appTopViewController] showHint:@"请输入正确的验证码"];
         return;
     }
+    
+    if (![text.text isEqualToString:totalrecords]) {
+        [[AppUtil appTopViewController] showHint:@"手机号码错误"];
+        return;
+    }
+
+    
+    
     [self showHudInView:self.view hint:@"正在修改..."];
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=forgetPassword";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
@@ -238,6 +248,7 @@
         
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             _registCode =json[@"jsondata"][@"content"];
+            totalrecords = json[@"jsondata"][@"totalrecords"];
             [self timeOut];
         }else{
             [[AppUtil appTopViewController] showHint:json[@"jsondata"][@"retDesc"]];

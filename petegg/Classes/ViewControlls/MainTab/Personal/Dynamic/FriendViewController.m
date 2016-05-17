@@ -81,7 +81,7 @@
         
     }
 
-    headImageView.image =[UIImage imageNamed:@"DouYiDou.png"];
+    headImageView.image =[UIImage imageNamed:@"sego1.png"];
     [headImageView.layer setMasksToBounds:YES];
     [headImageView.layer setCornerRadius:30.0]; //设置矩形四个圆角半径
     headImageView.userInteractionEnabled  = YES;
@@ -137,7 +137,7 @@
 
         json = [json objectForKey:@"jsondata"] ;
         NSArray * arrStr =[json[@"content"] componentsSeparatedByString:@","];
-        [headImageView sd_setImageWithURL:[NSURL URLWithString:arrStr[0]] placeholderImage:[UIImage imageNamed:@"DouYiDou.png"]];
+        [headImageView sd_setImageWithURL:[NSURL URLWithString:arrStr[0]] placeholderImage:[UIImage imageNamed:@"sego1.png"]];
           nameLabel.text = arrStr[1];
         
         NSArray *array = [json objectForKey:@"list"];

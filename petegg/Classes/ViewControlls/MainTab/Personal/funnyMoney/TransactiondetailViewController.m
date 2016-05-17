@@ -34,8 +34,11 @@ static NSString * cellId = @"transactiondetailcellidd";
 -(void)setupData{
     [super setupData];
     [[AFHttpClient sharedAFHttpClient]getTransactionRecordWithMid:[AccountManager sharedAccountManager].loginModel.mid  complete:^(BaseModel *model) {
-        [self.dataSource addObjectsFromArray:model.list];
-        [self.tableView reloadData];
+        if (model) {
+            [self.dataSource addObjectsFromArray:model.list];
+            [self.tableView reloadData];
+        }
+     
 
     }];
 }

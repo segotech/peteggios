@@ -64,7 +64,7 @@
  */
 - (void)handleSingleTapFrom:(UITapGestureRecognizer *)tap
 {
-    [_nameTextF resignFirstResponder];
+    
     UIAlertController *sheet;
     //判断是否支持相机
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])

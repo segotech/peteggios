@@ -13,6 +13,7 @@
 {
     
     NSString * registCode;
+    NSString * totalrecords;
     
 }
 @property (nonatomic,strong)UITextField * textFieldes;
@@ -212,6 +213,12 @@
         return;
     }
     
+    if (![text.text isEqualToString:totalrecords]) {
+        [[AppUtil appTopViewController] showHint:@"手机号码错误"];
+        return;
+    }
+
+    
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=memberRegister";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:text.text forKey:@"phone"];
@@ -283,18 +290,21 @@
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-             registCode =json[@"jsondata"][@"content"];
+            registCode =json[@"jsondata"][@"content"];
+            totalrecords = json[@"jsondata"][@"totalrecords"];
              [self timeout];
-        }
-        if ([json[@"jsondata"][@"retDesc"] isEqualToString:@"此手机号码已注册"]) {
+        }else{
             NSString * str =[NSString stringWithFormat:@"%@",json[@"jsondata"][@"retDesc"]];
             UIButton * btn =  (UIButton *)[self.view viewWithTag:10000];
             btn.enabled = NO;
-    
-            [self showSuccessHudWithHint:str];
-
+             [[AppUtil appTopViewController] showHint:str];
+           // [self showSuccessHudWithHint:str];
             
         }
+//        if ([json[@"jsondata"][@"retDesc"] isEqualToString:@"此手机号码已注册"]) {
+//          
+//            
+//        }
           } failure:^(NSError *error) {
     }];
     

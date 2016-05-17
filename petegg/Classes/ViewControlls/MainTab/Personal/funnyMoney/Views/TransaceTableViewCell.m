@@ -13,7 +13,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _runAccoun = [[UILabel alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 5 * W_Hight_Zoom, 50 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+        _runAccoun = [[UILabel alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 10 * W_Hight_Zoom, 50 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
         _runAccoun.textColor = [UIColor blackColor];
         _runAccoun.text = @"消费";
         _runAccoun.font = [UIFont systemFontOfSize:13];
@@ -33,14 +33,15 @@
         _money.font = [UIFont systemFontOfSize:11];
         [self addSubview:_money];
         
-        _runAccounNumber  = [[UILabel alloc]initWithFrame:CGRectMake(285 * W_Wide_Zoom, 10 * W_Hight_Zoom, 50 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+        _runAccounNumber  = [[UILabel alloc]initWithFrame:CGRectMake(300 * W_Wide_Zoom, 12 * W_Hight_Zoom, 100 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
         _runAccounNumber.text = @"+50";
         _runAccounNumber.textColor = [UIColor greenColor];
+        _runAccounNumber.textAlignment = NSTextAlignmentCenter;
         _runAccounNumber.font = [UIFont systemFontOfSize:11];
         [self addSubview:_runAccounNumber];
         
         
-        _data = [[UILabel alloc]initWithFrame:CGRectMake(200 * W_Wide_Zoom, 37 * W_Hight_Zoom, 120 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+        _data = [[UILabel alloc]initWithFrame:CGRectMake(270 * W_Wide_Zoom, 37 * W_Hight_Zoom, 120 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
         _data.text = @"2015-10-09 16:48";
         _data.textColor = [UIColor grayColor];
         _data.font = [UIFont systemFontOfSize:10];

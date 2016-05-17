@@ -41,7 +41,7 @@
     UIImage * cachedImage;
     
     
-    
+    BOOL isJiazai;
 }
 
 @end
@@ -51,6 +51,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self selfDataHand];
+    isJiazai = NO;
     self.view.backgroundColor =[UIColor whiteColor];
     redpoint = NO;
     dongtai = NO;
@@ -94,6 +95,7 @@
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             NSArray * jsondata = json[@"jsondata"][@"list"];
             if (jsondata.count > 0 ) {
+               
                 [_heandBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:jsondata[0][@"headportrait"]]]] forState:UIControlStateNormal];
                 [self showLB:500 string:jsondata[0][@"sprouts"]];
                 [self showLB:501 string:jsondata[0][@"gz"]];
@@ -101,24 +103,21 @@
                 [self showLB:503 string:jsondata[0][@"praises"]];
                 _nameLabel.text = jsondata[0][@"nickname"];
                 
-                
+    
                 cachedImage =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:jsondata[0][@"headportrait"]]]];
                 bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
                 [self hideHud];
-
+                 isJiazai = YES;
             }else{
                 
                 [self hideHud];
             }
-            
-
+        
     }
         
     } failure:^(NSError *error) {
         [self hideHud];
     }];
-    
-
     
 }
 
@@ -329,6 +328,7 @@
 // 头像点击
 - (void)headBtnClick:(UIButton *)sender
 {
+    
     PersonInformationViewController * personinforVc = [[PersonInformationViewController alloc]init];
     [self.navigationController pushViewController:personinforVc animated:YES];
     
@@ -339,10 +339,12 @@
 // 关于sego
 - (void)doRightButtonTouch
 {
-    
-
-    ThreePointsViewController * threepointVc = [[ThreePointsViewController alloc]init];
-    [self.navigationController pushViewController:threepointVc animated:YES];
+    if (isJiazai == YES) {
+        ThreePointsViewController * threepointVc = [[ThreePointsViewController alloc]init];
+        [self.navigationController pushViewController:threepointVc animated:NO];
+    }else{
+    }
+   
     
 }
 
