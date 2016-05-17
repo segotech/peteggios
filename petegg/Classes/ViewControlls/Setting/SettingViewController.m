@@ -118,7 +118,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
  */
 - (void)doUnbindRequest {
     // 格式化参数。
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定要停用自动喂食吗？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定要解除绑定吗？" preferredStyle:UIAlertControllerStyleAlert];
     
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
        

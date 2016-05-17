@@ -108,6 +108,7 @@
                     [userDefatluts removeObjectForKey:key];
                     [userDefatluts synchronize];
                 }
+                [userDefatluts setObject:@"1" forKey:@"STARTFLAG"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
                 [[AccountManager sharedAccountManager]logout];
                 
@@ -119,14 +120,8 @@
             
         }
         
-       
-
     }];
-    
-    
-    
-    
-    
+
 
 }
 
