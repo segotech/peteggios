@@ -29,6 +29,9 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
     NSTimer * timer;
     NSInteger  timeEnd;
     
+    // 错误信息
+    NSString *faileStr;
+    
 
     
 }
@@ -182,7 +185,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
     [dicc setValue: [AccountManager sharedAccountManager].loginModel.mid                forKey:@"mid"];
     [dicc setValue:strdec   forKey:@"deviceno"];
     [AFNetWorking postWithApi:str parameters:dicc success:^(id json) {
-        
+         faileStr =json[@"jsondata"][@"retdesc"];
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             [self showSuccessHudWithHint:@"绑定成功"];
             NSString * srt =json[@"jsondata"][@"content"];
@@ -197,16 +200,14 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
           
             // 返回上级页面。
             [self.navigationController popViewControllerAnimated:YES];
-           
-            
         }else
         {
             
             [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(NSError *error) {
-        
-        [self showSuccessHudWithHint:@"绑定失败"];
+    
+        [self showSuccessHudWithHint:faileStr];
         [self.navigationController popViewControllerAnimated:YES];
         
         
