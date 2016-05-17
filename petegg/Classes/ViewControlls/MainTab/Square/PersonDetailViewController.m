@@ -335,7 +335,6 @@ static NSString * cellId = @"personDetailCellId";
 //        cell.bigImage.image =[self cutImage:image];
 //    }];
     
-    
     if (model.cutImage) {
         cell.bigImage.image = model.cutImage;
     }else{
@@ -346,6 +345,7 @@ static NSString * cellId = @"personDetailCellId";
             }
         }];
     }
+    
     cell.dateLabel.text = model.publishtime;
     cell.attentionLabel.text = model.content;
     cell.pinglunLabel.text = model.comments;
