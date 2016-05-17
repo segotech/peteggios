@@ -202,6 +202,9 @@ static NSString * cellId = @"recommeCellId";
             }
         }];
     }
+    
+    
+    
     UIButton * photoViewBtn = [[UIButton alloc]initWithFrame:cell.photoView.frame];
     photoViewBtn.tag = indexPath.row + 11;
     [photoViewBtn addTarget:self action:@selector(photoButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
