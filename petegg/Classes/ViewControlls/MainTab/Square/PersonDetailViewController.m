@@ -16,7 +16,7 @@
 #import "AFHttpClient+ChangepasswordAndBlacklist.h"
 #import "DetailViewController.h"
 #import "OtherEggViewController.h"
-
+#import "UIImage-Extensions.h"
 static NSString * cellId = @"personDetailCellId";
 @interface PersonDetailViewController ()
 
@@ -330,10 +330,22 @@ static NSString * cellId = @"personDetailCellId";
 {
     PersonDataTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     DetailModel * model = self.dataSourceImage[indexPath.row];
-    [cell.bigImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        cell.bigImage.image =[self cutImage:image];
-    }];
+   
+//    [cell.bigImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        cell.bigImage.image =[self cutImage:image];
+//    }];
     
+    
+    if (model.cutImage) {
+        cell.bigImage.image = model.cutImage;
+    }else{
+        [cell.bigImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if (image) {
+                cell.bigImage.image = [image imageByScalingProportionallyToSize:CGSizeMake(self.tableView.width, CGFLOAT_MAX)];
+                model.cutImage = cell.bigImage.image;
+            }
+        }];
+    }
     cell.dateLabel.text = model.publishtime;
     cell.attentionLabel.text = model.content;
     cell.pinglunLabel.text = model.comments;

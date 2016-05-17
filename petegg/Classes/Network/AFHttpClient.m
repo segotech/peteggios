@@ -8,8 +8,6 @@
 
 #import "AFHttpClient.h"
 
-
-
 @implementation AFHttpClient
 
 singleton_implementation(AFHttpClient)

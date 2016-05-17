@@ -50,4 +50,7 @@
 @property (nonatomic,copy)NSString <Optional> * type;
 
 @property (nonatomic,copy)NSString <Optional> * views;
+
+@property (nonatomic, strong) UIImage<Optional> *cutImage;
+
 @end
