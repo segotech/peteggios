@@ -79,6 +79,7 @@
 		3466DBC21CE5B93F0023393E /* guide2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBBF1CE5B93F0023393E /* guide2.jpg */; };
 		3466DBC31CE5B93F0023393E /* guide3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBC01CE5B93F0023393E /* guide3.jpg */; };
 		3466DBC51CE5BE550023393E /* guide4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBC41CE5BE550023393E /* guide4.jpg */; };
+		3466DBC71CEACAD70023393E /* segoColor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBC61CEACAD70023393E /* segoColor.jpg */; };
 		34813FE21CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = 34813FE11CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m */; };
 		34813FE41CC4DE50000DFE26 /* showPs.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FE31CC4DE50000DFE26 /* showPs.png */; };
 		34813FE81CC5D4EE000DFE26 /* CompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34813FE61CC5D4EE000DFE26 /* CompletionViewController.m */; };
@@ -552,6 +553,7 @@
 		3466DBBF1CE5B93F0023393E /* guide2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide2.jpg; sourceTree = "<group>"; };
 		3466DBC01CE5B93F0023393E /* guide3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide3.jpg; sourceTree = "<group>"; };
 		3466DBC41CE5BE550023393E /* guide4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide4.jpg; sourceTree = "<group>"; };
+		3466DBC61CEACAD70023393E /* segoColor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = segoColor.jpg; sourceTree = "<group>"; };
 		34813FE01CC4D80F000DFE26 /* AFHttpClient+PersonAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PersonAttention.h"; sourceTree = "<group>"; };
 		34813FE11CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PersonAttention.m"; sourceTree = "<group>"; };
 		34813FE31CC4DE50000DFE26 /* showPs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showPs.png; sourceTree = "<group>"; };
@@ -2732,6 +2734,7 @@
 				57666F661C9686DE00A52DBA /* Classes */,
 				57666F7B1C9686DE00A52DBA /* Resources */,
 				7D3DA5B61CA3D292005BD38B /* sego1.png */,
+				3466DBC61CEACAD70023393E /* segoColor.jpg */,
 				57666F551C96619700A52DBA /* ViewController.h */,
 				57666F561C96619700A52DBA /* ViewController.m */,
 				57666F581C96619700A52DBA /* Main.storyboard */,
@@ -3684,6 +3687,7 @@
 				34A215D51CCDFD6F00ADD8FF /* rootca.pem in Resources */,
 				34024DD51CE491DC000E3723 /* light_on_on.png in Resources */,
 				34A2182C1CCDFF9700ADD8FF /* notok.png in Resources */,
+				3466DBC71CEACAD70023393E /* segoColor.jpg in Resources */,
 				34144BD91CBFB1B3007C4498 /* MessageViewController.xib in Resources */,
 				344F02C41CA2D9720076CE62 /* right_on.png in Resources */,
 				34A218471CCDFF9700ADD8FF /* tapping.wav in Resources */,

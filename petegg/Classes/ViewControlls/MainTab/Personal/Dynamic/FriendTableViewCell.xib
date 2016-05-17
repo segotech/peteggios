@@ -113,6 +113,7 @@
                     <constraint firstItem="I6t-c8-mUK" firstAttribute="leading" secondItem="AtO-tb-KI0" secondAttribute="trailing" constant="-3" id="3sl-ZO-W3k"/>
                     <constraint firstItem="8wO-ZO-zIu" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="-2" id="4cb-ue-2L2"/>
                     <constraint firstItem="dpu-9P-Fha" firstAttribute="bottom" secondItem="LRh-G9-H8B" secondAttribute="bottom" id="5Su-PP-RaJ"/>
+                    <constraint firstItem="I6t-c8-mUK" firstAttribute="height" secondItem="AtO-tb-KI0" secondAttribute="height" id="7SK-Pp-kq0"/>
                     <constraint firstItem="L4D-gw-fG8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="Dc0-5a-Sig"/>
                     <constraint firstItem="tSs-nh-aTO" firstAttribute="centerX" secondItem="L4D-gw-fG8" secondAttribute="centerX" id="GZ3-3m-FZ1"/>
                     <constraint firstItem="dpu-9P-Fha" firstAttribute="leading" secondItem="LRh-G9-H8B" secondAttribute="trailing" constant="5" id="Jze-Nb-nht"/>
@@ -140,6 +141,7 @@
                     <constraint firstItem="h8T-wh-GWW" firstAttribute="bottom" secondItem="AtO-tb-KI0" secondAttribute="bottom" id="iHj-rF-sWc"/>
                     <constraint firstItem="AtO-tb-KI0" firstAttribute="trailing" secondItem="cPb-la-RDg" secondAttribute="trailing" id="ioA-sx-s32"/>
                     <constraint firstItem="8wO-ZO-zIu" firstAttribute="leading" secondItem="wXU-nz-uOp" secondAttribute="trailing" constant="5" id="ksh-Lm-TGr"/>
+                    <constraint firstItem="I6t-c8-mUK" firstAttribute="width" secondItem="AtO-tb-KI0" secondAttribute="width" constant="-4" id="lEY-pk-hHt"/>
                     <constraint firstItem="5QZ-b8-EFe" firstAttribute="leading" secondItem="tSs-nh-aTO" secondAttribute="trailing" constant="10" id="lf4-PQ-nYf"/>
                     <constraint firstItem="AtO-tb-KI0" firstAttribute="top" secondItem="Tc9-Ba-qZG" secondAttribute="bottom" constant="2" id="m23-eY-tTb"/>
                     <constraint firstItem="LRh-G9-H8B" firstAttribute="top" secondItem="wXU-nz-uOp" secondAttribute="top" constant="1" id="mBu-YD-6yg"/>
