@@ -85,6 +85,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     }
     // 已绑定设备，解除绑定。
     else {
+        resolveButton.enabled = TRUE;
         deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", str];
         incodeEdit.text = [NSString stringWithFormat:@"  接入码:  ******"];
         [self updateUI:@"解除绑定" State:true];

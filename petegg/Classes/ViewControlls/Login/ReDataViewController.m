@@ -107,9 +107,6 @@
         text2.secureTextEntry = NO;
         text3.secureTextEntry = NO;
     }
-
-    
-    
 }
 
 
