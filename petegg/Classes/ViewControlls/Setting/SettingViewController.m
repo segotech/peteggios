@@ -49,10 +49,10 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
 
     // 解绑按钮默认可用。
     unbindButton.backgroundColor = GREEN_COLOR;
-    unbindButton.enabled = YES;
+    unbindButton.enabled = TRUE;
     // 功能按钮默认不可用。
     resolveButton.backgroundColor = GRAY_COLOR;
-    resolveButton.enabled = FALSE;
+    resolveButton.enabled = TRUE;
     [self setNavTitle:NSLocalizedString(@"settingViewTitle", nil)];
 }
 
@@ -77,23 +77,30 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
 
         }else
         {
-            deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", strDeviceNo];
-            incodeEdit.text = [NSString stringWithFormat:@"  接入码:  ******"];
-            [self updateUI:@"解除绑定" State:true];
-            
+            [self solveBing:strDeviceNo];
         }
     }
     // 已绑定设备，解除绑定。
     else {
-        resolveButton.enabled = TRUE;
-        deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", str];
-        incodeEdit.text = [NSString stringWithFormat:@"  接入码:  ******"];
-        [self updateUI:@"解除绑定" State:true];
+        [self solveBing:str];
     }
     
     
     
 }
+
+// 设置网络
+- (void)solveBing:(NSString *)str
+{
+    
+    deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", str];
+    incodeEdit.text = [NSString stringWithFormat:@"  接入码:  ******"];
+    [self updateUI:@"解除绑定" State:true];
+
+    
+}
+
+
 
 /**
  *  显示警告提示
@@ -175,6 +182,18 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
  */
 - (IBAction)onResolveButtonClicked:(id)sender {
     if ([AppUtil isBlankString:strDeviceNo]) {
+        
+        if ([AppUtil isBlankString:[AccountManager sharedAccountManager].loginModel.deviceno]) {
+            
+            
+        }else
+        {
+            
+            WifiViewController *wifiView = [[WifiViewController alloc] initWithNibName:@"WifiViewController" bundle:nil];
+            [self.navigationController pushViewController:wifiView animated:YES];
+            return;
+        }
+        
     }
     // 设置网络配置。
     else {
