@@ -597,15 +597,16 @@
                 if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
                     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
                     
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-                        // 点击按钮后的方法直接在这里面写
-                       // [self.navigationController popToRootViewControllerAnimated:NO];
-                        SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
-                        [self.navigationController pushViewController:setVC animated:YES];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+                       
 
                     }];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
-                        NSLog(@"取消");
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+                    
+                        SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+                        [self.navigationController pushViewController:setVC animated:YES];
+                        
+                    
                     }];
                     [alertController addAction:okAction];
                     [alertController addAction:cancelAction];
@@ -628,15 +629,16 @@
                 if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
                     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
                     
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-                        // 点击按钮后的方法直接在这里面写
-                        // [self.navigationController popToRootViewControllerAnimated:NO];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+                        
+                        
+                    }];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+                        
                         SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
                         [self.navigationController pushViewController:setVC animated:YES];
                         
-                    }];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
-                        NSLog(@"取消");
+                        
                     }];
                     [alertController addAction:okAction];
                     [alertController addAction:cancelAction];
@@ -662,15 +664,16 @@
                 if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
                     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
                     
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-                        // 点击按钮后的方法直接在这里面写
-                        // [self.navigationController popToRootViewControllerAnimated:NO];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+                        
+                        
+                    }];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+                        
                         SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
                         [self.navigationController pushViewController:setVC animated:YES];
                         
-                    }];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
-                        NSLog(@"取消");
+                        
                     }];
                     [alertController addAction:okAction];
                     [alertController addAction:cancelAction];
