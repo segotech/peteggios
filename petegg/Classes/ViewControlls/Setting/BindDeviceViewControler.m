@@ -445,18 +445,22 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
                 [timer setFireDate:[NSDate distantFuture]];
             }
             //超时
-            if (timeEnd>300) {
-                
-                [self showWarningTip:@"配置超时"];
-               // [timer setFireDate:[NSDate distantFuture]];
-                [self.navigationController popViewControllerAnimated:YES];
-                
-            }
+//            if (timeEnd>300) {
+//                
+//                [self showWarningTip:@"配置超时"];
+//               // [timer setFireDate:[NSDate distantFuture]];
+//                [self.navigationController popViewControllerAnimated:YES];
+//                
+//            }
             
             // 出错了。
             else {
                 [self showWarningTip:@"配置失败，请重新搜索设备"];
-                [timer setFireDate:[NSDate distantFuture]];
+                
+                self.deviceNumberEdit.text = @"";
+                self.incodeEdit.text = @"";
+                self.bindButton.enabled = FALSE;
+                
                 return;
             }
 
