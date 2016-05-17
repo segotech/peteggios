@@ -141,16 +141,18 @@
     [self showHudInView:self.view hint:@"正在登录..."];
     [[AFHttpClient sharedAFHttpClient]loginWithUserName:self.accountTextField.text password:self.passwordTextField.text complete:^(BaseModel *model) {
         if ([model.retCode isEqualToString:@"0000"]) {
-            [[AppUtil appTopViewController] showHint:model.retDesc];
+           // [[AppUtil appTopViewController] showHint:model.retDesc];
             NSMutableArray * listAry = [[NSMutableArray alloc]init];
             [listAry addObjectsFromArray:model.list];
             LoginModel * model1 = listAry[0];
-            if ([AppUtil isBlankString:model1.headportrait]) {
-                 [[AppUtil appTopViewController] showHint:@"请补全个人信息哦"];
-                CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
-                compleVC.mid = model1.mid;
-                [self.navigationController pushViewController:compleVC animated:YES];
-            }else{
+            if ([AppUtil isBlankString:model1.headportrait]
+                || [AppUtil isBlankString:model1.nickname]) {
+                    [[AppUtil appTopViewController] showHint:@"请补全个人信息哦"];
+                    CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
+                    compleVC.mid = model1.mid;
+                    [self.navigationController pushViewController:compleVC animated:YES];
+        }
+            else{
             [[AccountManager sharedAccountManager] login:model.list[0]];
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
             }

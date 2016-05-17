@@ -43,6 +43,7 @@
 @property (nonatomic, strong) NSMutableArray* resourcesArray;
 @property (nonatomic, strong) NSMutableArray* photoArray;
 @property (nonatomic, strong) NSString * isdianzan;
+@property (nonatomic,strong)UITextField * ceishi;
 @property (nonatomic,assign)BOOL dianzanzan;
 
 @property (nonatomic,assign)BOOL isVideo;
@@ -84,6 +85,8 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
     self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height - 49);
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1)];
     self.tableView.separatorStyle = NO;
+    self.ceishi =[[UITextField alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.view addSubview:self.ceishi];
     
     [self.tableView registerClass:[DetailContentCell class] forCellReuseIdentifier:kDetailContentCellID];
     [self.tableView registerClass:[DetailCommentCell class] forCellReuseIdentifier:kDetailCommentCellID];
@@ -267,19 +270,19 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
 {
     
     // 1、创建分享参数
-    NSArray *imageArray = @[[UIImage imageNamed:@"ceishi.jpg"]];
+    NSArray *imageArray = @[[UIImage imageNamed:@"sego1.png"]];
     //（注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数
     
 
-   // NSString * strUrl =[NSString stringWithFormat:@"http://180.97.81.213:15102/clientAction.do?method=client&nextPage=/s/sproutpet/article.jsp&stid=%@&mid=%@&access=outside",self.stid,[AccountManager sharedAccountManager].loginModel.mid];
+    NSString * strUrl =[NSString stringWithFormat:@"http://180.97.81.213:15102/clientAction.do?method=client&nextPage=/s/sproutpet/article.jsp&stid=%@&mid=%@&access=outside",self.stid,[AccountManager sharedAccountManager].loginModel.mid];
     
     if (imageArray) {
         
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         [shareParams
          SSDKSetupShareParamsByText:[NSString stringWithFormat:@"赛果分享http://180.97.81.213:15102/clientAction.do?method=client&nextPage=/s/sproutpet/article.jsp&stid=%@&mid=%@&access=outside",self.stid,[AccountManager sharedAccountManager].loginModel.mid]
-         images:nil
-         url:nil
+         images:imageArray
+         url:[NSURL URLWithString:strUrl]
          title:@"赛果分享"
          type:SSDKContentTypeAuto];
         
@@ -301,6 +304,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
                                      cancelButtonTitle:@"确定"
                                      otherButtonTitles:nil];
                     [alertView show];
+                    [self.ceishi becomeFirstResponder];
                     break;
                 }
                 case SSDKResponseStateFail: {
@@ -704,5 +708,12 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
 
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+    
+}
 
 @end

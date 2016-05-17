@@ -229,7 +229,21 @@
         return;
     }
     if ([AppUtil isBlankString:self.nameTextF.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入姓名"];
+        [[AppUtil appTopViewController] showHint:@"请输入昵称"];
+        return;
+    }
+    if([AppUtil isBlankString:catOrDog])
+    {
+        [[AppUtil appTopViewController]showHint:@"请选择家族"];
+        
+        return;
+    }
+    if ([AppUtil isBlankString:girlOrBoy]) {
+        [[AppUtil appTopViewController]showHint:@"请选择性别"];
+        return;
+    }
+    if ([AppUtil isBlankString:birstyStr]) {
+        [[AppUtil appTopViewController]showHint:@"请选择生日"];
         return;
     }
     [self.birthdayBtn setTitle:birstyStr forState:UIControlStateNormal];

@@ -261,15 +261,21 @@
         //  付钱提示
         
         if ([AppUtil isBlankString:self.otherArr[0][@"price"]]) {
-             money =[NSString stringWithFormat:@"确定支付￥%d",0];
+           //  money =[NSString stringWithFormat:@"确定支付￥%d",0];
         }else{
-            
+            if ([self.otherArr[0][@"price"] isEqualToString:@"0"]) {
+                
+                [self kaiqi];
+            }else
+            {
            money =[NSString stringWithFormat:@"确定支付￥%@",self.otherArr[0][@"price"]];
+            UIAlertView * slertShow =[[UIAlertView alloc]initWithTitle:nil message:money delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [slertShow show];
+                
+            }
+
 
         }
-    UIAlertView * slertShow =[[UIAlertView alloc]initWithTitle:nil message:money delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        
-        [slertShow show];
         
     }
     
@@ -282,38 +288,46 @@
     }
     if (buttonIndex ==1) {
         //时间
-        NSDate *  senddate=[NSDate date];
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        [dateformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        NSString *  locationString=[dateformatter stringFromDate:senddate];
-        NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
-        // 使用记录
-        NSString * service =@"clientAction.do?common=addDeviceUseRecord&classes=appinterface&method=json";
-        NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-        [dic setValue:@"other" forKey:@"object"];
-        [dic setValue:self.otherArr[0][@"deviceno"] forKey:@"deviceno"];
-        [dic setValue:self.otherArr[0][@"mid"] forKey:@"belong"];
-        [dic setValue:mid forKey:@"mid"];
-        [dic setValue:locationString forKey:@"starttime"];
-        [dic setValue:self.otherArr[0][@"price"] forKey:@"consumption"];
         
-        [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
-            
-            NSString * buildID = json[@"jsondata"][@"content"];
-            NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-            [defaults setValue:buildID forKey:@"othID"];
-             [defaults setValue:self.otherArr[0][@"tsnum"] forKey:@"tsm"];
-            [defaults synchronize];
-            NSString * deveOther=self.otherArr[0][@"deviceno"];
-            
-            [self sipCall:deveOther sipName:nil];
-            
-        } failure:^(NSError *error) {
-            
-        }];
+        [self kaiqi];
+        
     }
 }
 
+
+- (void)kaiqi
+{
+    
+    NSDate *  senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *  locationString=[dateformatter stringFromDate:senddate];
+    NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
+    // 使用记录
+    NSString * service =@"clientAction.do?common=addDeviceUseRecord&classes=appinterface&method=json";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:@"other" forKey:@"object"];
+    [dic setValue:self.otherArr[0][@"deviceno"] forKey:@"deviceno"];
+    [dic setValue:self.otherArr[0][@"mid"] forKey:@"belong"];
+    [dic setValue:mid forKey:@"mid"];
+    [dic setValue:locationString forKey:@"starttime"];
+    [dic setValue:self.otherArr[0][@"price"] forKey:@"consumption"];
+    
+    [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
+        
+        NSString * buildID = json[@"jsondata"][@"content"];
+        NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+        [defaults setValue:buildID forKey:@"othID"];
+        [defaults setValue:self.otherArr[0][@"tsnum"] forKey:@"tsm"];
+        [defaults synchronize];
+        NSString * deveOther=self.otherArr[0][@"deviceno"];
+        
+        [self sipCall:deveOther sipName:nil];
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 
 - (void)didReceiveMemoryWarning {

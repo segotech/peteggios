@@ -26,6 +26,10 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
     int serviceNum;   // 添加成功的service数量
     BOOL isAccecptOk; // 是否接收结果成功
     NSString * deviceoNum;
+    NSTimer * timer;
+    NSInteger  timeEnd;
+    
+
     
 }
 
@@ -245,6 +249,10 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
  *  创建模拟的ble设备，收发绑定请求。
  */
 - (void)setUpBleDevice {
+    
+//    timer =  [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timestart:) userInfo:nil repeats:YES];
+//    [timer setFireDate:[NSDate distantPast]];
+    
     // bind请求的参数json对象。
     NSString *strUserid = [AccountManager sharedAccountManager].loginModel.mid;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bind", @"action", strUserid, @"userid", nil];
@@ -270,6 +278,19 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
 }
 
 /**
+ *  时间
+ *
+ *  @return 超过5分钟断开
+ */
+
+- (void)timestart:(NSTimer*)sender
+{
+    timeEnd++;
+    
+}
+
+
+/**
  *  蓝牙状态更新回调
  *
  *  @param peripheral 蓝牙周边管理器
@@ -284,6 +305,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
         hud.labelText = @"正在获取设备信息，请等待...";
 
         [self setUpBleDevice];
+        
         break;
 
     // 蓝牙关闭时，提示用户打开蓝牙。
@@ -398,13 +420,16 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
             NSArray *array = [strResult componentsSeparatedByString:@","];
             if (array == nil || array.count != 2) {
                 [self showWarningTip:@"配置失败，请重新搜索设备"];
+                //[timer setFireDate:[NSDate distantFuture]];
                 return;
             }
             strResult = array[0];
             // 出错了。
             if (![strResult isEqualToString:@"OK"]) {
                 [self showWarningTip:@"配置失败，请重新搜索设备"];
+                //[timer setFireDate:[NSDate distantFuture]];
                 return;
+                
             }
 
             // 设备号以segoegg打头。
@@ -417,12 +442,21 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
                 self.deviceNumberEdit.text = deviceoNum;
                 self.incodeEdit.text = @"123456";
                 [self enableBindButton];
-                
-               // [self deviceMemer:strNumber];
+                [timer setFireDate:[NSDate distantFuture]];
             }
+            //超时
+            if (timeEnd>300) {
+                
+                [self showWarningTip:@"配置超时"];
+               // [timer setFireDate:[NSDate distantFuture]];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }
+            
             // 出错了。
             else {
                 [self showWarningTip:@"配置失败，请重新搜索设备"];
+                [timer setFireDate:[NSDate distantFuture]];
                 return;
             }
 

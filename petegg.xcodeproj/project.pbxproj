@@ -75,7 +75,6 @@
 		344F02E41CA3EA0B0076CE62 /* while_good.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F02DA1CA3EA0B0076CE62 /* while_good.png */; };
 		3455BB4D1CAFC98E00CA0D27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3455BB4C1CAFC98E00CA0D27 /* QuartzCore.framework */; };
 		3455BB4F1CAFC99B00CA0D27 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3455BB4E1CAFC99B00CA0D27 /* Accelerate.framework */; };
-		3455BB531CAFD31200CA0D27 /* ceishi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3455BB521CAFD31200CA0D27 /* ceishi.jpg */; };
 		3466DBC11CE5B93F0023393E /* guide1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBBE1CE5B93F0023393E /* guide1.jpg */; };
 		3466DBC21CE5B93F0023393E /* guide2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBBF1CE5B93F0023393E /* guide2.jpg */; };
 		3466DBC31CE5B93F0023393E /* guide3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBC01CE5B93F0023393E /* guide3.jpg */; };
@@ -549,7 +548,6 @@
 		344F02DA1CA3EA0B0076CE62 /* while_good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = while_good.png; sourceTree = "<group>"; };
 		3455BB4C1CAFC98E00CA0D27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3455BB4E1CAFC99B00CA0D27 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		3455BB521CAFD31200CA0D27 /* ceishi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ceishi.jpg; path = Resources/Images/ceishi.jpg; sourceTree = "<group>"; };
 		3466DBBE1CE5B93F0023393E /* guide1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide1.jpg; sourceTree = "<group>"; };
 		3466DBBF1CE5B93F0023393E /* guide2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide2.jpg; sourceTree = "<group>"; };
 		3466DBC01CE5B93F0023393E /* guide3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide3.jpg; sourceTree = "<group>"; };
@@ -1383,7 +1381,7 @@
 		7D3A352A1CB3CAE00037C616 /* RegiestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegiestViewController.m; sourceTree = "<group>"; };
 		7D3A352C1CB3CAFA0037C616 /* ReDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReDataViewController.h; sourceTree = "<group>"; };
 		7D3A352D1CB3CAFA0037C616 /* ReDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReDataViewController.m; sourceTree = "<group>"; };
-		7D3DA5B61CA3D292005BD38B /* sego1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sego1.png; sourceTree = "<group>"; };
+		7D3DA5B61CA3D292005BD38B /* sego1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sego1.png; path = Resources/Images/nav/sego1.png; sourceTree = "<group>"; };
 		7D3DA5B81CA3D2C7005BD38B /* sego.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sego.png; sourceTree = "<group>"; };
 		7D3DA5BA1CA3EC43005BD38B /* 评论.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论.png"; sourceTree = "<group>"; };
 		7D3DA5BC1CA3EC5B005BD38B /* 点赞5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点赞5.png"; sourceTree = "<group>"; };
@@ -1745,7 +1743,6 @@
 				57F2C8301CA10FB8005324DD /* btn_back@2x.png */,
 				344F022C1C9FE02C0076CE62 /* new_egg_seting.png */,
 				7DF068931CA0EBD5003BEE94 /* btn_new_issue@2x.png */,
-				7D3DA5B61CA3D292005BD38B /* sego1.png */,
 				7D3DA5B81CA3D2C7005BD38B /* sego.png */,
 				7D3DA5BA1CA3EC43005BD38B /* 评论.png */,
 				7D3DA5BC1CA3EC5B005BD38B /* 点赞5.png */,
@@ -2734,10 +2731,10 @@
 			children = (
 				57666F661C9686DE00A52DBA /* Classes */,
 				57666F7B1C9686DE00A52DBA /* Resources */,
+				7D3DA5B61CA3D292005BD38B /* sego1.png */,
 				57666F551C96619700A52DBA /* ViewController.h */,
 				57666F561C96619700A52DBA /* ViewController.m */,
 				57666F581C96619700A52DBA /* Main.storyboard */,
-				3455BB521CAFD31200CA0D27 /* ceishi.jpg */,
 				57666F5B1C96619700A52DBA /* Assets.xcassets */,
 				57666F5D1C96619700A52DBA /* LaunchScreen.storyboard */,
 				57666F601C96619700A52DBA /* Info.plist */,
@@ -3612,6 +3609,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 4UKEB375ND;
 					};
 				};
 			};
@@ -3746,7 +3744,6 @@
 				344F02DB1CA3EA0B0076CE62 /* blank_list.png in Resources */,
 				57666FAF1C96947B00A52DBA /* Localizable.strings in Resources */,
 				34A215D81CCDFD6F00ADD8FF /* sephonerc-factory in Resources */,
-				3455BB531CAFD31200CA0D27 /* ceishi.jpg in Resources */,
 				344F02331C9FE0410076CE62 /* egg_offline.png in Resources */,
 				7D9D769C1CBCF011004E45DE /* searche.png in Resources */,
 				7D2F82011CAE25030097820B /* egg_eye.png in Resources */,
@@ -4255,7 +4252,7 @@
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib",
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpetop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -4316,7 +4313,7 @@
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib",
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpetop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

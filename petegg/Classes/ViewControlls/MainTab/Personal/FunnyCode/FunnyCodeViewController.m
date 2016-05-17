@@ -82,9 +82,11 @@
 {
     
   // 1、创建分享参数
-  NSArray *imageArray = @[ [UIImage imageNamed:@"ceishi.jpg"] ];
+  NSArray *imageArray = @[ [UIImage imageNamed:@"sego1.png"] ];
   //（注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数
 
+    
+ // QQ空间分享失败的原因为 image url title 不能为nil 是一种图文链接的方式
   if (imageArray) {
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams
@@ -93,13 +95,14 @@
                                url:nil
                              title:@"赛果逗码分享"
                               type:SSDKContentTypeAuto];
-    
+      
       
     // 2、分享（可以弹出我们的分享菜单和编辑界面）
     [ShareSDK showShareActionSheet: nil items:nil shareParams:shareParams onShareStateChanged:^(
              SSDKResponseState state, SSDKPlatformType platformType,
              NSDictionary *userData, SSDKContentEntity *contentEntity,
              NSError *error, BOOL end) {
+        
            switch (state) {
            case SSDKResponseStateSuccess: {
              UIAlertView *alertView =
@@ -109,7 +112,7 @@
                                   cancelButtonTitle:@"确定"
                                   otherButtonTitles:nil];
              [alertView show];
-               [ceishi becomeFirstResponder];
+            [ceishi becomeFirstResponder];
 
 //               NSLog(@"22222");
 //               __weak FunnyCodeViewController *weakSelf = self;

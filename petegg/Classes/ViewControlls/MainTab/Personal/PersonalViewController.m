@@ -251,7 +251,7 @@
     [self.view addSubview:_headView];
     
     // 头像
-    _heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(_headView.center.x-40, self.view.origin.y+20, 80, 80)];
+    _heandBtn =[[UIButton alloc]initWithFrame:CGRectMake(_headView.center.x-40, self.view.origin.y+30, 80, 80)];
     [_heandBtn.layer setMasksToBounds:YES];
     [_heandBtn.layer setCornerRadius:40]; //设置矩形四个圆角半径
     _heandBtn.userInteractionEnabled = YES;

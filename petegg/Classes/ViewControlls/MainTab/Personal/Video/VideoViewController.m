@@ -202,8 +202,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 {
     if ([statsIdentifi isEqualToString:@"1"]) {
         NSMutableString *deleStr = [[NSMutableString alloc]init];
-        
-       
 
         if (deleteOrUpdateArr.count==1) {
             NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
@@ -254,6 +252,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             if ([AppUtil isBlankString:devo]) {
                 //没有设备
                 
+                 [self showMessageWarring:@"请绑定设备后在上传" view:app.window];
+                return;
             }else{
                 termidSelf = termid;
                 deviceoSelf = devo;
@@ -296,7 +296,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
        {
         // 上传命令 失败
            NSString * str =[dic1 objectForKey:@"retDesc"];
-        [self showSuccessHudWithHint:str];
+          [self showSuccessHudWithHint:str];
 
            
        }
@@ -371,6 +371,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     }
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
+        
+        
+        
         NSMutableArray * arr =[[NSMutableArray alloc]init];
         if (page == START_PAGE_INDEX) {
             [self.dataSource removeAllObjects];
@@ -384,11 +387,17 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             
         } else {
             [arr addObjectsFromArray:json];
+            if (arr.count == 0) {
+                
+                [self showSuccessHudWithHint:@"没有更多数据哦"];
+            }else{
             for (NSDictionary *dic0 in arr) {
                 VideoModel *model = [[VideoModel alloc] init];
                 [model setValuesForKeysWithDictionary:dic0];
                 [self.dataSource addObject:model];
             }
+            }
+         
             
             
         }
@@ -400,6 +409,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     } failure:^(NSError *error) {
         
     }];
+        
+        
     
 }
 
@@ -439,6 +450,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
                 [standDefus removeObjectForKey:@"content"];
                 [self initRefreshView:@"0"];
                 self.proAccuracy.progress =1.0;
+                self.proAccuracy.hidden  = YES;
                 [timer setFireDate:[NSDate distantFuture]];
                 
             }

@@ -258,6 +258,8 @@
     }else if([status isEqualToString:@"ds000"])
     {
         // 设备不存在
+        _yesDeviceImageView.image =[UIImage imageNamed:@"egg_offline.png"];
+        [_noDeviceImageView removeFromSuperview];
         
         
     }
