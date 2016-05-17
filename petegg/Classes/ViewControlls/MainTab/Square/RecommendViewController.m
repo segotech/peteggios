@@ -39,12 +39,12 @@ static NSString * cellId = @"recommeCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
 -(void)dada{
     [self initRefreshView];
+    // [self loadDataSourceWithPage:1];
 }
 -(void)dada2{
     [self loadDataSourceWithPage:1];

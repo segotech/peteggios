@@ -57,7 +57,7 @@
     _downTextfield.tintColor = GREEN_COLOR;
     [self.view addSubview:_downTextfield];
     
-    UILabel * tixingLabel = [[UILabel alloc]initWithFrame:CGRectMake(35 * W_Wide_Zoom, 240 * W_Hight_Zoom, 315 * W_Wide_Zoom, 60 * W_Hight_Zoom)];
+    UILabel * tixingLabel = [[UILabel alloc]initWithFrame:CGRectMake(32 * W_Wide_Zoom, 240 * W_Hight_Zoom, 315 * W_Wide_Zoom, 60 * W_Hight_Zoom)];
     tixingLabel.text = @"您的联系方式有助于我们沟通和解决问题，仅工作人员可见!";
     tixingLabel.numberOfLines = 2;
     tixingLabel.textColor = [UIColor blackColor];

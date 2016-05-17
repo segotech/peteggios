@@ -175,14 +175,25 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 - (void)onVideo:(UITapGestureRecognizer *)imageSender
 {
     
-    
+   
     
     NSInteger i = imageSender.view.tag/1000;//分区
     int j = imageSender.view.tag%1000;//每个分区的分组
     GetPhotoGraphModel *model = self.dataSource[i-1];
     NSArray *imageA = [model.networkaddress componentsSeparatedByString:@","];
-
     MyVideoCollectionViewCell *cell = (MyVideoCollectionViewCell *)[self.collection cellForItemAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i-1]];
+
+    if (deleteOrUpdateArr.count>=4) {
+        if (cell.rightBtn.hidden == NO) {
+            cell.rightBtn.hidden = YES;
+            cell.rightBtn.selected = NO;
+            [deleteOrUpdateArr removeObject:imageA[j]];//把要删除的图片从删除数组中删除
+        }else{
+        
+        [[AppUtil appTopViewController] showHint:@"您只能选择最多四张图片"];
+        return;
+        }
+    }else{
     
     if (cell.rightBtn.hidden == YES) {
         cell.rightBtn.hidden = NO;
@@ -198,8 +209,12 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     if (deleteOrUpdateArr.count>=1) {
         _deleteImageV.hidden = NO;
         
+    }else{
+        _deleteImageV.hidden = YES;
     }
-    
+        
+        
+    }
     
 }
 

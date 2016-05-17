@@ -64,7 +64,7 @@
  */
 - (void)handleSingleTapFrom:(UITapGestureRecognizer *)tap
 {
-    
+    [_nameTextF resignFirstResponder];
     UIAlertController *sheet;
     //判断是否支持相机
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
@@ -160,25 +160,26 @@
  *  XLB 点击事件
  */
 - (IBAction)brithdayBtn:(UIButton *)sender {
-    
+    [_nameTextF resignFirstResponder];
     self.backView.hidden = NO;
     
 }
 
 - (IBAction)manBtn:(UIButton *)sender {
-   
+   [_nameTextF resignFirstResponder];
     [self chooseOnebtn:2004 button:sender];
     
     
 }
 
 - (IBAction)wowenSelect:(UIButton *)sender {
-    
+    [_nameTextF resignFirstResponder];
     [self chooseOnebtn:2003 button:sender];
 
 }
 
 - (IBAction)dogWindowsBtn:(UIButton *)sender {
+    [_nameTextF resignFirstResponder];
    [self chooseOnebtn:2006 button:sender];
     
     
@@ -186,6 +187,7 @@
 
 
 - (IBAction)catWindowsBtn:(UIButton *)sender {
+    [_nameTextF resignFirstResponder];
    [self chooseOnebtn:2005 button:sender];
     
 }
@@ -204,12 +206,12 @@
      */
     
      
-    
+    [_nameTextF resignFirstResponder];
     
 }
 
 - (IBAction)overViewBtn:(UIButton *)sender {
-    
+    [_nameTextF resignFirstResponder];
     self.backView.hidden = YES;
     NSDate*selected = [self.timeSelect date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -271,7 +273,7 @@
 
 - (void)chooseOnebtn:(NSInteger )tag button:(UIButton *)sender
 {
-    
+    [_nameTextF resignFirstResponder];
     switch (tag) {
         case 2004:
             

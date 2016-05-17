@@ -330,10 +330,14 @@ static NSString * cellId = @"personDetailCellId";
 {
     PersonDataTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     DetailModel * model = self.dataSourceImage[indexPath.row];
-   
-//    [cell.bigImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        cell.bigImage.image =[self cutImage:image];
-//    }];
+    
+    if ([model.type isEqualToString:@"pv"] || [model.type isEqualToString:@"v"]) {
+        cell.mvImageview.hidden = NO;
+    }else{
+        cell.mvImageview.hidden = YES;
+    }
+
+    
     
     if (model.cutImage) {
         cell.bigImage.image = model.cutImage;

@@ -13,6 +13,7 @@
 #import "PersonAttentionTableViewCell.h"
 #import "PersonDetailViewController.h"
 #import "AFHttpClient+IsfriendClient.h"
+
 static NSString * cellId = @"personNewAttentionTableViewCellidddd";
 
 @interface PersonNewAttentionViewController ()
@@ -106,13 +107,14 @@ static NSString * cellId = @"personNewAttentionTableViewCellidddd";
         cell.sexImage.image = [UIImage imageNamed:@"womanquanquan.png"];
     }
     
-    
     if ([AppUtil isBlankString:model.isfriend]) {
-        [cell.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
+        [cell.rightButton setTitle:@"加关注" forState:UIControlStateNormal];
+        cell.rightButton.tag = indexPath.row + 175;
     }else{
         [cell.rightButton setTitle:@"互相关注" forState:UIControlStateNormal];
+          cell.rightButton.tag = indexPath.row + 176;
     }
-    cell.rightButton.tag = indexPath.row + 176;
+  
     [cell.rightButton addTarget:self action:@selector(quxiaoGuanzhubtnTouch:) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -133,16 +135,26 @@ static NSString * cellId = @"personNewAttentionTableViewCellidddd";
 }
 
 -(void)quxiaoGuanzhubtnTouch:(UIButton *)sender{
-    NSInteger i = sender.tag - 176;
-    NSLog(@"%ld",i);
-    NearbyModel * model = self.dataSource[i];
-    [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"cancel" complete:^(BaseModel *model) {
-        //提示
-        [[AppUtil appTopViewController] showHint:model.retDesc];
-        //刷新界面
-        [self loadDataSourceWithPage:1];
-        
-    }];
+    if (sender.tag == 175) {
+        NSInteger i = sender.tag - 175;
+        NSLog(@"%ld",i);
+        NearbyModel * model = self.dataSource[i];
+        [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"add" complete:^(BaseModel *model) {
+            [[AppUtil appTopViewController] showHint:model.retDesc];
+            [self loadDataSourceWithPage:1];
+        }];
+    }else{
+         NSInteger i = sender.tag - 176;
+              NearbyModel * model = self.dataSource[i];
+              [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"cancel" complete:^(BaseModel *model) {
+                  //提示
+                  [[AppUtil appTopViewController] showHint:model.retDesc];
+                  //刷新界面
+                  [self loadDataSourceWithPage:1];
+                  
+              }];
+    }
+   
     
 }
 @end

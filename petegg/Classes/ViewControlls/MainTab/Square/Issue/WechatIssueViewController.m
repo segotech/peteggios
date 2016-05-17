@@ -15,6 +15,7 @@
 @property (nonatomic,strong)SCPlayer *player;
 @property (nonatomic,strong)UITextView * topTextView;
 @property (nonatomic,strong)UILabel * placeholderLabel;
+@property (nonatomic,strong)UIButton *releaseButton;
 @end
 
 @implementation WechatIssueViewController
@@ -22,7 +23,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.automaticallyAdjustsScrollViewInsets = NO;
+    _releaseButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [_releaseButton setTitle:@"发布" forState:normal];
+    [_releaseButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
+    _releaseButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_releaseButton addTarget:self action:@selector(releaseInfo:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *releaseButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_releaseButton];
+    self.navigationItem.rightBarButtonItem = releaseButtonItem;
+
 }
 -(void)setupView{
     [super setupView];
@@ -47,8 +56,7 @@
     [self.view addSubview:_placeholderLabel];
 
     
-    
-    
+
     if ([_wechatOrziyuanku isEqualToString:@"wechat"]) {
         _player = [SCPlayer player];
         SCVideoPlayerView *playerView = [[SCVideoPlayerView alloc] initWithPlayer:_player];
@@ -83,17 +91,22 @@
 }
 
 -(void)doRightButtonTouch{
+
+}
+
+-(void)releaseInfo:(UIButton *)sender{
     if ([_wechatOrziyuanku isEqualToString:@"wechat"]) {
+        sender.userInteractionEnabled = NO;
         [self wechatIssue];
     }else if([_wechatOrziyuanku isEqualToString:@"ziyuankuship"]){
+        sender.userInteractionEnabled = NO;
         [self ziyuankuissue];
-    
+        
     }else if ([_wechatOrziyuanku isEqualToString:@"tupianpian"]){
-    
+        sender.userInteractionEnabled = NO;
         [self tupianpianfabu];
     }
 }
-
 -(void)tupianpianfabu{
     NSString * resouce = [_imageArrayy componentsJoinedByString:@","];
     NSMutableString * str = [NSMutableString stringWithString:resouce];
@@ -104,19 +117,9 @@
             [self.navigationController popToRootViewControllerAnimated:NO];
         }
         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
+        _releaseButton.userInteractionEnabled = YES;
     }];
-
-
 }
-
-
-
-
-
-
-
-
-
 -(void)ziyuankuissue{
     NSString * thresouceStr = [[NSString alloc]init];
     thresouceStr  = [_thumbArry componentsJoinedByString:@","];
@@ -133,6 +136,7 @@
             [self.navigationController popToRootViewControllerAnimated:NO];
         }
         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
+        _releaseButton.userInteractionEnabled = YES;
     }];
 }
 
@@ -147,6 +151,7 @@
             [self.navigationController popToRootViewControllerAnimated:NO];
         }
         [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
+        _releaseButton.userInteractionEnabled = YES;
     }];
 }
 

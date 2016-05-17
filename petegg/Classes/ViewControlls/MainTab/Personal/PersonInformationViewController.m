@@ -219,6 +219,10 @@
     [sureButton addTarget:self action:@selector(sureButtonTouch) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)gongkaiButtonTouch:(UIButton *)sender{
+    [_nameTextField resignFirstResponder];
+    [_qqTextField resignFirstResponder];
+    [_addressTextField resignFirstResponder];
+    [_signTextField resignFirstResponder];
     _downWithView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 120 * W_Hight_Zoom)];
     _littleDownView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 667 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     _coverButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 667 * W_Hight_Zoom)];
@@ -456,6 +460,11 @@
 
 //生日按钮点击
 -(void)brithdayButtontouch{
+    [_nameTextField resignFirstResponder];
+    [_qqTextField resignFirstResponder];
+    [_addressTextField resignFirstResponder];
+    [_signTextField resignFirstResponder];
+
     _bigButton = [[UIButton alloc]initWithFrame:self.view.bounds];
     _bigButton.backgroundColor = [UIColor blackColor];
     _bigButton.alpha = 0.4;
@@ -518,12 +527,21 @@
 -(void)leftKuangTouch{
     _leftkuangbtn.selected = YES;
     _rightkuangBtn.selected = NO;
+    [_nameTextField resignFirstResponder];
+    [_qqTextField resignFirstResponder];
+    [_addressTextField resignFirstResponder];
+    [_signTextField resignFirstResponder];
 
 }
 
 -(void)rightKuangTouch{
     _leftkuangbtn.selected = NO;
     _rightkuangBtn.selected = YES;
+    [_nameTextField resignFirstResponder];
+    [_qqTextField resignFirstResponder];
+    [_addressTextField resignFirstResponder];
+    [_signTextField resignFirstResponder];
+
 }
 
 
@@ -531,13 +549,36 @@
 -(void)sexTouch1{
     _manBtn.selected = YES;
     _womanBtn.selected = NO;
+    [_nameTextField resignFirstResponder];
+    [_qqTextField resignFirstResponder];
+    [_addressTextField resignFirstResponder];
+    [_signTextField resignFirstResponder];
+
 
 
 }
 -(void)sexTouch2{
     _womanBtn.selected = YES;
     _manBtn.selected = NO;
+    [_nameTextField resignFirstResponder];
+    [_qqTextField resignFirstResponder];
+    [_addressTextField resignFirstResponder];
+    [_signTextField resignFirstResponder];
+
 }
+
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (![_nameTextField isExclusiveTouch]||![_qqTextField isExclusiveTouch] || ![_addressTextField isExclusiveTouch]||![_signTextField isExclusiveTouch]) {
+        [_nameTextField resignFirstResponder];
+        [_qqTextField resignFirstResponder];
+        [_addressTextField resignFirstResponder];
+        [_signTextField resignFirstResponder];
+        
+    }
+}
+
 
 
 

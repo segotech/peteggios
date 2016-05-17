@@ -85,7 +85,6 @@
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定要退出登录吗？" preferredStyle:UIAlertControllerStyleAlert];
     
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@NO];
         [[AccountManager sharedAccountManager]logout];
         // 清除plist
@@ -96,21 +95,12 @@
             [userDefatluts synchronize];
         }
         [userDefatluts setObject:@"1" forKey:@"STARTFLAG"];
-
     }]];
-    
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
     }]];
     [self presentViewController:alert animated:YES completion:nil];
 
-    
-    
-    
-    
 }
-
-
 -(void)someTouchcc:(UIButton *)sender{
     if (sender.tag == 120) {
         IntroduceViewController * introlVc = [[IntroduceViewController alloc]init];
@@ -131,9 +121,5 @@
     [super setupData];
 
 }
-
-
-
-
 
 @end

@@ -39,9 +39,60 @@
     //[self setTitle:@"发布"];
     [self setNavTitle:@"发布萌宠秀"];
      self.automaticallyAdjustsScrollViewInsets = NO;
-    [self showBarButton:NAV_RIGHT title:@"发布" fontColor:[UIColor blackColor]];
+   // [self showBarButton:NAV_RIGHT title:@"发布" fontColor:[UIColor blackColor]];
     self.view.backgroundColor = LIGHT_GRAY_COLOR;
+    
+    UIButton *releaseButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [releaseButton setTitle:@"发布" forState:normal];
+    [releaseButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    releaseButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [releaseButton addTarget:self action:@selector(releaseInfo:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *releaseButtonItem = [[UIBarButtonItem alloc] initWithCustomView:releaseButton];
+    self.navigationItem.rightBarButtonItem = releaseButtonItem;
+    
 }
+
+-(void)releaseInfo:(UIButton *)sender{
+    sender.userInteractionEnabled = NO;
+    [_imageArray removeLastObject];
+    NSMutableString * stingArr =[[NSMutableString alloc]init];
+    NSDateFormatter * formater =[[NSDateFormatter alloc]init];
+    NSMutableArray * dataBaseArr =[[NSMutableArray alloc]init];
+    for (int i = 0 ; i < _imageArray.count; i ++) {
+        NSData * dataImage = UIImageJPEGRepresentation(_imageArray[i], 0.5);
+        NSString * dateBase64 =[dataImage base64EncodedStringWithOptions:0];
+        [dataBaseArr addObject:dateBase64];
+    }
+    [formater setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
+    [formater stringFromDate:[NSDate date]];
+    
+    NSString *picname1 = [NSString stringWithFormat:@"%@.jpg",[formater stringFromDate:[NSDate date]]];
+    [stingArr appendString:@"["];
+    for (int i = 0; i < _imageArray.count; i++) {
+        NSString * picstr =[NSString stringWithFormat:@"{\"%@\":\"%@\",\"%@\":\"%@\"}",@"name",picname1,@"content",dataBaseArr[i]];
+        [stingArr appendString:picstr];
+        
+        if (i != _imageArray.count-1) {
+            [stingArr appendString:@","];
+        }
+    }
+    [stingArr appendString:@"]"];
+    
+    [self showHudInView:self.view hint:@"正在发布..."];
+    [[AFHttpClient sharedAFHttpClient]addSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid content:_topTextView.text type:@"p" resources:stingArr complete:^(BaseModel *model) {
+        //  NSLog(@"hahaaha:%@",model.retCode);
+        [self hideHud];
+        if (model) {
+            [self.navigationController popViewControllerAnimated:NO];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
+        }
+        sender.userInteractionEnabled = YES;
+    }];
+
+}
+
+
 -(void)setupView{
     [super setupData];
     _topTextView = [[UITextView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, 375 * W_Wide_Zoom, 150 * W_Hight_Zoom)];
@@ -92,39 +143,7 @@
 
 
 -(void)doRightButtonTouch{
-    [_imageArray removeLastObject];
-    NSMutableString * stingArr =[[NSMutableString alloc]init];
-    NSDateFormatter * formater =[[NSDateFormatter alloc]init];
-    NSMutableArray * dataBaseArr =[[NSMutableArray alloc]init];
-    for (int i = 0 ; i < _imageArray.count; i ++) {
-        NSData * dataImage = UIImageJPEGRepresentation(_imageArray[i], 0.5);
-        NSString * dateBase64 =[dataImage base64EncodedStringWithOptions:0];
-        [dataBaseArr addObject:dateBase64];
-    }
-    [formater setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
-    [formater stringFromDate:[NSDate date]];
-    
-    NSString *picname1 = [NSString stringWithFormat:@"%@.jpg",[formater stringFromDate:[NSDate date]]];
-    [stingArr appendString:@"["];
-    for (int i = 0; i < _imageArray.count; i++) {
-        NSString * picstr =[NSString stringWithFormat:@"{\"%@\":\"%@\",\"%@\":\"%@\"}",@"name",picname1,@"content",dataBaseArr[i]];
-        [stingArr appendString:picstr];
-        
-        if (i != _imageArray.count-1) {
-            [stingArr appendString:@","];
-        }
-    }
-    [stingArr appendString:@"]"];
 
-    [self showHudInView:self.view hint:@"正在发布..."];
-    [[AFHttpClient sharedAFHttpClient]addSproutpetWithMid:[AccountManager sharedAccountManager].loginModel.mid content:_topTextView.text type:@"p" resources:stingArr complete:^(BaseModel *model) {
-      //  NSLog(@"hahaaha:%@",model.retCode);
-        [self hideHud];
-        //if ([model.retCode isEqualToString:@"0000"]) {
-            [self.navigationController popViewControllerAnimated:NO];
-        //}
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
-    }];
 }
 
 -(void)addImageS{

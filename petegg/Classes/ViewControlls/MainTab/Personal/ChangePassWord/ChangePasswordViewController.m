@@ -33,26 +33,26 @@
         lineLabeles.backgroundColor = GRAY_COLOR;
         [self.view addSubview:lineLabeles];
         
-        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(30 * W_Wide_Zoom, 75*W_Hight_Zoom + i * 60 * W_Hight_Zoom, 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 75*W_Hight_Zoom + i * 60 * W_Hight_Zoom, 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
         nameLabeles.text = nameArray[i];
         nameLabeles.font = [UIFont systemFontOfSize:15];
-        nameLabeles.textAlignment = NSTextAlignmentRight;
+        nameLabeles.textAlignment = NSTextAlignmentLeft;
         [self.view addSubview:nameLabeles];
 
     }
-    _oldPasswordTextfield = [[UITextField alloc]initWithFrame:CGRectMake(140 * W_Wide_Zoom, 75 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _oldPasswordTextfield = [[UITextField alloc]initWithFrame:CGRectMake(110 * W_Wide_Zoom, 75 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _oldPasswordTextfield.font = [UIFont systemFontOfSize:14];
     _oldPasswordTextfield.placeholder = @"请输入旧密码";
     _oldPasswordTextfield.tintColor = GREEN_COLOR;
     [self.view addSubview:_oldPasswordTextfield];
     
-    _newpassWordTextfield = [[UITextField alloc]initWithFrame:CGRectMake(140 * W_Wide_Zoom, 135 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _newpassWordTextfield = [[UITextField alloc]initWithFrame:CGRectMake(110 * W_Wide_Zoom, 135 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _newpassWordTextfield.font = [UIFont systemFontOfSize:14];
     _newpassWordTextfield.placeholder = @"请输入新密码";
     _newpassWordTextfield.tintColor = GREEN_COLOR;
     [self.view addSubview:_newpassWordTextfield];
     
-    _surePassworeTextfield = [[UITextField alloc]initWithFrame:CGRectMake(140 * W_Wide_Zoom, 195 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _surePassworeTextfield = [[UITextField alloc]initWithFrame:CGRectMake(110 * W_Wide_Zoom, 195 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _surePassworeTextfield.font = [UIFont systemFontOfSize:14];
     _surePassworeTextfield.placeholder = @"请输入确定密码";
     _surePassworeTextfield.tintColor = GREEN_COLOR;

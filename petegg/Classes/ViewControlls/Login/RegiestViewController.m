@@ -49,7 +49,7 @@
         lineLabeles.backgroundColor = GRAY_COLOR;
         [self.view addSubview:lineLabeles];
         
-        _textFieldes = [[UITextField alloc]initWithFrame:CGRectMake(90 * W_Wide_Zoom,  68 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+        _textFieldes = [[UITextField alloc]initWithFrame:CGRectMake(110 * W_Wide_Zoom,  70 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
         _textFieldes.placeholder = placeArray[i];
         [_textFieldes setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
          // _textFieldes.secureTextEntry = YES;
