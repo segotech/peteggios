@@ -38,7 +38,7 @@
         lineLabeles.backgroundColor = GRAY_COLOR;
         [self.view addSubview:lineLabeles];
 //        
-        _textFieldes = [[UITextField alloc]initWithFrame:CGRectMake(120 * W_Wide_Zoom,  68 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+        _textFieldes = [[UITextField alloc]initWithFrame:CGRectMake(110 * W_Wide_Zoom,  70 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
         _textFieldes.placeholder = placeArray[i];
         [_textFieldes setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
         [_textFieldes setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -180,6 +180,12 @@
         return;
     }
     [self proveCode];
+    
+    
+    
+}
+
+-(void)timeOut{
     __block int timeout=60; //倒计时时间
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
@@ -195,7 +201,7 @@
             int seconds = timeout % 60;
             NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
             dispatch_async(dispatch_get_main_queue(), ^{
-              //  NSLog(@"————————%@",strTime);
+                //  NSLog(@"————————%@",strTime);
                 [UIView beginAnimations:nil context:nil];
                 [UIView setAnimationDuration:1];
                 [_securityButton setTitle:[NSString stringWithFormat:@"%@秒后重新发送",strTime] forState:UIControlStateNormal];
@@ -207,10 +213,9 @@
         }
     });
     dispatch_resume(_timer);
-    
-    
-    
+
 }
+
 
 
 
@@ -230,6 +235,7 @@
         
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             _registCode =json[@"jsondata"][@"content"];
+            [self timeOut];
         }else{
             [[AppUtil appTopViewController] showHint:json[@"jsondata"][@"retDesc"]];
             UIButton * btn =  (UIButton *)[self.view viewWithTag:10000];

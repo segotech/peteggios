@@ -79,10 +79,7 @@
         self.rihttnumber.textColor =[UIColor grayColor];
         [self addSubview:self.rihttnumber];
         
-        self.centerImage = [[UIImageView alloc]initWithFrame:CGRectMake(158*W_Wide_Zoom, 180 * W_Hight_Zoom, 50 * W_Wide_Zoom, 50 * W_Hight_Zoom)];
-        [self.centerImage setImage:[UIImage imageNamed:@"MV.png"]];
-        // [self addSubview:self.centerImage];
-    
+        
         self.topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 373 * W_Wide_Zoom, 10 * W_Hight_Zoom)];
         self.topView.backgroundColor = [UIColor lightGrayColor];
         self.topView.alpha = 0.1;

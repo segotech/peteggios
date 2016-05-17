@@ -181,7 +181,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
 
 - (void)onVideo:(UITapGestureRecognizer *)imageSender
 {
-    
 
     
      NSInteger i = imageSender.view.tag/1000;//分区
@@ -193,7 +192,19 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
         NSArray * thumAr = [model.thumbnails componentsSeparatedByString:@","];
     
         MyVideoCollectionViewCell *cell = (MyVideoCollectionViewCell *)[self.collection cellForItemAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i-1]];
-        
+    
+    if (deleteOrUpdateArr.count>=1) {
+        if (cell.rightBtn.hidden == NO) {
+            cell.rightBtn.hidden = YES;
+            cell.rightBtn.selected = NO;
+            [deleteOrUpdateArr removeObject:imageA[j]];//把要删除的图片从删除数组中删除
+             [thumbnailsAry removeObject:thumAr[j]];
+              _deleteImageV.hidden = YES;
+        }else{
+            [[AppUtil appTopViewController] showHint:@"您只能选择一个视频"];
+            return;
+        }
+    }else{
         if (cell.rightBtn.hidden == YES) {
             cell.rightBtn.hidden = NO;
             cell.rightBtn.selected = YES;
@@ -212,8 +223,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier111";
     }else{
         _deleteImageV.hidden = YES;
     }
+     
         
-       
+    }
 }
 
 

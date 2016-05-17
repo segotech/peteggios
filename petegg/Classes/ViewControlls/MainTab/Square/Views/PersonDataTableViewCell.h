@@ -17,4 +17,6 @@
 @property (nonatomic,strong)UILabel* pinglunLabel;
 @property (nonatomic,strong)UILabel * aixinLabel;
 @property (nonatomic,strong)UIView * topView;
+@property (nonatomic,strong)UIImageView * centerImage; //视频图标
+@property (nonatomic,strong)UIImageView * mvImageview;
 @end

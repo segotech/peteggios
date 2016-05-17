@@ -147,7 +147,7 @@ static NSString * cellId = @"personAttentionCeliddd";
      NearbyModel * model = self.dataSource[i];
     [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"cancel" complete:^(BaseModel *model) {
         //提示
-        [[AppUtil appTopViewController] showHint:model.retDesc];
+       // [[AppUtil appTopViewController] showHint:model.retDesc];
         //刷新界面
         [self loadDataSourceWithPage:1];
         

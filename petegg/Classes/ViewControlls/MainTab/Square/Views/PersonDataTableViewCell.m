@@ -21,6 +21,8 @@
         
         _bigImage = [[UIImageView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 10 * W_Hight_Zoom, 375 * W_Wide_Zoom, 250 * W_Hight_Zoom)];
         _bigImage.backgroundColor = [UIColor clearColor];
+        _bigImage.contentMode = UIViewContentModeCenter;
+        _bigImage.layer.masksToBounds = YES;
         [self addSubview:_bigImage];
         
         
@@ -57,8 +59,10 @@
         _aixinLabel.text = @"33";
         [self addSubview:_aixinLabel];
         
-        
-        
+        self.mvImageview = [[UIImageView alloc]initWithFrame:CGRectMake(167.5 * W_Wide_Zoom, 125 * W_Hight_Zoom, 40 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+        [self.mvImageview setImage:[UIImage imageNamed:@"MV.png"]];
+        self.mvImageview.hidden = YES;
+        [self addSubview:self.mvImageview];
         
     }
 

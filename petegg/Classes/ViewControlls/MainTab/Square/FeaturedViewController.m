@@ -26,11 +26,17 @@
  //   NSString * str =  [AppUtil getServerTest];
      NSString * str = @"";
     if ([self.number isEqualToString: @"2"]) {
-        //str = [str stringByAppendingString:@"s/recommend/article.jsp?aid=2&access=inside"];
-        str = @"http://180.97.81.213:15101/clientAction.do?method=client&aid=2&nextPage=/s/recommend/article.jsp&access=inside";
-    }else if([self.number isEqualToString: @"3"]){
 
-        str = @"http://180.97.81.213:15101/clientAction.do?method=client&aid=3&nextPage=/s/recommend/article.jsp&access=inside";
+        str =[AppUtil getServerTest];
+        str = [str stringByAppendingString:@"clientAction.do?method=client&aid=2&nextPage=/s/recommend/article.jsp&access=inside"];
+    
+        
+    }else if([self.number isEqualToString: @"3"]){
+        
+        str =[AppUtil getServerTest];
+        str = [str stringByAppendingString:@"clientAction.do?method=client&aid=3&nextPage=/s/recommend/article.jsp&access=inside"];
+
+    
     }
     
     NSURL * url = [NSURL URLWithString:str];

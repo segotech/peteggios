@@ -23,6 +23,7 @@
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "ReportViewController.h"
+#import "PersonDetailViewController.h"
 @interface DetailViewController()<MWPhotoBrowserDelegate>
 {
     NSIndexPath *currentEditingIndexthPath;
@@ -419,6 +420,12 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
         _iconImageView.layer.masksToBounds = YES;
         [bgView addSubview:_iconImageView];
         
+        UIButton * touchuBtn = [[UIButton alloc]initWithFrame:_iconImageView.frame];
+        touchuBtn.backgroundColor = [UIColor clearColor];
+        [bgView addSubview:touchuBtn];
+        [touchuBtn addTarget:self action:@selector(wocaonigedaxigua) forControlEvents:UIControlEventTouchUpInside];
+        
+        
         // 名字
         _nameLabel =[[UILabel alloc]initWithFrame:CGRectMake( _iconImageView.right + 8,23, self.tableView.width - _iconImageView.right - 8 - 8, 20)];
         _nameLabel.font =[UIFont systemFontOfSize:13];
@@ -432,6 +439,16 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
     
     return _userInfoView;
 }
+-(void)wocaonigedaxigua{
+    NSLog(@"haha");
+    
+    PersonDetailViewController * perVc = [[PersonDetailViewController alloc]init];
+    perVc.ddddd = self.detailModel.publishuser;
+    [self.navigationController pushViewController:perVc animated:NO];
+    
+}
+
+
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     

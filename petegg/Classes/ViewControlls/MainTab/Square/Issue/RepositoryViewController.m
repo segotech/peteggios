@@ -95,25 +95,61 @@
 
 
 -(void)leftbuttonTouch{
-    _leftButton.selected = YES;
-    _rightButton.selected = NO;
-    [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(81.75 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
-    }];
+
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"视频和抓拍只能选择一种发布，您要放弃抓拍选择视频？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+            _leftButton.selected = YES;
+            _rightButton.selected = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                _lineLabel.frame = CGRectMake(81.75 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
+            }];
+            
+            [self.pageViewController setViewControllers:@[self.viewControllers[0]] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+            NSLog(@"取消");
+        }];
+        [alertController addAction:okAction];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+
     
-    [self.pageViewController setViewControllers:@[self.viewControllers[0]] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+    
+    
+    
 }
 
 -(void)rightButtonTouch{
-    _leftButton.selected = NO;
-    _rightButton.selected = YES;
-    [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(269.25 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
-        
-    }];
     
-    [self.pageViewController setViewControllers:@[self.viewControllers[1]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"视频和抓拍只能选择一种发布，您要放弃视频选择抓拍？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+      
+        
+        _leftButton.selected = NO;
+        _rightButton.selected = YES;
+        [UIView animateWithDuration:0.3 animations:^{
+            _lineLabel.frame = CGRectMake(269.25 * W_Wide_Zoom, 31 * W_Hight_Zoom, 24 * W_Wide_Zoom, 1.2 * W_Hight_Zoom);
+            
+        }];
+        
+        [self.pageViewController setViewControllers:@[self.viewControllers[1]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+        NSLog(@"取消");
+    }];
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+
+    
+    
+  
     
 }
 

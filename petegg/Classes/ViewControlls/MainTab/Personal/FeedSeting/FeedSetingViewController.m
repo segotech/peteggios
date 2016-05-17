@@ -159,9 +159,6 @@ static NSString * cellId = @"fedseting2321232322313323231";
 
 -(void)twoDayView{
     [_bigView1 removeFromSuperview];
-    _bigView2.hidden = NO;
-    _bigView1.hidden = YES;
-
     _bigView2 = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 350 * W_Hight_Zoom, 375 * W_Wide_Zoom, 120 * W_Hight_Zoom)];
     _bigView2.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_bigView2];
@@ -198,14 +195,10 @@ static NSString * cellId = @"fedseting2321232322313323231";
         [_bigView2 addSubview:tLabel];
     }
 
-
-
 }
 
 -(void)onedayView{
     [_bigView2 removeFromSuperview];
-    _bigView2.hidden = YES;
-    _bigView1.hidden = NO;
     _bigView1 = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 350 * W_Hight_Zoom, 375 * W_Wide_Zoom, 240 * W_Hight_Zoom)];
     _bigView1.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_bigView1];
@@ -448,6 +441,9 @@ static NSString * cellId = @"fedseting2321232322313323231";
 
 //查询
 -(void)querWeishi{
+    [_bigView2 removeFromSuperview];
+    [_bigView1
+     removeFromSuperview];
     [_timeBtn1 setTitle:@"" forState:UIControlStateNormal];
     [_timeBtn2 setTitle:@"" forState:UIControlStateNormal];
     [_timeBtn3 setTitle:@"" forState:UIControlStateNormal];

@@ -26,6 +26,7 @@
 #import "ThreePointsViewController.h"
 #import "UITabBar+Badge.h"
 
+#import "SettingViewController.h"
 @interface PersonalViewController()
 
 {
@@ -592,7 +593,21 @@
                 NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
                 NSString * devo  = [defaults objectForKey:@"deviceNumber"];
                 if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
-                 [[AppUtil appTopViewController] showHint:@"请绑定设备才能使用此功能"];
+                    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+                        // 点击按钮后的方法直接在这里面写
+                       // [self.navigationController popToRootViewControllerAnimated:NO];
+                        SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+                        [self.navigationController pushViewController:setVC animated:YES];
+
+                    }];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+                        NSLog(@"取消");
+                    }];
+                    [alertController addAction:okAction];
+                    [alertController addAction:cancelAction];
+                    [self presentViewController:alertController animated:YES completion:nil];
                 }else{
                 FunnyCodeViewController * funVC =[[FunnyCodeViewController alloc]initWithNibName:@"FunnyCodeViewController" bundle:nil];
                 [self.navigationController pushViewController:funVC animated:YES];
@@ -609,7 +624,21 @@
                 NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
                 NSString * devo  = [defaults objectForKey:@"deviceNumber"];
                 if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
-                    [[AppUtil appTopViewController] showHint:@"请绑定设备才能使用此功能"];
+                    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+                        // 点击按钮后的方法直接在这里面写
+                        // [self.navigationController popToRootViewControllerAnimated:NO];
+                        SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+                        [self.navigationController pushViewController:setVC animated:YES];
+                        
+                    }];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+                        NSLog(@"取消");
+                    }];
+                    [alertController addAction:okAction];
+                    [alertController addAction:cancelAction];
+                    [self presentViewController:alertController animated:YES completion:nil];
                 }else{
                 PermissionViewController * perVc = [[PermissionViewController alloc]init];
                 [self.navigationController pushViewController:perVc animated:YES];
@@ -629,7 +658,21 @@
                 NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
                 NSString * devo  = [defaults objectForKey:@"deviceNumber"];
                 if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
-                    [[AppUtil appTopViewController] showHint:@"请绑定设备才能使用此功能"];
+                    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+                        // 点击按钮后的方法直接在这里面写
+                        // [self.navigationController popToRootViewControllerAnimated:NO];
+                        SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+                        [self.navigationController pushViewController:setVC animated:YES];
+                        
+                    }];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+                        NSLog(@"取消");
+                    }];
+                    [alertController addAction:okAction];
+                    [alertController addAction:cancelAction];
+                    [self presentViewController:alertController animated:YES completion:nil];
                 }else{
                 FeedSetingViewController * feed = [[FeedSetingViewController alloc]init];
                 [self.navigationController pushViewController:feed animated:YES];
