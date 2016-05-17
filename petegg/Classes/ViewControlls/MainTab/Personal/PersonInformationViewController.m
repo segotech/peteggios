@@ -54,9 +54,12 @@
     [super setupData];
     [self showHudInView:self.view hint:@"正在加载..."];
     [[AFHttpClient sharedAFHttpClient]queryByIdMemberWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
-        [self hideHud];
-        [self.dataSource addObjectsFromArray:model.list];
-        [self initUserface];
+        if (model) {
+            [self hideHud];
+            [self.dataSource addObjectsFromArray:model.list];
+            [self initUserface];
+        }
+       
     }];
     
 }
