@@ -105,7 +105,9 @@
                 
     
                 cachedImage =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:jsondata[0][@"headportrait"]]]];
+                
                 bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
+
                 [self hideHud];
                  isJiazai = YES;
             }else{
