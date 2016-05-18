@@ -250,6 +250,8 @@
 
 
 
+// 除了开灯其他的都延迟3秒
+
 //喂食
 - (IBAction)feedBtnClick:(UIButton *)sender {
     
@@ -335,6 +337,17 @@
 - (IBAction)juankFootBtnClick:(UIButton *)sender {
     
    
+//    [NSThread sleepForTimeInterval:3];
+//    sender.selected =!sender.selected;
+    
+//    double delayInSeconds = 3.0;
+//    __block InCallViewController* bself = self;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//        
+//       // sender.selected =!sender.selected;
+//    });
+    
     NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
     NSString * tsm =[defaults objectForKey:@"tsm"];
     NSString * otherID =[defaults objectForKey:@"othID"];
@@ -372,6 +385,7 @@
     
     
 }
+
 //抓拍
 - (IBAction)photoBtnClick:(UIButton *)sender {
     
@@ -385,7 +399,6 @@
         [dic setValue:termidOth forKey:@"termid"];
     }else
     {
-        
         [self dowithID];
         [dic setValue:deviceoSelf forKey:@"deviceno"];
         [dic setValue:termidSelf forKey:@"termid"];
