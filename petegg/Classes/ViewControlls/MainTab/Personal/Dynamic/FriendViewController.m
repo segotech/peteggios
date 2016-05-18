@@ -120,27 +120,36 @@
 - (void)loadDataSourceWithPage:(int)page
 {
     NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
-    [dicc setValue:@"1" forKey:@"page"];
+    [dicc setValue:[NSString stringWithFormat:@"%d",page] forKey:@"page"];
     [dicc setValue:@"10" forKey:@"size"];
     [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
 
     NSString * service =[NSString stringWithFormat:@"clientAction.do?common=queryTrend&classes=appinterface&method=json"];
     [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
+         json = [json objectForKey:@"jsondata"] ;
+         NSArray *array = [json objectForKey:@"list"];
         
         if (page == START_PAGE_INDEX) {
             [self.dataSource removeAllObjects];
         }else
         {
             
+            
         }
-        [self.dataSource removeAllObjects];
-
-        json = [json objectForKey:@"jsondata"] ;
+        
+        if (array.count<REQUEST_PAGE_SIZE) {
+            self.tableView.mj_footer.hidden = YES;
+        }else
+        {
+            
+            self.tableView.mj_footer.hidden = NO;
+        }
+       
         NSArray * arrStr =[json[@"content"] componentsSeparatedByString:@","];
         [headImageView sd_setImageWithURL:[NSURL URLWithString:arrStr[0]] placeholderImage:[UIImage imageNamed:@"sego1.png"]];
           nameLabel.text = arrStr[1];
         
-        NSArray *array = [json objectForKey:@"list"];
+        
         
         if (array.count > 0) {
             for (NSDictionary *dic0 in array) {
@@ -163,6 +172,8 @@
         
     }];
 
+    
+    
     
     
 }
@@ -281,7 +292,7 @@
         else  // 图
         {
             
-            [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.resources] placeholderImage:[UIImage imageNamed:@"sego1.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [cell.oneImagev sd_setImageWithURL:[NSURL URLWithString:model.thumbnails] placeholderImage:[UIImage imageNamed:@"sego1.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 
                 cell.oneImagev.image =[self cutImage:image];
                 
