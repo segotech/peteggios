@@ -23,7 +23,7 @@ static NSString * cellId = @"111111111111";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"附近";
+    self.title = @"推荐";
     self.view.backgroundColor = [UIColor blackColor];
     
     
@@ -54,8 +54,11 @@ static NSString * cellId = @"111111111111";
 //        }else{
 //            self.tableView.footer.hidden = NO;
 //        }
-        [self.dataSource addObjectsFromArray:model.list];
-        [self.tableView reloadData];
+        if (model) {
+            [self.dataSource addObjectsFromArray:model.list];
+            [self.tableView reloadData];
+        }
+       
        // [self handleEndRefresh];
     }];
 }

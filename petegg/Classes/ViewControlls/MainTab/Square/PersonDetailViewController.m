@@ -55,7 +55,7 @@ static NSString * cellId = @"personDetailCellId";
 
 -(void)initUseTopView{
     
-    PersonDetailModel * model = self.dataSource[0];
+    PersonDetailModel * model = self.dataSourceImage[0];
     
     //判断是自己或者已被拉黑的人，不显示拉黑按钮
     if ([model.mid isEqualToString:[AccountManager sharedAccountManager].loginModel.mid]|| [model.isinblacklist isEqualToString:@"1"]) {
@@ -273,7 +273,7 @@ static NSString * cellId = @"personDetailCellId";
     [super setupData];
     
     [[AFHttpClient sharedAFHttpClient]querPresenWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:_ddddd complete:^(BaseModel *model) {
-        [self.dataSource addObjectsFromArray:model.list];
+        [self.dataSourceImage addObjectsFromArray:model.list];
         [self initUseTopView];
         [self openVideo];
     } failure:^{
@@ -285,10 +285,10 @@ static NSString * cellId = @"personDetailCellId";
     [[AFHttpClient sharedAFHttpClient]querByIdSproutpetWithFriend:_ddddd pageIndex:page pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
         
         if (page == START_PAGE_INDEX) {
-            [self.dataSourceImage removeAllObjects];
-            [self.dataSourceImage addObjectsFromArray:model.list];
+            [self.dataSource removeAllObjects];
+            [self.dataSource addObjectsFromArray:model.list];
         } else {
-            [self.dataSourceImage addObjectsFromArray:model.list];
+            [self.dataSource addObjectsFromArray:model.list];
         }
         
         if (model.list.count < REQUEST_PAGE_SIZE){
@@ -299,6 +299,22 @@ static NSString * cellId = @"personDetailCellId";
         
         [self.tableView reloadData];
         [self handleEndRefresh];
+//        if (page == START_PAGE_INDEX) {
+//            [self.dataSource removeAllObjects];
+//            [self.dataSource addObjectsFromArray:model.list];
+//        } else {
+//            [self.dataSource addObjectsFromArray:model.list];
+//        }
+//        
+//        if (model.list.count < REQUEST_PAGE_SIZE){
+//            self.tableView.mj_footer.hidden = YES;
+//        }else{
+//            self.tableView.mj_footer.hidden = NO;
+//        }
+//        
+//        [self.tableView reloadData];
+//        [self handleEndRefresh];
+        
     } failure:^{
         [self handleEndRefresh];
     }];
@@ -317,7 +333,7 @@ static NSString * cellId = @"personDetailCellId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataSourceImage.count;
+    return self.dataSource.count;
 }
 
 
@@ -329,7 +345,7 @@ static NSString * cellId = @"personDetailCellId";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PersonDataTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    DetailModel * model = self.dataSourceImage[indexPath.row];
+    DetailModel * model = self.dataSource[indexPath.row];
     
     if ([model.type isEqualToString:@"pv"] || [model.type isEqualToString:@"v"]) {
         cell.mvImageview.hidden = NO;
@@ -364,7 +380,7 @@ static NSString * cellId = @"personDetailCellId";
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DetailModel * model = self.dataSourceImage[indexPath.row];
+    DetailModel * model = self.dataSource[indexPath.row];
 
     //  NSString * stid = model.stid;
     DetailViewController* viewController = [[DetailViewController alloc] init];
