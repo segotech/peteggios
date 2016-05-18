@@ -417,7 +417,7 @@
 // 上
 - (IBAction)start:(UIButton *)sender {
     
-    [self moveRobot:@"1"];
+    [self moveRobot:@"4"];
 }
 
 // 上结束
@@ -435,7 +435,7 @@
 
 - (IBAction)downStart:(UIButton *)sender {
     
-        [self moveRobot:@"2"];
+        [self moveRobot:@"3"];
     
 }
 
@@ -445,7 +445,7 @@
 // 左
 - (IBAction)leftStart:(UIButton *)sender {
     
-    [self moveRobot:@"3"];
+    [self moveRobot:@"2"];
 }
 
 - (IBAction)left:(UIButton *)sender {
@@ -462,9 +462,17 @@
 - (IBAction)rightstatr:(UIButton *)sender {
     
     
-    [self moveRobot:@"4"];
+    [self moveRobot:@"1"];
     
 }
+
+
+
+
+
+
+
+
 
 
 - (void)moveRobot:(NSString *)str
