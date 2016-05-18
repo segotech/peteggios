@@ -100,7 +100,7 @@
         if (model) {
             UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"修改成功，请重新登录" preferredStyle:UIAlertControllerStyleAlert];
             
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) { 
                 
                 NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
                 NSDictionary *dictionary = [userDefatluts dictionaryRepresentation];

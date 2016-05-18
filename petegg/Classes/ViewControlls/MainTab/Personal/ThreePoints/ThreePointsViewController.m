@@ -30,9 +30,9 @@
     tubiaobiao.image = [UIImage imageNamed:@"tubiaobiao.png"];
     [self.view addSubview:tubiaobiao];
 
-    UILabel * banbenLabel = [[UILabel alloc]initWithFrame:CGRectMake(150 *W_Wide_Zoom, 240 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    UILabel * banbenLabel = [[UILabel alloc]initWithFrame:CGRectMake(160 *W_Wide_Zoom, 240 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     
-    banbenLabel.text = @"SEGOV1.2";
+    banbenLabel.text = @"SEGOV1.3";
     banbenLabel.textColor = [UIColor grayColor];
     banbenLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:banbenLabel];
@@ -42,7 +42,7 @@
     whiteView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:whiteView];
     
-    NSArray * nameArray = @[@"功能介绍",@"意见反馈",@"注册协议"];
+    NSArray * nameArray = @[@"产品简介",@"意见反馈",@"注册协议"];
     for (int i = 0 ; i < 3 ; i++) {
         UILabel * linelabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 50 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         linelabel.backgroundColor = [UIColor grayColor];

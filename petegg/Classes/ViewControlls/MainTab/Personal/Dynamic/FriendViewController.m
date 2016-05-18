@@ -120,7 +120,7 @@
 - (void)loadDataSourceWithPage:(int)page
 {
     NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
-    [dicc setValue:@"1" forKey:@"page"];
+    [dicc setValue: @"1" forKey:@"page"];
     [dicc setValue:@"10" forKey:@"size"];
     [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
 

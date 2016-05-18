@@ -40,7 +40,7 @@
     [self.view addSubview:whiteView];
  
     NSArray * imageNameArray = @[@"nearPeople.png",@"DouYiDou.png"];
-    NSArray * nameArray = @[@"附近的人",@"逗一逗"];
+    NSArray * nameArray = @[@"推荐",@"逗一逗"];
     for (int i = 0 ; i < 2 ; i ++) {
         UIImageView * headImages = [[UIImageView alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 15 * W_Hight_Zoom + i * 60 * W_Hight_Zoom, 30 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
         headImages.image = [UIImage imageNamed:imageNameArray[i]];
