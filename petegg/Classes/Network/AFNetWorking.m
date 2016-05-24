@@ -25,13 +25,8 @@
     [manger POST:url parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (success) {
             success(responseObject);
-                      
-            
-            
             
         }
-        
-        
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         
         if (error) {

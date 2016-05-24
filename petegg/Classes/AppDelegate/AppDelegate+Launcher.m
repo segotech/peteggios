@@ -36,10 +36,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:NotificationLoginStateChange object:nil];
     
     
-      
-    
-    
-    
     [self checkLogin];
 }
 
