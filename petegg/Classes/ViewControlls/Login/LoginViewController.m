@@ -56,7 +56,7 @@
     
 
     _accountTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 133 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
-    _accountTextField.placeholder = @"请输入账号";
+    _accountTextField.placeholder = @"请输入手机号码";
     _accountTextField.tintColor = [UIColor whiteColor];
     _accountTextField.keyboardType = UIKeyboardTypeNumberPad;
     [_accountTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];

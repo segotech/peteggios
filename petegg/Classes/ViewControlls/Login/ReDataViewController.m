@@ -26,12 +26,12 @@
 }
 -(void)setupView{
     [super setupView];
-    NSArray * namearray = @[@"账号:",@"验证码:",@"密码:",@"确认密码:",];
-    NSArray * placeArray = @[@"请输入账号",@"请输入验证码",@"请输入密码",@"请确认密码"];
+    NSArray * namearray = @[@"手机号码:",@"验证码:",@"密码:",@"确认密码:",];
+    NSArray * placeArray = @[@"请输入手机号码",@"请输入验证码",@"请输入密码",@"请确认密码"];
     for (int i = 0 ; i < 4; i++ ) {
-        UILabel * writingLabeles = [[UILabel alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 70 * W_Hight_Zoom + 50 * W_Hight_Zoom * i, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+        UILabel * writingLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 70 * W_Hight_Zoom + 50 * W_Hight_Zoom * i, 70 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
         writingLabeles.text = namearray[i];
-        writingLabeles.textAlignment = NSTextAlignmentLeft;
+        writingLabeles.textAlignment = NSTextAlignmentRight;
         writingLabeles.font = [UIFont systemFontOfSize:15];
         writingLabeles.textColor = [UIColor blackColor];
         [self.view addSubview:writingLabeles];
@@ -40,7 +40,7 @@
         lineLabeles.backgroundColor = GRAY_COLOR;
         [self.view addSubview:lineLabeles];
 //        
-        _textFieldes = [[UITextField alloc]initWithFrame:CGRectMake(110 * W_Wide_Zoom,  70 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
+        _textFieldes = [[UITextField alloc]initWithFrame:CGRectMake(90 * W_Wide_Zoom,  70 * W_Hight_Zoom + i * 50 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
         _textFieldes.placeholder = placeArray[i];
         [_textFieldes setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
         [_textFieldes setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
