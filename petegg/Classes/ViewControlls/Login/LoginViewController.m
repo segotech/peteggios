@@ -47,7 +47,7 @@
     [shuruKuangImage addSubview:downIcon];
     
     _loginButton = [[UIButton alloc]initWithFrame:CGRectMake(37.5 * W_Wide_Zoom, 320 * W_Hight_Zoom, 300 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
-    [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
+    [_loginButton setTitle:@"Login" forState:UIControlStateNormal];
     [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _loginButton.backgroundColor = GREEN_COLOR;
     _loginButton.layer.cornerRadius = 5;
@@ -56,7 +56,7 @@
     
 
     _accountTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 133 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
-    _accountTextField.placeholder = @"请输入手机号码";
+    _accountTextField.placeholder = @"Please enter your Email";
     _accountTextField.tintColor = [UIColor whiteColor];
     _accountTextField.keyboardType = UIKeyboardTypeNumberPad;
     [_accountTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
@@ -66,7 +66,7 @@
     [self.view addSubview:_accountTextField];
     
     _passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 193 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
-    _passwordTextField.placeholder = @"请输入密码";
+    _passwordTextField.placeholder = @"Please enter a password";
     _passwordTextField.tintColor = [UIColor whiteColor];
     _passwordTextField.keyboardType = UIKeyboardTypeDefault;
     _passwordTextField.secureTextEntry = YES;
@@ -84,8 +84,8 @@
     [secureBtn addTarget:self action:@selector(secureButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:secureBtn];
     
-    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(77.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
-    [regiestButton setTitle:@"新用户注册" forState:UIControlStateNormal];
+    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(77.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 120 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+    [regiestButton setTitle:@"Register" forState:UIControlStateNormal];
     [regiestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     regiestButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:regiestButton];
@@ -95,8 +95,8 @@
     shulineLabel.backgroundColor = GRAY_COLOR;
     [self.view addSubview:shulineLabel];
     
-    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(197.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 100 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
-    [reDataButton setTitle:@"忘记密码?" forState:UIControlStateNormal];
+    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(197.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 120 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+    [reDataButton setTitle:@"Forget password?" forState:UIControlStateNormal];
     [reDataButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     reDataButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:reDataButton];
@@ -129,16 +129,25 @@
 
 -(void)loginTouch{
     NSLog(@"登录");
+    
+    CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
+    compleVC.mid = @"jfjfjjf";
+    [self.navigationController pushViewController:compleVC animated:YES];
+    
+    return ;
+    
     if ([AppUtil isBlankString:self.accountTextField.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入帐号"];
+        [[AppUtil appTopViewController] showHint:@"Please enter your Email address"];
         return;
     }
     if ([AppUtil isBlankString:self.passwordTextField.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入密码"];
+        [[AppUtil appTopViewController] showHint:@"Please enter a password"];
         return;
         
     }
-    [self showHudInView:self.view hint:@"正在登录..."];
+    [self showHudInView:self.view hint:@"Being logged in..."];
+
+    
     [[AFHttpClient sharedAFHttpClient]loginWithUserName:self.accountTextField.text password:self.passwordTextField.text complete:^(BaseModel *model) {
         if ([model.retCode isEqualToString:@"0000"]) {
            // [[AppUtil appTopViewController] showHint:model.retDesc];
@@ -147,7 +156,7 @@
             LoginModel * model1 = listAry[0];
             if ([AppUtil isBlankString:model1.headportrait]
                 || [AppUtil isBlankString:model1.nickname]) {
-                    [[AppUtil appTopViewController] showHint:@"请补全个人信息哦"];
+                [[AppUtil appTopViewController] showHint:@"Please complete the personal information."];
                     CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
                     compleVC.mid = model1.mid;
                     [self.navigationController pushViewController:compleVC animated:YES];

@@ -127,7 +127,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
  *  显示打开蓝牙提示窗
  */
 - (void)showNeedBluetoothWaringDialog {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"你尚未打开蓝牙" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"去设置", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You have not yet opened Bluetooth" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"To set", nil];
     [alert show];
 }
 
@@ -164,7 +164,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
     }
     NSString *strNumber = self.deviceNumberEdit.text;
     if ([AppUtil isBlankString:strNumber]) {
-        [self showWarningTip:@"设备号不存在"];
+        [self showWarningTip:@"Device number does not exist"];
         return;
     }
     [self deviceMemer:deviceoNum];
@@ -299,7 +299,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
         NSLog(@"Bluetooth powered on");
 
         hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"正在获取设备信息，请等待...";
+            hud.labelText = @"Getting device information, please wait...";
 
         [self setUpBleDevice];
         
@@ -416,14 +416,14 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
             // 将字符串分割为2个元素的数组。
             NSArray *array = [strResult componentsSeparatedByString:@","];
             if (array == nil || array.count != 2) {
-                [self showWarningTip:@"配置失败，请重新搜索设备"];
+                [self showWarningTip:@"Configuration failed, please re search the device!"];
                 //[timer setFireDate:[NSDate distantFuture]];
                 return;
             }
             strResult = array[0];
             // 出错了。
             if (![strResult isEqualToString:@"OK"]) {
-                [self showWarningTip:@"配置失败，请重新搜索设备"];
+                [self showWarningTip:@"Configuration failed, please re search the device!"];
                 //[timer setFireDate:[NSDate distantFuture]];
                 return;
                 
@@ -452,7 +452,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
             
             // 出错了。
             else {
-                [self showWarningTip:@"配置失败，请重新搜索设备"];
+                [self showWarningTip:@"Configuration failed, please re search the device"];
                 
                 self.deviceNumberEdit.text = @"";
                 self.incodeEdit.text = @"";

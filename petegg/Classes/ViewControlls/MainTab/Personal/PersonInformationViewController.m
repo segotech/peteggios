@@ -52,7 +52,7 @@
 }
 -(void)setupData{
     [super setupData];
-    [self showHudInView:self.view hint:@"正在加载..."];
+    [self showHudInView:self.view hint:@"Loading..."];
     [[AFHttpClient sharedAFHttpClient]queryByIdMemberWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
         if (model) {
             [self hideHud];

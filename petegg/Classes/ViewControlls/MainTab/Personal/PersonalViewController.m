@@ -8,19 +8,17 @@
 
 #import "PersonalViewController.h"
 #import "personTableViewCell.h"
-#import "VideoViewController.h"
+//#import "VideoViewController.h"
 #import <Accelerate/Accelerate.h>
-#import "FriendViewController.h"
-#import "FunnyCodeViewController.h"
-#import "BaseViewController.h"
-#import "PersonAttentionViewController.h"
-#import "SnapViewController.h"
+//#import "FriendViewController.h"
+//#import "FunnyCodeViewController.h"
+//#import "BaseViewController.h"
+//#import "PersonAttentionViewController.h"
+//#import "SnapViewController.h"
 #import "PersonInformationViewController.h"
 #import "ChangePasswordViewController.h"
-#import "BalckListViewController.h"
-#import "PermissionViewController.h"
-
-#import "FounyMoneyViewController.h"
+//#import "BalckListViewController.h"
+//#import "PermissionViewController.h"
 
 #import "FeedSetingViewController.h"
 #import "ThreePointsViewController.h"
@@ -58,15 +56,12 @@
     [self setNavTitle: NSLocalizedString(@"tabPersonal", nil)];
     self.dataSource =[NSMutableArray array];
     self.dataSourceImage =[NSMutableArray array];
-    NSArray * arrName =@[@"动态",@"录像",@"抓拍",@"关注",@"逗币",@"逗码",@"喂食设置",@"权限设置",@"修改密码",@"黑名单"];
     
+    NSArray * arrName =@[@"喂食设置",@"修改密码"];
     [self.dataSource addObjectsFromArray:arrName];
-    NSArray * arrImage =@[@"person_videotape.png.png",@"person_photograph.png.png",@"person_balance.png.png",@"nopointattention.png",@"person_bean.png",@"person_code.png",@"person_weishi.png",@"person_control.png",@"person_pw.png",@"blank_list.png"];
+    
+    NSArray * arrImage =@[@"person_weishi.png" ,@"person_pw.png"];
     [self.dataSourceImage addObjectsFromArray:arrImage];
-    
-   
-
-    
 }
 
 
@@ -87,7 +82,7 @@
 - (void)selfDataHand
 {
  
-    [self showHudInView:self.view hint:@"正在加载..."];
+    [self showHudInView:self.view hint:@"Loading..."];
     NSString * str =@"clientAction.do?method=json&common=queryPraises&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
@@ -358,41 +353,13 @@
     return 4;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    
-    
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
-            
         case 0:
-            
-            return  3;
-            
-            break;
-            
-        case 1:
-            
-            return  3;
-            
-            break;
-            
-        case 2:
-            return 3;
-            break;
-        case 3:
-            return 1;
-            break;
-            
-            
+            return  2;
         default:
-            
             return 0;
-            
-            break;
-            
     }
-    
-    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -410,36 +377,7 @@
 //  设置标题的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    switch (section) {
-            
-        case 0:
-            
-            return  0.5;
-            
-            break;
-            
-        case 1:
-            
-            return  18;
-            
-            break;
-            
-        case 2:
-            return 18;
-            break;
-        case 3:
-            return 18;
-            break;
-            
-            
-        default:
-            
-            return 0;
-            
-            break;
-            
-    }
-    
+    return  0.5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -465,65 +403,9 @@
         cell = [[personTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:showUserInfoCellIdentifier];
     }
     
-    switch (indexPath.section) {
-            
-        case 0:
-            if (indexPath.row == 0) {
-                //&&
-                if (![self.count isEqualToString:@"0"]) {
-                    dongtai = NO;
-                    cell.moneyLabel.hidden = NO;
-                    cell.moneyLabel.text = self.count;
-                }
-                else
-                {
-                    dongtai = YES;
-                    cell.moneyLabel.hidden  = YES;
-                }
-            }
-           
-            // Configure the cell.
-            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row]];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.introduce.text= self.dataSource[indexPath.row];
-            break;
-            
-        case 1:
-            if (indexPath.row == 0) {
-                if (![tipstr isEqualToString:@"0"]) {
-                    redpoint = NO;
-                    cell.redpoint.hidden = NO;
-                }else{
-                    redpoint = YES;
-                    cell.redpoint.hidden  = YES;
-                }
-            }
-        
-            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+3]];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.introduce.text= self.dataSource[indexPath.row+3];
-
-            break;
-            
-        case 2:
-            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+6]];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.introduce.text= self.dataSource[indexPath.row+6];
-            break;
-            
-         case 3:
-            
-            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row+9]];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.introduce.text= self.dataSource[indexPath.row+9];
-            
-            break;
-            
-        default:
-            
-            break;
-            
-    }
+    cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.introduce.text= self.dataSource[indexPath.row];
     
     // 选择之后的风格
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -545,169 +427,45 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-   
-    switch (indexPath.section) {
-        case 0:
-            
-            if (indexPath.row == 0) {
-                NSLog(@"时光轴");
-                
-                FriendViewController * friendVC =[[FriendViewController alloc]initWithNibName:@"FriendViewController" bundle:nil];
-                [self.navigationController pushViewController:friendVC animated:YES];
-            
-            }
-            if (indexPath.row == 1) {
-                NSLog(@"录像");
-                VideoViewController * videoVC =[[VideoViewController alloc]initWithNibName:@"VideoViewController" bundle:nil];
-                [self.navigationController pushViewController:videoVC animated:YES];
-               
-                
-            }
-            if (indexPath.row == 2) {
-                NSLog(@"抓拍");
-                SnapViewController * snapVC =[[SnapViewController alloc]initWithNibName:@"SnapViewController" bundle:nil];
-                [self.navigationController pushViewController:snapVC animated:YES];
-                
-            
-                
-            }
-            break;
-            
-        case 1:
-            if (indexPath.row == 0) {
-                
-                NSLog(@"00");
-                PersonAttentionViewController * attentionVc = [[PersonAttentionViewController alloc]init];
-                attentionVc.isredTip = redpoint;
-                [self.navigationController pushViewController:attentionVc animated:YES];
-    
-            }
-            if (indexPath.row == 1) {
-                
-                FounyMoneyViewController * funMoyVC =[[FounyMoneyViewController alloc]initWithNibName:@"FounyMoneyViewController" bundle:nil];
-                [self.navigationController pushViewController:funMoyVC animated:YES];
-                
-                
-                
-            }
-            if (indexPath.row == 2) {
-                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-                NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
-                NSString * devo  = [defaults objectForKey:@"deviceNumber"];
-                if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
-                    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-                       
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-                    }];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
-                    
-                        SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
-                        [self.navigationController pushViewController:setVC animated:YES];
-                        
-                    
-                    }];
-                    [alertController addAction:okAction];
-                    [alertController addAction:cancelAction];
-                    [self presentViewController:alertController animated:YES completion:nil];
-                }else{
-                FunnyCodeViewController * funVC =[[FunnyCodeViewController alloc]initWithNibName:@"FunnyCodeViewController" bundle:nil];
-                [self.navigationController pushViewController:funVC animated:YES];
-                }
-                
-            }
-            
-            break;
-            
-        case 2:
-            if (indexPath.row ==1) {
-                NSLog(@"000");
-                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-                NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
-                NSString * devo  = [defaults objectForKey:@"deviceNumber"];
-                if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
-                    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-                        
-                        
-                    }];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
-                        
-                        SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
-                        [self.navigationController pushViewController:setVC animated:YES];
-                        
-                        
-                    }];
-                    [alertController addAction:okAction];
-                    [alertController addAction:cancelAction];
-                    [self presentViewController:alertController animated:YES completion:nil];
-                }else{
-                PermissionViewController * perVc = [[PermissionViewController alloc]init];
-                [self.navigationController pushViewController:perVc animated:YES];
-                }
-            }
-            
-            if (indexPath.row  ==2) {
-                NSLog(@"111");
-                ChangePasswordViewController * changVc = [[ChangePasswordViewController alloc]init];
-                [self.navigationController pushViewController:changVc animated:YES];
-             
-            }
-            
-            if (indexPath.row ==0) {
-                
-                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-                NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
-                NSString * devo  = [defaults objectForKey:@"deviceNumber"];
-                if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
-                    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-                        
-                        
-                    }];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
-                        
-                        SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
-                        [self.navigationController pushViewController:setVC animated:YES];
-                        
-                        
-                    }];
-                    [alertController addAction:okAction];
-                    [alertController addAction:cancelAction];
-                    [self presentViewController:alertController animated:YES completion:nil];
-                }else{
-                FeedSetingViewController * feed = [[FeedSetingViewController alloc]init];
-                [self.navigationController pushViewController:feed animated:YES];
-                }
-            }
-            
-            
-            break;
-            
-        case 3:
-            
-            if (indexPath.row ==0) {
-                BalckListViewController * black = [[BalckListViewController alloc]init];
-                [self.navigationController pushViewController:black animated:YES];
-            }
-           
-        
-            
-            
-            
-            break;
-            
-        default:
-            break;
+    if (indexPath.row  == 1) {
+        NSLog(@"111");
+        ChangePasswordViewController * changVc = [[ChangePasswordViewController alloc]init];
+        [self.navigationController pushViewController:changVc animated:YES];
+     
     }
     
-    
+    if (indexPath.row ==0) {
+        
+        NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+        NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
+        NSString * devo  = [defaults objectForKey:@"deviceNumber"];
+        if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
+            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+                
+                
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+                
+                SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+                [self.navigationController pushViewController:setVC animated:YES];
+                
+                
+            }];
+            [alertController addAction:okAction];
+            [alertController addAction:cancelAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }else{
+        FeedSetingViewController * feed = [[FeedSetingViewController alloc]init];
+        [self.navigationController pushViewController:feed animated:YES];
+        }
+    }
 }
+
+
 /**
  *  @1毛玻璃效果方法
  *

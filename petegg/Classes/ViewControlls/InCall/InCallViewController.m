@@ -357,7 +357,7 @@
     if (isOth) {
         feeding++;
         if ([tsm intValue]<feeding) {
-            [self showSuccessHudWithHint:@"达到最大投食次数了"];
+            [self showSuccessHudWithHint:@"To achieve the maximum number of feeding times"];
             return;
         }else{
         [dic setValue:otherID forKey:@"id"];

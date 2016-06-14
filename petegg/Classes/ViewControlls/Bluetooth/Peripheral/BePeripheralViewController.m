@@ -39,7 +39,7 @@ static NSString * const LocalNameKey =  @"segopass";
     //页面样式
     [self.view setBackgroundColor:[UIColor whiteColor]];
     info = [[UILabel alloc]initWithFrame:self.view.frame];
-    [info setText:@"正在打开设备"];
+    [info setText:@"Opening device"];
     [info setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:info];
     
@@ -122,7 +122,7 @@ static NSString * const LocalNameKey =  @"segopass";
             //在这里判断蓝牙设别的状态  当开启了则可调用  setUp方法(自定义)
         case CBPeripheralManagerStatePoweredOn:
             NSLog(@"powered on");
-            [info setText:[NSString stringWithFormat:@"设备名%@已经打开，可以使用center进行连接",LocalNameKey]];
+            [info setText:[NSString stringWithFormat:@"Device name%@ has been opened, you can use center to connect!",LocalNameKey]];
             [self setUp];
             break;
         case CBPeripheralManagerStatePoweredOff:

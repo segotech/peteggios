@@ -53,6 +53,8 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     // 功能按钮默认不可用。
     resolveButton.backgroundColor = GRAY_COLOR;
     resolveButton.enabled = TRUE;
+    [resolveButton setTitle:@"Set network" forState:UIControlStateNormal];
+    
     [self setNavTitle:NSLocalizedString(@"settingViewTitle", nil)];
 }
 
@@ -73,7 +75,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     // 尚未绑定设备，则绑定设备。
     if ([AppUtil isBlankString:str]) {
         if ([AppUtil isBlankString:strDeviceNo]) {
-            [self updateUI:@"搜索设备" State:false];
+            [self updateUI:@"Search equipment" State:false];
 
         }else
         {
@@ -93,9 +95,9 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
 - (void)solveBing:(NSString *)str
 {
     
-    deviceNumberEdit.text = [NSString stringWithFormat:@"  设备号:  %@", str];
-    incodeEdit.text = [NSString stringWithFormat:@"  接入码:  ******"];
-    [self updateUI:@"解除绑定" State:true];
+    deviceNumberEdit.text = [NSString stringWithFormat:@"  Equipment No.:  %@", str];
+    incodeEdit.text = [NSString stringWithFormat:@"  Access code:  ******"];
+    [self updateUI:@"Remove binding" State:true];
 
     
 }
@@ -118,9 +120,9 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
  */
 - (void)doUnbindRequest {
     // 格式化参数。
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定要解除绑定吗？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"tip" message:@"Are you sure you want to remove the binding?" preferredStyle:UIAlertControllerStyleAlert];
     
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alert addAction:[UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
        
         
         NSString *mid = [AccountManager sharedAccountManager].loginModel.mid;
@@ -137,7 +139,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
         
         // 创建进度提示窗。
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"正在解除绑定设备，请等待...";
+        hud.labelText = @"Is lifting the binding device, please wait...";
         
         // 执行http请求。
         [manager POST:service
@@ -154,17 +156,17 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
                       [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_WIFI_CONFIGURED];
                       [AccountManager sharedAccountManager].loginModel.deviceno = @"";
                       // 更新界面状态。
-                      [self updateUI:@"搜索设备" State:false];
+                      [self updateUI:@"Search equipment" State:false];
                   }
               }
               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                   NSLog(@"Unbind device failed: %@", error);
-                  [self showWarningTip:@"执行失败，请检查网络是否正常"];
+                  [self showWarningTip:@"Failure, please check the network is ok"];
               }];
 
     }]];
     
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }]];
     
@@ -243,8 +245,8 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
         resolveButton.backgroundColor = GRAY_COLOR;
         resolveButton.enabled = FALSE;
 
-        deviceNumberEdit.text = @"  设备号:  ";
-        incodeEdit.text = @"  接入码:  ";
+        deviceNumberEdit.text = NSLocalizedString(@"EquipmentNo", nil);
+        incodeEdit.text = NSLocalizedString(@"AccessCode", nil);
         strDeviceNo = strConfigResult = @"";
     }
 }

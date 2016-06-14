@@ -54,6 +54,8 @@
 + (CGColorRef) getColorFromRed:(int)red Green:(int)green Blue:(int)blue Alpha:(int)alpha;
 // 判断手机号
 + (BOOL) isValidateMobile:(NSString *)mobile;
+//判断email
++(BOOL)isValidateEmail:(NSString *)email;
 // lable 适应
 + (CGSize)lable:(UILabel *)sender scaleToSize:(CGSize)sizeL;
 // 图片处理

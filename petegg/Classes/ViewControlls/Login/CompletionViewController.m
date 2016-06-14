@@ -47,12 +47,12 @@
 
 }
 -(void)doLeftButtonTouch{
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有填写确认您的信息，确认返回?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Tip" message:@"You have not yet completed the confirmation of your information, confirm the return?" preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         // 点击按钮后的方法直接在这里面写
          [self.navigationController popToRootViewControllerAnimated:YES];    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
         NSLog(@"取消");
     }];
     [alertController addAction:okAction];
@@ -70,9 +70,9 @@
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         
-        sheet = [UIAlertController alertControllerWithTitle:@"选择上传方式" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        sheet = [UIAlertController alertControllerWithTitle:@"Select upload mode" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         
-        UIAlertAction *laterAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *laterAction = [UIAlertAction actionWithTitle:@"Photograph" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             // 普通按键
          
             sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -80,14 +80,14 @@
             
             
         }];
-        UIAlertAction *laterAction1 = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *laterAction1 = [UIAlertAction actionWithTitle:@"Select from album" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             // 普通按键
             sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             [self openXC];
             
             
         }];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             // 取消按键
         }];
         
@@ -227,25 +227,25 @@
     
     if (!isHand) {
         
-        [[AppUtil appTopViewController] showHint:@"请选择头像"];
+        [[AppUtil appTopViewController] showHint:@"Please select a picture"];
         return;
     }
     if ([AppUtil isBlankString:self.nameTextF.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入昵称"];
+        [[AppUtil appTopViewController] showHint:@"Please enter a nickname"];
         return;
     }
     if([AppUtil isBlankString:catOrDog])
     {
-        [[AppUtil appTopViewController]showHint:@"请选择家族"];
+        [[AppUtil appTopViewController]showHint:@"Please select a family"];
         
         return;
     }
     if ([AppUtil isBlankString:girlOrBoy]) {
-        [[AppUtil appTopViewController]showHint:@"请选择性别"];
+        [[AppUtil appTopViewController]showHint:@"Please select the gender"];
         return;
     }
     if ([AppUtil isBlankString:birstyStr]) {
-        [[AppUtil appTopViewController]showHint:@"请选择生日"];
+        [[AppUtil appTopViewController]showHint:@"Please choose your birthday"];
         return;
     }
     [self.birthdayBtn setTitle:birstyStr forState:UIControlStateNormal];

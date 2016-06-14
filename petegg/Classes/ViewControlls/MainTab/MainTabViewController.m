@@ -8,13 +8,10 @@
 
 #import "MainTabViewController.h"
 
-#import "SquareViewController.h"
-#import "NearViewController.h"
 #import "EggViewController.h"
-#import "RankViewController.h"
 #import "PersonalViewController.h"
-#import "SettingViewController.h"
 #import "UITabBar+Badge.h"
+
 @interface MainTabViewController()
 {
     
@@ -27,14 +24,8 @@
     
 }
 
-//广场
-@property (nonatomic, strong) UINavigationController* navSquareVC;
-//附近
-@property (nonatomic, strong) UINavigationController* navNearVC;
 //不倒蛋
 @property (strong, nonatomic) UINavigationController  *navEggVC;
-//榜单
-@property (strong, nonatomic) UINavigationController  *navRankVC;
 //个人中心
 @property (strong, nonatomic) UINavigationController  *navPersonalVC;
 
@@ -64,10 +55,7 @@
     self.tabBar.backgroundColor=[UIColor whiteColor];
     
     self.viewControllers = @[
-                             self.navSquareVC,
-                             self.navNearVC,
                              self.navEggVC,
-                             self.navRankVC,
                              self.navPersonalVC
                              ];
     
@@ -77,38 +65,6 @@
     self.tabBar.layer.shadowRadius = 2;
 }
 
-//广场
-- (UINavigationController *)navSquareVC{
-    if (!_navSquareVC) {
-        
-        SquareViewController* vc = [[SquareViewController alloc] init];
-        vc.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabSquare", nil)
-                                      image:[[UIImage imageNamed:@"tab_square_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                              selectedImage:[[UIImage imageNamed:@"tab_square_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        
-        _navSquareVC = [[UINavigationController alloc]initWithRootViewController:vc];
-    }
-    
-    return _navSquareVC;
-}
-
-//附近
-- (UINavigationController *)navNearVC{
-    if (!_navNearVC) {
-        
-        NearViewController* vc = [[NearViewController alloc] init];
-        vc.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabNear", nil)
-                                      image:[[UIImage imageNamed:@"tab_near_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                              selectedImage:[[UIImage imageNamed:@"tab_near_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        
-        _navNearVC = [[UINavigationController alloc]initWithRootViewController:vc];
-    }
-    
-    return _navNearVC;
-}
-
 //不倒蛋
 - (UINavigationController *)navEggVC{
     if (!_navEggVC) {
@@ -116,7 +72,7 @@
         EggViewController* vc = [[EggViewController alloc] init];
         
         vc.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabEgg", nil)
+        [[UITabBarItem alloc] initWithTitle:@"Egg"
                                       image:[[UIImage imageNamed:@"tab_egg_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_egg_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         
@@ -124,24 +80,6 @@
     }
     
     return _navEggVC;
-}
-
-
-
-
-//榜单
-- (UINavigationController *)navRankVC{
-    if (!_navRankVC) {
-        
-        RankViewController* vc = [[RankViewController alloc] init];
-        vc.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabRank", nil)
-                                      image:[[UIImage imageNamed:@"tab_rank_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                              selectedImage:[[UIImage imageNamed:@"tab_rank_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        _navRankVC = [[UINavigationController alloc]initWithRootViewController:vc];
-    }
-    
-    return _navRankVC;
 }
 
 //个人中心
@@ -154,7 +92,7 @@
         // vc.messageCount =messageCount;
         
         vc.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabPersonal", nil)
+        [[UITabBarItem alloc] initWithTitle:@"Personal Center"
                                       image:[[UIImage imageNamed:@"tab_personal_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_personal_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
        _navPersonalVC = [[UINavigationController alloc]initWithRootViewController:vc];
@@ -178,13 +116,11 @@
         
     });
     dispatch_resume(timer3);
-    
-    
 }
+
 /**
  *  对比时间差
  */
-
 - (void)compareDoubleTime
 {
     

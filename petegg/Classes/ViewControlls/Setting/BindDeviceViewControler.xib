@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -33,7 +33,7 @@
                                 <constraint firstAttribute="width" constant="65" id="afZ-5p-WLR"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="设备号:">
+                            <state key="normal" title="Equipment number:">
                                 <color key="titleColor" red="0.054125463589999999" green="0.060724431820000001" blue="0.059614748199999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
@@ -70,7 +70,7 @@
                                 <constraint firstAttribute="width" constant="65" id="kfw-TZ-Wis"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="接入码:">
+                            <state key="normal" title="Access code:">
                                 <color key="titleColor" red="0.054125463589999999" green="0.060724431820000001" blue="0.059614748199999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
@@ -99,7 +99,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="rEa-at-afK"/>
                     </constraints>
-                    <state key="normal" title="绑定设备"/>
+                    <state key="normal" title="Remove binding"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                     </userDefinedRuntimeAttributes>

@@ -74,6 +74,13 @@ static NSString * getServerTest1 = @"http://192.168.1.103:8080/sego_v3/";
     return [phoneTest evaluateWithObject:mobile];
 }
 
++(BOOL)isValidateEmail:(NSString *)email
+{
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES%@",emailRegex];
+    return [emailTest evaluateWithObject:email];
+}
+
 + (CGSize)lable:(UILabel *)sender scaleToSize:(CGSize)sizeL
 {
     

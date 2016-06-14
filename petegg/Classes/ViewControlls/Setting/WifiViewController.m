@@ -100,7 +100,7 @@
 - (void)showWarningTip:(NSString *)str {
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
-    hud.labelText = str;
+    hud.detailsLabelText = str;
     hud.minSize = CGSizeMake(132.f, 66.0f);
     [hud hide:YES afterDelay:1.0];
 }
@@ -112,7 +112,7 @@
  */
 - (IBAction)onOkButtonClicked:(id)sender {
     if ([AppUtil isBlankString:wifiNameEdit.text] || [AppUtil isBlankString:passwordEdit.text]) {
-        [self showWarningTip:@"WIFI名称或密码不能为空"];
+        [self showWarningTip:@"WIFI name or password can not be empty"];
         return;
     }
     // TODO 检查名称或密码中不能有空格。

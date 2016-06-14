@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WifiViewController">
@@ -26,7 +26,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="hCB-QG-7EW"/>
                     </constraints>
-                    <state key="normal" title="确定"/>
+                    <state key="normal" title="Confirm"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                     </userDefinedRuntimeAttributes>
@@ -37,17 +37,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6B-Ti-8PX">
                     <rect key="frame" x="40" y="169" width="241" height="40"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  WIFI名称:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8g-MM-lon">
-                            <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  WIFI Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8g-MM-lon">
+                            <rect key="frame" x="0.0" y="0.0" width="89" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="80" id="W7X-7V-IsK"/>
+                                <constraint firstAttribute="width" constant="89" id="W7X-7V-IsK"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-oS-i5T" userLabel="Wifi Name Edit">
-                            <rect key="frame" x="75" y="0.0" width="166" height="40"/>
+                            <rect key="frame" x="89" y="0.0" width="152" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -56,10 +56,10 @@
                         <constraint firstAttribute="bottom" secondItem="C8g-MM-lon" secondAttribute="bottom" id="0wH-vG-joX"/>
                         <constraint firstItem="C8g-MM-lon" firstAttribute="top" secondItem="a6B-Ti-8PX" secondAttribute="top" id="3cq-BD-lWB"/>
                         <constraint firstAttribute="trailing" secondItem="Kdf-oS-i5T" secondAttribute="trailing" id="7fR-FJ-m0c"/>
-                        <constraint firstItem="Kdf-oS-i5T" firstAttribute="leading" secondItem="a6B-Ti-8PX" secondAttribute="leading" constant="75" id="DzW-rH-VKZ"/>
                         <constraint firstItem="Kdf-oS-i5T" firstAttribute="top" secondItem="C8g-MM-lon" secondAttribute="top" id="RR4-85-DxD"/>
                         <constraint firstItem="C8g-MM-lon" firstAttribute="bottom" secondItem="Kdf-oS-i5T" secondAttribute="bottom" id="caD-re-X1U"/>
                         <constraint firstItem="C8g-MM-lon" firstAttribute="leading" secondItem="a6B-Ti-8PX" secondAttribute="leading" id="rKo-Pg-9Mv"/>
+                        <constraint firstItem="Kdf-oS-i5T" firstAttribute="leading" secondItem="C8g-MM-lon" secondAttribute="trailing" id="vMv-Ji-2lg"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
@@ -72,28 +72,28 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRx-6A-wU0">
                     <rect key="frame" x="40" y="229" width="241" height="40"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  访问密码:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT1-al-qjk">
-                            <rect key="frame" x="0.0" y="-1" width="80" height="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT1-al-qjk">
+                            <rect key="frame" x="0.0" y="-1" width="122" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="80" id="VbO-nJ-haE"/>
+                                <constraint firstAttribute="width" constant="122" id="VbO-nJ-haE"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WWR-aS-BWf" userLabel="Password Edit">
-                            <rect key="frame" x="75" y="4" width="166" height="27"/>
+                            <rect key="frame" x="122" y="4" width="119" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="tT1-al-qjk" secondAttribute="bottom" constant="1" id="9aw-AA-Yn1"/>
-                        <constraint firstItem="WWR-aS-BWf" firstAttribute="leading" secondItem="sRx-6A-wU0" secondAttribute="leading" constant="75" id="JdR-mw-4YK"/>
                         <constraint firstItem="WWR-aS-BWf" firstAttribute="top" secondItem="sRx-6A-wU0" secondAttribute="top" constant="4" id="LOO-1T-u0E"/>
                         <constraint firstItem="tT1-al-qjk" firstAttribute="top" secondItem="sRx-6A-wU0" secondAttribute="top" constant="-1" id="MDX-1w-lB3"/>
                         <constraint firstAttribute="trailing" secondItem="WWR-aS-BWf" secondAttribute="trailing" id="UM7-CI-cqD"/>
                         <constraint firstItem="tT1-al-qjk" firstAttribute="leading" secondItem="sRx-6A-wU0" secondAttribute="leading" id="gYC-zY-b0H"/>
+                        <constraint firstItem="WWR-aS-BWf" firstAttribute="leading" secondItem="tT1-al-qjk" secondAttribute="trailing" id="mNK-VG-gfV"/>
                         <constraint firstAttribute="bottom" secondItem="WWR-aS-BWf" secondAttribute="bottom" constant="9" id="wfe-oE-luq"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -117,11 +117,11 @@
                         <action selector="onShowPasswordButtonClicked:" destination="-1" eventType="touchUpInside" id="0xh-vD-Sox"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="显示密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8y-eI-eiq">
-                    <rect key="frame" x="70" y="290" width="95" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8y-eI-eiq">
+                    <rect key="frame" x="70" y="290" width="144" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Es1-kv-Dgr"/>
-                        <constraint firstAttribute="width" constant="95" id="FAp-IH-Hdb"/>
+                        <constraint firstAttribute="width" constant="144" id="FAp-IH-Hdb"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -163,13 +163,13 @@
                     </userDefinedRuntimeAttributes>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siG-El-cD0">
-                    <rect key="frame" x="40" y="331" width="85" height="25"/>
+                    <rect key="frame" x="40" y="331" width="116" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="85" id="ljK-gu-79K"/>
+                        <constraint firstAttribute="width" constant="116" id="ljK-gu-79K"/>
                         <constraint firstAttribute="height" constant="25" id="nsS-yj-CzZ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="  加密方式:">
+                    <state key="normal" title="Encryption mode:">
                         <color key="titleColor" red="0.054125463589999999" green="0.060724431820000001" blue="0.059614748199999998" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>

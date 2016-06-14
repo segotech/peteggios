@@ -21,13 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setNavTitle:@"忘记密码"];
+    [self setNavTitle:@"Forget password"];
 
 }
 -(void)setupView{
     [super setupView];
-    NSArray * namearray = @[@"手机号码:",@"验证码:",@"密码:",@"确认密码:",];
-    NSArray * placeArray = @[@"请输入手机号码",@"请输入验证码",@"请输入密码",@"请确认密码"];
+    NSArray * namearray = @[@"phone number:",@"Verification code:",@"Password:",@"Confirm password:",];
+    NSArray * placeArray = @[@"Please enter your mobile phone number",@"Please enter the verification code",@"Please enter a password",@"Please confirm the password"];
     for (int i = 0 ; i < 4; i++ ) {
         UILabel * writingLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 70 * W_Hight_Zoom + 50 * W_Hight_Zoom * i, 70 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
         writingLabeles.text = namearray[i];
@@ -61,7 +61,7 @@
     
     _securityButton = [[UIButton alloc]initWithFrame:CGRectMake(250 * W_Wide_Zoom, 120 * W_Hight_Zoom, 110 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _securityButton.backgroundColor = GREEN_COLOR;
-    [_securityButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [_securityButton setTitle:@"Get verification code" forState:UIControlStateNormal];
     _securityButton.titleLabel.font = [UIFont systemFontOfSize:14];
     _securityButton.layer.cornerRadius = 5;
     [_securityButton addTarget:self action:@selector(passwordCode:) forControlEvents:UIControlEventTouchUpInside];
@@ -86,7 +86,7 @@
     registBtn.layer.cornerRadius =  6;
     registBtn.tag = 10000;
     registBtn.center = self.view.center;
-    [registBtn setTitle:@"完成" forState:UIControlStateNormal];
+    [registBtn setTitle:@"Complete" forState:UIControlStateNormal];
     registBtn.titleLabel.font =[UIFont systemFontOfSize:16];
     [registBtn addTarget:self action:@selector(registBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:registBtn];
@@ -126,39 +126,39 @@
     UITextField * text2 =  (UITextField *)[self.view viewWithTag:38];
     UITextField * text3 =  (UITextField *)[self.view viewWithTag:39];
     if ([AppUtil isBlankString:text.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入账号"];
+        [[AppUtil appTopViewController] showHint:@"Please enter your account number"];
         return;
     }
     if (![AppUtil isValidateMobile:text.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入正确格式的手机号码"];
+        [[AppUtil appTopViewController] showHint:@"Please enter the phone number in the correct format."];
         return;
     }
     if ([AppUtil isBlankString:text1.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入验证码"];
+        [[AppUtil appTopViewController] showHint:@"Please enter the verification code"];
         return;
     }
     if ([AppUtil isBlankString:text2.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入密码"];
+        [[AppUtil appTopViewController] showHint:@"Please enter a password"];
         return;
     }
     if (![text2.text isEqualToString:text3.text]) {
-        [[AppUtil appTopViewController] showHint:@"您两次输入的密码不一致"];
+        [[AppUtil appTopViewController] showHint:@"The password you entered is not consistent for the two time."];
         return;
     }
     
     if (![text1.text isEqualToString:_registCode]) {
-        [[AppUtil appTopViewController] showHint:@"请输入正确的验证码"];
+        [[AppUtil appTopViewController] showHint:@"Please enter the correct verification code"];
         return;
     }
     
     if (![text.text isEqualToString:totalrecords]) {
-        [[AppUtil appTopViewController] showHint:@"手机号码错误"];
+        [[AppUtil appTopViewController] showHint:@"Cell phone number error"];
         return;
     }
 
     
     
-    [self showHudInView:self.view hint:@"正在修改..."];
+    [self showHudInView:self.view hint:@"Being modified..."];
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=forgetPassword";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:text.text forKey:@"phone"];
@@ -166,7 +166,7 @@
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         [self hideHud];
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-             [[AppUtil appTopViewController] showHint:@"修改成功"];
+            [[AppUtil appTopViewController] showHint:@"Successful modification"];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
              [[AppUtil appTopViewController] showHint:json[@"jsondata"][@"retDesc"]];
@@ -182,11 +182,11 @@
 {
     UITextField * text =  (UITextField *)[self.view viewWithTag:36];
     if ([AppUtil isBlankString:text.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入帐号"];
+        [[AppUtil appTopViewController] showHint:@"Please enter your account number"];
         return;
     }
     if (![AppUtil isValidateMobile:text.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入正确格式的手机号码"];
+        [[AppUtil appTopViewController] showHint:@"Please enter the phone number in the correct format."];
         return;
     }
     [self proveCode];
@@ -203,7 +203,7 @@
         if(timeout<=0){ //倒计时结束，关闭
             dispatch_source_cancel(_timer);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [_securityButton setTitle:@"发送验证码" forState:UIControlStateNormal];
+                [_securityButton setTitle:@"Send verification code" forState:UIControlStateNormal];
                 _securityButton.userInteractionEnabled = YES;
                 _securityButton.backgroundColor = GREEN_COLOR;
             });
@@ -214,7 +214,7 @@
                 //  NSLog(@"————————%@",strTime);
                 [UIView beginAnimations:nil context:nil];
                 [UIView setAnimationDuration:1];
-                [_securityButton setTitle:[NSString stringWithFormat:@"%@秒后重新发送",strTime] forState:UIControlStateNormal];
+                [_securityButton setTitle:[NSString stringWithFormat:@"%@ sec to send back",strTime] forState:UIControlStateNormal];
                 [UIView commitAnimations];
                 _securityButton.userInteractionEnabled = NO;
                 _securityButton.backgroundColor = [UIColor grayColor];

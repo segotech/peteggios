@@ -95,7 +95,7 @@
     self.view.backgroundColor =[UIColor whiteColor];
 
     UIButton * backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 40, 35)];
-    [backButton setTitle:@"返回" forState:UIControlStateNormal];
+    [backButton setTitle:@"Back" forState:UIControlStateNormal];
     backButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:backButton];
@@ -105,7 +105,7 @@
     lineLabel.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:lineLabel];
     UILabel * titelLabel = [[UILabel alloc]initWithFrame:CGRectMake(175, 20, 100, 35)];
-    titelLabel.text = @"视频";
+    titelLabel.text = @"Video";
     titelLabel.textColor = [UIColor blackColor];
     titelLabel.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:titelLabel];

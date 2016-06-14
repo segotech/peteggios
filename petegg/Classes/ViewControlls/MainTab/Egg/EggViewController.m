@@ -32,7 +32,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
  
-    [self setNavTitle: NSLocalizedString(@"tabEgg", nil)];
+    [self setNavTitle: @"Egg"];
     
     UIButton * btnFb2 =[UIButton buttonWithType:UIButtonTypeCustom];
     btnFb2.frame=CGRectMake(0, 0, 18, 18) ;
