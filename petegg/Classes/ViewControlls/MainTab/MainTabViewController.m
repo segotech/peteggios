@@ -153,7 +153,8 @@
                 if (dateEndOver >= 600) {
                   // 已经超时
                   dispatch_suspend(timer3);
-                    [self showMessageWarring:@"超时" view:app.window];
+//                    [self showMessageWarring:@"超时" view:app.window];
+                    [self showMessageWarring:@"Overtime" view:app.window];
                     
                  [standDefus removeObjectForKey:@"content"];
 
@@ -164,13 +165,14 @@
               }
               if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
                 // 上传成功
-                [self showMessageWarring:@"上传成功" view:app.window];
+                  [self showMessageWarring:@"Upload success" view:app.window];
                 [standDefus removeObjectForKey:@"content"];
                 dispatch_suspend(timer3);
               }
               if ([[json objectForKey:@"content"] isEqualToString:@"2"]) {
                   dispatch_suspend(timer3);
-                  [self showMessageWarring:@"上传失败" view:app.window];
+//                  [self showMessageWarring:@"上传失败" view:app.window];
+                  [self showMessageWarring:@"Upload failed" view:app.window];
                  [standDefus removeObjectForKey:@"content"];
              
             }
@@ -178,7 +180,8 @@
             }
 
             failure:^(NSError *error){
-               [self showMessageWarring:@"网络错误" view:app.window];
+//               [self showMessageWarring:@"网络错误" view:app.window];
+                [self showMessageWarring:@"Network error" view:app.window];
                 
             }];
     }
