@@ -41,9 +41,41 @@
     
     
     [self checkLogin];
+   
+}
+
+
+
+
+/**
+ *  帆哥接口
+ */
+
+
+- (void)mapMidMehoth
+{
+    NSString * str =@"clientAction.do?common=modLocation&classes=appinterface&method=json";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    if ([AppUtil isBlankString:[AccountManager sharedAccountManager].loginModel.mid]) {
+         [dic setValue:@"" forKey:@"mid"];
+    }else{
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+    }
+    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+        
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+    
 }
 
 - (void)checkLogin{
+    
+    [self mapMidMehoth];
     if ([AccountManager sharedAccountManager].isLogin) {
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
     }else{

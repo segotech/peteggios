@@ -31,6 +31,9 @@
     NSString * termidSelf;
     NSString * deviceoSelf;
     
+    int strXS;
+    
+    
     
     
     
@@ -183,38 +186,36 @@
 }
 
 
+
+
+
 // 滑动红外线
 - (IBAction)moveBtnClick:(UISlider *)sender {
     
-
+   
+    // 200毫秒 // 10个像素
     float valu = sender.value*100;
     int str =(int)valu;
+    
     NSString * msg =[NSString stringWithFormat:@"control_pantilt,0,0,1,0,%d,%d",str,30];
- 
-    doubleTime++;
-    if (doubleTime%2 ==0) {
-        
-        int timeComparSecond =[self getTimeNow];
-        if (timeComparSecond - timeCompar<100) {
-            
-            // 不执行
-        }else{
-            
-            
-            [self sendMessage:msg];
-        }
-
-    }else{
-        
-       timeCompar = [self getTimeNow];
-        [self sendMessage:msg];
-        
-    }
     
+    double delayInSeconds = 0.200;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    //执行事件
+         
+         if (str-50>10 || 50-str>10) {
+              [self sendMessage:msg];
+         }
+       
+        
+    });
    
-    
+
     
 }
+
+
 
 - (int )getTimeNow
 {
@@ -242,7 +243,7 @@
 
 #pragma sendMessageTest wjb
 -(void) sendMessage:(NSString *)mess{
-    
+    NSLog(@"滑动红外线");
     const char * message =[mess UTF8String];
     sephone_core_send_user_message([SephoneManager getLc], message);
     
