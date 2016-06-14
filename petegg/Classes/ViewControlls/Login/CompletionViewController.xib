@@ -183,8 +183,8 @@
                         <action selector="brithdayBtn:" destination="-1" eventType="touchUpInside" id="Cow-4u-ep0"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TE5-vP-ffq">
-                    <rect key="frame" x="0.0" y="600" width="320" height="205"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TE5-vP-ffq">
+                    <rect key="frame" x="0.0" y="300" width="320" height="205"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="073-iu-WDa">
                             <rect key="frame" x="113" y="180" width="94" height="25"/>
