@@ -185,7 +185,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
     [dicc setValue: [AccountManager sharedAccountManager].loginModel.mid                forKey:@"mid"];
     [dicc setValue:strdec   forKey:@"deviceno"];
     [AFNetWorking postWithApi:str parameters:dicc success:^(id json) {
-         faileStr =json[@"jsondata"][@"retdesc"];
+         faileStr =json[@"jsondata"][@"retDesc"];
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             [self showSuccessHudWithHint:@"绑定成功"];
             NSString * srt =json[@"jsondata"][@"content"];
@@ -194,16 +194,12 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
             [defaults setObject:deviceoNum forKey:PREF_DEVICE_NUMBER];
             [defaults synchronize];
             // TODO 实现设备http绑定。
-            
-          
-          
-          
             // 返回上级页面。
             [self.navigationController popViewControllerAnimated:YES];
         }else
         {
-            
-            [self.navigationController popViewControllerAnimated:YES];
+            [[AppUtil appTopViewController] showHint:faileStr];
+           // [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(NSError *error) {
     
