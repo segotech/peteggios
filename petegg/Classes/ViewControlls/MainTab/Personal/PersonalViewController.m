@@ -57,7 +57,7 @@
     self.dataSource =[NSMutableArray array];
     self.dataSourceImage =[NSMutableArray array];
     
-    NSArray * arrName =@[@"喂食设置",@"修改密码"];
+    NSArray * arrName =@[@"Feeding set",@"Modify password"];
     [self.dataSource addObjectsFromArray:arrName];
     
     NSArray * arrImage =@[@"person_weishi.png" ,@"person_pw.png"];
@@ -92,10 +92,10 @@
             if (jsondata.count > 0 ) {
                
                 [_heandBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:jsondata[0][@"headportrait"]]]] forState:UIControlStateNormal];
-                [self showLB:500 string:jsondata[0][@"sprouts"]];
-                [self showLB:501 string:jsondata[0][@"gz"]];
-                [self showLB:502 string:jsondata[0][@"fs"]];
-                [self showLB:503 string:jsondata[0][@"praises"]];
+//                [self showLB:500 string:jsondata[0][@"sprouts"]];
+//                [self showLB:501 string:jsondata[0][@"gz"]];
+//                [self showLB:502 string:jsondata[0][@"fs"]];
+//                [self showLB:503 string:jsondata[0][@"praises"]];
                 _nameLabel.text = jsondata[0][@"nickname"];
                 
     
@@ -277,32 +277,32 @@
     *  循环控件 3个12
     *
     */
-    NSArray * arrName =@[@"帖子",@"关注",@"粉丝",@"点赞"];
-    
-    for (NSInteger i = 0;i<4; i++) {
-        UILabel * numLb =[[UILabel alloc]initWithFrame:CGRectMake(46+i*70*W_Hight_Zoom, _heandBtn.frame.origin.y+110*W_Hight_Zoom, 80*W_Wide_Zoom, 20*W_Hight_Zoom)];
-        numLb.tag = 500+i;
-        numLb.textAlignment = NSTextAlignmentCenter;
-        numLb.textColor =[UIColor whiteColor];
-        numLb.text =@"1000";
-        numLb.font =[UIFont boldSystemFontOfSize:10.0f];
-        
-        UILabel * wordLb =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80*W_Wide_Zoom, 20*W_Hight_Zoom)];
-        wordLb.center = CGPointMake(numLb.center.x+30*W_Wide_Zoom, numLb.frame.origin.y+25*W_Hight_Zoom);
-        wordLb.text =arrName[i];
-        wordLb.textColor =[UIColor whiteColor];
-        wordLb.font =[UIFont boldSystemFontOfSize:10.0f];
-        if (i<3) {
-            UILabel * lineLB =[[UILabel alloc]initWithFrame:CGRectMake(119*W_Wide_Zoom +i*70, _heandBtn.frame.origin.y+120*W_Hight_Zoom, 1.5, 20)];
-            lineLB.backgroundColor =[UIColor whiteColor];
-            [_headView addSubview:lineLB];
-        }
-
-   
-        [_headView addSubview:wordLb];
-        [_headView addSubview:numLb];
-    
-    }
+//    NSArray * arrName =@[@"帖子",@"关注",@"粉丝",@"点赞"];
+//    
+//    for (NSInteger i = 0;i<4; i++) {
+//        UILabel * numLb =[[UILabel alloc]initWithFrame:CGRectMake(46+i*70*W_Hight_Zoom, _heandBtn.frame.origin.y+110*W_Hight_Zoom, 80*W_Wide_Zoom, 20*W_Hight_Zoom)];
+//        numLb.tag = 500+i;
+//        numLb.textAlignment = NSTextAlignmentCenter;
+//        numLb.textColor =[UIColor whiteColor];
+//        numLb.text =@"1000";
+//        numLb.font =[UIFont boldSystemFontOfSize:10.0f];
+//        
+//        UILabel * wordLb =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80*W_Wide_Zoom, 20*W_Hight_Zoom)];
+//        wordLb.center = CGPointMake(numLb.center.x+30*W_Wide_Zoom, numLb.frame.origin.y+25*W_Hight_Zoom);
+//        wordLb.text =arrName[i];
+//        wordLb.textColor =[UIColor whiteColor];
+//        wordLb.font =[UIFont boldSystemFontOfSize:10.0f];
+//        if (i<3) {
+//            UILabel * lineLB =[[UILabel alloc]initWithFrame:CGRectMake(119*W_Wide_Zoom +i*70, _heandBtn.frame.origin.y+120*W_Hight_Zoom, 1.5, 20)];
+//            lineLB.backgroundColor =[UIColor whiteColor];
+//            [_headView addSubview:lineLB];
+//        }
+//
+//   
+//        [_headView addSubview:wordLb];
+//        [_headView addSubview:numLb];
+//    
+//    }
     
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
@@ -442,13 +442,13 @@
         NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
         NSString * devo  = [defaults objectForKey:@"deviceNumber"];
         if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
-            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有绑定设备，是否要绑定设备?" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Tip" message:@"You do not have a binding device, do you want to bind the device?" preferredStyle:UIAlertControllerStyleAlert];
             
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Cancel" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
                 
                 
             }];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"立即" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Immediately" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
                 
                 SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
                 [self.navigationController pushViewController:setVC animated:YES];

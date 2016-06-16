@@ -75,7 +75,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     // 尚未绑定设备，则绑定设备。
     if ([AppUtil isBlankString:str]) {
         if ([AppUtil isBlankString:strDeviceNo]) {
-            [self updateUI:@"Search equipment" State:false];
+            [self updateUI:@"Search device" State:false];
 
         }else
         {
@@ -95,7 +95,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
 - (void)solveBing:(NSString *)str
 {
     
-    deviceNumberEdit.text = [NSString stringWithFormat:@"  Equipment No.:  %@", str];
+    deviceNumberEdit.text = [NSString stringWithFormat:@"  Device No.:  %@", str];
     incodeEdit.text = [NSString stringWithFormat:@"  Access code:  ******"];
     [self updateUI:@"Remove binding" State:true];
 
@@ -156,7 +156,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
                       [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_WIFI_CONFIGURED];
                       [AccountManager sharedAccountManager].loginModel.deviceno = @"";
                       // 更新界面状态。
-                      [self updateUI:@"Search equipment" State:false];
+                      [self updateUI:@"Search device" State:false];
                   }
               }
               failure:^(AFHTTPRequestOperation *operation, NSError *error) {

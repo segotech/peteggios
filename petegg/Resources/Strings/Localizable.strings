@@ -18,16 +18,16 @@
 
 // wifi
 "wifiTitle" = "Set networ";
-"bindDevice" = "Binding equipment";
+"bindDevice" = "Binding device";
 
 // setting
 "settingViewTitle" = "Setting";
 "wifiViewTitle" = "Set network";
 "INFO_NetNoReachable" = "The current network is not available";
 "INFO_ReachableViaWWAN"= "Current non WIFI environment";
-"bindDeviceViewTitle" = "Binding equipment";
+"bindDeviceViewTitle" = "Binding device";
 
-"EquipmentNo" = "Equipment No.:";
+"EquipmentNo" = "Device No.:";
 "AccessCode" = "Access code:";
 
 // 登录 注册

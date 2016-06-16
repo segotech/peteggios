@@ -20,48 +20,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"修改密码"];
+    [self setNavTitle:@"Modify password"];
     self.view.backgroundColor = [UIColor whiteColor];
     
 }
 -(void)setupView{
     [super  setupView];
 
-    NSArray * nameArray = @[@"旧密码:",@"新密码:",@"确认密码:"];
+    NSArray * nameArray = @[@"Old password:",@"New password:",@"Confirm password:"];
     for (int i = 0 ; i < 3; i ++) {
         UILabel * lineLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 120 *W_Hight_Zoom + 60 * i * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         lineLabeles.backgroundColor = GRAY_COLOR;
         [self.view addSubview:lineLabeles];
         
-        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 75*W_Hight_Zoom + i * 60 * W_Hight_Zoom, 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom, 75*W_Hight_Zoom + i * 60 * W_Hight_Zoom, 130 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
         nameLabeles.text = nameArray[i];
-        nameLabeles.font = [UIFont systemFontOfSize:15];
-        nameLabeles.textAlignment = NSTextAlignmentLeft;
+        nameLabeles.font = [UIFont systemFontOfSize:13];
+        nameLabeles.textAlignment = NSTextAlignmentRight;
         [self.view addSubview:nameLabeles];
 
     }
-    _oldPasswordTextfield = [[UITextField alloc]initWithFrame:CGRectMake(110 * W_Wide_Zoom, 75 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _oldPasswordTextfield.font = [UIFont systemFontOfSize:14];
-    _oldPasswordTextfield.placeholder = @"请输入旧密码";
+    _oldPasswordTextfield = [[UITextField alloc]initWithFrame:CGRectMake(150 * W_Wide_Zoom, 75 * W_Hight_Zoom, 220 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _oldPasswordTextfield.font = [UIFont systemFontOfSize:13];
+    _oldPasswordTextfield.placeholder = @"Please enter the old password";
     _oldPasswordTextfield.tintColor = GREEN_COLOR;
     [self.view addSubview:_oldPasswordTextfield];
     
-    _newpassWordTextfield = [[UITextField alloc]initWithFrame:CGRectMake(110 * W_Wide_Zoom, 135 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _newpassWordTextfield.font = [UIFont systemFontOfSize:14];
-    _newpassWordTextfield.placeholder = @"请输入新密码";
+    _newpassWordTextfield = [[UITextField alloc]initWithFrame:CGRectMake(150 * W_Wide_Zoom, 135 * W_Hight_Zoom, 220 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _newpassWordTextfield.font = [UIFont systemFontOfSize:13];
+    _newpassWordTextfield.placeholder = @"Please enter a new password";
     _newpassWordTextfield.tintColor = GREEN_COLOR;
     [self.view addSubview:_newpassWordTextfield];
     
-    _surePassworeTextfield = [[UITextField alloc]initWithFrame:CGRectMake(110 * W_Wide_Zoom, 195 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    _surePassworeTextfield.font = [UIFont systemFontOfSize:14];
-    _surePassworeTextfield.placeholder = @"请输入确定密码";
+    _surePassworeTextfield = [[UITextField alloc]initWithFrame:CGRectMake(150 * W_Wide_Zoom, 195 * W_Hight_Zoom, 220 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _surePassworeTextfield.font = [UIFont systemFontOfSize:13];
+    _surePassworeTextfield.placeholder = @"Please enter a confirm password";
     _surePassworeTextfield.tintColor = GREEN_COLOR;
     [self.view addSubview:_surePassworeTextfield];
 
     
     UIButton * sureButton = [[UIButton alloc]initWithFrame:CGRectMake(87.5 * W_Wide_Zoom, 300 * W_Hight_Zoom, 200 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     sureButton.backgroundColor = GREEN_COLOR;
-    [sureButton setTitle:@"确定" forState:UIControlStateNormal];
+    [sureButton setTitle:@"Confirm" forState:UIControlStateNormal];
     [sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     sureButton.titleLabel.font = [UIFont systemFontOfSize:14];
     sureButton.layer.cornerRadius = 5;
@@ -77,30 +77,30 @@
 -(void)sureButtonTouch{
     NSString * str = [AccountManager sharedAccountManager].loginModel.showpwd;
     if (![_oldPasswordTextfield.text isEqualToString:str]) {
-        [[AppUtil appTopViewController] showHint:@"您输入的旧密码有误"];
+        [[AppUtil appTopViewController] showHint:@"The old password you entered is incorrect."];
         return;
     }
     if ([str isEqualToString:_newpassWordTextfield.text]) {
-        [[AppUtil appTopViewController] showHint:@"新密码不能与旧密码一致"];
+        [[AppUtil appTopViewController] showHint:@"The new password cannot be consistent with the old password"];
         return;
     }
     
     if (![_newpassWordTextfield.text isEqualToString:_surePassworeTextfield.text]) {
-        [[AppUtil appTopViewController] showHint:@"两次输入密码不一致"];
+        [[AppUtil appTopViewController] showHint:@"Two input passwords are not consistent"];
         return;
     }
     
     if ([AppUtil isBlankString:_newpassWordTextfield.text]) {
-         [[AppUtil appTopViewController] showHint:@"请输入新密码"];
+        [[AppUtil appTopViewController] showHint:@"Please enter a new password"];
         return;
     }
-    [self showHudInView:self.view hint:@"正在修改..."];
+    [self showHudInView:self.view hint:@"Being modified..."];
     [[AFHttpClient sharedAFHttpClient]modifyPasswordWithMid:[AccountManager sharedAccountManager].loginModel.mid password:_newpassWordTextfield.text complete:^(BaseModel *model) {
         [self hideHud];
         if (model) {
-            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"修改成功，请重新登录" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Tip" message:@"Modify the success, please re login" preferredStyle:UIAlertControllerStyleAlert];
             
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) { 
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
                 
                 NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
                 NSDictionary *dictionary = [userDefatluts dictionaryRepresentation];

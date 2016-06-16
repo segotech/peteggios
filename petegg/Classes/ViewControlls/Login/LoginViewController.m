@@ -130,12 +130,6 @@
 -(void)loginTouch{
     NSLog(@"登录");
     
-    CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
-    compleVC.mid = @"jfjfjjf";
-    [self.navigationController pushViewController:compleVC animated:YES];
-    
-    return ;
-    
     if ([AppUtil isBlankString:self.accountTextField.text]) {
         [[AppUtil appTopViewController] showHint:@"Please enter your Email address"];
         return;

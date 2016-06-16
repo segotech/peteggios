@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"产品简介"];
+    [self setNavTitle:@"Product introduction"];
 }
 
 -(void)setupView{
