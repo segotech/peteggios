@@ -70,7 +70,6 @@
 		3466DBC11CE5B93F0023393E /* guide1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBBE1CE5B93F0023393E /* guide1.jpg */; };
 		3466DBC21CE5B93F0023393E /* guide2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBBF1CE5B93F0023393E /* guide2.jpg */; };
 		3466DBC31CE5B93F0023393E /* guide3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBC01CE5B93F0023393E /* guide3.jpg */; };
-		3466DBC51CE5BE550023393E /* guide4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBC41CE5BE550023393E /* guide4.jpg */; };
 		3466DBC71CEACAD70023393E /* segoColor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3466DBC61CEACAD70023393E /* segoColor.jpg */; };
 		34813FE21CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = 34813FE11CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m */; };
 		34813FE41CC4DE50000DFE26 /* showPs.png in Resources */ = {isa = PBXBuildFile; fileRef = 34813FE31CC4DE50000DFE26 /* showPs.png */; };
@@ -436,7 +435,6 @@
 		3466DBBE1CE5B93F0023393E /* guide1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide1.jpg; sourceTree = "<group>"; };
 		3466DBBF1CE5B93F0023393E /* guide2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide2.jpg; sourceTree = "<group>"; };
 		3466DBC01CE5B93F0023393E /* guide3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide3.jpg; sourceTree = "<group>"; };
-		3466DBC41CE5BE550023393E /* guide4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide4.jpg; sourceTree = "<group>"; };
 		3466DBC61CEACAD70023393E /* segoColor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = segoColor.jpg; sourceTree = "<group>"; };
 		34813FE01CC4D80F000DFE26 /* AFHttpClient+PersonAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+PersonAttention.h"; sourceTree = "<group>"; };
 		34813FE11CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+PersonAttention.m"; sourceTree = "<group>"; };
@@ -1317,7 +1315,6 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
-				3466DBC41CE5BE550023393E /* guide4.jpg */,
 				3466DBBE1CE5B93F0023393E /* guide1.jpg */,
 				3466DBBF1CE5B93F0023393E /* guide2.jpg */,
 				3466DBC01CE5B93F0023393E /* guide3.jpg */,
@@ -2974,7 +2971,6 @@
 				57666FBB1C96979F00A52DBA /* tab_egg_normal@3x.png in Resources */,
 				7D1714321CBB4C620047FA70 /* nearPeople.png in Resources */,
 				7D825D3B1CBCA88D00F4E216 /* timeLIst.png in Resources */,
-				3466DBC51CE5BE550023393E /* guide4.jpg in Resources */,
 				7D24EA8D1CC4E74A004EB1E2 /* miaomiao.png in Resources */,
 				7D1968BF1CE0906B009A63BB /* weishi_twoday.png in Resources */,
 				34A218441CCDFF9700ADD8FF /* rock.wav in Resources */,
