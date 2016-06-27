@@ -252,6 +252,16 @@
 		578B9E671CA2D8CB00CAC21D /* SquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 578B9E661CA2D8CB00CAC21D /* SquareModel.m */; };
 		579CF1171CF3E8310091EA6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 579CF1151CF3E8310091EA6D /* LaunchScreen.storyboard */; };
 		57AFD66B1CE5AE1700B611FC /* launcher_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFD66A1CE5AE1700B611FC /* launcher_icon@2x.png */; };
+		57E053E71D1FEFB300AA29F8 /* HeaderViewCollection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E053DE1D1FEFB300AA29F8 /* HeaderViewCollection.xib */; };
+		57E053E81D1FEFB300AA29F8 /* MyVideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E053E01D1FEFB300AA29F8 /* MyVideoCollectionViewCell.m */; };
+		57E053E91D1FEFB300AA29F8 /* SQSupplementaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E053E11D1FEFB300AA29F8 /* SQSupplementaryView.xib */; };
+		57E053EA1D1FEFB300AA29F8 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E053E31D1FEFB300AA29F8 /* VideoViewController.m */; };
+		57E053EB1D1FEFB300AA29F8 /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E053E41D1FEFB300AA29F8 /* VideoViewController.xib */; };
+		57E053EC1D1FEFB300AA29F8 /* ViewControllerss.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E053E61D1FEFB300AA29F8 /* ViewControllerss.m */; };
+		57E053F41D1FF01600AA29F8 /* LargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E053EF1D1FF01600AA29F8 /* LargeViewController.m */; };
+		57E053F51D1FF01600AA29F8 /* LargeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E053F01D1FF01600AA29F8 /* LargeViewController.xib */; };
+		57E053F61D1FF01600AA29F8 /* SnapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E053F21D1FF01600AA29F8 /* SnapViewController.m */; };
+		57E053F71D1FF01600AA29F8 /* SnapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E053F31D1FF01600AA29F8 /* SnapViewController.xib */; };
 		57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F2C8301CA10FB8005324DD /* btn_back@2x.png */; };
 		57F824E41CDAED3A0026D597 /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F824E31CDAED3A0026D597 /* UIImage-Extensions.m */; };
 		7D0116171CC7631000FEEF16 /* AFHttpClient+Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0116161CC7631000FEEF16 /* AFHttpClient+Issue.m */; };
@@ -1082,6 +1092,21 @@
 		578B9E661CA2D8CB00CAC21D /* SquareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareModel.m; sourceTree = "<group>"; };
 		579CF1161CF3E8310091EA6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57AFD66A1CE5AE1700B611FC /* launcher_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launcher_icon@2x.png"; sourceTree = "<group>"; };
+		57E053DE1D1FEFB300AA29F8 /* HeaderViewCollection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderViewCollection.xib; sourceTree = "<group>"; };
+		57E053DF1D1FEFB300AA29F8 /* MyVideoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVideoCollectionViewCell.h; sourceTree = "<group>"; };
+		57E053E01D1FEFB300AA29F8 /* MyVideoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVideoCollectionViewCell.m; sourceTree = "<group>"; };
+		57E053E11D1FEFB300AA29F8 /* SQSupplementaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQSupplementaryView.xib; sourceTree = "<group>"; };
+		57E053E21D1FEFB300AA29F8 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		57E053E31D1FEFB300AA29F8 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		57E053E41D1FEFB300AA29F8 /* VideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
+		57E053E51D1FEFB300AA29F8 /* ViewControllerss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerss.h; sourceTree = "<group>"; };
+		57E053E61D1FEFB300AA29F8 /* ViewControllerss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerss.m; sourceTree = "<group>"; };
+		57E053EE1D1FF01600AA29F8 /* LargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeViewController.h; sourceTree = "<group>"; };
+		57E053EF1D1FF01600AA29F8 /* LargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeViewController.m; sourceTree = "<group>"; };
+		57E053F01D1FF01600AA29F8 /* LargeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargeViewController.xib; sourceTree = "<group>"; };
+		57E053F11D1FF01600AA29F8 /* SnapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapViewController.h; sourceTree = "<group>"; };
+		57E053F21D1FF01600AA29F8 /* SnapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapViewController.m; sourceTree = "<group>"; };
+		57E053F31D1FF01600AA29F8 /* SnapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SnapViewController.xib; sourceTree = "<group>"; };
 		57F2C8301CA10FB8005324DD /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
 		57F824E21CDAED3A0026D597 /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
 		57F824E31CDAED3A0026D597 /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
@@ -2775,6 +2800,35 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		57E053DD1D1FEFB300AA29F8 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				57E053DE1D1FEFB300AA29F8 /* HeaderViewCollection.xib */,
+				57E053DF1D1FEFB300AA29F8 /* MyVideoCollectionViewCell.h */,
+				57E053E01D1FEFB300AA29F8 /* MyVideoCollectionViewCell.m */,
+				57E053E11D1FEFB300AA29F8 /* SQSupplementaryView.xib */,
+				57E053E21D1FEFB300AA29F8 /* VideoViewController.h */,
+				57E053E31D1FEFB300AA29F8 /* VideoViewController.m */,
+				57E053E41D1FEFB300AA29F8 /* VideoViewController.xib */,
+				57E053E51D1FEFB300AA29F8 /* ViewControllerss.h */,
+				57E053E61D1FEFB300AA29F8 /* ViewControllerss.m */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		57E053ED1D1FF01600AA29F8 /* Snap */ = {
+			isa = PBXGroup;
+			children = (
+				57E053EE1D1FF01600AA29F8 /* LargeViewController.h */,
+				57E053EF1D1FF01600AA29F8 /* LargeViewController.m */,
+				57E053F01D1FF01600AA29F8 /* LargeViewController.xib */,
+				57E053F11D1FF01600AA29F8 /* SnapViewController.h */,
+				57E053F21D1FF01600AA29F8 /* SnapViewController.m */,
+				57E053F31D1FF01600AA29F8 /* SnapViewController.xib */,
+			);
+			path = Snap;
+			sourceTree = "<group>";
+		};
 		57F824E11CDAED3A0026D597 /* UIImage-Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -2787,6 +2841,8 @@
 		7D825CED1CBCA65000F4E216 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				57E053ED1D1FF01600AA29F8 /* Snap */,
+				57E053DD1D1FEFB300AA29F8 /* Video */,
 				574EFF481D0AEF7E0044BA34 /* ThreePoints */,
 				7DA216941CD233AB00F6BCCB /* FeedSeting */,
 				7DB4F5BF1CCF847C002918DA /* ChangePassWord */,
@@ -2938,12 +2994,14 @@
 			files = (
 				34A2182A1CCDFF9700ADD8FF /* mic_active.png in Resources */,
 				7D24EA8F1CC4E74A004EB1E2 /* womanquanquan.png in Resources */,
+				57E053F51D1FF01600AA29F8 /* LargeViewController.xib in Resources */,
 				57F2C8311CA10FB9005324DD /* btn_back@2x.png in Resources */,
 				34813FF11CC5E039000DFE26 /* womenAnimal.png in Resources */,
 				7D825CE61CBCA51B00F4E216 /* SettingViewController.xib in Resources */,
 				34A218371CCDFF9700ADD8FF /* status-red.png in Resources */,
 				344F02631C9FEBDE0076CE62 /* snap_on.png in Resources */,
 				34024DD11CE33976000E3723 /* 22.png in Resources */,
+				57E053E71D1FEFB300AA29F8 /* HeaderViewCollection.xib in Resources */,
 				34A215DC1CCDFD6F00ADD8FF /* shortring.caf in Resources */,
 				57666FC21C96979F00A52DBA /* tab_rank_press@3x.png in Resources */,
 				7D0128E81CC5C8480009BF6B /* moveing.png in Resources */,
@@ -3096,6 +3154,7 @@
 				34813FE91CC5D4EE000DFE26 /* CompletionViewController.xib in Resources */,
 				57666F5A1C96619700A52DBA /* Main.storyboard in Resources */,
 				34A218421CCDFF9700ADD8FF /* oldphone.wav in Resources */,
+				57E053EB1D1FEFB300AA29F8 /* VideoViewController.xib in Resources */,
 				7D825D2A1CBCA85A00F4E216 /* person_control.png in Resources */,
 				34A218211CCDFF9700ADD8FF /* composing_chat.png in Resources */,
 				344F02611C9FEBDE0076CE62 /* round.png in Resources */,
@@ -3112,6 +3171,7 @@
 				34A218161CCDFF9700ADD8FF /* nowebcamCIF.jpg in Resources */,
 				34813FE41CC4DE50000DFE26 /* showPs.png in Resources */,
 				7DF146F11CD057EF0046D726 /* addblack.png in Resources */,
+				57E053F71D1FF01600AA29F8 /* SnapViewController.xib in Resources */,
 				344F02C01CA2D8CE0076CE62 /* left_on.png in Resources */,
 				34A218351CCDFF9700ADD8FF /* status-offline.png in Resources */,
 				34A2181E1CCDFF9700ADD8FF /* chat_message_inprogress.png in Resources */,
@@ -3125,6 +3185,7 @@
 				34024DD41CE491DC000E3723 /* light_on_on_on.png in Resources */,
 				7D1763A61CBF864C00579B4C /* dianzanhou.png in Resources */,
 				34024DE41CE5745F000E3723 /* 引导页ok-3.png in Resources */,
+				57E053E91D1FEFB300AA29F8 /* SQSupplementaryView.xib in Resources */,
 				34144BE21CC48688007C4498 /* history_triangle.png in Resources */,
 				34A2181F1CCDFF9700ADD8FF /* chat_message_not_delivered.png in Resources */,
 				579CF1171CF3E8310091EA6D /* LaunchScreen.storyboard in Resources */,
@@ -3218,6 +3279,7 @@
 				5778B3011CC08BBC00EC2D96 /* NSString+URLEncoding.m in Sources */,
 				57666FA71C968B1F00A52DBA /* LoginViewController.m in Sources */,
 				7D825CCB1CBCA41700F4E216 /* VideoModel.m in Sources */,
+				57E053EC1D1FEFB300AA29F8 /* ViewControllerss.m in Sources */,
 				34813FE21CC4D80F000DFE26 /* AFHttpClient+PersonAttention.m in Sources */,
 				34144BC91CBFB147007C4498 /* TimeHistoryModel.m in Sources */,
 				7DEB3F171CD30C9E00502179 /* FeddingModel.m in Sources */,
@@ -3237,9 +3299,11 @@
 				57666FCD1C96BD2500A52DBA /* AppDelegate+ShareSDK.m in Sources */,
 				34DB513C1CDC68520032CF39 /* GetPhotoGraphModel.m in Sources */,
 				7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */,
+				57E053E81D1FEFB300AA29F8 /* MyVideoCollectionViewCell.m in Sources */,
 				7D0116171CC7631000FEEF16 /* AFHttpClient+Issue.m in Sources */,
 				7D3A351F1CB3AE790037C616 /* LoginModel.m in Sources */,
 				574EFF511D0AEF7E0044BA34 /* AgreementViewController.m in Sources */,
+				57E053F41D1FF01600AA29F8 /* LargeViewController.m in Sources */,
 				7D825D181CBCA67800F4E216 /* UITabBar+Badge.m in Sources */,
 				57666F831C9687C500A52DBA /* MainTabViewController.m in Sources */,
 				7DA2168A1CD1B4A600F6BCCB /* PremissModel.m in Sources */,
@@ -3269,6 +3333,7 @@
 				57666F511C96619700A52DBA /* main.m in Sources */,
 				344F02851CA12E3C0076CE62 /* CALayer+XibConfiguration.m in Sources */,
 				57666FA11C9689CC00A52DBA /* EggViewController.m in Sources */,
+				57E053F61D1FF01600AA29F8 /* SnapViewController.m in Sources */,
 				7D825D1B1CBCA69E00F4E216 /* BaseCollectionViewController.m in Sources */,
 				7DA2169D1CD2358E00F6BCCB /* FeedSetingViewController.m in Sources */,
 				7D1763A91CBF8DD100579B4C /* RankModel.m in Sources */,
@@ -3283,6 +3348,7 @@
 				7D825CE21CBCA51B00F4E216 /* BindDeviceViewControler.m in Sources */,
 				7DA216901CD20AB000F6BCCB /* ZdFriendModel.m in Sources */,
 				574EFF521D0AEF7E0044BA34 /* IntroduceViewController.m in Sources */,
+				57E053EA1D1FEFB300AA29F8 /* VideoViewController.m in Sources */,
 				344F02BC1CA27E780076CE62 /* BePeripheralViewController.m in Sources */,
 				7D9D769A1CBCCD24004E45DE /* NearbyModel.m in Sources */,
 				57666F7F1C9686DE00A52DBA /* AppDelegate.m in Sources */,

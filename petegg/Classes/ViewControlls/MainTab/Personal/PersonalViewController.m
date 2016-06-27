@@ -8,13 +8,13 @@
 
 #import "PersonalViewController.h"
 #import "personTableViewCell.h"
-//#import "VideoViewController.h"
+#import "VideoViewController.h"
 #import <Accelerate/Accelerate.h>
 //#import "FriendViewController.h"
 //#import "FunnyCodeViewController.h"
 //#import "BaseViewController.h"
 //#import "PersonAttentionViewController.h"
-//#import "SnapViewController.h"
+#import "SnapViewController.h"
 #import "PersonInformationViewController.h"
 #import "ChangePasswordViewController.h"
 //#import "BalckListViewController.h"
@@ -57,10 +57,10 @@
     self.dataSource =[NSMutableArray array];
     self.dataSourceImage =[NSMutableArray array];
     
-    NSArray * arrName =@[@"Feeding set",@"Modify password"];
+    NSArray * arrName =@[@"录像",@"抓拍",@"Feeding set",@"Modify password"];
     [self.dataSource addObjectsFromArray:arrName];
     
-    NSArray * arrImage =@[@"person_weishi.png" ,@"person_pw.png"];
+    NSArray * arrImage =@[@"person_photograph.png.png",@"person_balance.png.png", @"person_weishi.png" ,@"person_pw.png"];
     [self.dataSourceImage addObjectsFromArray:arrImage];
 }
 
@@ -350,13 +350,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return  2;
+            return 2;
+        case 1:
+            return 2;
         default:
             return 0;
     }
@@ -376,6 +378,14 @@
 
 //  设置标题的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    switch (section) {
+            
+        case 0:
+            return  0.5;
+            
+        case 1:
+            return  18;
+    }
     
     return  0.5;
 }
@@ -403,10 +413,26 @@
         cell = [[personTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:showUserInfoCellIdentifier];
     }
     
-    cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row]];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.introduce.text= self.dataSource[indexPath.row];
-    
+    switch (indexPath.section) {
+        case 0:
+        {
+            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row ]];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.introduce.text= self.dataSource[indexPath.row ];
+        }
+            break;
+        case 1:
+        {
+            cell.imageCell.image =[UIImage imageNamed:self.dataSourceImage[indexPath.row + 2]];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.introduce.text= self.dataSource[indexPath.row + 2];
+        }
+            break;
+            
+        default:
+            break;
+    }
+   
     // 选择之后的风格
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
@@ -429,40 +455,66 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    if (indexPath.row  == 1) {
-        NSLog(@"111");
-        ChangePasswordViewController * changVc = [[ChangePasswordViewController alloc]init];
-        [self.navigationController pushViewController:changVc animated:YES];
-     
-    }
-    
-    if (indexPath.row ==0) {
-        
-        NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-        NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
-        NSString * devo  = [defaults objectForKey:@"deviceNumber"];
-        if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
-            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Tip" message:@"You do not have a binding device, do you want to bind the device?" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Cancel" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+    switch (indexPath.section) {
+        case 0:
+        {
+            if (indexPath.row == 0) {
+                NSLog(@"录像");
+                VideoViewController * videoVC =[[VideoViewController alloc]initWithNibName:@"VideoViewController" bundle:nil];
+                [self.navigationController pushViewController:videoVC animated:YES];
+               
                 
-                
-            }];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Immediately" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
-                
-                SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
-                [self.navigationController pushViewController:setVC animated:YES];
-                
-                
-            }];
-            [alertController addAction:okAction];
-            [alertController addAction:cancelAction];
-            [self presentViewController:alertController animated:YES completion:nil];
-        }else{
-        FeedSetingViewController * feed = [[FeedSetingViewController alloc]init];
-        [self.navigationController pushViewController:feed animated:YES];
+            }
+            if (indexPath.row == 1) {
+                NSLog(@"抓拍");
+                SnapViewController * snapVC =[[SnapViewController alloc]initWithNibName:@"SnapViewController" bundle:nil];
+                [self.navigationController pushViewController:snapVC animated:YES];
+            }
         }
+            break;
+        case 1:
+        {
+            if (indexPath.row  == 1) {
+                NSLog(@"111");
+                ChangePasswordViewController * changVc = [[ChangePasswordViewController alloc]init];
+                [self.navigationController pushViewController:changVc animated:YES];
+             
+            }
+            
+            if (indexPath.row ==0) {
+                
+                NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+                NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
+                NSString * devo  = [defaults objectForKey:@"deviceNumber"];
+                if ([AppUtil isBlankString:devoLG] && [AppUtil isBlankString:devo]) {
+                    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Tip" message:@"You do not have a binding device, do you want to bind the device?" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Cancel" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+                        
+                        
+                    }];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Immediately" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+                        
+                        SettingViewController * setVC =[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+                        [self.navigationController pushViewController:setVC animated:YES];
+                        
+                        
+                    }];
+                    [alertController addAction:okAction];
+                    [alertController addAction:cancelAction];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }else{
+                FeedSetingViewController * feed = [[FeedSetingViewController alloc]init];
+                [self.navigationController pushViewController:feed animated:YES];
+                }
+            }
+        }
+            break;
+            
+        default:
+            break;
     }
+   
 }
 
 
