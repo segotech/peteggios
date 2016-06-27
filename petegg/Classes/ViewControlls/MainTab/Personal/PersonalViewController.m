@@ -338,7 +338,7 @@
 {
     if (isJiazai == YES) {
         ThreePointsViewController * threepointVc = [[ThreePointsViewController alloc]init];
-        [self.navigationController pushViewController:threepointVc animated:NO];
+        [self.navigationController pushViewController:threepointVc animated:YES];
     }else{
     }
    

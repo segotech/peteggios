@@ -56,7 +56,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
 - (void)viewDidLoad {
     [super viewDidLoad];
     _ondedayArray = [[NSMutableArray alloc]init];
-    [self setNavTitle:@"喂食设置"];
+    [self setNavTitle:@"Feeding set"];
     _dataArray = [[NSMutableArray alloc]init];
     self.view.backgroundColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1];
     [self querWeishi];
@@ -70,8 +70,8 @@ static NSString * cellId = @"fedseting2321232322313323231";
     _bigBtn.layer.cornerRadius = _bigBtn.width/2;
     [self.view addSubview:_bigBtn];
     
-    UILabel * wenziLabel = [[UILabel alloc]initWithFrame:CGRectMake(87.5 * W_Wide_Zoom, 300 * W_Hight_Zoom, 80 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
-    wenziLabel.text = @"喂食天数";
+    UILabel * wenziLabel = [[UILabel alloc]initWithFrame:CGRectMake(87.5 * W_Wide_Zoom, 300 * W_Hight_Zoom, 100 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    wenziLabel.text = @"Feeding days";
     wenziLabel.textColor = [UIColor blackColor];
     wenziLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:wenziLabel];
@@ -82,7 +82,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
     [self.view addSubview:whiteView];
     
     _oneDayButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    [_oneDayButton setTitle:@"一天" forState:UIControlStateNormal];
+    [_oneDayButton setTitle:@"One" forState:UIControlStateNormal];
     _oneDayButton.backgroundColor = [UIColor whiteColor];
     _oneDayButton.titleLabel.font = [UIFont systemFontOfSize:13];
     [_oneDayButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
@@ -92,7 +92,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
 
     
     _twoDayButton = [[UIButton alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 0 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    [_twoDayButton setTitle:@"两天" forState:UIControlStateNormal];
+    [_twoDayButton setTitle:@"Two" forState:UIControlStateNormal];
     _twoDayButton.backgroundColor = [UIColor whiteColor];
     _twoDayButton.titleLabel.font = [UIFont systemFontOfSize:13];
     [_twoDayButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
@@ -111,7 +111,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
 //    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     UIButton * sureBtn = [[UIButton alloc]initWithFrame:CGRectMake(221.25 * W_Wide_Zoom, 620 * W_Hight_Zoom, 120 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     sureBtn.backgroundColor = GREEN_COLOR;
-    [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [sureBtn setTitle:@"Confirm" forState:UIControlStateNormal];
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     sureBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     sureBtn.layer.cornerRadius = 5;
@@ -121,7 +121,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
     
     _sureBtn2 = [[UIButton alloc]initWithFrame:CGRectMake(33.75 * W_Wide_Zoom, 620 * W_Hight_Zoom, 120 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _sureBtn2.backgroundColor = GREEN_COLOR;
-    [_sureBtn2 setTitle:@"停用" forState:UIControlStateNormal];
+    [_sureBtn2 setTitle:@"Stop" forState:UIControlStateNormal];
     [_sureBtn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _sureBtn2.titleLabel.font = [UIFont systemFontOfSize:13];
     _sureBtn2.layer.cornerRadius = 5;
@@ -132,11 +132,11 @@ static NSString * cellId = @"fedseting2321232322313323231";
 }
 
 -(void)stopWeishi{
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定要停用自动喂食吗？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Tip" message:@"Are you sure you want to disable the automatic feeding？" preferredStyle:UIAlertControllerStyleAlert];
     
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alert addAction:[UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         FeddingModel * model = self.dataSource[0];
-        [self showHudInView:self.view hint:@"正在停用..."];
+        [self showHudInView:self.view hint:@"Stoping..."];
         [[AFHttpClient sharedAFHttpClient]cancelFeedingtimeWithbrid:model.brid complete:^(BaseModel *model) {
             [self hideHud];
             if (model) {
@@ -147,7 +147,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
         }];
     }]];
     
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }]];
     
@@ -288,14 +288,14 @@ static NSString * cellId = @"fedseting2321232322313323231";
     _datePicker.alpha = 1;
     
     [[UIApplication sharedApplication].keyWindow addSubview:_datePicker];
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];//设置  为中文显示
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_CN"];//设置  为中文显示
     _datePicker.locale = locale;
     
     [_datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged ];
     
     _wanchengBtn = [[UIButton alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom, 427 * W_Hight_Zoom, 375 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     _wanchengBtn.backgroundColor = [UIColor whiteColor];
-    [_wanchengBtn setTitle:@"完成" forState:UIControlStateNormal];
+    [_wanchengBtn setTitle:@"Complete" forState:UIControlStateNormal];
     [_wanchengBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [[UIApplication sharedApplication].keyWindow addSubview:_wanchengBtn];
     [_wanchengBtn addTarget:self action:@selector(wanchengButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
@@ -369,7 +369,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
     [self onedayView];
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame = CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
-    [[AppUtil appTopViewController] showHint:@"启用一天模式"];
+    [[AppUtil appTopViewController] showHint:@"Start one day mode"];
          [_bigBtn setImage:[UIImage imageNamed:@"weishi_onday.png"] forState:UIControlStateNormal];
     }];
 }
@@ -384,7 +384,8 @@ static NSString * cellId = @"fedseting2321232322313323231";
     [self twoDayView];
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame = CGRectMake(42 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
-         [[AppUtil appTopViewController] showHint:@"启用两天模式"];
+//         [[AppUtil appTopViewController] showHint:@"启用两天模式"];
+        [[AppUtil appTopViewController] showHint:@"Start two day mode"];
          [_bigBtn setImage:[UIImage imageNamed:@"weishi_twoday.png"] forState:UIControlStateNormal];
     }];
 
@@ -412,12 +413,13 @@ static NSString * cellId = @"fedseting2321232322313323231";
     for (int i = 0 ; i < _dataArray.count - 1; i++) {
         for (int j = i + 1; j < _dataArray.count; j++) {
             if (_dataArray[i] == _dataArray[j]) {
-               [[AppUtil appTopViewController] showHint:@"请不要选择相同的时间哦，亲!"];
+//               [[AppUtil appTopViewController] showHint:@"请不要选择相同的时间哦，亲!"];
+                [[AppUtil appTopViewController] showHint:@"Please do not choose the same time Oh!"];
                 return;
             }
         }
     }
-    [self showHudInView:self.view hint:@"正在设置..."];
+    [self showHudInView:self.view hint:@"Setting..."];
     NSString * timeStr = [_dataArray componentsJoinedByString:@","];
     NSLog(@"%@",timeStr);
     NSString * termidStr = [AccountManager sharedAccountManager].loginModel.termid ;
