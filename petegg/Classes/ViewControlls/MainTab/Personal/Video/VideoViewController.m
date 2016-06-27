@@ -68,7 +68,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
      app= (AppDelegate *)[UIApplication sharedApplication].delegate;
     // 选择按钮
     isSelet = YES;
-    [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+//    [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+    
+    [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
     
     // collection
     self.collection.frame = CGRectMake(10, 110, SCREEN_WIDTH-20, SCREEN_HEIGHT-110);
@@ -81,11 +83,10 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     self.collection.backgroundColor = [UIColor whiteColor];
     
     
-    
-    
     // 已上传  未上传
     UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0, 60, self.view.bounds.size.width, 50)];
-    _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(60 , 10, 60 , 30 )];
+    _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(60 , 10, 120 , 30 )];
+    _leftButton.centerX = self.view.width * 0.25;
     [_leftButton setTitle:NSLocalizedString(@"hadupdata", nil) forState:UIControlStateNormal];
     _leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -95,11 +96,12 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [_leftButton addTarget:self action:@selector(leftbuttonTouch) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:_leftButton];
     
-    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(70, 34, 40, 1)];
+    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(_leftButton.left + 10, 34, 100, 1)];
     _lineLabel.backgroundColor = GREEN_COLOR;
     [topView addSubview:_lineLabel];
     
-    _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(250, 10, 60, 30)];
+    _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(250, 10, 120, 30)];
+    _rightButton.centerX = self.view.width * 0.75;
     [_rightButton setTitle:NSLocalizedString(@"willupdata", nil) forState:UIControlStateNormal];
     _rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -164,7 +166,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     [deleteOrUpdateArr removeAllObjects];
     if (isSelet) {
-        [self showBarButton:NAV_RIGHT imageName:@"cancel.png"];
+//        [self showBarButton:NAV_RIGHT imageName:@"cancel.png"];
+            [self showBarButton:NAV_RIGHT title:@"Cancel" fontColor:[UIColor blackColor]];
         isSelet = NO;
         _deleteImageV.hidden = NO;
 
@@ -179,7 +182,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         cell.rightBtn.selected = NO;
         }
     }
-          [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+//          [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+            [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
+        
          isSelet = YES;
         _deleteImageV.hidden = YES;
         
@@ -224,7 +229,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             
           NSString * str   =json[@"jsondata"][@"retCode"];
             if([str isEqualToString:@"0000"]){
-                [self showSuccessHudWithHint:@"删除成功"];
+//                [self showSuccessHudWithHint:@"删除成功"];
+                [self showSuccessHudWithHint:@"Delete success"];
                 [self initRefreshView:@"1"];
                 [deleteOrUpdateArr removeAllObjects];
                 _deleteImageV.hidden  = YES;
@@ -252,7 +258,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             if ([AppUtil isBlankString:devo]) {
                 //没有设备
                 
-                 [self showMessageWarring:@"请绑定设备后在上传" view:app.window];
+//                 [self showMessageWarring:@"请绑定设备后在上传" view:app.window];
+                [self showMessageWarring:@"Please bind the device after uploading" view:app.window];
                 return;
             }else{
                 termidSelf = termid;
@@ -263,7 +270,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             deviceoSelf = devoLG;
         }
     if (![AppUtil isBlankString:[standDefauls objectForKey:@"content"]]) {
-        [self showMessageWarring:@"还有视频正在上传" view:app.window];
+//        [self showMessageWarring:@"还有视频正在上传" view:app.window];
+        [self showMessageWarring:@"There are videos are uploaded" view:app.window];
         
     }else{
     
@@ -315,12 +323,14 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     }else if (deleteOrUpdateArr.count ==0)
     {
         
-    [self showMessageWarring:@"没有选择视频哦" view:app.window];
+//            [self showMessageWarring:@"没有选择视频哦" view:app.window];
+        [self showMessageWarring:@"Did not choose the video oh" view:app.window];
         
     }else
     {
         
-    [self showMessageWarring:@"一次只能选择一个视频上传哦" view:app.window];
+//    [self showMessageWarring:@"一次只能选择一个视频上传哦" view:app.window];
+        [self showMessageWarring:@"One can only choose a video upload oh" view:app.window];
     }
         
    
@@ -389,7 +399,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             [arr addObjectsFromArray:json];
             if (arr.count == 0) {
                 
-                [self showSuccessHudWithHint:@"没有更多数据哦"];
+//                [self showSuccessHudWithHint:@"没有更多数据哦"];
+                [self showSuccessHudWithHint:@"No more data oh"];
             }else{
             for (NSDictionary *dic0 in arr) {
                 VideoModel *model = [[VideoModel alloc] init];
@@ -435,7 +446,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
         if(dateEndOver >600)
         {
-            [self showMessageWarring:@"超时" view:app.window];
+//            [self showMessageWarring:@"超时" view:app.window];
+            [self showMessageWarring:@"Overtime" view:app.window];
             [timer setFireDate:[NSDate distantFuture]];
              [standDefus removeObjectForKey:@"content"];
             
@@ -446,7 +458,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
                 NSLog(@"上传中");
             }
             if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
-                [self showMessageWarring:@"上传成功" view:app.window];
+//                [self showMessageWarring:@"上传成功" view:app.window];
+                [self showMessageWarring:@"Upload success" view:app.window];
                 [standDefus removeObjectForKey:@"content"];
                 [self initRefreshView:@"0"];
                 self.proAccuracy.progress =1.0;
@@ -455,7 +468,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
                 
             }
             if ([[json objectForKey:@"content"] isEqualToString:@"2"]) {
-                 [self showMessageWarring:@"上传失败" view:app.window];
+//                 [self showMessageWarring:@"上传失败" view:app.window];
+                [self showMessageWarring:@"Upload failed" view:app.window];
                 [timer setFireDate:[NSDate distantFuture]];
                  [standDefus removeObjectForKey:@"content"];
             }
@@ -485,7 +499,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     _leftButton.selected = YES;
     _rightButton.selected = NO;
     [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(70, 34, 40, 1);
+        _lineLabel.frame = CGRectMake(_leftButton.left - 10, 34, 100, 1);
     }];
     
     
@@ -501,7 +515,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     _leftButton.selected = NO;
     _rightButton.selected = YES;
     [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(260, 34, 40, 1);
+        _lineLabel.frame = CGRectMake(_rightButton.left + 10, 34, 100, 1);
         
         
     }];

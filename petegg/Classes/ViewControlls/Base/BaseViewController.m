@@ -39,8 +39,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setLeftBackButton];
-    [self isMessage];
-    [self isfouceTip];
+//    [self isMessage];
+//    [self isfouceTip];
 
 }
 

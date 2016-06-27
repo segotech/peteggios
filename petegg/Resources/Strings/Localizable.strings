@@ -27,6 +27,12 @@
 "INFO_ReachableViaWWAN"= "Current non WIFI environment";
 "bindDeviceViewTitle" = "Binding device";
 
+"photograph" = "Photograph";
+"photoalbum" = "Photoalbum";
+"videoTitle" = "Video";
+"hadupdata" = "Already uploaded";
+"willupdata" = "Not uploaded";
+
 "EquipmentNo" = "Device No.:";
 "AccessCode" = "Access code:";
 

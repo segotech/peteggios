@@ -256,7 +256,6 @@
 		57E053E81D1FEFB300AA29F8 /* MyVideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E053E01D1FEFB300AA29F8 /* MyVideoCollectionViewCell.m */; };
 		57E053E91D1FEFB300AA29F8 /* SQSupplementaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E053E11D1FEFB300AA29F8 /* SQSupplementaryView.xib */; };
 		57E053EA1D1FEFB300AA29F8 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E053E31D1FEFB300AA29F8 /* VideoViewController.m */; };
-		57E053EB1D1FEFB300AA29F8 /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E053E41D1FEFB300AA29F8 /* VideoViewController.xib */; };
 		57E053EC1D1FEFB300AA29F8 /* ViewControllerss.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E053E61D1FEFB300AA29F8 /* ViewControllerss.m */; };
 		57E053F41D1FF01600AA29F8 /* LargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E053EF1D1FF01600AA29F8 /* LargeViewController.m */; };
 		57E053F51D1FF01600AA29F8 /* LargeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E053F01D1FF01600AA29F8 /* LargeViewController.xib */; };
@@ -1098,7 +1097,6 @@
 		57E053E11D1FEFB300AA29F8 /* SQSupplementaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQSupplementaryView.xib; sourceTree = "<group>"; };
 		57E053E21D1FEFB300AA29F8 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		57E053E31D1FEFB300AA29F8 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
-		57E053E41D1FEFB300AA29F8 /* VideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
 		57E053E51D1FEFB300AA29F8 /* ViewControllerss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerss.h; sourceTree = "<group>"; };
 		57E053E61D1FEFB300AA29F8 /* ViewControllerss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerss.m; sourceTree = "<group>"; };
 		57E053EE1D1FF01600AA29F8 /* LargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeViewController.h; sourceTree = "<group>"; };
@@ -2809,7 +2807,6 @@
 				57E053E11D1FEFB300AA29F8 /* SQSupplementaryView.xib */,
 				57E053E21D1FEFB300AA29F8 /* VideoViewController.h */,
 				57E053E31D1FEFB300AA29F8 /* VideoViewController.m */,
-				57E053E41D1FEFB300AA29F8 /* VideoViewController.xib */,
 				57E053E51D1FEFB300AA29F8 /* ViewControllerss.h */,
 				57E053E61D1FEFB300AA29F8 /* ViewControllerss.m */,
 			);
@@ -3154,7 +3151,6 @@
 				34813FE91CC5D4EE000DFE26 /* CompletionViewController.xib in Resources */,
 				57666F5A1C96619700A52DBA /* Main.storyboard in Resources */,
 				34A218421CCDFF9700ADD8FF /* oldphone.wav in Resources */,
-				57E053EB1D1FEFB300AA29F8 /* VideoViewController.xib in Resources */,
 				7D825D2A1CBCA85A00F4E216 /* person_control.png in Resources */,
 				34A218211CCDFF9700ADD8FF /* composing_chat.png in Resources */,
 				344F02611C9FEBDE0076CE62 /* round.png in Resources */,

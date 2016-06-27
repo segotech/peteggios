@@ -57,7 +57,7 @@
     self.dataSource =[NSMutableArray array];
     self.dataSourceImage =[NSMutableArray array];
     
-    NSArray * arrName =@[@"录像",@"抓拍",@"Feeding set",@"Modify password"];
+    NSArray * arrName =@[@"Video",@"Capture",@"Feeding set",@"Modify password"];
     [self.dataSource addObjectsFromArray:arrName];
     
     NSArray * arrImage =@[@"person_photograph.png.png",@"person_balance.png.png", @"person_weishi.png" ,@"person_pw.png"];
@@ -460,7 +460,7 @@
         {
             if (indexPath.row == 0) {
                 NSLog(@"录像");
-                VideoViewController * videoVC =[[VideoViewController alloc]initWithNibName:@"VideoViewController" bundle:nil];
+                VideoViewController * videoVC =[[VideoViewController alloc]init];
                 [self.navigationController pushViewController:videoVC animated:YES];
                
                 

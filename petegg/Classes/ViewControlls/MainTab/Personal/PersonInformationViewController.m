@@ -45,7 +45,8 @@
     [super viewDidLoad];
     
     self.dataSource = [[NSMutableArray alloc]init];
-    [self setNavTitle:@"修改个人信息"];
+//    [self setNavTitle:@"修改个人信息"];
+    [self setNavTitle:@"Modify personal information"];
     _imagePicker =[[UIImagePickerController alloc]init];
     _imagePicker.delegate= self;
     self.view.backgroundColor = [UIColor whiteColor];
@@ -71,13 +72,13 @@
 
 }
 -(void)initUserface{
-    NSArray * nameArray = @[@"性别",@"昵称",@"QQ",@"家族",@"生日",@"地址",@"签名"];
+    NSArray * nameArray = @[@"Gender",@"Nickname",@"QQ",@"Family",@"Birthday",@"Address",@"Signature"];
     for (int i  = 0 ; i < 7 ; i ++) {
         UILabel * lineLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 230 * W_Hight_Zoom + 45 * W_Hight_Zoom * i , 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         lineLabeles.backgroundColor = [UIColor lightGrayColor];
         [self.view addSubview:lineLabeles];
         
-        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(55 * W_Wide_Zoom, 195 * W_Hight_Zoom + 45* W_Hight_Zoom * i , 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+        UILabel * nameLabeles = [[UILabel alloc]initWithFrame:CGRectMake(35 * W_Wide_Zoom, 195 * W_Hight_Zoom + 45* W_Hight_Zoom * i , 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
         nameLabeles.font = [UIFont systemFontOfSize:15];
         nameLabeles.text = nameArray[i];
         nameLabeles.textColor = [UIColor blackColor];
@@ -122,7 +123,7 @@
     _nameTextField.tintColor = GREEN_COLOR;
     _nameTextField.font = [UIFont systemFontOfSize:13];
     // _nameTextField.backgroundColor = [UIColor blueColor];
-    _nameTextField.placeholder = @"请输入昵称";
+    _nameTextField.placeholder = @"Please input nickname";
     [self.view addSubview:_nameTextField];
     _nameTextField.text = model.nickname;
     
@@ -131,23 +132,23 @@
     //_qqTextField.backgroundColor = [UIColor blueColor];
     _qqTextField.tintColor = GREEN_COLOR;
     _qqTextField.font = [UIFont systemFontOfSize:13];
-    _qqTextField.placeholder = @"请输入qq";
+    _qqTextField.placeholder = @"Please input qq";
     [self.view addSubview:_qqTextField];
     _qqTextField.text = model.qq;
     
     
-    _publicBtn = [[UIButton alloc]initWithFrame:CGRectMake(280 * W_Wide_Zoom, 285 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Wide_Zoom)];
+    _publicBtn = [[UIButton alloc]initWithFrame:CGRectMake(280 * W_Wide_Zoom, 285 * W_Hight_Zoom, 90 * W_Wide_Zoom, 30 * W_Wide_Zoom)];
    // [_publicBtn setTitle:@"公开" forState:UIControlStateNormal];
     [_publicBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     _publicBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:_publicBtn];
     [_publicBtn addTarget:self action:@selector(gongkaiButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     if ([model.qqshowpurview isEqualToString:@"all"]) {
-        [_publicBtn setTitle:@"公开" forState:UIControlStateNormal];
+        [_publicBtn setTitle:@"All people" forState:UIControlStateNormal];
     }else if ([model.qqshowpurview isEqualToString:@"self"]){
-        [_publicBtn setTitle:@"仅自己" forState:UIControlStateNormal];
+        [_publicBtn setTitle:@"Only myself" forState:UIControlStateNormal];
     }else if ([model.qqshowpurview isEqualToString:@"friend"]){
-        [_publicBtn setTitle:@"仅好友" forState:UIControlStateNormal];
+        [_publicBtn setTitle:@"Only friends" forState:UIControlStateNormal];
     }
     
     
@@ -160,7 +161,7 @@
     [self.view addSubview:_leftkuangbtn];
     
     UILabel * wangLabel = [[UILabel alloc]initWithFrame:CGRectMake(153 * W_Wide_Zoom, 331 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    wangLabel.text = @"汪星人";
+    wangLabel.text = @"Dog";
     wangLabel.textColor = [UIColor blackColor];
     wangLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:wangLabel];
@@ -172,7 +173,7 @@
     [self.view addSubview:_rightkuangBtn];
     
     UILabel * miaoLabel = [[UILabel alloc]initWithFrame:CGRectMake(223 * W_Wide_Zoom, 331 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    miaoLabel.text = @"喵星人";
+    miaoLabel.text = @"Cat";
     miaoLabel.textColor = [UIColor blackColor];
     miaoLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:miaoLabel];
@@ -196,7 +197,7 @@
     _addressTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 420 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _addressTextField.tintColor = GREEN_COLOR;
     _addressTextField.font = [UIFont systemFontOfSize:13];
-    _addressTextField.placeholder = @"请输入地址";
+    _addressTextField.placeholder = @"Please input address";
     [self.view addSubview:_addressTextField];
     _addressTextField.text = model.address;
     
@@ -204,14 +205,14 @@
     _signTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 465 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _signTextField.tintColor = GREEN_COLOR;
     _signTextField.font = [UIFont systemFontOfSize:13];
-    _signTextField.placeholder = @"请输入签名";
+    _signTextField.placeholder = @"Please input signature";
     [self.view addSubview:_signTextField];
     _signTextField.text = model.signature;
     
     
     UIButton * sureButton = [[UIButton alloc]initWithFrame:CGRectMake(87.5 * W_Wide_Zoom, 530 * W_Hight_Zoom, 200 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     sureButton.backgroundColor = GREEN_COLOR;
-    [sureButton setTitle:@"确定" forState:UIControlStateNormal];
+    [sureButton setTitle:@"Confirm" forState:UIControlStateNormal];
     [sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     sureButton.titleLabel.font = [UIFont systemFontOfSize:14];
     sureButton.layer.cornerRadius = 5;
@@ -238,7 +239,7 @@
         [[UIApplication sharedApplication].keyWindow addSubview:_littleDownView];
         [[UIApplication sharedApplication].keyWindow addSubview:_downWithView];
     }];
-    NSArray * nameArray = @[@"所有人",@"好友",@"仅自己",];
+    NSArray * nameArray = @[@"All people",@"Only friends",@"Only myself",];
     for (int i = 0; i < 3; i++) {
         UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 40 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         lineLabel.backgroundColor = GRAY_COLOR;
@@ -253,7 +254,7 @@
         [downButtones addTarget:self action:@selector(gongkai:) forControlEvents:UIControlEventTouchUpInside];
     }
     UIButton * quxiaoButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
-    [quxiaoButton setTitle:@"取消" forState:UIControlStateNormal];
+    [quxiaoButton setTitle:@"Cancel" forState:UIControlStateNormal];
     [quxiaoButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     quxiaoButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_littleDownView addSubview:quxiaoButton];
@@ -267,17 +268,17 @@
     NSString * objectStr = @"";
     if (sender.tag == 0) {
         objectStr = @"all";
-        [_publicBtn setTitle:@"公开" forState:UIControlStateNormal];
+        [_publicBtn setTitle:@"All people" forState:UIControlStateNormal];
     }else if (sender.tag == 1){
         objectStr = @"friend";
-        [_publicBtn setTitle:@"仅好友" forState:UIControlStateNormal];
+        [_publicBtn setTitle:@"Only friends" forState:UIControlStateNormal];
     }else if (sender.tag == 2){
         objectStr = @"self";
-        [_publicBtn setTitle:@"仅自己" forState:UIControlStateNormal];
+        [_publicBtn setTitle:@"Only myself" forState:UIControlStateNormal];
     }
     [[AFHttpClient sharedAFHttpClient]modifyQqStatusWithMid:[AccountManager sharedAccountManager].loginModel.mid object:objectStr complete:^(BaseModel *model) {
         if (model) {
-            [[AppUtil appTopViewController] showHint:@"修改成功"];
+            [[AppUtil appTopViewController] showHint:@"Modify success"];
         }else{
             [[AppUtil appTopViewController] showHint:model.retDesc];
         }
@@ -322,7 +323,7 @@
         [downButtones addTarget:self action:@selector(imageButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     }
     UIButton * quxiaoButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 375 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
-    [quxiaoButton setTitle:@"取消" forState:UIControlStateNormal];
+    [quxiaoButton setTitle:@"Cancel" forState:UIControlStateNormal];
     [quxiaoButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     quxiaoButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_littleDownView addSubview:quxiaoButton];
@@ -413,10 +414,10 @@
 
 -(void)changgeheadRequest{
     
-    [self showHudInView:self.view hint:@"正在修改..."];
+    [self showHudInView:self.view hint:@"Modifing..."];
     [[AFHttpClient sharedAFHttpClient]modifyHeadportraitWithMid: [AccountManager sharedAccountManager].loginModel.mid picture:_picstr complete:^(BaseModel *model) {
         [self hideHud];
-        [[AppUtil appTopViewController] showHint:@"修改成功"];
+        [[AppUtil appTopViewController] showHint:@"Modify success"];
         
     }];
 
@@ -429,7 +430,7 @@
 
 -(void)sureButtonTouch{
     if ([AppUtil isBlankString:_nameTextField.text]) {
-        [[AppUtil appTopViewController] showHint:@"请输入昵称"];
+        [[AppUtil appTopViewController] showHint:@"Please input nickname"];
         return;
     }
     
@@ -446,12 +447,12 @@
         petrace = @"喵";
     }
     
-    [self showHudInView:self.view hint:@"正在修改..."];
+    [self showHudInView:self.view hint:@"Modifing..."];
     [[AFHttpClient sharedAFHttpClient]modifyMemberWithMid:[AccountManager sharedAccountManager].loginModel.mid nicname:_nameTextField.text qq:_qqTextField.text address:_addressTextField.text signature:_signTextField.text pet_sex:petsex pet_birthday:_brithdayBtn.titleLabel.text pet_race:petrace complete:^(BaseModel *model) {
             [self hideHud];
-            [[AppUtil appTopViewController] showHint:@"修改成功"];
+            [[AppUtil appTopViewController] showHint:@"Modify success"];
         
-              [[NSNotificationCenter defaultCenter]postNotificationName:@"changeNameText" object:_nameTextField.text];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"changeNameText" object:_nameTextField.text];
             [self.navigationController popViewControllerAnimated:YES];
     }];
 
@@ -476,14 +477,14 @@
     _datePicker.backgroundColor = [UIColor whiteColor];
     _datePicker.alpha = 1;
     [[UIApplication sharedApplication].keyWindow addSubview:_datePicker];
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];//设置为中文显示
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_CN"];//设置为中文显示
     _datePicker.locale = locale;
     
     [_datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged ];
    
     _wanchengBtn = [[UIButton alloc]initWithFrame:CGRectMake(0* W_Wide_Zoom, 427 * W_Hight_Zoom, 375 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     _wanchengBtn.backgroundColor = [UIColor whiteColor];
-    [_wanchengBtn setTitle:@"完成" forState:UIControlStateNormal];
+    [_wanchengBtn setTitle:@"Complete" forState:UIControlStateNormal];
     [_wanchengBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [[UIApplication sharedApplication].keyWindow addSubview:_wanchengBtn];
     [_wanchengBtn addTarget:self action:@selector(wanchengButtonTouch:) forControlEvents:UIControlEventTouchUpInside];

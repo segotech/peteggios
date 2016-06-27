@@ -46,7 +46,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [super setupView];
     
     isSelet = YES;
-     [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+//     [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+    [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
+    
     self.collection.frame = CGRectMake(10, 65, SCREEN_WIDTH-20, SCREEN_HEIGHT-70);
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.collection.showsHorizontalScrollIndicator = NO;
@@ -96,7 +98,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 {
     [deleteArr removeAllObjects];
     if (isSelet) {
-        [self showBarButton:NAV_RIGHT imageName:@"cancel.png"];
+//        [self showBarButton:NAV_RIGHT imageName:@"cancel.png"];
+        [self showBarButton:NAV_RIGHT title:@"Cancel" fontColor:[UIColor blackColor]];
         isSelet = NO;
         _deleteImageV.hidden = NO;
         
@@ -111,7 +114,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
                 cell.rightBtn.selected = NO;
             }
         }
-        [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+//        [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+        [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
+        
         isSelet = YES;
         _deleteImageV.hidden = YES;
         
@@ -180,7 +185,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             if([[json objectForKey:@"retCode"] isEqualToString:@"0000"]){
                 [self showSuccessHudWithHint:@"删除成功"];
                  [self initRefreshView:@"0"];
-                 [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+//                 [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+                [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
                 
             }
 

@@ -145,9 +145,9 @@
         
         UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@""
                                                            delegate:self
-                                                  cancelButtonTitle:@"取消"
+                                                  cancelButtonTitle:@"Cancel"
                                              destructiveButtonTitle:nil
-                                        otherButtonTitles:@"保存图片到相册", nil];
+                                                  otherButtonTitles:@"Save pictures to album", nil];
         [sheet showInView:self.view];
     }
     
@@ -174,11 +174,11 @@
     
     if (!error) {
        
-        [self showSuccessHudWithHint:@"保存成功"];
+        [self showSuccessHudWithHint:@"Save success"];
         
     }else
     {
-        [self showFailureHudWithHint:@"保存失败"];
+        [self showFailureHudWithHint:@"Save fail"];
     }
 
     

@@ -174,7 +174,8 @@
         {
         
         if ([arr[0][@"status"] isEqualToString:@"0"]) {
-            [self.window.rootViewController showSuccessHudWithHint:@"此逗码已经失效"];
+//            [self.window.rootViewController showSuccessHudWithHint:@"此逗码已经失效"];
+            [self.window.rootViewController showSuccessHudWithHint:@"This code has been invalid"];
         }else
         {
             
