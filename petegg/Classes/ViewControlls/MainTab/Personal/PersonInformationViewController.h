@@ -10,4 +10,6 @@
 
 @interface PersonInformationViewController : BaseViewController
 
+@property (nonatomic, strong) InformationModel * informationModel;
+
 @end

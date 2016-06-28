@@ -59,7 +59,7 @@ singleton_implementation(AFHttpClient)
 //        NSLog(@"respons === %@", [self DataTOjsonString:responseObject]);
         BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:&error];
         
-//        NSLog(@"%@", operation.request.URL.absoluteString);
+        NSLog(@"Requese.URL === %@", operation.request.URL.absoluteString);
         
         if (error || [model.retCode integerValue] != 0) {
             [[AppUtil appTopViewController] showHint:error ? [error localizedDescription] : model.retDesc];

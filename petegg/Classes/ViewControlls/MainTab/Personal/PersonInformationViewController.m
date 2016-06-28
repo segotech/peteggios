@@ -51,26 +51,30 @@
     _imagePicker.delegate= self;
     self.view.backgroundColor = [UIColor whiteColor];
 }
+
 -(void)setupData{
     [super setupData];
-    [self showHudInView:self.view hint:@"Loading..."];
-    [[AFHttpClient sharedAFHttpClient]queryByIdMemberWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
-        if (model) {
-            [self hideHud];
-            [self.dataSource addObjectsFromArray:model.list];
-            [self initUserface];
-        }
-       
-    }];
     
+    if (self.informationModel) {
+        [self initUserface];
+    }else{
+        [self showHudInView:self.view hint:@"Loading..."];
+        
+        [[AFHttpClient sharedAFHttpClient]queryByIdMemberWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
+            if (model) {
+                [self hideHud];
+                self.informationModel = model.list[0];
+                [self initUserface];
+            }
+        }];
+    }
 }
 
 
 -(void)setupView{
     [super setupView];
-
-
 }
+
 -(void)initUserface{
     NSArray * nameArray = @[@"Gender",@"Nickname",@"Family",@"Birthday",@"Address",@"Signature"];
     for (int i  = 0 ; i < 6 ; i ++) {
@@ -85,11 +89,10 @@
         [self.view addSubview:nameLabeles];
     }
     
-    InformationModel * model = self.dataSource[0];
     _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(147.5 * W_Wide_Zoom, 80 * W_Hight_Zoom, 80 * W_Wide_Zoom, 80 * W_Hight_Zoom)];
     [_headImage.layer setMasksToBounds:YES];
     _headImage.layer.cornerRadius = _headImage.width/2;
-    NSString * imageStr = [NSString stringWithFormat:@"%@",model.headportrait];
+    NSString * imageStr = [NSString stringWithFormat:@"%@",self.informationModel.headportrait];
     NSURL * imageUrl = [NSURL URLWithString:imageStr];
     [_headImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"sego1.png"]];
     [self.view addSubview:_headImage];
@@ -112,7 +115,7 @@
     [self.view addSubview:_womanBtn];
     [_womanBtn addTarget:self action:@selector(sexTouch2) forControlEvents:UIControlEventTouchUpInside];
     
-    if ([model.pet_sex isEqualToString:@"公"]) {
+    if ([self.informationModel.pet_sex isEqualToString:@"公"]) {
         _manBtn.selected = YES;
     }else{
         _womanBtn.selected = YES;
@@ -125,7 +128,7 @@
     // _nameTextField.backgroundColor = [UIColor blueColor];
     _nameTextField.placeholder = @"Please input nickname";
     [self.view addSubview:_nameTextField];
-    _nameTextField.text = model.nickname;
+    _nameTextField.text = self.informationModel.nickname;
     
     
 //    _qqTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 285 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
@@ -177,7 +180,7 @@
     miaoLabel.textColor = [UIColor blackColor];
     miaoLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:miaoLabel];
-    if ([model.pet_race isEqualToString:@"汪"]) {
+    if ([self.informationModel.pet_race isEqualToString:@"汪"]) {
         _leftkuangbtn.selected = YES;
     }else{
         _rightkuangBtn.selected = YES;
@@ -192,14 +195,14 @@
     [_brithdayBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:_brithdayBtn];
     [_brithdayBtn addTarget:self action:@selector(brithdayButtontouch) forControlEvents:UIControlEventTouchUpInside];
-    [_brithdayBtn setTitle:model.pet_birthday forState:UIControlStateNormal];
+    [_brithdayBtn setTitle:self.informationModel.pet_birthday forState:UIControlStateNormal];
     
     _addressTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 375 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _addressTextField.tintColor = GREEN_COLOR;
     _addressTextField.font = [UIFont systemFontOfSize:13];
     _addressTextField.placeholder = @"Please input address";
     [self.view addSubview:_addressTextField];
-    _addressTextField.text = model.address;
+    _addressTextField.text = self.informationModel.address;
     
     
     _signTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 420 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
@@ -207,7 +210,7 @@
     _signTextField.font = [UIFont systemFontOfSize:13];
     _signTextField.placeholder = @"Please input signature";
     [self.view addSubview:_signTextField];
-    _signTextField.text = model.signature;
+    _signTextField.text = self.informationModel.signature;
     
     
     UIButton * sureButton = [[UIButton alloc]initWithFrame:CGRectMake(87.5 * W_Wide_Zoom, 470 * W_Hight_Zoom, 200 * W_Wide_Zoom, 35 * W_Hight_Zoom)];

@@ -25,6 +25,11 @@
 #import "UITabBar+Badge.h"
 
 #import "SettingViewController.h"
+
+#import "AFHttpClient+InformationChange.h"
+
+#import "UIButton+WebCache.h"
+
 @interface PersonalViewController()
 
 {
@@ -38,8 +43,9 @@
     
     UIImage * cachedImage;
     
+    InformationModel * informationModel;
     
-    BOOL isJiazai;
+//    BOOL isJiazai;
 }
 
 @end
@@ -48,8 +54,10 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self selfDataHand];
-    isJiazai = NO;
+    
+//    [self selfDataHand];
+    
+//    isJiazai = NO;
     self.view.backgroundColor =[UIColor whiteColor];
     redpoint = NO;
     dongtai = NO;
@@ -65,11 +73,34 @@
 }
 
 
-- (void)setupData
-{
-  
+- (void)setupData {
     [super setupData];
     
+    [self showHudInView:self.view hint:@"Loading..."];
+    
+    [[AFHttpClient sharedAFHttpClient]queryByIdMemberWithMid:[AccountManager sharedAccountManager].loginModel.mid complete:^(BaseModel *model) {
+        if (model) {
+            [self hideHud];
+            
+            informationModel = model.list[0];
+            
+            [self performSelectorOnMainThread:@selector(flushHeadView) withObject:nil waitUntilDone:NO];
+        }
+    }];
+}
+
+- (void)flushHeadView {
+    
+    [_heandBtn sd_setImageWithURL:[NSURL URLWithString:informationModel.headportrait] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"sego1"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        if (image) {
+            bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
+        }else{
+            bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"sego1"]] withBlurLevel:0.2];
+        }
+    }];
+    
+    _nameLabel.text = informationModel.nickname;
 }
 
 /**
@@ -79,44 +110,44 @@
  */
 
 
-- (void)selfDataHand
-{
- 
-    [self showHudInView:self.view hint:@"Loading..."];
-    NSString * str =@"clientAction.do?method=json&common=queryPraises&classes=appinterface";
-    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
-    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-            NSArray * jsondata = json[@"jsondata"][@"list"];
-            if (jsondata.count > 0 ) {
-               
-                [_heandBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:jsondata[0][@"headportrait"]]]] forState:UIControlStateNormal];
-//                [self showLB:500 string:jsondata[0][@"sprouts"]];
-//                [self showLB:501 string:jsondata[0][@"gz"]];
-//                [self showLB:502 string:jsondata[0][@"fs"]];
-//                [self showLB:503 string:jsondata[0][@"praises"]];
-                _nameLabel.text = jsondata[0][@"nickname"];
-                
-    
-                cachedImage =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:jsondata[0][@"headportrait"]]]];
-                
-                bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
-
-                [self hideHud];
-                 isJiazai = YES;
-            }else{
-                
-                [self hideHud];
-            }
-        
-    }
-        
-    } failure:^(NSError *error) {
-        [self hideHud];
-    }];
-    
-}
+//- (void)selfDataHand
+//{
+// 
+//    [self showHudInView:self.view hint:@"Loading..."];
+//    NSString * str =@"clientAction.do?method=json&common=queryPraises&classes=appinterface";
+//    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+//    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+//    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
+//        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+//            NSArray * jsondata = json[@"jsondata"][@"list"];
+//            if (jsondata.count > 0 ) {
+//               
+//                [_heandBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:jsondata[0][@"headportrait"]]]] forState:UIControlStateNormal];
+////                [self showLB:500 string:jsondata[0][@"sprouts"]];
+////                [self showLB:501 string:jsondata[0][@"gz"]];
+////                [self showLB:502 string:jsondata[0][@"fs"]];
+////                [self showLB:503 string:jsondata[0][@"praises"]];
+//                _nameLabel.text = jsondata[0][@"nickname"];
+//                
+//    
+//                cachedImage =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:jsondata[0][@"headportrait"]]]];
+//                
+//                bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
+//
+//                [self hideHud];
+////                 isJiazai = YES;
+//            }else{
+//                
+//                [self hideHud];
+//            }
+//        
+//    }
+//        
+//    } failure:^(NSError *error) {
+//        [self hideHud];
+//    }];
+//    
+//}
 
 /**
  * 处理背景
@@ -144,7 +175,6 @@
 -(void)changeName:(NSNotification *)nsnotifition{
     NSString * str = nsnotifition.object;
     _nameLabel.text = str;
-
 }
 
 
@@ -267,7 +297,7 @@
      */
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200*W_Wide_Zoom, 20*W_Hight_Zoom)];
     _nameLabel.text = @"";
-    _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+90*W_Hight_Zoom);
+    _nameLabel.center = CGPointMake(self.view.center.x, _heandBtn.frame.origin.y+100*W_Hight_Zoom);
     _nameLabel.font = [UIFont systemFontOfSize:15];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.textColor = [UIColor whiteColor];
@@ -323,24 +353,20 @@
     
 }
 // 头像点击
-- (void)headBtnClick:(UIButton *)sender
-{
-    
+- (void)headBtnClick:(UIButton *)sender {
     PersonInformationViewController * personinforVc = [[PersonInformationViewController alloc]init];
     [self.navigationController pushViewController:personinforVc animated:YES];
-    
-    
 }
 
 
 // 关于sego
 - (void)doRightButtonTouch
 {
-    if (isJiazai == YES) {
+//    if (isJiazai == YES) {
         ThreePointsViewController * threepointVc = [[ThreePointsViewController alloc]init];
         [self.navigationController pushViewController:threepointVc animated:YES];
-    }else{
-    }
+//    }else{
+//    }
    
     
 }
