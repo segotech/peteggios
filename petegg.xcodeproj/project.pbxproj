@@ -207,6 +207,7 @@
 		34EDB5CC1CD34279001BB50C /* OtherEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5CB1CD34279001BB50C /* OtherEggViewController.m */; };
 		34EDB5CE1CD3542A001BB50C /* opvideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34EDB5CD1CD3542A001BB50C /* opvideo.png */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
+		5712BE891D21567D0030768D /* AFHttpClient+LoginAndRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 5712BE881D21567D0030768D /* AFHttpClient+LoginAndRegister.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		57462D9D1CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462D9A1CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.m */; };
 		57462D9E1CB8DD480071047E /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462D9C1CB8DD480071047E /* UIView+SDAutoLayout.m */; };
@@ -1012,6 +1013,8 @@
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		5712BE871D21567D0030768D /* AFHttpClient+LoginAndRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+LoginAndRegister.h"; sourceTree = "<group>"; };
+		5712BE881D21567D0030768D /* AFHttpClient+LoginAndRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+LoginAndRegister.m"; sourceTree = "<group>"; };
 		572220CE1CB3B6CB00C9C7D2 /* AFHttpClient+Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Account.h"; sourceTree = "<group>"; };
 		572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Account.m"; sourceTree = "<group>"; };
 		57462D991CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
@@ -2591,6 +2594,8 @@
 			children = (
 				578B9E5C1CA29A9E00CAC21D /* AFHttpClient.h */,
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
+				5712BE871D21567D0030768D /* AFHttpClient+LoginAndRegister.h */,
+				5712BE881D21567D0030768D /* AFHttpClient+LoginAndRegister.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
 				7DEB3F121CD2FD0100502179 /* AFHttpClient+FeedingClient.h */,
@@ -3283,6 +3288,7 @@
 				57666FE21C96BF4400A52DBA /* UIView+Sizes.m in Sources */,
 				7D825CE71CBCA51B00F4E216 /* SettingViewController.m in Sources */,
 				57666F861C9687E300A52DBA /* BaseViewController.m in Sources */,
+				5712BE891D21567D0030768D /* AFHttpClient+LoginAndRegister.m in Sources */,
 				7D825D3F1CBCA93D00F4E216 /* AppDelegate+Launcher.m in Sources */,
 				7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */,
 				7D825CD51CBCA4C800F4E216 /* InCallViewController.m in Sources */,

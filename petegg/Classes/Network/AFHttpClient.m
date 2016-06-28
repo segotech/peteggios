@@ -13,7 +13,7 @@
 singleton_implementation(AFHttpClient)
 
 - (instancetype)init{
-    if (self = [super initWithBaseURL:[NSURL URLWithString: [AppUtil getServerTest]]]) {
+    if (self = [super initWithBaseURL:[NSURL URLWithString: @"http://180.97.80.227:8080"]]) {
         self.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain", @"application/json", nil];
         [self.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -56,8 +56,10 @@ singleton_implementation(AFHttpClient)
     return [super POST:URLString parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         
         NSError* error = nil;
-      //  NSLog(@"respons === %@", [self DataTOjsonString:responseObject]);
+//        NSLog(@"respons === %@", [self DataTOjsonString:responseObject]);
         BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:&error];
+        
+//        NSLog(@"%@", operation.request.URL.absoluteString);
         
         if (error || [model.retCode integerValue] != 0) {
             [[AppUtil appTopViewController] showHint:error ? [error localizedDescription] : model.retDesc];

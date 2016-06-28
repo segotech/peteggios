@@ -220,32 +220,17 @@
 //        return;
 //    }
 
+    [self showHudInView:self.view hint:@"Registering"];
     
-    /**
-     *  ldp 接口要重写
-     */
-//    NSString * str =@"clientAction.do?method=json&classes=appinterface&common=memberRegister";
-//    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-//    [dic setValue:text.text forKey:@"phone"];
-//    [dic setValue:text2.text forKey:@"password"];
-//    
-//    [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-//    
-//        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-//            [self showSuccessHudWithHint:@"login was successful"];
-//    
-//            CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
-//            compleVC.mid = json[@"jsondata"][@"content"];
-//            [self.navigationController pushViewController:compleVC animated:YES];
-//
-//        }
-//        
-//        NSLog(@"====%@",json);
-//        
-//       
-//        
-//    } failure:^(NSError *error) {
-//    }];
+    [[AFHttpClient sharedAFHttpClient] registerWithEmail:text.text password:text1.text complete:^(BaseModel *model) {
+        
+        [self hideHud];
+        
+        if (model) {
+            
+        }
+        
+    }];
 
     
 }

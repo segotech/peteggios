@@ -75,7 +75,9 @@
 
 }
 -(void)sureButtonTouch{
-    NSString * str = [AccountManager sharedAccountManager].loginModel.showpwd;
+    
+    NSString * str = [AccountManager sharedAccountManager].loginModel.password;
+    
     if (![_oldPasswordTextfield.text isEqualToString:str]) {
         [[AppUtil appTopViewController] showHint:@"The old password you entered is incorrect."];
         return;

@@ -72,8 +72,8 @@
 
 }
 -(void)initUserface{
-    NSArray * nameArray = @[@"Gender",@"Nickname",@"QQ",@"Family",@"Birthday",@"Address",@"Signature"];
-    for (int i  = 0 ; i < 7 ; i ++) {
+    NSArray * nameArray = @[@"Gender",@"Nickname",@"Family",@"Birthday",@"Address",@"Signature"];
+    for (int i  = 0 ; i < 6 ; i ++) {
         UILabel * lineLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 230 * W_Hight_Zoom + 45 * W_Hight_Zoom * i , 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         lineLabeles.backgroundColor = [UIColor lightGrayColor];
         [self.view addSubview:lineLabeles];
@@ -128,51 +128,51 @@
     _nameTextField.text = model.nickname;
     
     
-    _qqTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 285 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    //_qqTextField.backgroundColor = [UIColor blueColor];
-    _qqTextField.tintColor = GREEN_COLOR;
-    _qqTextField.font = [UIFont systemFontOfSize:13];
-    _qqTextField.placeholder = @"Please input qq";
-    [self.view addSubview:_qqTextField];
-    _qqTextField.text = model.qq;
+//    _qqTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 285 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+//    //_qqTextField.backgroundColor = [UIColor blueColor];
+//    _qqTextField.tintColor = GREEN_COLOR;
+//    _qqTextField.font = [UIFont systemFontOfSize:13];
+//    _qqTextField.placeholder = @"Please input qq";
+//    [self.view addSubview:_qqTextField];
+//    _qqTextField.text = model.qq;
     
     
-    _publicBtn = [[UIButton alloc]initWithFrame:CGRectMake(280 * W_Wide_Zoom, 285 * W_Hight_Zoom, 90 * W_Wide_Zoom, 30 * W_Wide_Zoom)];
-   // [_publicBtn setTitle:@"公开" forState:UIControlStateNormal];
-    [_publicBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    _publicBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    [self.view addSubview:_publicBtn];
-    [_publicBtn addTarget:self action:@selector(gongkaiButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
-    if ([model.qqshowpurview isEqualToString:@"all"]) {
-        [_publicBtn setTitle:@"All people" forState:UIControlStateNormal];
-    }else if ([model.qqshowpurview isEqualToString:@"self"]){
-        [_publicBtn setTitle:@"Only myself" forState:UIControlStateNormal];
-    }else if ([model.qqshowpurview isEqualToString:@"friend"]){
-        [_publicBtn setTitle:@"Only friends" forState:UIControlStateNormal];
-    }
+//    _publicBtn = [[UIButton alloc]initWithFrame:CGRectMake(280 * W_Wide_Zoom, 285 * W_Hight_Zoom, 90 * W_Wide_Zoom, 30 * W_Wide_Zoom)];
+//   // [_publicBtn setTitle:@"公开" forState:UIControlStateNormal];
+//    [_publicBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    _publicBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+//    [self.view addSubview:_publicBtn];
+//    [_publicBtn addTarget:self action:@selector(gongkaiButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+//    if ([model.qqshowpurview isEqualToString:@"all"]) {
+//        [_publicBtn setTitle:@"All people" forState:UIControlStateNormal];
+//    }else if ([model.qqshowpurview isEqualToString:@"self"]){
+//        [_publicBtn setTitle:@"Only myself" forState:UIControlStateNormal];
+//    }else if ([model.qqshowpurview isEqualToString:@"friend"]){
+//        [_publicBtn setTitle:@"Only friends" forState:UIControlStateNormal];
+//    }
     
     
     
     
-    _leftkuangbtn = [[UIButton alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 337 * W_Hight_Zoom, 18 * W_Wide_Zoom, 17 * W_Hight_Zoom)];
+    _leftkuangbtn = [[UIButton alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 290 * W_Hight_Zoom, 18 * W_Wide_Zoom, 17 * W_Hight_Zoom)];
     [_leftkuangbtn setImage:[UIImage imageNamed:@"kuang_off.png"] forState:UIControlStateNormal];
     [_leftkuangbtn setImage:[UIImage imageNamed:@"kuang_on.png"] forState:UIControlStateSelected];
     [_leftkuangbtn addTarget:self action:@selector(leftKuangTouch) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_leftkuangbtn];
     
-    UILabel * wangLabel = [[UILabel alloc]initWithFrame:CGRectMake(153 * W_Wide_Zoom, 331 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    UILabel * wangLabel = [[UILabel alloc]initWithFrame:CGRectMake(153 * W_Wide_Zoom, 283 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     wangLabel.text = @"Dog";
     wangLabel.textColor = [UIColor blackColor];
     wangLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:wangLabel];
     
-    _rightkuangBtn = [[UIButton alloc]initWithFrame:CGRectMake(200 * W_Wide_Zoom, 337 * W_Hight_Zoom, 18 * W_Wide_Zoom, 17 * W_Hight_Zoom)];
+    _rightkuangBtn = [[UIButton alloc]initWithFrame:CGRectMake(200 * W_Wide_Zoom, 290 * W_Hight_Zoom, 18 * W_Wide_Zoom, 17 * W_Hight_Zoom)];
     [_rightkuangBtn setImage:[UIImage imageNamed:@"kuang_off.png"] forState:UIControlStateNormal];
     [_rightkuangBtn setImage:[UIImage imageNamed:@"kuang_on.png"] forState:UIControlStateSelected];
     [_rightkuangBtn addTarget:self action:@selector(rightKuangTouch) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_rightkuangBtn];
     
-    UILabel * miaoLabel = [[UILabel alloc]initWithFrame:CGRectMake(223 * W_Wide_Zoom, 331 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    UILabel * miaoLabel = [[UILabel alloc]initWithFrame:CGRectMake(223 * W_Wide_Zoom, 283 * W_Hight_Zoom, 50 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     miaoLabel.text = @"Cat";
     miaoLabel.textColor = [UIColor blackColor];
     miaoLabel.font = [UIFont systemFontOfSize:13];
@@ -186,7 +186,7 @@
     
     
     
-    _brithdayBtn = [[UIButton alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 375 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _brithdayBtn = [[UIButton alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 330 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     //[_brithdayBtn setTitle:@"2016-05-13" forState:UIControlStateNormal];
     _brithdayBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [_brithdayBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -194,7 +194,7 @@
     [_brithdayBtn addTarget:self action:@selector(brithdayButtontouch) forControlEvents:UIControlEventTouchUpInside];
     [_brithdayBtn setTitle:model.pet_birthday forState:UIControlStateNormal];
     
-    _addressTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 420 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _addressTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 375 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _addressTextField.tintColor = GREEN_COLOR;
     _addressTextField.font = [UIFont systemFontOfSize:13];
     _addressTextField.placeholder = @"Please input address";
@@ -202,7 +202,7 @@
     _addressTextField.text = model.address;
     
     
-    _signTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 465 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    _signTextField = [[UITextField alloc]initWithFrame:CGRectMake(130 * W_Wide_Zoom, 420 * W_Hight_Zoom, 200 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _signTextField.tintColor = GREEN_COLOR;
     _signTextField.font = [UIFont systemFontOfSize:13];
     _signTextField.placeholder = @"Please input signature";
@@ -210,7 +210,7 @@
     _signTextField.text = model.signature;
     
     
-    UIButton * sureButton = [[UIButton alloc]initWithFrame:CGRectMake(87.5 * W_Wide_Zoom, 530 * W_Hight_Zoom, 200 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+    UIButton * sureButton = [[UIButton alloc]initWithFrame:CGRectMake(87.5 * W_Wide_Zoom, 470 * W_Hight_Zoom, 200 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     sureButton.backgroundColor = GREEN_COLOR;
     [sureButton setTitle:@"Confirm" forState:UIControlStateNormal];
     [sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -219,6 +219,7 @@
     [self.view addSubview:sureButton];
     [sureButton addTarget:self action:@selector(sureButtonTouch) forControlEvents:UIControlEventTouchUpInside];
 }
+
 -(void)gongkaiButtonTouch:(UIButton *)sender{
     [_nameTextField resignFirstResponder];
     [_qqTextField resignFirstResponder];
@@ -264,30 +265,30 @@
 
 
 
--(void)gongkai:(UIButton *)sender{
-    NSString * objectStr = @"";
-    if (sender.tag == 0) {
-        objectStr = @"all";
-        [_publicBtn setTitle:@"All people" forState:UIControlStateNormal];
-    }else if (sender.tag == 1){
-        objectStr = @"friend";
-        [_publicBtn setTitle:@"Only friends" forState:UIControlStateNormal];
-    }else if (sender.tag == 2){
-        objectStr = @"self";
-        [_publicBtn setTitle:@"Only myself" forState:UIControlStateNormal];
-    }
-    [[AFHttpClient sharedAFHttpClient]modifyQqStatusWithMid:[AccountManager sharedAccountManager].loginModel.mid object:objectStr complete:^(BaseModel *model) {
-        if (model) {
-            [[AppUtil appTopViewController] showHint:@"Modify success"];
-        }else{
-            [[AppUtil appTopViewController] showHint:model.retDesc];
-        }
-    }];
-    
-    
-    
-    [self hideButton:nil];
-}
+//-(void)gongkai:(UIButton *)sender{
+//    NSString * objectStr = @"";
+//    if (sender.tag == 0) {
+//        objectStr = @"all";
+//        [_publicBtn setTitle:@"All people" forState:UIControlStateNormal];
+//    }else if (sender.tag == 1){
+//        objectStr = @"friend";
+//        [_publicBtn setTitle:@"Only friends" forState:UIControlStateNormal];
+//    }else if (sender.tag == 2){
+//        objectStr = @"self";
+//        [_publicBtn setTitle:@"Only myself" forState:UIControlStateNormal];
+//    }
+//    [[AFHttpClient sharedAFHttpClient]modifyQqStatusWithMid:[AccountManager sharedAccountManager].loginModel.mid object:objectStr complete:^(BaseModel *model) {
+//        if (model) {
+//            [[AppUtil appTopViewController] showHint:@"Modify success"];
+//        }else{
+//            [[AppUtil appTopViewController] showHint:model.retDesc];
+//        }
+//    }];
+//    
+//    
+//    
+//    [self hideButton:nil];
+//}
 
 
 

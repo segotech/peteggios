@@ -32,6 +32,7 @@
 #import "MBProgressHUD.h"
 
 #import "AFHttpClient.h"
+#import "AFHttpClient+LoginAndRegister.h"
 
 #import "AppDelegate.h"
 

@@ -58,7 +58,7 @@
     _accountTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 133 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
     _accountTextField.placeholder = @"Please enter your Email";
     _accountTextField.tintColor = [UIColor whiteColor];
-    _accountTextField.keyboardType = UIKeyboardTypeNumberPad;
+    _accountTextField.keyboardType = UIKeyboardTypeEmailAddress;
     [_accountTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     [_accountTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _accountTextField.textColor = [UIColor whiteColor];
@@ -154,8 +154,7 @@
                     CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
                     compleVC.mid = model1.mid;
                     [self.navigationController pushViewController:compleVC animated:YES];
-        }
-            else{
+        }else{
             [[AccountManager sharedAccountManager] login:model.list[0]];
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
             }
