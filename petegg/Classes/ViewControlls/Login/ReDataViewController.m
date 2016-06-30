@@ -46,7 +46,7 @@
         _textFieldes.placeholder = placeArray[i];
         [_textFieldes setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
         [_textFieldes setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
-//        _textFieldes.tag = i + 36;
+        _textFieldes.tag = i + 36;
 //        if (_textFieldes.tag == 36 || _textFieldes.tag == 37) {
             _textFieldes.keyboardType = UIKeyboardTypeEmailAddress;
 //        }
@@ -122,57 +122,59 @@
 - (void)registBtn:(UIButton *)sender
 {
     UITextField * text =  (UITextField *)[self.view viewWithTag:36];
-    UITextField * text1 =  (UITextField *)[self.view viewWithTag:37];
-    UITextField * text2 =  (UITextField *)[self.view viewWithTag:38];
-    UITextField * text3 =  (UITextField *)[self.view viewWithTag:39];
+//    UITextField * text1 =  (UITextField *)[self.view viewWithTag:37];
+//    UITextField * text2 =  (UITextField *)[self.view viewWithTag:38];
+//    UITextField * text3 =  (UITextField *)[self.view viewWithTag:39];
     if ([AppUtil isBlankString:text.text]) {
-        [[AppUtil appTopViewController] showHint:@"Please enter your account number"];
-        return;
-    }
-    if (![AppUtil isValidateMobile:text.text]) {
-        [[AppUtil appTopViewController] showHint:@"Please enter the phone number in the correct format."];
-        return;
-    }
-    if ([AppUtil isBlankString:text1.text]) {
-        [[AppUtil appTopViewController] showHint:@"Please enter the verification code"];
-        return;
-    }
-    if ([AppUtil isBlankString:text2.text]) {
-        [[AppUtil appTopViewController] showHint:@"Please enter a password"];
-        return;
-    }
-    if (![text2.text isEqualToString:text3.text]) {
-        [[AppUtil appTopViewController] showHint:@"The password you entered is not consistent for the two time."];
+        [[AppUtil appTopViewController] showHint:@"Please enter your email"];
         return;
     }
     
-    if (![text1.text isEqualToString:_registCode]) {
-        [[AppUtil appTopViewController] showHint:@"Please enter the correct verification code"];
+    if (![AppUtil isValidateEmail:text.text]) {
+        [[AppUtil appTopViewController] showHint:@"Please enter the email in the correct format."];
         return;
     }
-    
-    if (![text.text isEqualToString:totalrecords]) {
-        [[AppUtil appTopViewController] showHint:@"Cell phone number error"];
-        return;
-    }
+//    if ([AppUtil isBlankString:text1.text]) {
+//        [[AppUtil appTopViewController] showHint:@"Please enter the verification code"];
+//        return;
+//    }
+//    if ([AppUtil isBlankString:text2.text]) {
+//        [[AppUtil appTopViewController] showHint:@"Please enter a password"];
+//        return;
+//    }
+//    if (![text2.text isEqualToString:text3.text]) {
+//        [[AppUtil appTopViewController] showHint:@"The password you entered is not consistent for the two time."];
+//        return;
+//    }
+//    
+//    if (![text1.text isEqualToString:_registCode]) {
+//        [[AppUtil appTopViewController] showHint:@"Please enter the correct verification code"];
+//        return;
+//    }
+//    
+//    if (![text.text isEqualToString:totalrecords]) {
+//        [[AppUtil appTopViewController] showHint:@"Cell phone number error"];
+//        return;
+//    }
 
     
     
     [self showHudInView:self.view hint:@"Being modified..."];
+    
     NSString * str =@"clientAction.do?method=json&classes=appinterface&common=forgetPassword";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    [dic setValue:text.text forKey:@"phone"];
-    [dic setValue:text2.text forKey:@"password"];
+    [dic setValue:text.text forKey:@"email"];
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         [self hideHud];
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-            [[AppUtil appTopViewController] showHint:@"Successful modification"];
+            [[AppUtil appTopViewController] showHint:@"Send reset password message successfully"];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
              [[AppUtil appTopViewController] showHint:json[@"jsondata"][@"retDesc"]];
         }
         NSLog(@"====%@",json);
     } failure:^(NSError *error) {
+        [self hideHud];
     }];
 }
 
