@@ -417,14 +417,15 @@
 }
 
 -(void)changgeheadRequest{
-    
     [self showHudInView:self.view hint:@"Modifing..."];
+    
     [[AFHttpClient sharedAFHttpClient]modifyHeadportraitWithMid: [AccountManager sharedAccountManager].loginModel.mid picture:_picstr complete:^(BaseModel *model) {
         [self hideHud];
-        [[AppUtil appTopViewController] showHint:@"Modify success"];
         
+        [[NSNotificationCenter defaultCenter]postNotificationName:NotificationInformationChange object:nil];
+        
+        [[AppUtil appTopViewController] showHint:@"Modify success"];
     }];
-
 }
 
 
@@ -457,6 +458,7 @@
             [[AppUtil appTopViewController] showHint:@"Modify success"];
         
             [[NSNotificationCenter defaultCenter]postNotificationName:@"changeNameText" object:_nameTextField.text];
+            [[NSNotificationCenter defaultCenter]postNotificationName:NotificationInformationChange object:nil];
             [self.navigationController popViewControllerAnimated:YES];
     }];
 

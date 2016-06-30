@@ -10,6 +10,8 @@
 
 #import "EggViewController.h"
 #import "PersonalViewController.h"
+#import "RecordViewController.h"
+
 #import "UITabBar+Badge.h"
 
 @interface MainTabViewController()
@@ -24,6 +26,8 @@
     
 }
 
+//记录
+@property (strong, nonatomic) UINavigationController  *navRecordVC;
 //不倒蛋
 @property (strong, nonatomic) UINavigationController  *navEggVC;
 //个人中心
@@ -55,6 +59,7 @@
     self.tabBar.backgroundColor=[UIColor whiteColor];
     
     self.viewControllers = @[
+                             self.navRecordVC,
                              self.navEggVC,
                              self.navPersonalVC
                              ];
@@ -63,6 +68,23 @@
     self.tabBar.layer.shadowOffset = CGSizeMake(0, -1);
     self.tabBar.layer.shadowOpacity = 0.4;
     self.tabBar.layer.shadowRadius = 2;
+}
+
+//记录
+- (UINavigationController *)navRecordVC{
+    if (!_navRecordVC) {
+        
+        RecordViewController* vc = [[RecordViewController alloc] init];
+        
+        vc.tabBarItem =
+        [[UITabBarItem alloc] initWithTitle:@"Record"
+                                      image:[[UIImage imageNamed:@"tab_egg_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                              selectedImage:[[UIImage imageNamed:@"tab_egg_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        
+        _navRecordVC = [[UINavigationController alloc]initWithRootViewController:vc];
+    }
+    
+    return _navRecordVC;
 }
 
 //不倒蛋

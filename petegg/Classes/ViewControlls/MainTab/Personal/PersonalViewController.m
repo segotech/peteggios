@@ -94,7 +94,7 @@
     [_heandBtn sd_setImageWithURL:[NSURL URLWithString:informationModel.headportrait] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"sego1"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
         if (image) {
-            bgImgView.image = [self blurryImage:[self cutImage:cachedImage] withBlurLevel:0.2];
+            bgImgView.image = [self blurryImage:[self cutImage:image] withBlurLevel:0.2];
         }else{
             bgImgView.image = [self blurryImage:[self cutImage:[UIImage imageNamed:@"sego1"]] withBlurLevel:0.2];
         }

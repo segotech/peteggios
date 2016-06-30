@@ -18,6 +18,8 @@
 
 @property (nonatomic, copy) NSString<Optional> *retCode;
 
+@property (nonatomic, copy) NSString<Optional> *totalrecords;
+
 @property (nonatomic, strong) NSArray<Optional> *list;
 
 @end

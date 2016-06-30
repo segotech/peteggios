@@ -208,6 +208,11 @@
 		34EDB5CE1CD3542A001BB50C /* opvideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34EDB5CD1CD3542A001BB50C /* opvideo.png */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		5712BE891D21567D0030768D /* AFHttpClient+LoginAndRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 5712BE881D21567D0030768D /* AFHttpClient+LoginAndRegister.m */; };
+		5712BE8F1D2224F30030768D /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5712BE8E1D2224F30030768D /* RecordViewController.m */; };
+		5712BE921D2227AA0030768D /* AFHttpClient+Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 5712BE911D2227AA0030768D /* AFHttpClient+Record.m */; };
+		5712BE951D22288D0030768D /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5712BE941D22288D0030768D /* RecordModel.m */; };
+		5712BE9A1D235C010030768D /* BaseGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5712BE991D235C010030768D /* BaseGridViewController.m */; };
+		5712BEA01D2377800030768D /* RecordHeaderViewCollection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5712BE9F1D2377800030768D /* RecordHeaderViewCollection.xib */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		57462D9D1CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462D9A1CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.m */; };
 		57462D9E1CB8DD480071047E /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57462D9C1CB8DD480071047E /* UIView+SDAutoLayout.m */; };
@@ -1015,6 +1020,15 @@
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		5712BE871D21567D0030768D /* AFHttpClient+LoginAndRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+LoginAndRegister.h"; sourceTree = "<group>"; };
 		5712BE881D21567D0030768D /* AFHttpClient+LoginAndRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+LoginAndRegister.m"; sourceTree = "<group>"; };
+		5712BE8D1D2224F30030768D /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		5712BE8E1D2224F30030768D /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
+		5712BE901D2227AA0030768D /* AFHttpClient+Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Record.h"; sourceTree = "<group>"; };
+		5712BE911D2227AA0030768D /* AFHttpClient+Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Record.m"; sourceTree = "<group>"; };
+		5712BE931D22288D0030768D /* RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordModel.h; sourceTree = "<group>"; };
+		5712BE941D22288D0030768D /* RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordModel.m; sourceTree = "<group>"; };
+		5712BE981D235C010030768D /* BaseGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGridViewController.h; sourceTree = "<group>"; };
+		5712BE991D235C010030768D /* BaseGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGridViewController.m; sourceTree = "<group>"; };
+		5712BE9F1D2377800030768D /* RecordHeaderViewCollection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordHeaderViewCollection.xib; sourceTree = "<group>"; };
 		572220CE1CB3B6CB00C9C7D2 /* AFHttpClient+Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Account.h"; sourceTree = "<group>"; };
 		572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Account.m"; sourceTree = "<group>"; };
 		57462D991CB8DD480071047E /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
@@ -2370,6 +2384,24 @@
 			path = InCall;
 			sourceTree = "<group>";
 		};
+		5712BE8C1D2224DF0030768D /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				5712BE9E1D2377660030768D /* Views */,
+				5712BE8D1D2224F30030768D /* RecordViewController.h */,
+				5712BE8E1D2224F30030768D /* RecordViewController.m */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		5712BE9E1D2377660030768D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5712BE9F1D2377800030768D /* RecordHeaderViewCollection.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		57462D981CB8DD480071047E /* SDAutoLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -2572,6 +2604,8 @@
 				34144BE41CC48C76007C4498 /* PhotoModel.m */,
 				34144BEE1CC4BFB9007C4498 /* ImageModel.h */,
 				34144BEF1CC4BFB9007C4498 /* ImageModel.m */,
+				5712BE931D22288D0030768D /* RecordModel.h */,
+				5712BE941D22288D0030768D /* RecordModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2596,6 +2630,8 @@
 				578B9E5D1CA29A9E00CAC21D /* AFHttpClient.m */,
 				5712BE871D21567D0030768D /* AFHttpClient+LoginAndRegister.h */,
 				5712BE881D21567D0030768D /* AFHttpClient+LoginAndRegister.m */,
+				5712BE901D2227AA0030768D /* AFHttpClient+Record.h */,
+				5712BE911D2227AA0030768D /* AFHttpClient+Record.m */,
 				7D825CCC1CBCA44600F4E216 /* AFNetWorking.h */,
 				7D825CCD1CBCA44600F4E216 /* AFNetWorking.m */,
 				7DEB3F121CD2FD0100502179 /* AFHttpClient+FeedingClient.h */,
@@ -2663,6 +2699,8 @@
 				7D825D171CBCA67800F4E216 /* UITabBar+Badge.m */,
 				7D825D191CBCA69E00F4E216 /* BaseCollectionViewController.h */,
 				7D825D1A1CBCA69E00F4E216 /* BaseCollectionViewController.m */,
+				5712BE981D235C010030768D /* BaseGridViewController.h */,
+				5712BE991D235C010030768D /* BaseGridViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -2707,6 +2745,7 @@
 		57666F801C96878800A52DBA /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
+				5712BE8C1D2224DF0030768D /* Record */,
 				34EDB5C91CD34242001BB50C /* EggOther */,
 				7D825CED1CBCA65000F4E216 /* Personal */,
 				57666F941C9689CC00A52DBA /* Egg */,
@@ -3163,6 +3202,7 @@
 				7D072B211CE468D100CAED11 /* noshowpass.png in Resources */,
 				34D27AEE1CE06B8E00244333 /* play2.png in Resources */,
 				34D27AED1CE06B8E00244333 /* play.png in Resources */,
+				5712BEA01D2377800030768D /* RecordHeaderViewCollection.xib in Resources */,
 				7D2F82041CAE25030097820B /* egg_usertubiao.png in Resources */,
 				57666FBF1C96979F00A52DBA /* tab_personal_normal@3x.png in Resources */,
 				34A218401CCDFF9700ADD8FF /* oldphone-mono-30s.caf in Resources */,
@@ -3267,6 +3307,7 @@
 				7DB9E18B1CCE3AE7009AB3A7 /* PersonInformationViewController.m in Sources */,
 				57462DA61CBA46270071047E /* CommentModel.m in Sources */,
 				57666F571C96619700A52DBA /* ViewController.m in Sources */,
+				5712BE9A1D235C010030768D /* BaseGridViewController.m in Sources */,
 				7D05D8A81CCB21080081FB24 /* IssueZiYuankuModel.m in Sources */,
 				7DEB3F141CD2FD0100502179 /* AFHttpClient+FeedingClient.m in Sources */,
 				7DB4F5C51CCF9E12002918DA /* AFHttpClient+ChangepasswordAndBlacklist.m in Sources */,
@@ -3293,6 +3334,7 @@
 				7DB4F5C21CCF849A002918DA /* ChangePasswordViewController.m in Sources */,
 				7D825CD51CBCA4C800F4E216 /* InCallViewController.m in Sources */,
 				34A215DB1CCDFD6F00ADD8FF /* SephoneUtils.m in Sources */,
+				5712BE951D22288D0030768D /* RecordModel.m in Sources */,
 				34EDB5CC1CD34279001BB50C /* OtherEggViewController.m in Sources */,
 				570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */,
 				578B9E671CA2D8CB00CAC21D /* SquareModel.m in Sources */,
@@ -3302,6 +3344,7 @@
 				34DB513C1CDC68520032CF39 /* GetPhotoGraphModel.m in Sources */,
 				7DB4F5BB1CCF1195002918DA /* AFHttpClient+InformationChange.m in Sources */,
 				57E053E81D1FEFB300AA29F8 /* MyVideoCollectionViewCell.m in Sources */,
+				5712BE921D2227AA0030768D /* AFHttpClient+Record.m in Sources */,
 				7D0116171CC7631000FEEF16 /* AFHttpClient+Issue.m in Sources */,
 				7D3A351F1CB3AE790037C616 /* LoginModel.m in Sources */,
 				574EFF511D0AEF7E0044BA34 /* AgreementViewController.m in Sources */,
@@ -3347,6 +3390,7 @@
 				57666FDD1C96BE6F00A52DBA /* UIView+TapBlocks.m in Sources */,
 				7D03322E1CB6680F00E923A9 /* AFHttpClient+PersonDate.m in Sources */,
 				7DB4F5BE1CCF3F35002918DA /* InformationModel.m in Sources */,
+				5712BE8F1D2224F30030768D /* RecordViewController.m in Sources */,
 				7D825CE21CBCA51B00F4E216 /* BindDeviceViewControler.m in Sources */,
 				7DA216901CD20AB000F6BCCB /* ZdFriendModel.m in Sources */,
 				574EFF521D0AEF7E0044BA34 /* IntroduceViewController.m in Sources */,

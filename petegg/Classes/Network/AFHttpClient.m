@@ -56,7 +56,7 @@ singleton_implementation(AFHttpClient)
     return [super POST:URLString parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         
         NSError* error = nil;
-//        NSLog(@"respons === %@", [self DataTOjsonString:responseObject]);
+        NSLog(@"respons === %@", [self DataTOjsonString:responseObject]);
         BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject[@"jsondata"] error:&error];
         
         NSLog(@"Requese.URL === %@", operation.request.URL.absoluteString);

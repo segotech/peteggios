@@ -18,5 +18,9 @@
 - (UIImage *)imageRotatedByDegrees:(CGFloat)degrees;
 
 - (UIImage *)fixOrientation;
-    
+
+//处理头像使用
+- (UIImage *)blurryImageWithBlurLevel:(CGFloat)blur;
+- (UIImage *)cutImage;
+
 @end;

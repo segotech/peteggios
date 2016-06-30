@@ -24,6 +24,7 @@
 #import "FeddingModel.h"
 #import "GetPhotoGraphModel.h"
 #import "TransactionRecordModel.h"
+#import "RecordModel.h"
 
 #define BASE_URL    @"clientAction.do?common=queryFollowSproutpet&classes=appinterface&method=json"
 

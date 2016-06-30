@@ -15,3 +15,5 @@
 #endif /* Notification_h */
 
 static NSString *NotificationLoginStateChange = @"NotificationLoginStateChange";
+
+static NSString *NotificationInformationChange = @"NotificationInformationChange";
