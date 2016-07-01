@@ -49,6 +49,11 @@
     [SephoneManager addProxyConfig:[AccountManager sharedAccountManager].loginModel.sipno password:[AccountManager sharedAccountManager].loginModel.sippw domain:@"www.segosip001.cn"];
     
     
+    NSLog(@"====%@======%@",[AccountManager sharedAccountManager].loginModel.sipno,[AccountManager sharedAccountManager].loginModel.sippw);
+    
+    
+    
+    
     
 }
 
@@ -95,10 +100,25 @@
     SephoneProxyConfig *cfg = [[notif.userInfo objectForKey:@"cfg"] pointerValue];
     // Only report bad credential issue
     
+    
+    
+
+    
     switch (state) {
+            
+        case SephoneRegistrationNone:
+            
+            NSLog(@"======开始");
+            break;
+        case SephoneRegistrationProgress:
+            NSLog(@"=====注册进行");
+            break;
         case SephoneRegistrationOk:
             
             NSLog(@"=======成功");
+            break;
+        case SephoneRegistrationCleared:
+            NSLog(@"======注销成功")
             break;
         case SephoneRegistrationFailed:
             NSLog(@"========OK 以外都是失败");
