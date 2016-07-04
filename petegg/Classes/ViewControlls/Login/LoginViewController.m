@@ -154,11 +154,13 @@
                     CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
                     compleVC.mid = model1.mid;
                     [self.navigationController pushViewController:compleVC animated:YES];
-        }else{
-            [[AccountManager sharedAccountManager] login:model.list[0]];
-            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
+            }else{
+                [[AccountManager sharedAccountManager] login:model.list[0]];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginStateChange object:@YES];
+
             }
-           [self hideHud];
+           
+            [self hideHud];
         }else{
             [self hideHud];
         

@@ -75,6 +75,7 @@ singleton_implementation(AFHttpClient)
         }
         
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+       [[AppUtil appTopViewController] showHint: NSLocalizedString(@"INFO_NetNoReachable", nil)];
         if (result) {
             result(nil);
         }

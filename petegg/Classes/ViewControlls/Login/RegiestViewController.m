@@ -228,8 +228,10 @@
         
         if (model) {
             
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            [[AppUtil appTopViewController] showHint:model.retDesc];
         }
-        
     }];
 
     
