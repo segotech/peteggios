@@ -84,8 +84,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     
     // 已上传  未上传
-    UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0, 60, self.view.bounds.size.width, 50)];
-    _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(60 , 10, 120 , 30 )];
+    UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, self.view.bounds.size.width, 50 * W_Hight_Zoom)];
+    _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(60 * W_Wide_Zoom , 10 * W_Hight_Zoom, 120 * W_Wide_Zoom , 30 * W_Hight_Zoom )];
     _leftButton.centerX = self.view.width * 0.25;
     [_leftButton setTitle:@"Oncloud" forState:UIControlStateNormal];
     _leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -96,11 +96,11 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [_leftButton addTarget:self action:@selector(leftbuttonTouch) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:_leftButton];
     
-    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(_leftButton.left + 10, 34, 100, 1)];
+    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(45 * W_Wide_Zoom, 34 * W_Hight_Zoom, 100 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
     _lineLabel.backgroundColor = GREEN_COLOR;
     [topView addSubview:_lineLabel];
     
-    _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(250, 10, 120, 30)];
+    _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(250 * W_Wide_Zoom, 10 * W_Hight_Zoom, 120 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _rightButton.centerX = self.view.width * 0.75;
     [_rightButton setTitle:@"Local" forState:UIControlStateNormal];
     _rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -499,7 +499,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     _leftButton.selected = YES;
     _rightButton.selected = NO;
     [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(_leftButton.left - 10, 34, 100, 1);
+        _lineLabel.frame = CGRectMake(50 * W_Wide_Zoom, 34 * W_Hight_Zoom, 100 * W_Wide_Zoom, 1 * W_Hight_Zoom);
     }];
     
     
@@ -515,7 +515,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     _leftButton.selected = NO;
     _rightButton.selected = YES;
     [UIView animateWithDuration:0.3 animations:^{
-        _lineLabel.frame = CGRectMake(_rightButton.left + 10, 34, 100, 1);
+        _lineLabel.frame = CGRectMake(235 * W_Wide_Zoom, 34 * W_Hight_Zoom, 100 * W_Wide_Zoom, 1 * W_Hight_Zoom);
         
         
     }];

@@ -312,7 +312,7 @@
         [[UIApplication sharedApplication].keyWindow addSubview:_littleDownView];
         [[UIApplication sharedApplication].keyWindow addSubview:_downWithView];
     }];
-    NSArray * nameArray = @[NSLocalizedString(@"photograph", nil),NSLocalizedString(@"photoalbum", nil)];
+    NSArray * nameArray = @[NSLocalizedString(@"photograph", nil),NSLocalizedString(@"Select from album", nil)];
     for (int i = 0; i < 2; i++) {
         UILabel * lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom + i * 40 * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         lineLabel.backgroundColor = GRAY_COLOR;
