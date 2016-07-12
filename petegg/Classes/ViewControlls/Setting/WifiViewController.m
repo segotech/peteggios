@@ -230,7 +230,7 @@
         NSLog(@"Bluetooth powered on");
 
         hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Is configured network equipment, please wait...";
+        hud.labelText = @"Waiting";
 
         [self setUpBleDevice];
         break;
