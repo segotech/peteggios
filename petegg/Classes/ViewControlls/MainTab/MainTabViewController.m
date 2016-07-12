@@ -77,7 +77,7 @@
         RecordViewController* vc = [[RecordViewController alloc] init];
         
         vc.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:@"Record"
+        [[UITabBarItem alloc] initWithTitle:@"Album"
                                       image:[[UIImage imageNamed:@"tab_egg_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_egg_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         
@@ -94,7 +94,7 @@
         EggViewController* vc = [[EggViewController alloc] init];
         
         vc.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:@"Egg"
+        [[UITabBarItem alloc] initWithTitle:@"Device"
                                       image:[[UIImage imageNamed:@"tab_egg_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_egg_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         
@@ -114,7 +114,7 @@
         // vc.messageCount =messageCount;
         
         vc.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:@"Personal Center"
+        [[UITabBarItem alloc] initWithTitle:@"Settings"
                                       image:[[UIImage imageNamed:@"tab_personal_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_personal_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
        _navPersonalVC = [[UINavigationController alloc]initWithRootViewController:vc];

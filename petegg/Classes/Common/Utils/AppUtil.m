@@ -21,8 +21,12 @@ static NSString* server = @"http://192.168.43.1:7766/rest/operate";
 //static NSString * getServer3 =@"http://180.97.80.227:15102/";
 // 测试
 //static NSString * getServer3 =@"http://180.97.81.213:15102/";
-static NSString * getServer3 =@"http://180.97.80.227:8080/";
+//static NSString * getServer3 =@"http://180.97.80.227:8080/";
 static NSString * getServerTest = @"http://180.97.80.227:15102/";
+//http://app.segoapp.xyz:15102
+//英文版地址
+static NSString * getServer3 =@"http://app.segoapp.xyz:15102/";
+
 static NSString * getServerTest1 = @"http://192.168.1.103:8080/sego_v3/";
 
 

@@ -38,6 +38,7 @@
      [self setNavTitle: NSLocalizedString(@"completion", nil)];
     handImage.userInteractionEnabled = YES;
     [self.nameTextF setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    isHand = NO;
 }
 
 - (void)setupView{
@@ -147,6 +148,14 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 - (void)setupData
@@ -225,7 +234,7 @@
 - (IBAction)overBtn:(UIButton *)sender {
     
     
-    if (!isHand) {
+    if (isHand == NO) {
         
         [[AppUtil appTopViewController] showHint:@"Please select a picture"];
         return;

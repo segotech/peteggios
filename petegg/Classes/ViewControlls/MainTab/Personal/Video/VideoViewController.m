@@ -55,7 +55,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [super viewDidLoad];
     
     self.view.backgroundColor =[UIColor whiteColor];
-    [self setNavTitle: NSLocalizedString(@"videoTitle", nil)];
+    [self setNavTitle: @"Video recording"];
     
    
     
@@ -87,7 +87,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0, 60, self.view.bounds.size.width, 50)];
     _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(60 , 10, 120 , 30 )];
     _leftButton.centerX = self.view.width * 0.25;
-    [_leftButton setTitle:NSLocalizedString(@"hadupdata", nil) forState:UIControlStateNormal];
+    [_leftButton setTitle:@"Oncloud" forState:UIControlStateNormal];
     _leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_leftButton setTitleColor:GREEN_COLOR forState:UIControlStateSelected];
@@ -102,7 +102,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(250, 10, 120, 30)];
     _rightButton.centerX = self.view.width * 0.75;
-    [_rightButton setTitle:NSLocalizedString(@"willupdata", nil) forState:UIControlStateNormal];
+    [_rightButton setTitle:@"Local" forState:UIControlStateNormal];
     _rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_rightButton setTitleColor:GREEN_COLOR forState:UIControlStateSelected];
@@ -293,7 +293,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
        [standDefauls synchronize];
        if([[dic1 objectForKey:@"retCode"] isEqualToString:@"0000"]){
         // 提取视频编号
-           [self showSuccessHudWithHint:[dic1 objectForKey:@"retDesc"]];
+           [self showSuccessHudWithHint:@"Video is being uploaded, please do not close the application"];
         NSString  * trdID = dic1[@"content"];
            // 检查视频上传状态
            timer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(checkVideoStats:) userInfo:trdID repeats:YES];

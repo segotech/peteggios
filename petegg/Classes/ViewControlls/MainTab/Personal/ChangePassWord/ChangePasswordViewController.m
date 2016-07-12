@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"Modify password"];
+    [self setNavTitle:@"Change password"];
     self.view.backgroundColor = [UIColor whiteColor];
     
 }
