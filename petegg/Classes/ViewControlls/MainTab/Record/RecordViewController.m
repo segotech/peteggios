@@ -42,7 +42,7 @@ static NSString *kRecordheaderIdentifier = @"RecordHeaderIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor =[UIColor whiteColor];
-    [self setNavTitle: @"Record"];
+    [self setNavTitle: @"Album"];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadInformation) name:NotificationInformationChange object:nil];
 }

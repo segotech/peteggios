@@ -11,9 +11,9 @@
 @implementation AFHttpClient
 
 singleton_implementation(AFHttpClient)
-
+//http://180.97.80.227:8080
 - (instancetype)init{
-    if (self = [super initWithBaseURL:[NSURL URLWithString: @"http://180.97.80.227:8080"]]) {
+    if (self = [super initWithBaseURL:[NSURL URLWithString: [AppUtil getServerTest]]]) {
         self.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain", @"application/json", nil];
         [self.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
