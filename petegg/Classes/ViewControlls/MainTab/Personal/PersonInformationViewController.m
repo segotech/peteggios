@@ -391,7 +391,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    NSDateFormatter * formater =[[NSDateFormatter alloc]init];
+    
     
     UIImage * showImage = info[UIImagePickerControllerEditedImage];
     NSLog(@"wocaocao:%@",showImage);
@@ -399,6 +399,7 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:@"handImageText" object:showImage];
     
     _headImage.image = showImage;
+    NSDateFormatter * formater =[[NSDateFormatter alloc]init];
     NSData * data = UIImageJPEGRepresentation(showImage,1.0f);
     
     [formater setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
