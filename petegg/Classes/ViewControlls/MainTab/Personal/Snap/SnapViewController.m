@@ -36,7 +36,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor =[UIColor whiteColor];
-    [self setNavTitle: NSLocalizedString(@"snap", nil)];
+    [self setNavTitle: @"Snapshot"];
     
 }
 
@@ -135,12 +135,12 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     if (deleteArr.count>0) {//有所需要删除的数据
         
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"你确定要删除所选图片!" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Are you sure you want to delete the selected images？" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Sure", nil];
         
         [alert show];
         
     }else{
-        [self showSuccessHudWithHint:@"请选择要删除的照片"];
+        [self showSuccessHudWithHint:@"Please choose to delete the photo!"];
     }
 
     
@@ -164,16 +164,26 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
         _deleteImageV.hidden = YES;
         
+//        NSMutableString *deleStr = [[NSMutableString alloc]init];
+//        NSString *str = [NSString stringWithFormat:@"%@",deleteArr[0]];
+//        [deleStr appendFormat:@"%@",[str substringFromIndex:61]];
+//        deleStr =[NSMutableString stringWithFormat:@"'%@'",deleStr];
+//        
+//        for (int i=1; i<deleteArr.count; i++) {
+//            NSString *str = [NSString stringWithFormat:@"%@",deleteArr[i]];
+//            [deleStr appendFormat:@",'%@'",[str substringFromIndex:61]];
+//            
+//        }
         NSMutableString *deleStr = [[NSMutableString alloc]init];
         NSString *str = [NSString stringWithFormat:@"%@",deleteArr[0]];
-        [deleStr appendFormat:@"%@",[str substringFromIndex:42]];
+        [deleStr appendFormat:@"%@",str];
         deleStr =[NSMutableString stringWithFormat:@"'%@'",deleStr];
-        
         for (int i=1; i<deleteArr.count; i++) {
             NSString *str = [NSString stringWithFormat:@"%@",deleteArr[i]];
-            [deleStr appendFormat:@",'%@'",[str substringFromIndex:42]];
-            
+            [deleStr appendFormat:@",'%@'",str];
         }
+        
+        
         
         NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
         [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
@@ -183,7 +193,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             
             json = [json objectForKey:@"jsondata"] ;
             if([[json objectForKey:@"retCode"] isEqualToString:@"0000"]){
-                [self showSuccessHudWithHint:@"删除成功"];
+                [self showSuccessHudWithHint:@"Delete the success"];
                  [self initRefreshView:@"0"];
 //                 [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
                 [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
@@ -374,7 +384,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         int j = imageSender.view.tag%1000;//每个分区的分组
         
         PhotoModel *model = self.dataSource[i-1];
-        NSArray *imageA = [model.networkaddress componentsSeparatedByString:@","];
+        NSArray *imageA = [model.imagename componentsSeparatedByString:@","];
         
         MyVideoCollectionViewCell *cell = (MyVideoCollectionViewCell *)[self.collection cellForItemAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i-1]];
         
@@ -396,7 +406,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         int j = imageSender.view.tag%1000;
         
         PhotoModel *model = self.dataSource[i-1];
-        NSArray *jArr = [model.networkaddress componentsSeparatedByString:@","];
+        NSArray *jArr = [model.imagename componentsSeparatedByString:@","];
         [deleteArr removeObject:jArr[j]];
         [deleteArr insertObject:jArr[j] atIndex:0];
         

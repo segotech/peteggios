@@ -56,7 +56,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
 - (void)viewDidLoad {
     [super viewDidLoad];
     _ondedayArray = [[NSMutableArray alloc]init];
-    [self setNavTitle:@"Feeding set"];
+    [self setNavTitle:@"Set feeding times"];
     _dataArray = [[NSMutableArray alloc]init];
     self.view.backgroundColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1];
     [self querWeishi];
@@ -70,19 +70,19 @@ static NSString * cellId = @"fedseting2321232322313323231";
     _bigBtn.layer.cornerRadius = _bigBtn.width/2;
     [self.view addSubview:_bigBtn];
     
-    UILabel * wenziLabel = [[UILabel alloc]initWithFrame:CGRectMake(87.5 * W_Wide_Zoom, 300 * W_Hight_Zoom, 100 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
-    wenziLabel.text = @"Feeding days";
+    UILabel * wenziLabel = [[UILabel alloc]initWithFrame:CGRectMake(67.5 * W_Wide_Zoom, 300 * W_Hight_Zoom, 150 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    wenziLabel.text = @"Feeding schedules";
     wenziLabel.textColor = [UIColor blackColor];
     wenziLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:wenziLabel];
     
-    UIView * whiteView = [[UIView alloc]initWithFrame:CGRectMake(230 * W_Wide_Zoom, 300 * W_Hight_Zoom, 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+    UIView * whiteView = [[UIView alloc]initWithFrame:CGRectMake(230 * W_Wide_Zoom, 290 * W_Hight_Zoom, 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     whiteView.backgroundColor = [UIColor whiteColor];
     whiteView.layer.cornerRadius = 3;
     [self.view addSubview:whiteView];
     
     _oneDayButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    [_oneDayButton setTitle:@"One" forState:UIControlStateNormal];
+    [_oneDayButton setTitle:@"1day" forState:UIControlStateNormal];
     _oneDayButton.backgroundColor = [UIColor whiteColor];
     _oneDayButton.titleLabel.font = [UIFont systemFontOfSize:13];
     [_oneDayButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
@@ -92,7 +92,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
 
     
     _twoDayButton = [[UIButton alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 0 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    [_twoDayButton setTitle:@"Two" forState:UIControlStateNormal];
+    [_twoDayButton setTitle:@"2days" forState:UIControlStateNormal];
     _twoDayButton.backgroundColor = [UIColor whiteColor];
     _twoDayButton.titleLabel.font = [UIFont systemFontOfSize:13];
     [_twoDayButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
@@ -430,7 +430,8 @@ static NSString * cellId = @"fedseting2321232322313323231";
         termidStr= [defaults objectForKey:@"termid"];
     }
     
-    [[AFHttpClient sharedAFHttpClient]addFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid type:typeStr times:timeStr deviceno:[AccountManager sharedAccountManager].loginModel.deviceno termid:[AccountManager sharedAccountManager].loginModel.termid complete:^(BaseModel *model) {
+    [[AFHttpClient sharedAFHttpClient]addFeedingtimeWithMid:[AccountManager sharedAccountManager].loginModel.mid type:typeStr times:timeStr deviceno:deviceno termid:termidStr complete:^(BaseModel *model) {
+        
         [self hideHud];
         if (model) {
             [[AppUtil appTopViewController] showHint:model.retDesc];

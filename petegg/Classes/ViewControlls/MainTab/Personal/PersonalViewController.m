@@ -61,11 +61,11 @@
     self.view.backgroundColor =[UIColor whiteColor];
     redpoint = NO;
     dongtai = NO;
-    [self setNavTitle: NSLocalizedString(@"tabPersonal", nil)];
+    [self setNavTitle: @"Settings"];
     self.dataSource =[NSMutableArray array];
     self.dataSourceImage =[NSMutableArray array];
     
-    NSArray * arrName =@[@"Video",@"Capture",@"Feeding set",@"Modify password"];
+    NSArray * arrName =@[@"Video Recording",@"Snapshot",@"Set feeding times",@"Change password"];
     [self.dataSource addObjectsFromArray:arrName];
     
     NSArray * arrImage =@[@"person_photograph.png.png",@"person_balance.png.png", @"person_weishi.png" ,@"person_pw.png"];

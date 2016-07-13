@@ -35,7 +35,7 @@
 {
     [super setupView];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    mytableView = [[QFTableView alloc] initWithFrame:CGRectMake(0, 60, 375, MainScreen.height)];
+    mytableView = [[QFTableView alloc] initWithFrame:CGRectMake(0, 60, 375* W_Wide_Zoom, MainScreen.height)];
     mytableView.delegate   = self;
     mytableView.dataSource = self;
     mytableView.backgroundColor =[UIColor blackColor];
@@ -59,7 +59,7 @@
 
 - (CGFloat)QFTableView:(QFTableView *)fanView widthForIndex:(NSInteger)index
 {
-    return 375;
+    return 375 * W_Wide_Zoom;
 }
 
 
@@ -87,7 +87,7 @@
 
     strUrl = imageArray[index];
     
-    UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 375, [UIScreen mainScreen].bounds.size.height - 108)];
+    UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 375 * W_Wide_Zoom, [UIScreen mainScreen].bounds.size.height - 108)];
     imageV.userInteractionEnabled = YES;
     imageV.backgroundColor = [UIColor blackColor];
     imageV.contentMode = UIViewContentModeScaleAspectFit;
