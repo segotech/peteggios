@@ -293,7 +293,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
        [standDefauls synchronize];
        if([[dic1 objectForKey:@"retCode"] isEqualToString:@"0000"]){
         // 提取视频编号
-           [self showSuccessHudWithHint:@"Uploadeding, please don't close the application"];
+           //[self showSuccessHudWithHint:@"Uploading, please don't close the application"];
+           [[AppUtil appTopViewController] showHint:@"Uploading, please don't close the application"];
         NSString  * trdID = dic1[@"content"];
            // 检查视频上传状态
            timer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(checkVideoStats:) userInfo:trdID repeats:YES];

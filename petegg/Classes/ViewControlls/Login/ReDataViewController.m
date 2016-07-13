@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setNavTitle:@"Forget password"];
+    [self setNavTitle:@"Forget Password"];
 
 }
 -(void)setupView{

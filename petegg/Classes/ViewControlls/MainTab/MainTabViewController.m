@@ -77,7 +77,7 @@
         RecordViewController* vc = [[RecordViewController alloc] init];
         
         vc.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:@"Album"
+        [[UITabBarItem alloc] initWithTitle:@"Home"
                                       image:[[UIImage imageNamed:@"Home.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"HomeSelect.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         

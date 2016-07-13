@@ -45,7 +45,7 @@ static NSString *kRecordheaderIdentifier = @"RecordHeaderIdentifier";
     self.pageSize = -1;
     
     self.view.backgroundColor =[UIColor whiteColor];
-    [self setNavTitle: @"Album"];
+    [self setNavTitle: @"Home"];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadInformation) name:NotificationInformationChange object:nil];
 }

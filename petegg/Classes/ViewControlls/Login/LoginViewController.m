@@ -96,7 +96,7 @@
     [self.view addSubview:shulineLabel];
     
     UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(177.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 120 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
-    [reDataButton setTitle:@"Forget password?" forState:UIControlStateNormal];
+    [reDataButton setTitle:@"Forget Password?" forState:UIControlStateNormal];
     [reDataButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     reDataButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:reDataButton];
