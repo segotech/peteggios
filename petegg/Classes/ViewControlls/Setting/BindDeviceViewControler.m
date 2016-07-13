@@ -187,7 +187,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
     [AFNetWorking postWithApi:str parameters:dicc success:^(id json) {
          faileStr =json[@"jsondata"][@"retDesc"];
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
-//            [self showSuccessHudWithHint:@"绑定成功"];
+
             [self showSuccessHudWithHint:@"Bind successfully"];
             NSString * srt =json[@"jsondata"][@"content"];
             NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];

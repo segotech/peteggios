@@ -95,8 +95,8 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
 - (void)solveBing:(NSString *)str
 {
     
-    deviceNumberEdit.text = [NSString stringWithFormat:@"  Device No.:  %@", str];
-    incodeEdit.text = [NSString stringWithFormat:@"  Access code:  ******"];
+    deviceNumberEdit.text = [NSString stringWithFormat:@"    Device No:  %@", str];
+    incodeEdit.text = [NSString stringWithFormat:@"    Access code:  ******"];
     [self updateUI:@"Remove binding" State:true];
 
     
