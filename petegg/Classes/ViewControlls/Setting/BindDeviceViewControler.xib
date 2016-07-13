@@ -95,7 +95,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="rEa-at-afK"/>
                     </constraints>
-                    <state key="normal" title="Binding device"/>
+                    <state key="normal" title="Binding Device"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                     </userDefinedRuntimeAttributes>

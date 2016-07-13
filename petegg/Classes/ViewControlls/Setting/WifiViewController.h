@@ -28,4 +28,10 @@
 // 进度窗
 @property (nonatomic, weak) MBProgressHUD *hud;
 
+@property (weak, nonatomic) IBOutlet UIButton *showPasswordBtn;
+
+
+
+
+
 @end

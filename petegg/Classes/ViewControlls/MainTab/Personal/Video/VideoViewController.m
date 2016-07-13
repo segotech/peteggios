@@ -55,7 +55,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [super viewDidLoad];
     
     self.view.backgroundColor =[UIColor whiteColor];
-    [self setNavTitle: @"Video recording"];
+    [self setNavTitle: @"Video Recording"];
     
    
     

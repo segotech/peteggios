@@ -22,10 +22,10 @@
 
 // setting
 "settingViewTitle" = "Setting";
-"wifiViewTitle" = "Set network";
+"wifiViewTitle" = "Set Network";
 "INFO_NetNoReachable" = "The current network is not available";
 "INFO_ReachableViaWWAN"= "Current non WIFI environment";
-"bindDeviceViewTitle" = "Binding device";
+"bindDeviceViewTitle" = "Binding Device";
 
 "photograph" = "Photograph";
 "photoalbum" = "Photoalbum";
@@ -34,7 +34,7 @@
 "willupdata" = "Not uploaded";
 
 "EquipmentNo" = "  Device No:";
-"AccessCode" = "  Access code:";
+"AccessCode" = "  Access Code:";
 
 // 登录 注册
 "regist" = "Register";

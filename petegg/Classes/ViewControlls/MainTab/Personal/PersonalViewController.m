@@ -61,11 +61,11 @@
     self.view.backgroundColor =[UIColor whiteColor];
     redpoint = NO;
     dongtai = NO;
-    [self setNavTitle: @"Settings"];
+    [self setNavTitle: @"Me"];
     self.dataSource =[NSMutableArray array];
     self.dataSourceImage =[NSMutableArray array];
     
-    NSArray * arrName =@[@"Video Recording",@"Snapshot",@"Set feeding times",@"Change password"];
+    NSArray * arrName =@[@"Video Recording",@"Snapshot",@"Set Feeding Times",@"Change Password"];
     [self.dataSource addObjectsFromArray:arrName];
     
     NSArray * arrImage =@[@"person_photograph.png.png",@"person_balance.png.png", @"person_weishi.png" ,@"person_pw.png"];

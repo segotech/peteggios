@@ -46,7 +46,7 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    encryptionList = @[ @"无密码", @"WPA/WPA2", @"WEP" ];
+    encryptionList = @[ @"Public", @"WPA/WPA2", @"WEP" ];
     // 初始化加密方式下拉框。
     encryptionListTab.hidden = YES;
     curEncryption = [NSString stringWithFormat:@"1"];
@@ -62,7 +62,10 @@
     
     self.wifiNameEdit.text = [self fetchSSIDInfo];
     
-    
+    [_showPasswordBtn setImage:[UIImage imageNamed:@"kuang_off.png"] forState:UIControlStateNormal];
+    [_showPasswordBtn setImage:[UIImage imageNamed:@"kuang_on.png"] forState:UIControlStateSelected];
+    _showPasswordBtn.selected = NO;
+    passwordEdit.secureTextEntry = YES;
 
     [self setNavTitle:NSLocalizedString(@"wifiViewTitle", nil)];
 }
@@ -88,9 +91,9 @@
 - (IBAction)onShowPasswordButtonClicked:(UIButton *)sender {
     sender.selected = !sender.selected;
     if (sender.selected) {
-        passwordEdit.secureTextEntry = YES;
-    } else {
         passwordEdit.secureTextEntry = NO;
+    } else {
+        passwordEdit.secureTextEntry = YES;
     }
 }
 
@@ -149,7 +152,7 @@
  *  显示打开蓝牙提示窗
  */
 - (void)showNeedBluetoothWaringDialog {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"你尚未打开蓝牙" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"去设置", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You have not yet opened Bluetooth" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"To Set", nil];
     [alert show];
 }
 
@@ -230,7 +233,7 @@
         NSLog(@"Bluetooth powered on");
 
         hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Waiting";
+        hud.labelText = @"Setting network";
 
         [self setUpBleDevice];
         break;
@@ -312,13 +315,14 @@
             // 将字符串分割为2个元素的数组。
             NSArray *array = [strResult componentsSeparatedByString:@","];
             if (array == nil || array.count != 2) {
-                [self showWarningTip:@"配置失败，请重新设置网络"];
+               //[self showWarningTip:@"配置失败，请重新设置网络"];
+                [[AppUtil appTopViewController] showHint:@"Failed,try again"];
                 return;
             }
             strResult = array[0];
             // 出错了。
             if (![strResult isEqualToString:@"OK"]) {
-                [self showWarningTip:@"配置失败，请重新设置网络"];
+               [[AppUtil appTopViewController] showHint:@"Failed,try again"];
                 return;
             }
 
@@ -335,7 +339,7 @@
             
                 
             } else {
-                [self showWarningTip:@"配置失败，请重新设置网络"];
+               [[AppUtil appTopViewController] showHint:@"Failed,try again"];
                 return;
             }
 
@@ -458,7 +462,7 @@
     // 更新选择按钮的文本。
     // OPEN
     if (indexPath.row == 0) {
-        [self.selectEncryptionButton setTitle:@"无密码" forState:UIControlStateNormal];
+        [self.selectEncryptionButton setTitle:@"Public" forState:UIControlStateNormal];
     }
     // WPA/WPA2
     else if (indexPath.row == 1) {
@@ -488,14 +492,14 @@
     
     [AFNetWorking postWithApi:str parameters:dicc success:^(id json) {
         
-        [self showSuccessHudWithHint:@"绑定成功"];
-        
+        //[self showSuccessHudWithHint:@"绑定成功"];
+        [[AppUtil appTopViewController] showHint:@"Complete"];
         // 返回上一级页面。
         [self.navigationController popViewControllerAnimated:YES];
         
     } failure:^(NSError *error) {
         
-        [self showSuccessHudWithHint:@"绑定失败"];
+        [[AppUtil appTopViewController] showHint:@"Failed"];
         
         
     }];

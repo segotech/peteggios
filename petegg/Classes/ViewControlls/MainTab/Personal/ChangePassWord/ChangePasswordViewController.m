@@ -20,14 +20,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"Change password"];
+    [self setNavTitle:@"Change Password"];
     self.view.backgroundColor = [UIColor whiteColor];
     
 }
 -(void)setupView{
     [super  setupView];
 
-    NSArray * nameArray = @[@"Old password:",@"New password:",@"Confirm password:"];
+    NSArray * nameArray = @[@"Old Password:",@"New Password:",@"Confirm Password:"];
     for (int i = 0 ; i < 3; i ++) {
         UILabel * lineLabeles = [[UILabel alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 120 *W_Hight_Zoom + 60 * i * W_Hight_Zoom, 375 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
         lineLabeles.backgroundColor = GRAY_COLOR;
@@ -54,7 +54,7 @@
     
     _surePassworeTextfield = [[UITextField alloc]initWithFrame:CGRectMake(150 * W_Wide_Zoom, 195 * W_Hight_Zoom, 220 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     _surePassworeTextfield.font = [UIFont systemFontOfSize:13];
-    _surePassworeTextfield.placeholder = @"Please enter a confirm password";
+    _surePassworeTextfield.placeholder = @"Please enter again to confirm ";
     _surePassworeTextfield.tintColor = GREEN_COLOR;
     [self.view addSubview:_surePassworeTextfield];
 
@@ -100,7 +100,7 @@
     [[AFHttpClient sharedAFHttpClient]modifyPasswordWithMid:[AccountManager sharedAccountManager].loginModel.mid password:_newpassWordTextfield.text complete:^(BaseModel *model) {
         [self hideHud];
         if (model) {
-            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Tip" message:@"Modify the success, please re login" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Tip" message:@"Change success, please relogin" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
                 

@@ -56,7 +56,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
 - (void)viewDidLoad {
     [super viewDidLoad];
     _ondedayArray = [[NSMutableArray alloc]init];
-    [self setNavTitle:@"Set feeding times"];
+    [self setNavTitle:@"Set Feeding Times"];
     _dataArray = [[NSMutableArray alloc]init];
     self.view.backgroundColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1];
     [self querWeishi];
@@ -71,7 +71,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
     [self.view addSubview:_bigBtn];
     
     UILabel * wenziLabel = [[UILabel alloc]initWithFrame:CGRectMake(67.5 * W_Wide_Zoom, 300 * W_Hight_Zoom, 150 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
-    wenziLabel.text = @"Feeding schedules";
+    wenziLabel.text = @"Feeding Schedules";
     wenziLabel.textColor = [UIColor blackColor];
     wenziLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:wenziLabel];
@@ -82,7 +82,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
     [self.view addSubview:whiteView];
     
     _oneDayButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    [_oneDayButton setTitle:@"1day" forState:UIControlStateNormal];
+    [_oneDayButton setTitle:@"1 day" forState:UIControlStateNormal];
     _oneDayButton.backgroundColor = [UIColor whiteColor];
     _oneDayButton.titleLabel.font = [UIFont systemFontOfSize:13];
     [_oneDayButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
@@ -92,14 +92,14 @@ static NSString * cellId = @"fedseting2321232322313323231";
 
     
     _twoDayButton = [[UIButton alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 0 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    [_twoDayButton setTitle:@"2days" forState:UIControlStateNormal];
+    [_twoDayButton setTitle:@"2 days" forState:UIControlStateNormal];
     _twoDayButton.backgroundColor = [UIColor whiteColor];
     _twoDayButton.titleLabel.font = [UIFont systemFontOfSize:13];
     [_twoDayButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
     [whiteView addSubview:_twoDayButton];
     [_twoDayButton addTarget:self action:@selector(twoDayButtontouch) forControlEvents:UIControlEventTouchUpInside];
     
-    _moveView = [[UIView alloc]initWithFrame:CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom)];
+    _moveView = [[UIView alloc]initWithFrame:CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 40 * W_Wide_Zoom, 26 * W_Hight_Zoom)];
     _moveView.backgroundColor = GREEN_COLOR;
     [whiteView addSubview:_moveView];
     

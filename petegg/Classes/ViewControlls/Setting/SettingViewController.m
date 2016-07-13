@@ -53,7 +53,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     // 功能按钮默认不可用。
     resolveButton.backgroundColor = GRAY_COLOR;
     resolveButton.enabled = TRUE;
-    [resolveButton setTitle:@"Set network" forState:UIControlStateNormal];
+    [resolveButton setTitle:@"Set Network" forState:UIControlStateNormal];
     
     [self setNavTitle:NSLocalizedString(@"settingViewTitle", nil)];
 }
@@ -75,7 +75,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
     // 尚未绑定设备，则绑定设备。
     if ([AppUtil isBlankString:str]) {
         if ([AppUtil isBlankString:strDeviceNo]) {
-            [self updateUI:@"Search device" State:false];
+            [self updateUI:@"Search Device" State:false];
 
         }else
         {
@@ -96,8 +96,8 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
 {
     
     deviceNumberEdit.text = [NSString stringWithFormat:@"    Device No:  %@", str];
-    incodeEdit.text = [NSString stringWithFormat:@"    Access code:  ******"];
-    [self updateUI:@"Remove binding" State:true];
+    incodeEdit.text = [NSString stringWithFormat:@"    Access Code:  ******"];
+    [self updateUI:@"Remove Binding" State:true];
 
     
 }
@@ -139,7 +139,7 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
         
         // 创建进度提示窗。
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Is lifting the binding device, please wait...";
+        hud.labelText = @"Please wait...";
         
         // 执行http请求。
         [manager POST:service
@@ -156,12 +156,12 @@ NSString *const PREF_WIFI_CONFIGURED = @"wifiConfigured";
                       [[NSUserDefaults standardUserDefaults] removeObjectForKey:PREF_WIFI_CONFIGURED];
                       [AccountManager sharedAccountManager].loginModel.deviceno = @"";
                       // 更新界面状态。
-                      [self updateUI:@"Search device" State:false];
+                      [self updateUI:@"Search Device" State:false];
                   }
               }
               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                   NSLog(@"Unbind device failed: %@", error);
-                  [self showWarningTip:@"Failure, please check the network is ok"];
+                  [self showWarningTip:@"Failure, please check the network "];
               }];
 
     }]];

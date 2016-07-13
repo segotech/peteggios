@@ -127,7 +127,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
  *  显示打开蓝牙提示窗
  */
 - (void)showNeedBluetoothWaringDialog {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You have not yet opened Bluetooth" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"To set", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You have not yet opened Bluetooth" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"To Set", nil];
     [alert show];
 }
 
@@ -188,12 +188,13 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
          faileStr =json[@"jsondata"][@"retDesc"];
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
 
-            [self showSuccessHudWithHint:@"Bind successfully"];
+            //[self showSuccessHudWithHint:@"Bind successfully"];
             NSString * srt =json[@"jsondata"][@"content"];
             NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
             [defaults setObject:srt forKey:TERMID_DEVICNUMER];
             [defaults setObject:deviceoNum forKey:PREF_DEVICE_NUMBER];
             [defaults synchronize];
+            [[AppUtil appTopViewController] showHint:@"Success,please set network"];
             // TODO 实现设备http绑定。
             // 返回上级页面。
             [self.navigationController popViewControllerAnimated:YES];
@@ -300,7 +301,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
         NSLog(@"Bluetooth powered on");
 
         hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = @"Getting device information, please wait...";
+            hud.labelText = @"Searching for device...";
 
         [self setUpBleDevice];
         

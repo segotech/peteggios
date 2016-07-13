@@ -78,8 +78,8 @@
         
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:@"Album"
-                                      image:[[UIImage imageNamed:@"tab_egg_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                              selectedImage:[[UIImage imageNamed:@"tab_egg_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                                      image:[[UIImage imageNamed:@"Home.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                              selectedImage:[[UIImage imageNamed:@"HomeSelect.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         
         _navRecordVC = [[UINavigationController alloc]initWithRootViewController:vc];
     }
@@ -114,7 +114,7 @@
         // vc.messageCount =messageCount;
         
         vc.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:@"Settings"
+        [[UITabBarItem alloc] initWithTitle:@"Me"
                                       image:[[UIImage imageNamed:@"tab_personal_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                               selectedImage:[[UIImage imageNamed:@"tab_personal_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
        _navPersonalVC = [[UINavigationController alloc]initWithRootViewController:vc];

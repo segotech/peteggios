@@ -66,7 +66,7 @@
     [self.view addSubview:_accountTextField];
     
     _passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(70 * W_Wide_Zoom, 193 * W_Hight_Zoom, 200 * W_Wide_Zoom, 40 * W_Hight_Zoom)];
-    _passwordTextField.placeholder = @"Please enter a password";
+    _passwordTextField.placeholder = @"Please enter your password";
     _passwordTextField.tintColor = [UIColor whiteColor];
     _passwordTextField.keyboardType = UIKeyboardTypeDefault;
     _passwordTextField.secureTextEntry = YES;
@@ -84,18 +84,18 @@
     [secureBtn addTarget:self action:@selector(secureButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:secureBtn];
     
-    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(77.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 120 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+    UIButton * regiestButton = [[UIButton alloc]initWithFrame:CGRectMake(57.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 120 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [regiestButton setTitle:@"Register" forState:UIControlStateNormal];
     [regiestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     regiestButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:regiestButton];
     [regiestButton addTarget:self action:@selector(regiestButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     
-    UILabel * shulineLabel = [[UILabel alloc]initWithFrame:CGRectMake(187.5 * W_Wide_Zoom, 390 * W_Hight_Zoom, 1 * W_Wide_Zoom, 12 * W_Hight_Zoom)];
+    UILabel * shulineLabel = [[UILabel alloc]initWithFrame:CGRectMake(160 * W_Wide_Zoom, 392 * W_Hight_Zoom, 1 * W_Wide_Zoom, 12 * W_Hight_Zoom)];
     shulineLabel.backgroundColor = GRAY_COLOR;
     [self.view addSubview:shulineLabel];
     
-    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(197.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 120 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
+    UIButton * reDataButton = [[UIButton alloc]initWithFrame:CGRectMake(177.5 * W_Wide_Zoom, 380 * W_Hight_Zoom, 120 * W_Wide_Zoom, 35 * W_Hight_Zoom)];
     [reDataButton setTitle:@"Forget password?" forState:UIControlStateNormal];
     [reDataButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     reDataButton.titleLabel.font = [UIFont systemFontOfSize:14];
