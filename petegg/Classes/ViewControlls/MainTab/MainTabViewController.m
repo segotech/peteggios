@@ -78,8 +78,8 @@
         
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:@"Home"
-                                      image:[[UIImage imageNamed:@"Home.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                              selectedImage:[[UIImage imageNamed:@"HomeSelect.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                                      image:[[UIImage imageNamed:@"jiluhou.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                              selectedImage:[[UIImage imageNamed:@"jiluselect.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         
         _navRecordVC = [[UINavigationController alloc]initWithRootViewController:vc];
     }
