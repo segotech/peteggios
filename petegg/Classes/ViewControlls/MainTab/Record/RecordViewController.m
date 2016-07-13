@@ -41,6 +41,9 @@ static NSString *kRecordheaderIdentifier = @"RecordHeaderIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageSize = -1;
+    
     self.view.backgroundColor =[UIColor whiteColor];
     [self setNavTitle: @"Album"];
     

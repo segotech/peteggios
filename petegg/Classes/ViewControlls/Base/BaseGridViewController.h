@@ -19,6 +19,8 @@
 
 @property (nonatomic, assign) int pageIndex;
 
+@property (nonatomic, assign) int pageSize;
+
 //加载分页数据
 - (void)loadDataSourceWithPage:(int)page;
 

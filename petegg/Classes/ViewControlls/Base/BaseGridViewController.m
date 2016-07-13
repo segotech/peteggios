@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageSize = REQUEST_PAGE_SIZE;
 }
 
 - (void)setupData{
@@ -53,13 +54,20 @@
     }];
     
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        if ((weakSelf.pageIndex )* REQUEST_PAGE_SIZE == weakSelf.dataSource.count) {
+        
+        if (self.pageSize > 0) {
+            if ((weakSelf.pageIndex )* REQUEST_PAGE_SIZE == weakSelf.dataSource.count) {
+                weakSelf.pageIndex++;
+                [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
+            }else{
+                [weakSelf.collectionView.mj_footer endRefreshing];
+                weakSelf.collectionView.mj_footer.hidden = YES;
+            }     
+        }else{
             weakSelf.pageIndex++;
             [weakSelf loadDataSourceWithPage:weakSelf.pageIndex];
-        }else{
-            [weakSelf.collectionView.mj_footer endRefreshing];
-            weakSelf.collectionView.mj_footer.hidden = YES;
         }
+       
     }];
     
     self.collectionView.mj_footer.hidden = YES;
