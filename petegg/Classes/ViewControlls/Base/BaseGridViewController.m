@@ -73,12 +73,6 @@
     
     [self.collectionView.mj_header endRefreshing];
     [self.collectionView.mj_footer endRefreshing];
-    
-    if (self.dataSource.count == self.totalrecords) {
-        self.collectionView.mj_footer.hidden = YES;
-    }else{
-        self.collectionView.mj_footer.hidden = NO;
-    }
 }
 
 /**
