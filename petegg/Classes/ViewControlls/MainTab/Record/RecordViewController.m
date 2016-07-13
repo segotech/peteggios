@@ -41,6 +41,9 @@ static NSString *kRecordheaderIdentifier = @"RecordHeaderIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageSize = -1;
+    
     self.view.backgroundColor =[UIColor whiteColor];
     [self setNavTitle: @"Album"];
     
@@ -126,13 +129,18 @@ static NSString *kRecordheaderIdentifier = @"RecordHeaderIdentifier";
                 [self.dataSource addObject:[[RecordModel alloc] init]];
             }
             
-            self.totalrecords = [model.totalrecords intValue] + 1;
-            
             for (RecordModel* recordModel in model.list) {
                 recordModel.networkaddressArray = [recordModel.networkaddress componentsSeparatedByString:@","];
                 recordModel.thumbailsArray = [recordModel.thumbnails componentsSeparatedByString:@","];
                 recordModel.typeArray = [recordModel.type componentsSeparatedByString:@","];
             }
+            
+            if (model.list.count == 0) {
+                self.collectionView.mj_footer.hidden = YES;
+            }else{
+                self.collectionView.mj_footer.hidden = NO;
+            }
+            
             
             [self.dataSource addObjectsFromArray:model.list];
             
