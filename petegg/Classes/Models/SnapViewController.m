@@ -398,13 +398,14 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         for (int kkk = 1; kkk<deleteArr.count; kkk++) {
             strAllimg = [strAllimg stringByAppendingFormat:@",%@",deleteArr[kkk]];
         }
+        
+        
         ImageModel *model1 = [[ImageModel alloc]init];
         model1.imagename = strAllimg;
     
         // 暂时不处理事情
         LargeViewController * largeVC =[[LargeViewController alloc]initWithNibName:@"LargeViewController" bundle:nil];
         largeVC.model = model1;
-        
         [self.navigationController pushViewController:largeVC animated:YES];
         
     }

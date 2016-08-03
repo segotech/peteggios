@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWWeakTimer.h"
 
 @interface InCallViewController : UIViewController
 

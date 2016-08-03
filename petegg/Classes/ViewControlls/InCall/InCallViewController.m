@@ -93,8 +93,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    [self.backBtn removeFromSuperview];
-    
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     if (updateTimer != nil) {
         [updateTimer invalidate];
@@ -145,10 +143,18 @@
 
 }
 
+-(void)dealloc {
+    [moveTimer invalidate];
+    NSLog(@"%@ dealloc", NSStringFromClass([self class]));
+}
+
+
 - (void)RefreshCellForLiveId
 {
     
     [SephoneManager terminateCurrentCallOrConference];
+    [moveTimer invalidate];
+    [self  videoEnd];
     [self dismissViewControllerAnimated:YES completion:nil];
     
     
@@ -491,21 +497,24 @@
 
 - (void)moveRobot:(NSString *)str
 {
-   
-    if (moveTimer != nil) {
-        [moveTimer invalidate];
-        moveTimer = nil;
-    }else{
-    moveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0*0.2 target:self selector:@selector(sendInfomation:) userInfo:str repeats:YES];
-    }
+    NSLog(@"+++++++++++++++++++++");
+        moveTimer = [HWWeakTimer scheduledTimerWithTimeInterval:1.0*0.2 block:^(id userInfo) {
+             
+         [self sendInfomation:str];
+              NSLog(@"时间 时间你给我个答案");
+        } userInfo:@"Fire" repeats:YES];
+          [moveTimer fire];
+          
+          
+ 
     
 }
 
 
-- (void)sendInfomation:(NSTimer *)sender
+- (void)sendInfomation:(NSString *)sender
 {
     
-    NSString * msg =[NSString stringWithFormat:@"control_servo,0,0,1,%d,200",[sender.userInfo intValue]];
+    NSString * msg =[NSString stringWithFormat:@"control_servo,0,0,1,%d,200",[sender intValue]];
     [self sendMessage:msg];
 
     
@@ -515,11 +524,7 @@
 
 - (void)overTime
 {
-    if (moveTimer != nil) {
-        [moveTimer invalidate];
-        moveTimer = nil;
-    }
-
+      [moveTimer invalidate];
     
 }
 
@@ -670,6 +675,8 @@
     
  
 }
+
+
 
 
 // 用户体验设置
