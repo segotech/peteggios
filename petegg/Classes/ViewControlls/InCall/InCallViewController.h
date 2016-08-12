@@ -22,6 +22,10 @@
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *flowerUI;
 
+@property (strong, nonatomic) IBOutlet UIButton *top_btn;
+@property (strong, nonatomic) IBOutlet UIButton *down_btn;
+@property (strong, nonatomic) IBOutlet UIButton *right_btn;
+@property (strong, nonatomic) IBOutlet UIButton *left_btn;
 
 // 别人
 

@@ -63,6 +63,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
     self.bindButton.backgroundColor = GRAY_COLOR;
     self.bindButton.enabled = FALSE;
     self.incodeEdit.secureTextEntry = TRUE;
+    self.deviceNumberEdit.enabled = NO;
 
     [self setNavTitle:NSLocalizedString(@"bindDeviceViewTitle", nil)];
 }
@@ -167,6 +168,14 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
         [self showWarningTip:@"设备号不存在"];
         return;
     }
+//    if(deviceoNum != strNumber)
+//    {
+//        
+//        [self showWarningTip:@"设备号不存在"];
+//        return;
+//        
+//    }
+    
     [self deviceMemer:deviceoNum];
 
   
@@ -203,7 +212,7 @@ NSString *const SEGOEGG_PREFIX = @"segoegg";
         }
     } failure:^(NSError *error) {
     
-        [self showSuccessHudWithHint:faileStr];
+        [[AppUtil appTopViewController] showHint:faileStr];
         [self.navigationController popViewControllerAnimated:YES];
         
         

@@ -22,5 +22,6 @@
 @property (strong,nonatomic) NSArray* PicArray;
 @property (nonatomic,strong)UIScrollView *scrollView;
 @property (nonatomic,strong)UIPageControl *pageControl;
+@property (nonatomic,assign)NSInteger page;
 
 @end
