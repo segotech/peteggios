@@ -169,6 +169,7 @@
     else if ([status isEqualToString:@"ds003"]) {
         //通话
        imageStatus.image =[UIImage imageNamed:@"egg_calling.png"];
+        button0.backgroundColor = GRAY_COLOR;
         [self btn_select];
 
         
@@ -242,8 +243,6 @@
     button0.frame = CGRectMake(80*W_Wide_Zoom, 500*W_Hight_Zoom, 220*W_Wide_Zoom, 35*W_Hight_Zoom);
         button0.alpha =1;
         [button0 addTarget:self action:@selector(btn_set:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
     [self.view addSubview:button0];
 }
 

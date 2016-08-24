@@ -97,10 +97,11 @@
     
     switch (state) {
         case SephoneRegistrationOk:
-            
             NSLog(@"=======成功");
+           // [[AppUtil appTopViewController]showHint:@"注册成功"];
             break;
         case SephoneRegistrationFailed:
+          //   [[AppUtil appTopViewController]showHint:@"注册失败"];
             NSLog(@"========OK 以外都是失败");
             break;
             
@@ -246,8 +247,11 @@
     }
     else if ([status isEqualToString:@"ds003"]) {
         //通话
-        _yesDeviceImageView.image =[UIImage imageNamed:@"egg_calling.png"];
         [self buttonOpen];
+        _yesDeviceImageView.image =[UIImage imageNamed:@"egg_calling.png"];
+        _isOpen = NO;
+        _openButton.backgroundColor = GRAY_COLOR;
+        
         
     }
     else if ([status isEqualToString:@"ds004"]) {
@@ -298,7 +302,6 @@
     
     
     if (_isOpen) {
-        
         _isOpen = NO;
         /**
          *   这里做一个模拟延迟的菊花 提高用户体验
@@ -351,8 +354,9 @@
     }else
     {
         // 测试
-    
         
+        [self showSuccessHudWithHint:@"设备不能开启"];
+    
     }
     
     

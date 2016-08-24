@@ -56,6 +56,14 @@
 {
     //用来计算pageView该显示第几个 scrollView.contentOffset.x
     _pageControl.currentPage = scrollView.contentOffset.x/_scrollView.frame.size.width;
+    self.page++;
+    if (self.page >2) {
+        if (self.delegate) {
+            [self.delegate getScrollV:@""];
+        }
+         [self removeFromSuperview];
+    }
+    
 }
 
 - (void)ontapScrollV:(UITapGestureRecognizer *)sender

@@ -64,6 +64,7 @@
     [super viewWillAppear:animated];
     // Set observer
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callUpdateEvent:) name:kSephoneCallUpdate object:nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:)name:UIApplicationWillResignActiveNotification object:nil]; //监听是否触发home键挂起程序.
     
     // Update on show
     SephoneCall *call_ = sephone_core_get_current_call([SephoneManager getLc]);
@@ -80,6 +81,8 @@
     
     
 }
+
+
 
 - (void)applicationWillResignActive:(NSNotification *)notification
 
@@ -108,6 +111,7 @@
         timeShow = nil;
         
     }
+     [moveTimer invalidate];
     
     // Clear windows
     //  必须清除，否则会因为arc导致再次视频通话时crash。
@@ -144,8 +148,8 @@
 }
 
 -(void)dealloc {
-    [moveTimer invalidate];
-    NSLog(@"%@ dealloc", NSStringFromClass([self class]));
+     [moveTimer invalidate];
+     NSLog(@"%@ dealloc", NSStringFromClass([self class]));
 }
 
 
@@ -183,6 +187,7 @@
     
     
     if (![SephoneManager hasCall:calls]) {
+        
         [self dismissViewControllerAnimated:YES completion:nil];
         return;
     }
@@ -430,6 +435,7 @@
 //  返回
 - (IBAction)backBtnClick:(UIButton *)sender {
     [self videoEnd];
+     [moveTimer invalidate];
     [SephoneManager terminateCurrentCallOrConference];
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -455,7 +461,7 @@
 
 - (IBAction)downStart:(UIButton *)sender {
     
-        [self moveRobot:@"3"];
+  [self moveRobot:@"3"];
     
 }
 
@@ -498,8 +504,45 @@
 - (void)moveRobot:(NSString *)str
 {
     NSLog(@"+++++++++++++++++++++");
+    
+    NSInteger i = [str integerValue];
+    switch (i) {
+        case 1:
+            self.right_btn.userInteractionEnabled = YES;
+            self.left_btn.userInteractionEnabled = NO;
+            self.top_btn.userInteractionEnabled = NO;
+            self.down_btn.userInteractionEnabled = NO;
+            break;
+            
+        case 2:
+            self.right_btn.userInteractionEnabled = NO;
+            self.left_btn.userInteractionEnabled = YES;
+            self.top_btn.userInteractionEnabled = NO;
+            self.down_btn.userInteractionEnabled = NO;
+        
+            break;
+        case 3:
+            self.right_btn.userInteractionEnabled = NO;
+            self.left_btn.userInteractionEnabled = NO;
+            self.top_btn.userInteractionEnabled = NO;
+            self.down_btn.userInteractionEnabled = YES;
+            
+            break;
+            
+        case 4:
+            self.right_btn.userInteractionEnabled = NO;
+            self.left_btn.userInteractionEnabled = NO;
+            self.top_btn.userInteractionEnabled = YES;
+            self.down_btn.userInteractionEnabled = NO;
+            
+            break;
+
+
+        default:
+            break;
+    }
+    
         moveTimer = [HWWeakTimer scheduledTimerWithTimeInterval:1.0*0.2 block:^(id userInfo) {
-             
          [self sendInfomation:str];
               NSLog(@"时间 时间你给我个答案");
         } userInfo:@"Fire" repeats:YES];
@@ -525,6 +568,10 @@
 - (void)overTime
 {
       [moveTimer invalidate];
+    self.right_btn.userInteractionEnabled = YES;
+    self.left_btn.userInteractionEnabled = YES;
+    self.top_btn.userInteractionEnabled = YES;
+    self.down_btn.userInteractionEnabled = YES;
     
 }
 
@@ -588,6 +635,7 @@
         case SephoneCallEnd:
         case SephoneCallError: {
             call = NULL;
+            NSLog(@"超时返回");
            [self dismissViewControllerAnimated:YES completion:nil];
             break;
         }

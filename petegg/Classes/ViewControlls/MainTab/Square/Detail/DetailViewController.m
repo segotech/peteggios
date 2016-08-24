@@ -274,29 +274,29 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
     NSArray *imageArray = @[[UIImage imageNamed:@"segoColor.jpg"]];
     //（注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数
     
-    //NSString * strUrl =[NSString stringWithFormat:@"http://180.97.81.213/clientAction.do?method=client&nextPage=/s/sproutpet/article.jsp&stid=%@&mid=%@&access=outside",self.stid,[AccountManager sharedAccountManager].loginModel.mid];
+    NSString * strUrl =[NSString stringWithFormat:@"http://180.97.81.213/clientAction.do?method=client&nextPage=/s/sproutpet/article.jsp&stid=%@&mid=%@&access=outside",self.stid,[AccountManager sharedAccountManager].loginModel.mid];
     
-    NSString * strUrl =[NSString stringWithFormat:@"http://www.segopet.com/site/wx/wxvideosdk.jsp"];
+  //  NSString * strUrl =[NSString stringWithFormat:@"http://www.segopet.com/site/wx/wxvideosdk.jsp"];
 
-    
-//    if (imageArray) {
-//        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-//        [shareParams
-//         SSDKSetupShareParamsByText:[NSString stringWithFormat:@"赛果分享http://180.97.81.213:15102/clientAction.do?method=client&nextPage=/s/sproutpet/article.jsp&stid=%@&mid=%@&access=outside",self.stid,[AccountManager sharedAccountManager].loginModel.mid]
-//         images:imageArray
-//         url:[NSURL URLWithString:strUrl]
-//         title:@"赛果分享"
-//         type:SSDKContentTypeAuto];
     
     if (imageArray) {
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         [shareParams
-         SSDKSetupShareParamsByText:[NSString stringWithFormat:@"仅需嵌入几行代码，就能在您的APP或智能硬件里实现远程双向视频聊天功能"]
+         SSDKSetupShareParamsByText:[NSString stringWithFormat:@"赛果分享http://180.97.81.213:15102/clientAction.do?method=client&nextPage=/s/sproutpet/article.jsp&stid=%@&mid=%@&access=outside",self.stid,[AccountManager sharedAccountManager].loginModel.mid]
          images:imageArray
          url:[NSURL URLWithString:strUrl]
-         title:@"赛果视频SDK"
+         title:@"赛果分享"
          type:SSDKContentTypeAuto];
-        
+    
+//    if (imageArray) {
+//        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+//        [shareParams
+//         SSDKSetupShareParamsByText:[NSString stringWithFormat:@"仅需嵌入几行代码，就能在您的APP或智能硬件里实现远程双向视频聊天功能"]
+//         images:imageArray
+//         url:[NSURL URLWithString:strUrl]
+//         title:@"赛果视频SDK"
+//         type:SSDKContentTypeAuto];
+    
         
         // 2、分享（可以弹出我们的分享菜单和编辑界面）
         [ShareSDK showShareActionSheet: nil items:nil shareParams:shareParams onShareStateChanged:^(
