@@ -70,11 +70,50 @@ static NSString * cellId = @"fedseting2321232322313323231";
     _bigBtn.layer.cornerRadius = _bigBtn.width/2;
     [self.view addSubview:_bigBtn];
     
-    UILabel * wenziLabel = [[UILabel alloc]initWithFrame:CGRectMake(87.5 * W_Wide_Zoom, 300 * W_Hight_Zoom, 80 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    UIView * whiteView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 290 * W_Hight_Zoom, 375 * W_Wide_Zoom, 50 * W_Hight_Zoom)];
+    whiteView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:whiteView];
+    
+    
+    
+    UILabel * wenziLabel = [[UILabel alloc]initWithFrame:CGRectMake(30 * W_Wide_Zoom, 15 * W_Hight_Zoom, 100 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
     wenziLabel.text = @"喂食天数";
     wenziLabel.textColor = [UIColor blackColor];
     wenziLabel.font = [UIFont systemFontOfSize:14];
-    [self.view addSubview:wenziLabel];
+    [whiteView addSubview:wenziLabel];
+    
+    _oneDayButton = [[UIButton alloc]initWithFrame:CGRectMake(235 * W_Wide_Zoom, 16 * W_Hight_Zoom, 17 * W_Wide_Zoom, 17 * W_Hight_Zoom)];
+    _oneDayButton.selected = YES;
+    [_oneDayButton setImage:[UIImage imageNamed:@"quan_guize.png"] forState:UIControlStateNormal];
+    [_oneDayButton setImage:[UIImage imageNamed:@"xuanquan_guize.png"] forState:UIControlStateSelected];
+    [whiteView  addSubview:_oneDayButton];
+      [_oneDayButton addTarget:self action:@selector(onedayButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel * wenzi1 =[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_oneDayButton.frame) + 5, 15 * W_Hight_Zoom, 50 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    wenzi1.text = @"一天";
+    wenzi1.textColor = GREEN_COLOR;
+    wenzi1.font = [UIFont systemFontOfSize:13];
+    [whiteView addSubview:wenzi1];
+  
+
+    
+    _twoDayButton = [[UIButton alloc]initWithFrame:CGRectMake(310 * W_Wide_Zoom, 16 * W_Hight_Zoom, 17 * W_Wide_Zoom, 17 * W_Hight_Zoom)];
+    [_twoDayButton setImage:[UIImage imageNamed:@"quan_guize.png"] forState:UIControlStateNormal];
+    [_twoDayButton setImage:[UIImage imageNamed:@"xuanquan_guize.png"] forState:UIControlStateSelected];
+    [whiteView addSubview:_twoDayButton];
+    [_twoDayButton addTarget:self action:@selector(twoDayButtontouch) forControlEvents:UIControlEventTouchUpInside];
+
+    
+    UILabel * wenzi2 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_twoDayButton.frame) + 5, 15 * W_Hight_Zoom, 50 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    wenzi2.text = @"两天";
+    wenzi2.textColor = GREEN_COLOR;
+    wenzi2.font = [UIFont systemFontOfSize:13];
+    [whiteView addSubview:wenzi2];
+    
+    
+    
+    
+    
     
 //    UIView * whiteView = [[UIView alloc]initWithFrame:CGRectMake(230 * W_Wide_Zoom, 300 * W_Hight_Zoom, 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
 //    whiteView.backgroundColor = [UIColor whiteColor];
@@ -272,7 +311,7 @@ static NSString * cellId = @"fedseting2321232322313323231";
 }
 
 
-//生日按钮点击
+
 -(void)brithdayButtontouch{
     _bigButton = [[UIButton alloc]initWithFrame:self.view.bounds];
     _bigButton.backgroundColor = [UIColor blackColor];
@@ -364,11 +403,11 @@ static NSString * cellId = @"fedseting2321232322313323231";
     _bigView2.hidden = YES;
     _bigView1.hidden = NO;
     [self onedayView];
-    [UIView animateWithDuration:0.3 animations:^{
-        _moveView.frame = CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
-    [[AppUtil appTopViewController] showHint:@"启用一天模式"];
+//    [UIView animateWithDuration:0.3 animations:^{
+//        _moveView.frame = CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
+//    [[AppUtil appTopViewController] showHint:@"启用一天模式"];
          [_bigBtn setImage:[UIImage imageNamed:@"weishi_onday.png"] forState:UIControlStateNormal];
-    }];
+//    }];
 }
 
 -(void)twoDayButtontouch{
@@ -379,12 +418,12 @@ static NSString * cellId = @"fedseting2321232322313323231";
     _twoDayButton.selected = YES;
      _isOneOrTwo = NO;
     [self twoDayView];
-    [UIView animateWithDuration:0.3 animations:^{
-        _moveView.frame = CGRectMake(42 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
-         [[AppUtil appTopViewController] showHint:@"启用两天模式"];
+//    [UIView animateWithDuration:0.3 animations:^{
+//        _moveView.frame = CGRectMake(42 * W_Wide_Zoom, 2 * W_Hight_Zoom, 36 * W_Wide_Zoom, 26 * W_Hight_Zoom);
+//         [[AppUtil appTopViewController] showHint:@"启用两天模式"];
          [_bigBtn setImage:[UIImage imageNamed:@"weishi_twoday.png"] forState:UIControlStateNormal];
-    }];
-
+//    }];
+//
 }
 
 
