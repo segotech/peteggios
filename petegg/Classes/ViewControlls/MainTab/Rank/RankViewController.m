@@ -78,9 +78,9 @@
     
     _weeBangVc = [[WeekBangViewController alloc]init];
     _monthBangVc = [[MonthBangViewController alloc]init];
-
+    
     _viewControllers = @[_weeBangVc, _monthBangVc];
-
+    
     [_pageViewController setViewControllers:@[_weeBangVc] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
 
 }

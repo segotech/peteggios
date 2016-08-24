@@ -95,9 +95,11 @@ static NSString * cellId = @"ranksCellIdddd";
 -(void)setupData{
     [super setupData];
     [[AFHttpClient sharedAFHttpClient]queryrankingWithMid:[AccountManager sharedAccountManager].loginModel.mid ranktype:@"week" complete:^(BaseModel *model) {
-        [self.dataSource addObjectsFromArray:model.list];
-        [self.tableView reloadData];
-        [self initDataTop];
+        if (model) {
+            [self.dataSource addObjectsFromArray:model.list];
+            [self.tableView reloadData];
+            [self initDataTop];
+        }
     }];
 }
 

@@ -24,8 +24,8 @@ static NSString* server = @"http://192.168.1.130:8080/sego_v3";
 //赛果三期 外网服务器
 //static NSString * getServer3 =@"http://180.97.80.227:15102/";
 // 测试
-static NSString * getServer3 =@"http://192.168.1.130:8080/sego_v3/";
-//static NSString * getServer3 =@"http://180.97.81.213/";
+//static NSString * getServer3 =@"http://192.168.1.130:8080/sego_v3/";
+static NSString * getServer3 =@"http://180.97.81.213/";
 static NSString * getServerTest = @"http://180.97.80.227:15102/";
 static NSString * getServerTest1 = @"http://192.168.1.103:8080/sego_v3/";
 
