@@ -27,7 +27,7 @@
     [super viewDidLoad];
     self.view.backgroundColor =[UIColor blackColor];
     
-    
+    [self setTitle:@"Snapshot"];
     
 }
 
