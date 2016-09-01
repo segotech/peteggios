@@ -406,7 +406,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         int j = imageSender.view.tag%1000;
         
         PhotoModel *model = self.dataSource[i-1];
-        NSArray *jArr = [model.imagename componentsSeparatedByString:@","];
+        NSArray *jArr = [model.networkaddress componentsSeparatedByString:@","];
         [deleteArr removeObject:jArr[j]];
         [deleteArr insertObject:jArr[j] atIndex:0];
         
