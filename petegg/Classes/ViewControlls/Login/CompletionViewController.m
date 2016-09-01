@@ -283,14 +283,21 @@
 - (void)chooseOnebtn:(NSInteger )tag button:(UIButton *)sender
 {
     [_nameTextF resignFirstResponder];
+    
     switch (tag) {
         case 2004:
-            
+            if ([girlOrBoy isEqualToString:@"公"]) {
+                girlOrBoy = @"";
+            }else{
             girlOrBoy = @"公";
+            }
             break;
         case 2003:
-            
+            if ([girlOrBoy isEqualToString:@"母"]) {
+                 girlOrBoy = @"";
+            }else{
             girlOrBoy = @"母";
+            }
             break;
             
         case 2005:
@@ -312,7 +319,9 @@
     UIButton * btn =(UIButton *)[self.view viewWithTag:tag];
     if (!btn.selected) {
         sender.selected =!sender.selected;
+       
     }
+    
     
    
 }
