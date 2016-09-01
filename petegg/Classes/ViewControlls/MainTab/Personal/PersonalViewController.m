@@ -10,16 +10,9 @@
 #import "personTableViewCell.h"
 #import "VideoViewController.h"
 #import <Accelerate/Accelerate.h>
-//#import "FriendViewController.h"
-//#import "FunnyCodeViewController.h"
-//#import "BaseViewController.h"
-//#import "PersonAttentionViewController.h"
 #import "SnapViewController.h"
 #import "PersonInformationViewController.h"
 #import "ChangePasswordViewController.h"
-//#import "BalckListViewController.h"
-//#import "PermissionViewController.h"
-
 #import "FeedSetingViewController.h"
 #import "ThreePointsViewController.h"
 #import "UITabBar+Badge.h"

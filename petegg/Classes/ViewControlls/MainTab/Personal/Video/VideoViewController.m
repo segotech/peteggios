@@ -93,7 +93,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [_leftButton setTitleColor:GREEN_COLOR forState:UIControlStateSelected];
     _leftButton.selected = YES;
     
-    [_leftButton addTarget:self action:@selector(leftbuttonTouch) forControlEvents:UIControlEventTouchUpInside];
+    [_leftButton addTarget:self action:@selector(leftbuttonTouch:) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:_leftButton];
     
     _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(45 * W_Wide_Zoom, 34 * W_Hight_Zoom, 100 * W_Wide_Zoom, 1 * W_Hight_Zoom)];
@@ -108,7 +108,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [_rightButton setTitleColor:GREEN_COLOR forState:UIControlStateSelected];
     _rightButton.selected = NO;
     [topView addSubview:_rightButton];
-    [_rightButton addTarget:self action:@selector(rightButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+    [_rightButton addTarget:self action:@selector(rightButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:topView];
     
     // 删除  上传
@@ -186,7 +186,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
         
          isSelet = YES;
-        _deleteImageV.hidden = YES;
+         _deleteImageV.hidden = YES;
         
 }
    
@@ -345,11 +345,11 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 - (void)handleSwipes:(UISwipeGestureRecognizer *)sender
 {
     if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
-        [self rightButtonTouch];
+        [self rightButtonTouch:nil];
      }
     if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
         
-        [self leftbuttonTouch];
+        [self leftbuttonTouch:nil];
     }
 }
 
@@ -367,7 +367,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 // 请求数据
 - (void)data:(NSString *)stateNum pageNum:(int)page
 {
-    
     NSString * str =@"clientAction.do?method=json&common=getVideo&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
@@ -382,9 +381,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     }
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
         json = [[json objectForKey:@"jsondata"]objectForKey:@"list"];
-        
-        
-        
         NSMutableArray * arr =[[NSMutableArray alloc]init];
         if (page == START_PAGE_INDEX) {
             [self.dataSource removeAllObjects];
@@ -400,7 +396,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             [arr addObjectsFromArray:json];
             if (arr.count == 0) {
                 
-//                [self showSuccessHudWithHint:@"没有更多数据哦"];
                 [self showSuccessHudWithHint:@"No more data oh"];
             }else{
             for (NSDictionary *dic0 in arr) {
@@ -414,8 +409,6 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             
         }
         [self handleEndRefresh];
-        NSLog(@"====%@",json);
-        
         [self.collection reloadData];
         
     } failure:^(NSError *error) {
@@ -489,11 +482,14 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 #pragma mark - 滑动
 
-- (void)leftbuttonTouch
+- (void)leftbuttonTouch:(UIButton *)state
 {
     
-    [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
+    if(state.selected)return;
+    state.selected = YES;
+    [self performSelector:@selector(timeEnough:) withObject:nil afterDelay:3.0];
     
+    [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
     [self initRefreshView:@"1"];
     [self.dataSource removeAllObjects];
     statsIdentifi = @"1";
@@ -506,10 +502,27 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
 }
 
-- (void)rightButtonTouch
-{
-    [_deleteBtn setImage:[UIImage imageNamed:@"update.png"] forState:UIControlStateNormal];
 
+-(void)timeEnough:(UIButton *)btn
+{
+    btn.selected = NO;
+    [timer invalidate];
+     timer=nil;
+    
+}
+
+
+
+- (void)rightButtonTouch:(UIButton *)btn
+{
+    
+    
+    if(btn.selected)return;
+     btn.selected = YES;
+    [self performSelector:@selector(timeEnough:) withObject:nil afterDelay:3.0];
+
+    
+    [_deleteBtn setImage:[UIImage imageNamed:@"update.png"] forState:UIControlStateNormal];
    [self initRefreshView:@"0"];
     statsIdentifi = @"0";
     [self.dataSource removeAllObjects];

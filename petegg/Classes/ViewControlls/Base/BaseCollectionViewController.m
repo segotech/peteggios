@@ -9,6 +9,10 @@
 #import "BaseCollectionViewController.h"
 
 @interface BaseCollectionViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+{
+    
+    BOOL isRefresh;
+}
 
 @end
 
@@ -58,7 +62,6 @@
 - (void)initRefreshView:(NSString *)stateNu
 {
      __typeof (&*self) __weak weakSelf = self;
-    
     self.collection.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
          weakSelf.stateNum = stateNu;
          weakSelf.pageIndex = START_PAGE_INDEX;
@@ -69,6 +72,8 @@
             weakSelf.pageIndex++;
              weakSelf.stateNum = stateNu;
             [weakSelf data:weakSelf.stateNum pageNum:weakSelf.pageIndex];
+            
+        
     }];
     [self.collection.mj_header beginRefreshing];
 }
@@ -82,7 +87,6 @@
 
 - (void)data:(NSString *)stateNum pageNum:(int)page
 {
-    
     
 }
 
