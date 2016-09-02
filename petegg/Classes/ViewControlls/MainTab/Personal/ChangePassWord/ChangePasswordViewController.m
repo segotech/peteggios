@@ -31,7 +31,7 @@
 }
 -(void)setupView{
     [super  setupView];
-    str = [AccountManager sharedAccountManager].loginModel.password;
+    
 
     NSArray * nameArray = @[@"Old Password:",@"New Password:",@"Confirm Password:"];
     for (int i = 0 ; i < 3; i ++) {
@@ -82,7 +82,20 @@
 }
 -(void)sureButtonTouch{
     
+    NSString * str2 = [AccountManager sharedAccountManager].loginModel.password;
+    NSUserDefaults *user =[NSUserDefaults standardUserDefaults];
+    NSString * str1 =  [user objectForKey:@"loginV"];
     
+    if ([AppUtil isBlankString:str1]) {
+        
+        str = str2;
+        
+    }else
+        
+    {
+        str = str1;
+        
+    }
     
     if (![_oldPasswordTextfield.text isEqualToString:str]) {
         [[AppUtil appTopViewController] showHint:@"The old password you entered is incorrect."];
@@ -106,11 +119,12 @@
     [[AFHttpClient sharedAFHttpClient]modifyPasswordWithMid:[AccountManager sharedAccountManager].loginModel.mid password:_newpassWordTextfield.text complete:^(BaseModel *model) {
         [self hideHud];
         if (model) {
+            NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
             UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Tip" message:@"Change success, please relogin" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+            [userDefatluts setObject:_newpassWordTextfield.text forKey:@"loginV"];
+             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
                 
-                NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
+                
                 NSDictionary *dictionary = [userDefatluts dictionaryRepresentation];
                 for(NSString* key in [dictionary allKeys]){
                     [userDefatluts removeObjectForKey:key];
