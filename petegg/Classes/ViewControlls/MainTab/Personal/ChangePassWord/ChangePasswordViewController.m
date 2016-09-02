@@ -9,6 +9,11 @@
 #import "ChangePasswordViewController.h"
 #import "AFHttpClient+ChangepasswordAndBlacklist.h"
 @interface ChangePasswordViewController ()
+
+{
+   NSString * str;
+    
+}
 @property (nonatomic,strong)UITextField * oldPasswordTextfield;
 @property (nonatomic,strong)UITextField * newpassWordTextfield;
 @property (nonatomic,strong)UITextField * surePassworeTextfield;
@@ -26,6 +31,7 @@
 }
 -(void)setupView{
     [super  setupView];
+    str = [AccountManager sharedAccountManager].loginModel.password;
 
     NSArray * nameArray = @[@"Old Password:",@"New Password:",@"Confirm Password:"];
     for (int i = 0 ; i < 3; i ++) {
@@ -76,7 +82,7 @@
 }
 -(void)sureButtonTouch{
     
-    NSString * str = [AccountManager sharedAccountManager].loginModel.password;
+    
     
     if (![_oldPasswordTextfield.text isEqualToString:str]) {
         [[AppUtil appTopViewController] showHint:@"The old password you entered is incorrect."];
