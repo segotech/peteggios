@@ -9,6 +9,12 @@
 #import "ChangePasswordViewController.h"
 #import "AFHttpClient+ChangepasswordAndBlacklist.h"
 @interface ChangePasswordViewController ()
+
+{
+    
+    
+    NSString * str;
+}
 @property (nonatomic,strong)UITextField * oldPasswordTextfield;
 @property (nonatomic,strong)UITextField * newpassWordTextfield;
 @property (nonatomic,strong)UITextField * surePassworeTextfield;
@@ -75,7 +81,22 @@
 
 }
 -(void)sureButtonTouch{
-    NSString * str = [AccountManager sharedAccountManager].loginModel.showpwd;
+    NSString * str2 = [AccountManager sharedAccountManager].loginModel.showpwd;
+    NSUserDefaults *user =[NSUserDefaults standardUserDefaults];
+    NSString * str1 =  [user objectForKey:@"loginV"];
+    
+    if ([AppUtil isBlankString:str1]) {
+        
+        str = str2;
+        
+    }else
+        
+    {
+        str = str1;
+        
+    }
+    
+    
     if (![_oldPasswordTextfield.text isEqualToString:str]) {
         [[AppUtil appTopViewController] showHint:@"您输入的旧密码有误"];
         return;
@@ -96,13 +117,14 @@
     }
     [self showHudInView:self.view hint:@"正在修改..."];
     [[AFHttpClient sharedAFHttpClient]modifyPasswordWithMid:[AccountManager sharedAccountManager].loginModel.mid password:_newpassWordTextfield.text complete:^(BaseModel *model) {
+        
         [self hideHud];
         if (model) {
+            NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
             UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"修改成功，请重新登录" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) { 
-                
-                NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];
+             [userDefatluts setObject:_newpassWordTextfield.text forKey:@"loginV"];
+
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
                 NSDictionary *dictionary = [userDefatluts dictionaryRepresentation];
                 for(NSString* key in [dictionary allKeys]){
                     [userDefatluts removeObjectForKey:key];
