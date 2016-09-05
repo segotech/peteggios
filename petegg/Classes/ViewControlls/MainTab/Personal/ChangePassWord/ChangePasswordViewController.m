@@ -101,7 +101,6 @@
         [self hideHud];
         if (model) {
             UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Tip" message:@"Change success, please relogin" preferredStyle:UIAlertControllerStyleAlert];
-            
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
                 
                 NSUserDefaults *userDefatluts = [NSUserDefaults standardUserDefaults];

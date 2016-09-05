@@ -254,12 +254,13 @@ static NSString * cellId = @"recommeCellId";
             [[AppUtil appTopViewController] showHint:model.retDesc];
             //刷新界面
             [self loadDataSourceWithPage:1];
-            
+            //要用model改一下
         }];
     }else{
    [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:friendId type:@"add" complete:^(BaseModel *model) {
        [[AppUtil appTopViewController] showHint:model.retDesc];
        [self loadDataSourceWithPage:1];
+       //同上
     }];
     }
 }

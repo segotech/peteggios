@@ -234,7 +234,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
                 [self initRefreshView:@"1"];
                 [deleteOrUpdateArr removeAllObjects];
                 _deleteImageV.hidden  = YES;
-                [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+                  [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
             }
             
         } failure:^(NSError *error) {
@@ -319,7 +319,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     }
         isSelet = YES;
         _deleteImageV.hidden = YES;
-        [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+          [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
         
     }else if (deleteOrUpdateArr.count ==0)
     {
