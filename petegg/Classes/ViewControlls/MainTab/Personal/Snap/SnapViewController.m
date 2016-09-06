@@ -164,16 +164,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
         _deleteImageV.hidden = YES;
         
-//        NSMutableString *deleStr = [[NSMutableString alloc]init];
-//        NSString *str = [NSString stringWithFormat:@"%@",deleteArr[0]];
-//        [deleStr appendFormat:@"%@",[str substringFromIndex:61]];
-//        deleStr =[NSMutableString stringWithFormat:@"'%@'",deleStr];
-//        
-//        for (int i=1; i<deleteArr.count; i++) {
-//            NSString *str = [NSString stringWithFormat:@"%@",deleteArr[i]];
-//            [deleStr appendFormat:@",'%@'",[str substringFromIndex:61]];
-//            
-//        }
+
         NSMutableString *deleStr = [[NSMutableString alloc]init];
         NSString *str = [NSString stringWithFormat:@"%@",deleteArr[0]];
         [deleStr appendFormat:@"%@",str];
@@ -195,7 +186,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             if([[json objectForKey:@"retCode"] isEqualToString:@"0000"]){
                 [self showSuccessHudWithHint:@"Delete success"];
                  [self initRefreshView:@"0"];
-//                 [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+//               [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
                 [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
                 
             }
@@ -215,6 +206,11 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 // 请求数据
 - (void)data:(NSString *)stateNum pageNum:(int)page
 {
+    
+    if (deleteArr.count>0) {
+        
+        [self handleEndRefresh];
+    }else{
     
     
     NSString * str =@"clientAction.do?method=json&common=getPhotoGraph&classes=appinterface";
@@ -256,6 +252,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     } failure:^(NSError *error) {
         
     }];
+        
+    }
     
 }
 

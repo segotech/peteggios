@@ -48,7 +48,7 @@
 {
     [super viewWillAppear:animated];
     
-   
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(check) name:@"check" object:nil];
   
 }
 
@@ -135,7 +135,6 @@
         
         [self compareDoubleTime];
         
-        
     });
     dispatch_resume(timer3);
 }
@@ -158,6 +157,7 @@
     dateEndOver = dateOver - dateEndOver;
     
     if ([AppUtil isBlankString:[standDefus objectForKey:@"content"]]) {
+          
         
     } else {
         // 先查询状态视频状态
@@ -166,19 +166,17 @@
         [NSString stringWithFormat:@"clientAction.do?common=queryTask&classes="
          @"appinterface&method=json&tid=%@",
          [standDefus objectForKey:@"content"]];
-        [AFNetWorking postWithApi:service
-            parameters:nil
-            success:^(id json) {
+        [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
               json = [json objectForKey:@"jsondata"];
               if ([[json objectForKey:@"content"] isEqualToString:@"0"]) {
                 // 在对比时间 做出判断
                 if (dateEndOver >= 600) {
                   // 已经超时
                   dispatch_suspend(timer3);
-//                    [self showMessageWarring:@"超时" view:app.window];
+//                  [self showMessageWarring:@"超时" view:app.window];
                     [self showMessageWarring:@"Overtime" view:app.window];
                     
-                 [standDefus removeObjectForKey:@"content"];
+                    [standDefus removeObjectForKey:@"content"];
 
                 } else {
                  

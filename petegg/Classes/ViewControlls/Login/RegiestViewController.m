@@ -195,7 +195,7 @@
         return;
     }
     if (![AppUtil isValidateEmail:text.text]) {
-        [[AppUtil appTopViewController] showHint:@"Please enter the correct format of Email"];
+        [[AppUtil appTopViewController] showHint:@"Please enter your Email"];
         return;
     }
 //    if ([AppUtil isBlankString:text1.text]) {

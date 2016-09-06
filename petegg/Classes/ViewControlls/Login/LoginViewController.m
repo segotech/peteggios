@@ -107,6 +107,7 @@
 }
 
 -(void)regiestButtonTouch:(UIButton *)sender{
+    
     RegiestViewController * reVc = [[RegiestViewController alloc]init];
     [self.navigationController pushViewController:reVc animated:YES];
 }
