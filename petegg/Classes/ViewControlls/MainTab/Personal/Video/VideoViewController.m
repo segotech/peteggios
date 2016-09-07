@@ -271,7 +271,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         }
     if (![AppUtil isBlankString:[standDefauls objectForKey:@"content"]]) {
 //        [self showMessageWarring:@"还有视频正在上传" view:app.window];
-        [self showMessageWarring:@"There are videos are uploaded" view:app.window];
+         [self showMessageWarring:@"There are videos are uploaded" view:app.window];
         
     }else{
     
@@ -295,6 +295,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         // 提取视频编号
            //[self showSuccessHudWithHint:@"Uploading, please don't close the application"];
            [[AppUtil appTopViewController] showHint:@"Uploading, please don't close the application"];
+           [[NSNotificationCenter defaultCenter]postNotificationName:@"check" object:nil];
+           
         NSString  * trdID = dic1[@"content"];
            // 检查视频上传状态
            timer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(checkVideoStats:) userInfo:trdID repeats:YES];
@@ -326,12 +328,15 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
 //            [self showMessageWarring:@"没有选择视频哦" view:app.window];
         [self showMessageWarring:@"Did not choose the video oh" view:app.window];
+        return;
         
     }else
     {
         
 //    [self showMessageWarring:@"一次只能选择一个视频上传哦" view:app.window];
         [self showMessageWarring:@"One can only choose a video upload oh" view:app.window];
+        return;
+        
     }
         
    

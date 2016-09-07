@@ -99,6 +99,11 @@
             [self hideHud];
             [[AppUtil appTopViewController] showHint:model.retDesc];
             [self.navigationController popViewControllerAnimated:YES];
+        }else
+            
+        {
+            
+            [self hideHud];
         }
     }];
     
