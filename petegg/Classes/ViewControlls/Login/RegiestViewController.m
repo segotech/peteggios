@@ -227,11 +227,11 @@
         [self hideHud];
         
         if (model) {
-            
+            [[AppUtil appTopViewController]showHint:@"Registration is successful, please go to email activation"];
             [self.navigationController popViewControllerAnimated:YES];
             
            // [[AppUtil appTopViewController] showHint:model.retDesc];
-            [[AppUtil appTopViewController]showHint:@"Registration is successful, please go to email activation"];
+        
         }
     }];
 
