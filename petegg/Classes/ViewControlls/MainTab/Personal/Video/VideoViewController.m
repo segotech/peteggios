@@ -200,131 +200,158 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 -(void)onDeleBt:(UIButton *)sender
 {
-    if ([statsIdentifi isEqualToString:@"1"]) {
-        NSMutableString *deleStr = [[NSMutableString alloc]init];
+    
+    if (deleteOrUpdateArr.count>0) {//有所需要删除的数据
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"你确定要删除所选视频!" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+        
+    }else{
+        [self showSuccessHudWithHint:@"请选择要删除的视频"];
+    }
+    
+}
 
-        if (deleteOrUpdateArr.count==1) {
-            NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
-            [deleStr appendFormat:@"'%@'",str];
-        }else
-        {
-            for (NSInteger i = 0; i<deleteOrUpdateArr.count; i++) {
-                NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[i]];
-                if (i == deleteOrUpdateArr.count-1) {
-                    [deleStr appendFormat:@"'%@'",str];
-                }else{
-                [deleStr appendFormat:@"'%@',",str];
+
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        if ([statsIdentifi isEqualToString:@"1"]) {
+            NSMutableString *deleStr = [[NSMutableString alloc]init];
+            
+            if (deleteOrUpdateArr.count==1) {
+                NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
+                [deleStr appendFormat:@"'%@'",str];
+            }else
+            {
+                for (NSInteger i = 0; i<deleteOrUpdateArr.count; i++) {
+                    NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[i]];
+                    if (i == deleteOrUpdateArr.count-1) {
+                        [deleStr appendFormat:@"'%@'",str];
+                    }else{
+                        [deleStr appendFormat:@"'%@',",str];
+                        
+                    }
                     
                 }
-
             }
-        }
-        NSString * service =[NSString stringWithFormat:@"clientAction.do?common=delVideo&classes=appinterface&method=json&filename=%@&mid=%@",deleStr,[AccountManager sharedAccountManager].loginModel.mid];
-        [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
-            
-          NSString * str   =json[@"jsondata"][@"retCode"];
-            if([str isEqualToString:@"0000"]){
-                [self showSuccessHudWithHint:@"删除成功"];
-                [self initRefreshView:@"1"];
-                [deleteOrUpdateArr removeAllObjects];
-                _deleteImageV.hidden  = YES;
-                [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
-            }
-            
-        } failure:^(NSError *error) {
-            
-        }];
-        
-        
-        
-        
-        
-    }else{
-    if (deleteOrUpdateArr.count ==1) {
-        self.proAccuracy.hidden = NO;
-        NSUserDefaults * standDefauls =[NSUserDefaults standardUserDefaults];
-        NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
-        NSString * termidLG = [AccountManager sharedAccountManager].loginModel.termid;
-        NSString * devo  = [standDefauls objectForKey:PREF_DEVICE_NUMBER];
-        NSString * termid = [standDefauls objectForKey:TERMID_DEVICNUMER];
-        
-        if ([AppUtil isBlankString:devoLG]) {
-            if ([AppUtil isBlankString:devo]) {
-                //没有设备
+            NSString * service =[NSString stringWithFormat:@"clientAction.do?common=delVideo&classes=appinterface&method=json&filename=%@&mid=%@",deleStr,[AccountManager sharedAccountManager].loginModel.mid];
+            [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
                 
-                 [self showMessageWarring:@"请绑定设备后在上传" view:app.window];
-                return;
-            }else{
-                termidSelf = termid;
-                deviceoSelf = devo;
-            }
+                NSString * str   =json[@"jsondata"][@"retCode"];
+                if([str isEqualToString:@"0000"]){
+                    [self showSuccessHudWithHint:@"删除成功"];
+                    [self initRefreshView:@"1"];
+                    [deleteOrUpdateArr removeAllObjects];
+                    _deleteImageV.hidden  = YES;
+                    [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+                }
+                
+            } failure:^(NSError *error) {
+                
+            }];
+            
+            
+            
+            
+            
         }else{
-            termidSelf = termidLG;
-            deviceoSelf = devoLG;
+            if (deleteOrUpdateArr.count ==1) {
+                self.proAccuracy.hidden = NO;
+                NSUserDefaults * standDefauls =[NSUserDefaults standardUserDefaults];
+                NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
+                NSString * termidLG = [AccountManager sharedAccountManager].loginModel.termid;
+                NSString * devo  = [standDefauls objectForKey:PREF_DEVICE_NUMBER];
+                NSString * termid = [standDefauls objectForKey:TERMID_DEVICNUMER];
+                
+                if ([AppUtil isBlankString:devoLG]) {
+                    if ([AppUtil isBlankString:devo]) {
+                        //没有设备
+                        
+                        [self showMessageWarring:@"请绑定设备后在上传" view:app.window];
+                        return;
+                    }else{
+                        termidSelf = termid;
+                        deviceoSelf = devo;
+                    }
+                }else{
+                    termidSelf = termidLG;
+                    deviceoSelf = devoLG;
+                }
+                if (![AppUtil isBlankString:[standDefauls objectForKey:@"content"]]) {
+                    [self showMessageWarring:@"还有视频正在上传" view:app.window];
+                    
+                }else{
+                    
+                    NSMutableString *deleStr = [[NSMutableString alloc]init];
+                    NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
+                    [deleStr appendFormat:@"%@",str];
+                    
+                    NSString * service =[NSString stringWithFormat:@"clientAction.do?common=uploadVideo&classes=appinterface&method=json&filename=%@&mid=%@&termid=%@&deviceno=%@",deleStr,[AccountManager sharedAccountManager].loginModel.mid,termidSelf,deviceoSelf];
+                    [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
+                        
+                        NSLog(@"%@",json);
+                        
+                        /**
+                         *  存取查询开始时间
+                         */
+                        NSDictionary *dic1 = [json objectForKey:@"jsondata"] ;
+                        [standDefauls setObject:[AppUtil getNowTime] forKey:@"endTime"];
+                        [standDefauls setObject:dic1[@"content"] forKey:@"content"];
+                        [standDefauls synchronize];
+                        if([[dic1 objectForKey:@"retCode"] isEqualToString:@"0000"]){
+                            // 提取视频编号
+                            [self showSuccessHudWithHint:[dic1 objectForKey:@"retDesc"]];
+                            NSString  * trdID = dic1[@"content"];
+                            // 检查视频上传状态
+                            [[NSNotificationCenter defaultCenter]postNotificationName:@"checkTime" object:nil];
+                            timer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(checkVideoStats:) userInfo:trdID repeats:YES];
+                            [timer setFireDate:[NSDate distantPast]];
+                            
+                            
+                        }else
+                        {
+                            // 上传命令 失败
+                            NSString * str =[dic1 objectForKey:@"retDesc"];
+                            [self showSuccessHudWithHint:str];
+                            
+                            
+                        }
+                        
+                    } failure:^(NSError *error) {
+                        
+                        // 上传命令 失败
+                        
+                    }];
+                    
+                }
+                isSelet = YES;
+                _deleteImageV.hidden = YES;
+                [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
+                
+            }else if (deleteOrUpdateArr.count ==0)
+            {
+                
+                [self showMessageWarring:@"没有选择视频哦" view:app.window];
+                
+            }else
+            {
+                
+                [self showMessageWarring:@"一次只能选择一个视频上传哦" view:app.window];
+            }
+            
+            
+            
         }
-    if (![AppUtil isBlankString:[standDefauls objectForKey:@"content"]]) {
-        [self showMessageWarring:@"还有视频正在上传" view:app.window];
-        
-    }else{
-    
-    NSMutableString *deleStr = [[NSMutableString alloc]init];
-    NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
-    [deleStr appendFormat:@"%@",str];
-    
-    NSString * service =[NSString stringWithFormat:@"clientAction.do?common=uploadVideo&classes=appinterface&method=json&filename=%@&mid=%@&termid=%@&deviceno=%@",deleStr,[AccountManager sharedAccountManager].loginModel.mid,termidSelf,deviceoSelf];
-   [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
-       
-       NSLog(@"%@",json);
-       
-       /**
-        *  存取查询开始时间
-        */
-       NSDictionary *dic1 = [json objectForKey:@"jsondata"] ;
-       [standDefauls setObject:[AppUtil getNowTime] forKey:@"endTime"];
-       [standDefauls setObject:dic1[@"content"] forKey:@"content"];
-       [standDefauls synchronize];
-       if([[dic1 objectForKey:@"retCode"] isEqualToString:@"0000"]){
-        // 提取视频编号
-           [self showSuccessHudWithHint:[dic1 objectForKey:@"retDesc"]];
-        NSString  * trdID = dic1[@"content"];
-           // 检查视频上传状态
-           timer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(checkVideoStats:) userInfo:trdID repeats:YES];
-           [timer setFireDate:[NSDate distantPast]];
-           
-           
-       }else
-       {
-        // 上传命令 失败
-           NSString * str =[dic1 objectForKey:@"retDesc"];
-          [self showSuccessHudWithHint:str];
 
-           
-       }
-       
-   } failure:^(NSError *error) {
-       
-        // 上传命令 失败
-       
-   }];
-    
-    }
-        isSelet = YES;
-        _deleteImageV.hidden = YES;
-        [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
-        
-    }else if (deleteOrUpdateArr.count ==0)
-    {
-        
-    [self showMessageWarring:@"没有选择视频哦" view:app.window];
         
     }else
+        
     {
         
-    [self showMessageWarring:@"一次只能选择一个视频上传哦" view:app.window];
-    }
         
-   
-    
     }
     
 }

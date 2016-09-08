@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -11,7 +11,11 @@
             <connections>
                 <outlet property="backView" destination="TE5-vP-ffq" id="hXz-nW-m1L"/>
                 <outlet property="birthdayBtn" destination="unB-Md-MTa" id="Xsl-i4-gNK"/>
+                <outlet property="catbtn" destination="7Ao-2e-fiq" id="CUy-eg-fdM"/>
+                <outlet property="dogbtn" destination="7ze-vQ-suj" id="uTJ-HC-wpm"/>
+                <outlet property="gongbtn" destination="8sr-gr-dFW" id="Syr-sH-a1H"/>
                 <outlet property="handImage" destination="X4x-bL-9cu" id="n1e-bx-aMt"/>
+                <outlet property="mubtn" destination="clI-Kd-0kb" id="dGt-tc-aPk"/>
                 <outlet property="nameTextF" destination="Coj-WT-XFk" id="AUo-zx-INy"/>
                 <outlet property="timeSelect" destination="PPr-RA-lR4" id="g7O-Wj-fZv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

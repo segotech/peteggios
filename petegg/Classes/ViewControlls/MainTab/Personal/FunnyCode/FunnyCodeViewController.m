@@ -80,6 +80,12 @@
 - (void)doRightButtonTouch
 
 {
+    if ([self.onFunyCode.text isEqualToString:@"暂无"]) {
+        
+        [self showSuccessHudWithHint:@"请生成有效逗码！"];
+    }else
+    {
+    
     
   // 1、创建分享参数
   NSArray *imageArray = @[ [UIImage imageNamed:@"segoColor.jpg"] ];
@@ -146,10 +152,13 @@
     }];
       
   }
+        
+    }
 }
 
 
 
+    
    
 
 

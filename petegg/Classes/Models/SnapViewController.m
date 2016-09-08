@@ -130,7 +130,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     if (deleteArr.count>0) {//有所需要删除的数据
         
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"你确定要删除所选图片!" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"你确定要删除所选图片？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         
         [alert show];
         
@@ -161,23 +161,25 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
         NSMutableString *deleStr = [[NSMutableString alloc]init];
         NSString *str = [NSString stringWithFormat:@"%@",deleteArr[0]];
-        [deleStr appendFormat:@"%@",[str substringFromIndex:42]];
+        [deleStr appendFormat:@"%@",[str substringFromIndex:52]];
         deleStr =[NSMutableString stringWithFormat:@"'%@'",deleStr];
         
         for (int i=1; i<deleteArr.count; i++) {
             NSString *str = [NSString stringWithFormat:@"%@",deleteArr[i]];
-            [deleStr appendFormat:@",'%@'",[str substringFromIndex:42]];
+            [deleStr appendFormat:@",'%@'",[str substringFromIndex:52]];
             
         }
         
         NSMutableDictionary *dicc = [[NSMutableDictionary alloc] init];
         [dicc setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
         [dicc setValue:deleStr forKey:@"filename"];
+        
         NSString  *  service =[NSString stringWithFormat:@"clientAction.do?common=delPhotoGraph&classes=appinterface&method=json"];
         [AFNetWorking postWithApi:service parameters:dicc success:^(id json) {
             
             json = [json objectForKey:@"jsondata"] ;
             if([[json objectForKey:@"retCode"] isEqualToString:@"0000"]){
+                [deleteArr removeAllObjects];
                 [self showSuccessHudWithHint:@"删除成功"];
                  [self initRefreshView:@"0"];
                  [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
@@ -200,6 +202,12 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 - (void)data:(NSString *)stateNum pageNum:(int)page
 {
     
+    if (deleteArr.count>0) {
+         [self handleEndRefresh];
+        
+    }else
+    {
+        
     
     NSString * str =@"clientAction.do?method=json&common=getPhotoGraph&classes=appinterface";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
@@ -241,6 +249,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
     }];
     
+}
+
 }
 
 

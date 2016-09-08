@@ -18,4 +18,10 @@
 @property (strong, nonatomic) IBOutlet UITextField *nameTextF;
 @property (nonatomic,strong)NSString * mid;
 
+
+@property (strong, nonatomic) IBOutlet UIButton *gongbtn;
+@property (strong, nonatomic) IBOutlet UIButton *mubtn;
+@property (strong, nonatomic) IBOutlet UIButton *dogbtn;
+@property (strong, nonatomic) IBOutlet UIButton *catbtn;
+
 @end

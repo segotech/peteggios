@@ -97,8 +97,11 @@
     [[AFHttpClient sharedAFHttpClient]addFeedbackWithMid:[AccountManager sharedAccountManager].loginModel.mid fconcent:_topTextfield.text fphone:_downTextfield.text complete:^(BaseModel *model) {
         if (model) {
             [self hideHud];
-            [[AppUtil appTopViewController] showHint:model.retDesc];
             [self.navigationController popViewControllerAnimated:YES];
+        }else
+        {
+            
+            [self hideHud];
         }
     }];
     

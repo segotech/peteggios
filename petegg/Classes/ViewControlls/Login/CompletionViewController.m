@@ -166,6 +166,8 @@
 }
 
 - (IBAction)manBtn:(UIButton *)sender {
+    sender.selected = YES;
+    self.mubtn.selected = NO;
    [_nameTextF resignFirstResponder];
     [self chooseOnebtn:2004 button:sender];
     
@@ -173,12 +175,16 @@
 }
 
 - (IBAction)wowenSelect:(UIButton *)sender {
+    sender.selected = YES;
+    self.gongbtn.selected = NO;
     [_nameTextF resignFirstResponder];
     [self chooseOnebtn:2003 button:sender];
 
 }
 
 - (IBAction)dogWindowsBtn:(UIButton *)sender {
+    sender.selected = YES;
+    self.catbtn.selected = NO;
     [_nameTextF resignFirstResponder];
    [self chooseOnebtn:2006 button:sender];
     
@@ -187,6 +193,8 @@
 
 
 - (IBAction)catWindowsBtn:(UIButton *)sender {
+    self.dogbtn.selected = NO;
+    sender.selected = YES;
     [_nameTextF resignFirstResponder];
    [self chooseOnebtn:2005 button:sender];
     
@@ -300,10 +308,10 @@
             break;
     }
     
-    UIButton * btn =(UIButton *)[self.view viewWithTag:tag];
-    if (!btn.selected) {
-        sender.selected =!sender.selected;
-    }
+//    UIButton * btn =(UIButton *)[self.view viewWithTag:tag];
+//    if (!btn.selected) {
+//        sender.selected =!sender.selected;
+//    }
     
    
 }

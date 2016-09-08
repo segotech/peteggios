@@ -268,6 +268,7 @@
         i = array.count;
         
     }
+    
     if (i ==1) { // 一张图
          //视频
         if ([model.type isEqualToString:@"pv"]) {

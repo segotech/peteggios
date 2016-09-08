@@ -45,13 +45,13 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     app= (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     [self setupSubviews];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(check) name:@"checkTime" object:nil];
     
    
   
@@ -177,6 +177,10 @@
         
         
     });
+    dispatch_source_set_cancel_handler(timer3, ^{
+        
+    });
+    
     dispatch_resume(timer3);
     
     
@@ -216,7 +220,8 @@
                 // 在对比时间 做出判断
                 if (dateEndOver >= 600) {
                   // 已经超时
-                  dispatch_suspend(timer3);
+                  //dispatch_suspend(timer3);
+                    dispatch_source_cancel(timer3);
                     [self showMessageWarring:@"超时" view:app.window];
                     
                  [standDefus removeObjectForKey:@"content"];
@@ -229,14 +234,15 @@
               if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
                 // 上传成功
                 [self showMessageWarring:@"上传成功" view:app.window];
+                dispatch_source_cancel(timer3);
                 [standDefus removeObjectForKey:@"content"];
-                dispatch_suspend(timer3);
+                //dispatch_suspend(timer3);
               }
               if ([[json objectForKey:@"content"] isEqualToString:@"2"]) {
-                  dispatch_suspend(timer3);
+                  //dispatch_suspend(timer3);
                   [self showMessageWarring:@"上传失败" view:app.window];
                  [standDefus removeObjectForKey:@"content"];
-             
+                  dispatch_source_cancel(timer3);
             }
 
             }
