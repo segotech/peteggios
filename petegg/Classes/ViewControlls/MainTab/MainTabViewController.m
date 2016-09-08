@@ -136,6 +136,12 @@
         [self compareDoubleTime];
         
     });
+    dispatch_source_set_cancel_handler(timer3, ^{
+        
+       // dispatch_source_cancel(timer3);
+
+    })
+    ;
     dispatch_resume(timer3);
 }
 
@@ -186,6 +192,7 @@
               if ([[json objectForKey:@"content"] isEqualToString:@"1"]) {
                 // 上传成功
                   [self showMessageWarring:@"Upload success" view:app.window];
+                  dispatch_source_cancel(timer3);
                 [standDefus removeObjectForKey:@"content"];
                 dispatch_suspend(timer3);
               }
