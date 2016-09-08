@@ -191,11 +191,11 @@
 //     UITextField * text3 =  (UITextField *)[self.view viewWithTag:36];
     
     if ([AppUtil isBlankString:text.text]) {
-        [[AppUtil appTopViewController] showHint:@"Please enter your account number"];
+        [[AppUtil appTopViewController] showHint:@"Please enter your Email"];
         return;
     }
     if (![AppUtil isValidateEmail:text.text]) {
-        [[AppUtil appTopViewController] showHint:@"Please enter your Email"];
+        [[AppUtil appTopViewController] showHint:@"Email format is not correct"];
         return;
     }
 //    if ([AppUtil isBlankString:text1.text]) {
@@ -227,10 +227,15 @@
         [self hideHud];
         
         if (model) {
-            [[AppUtil appTopViewController]showHint:@"Registration is successful, please go to email activation"];
-            [self.navigationController popViewControllerAnimated:YES];
+//            [[AppUtil appTopViewController]showHint:@"Registration is successful, please go to email activation"];
+//            [self.navigationController popViewControllerAnimated:YES];
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Tip" message:@"Registration is successful, please go to email to activate" preferredStyle:UIAlertControllerStyleAlert];
             
-           // [[AppUtil appTopViewController] showHint:model.retDesc];
+            [alert addAction:[UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+          
+                [self.navigationController popViewControllerAnimated:YES];
+            }]];
+            [self presentViewController:alert animated:YES completion:nil];
         
         }
     }];
