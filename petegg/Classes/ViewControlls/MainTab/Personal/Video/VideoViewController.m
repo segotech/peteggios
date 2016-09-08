@@ -208,7 +208,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     if ([statsIdentifi isEqualToString:@"1"]) {
     if (deleteOrUpdateArr.count>0) {//有所需要删除的数据
         
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Are you sure you want to delete the selected images？" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Sure", nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Are you sure you want to delete the selected video？" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Sure", nil];
         
         [alert show];
         
