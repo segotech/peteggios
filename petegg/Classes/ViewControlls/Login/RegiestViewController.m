@@ -225,19 +225,13 @@
     [dic setValue:text2.text forKey:@"password"];
     
     [AFNetWorking postWithApi:str parameters:dic success:^(id json) {
-    
         if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
             [self showSuccessHudWithHint:@"注册成功"];
-    
             CompletionViewController * compleVC =[[CompletionViewController alloc]initWithNibName:@"CompletionViewController" bundle:nil];
             compleVC.mid = json[@"jsondata"][@"content"];
             [self.navigationController pushViewController:compleVC animated:YES];
-
         }
-        
         NSLog(@"====%@",json);
-        
-       
         
     } failure:^(NSError *error) {
     }];
@@ -295,8 +289,8 @@
              [self timeout];
         }else{
             NSString * str =[NSString stringWithFormat:@"%@",json[@"jsondata"][@"retDesc"]];
-            UIButton * btn =  (UIButton *)[self.view viewWithTag:10000];
-            btn.enabled = NO;
+            //UIButton * btn =  (UIButton *)[self.view viewWithTag:10000];
+          //  btn.enabled = NO;
              [[AppUtil appTopViewController] showHint:str];
            // [self showSuccessHudWithHint:str];
             
@@ -329,8 +323,8 @@
                 _securityButton.backgroundColor = GREEN_COLOR;
             });
         }else{
-            int seconds = timeout % 60;
-            NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
+           // int seconds = timeout % 60;
+            NSString *strTime = [NSString stringWithFormat:@"%.2d", timeout];
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSLog(@"————————%@",strTime);
                 [UIView beginAnimations:nil context:nil];

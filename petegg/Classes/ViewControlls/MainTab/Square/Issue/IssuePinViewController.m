@@ -11,6 +11,9 @@
 #import "AFHttpClient+Issue.h"
 
 @interface IssuePinViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate>
+{
+    BOOL isChuan;
+}
 @property (nonatomic,strong)UITextView * topTextView;
 @property (nonatomic,strong)UIView * downWithView;
 @property (nonatomic,strong)UIButton * coverButton;
@@ -27,12 +30,13 @@
 @implementation IssuePinViewController
 
 {
-
+    
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    isChuan = YES;
     self.view.backgroundColor = [UIColor grayColor];
     _imagePicker =[[UIImagePickerController alloc]init];
     _imagePicker.delegate= self;
@@ -55,6 +59,7 @@
 
 -(void)releaseInfo:(UIButton *)sender{
     sender.userInteractionEnabled = NO;
+    isChuan = NO;
     [_imageArray removeLastObject];
     NSMutableString * stingArr =[[NSMutableString alloc]init];
     NSDateFormatter * formater =[[NSDateFormatter alloc]init];
@@ -88,6 +93,7 @@
             [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
         }
         sender.userInteractionEnabled = YES;
+        isChuan = YES;
     }];
 
 }
@@ -126,18 +132,24 @@
     
 }
 -(void)doLeftButtonTouch{
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有发布内容，是否要退出？" preferredStyle:UIAlertControllerStyleAlert];
+    if (isChuan == YES) {
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有发布内容，是否要退出？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+            // 点击按钮后的方法直接在这里面写
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+            NSLog(@"取消");
+        }];
+        [alertController addAction:okAction];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
     
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-        // 点击按钮后的方法直接在这里面写
-        [self.navigationController popToRootViewControllerAnimated:NO];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
-        NSLog(@"取消");
-    }];
-    [alertController addAction:okAction];
-    [alertController addAction:cancelAction];
-    [self presentViewController:alertController animated:YES completion:nil];
+    
+    }
+
 
 }
 
