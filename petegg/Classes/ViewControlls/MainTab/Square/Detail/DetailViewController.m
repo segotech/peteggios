@@ -116,7 +116,7 @@ NSString * const kDetailVideoCellID = @"DetailVideoCell";
             
             [self.resourcesArray removeAllObjects];
             
-            if ([self.detailModel.type isEqualToString:@"pv"]|| [self.detailModel.type isEqualToString:@"v"]) {
+            if ([self.detailModel.type isEqualToString:@"v"]) {
                 self.isVideo = YES;
                 self.resourcesArray = [NSMutableArray arrayWithObject:self.detailModel.thumbnails];
             }else{
