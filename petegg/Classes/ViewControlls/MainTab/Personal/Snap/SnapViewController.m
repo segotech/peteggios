@@ -185,6 +185,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             json = [json objectForKey:@"jsondata"] ;
             if([[json objectForKey:@"retCode"] isEqualToString:@"0000"]){
                 [self showSuccessHudWithHint:@"Delete success"];
+                [deleteArr removeAllObjects];
                  [self initRefreshView:@"0"];
 //               [self showBarButton:NAV_RIGHT imageName:@"selecting.png"];
                 [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];

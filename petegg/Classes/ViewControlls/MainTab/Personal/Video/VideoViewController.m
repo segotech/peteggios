@@ -206,44 +206,16 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 -(void)onDeleBt:(UIButton *)sender
 {
     if ([statsIdentifi isEqualToString:@"1"]) {
-        NSMutableString *deleStr = [[NSMutableString alloc]init];
+    if (deleteOrUpdateArr.count>0) {//有所需要删除的数据
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Are you sure you want to delete the selected images？" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Sure", nil];
+        
+        [alert show];
+        
+    }else{
+        [self showSuccessHudWithHint:@"Please choose to delete the photo!"];
+    }
 
-        if (deleteOrUpdateArr.count==1) {
-            NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
-            [deleStr appendFormat:@"'%@'",str];
-        }else
-        {
-            for (NSInteger i = 0; i<deleteOrUpdateArr.count; i++) {
-                NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[i]];
-                if (i == deleteOrUpdateArr.count-1) {
-                    [deleStr appendFormat:@"'%@'",str];
-                }else{
-                [deleStr appendFormat:@"'%@',",str];
-                    
-                }
-
-            }
-        }
-        NSString * service =[NSString stringWithFormat:@"clientAction.do?common=delVideo&classes=appinterface&method=json&filename=%@&mid=%@",deleStr,[AccountManager sharedAccountManager].loginModel.mid];
-        [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
-            
-          NSString * str   =json[@"jsondata"][@"retCode"];
-            if([str isEqualToString:@"0000"]){
-//                [self showSuccessHudWithHint:@"删除成功"];
-                [self showSuccessHudWithHint:@"Delete success"];
-                [self initRefreshView:@"1"];
-                [deleteOrUpdateArr removeAllObjects];
-                _deleteImageV.hidden  = YES;
-                  [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
-            }
-            
-        } failure:^(NSError *error) {
-            
-        }];
-        
-        
-        
-        
         
     }else{
     if (deleteOrUpdateArr.count ==1) {
@@ -344,6 +316,61 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     }
     
 }
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        
+        NSMutableString *deleStr = [[NSMutableString alloc]init];
+        
+        if (deleteOrUpdateArr.count==1) {
+            NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[0]];
+            [deleStr appendFormat:@"'%@'",str];
+        }else
+        {
+            for (NSInteger i = 0; i<deleteOrUpdateArr.count; i++) {
+                NSString *str = [NSString stringWithFormat:@"%@",deleteOrUpdateArr[i]];
+                if (i == deleteOrUpdateArr.count-1) {
+                    [deleStr appendFormat:@"'%@'",str];
+                }else{
+                    [deleStr appendFormat:@"'%@',",str];
+                    
+                }
+                
+            }
+        }
+        NSString * service =[NSString stringWithFormat:@"clientAction.do?common=delVideo&classes=appinterface&method=json&filename=%@&mid=%@",deleStr,[AccountManager sharedAccountManager].loginModel.mid];
+        [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
+            
+            NSString * str   =json[@"jsondata"][@"retCode"];
+            if([str isEqualToString:@"0000"]){
+                //                [self showSuccessHudWithHint:@"删除成功"];
+                [self showSuccessHudWithHint:@"Delete success"];
+                [self initRefreshView:@"1"];
+                [deleteOrUpdateArr removeAllObjects];
+                _deleteImageV.hidden  = YES;
+                [self showBarButton:NAV_RIGHT title:@"Select" fontColor:[UIColor blackColor]];
+            }
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
+        
+
+    }else
+    {
+        
+        
+    }
+
+
+
+}
+
+
+
 
 // 左滑右滑点击
 

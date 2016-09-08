@@ -11,7 +11,11 @@
             <connections>
                 <outlet property="backView" destination="TE5-vP-ffq" id="hXz-nW-m1L"/>
                 <outlet property="birthdayBtn" destination="unB-Md-MTa" id="Xsl-i4-gNK"/>
+                <outlet property="catbtn" destination="7Ao-2e-fiq" id="mDv-lQ-oAu"/>
+                <outlet property="dogbtn" destination="7ze-vQ-suj" id="Poz-TT-YV1"/>
+                <outlet property="gongbtn" destination="8sr-gr-dFW" id="1Cj-f2-dH4"/>
                 <outlet property="handImage" destination="X4x-bL-9cu" id="n1e-bx-aMt"/>
+                <outlet property="mubtn" destination="clI-Kd-0kb" id="3Ig-bj-aF1"/>
                 <outlet property="nameTextF" destination="Coj-WT-XFk" id="AUo-zx-INy"/>
                 <outlet property="timeSelect" destination="PPr-RA-lR4" id="g7O-Wj-fZv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
