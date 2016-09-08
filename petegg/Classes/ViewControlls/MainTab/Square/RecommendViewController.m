@@ -174,7 +174,7 @@ static NSString * cellId = @"recommeCellId";
     SquareModel * model = self.dataSource[indexPath.row];
 
    //cell赋值
-    if ([model.type isEqualToString:@"pv"] || [model.type isEqualToString:@"v"]) {
+    if ( [model.type isEqualToString:@"v"]) {
         cell.mvImageview.hidden = NO;
     }else{
         cell.mvImageview.hidden = YES;
