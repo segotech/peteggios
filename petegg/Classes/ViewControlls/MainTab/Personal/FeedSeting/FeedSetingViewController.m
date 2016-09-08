@@ -70,38 +70,81 @@ static NSString * cellId = @"fedseting2321232322313323231";
     _bigBtn.layer.cornerRadius = _bigBtn.width/2;
     [self.view addSubview:_bigBtn];
     
-    UILabel * wenziLabel = [[UILabel alloc]initWithFrame:CGRectMake(67.5 * W_Wide_Zoom, 300 * W_Hight_Zoom, 150 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+//    UILabel * wenziLabel = [[UILabel alloc]initWithFrame:CGRectMake(67.5 * W_Wide_Zoom, 300 * W_Hight_Zoom, 150 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+//    wenziLabel.text = @"Feeding Schedules";
+//    wenziLabel.textColor = [UIColor blackColor];
+//    wenziLabel.font = [UIFont systemFontOfSize:14];
+//    [self.view addSubview:wenziLabel];
+//    
+//    UIView * whiteView = [[UIView alloc]initWithFrame:CGRectMake(230 * W_Wide_Zoom, 290 * W_Hight_Zoom, 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+//    whiteView.backgroundColor = [UIColor whiteColor];
+//    whiteView.layer.cornerRadius = 3;
+//    [self.view addSubview:whiteView];
+//    
+//    _oneDayButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+//    [_oneDayButton setTitle:@"1 day" forState:UIControlStateNormal];
+//    _oneDayButton.backgroundColor = [UIColor whiteColor];
+//    _oneDayButton.titleLabel.font = [UIFont systemFontOfSize:13];
+//    [_oneDayButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+//    [whiteView addSubview:_oneDayButton];
+//    [_oneDayButton addTarget:self action:@selector(onedayButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+//    
+//
+//    
+//    _twoDayButton = [[UIButton alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 0 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
+//    [_twoDayButton setTitle:@"2 days" forState:UIControlStateNormal];
+//    _twoDayButton.backgroundColor = [UIColor whiteColor];
+//    _twoDayButton.titleLabel.font = [UIFont systemFontOfSize:13];
+//    [_twoDayButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+//    [whiteView addSubview:_twoDayButton];
+//    [_twoDayButton addTarget:self action:@selector(twoDayButtontouch) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    _moveView = [[UIView alloc]initWithFrame:CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 40 * W_Wide_Zoom, 26 * W_Hight_Zoom)];
+//    _moveView.backgroundColor = GREEN_COLOR;
+//    [whiteView addSubview:_moveView];
+    
+    UIView * whiteView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 290 * W_Hight_Zoom, 375 * W_Wide_Zoom, 50 * W_Hight_Zoom)];
+    whiteView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:whiteView];
+    
+    
+    
+    UILabel * wenziLabel = [[UILabel alloc]initWithFrame:CGRectMake(30 * W_Wide_Zoom, 15 * W_Hight_Zoom, 140 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
     wenziLabel.text = @"Feeding Schedules";
     wenziLabel.textColor = [UIColor blackColor];
     wenziLabel.font = [UIFont systemFontOfSize:14];
-    [self.view addSubview:wenziLabel];
+    [whiteView addSubview:wenziLabel];
     
-    UIView * whiteView = [[UIView alloc]initWithFrame:CGRectMake(230 * W_Wide_Zoom, 290 * W_Hight_Zoom, 80 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    whiteView.backgroundColor = [UIColor whiteColor];
-    whiteView.layer.cornerRadius = 3;
-    [self.view addSubview:whiteView];
-    
-    _oneDayButton = [[UIButton alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 0 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    [_oneDayButton setTitle:@"1 day" forState:UIControlStateNormal];
-    _oneDayButton.backgroundColor = [UIColor whiteColor];
-    _oneDayButton.titleLabel.font = [UIFont systemFontOfSize:13];
-    [_oneDayButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
-    [whiteView addSubview:_oneDayButton];
+    _oneDayButton = [[UIButton alloc]initWithFrame:CGRectMake(235 * W_Wide_Zoom, 16 * W_Hight_Zoom, 17 * W_Wide_Zoom, 17 * W_Hight_Zoom)];
+    _oneDayButton.selected = YES;
+    [_oneDayButton setImage:[UIImage imageNamed:@"quan_guize.png"] forState:UIControlStateNormal];
+    [_oneDayButton setImage:[UIImage imageNamed:@"xuanquan_guize.png"] forState:UIControlStateSelected];
+    [whiteView  addSubview:_oneDayButton];
     [_oneDayButton addTarget:self action:@selector(onedayButtonTouch) forControlEvents:UIControlEventTouchUpInside];
     
-
+    UILabel * wenzi1 =[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_oneDayButton.frame) + 5, 15 * W_Hight_Zoom, 50 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    wenzi1.text = @"1 day";
+    wenzi1.textColor = GREEN_COLOR;
+    wenzi1.font = [UIFont systemFontOfSize:13];
+    [whiteView addSubview:wenzi1];
     
-    _twoDayButton = [[UIButton alloc]initWithFrame:CGRectMake(40 * W_Wide_Zoom, 0 * W_Hight_Zoom, 40 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
-    [_twoDayButton setTitle:@"2 days" forState:UIControlStateNormal];
-    _twoDayButton.backgroundColor = [UIColor whiteColor];
-    _twoDayButton.titleLabel.font = [UIFont systemFontOfSize:13];
-    [_twoDayButton setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+    
+    
+    _twoDayButton = [[UIButton alloc]initWithFrame:CGRectMake(300 * W_Wide_Zoom, 16 * W_Hight_Zoom, 17 * W_Wide_Zoom, 17 * W_Hight_Zoom)];
+    [_twoDayButton setImage:[UIImage imageNamed:@"quan_guize.png"] forState:UIControlStateNormal];
+    [_twoDayButton setImage:[UIImage imageNamed:@"xuanquan_guize.png"] forState:UIControlStateSelected];
     [whiteView addSubview:_twoDayButton];
     [_twoDayButton addTarget:self action:@selector(twoDayButtontouch) forControlEvents:UIControlEventTouchUpInside];
     
-    _moveView = [[UIView alloc]initWithFrame:CGRectMake(2 * W_Wide_Zoom, 2 * W_Hight_Zoom, 40 * W_Wide_Zoom, 26 * W_Hight_Zoom)];
-    _moveView.backgroundColor = GREEN_COLOR;
-    [whiteView addSubview:_moveView];
+    
+    UILabel * wenzi2 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_twoDayButton.frame) + 5, 15 * W_Hight_Zoom, 50 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
+    wenzi2.text = @"2 days";
+    wenzi2.textColor = GREEN_COLOR;
+    wenzi2.font = [UIFont systemFontOfSize:13];
+    [whiteView addSubview:wenzi2];
+    
+
+    
     
     _isOneOrTwo = YES;
     
