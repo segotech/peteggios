@@ -203,7 +203,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     if (deleteOrUpdateArr.count>0) {//有所需要删除的数据
         
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"你确定要删除所选视频!" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"你确定要删除所选视频？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         [alert show];
         
     }else{
