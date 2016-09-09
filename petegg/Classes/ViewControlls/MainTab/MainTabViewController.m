@@ -84,8 +84,8 @@
         SquareViewController* vc = [[SquareViewController alloc] init];
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabSquare", nil)
-                                      image:[[UIImage imageNamed:@"tab_square_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                              selectedImage:[[UIImage imageNamed:@"tab_square_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                                      image:[[UIImage imageNamed:@"tab_squar"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                              selectedImage:[[UIImage imageNamed:@"tab_squar_dian"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         
         _navSquareVC = [[UINavigationController alloc]initWithRootViewController:vc];
     }
@@ -100,8 +100,8 @@
         NearViewController* vc = [[NearViewController alloc] init];
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabNear", nil)
-                                      image:[[UIImage imageNamed:@"tab_near_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                              selectedImage:[[UIImage imageNamed:@"tab_near_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                                      image:[[UIImage imageNamed:@"tab_faxian"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                              selectedImage:[[UIImage imageNamed:@"tab_faxian_dian"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         
         _navNearVC = [[UINavigationController alloc]initWithRootViewController:vc];
     }
@@ -117,8 +117,8 @@
         
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabEgg", nil)
-                                      image:[[UIImage imageNamed:@"tab_egg_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                              selectedImage:[[UIImage imageNamed:@"tab_egg_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                                      image:[[UIImage imageNamed:@"tab_budaodan"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                              selectedImage:[[UIImage imageNamed:@"tab_budaodan_dian"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         
         _navEggVC = [[UINavigationController alloc]initWithRootViewController:vc];
     }
@@ -136,8 +136,8 @@
         RankViewController* vc = [[RankViewController alloc] init];
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabRank", nil)
-                                      image:[[UIImage imageNamed:@"tab_rank_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                              selectedImage:[[UIImage imageNamed:@"tab_rank_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                                      image:[[UIImage imageNamed:@"tab_bangdan"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                              selectedImage:[[UIImage imageNamed:@"tab_bangdan_dian"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         _navRankVC = [[UINavigationController alloc]initWithRootViewController:vc];
     }
     
@@ -155,8 +155,8 @@
         
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabPersonal", nil)
-                                      image:[[UIImage imageNamed:@"tab_personal_normal"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                              selectedImage:[[UIImage imageNamed:@"tab_personal_press"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                                      image:[[UIImage imageNamed:@"tab_my"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                              selectedImage:[[UIImage imageNamed:@"tab_my_dian"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
        _navPersonalVC = [[UINavigationController alloc]initWithRootViewController:vc];
         
     }

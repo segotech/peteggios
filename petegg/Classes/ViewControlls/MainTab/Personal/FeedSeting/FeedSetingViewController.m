@@ -189,11 +189,8 @@ static NSString * cellId = @"fedseting2321232322313323231";
     
      [self presentViewController:alert animated:YES completion:nil];
 }
-
-
-
-
 -(void)twoDayView{
+    //dadaad
     [_bigView1 removeFromSuperview];
     _bigView2 = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 350 * W_Hight_Zoom, 375 * W_Wide_Zoom, 120 * W_Hight_Zoom)];
     _bigView2.backgroundColor = [UIColor whiteColor];
