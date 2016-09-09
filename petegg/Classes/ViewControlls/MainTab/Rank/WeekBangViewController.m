@@ -28,7 +28,7 @@ static NSString * cellId = @"ranksCellIdddd";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = GRAY_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 -(void)setupView{
     [super setupView];

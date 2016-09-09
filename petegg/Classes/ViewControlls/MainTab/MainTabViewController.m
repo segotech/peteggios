@@ -61,7 +61,7 @@
 
 - (void)setupSubviews
 {
-    self.tabBar.backgroundColor=[UIColor whiteColor];
+    self.tabBar.backgroundColor=[UIColor redColor];
     
     self.viewControllers = @[
                              self.navSquareVC,

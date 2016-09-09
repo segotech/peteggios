@@ -110,7 +110,7 @@ static NSString * cellId = @"douyidouCellId";
         [cell.rightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         cell.rightBtn.userInteractionEnabled = NO;
         
-        
+     // 
     }else{
     cell.rightBtn.backgroundColor = [UIColor whiteColor];
     [cell.rightBtn setTitle:@"互动" forState:UIControlStateNormal];
