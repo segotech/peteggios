@@ -42,6 +42,7 @@
 @property (nonatomic,copy)NSString <Optional> * pushid;
 @property (nonatomic,copy)NSString <Optional> * qq;
 @property (nonatomic,copy)NSString <Optional> * qqshowpurview;
+@property (nonatomic,copy)NSString <Optional> * ruletype;
 @property (nonatomic,copy)NSString <Optional> * showpwd;
 @property (nonatomic,copy)NSString <Optional> * signature;
 @property (nonatomic,copy)NSString <Optional> * sipno;

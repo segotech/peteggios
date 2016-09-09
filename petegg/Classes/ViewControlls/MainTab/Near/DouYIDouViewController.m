@@ -103,13 +103,22 @@ static NSString * cellId = @"douyidouCellId";
     cell.signLabel.text = model.signature;
     cell.zdRightBtn.hidden = YES;
     
-
+    if ([model.mid isEqualToString:[AccountManager sharedAccountManager].loginModel.mid]) {
+        cell.rightBtn.backgroundColor = [UIColor whiteColor];
+         cell.rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [cell.rightBtn setTitle:model.ruletype forState:UIControlStateNormal];
+        [cell.rightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        cell.rightBtn.userInteractionEnabled = NO;
+        
+        
+    }else{
     cell.rightBtn.backgroundColor = [UIColor whiteColor];
     [cell.rightBtn setTitle:@"互动" forState:UIControlStateNormal];
     [cell.rightBtn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
     cell.rightBtn.tag = indexPath.row + 120;
     cell.rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-  
+    
+    }
     [cell.headTouchButton addTarget:self action:@selector(headTouch:) forControlEvents:UIControlEventTouchUpInside];
     cell.headTouchButton.tag = indexPath.row + 2013;
 

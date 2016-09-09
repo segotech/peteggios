@@ -24,7 +24,13 @@ static NSString * cellId = @"personAttentionCeliddd";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+     // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(heheda) name:@"shuaxinxinxin" object:nil];
 }
+
+//-(void)heheda{
+//    [self initRefreshView];
+//
+//}
 
 -(void)setupView{
     [super setupView];

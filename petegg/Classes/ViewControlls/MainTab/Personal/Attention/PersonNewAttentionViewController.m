@@ -51,7 +51,7 @@ static NSString * cellId = @"personNewAttentionTableViewCellidddd";
 
 -(void)isread{
     [[AFHttpClient sharedAFHttpClient]isreadWithMid:[AccountManager sharedAccountManager].loginModel.mid type:@"f" complete:^(BaseModel *model) {
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"isreaddd" object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"isreaddd" object:nil];
     }];
 
 
@@ -138,20 +138,20 @@ static NSString * cellId = @"personNewAttentionTableViewCellidddd";
     if (sender.tag == 175) {
         NSInteger i = sender.tag - 175;
         NSLog(@"%ld",i);
-        NearbyModel * model = self.dataSource[i];
-        [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"add" complete:^(BaseModel *model) {
+        NearbyModel * model1 = self.dataSource[i];
+        [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model1.mid type:@"add" complete:^(BaseModel *model) {
             [[AppUtil appTopViewController] showHint:model.retDesc];
-            [self loadDataSourceWithPage:1];
+         //   [self initRefreshView];
+            [self.navigationController popViewControllerAnimated:YES];
         }];
     }else{
          NSInteger i = sender.tag - 176;
-              NearbyModel * model = self.dataSource[i];
-              [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.mid type:@"cancel" complete:^(BaseModel *model) {
+              NearbyModel * model1 = self.dataSource[i];
+              [[AFHttpClient sharedAFHttpClient]optgzWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model1.mid type:@"cancel" complete:^(BaseModel *model) {
                   //提示
                   [[AppUtil appTopViewController] showHint:model.retDesc];
                   //刷新界面
-                  [self loadDataSourceWithPage:1];
-                  
+                  [self.navigationController popViewControllerAnimated:YES];
               }];
     }
    
