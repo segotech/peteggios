@@ -10,6 +10,11 @@
 #import "AFHttpClient+ChangepasswordAndBlacklist.h"
 
 @interface SuggestViewController ()<UITextViewDelegate>
+{
+    
+    BOOL isClick;
+    
+}
 @property (nonatomic,strong)UITextView * topTextfield;
 @property (nonatomic,strong)UITextField * downTextfield;
 @property (nonatomic,strong)UILabel * placeholderLabel;
@@ -21,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"意见反馈"];
+    isClick = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 -(void)setupView{
@@ -84,6 +90,8 @@
 
 
 -(void)doRightButtonTouch{
+    
+    if (isClick) {
     if ([AppUtil isBlankString:_topTextfield.text]) {
         [[AppUtil appTopViewController] showHint:@"请输入反馈内容"];
         return;
@@ -94,6 +102,7 @@
     }
     
     [self showHudInView:self.view hint:@"正在发送..."];
+    isClick = NO;
     [[AFHttpClient sharedAFHttpClient]addFeedbackWithMid:[AccountManager sharedAccountManager].loginModel.mid fconcent:_topTextfield.text fphone:_downTextfield.text complete:^(BaseModel *model) {
         if (model) {
             [self hideHud];
@@ -103,7 +112,15 @@
             
             [self hideHud];
         }
+        isClick  = YES;
+        
     }];
+    }else
+    {
+        
+        return;
+        
+    }
     
 
 
