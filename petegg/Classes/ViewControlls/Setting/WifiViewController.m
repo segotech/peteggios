@@ -19,6 +19,8 @@
     BOOL isAccecptOk;        // 是否接收结果成功
     NSArray *encryptionList; // 加密方式数组
     NSString *curEncryption; // 当前加密选项
+    NSInteger  timeEnd;
+    NSTimer * timer;
 }
 
 @end
@@ -189,6 +191,10 @@
  *  创建ble设备
  */
 - (void)setUpBleDevice {
+    
+        timer =  [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timestart:) userInfo:nil repeats:YES];
+    
+        [timer setFireDate:[NSDate distantPast]];
     if ([AppUtil isBlankString:wifiNameEdit.text] || [AppUtil isBlankString:passwordEdit.text]) {
         return;
     }
@@ -218,6 +224,24 @@
     [peripheralManager addService:configService];
 }
 
+
+/**
+ * 超时
+ *
+ *
+ */
+ - (void)timestart:(NSTimer*)sender
+ {
+   timeEnd++;
+     if (timeEnd>120) {
+         // 关闭服务
+          [hud hide:TRUE];
+          [self showWarningTip:@"配置失败，请重新设置网络"];
+          [timer setFireDate:[NSDate distantFuture]];
+     }
+ 
+ }
+
 /**
  *  蓝牙状态更新回调
  *
@@ -231,8 +255,8 @@
 
         hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"正在配置设备网络，请等待...";
-
         [self setUpBleDevice];
+        
         break;
 
     // 蓝牙关闭时，提示用户打开蓝牙。
