@@ -189,10 +189,6 @@ static NSString * cellId = @"fedseting2321232322313323231";
     
      [self presentViewController:alert animated:YES completion:nil];
 }
-
-
-
-
 -(void)twoDayView{
     //dadaad
     [_bigView1 removeFromSuperview];
