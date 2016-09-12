@@ -33,7 +33,7 @@
 
     UILabel * banbenLabel = [[UILabel alloc]initWithFrame:CGRectMake(160 *W_Wide_Zoom, 240 * W_Hight_Zoom, 100 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
     
-    banbenLabel.text = @"SEGOV1.3";
+    banbenLabel.text = @"SEGO V1.4";
     banbenLabel.textColor = [UIColor grayColor];
     banbenLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:banbenLabel];

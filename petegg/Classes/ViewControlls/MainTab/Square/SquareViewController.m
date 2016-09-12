@@ -46,7 +46,6 @@
     //self.title = NSLocalizedString(@"tabSquare", nil);
     _imagePicker =[[UIImagePickerController alloc]init];
     _imagePicker.delegate= self;
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self initUserface];
 }
 

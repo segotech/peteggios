@@ -61,7 +61,7 @@
 
 - (void)setupSubviews
 {
-    self.tabBar.backgroundColor=[UIColor redColor];
+    self.tabBar.backgroundColor=[UIColor whiteColor];
     
     self.viewControllers = @[
                              self.navSquareVC,
@@ -88,6 +88,8 @@
                               selectedImage:[[UIImage imageNamed:@"tab_squar_dian"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         
         _navSquareVC = [[UINavigationController alloc]initWithRootViewController:vc];
+        
+        
     }
     
     return _navSquareVC;
@@ -150,8 +152,6 @@
     if (!_navPersonalVC) {
         
        PersonalViewController* vc = [[PersonalViewController alloc] init];
-        // 明天写
-        // vc.messageCount =messageCount;
         
         vc.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"tabPersonal", nil)
