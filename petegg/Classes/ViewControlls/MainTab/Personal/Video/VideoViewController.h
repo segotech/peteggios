@@ -10,5 +10,6 @@
 #import "BaseCollectionViewController.h"
 @interface VideoViewController :BaseCollectionViewController<UICollectionViewDelegateFlowLayout>
 
-
+// 进度窗
+@property (nonatomic, weak) MBProgressHUD *hud;
 @end

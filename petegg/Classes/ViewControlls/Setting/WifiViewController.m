@@ -515,8 +515,8 @@
         [self showSuccessHudWithHint:@"绑定成功"];
         
         // 返回上一级页面。
+        [peripheralManager removeAllServices];
         [self.navigationController popViewControllerAnimated:YES];
-        
     } failure:^(NSError *error) {
         
         [self showSuccessHudWithHint:@"绑定失败"];

@@ -44,12 +44,15 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 @property(nonatomic,strong)UIButton * updataBtn;
 @property (nonatomic, strong) UISwipeGestureRecognizer *leftSwipeGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *rightSwipeGestureRecognizer;
-@property(nonatomic,strong)UIProgressView * proAccuracy;
+//@property(nonatomic,strong)UIProgressView * proAccuracy;
 
 
 @end
 
+
 @implementation VideoViewController
+@synthesize hud;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -138,6 +141,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
     // 进度条
     
+    /*
     self.proAccuracy=[[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleDefault];
     self.proAccuracy.frame=CGRectMake(0, 65, 375, 100);
     self.proAccuracy.trackTintColor=[UIColor blackColor];
@@ -148,6 +152,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     //设置进度值并动画显示
     [self.proAccuracy setProgress:0.0 animated:YES];
     [self.view addSubview:self.proAccuracy];
+     */
 
     [self initRefreshView:@"1"];
     
@@ -200,7 +205,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 -(void)onDeleBt:(UIButton *)sender
 {
-    
+    if ([statsIdentifi isEqualToString:@"1"]) {
     if (deleteOrUpdateArr.count>0) {//有所需要删除的数据
         
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"你确定要删除所选视频？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
@@ -208,6 +213,12 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
     }else{
         [self showSuccessHudWithHint:@"请选择要删除的视频"];
+    }
+    }else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"你确定要上传所选视频？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+        
     }
     
 }
@@ -258,8 +269,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
             
             
         }else{
+            
             if (deleteOrUpdateArr.count ==1) {
-                self.proAccuracy.hidden = NO;
+               // self.proAccuracy.hidden = NO;
                 NSUserDefaults * standDefauls =[NSUserDefaults standardUserDefaults];
                 NSString * devoLG =[AccountManager sharedAccountManager].loginModel.deviceno;
                 NSString * termidLG = [AccountManager sharedAccountManager].loginModel.termid;
@@ -281,7 +293,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
                     deviceoSelf = devoLG;
                 }
                 if (![AppUtil isBlankString:[standDefauls objectForKey:@"content"]]) {
-                    [self showMessageWarring:@"还有视频正在上传" view:app.window];
+                     [self showMessageWarring:@"还有视频正在上传，请等待..." view:app.window];
                     
                 }else{
                     
@@ -303,7 +315,8 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
                         [standDefauls synchronize];
                         if([[dic1 objectForKey:@"retCode"] isEqualToString:@"0000"]){
                             // 提取视频编号
-                            [self showSuccessHudWithHint:[dic1 objectForKey:@"retDesc"]];
+                            hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                            hud.labelText = [dic1 objectForKey:@"retDesc"];
                             NSString  * trdID = dic1[@"content"];
                             // 检查视频上传状态
                             [[NSNotificationCenter defaultCenter]postNotificationName:@"checkTime" object:nil];
@@ -360,6 +373,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)handleSwipes:(UISwipeGestureRecognizer *)sender
 {
+    [deleteOrUpdateArr removeAllObjects];
     if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
         [self rightButtonTouch];
      }
@@ -446,7 +460,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 - (void)checkVideoStats:(NSTimer *)tid
 {
   
-    self.proAccuracy.progress= self.proAccuracy.progress+0.1;
+  //  self.proAccuracy.progress= self.proAccuracy.progress+0.1;
     NSString * service =[NSString stringWithFormat:@"clientAction.do?common=queryTask&classes=appinterface&method=json&tid=%@",tid.userInfo];
     [AFNetWorking postWithApi:service parameters:nil success:^(id json) {
         json = [json objectForKey:@"jsondata"] ;
@@ -463,7 +477,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
         
         if(dateEndOver >600)
         {
-            [self showMessageWarring:@"超时" view:app.window];
+            [self showMessageWarring:@"上传视频超时" view:app.window];
             [timer setFireDate:[NSDate distantFuture]];
              [standDefus removeObjectForKey:@"content"];
             
@@ -477,8 +491,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
                 [self showMessageWarring:@"上传成功" view:app.window];
                 [standDefus removeObjectForKey:@"content"];
                 [self initRefreshView:@"0"];
-                self.proAccuracy.progress =1.0;
-                self.proAccuracy.hidden  = YES;
+//                self.proAccuracy.progress =1.0;
+//                self.proAccuracy.hidden  = YES;
+                [hud hide:TRUE];
                 [timer setFireDate:[NSDate distantFuture]];
                 
             }

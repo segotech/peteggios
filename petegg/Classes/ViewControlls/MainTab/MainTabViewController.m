@@ -222,7 +222,7 @@
                   // 已经超时
                   //dispatch_suspend(timer3);
                     dispatch_source_cancel(timer3);
-                    [self showMessageWarring:@"超时" view:app.window];
+                    [self showMessageWarring:@"上传视频超时" view:app.window];
                     
                  [standDefus removeObjectForKey:@"content"];
 
@@ -241,7 +241,7 @@
               if ([[json objectForKey:@"content"] isEqualToString:@"2"]) {
                   //dispatch_suspend(timer3);
                   [self showMessageWarring:@"上传失败" view:app.window];
-                 [standDefus removeObjectForKey:@"content"];
+                  [standDefus removeObjectForKey:@"content"];
                   dispatch_source_cancel(timer3);
             }
 
