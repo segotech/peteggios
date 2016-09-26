@@ -95,7 +95,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [_leftButton setTitleColor:GREEN_COLOR forState:UIControlStateSelected];
     _leftButton.selected = YES;
     
-    [_leftButton addTarget:self action:@selector(leftbuttonTouch) forControlEvents:UIControlEventTouchUpInside];
+    [_leftButton addTarget:self action:@selector(leftbuttonTouch:) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:_leftButton];
     
     _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(70, 34, 40, 1)];
@@ -109,7 +109,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     [_rightButton setTitleColor:GREEN_COLOR forState:UIControlStateSelected];
     _rightButton.selected = NO;
     [topView addSubview:_rightButton];
-    [_rightButton addTarget:self action:@selector(rightButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+    [_rightButton addTarget:self action:@selector(rightButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:topView];
     
     // 删除  上传
@@ -375,11 +375,11 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 {
     [deleteOrUpdateArr removeAllObjects];
     if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
-        [self rightButtonTouch];
+        [self rightButtonTouch:nil];
      }
     if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
         
-        [self leftbuttonTouch];
+        [self leftbuttonTouch:nil];
     }
 }
 
@@ -517,7 +517,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 #pragma mark - 滑动
 
-- (void)leftbuttonTouch
+- (void)leftbuttonTouch:(UIButton *)btn
 {
     
     [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
@@ -534,8 +534,14 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     
 }
 
-- (void)rightButtonTouch
+- (void)rightButtonTouch:(UIButton *)btn
 {
+    if (btn.selected) return;
+    btn.selected = YES;
+    [self performSelector:@selector(timeEnough:) withObject:nil afterDelay:1];
+    
+    
+    
     [_deleteBtn setImage:[UIImage imageNamed:@"update.png"] forState:UIControlStateNormal];
 
    [self initRefreshView:@"0"];
