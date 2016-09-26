@@ -519,7 +519,9 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 
 - (void)leftbuttonTouch:(UIButton *)btn
 {
-    
+    if (btn.selected) return;
+    btn.selected = YES;
+    [self performSelector:@selector(timeEnough:) withObject:nil afterDelay:3.0];
     [_deleteBtn setImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
     
     [self initRefreshView:@"1"];
@@ -538,7 +540,7 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
 {
     if (btn.selected) return;
     btn.selected = YES;
-    [self performSelector:@selector(timeEnough:) withObject:nil afterDelay:1];
+    [self performSelector:@selector(timeEnough:) withObject:nil afterDelay:3.0];
     
     
     
@@ -556,6 +558,16 @@ static NSString *kheaderIdentifier = @"headerIdentifier";
     }];
     
 }
+
+
+-(void)timeEnough:(UIButton *)btn
+{
+    btn.selected = NO;
+    [timer invalidate];
+    timer=nil;
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
