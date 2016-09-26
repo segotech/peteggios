@@ -496,6 +496,86 @@
 
 
 
+//  抬头
+
+// 上
+- (IBAction)up_on:(UIButton *)sender {
+     [self overTime];
+    
+}
+
+
+- (IBAction)up_start_on:(UIButton *)sender {
+     [self moverobot:@"1"]; // 上
+    
+}
+
+
+// 下
+- (IBAction)down_on:(UIButton *)sender {
+    
+    [self overTime];
+}
+
+
+- (IBAction)down_start_on:(UIButton *)sender {
+    
+    [self moverobot:@"2"];
+}
+
+
+
+
+
+
+// 左右
+
+-(void)moverobot:(NSString *)str
+{
+    NSInteger i = [str integerValue];
+    switch (i) {
+        case 1:
+            self.right_btn.userInteractionEnabled = NO;
+            self.left_btn.userInteractionEnabled = NO;
+            self.top_btn.userInteractionEnabled = NO;
+            self.down_btn.userInteractionEnabled = NO;
+            self.left_up_btn.userInteractionEnabled = YES;
+            self.right_down_btn.userInteractionEnabled = NO;
+            break;
+            
+        case 2:
+            self.right_btn.userInteractionEnabled = NO;
+            self.left_btn.userInteractionEnabled = NO;
+            self.top_btn.userInteractionEnabled = NO;
+            self.down_btn.userInteractionEnabled = NO;
+            self.left_up_btn.userInteractionEnabled = NO;
+            self.right_down_btn.userInteractionEnabled = YES;
+            
+            break;
+        default:
+            break;
+    }
+    
+    
+    moveTimer = [HWWeakTimer scheduledTimerWithTimeInterval:1.0*0.2 block:^(id userInfo) {
+        
+        [self sendInfomationL:str];
+    } userInfo:@"Fire" repeats:YES];
+    [moveTimer fire];
+    
+    
+}
+
+
+- (void)sendInfomationL:(NSString *)sender
+{
+    
+    NSString * msg =[NSString stringWithFormat:@"control_servo,0,0,2,%d,200",[sender intValue]];
+    NSLog(@"我走");
+    [self sendMessage:msg];
+}
+
+
 
 
 

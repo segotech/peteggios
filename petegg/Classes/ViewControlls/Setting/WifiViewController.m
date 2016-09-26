@@ -74,6 +74,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [peripheralManager removeAllServices];
     [super viewWillDisappear:animated];
 }
 
@@ -527,5 +528,6 @@
     
     
 }
+
 
 @end
