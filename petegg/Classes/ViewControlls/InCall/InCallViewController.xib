@@ -11,11 +11,17 @@
             <connections>
                 <outlet property="backBtn" destination="l3X-9d-Ejb" id="sRb-Iu-c5s"/>
                 <outlet property="backImageView" destination="MPj-yo-ux3" id="cQk-SR-Fjv"/>
+                <outlet property="down_btn" destination="EM1-1q-QiH" id="rcN-Sr-yv6"/>
                 <outlet property="flowerUI" destination="vgc-Mt-UnQ" id="31b-5e-Myo"/>
+                <outlet property="left_btn" destination="vur-PE-QyA" id="Wfw-03-OGJ"/>
+                <outlet property="left_down_btn" destination="3rf-0P-w30" id="i5C-OH-DSm"/>
+                <outlet property="left_up_btn" destination="mov-K9-RlO" id="AvB-yP-2TO"/>
                 <outlet property="penSd" destination="Q5j-tu-GLJ" id="ekr-sW-ajx"/>
                 <outlet property="pointView" destination="ezY-K0-WOh" id="Aq2-Fk-65r"/>
+                <outlet property="right_btn" destination="ycV-il-bK5" id="ugO-bn-92V"/>
                 <outlet property="statsView" destination="EgM-iQ-nrP" id="1Jz-Fk-H9v"/>
                 <outlet property="timeText" destination="9a7-C0-y5K" id="V24-PD-glQ"/>
+                <outlet property="up_btn" destination="mPJ-u0-XsX" id="rUu-wP-Jmm"/>
                 <outlet property="videoView" destination="i19-7n-9fb" id="uJ9-bx-e9w"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="waitView" destination="Bme-8I-xeU" id="ETR-2l-gv8"/>
@@ -53,18 +59,6 @@
                         <action selector="lightBtnClick:" destination="-1" eventType="touchUpInside" id="Mqu-T3-YYC"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G36-9l-A16">
-                    <rect key="frame" x="172" y="282" width="50" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="G36-9l-A16" secondAttribute="height" multiplier="1:1" id="dFm-lP-U2p"/>
-                    </constraints>
-                    <state key="normal" image="junkfoot_on.png"/>
-                    <state key="selected" image="junkfoot_on.png"/>
-                    <state key="highlighted" image="juankfood_off.png"/>
-                    <connections>
-                        <action selector="juankFootBtnClick:" destination="-1" eventType="touchUpInside" id="aeG-zS-fxz"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKH-NF-sJ3">
                     <rect key="frame" x="246" y="282" width="50" height="50"/>
                     <constraints>
@@ -78,13 +72,13 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="round.png" translatesAutoresizingMaskIntoConstraints="NO" id="bqj-2U-TN2">
-                    <rect key="frame" x="66" y="362" width="190" height="190"/>
+                    <rect key="frame" x="13" y="362" width="190" height="190"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="bqj-2U-TN2" secondAttribute="height" multiplier="1:1" id="G4p-C7-BSb"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vur-PE-QyA">
-                    <rect key="frame" x="78" y="424" width="37" height="65"/>
+                    <rect key="frame" x="25" y="424" width="37" height="65"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="37" id="AWC-Mi-td0"/>
                     </constraints>
@@ -95,8 +89,20 @@
                         <action selector="leftStart:" destination="-1" eventType="touchDown" id="zcD-K3-sEK"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G36-9l-A16">
+                    <rect key="frame" x="172" y="282" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="G36-9l-A16" secondAttribute="height" multiplier="1:1" id="dFm-lP-U2p"/>
+                    </constraints>
+                    <state key="normal" image="junkfoot_on.png"/>
+                    <state key="selected" image="junkfoot_on.png"/>
+                    <state key="highlighted" image="juankfood_off.png"/>
+                    <connections>
+                        <action selector="juankFootBtnClick:" destination="-1" eventType="touchUpInside" id="aeG-zS-fxz"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycV-il-bK5">
-                    <rect key="frame" x="209" y="424" width="37" height="65"/>
+                    <rect key="frame" x="156" y="424" width="37" height="65"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="37" id="csY-a5-RYQ"/>
                     </constraints>
@@ -139,7 +145,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPJ-u0-XsX">
-                    <rect key="frame" x="128" y="380" width="65" height="37"/>
+                    <rect key="frame" x="75" y="380" width="65" height="37"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="MqH-3B-m5c"/>
                         <constraint firstAttribute="width" constant="65" id="WUe-fT-04h"/>
@@ -238,7 +244,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EM1-1q-QiH">
-                    <rect key="frame" x="128" y="504" width="65" height="37"/>
+                    <rect key="frame" x="75" y="504" width="65" height="37"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="zdM-Ks-b9v"/>
                     </constraints>
@@ -247,6 +253,28 @@
                     <connections>
                         <action selector="down:" destination="-1" eventType="touchUpInside" id="ptG-SU-HuT"/>
                         <action selector="downStart:" destination="-1" eventType="touchDown" id="hmj-Cy-Xez"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mov-K9-RlO">
+                    <rect key="frame" x="227" y="366" width="56" height="94"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="mov-K9-RlO" secondAttribute="height" multiplier="28:47" id="FTT-YJ-2gd"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="开启视频_03.png"/>
+                    <connections>
+                        <action selector="topup:" destination="-1" eventType="touchUpInside" id="Nar-Xm-Gbg"/>
+                        <action selector="uptop_start:" destination="-1" eventType="touchDown" id="OFO-1o-6Lx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rf-0P-w30">
+                    <rect key="frame" x="227" y="461" width="56" height="94"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="3rf-0P-w30" secondAttribute="height" multiplier="28:47" id="n3F-d3-Cwc"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="开启视频_05.png"/>
+                    <connections>
+                        <action selector="topdown:" destination="-1" eventType="touchUpInside" id="Mxy-TK-AIC"/>
+                        <action selector="topdown_start:" destination="-1" eventType="touchDown" id="8Y3-LJ-nzb"/>
                     </connections>
                 </button>
             </subviews>
@@ -260,20 +288,26 @@
                 <constraint firstItem="G36-9l-A16" firstAttribute="leading" secondItem="1w6-4H-qXq" secondAttribute="trailing" constant="24" id="6Ws-Ej-Tmh"/>
                 <constraint firstItem="G36-9l-A16" firstAttribute="top" secondItem="1w6-4H-qXq" secondAttribute="top" id="7Iw-1q-KOM"/>
                 <constraint firstItem="Q5j-tu-GLJ" firstAttribute="top" secondItem="Bme-8I-xeU" secondAttribute="bottom" constant="8" symbolic="YES" id="8te-HY-Dwi"/>
-                <constraint firstAttribute="trailing" secondItem="ycV-il-bK5" secondAttribute="trailing" constant="74" id="9w8-DD-mBo"/>
-                <constraint firstItem="Q5j-tu-GLJ" firstAttribute="centerX" secondItem="mPJ-u0-XsX" secondAttribute="centerX" id="AA3-2C-BeS"/>
+                <constraint firstAttribute="trailing" secondItem="ycV-il-bK5" secondAttribute="trailing" constant="127" id="9w8-DD-mBo"/>
+                <constraint firstItem="Q5j-tu-GLJ" firstAttribute="centerX" secondItem="mPJ-u0-XsX" secondAttribute="centerX" constant="52.5" id="AA3-2C-BeS"/>
                 <constraint firstItem="ycV-il-bK5" firstAttribute="top" secondItem="vur-PE-QyA" secondAttribute="top" id="C1o-ka-csg"/>
+                <constraint firstItem="mov-K9-RlO" firstAttribute="trailing" secondItem="3rf-0P-w30" secondAttribute="trailing" id="CfG-vF-SyQ"/>
                 <constraint firstItem="G36-9l-A16" firstAttribute="centerX" secondItem="uOV-n0-V8r" secondAttribute="centerX" id="D7b-89-BVZ"/>
                 <constraint firstItem="i19-7n-9fb" firstAttribute="leading" secondItem="Q5j-tu-GLJ" secondAttribute="leading" id="F8c-Cd-ynB"/>
                 <constraint firstItem="ycV-il-bK5" firstAttribute="centerY" secondItem="bqj-2U-TN2" secondAttribute="centerY" id="FPZ-o0-fCQ"/>
                 <constraint firstItem="G36-9l-A16" firstAttribute="bottom" secondItem="1w6-4H-qXq" secondAttribute="bottom" id="Fx9-bo-9em"/>
                 <constraint firstItem="uOV-n0-V8r" firstAttribute="firstBaseline" secondItem="AfK-vv-V6c" secondAttribute="firstBaseline" id="HTP-dy-vg6"/>
-                <constraint firstItem="vur-PE-QyA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="78" id="Lij-F8-U3B"/>
+                <constraint firstItem="3rf-0P-w30" firstAttribute="top" secondItem="mov-K9-RlO" secondAttribute="bottom" constant="1" id="IXK-oJ-VYo"/>
+                <constraint firstItem="mov-K9-RlO" firstAttribute="top" secondItem="xv0-5q-JQB" secondAttribute="bottom" constant="11" id="IXy-B0-mmP"/>
+                <constraint firstItem="mov-K9-RlO" firstAttribute="leading" secondItem="bqj-2U-TN2" secondAttribute="trailing" constant="24" id="KKc-Hn-tOX"/>
+                <constraint firstItem="vur-PE-QyA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="Lij-F8-U3B"/>
+                <constraint firstAttribute="bottom" secondItem="3rf-0P-w30" secondAttribute="bottom" constant="13" id="MpU-2o-cVW"/>
                 <constraint firstItem="EgM-iQ-nrP" firstAttribute="trailing" secondItem="Q5j-tu-GLJ" secondAttribute="trailing" id="NsU-4v-4x1"/>
                 <constraint firstItem="Q5j-tu-GLJ" firstAttribute="top" secondItem="EgM-iQ-nrP" secondAttribute="bottom" constant="7" id="PnM-62-mCl"/>
                 <constraint firstItem="i19-7n-9fb" firstAttribute="trailing" secondItem="Q5j-tu-GLJ" secondAttribute="trailing" id="QBU-zB-iVw"/>
                 <constraint firstItem="i19-7n-9fb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QIK-j3-yCb"/>
                 <constraint firstItem="boD-YA-pgv" firstAttribute="firstBaseline" secondItem="AfK-vv-V6c" secondAttribute="firstBaseline" id="QLs-Jb-eld"/>
+                <constraint firstItem="mov-K9-RlO" firstAttribute="leading" secondItem="3rf-0P-w30" secondAttribute="leading" id="R9V-AO-rIC"/>
                 <constraint firstAttribute="bottom" secondItem="bqj-2U-TN2" secondAttribute="bottom" constant="16" id="Toq-Ah-H9Y"/>
                 <constraint firstItem="boD-YA-pgv" firstAttribute="centerX" secondItem="E3l-XL-QyW" secondAttribute="centerX" constant="10.5" id="W4g-3n-ZJw"/>
                 <constraint firstItem="l3X-9d-Ejb" firstAttribute="top" secondItem="Bme-8I-xeU" secondAttribute="top" id="W5E-Tr-2uu"/>
@@ -282,7 +316,7 @@
                 <constraint firstAttribute="trailing" secondItem="QKH-NF-sJ3" secondAttribute="trailing" constant="24" id="akl-tc-dVP"/>
                 <constraint firstItem="Bme-8I-xeU" firstAttribute="leading" secondItem="i19-7n-9fb" secondAttribute="leading" id="c1Z-E1-yoK"/>
                 <constraint firstItem="xv0-5q-JQB" firstAttribute="centerX" secondItem="QKH-NF-sJ3" secondAttribute="centerX" id="eYS-xy-O1r"/>
-                <constraint firstItem="bqj-2U-TN2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="66" id="egt-rw-IPJ"/>
+                <constraint firstItem="bqj-2U-TN2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="13" id="egt-rw-IPJ"/>
                 <constraint firstItem="MPj-yo-ux3" firstAttribute="centerY" secondItem="Q5j-tu-GLJ" secondAttribute="centerY" constant="-3" id="fD4-q4-Ft8"/>
                 <constraint firstItem="QKH-NF-sJ3" firstAttribute="top" secondItem="MPj-yo-ux3" secondAttribute="bottom" constant="6" id="fnN-fy-VUN"/>
                 <constraint firstAttribute="bottom" secondItem="EM1-1q-QiH" secondAttribute="bottom" constant="27" id="g4T-sh-Yhz"/>
@@ -302,7 +336,7 @@
                 <constraint firstItem="E3l-XL-QyW" firstAttribute="bottom" secondItem="1w6-4H-qXq" secondAttribute="bottom" id="tFM-sT-q3i"/>
                 <constraint firstItem="xv0-5q-JQB" firstAttribute="firstBaseline" secondItem="uOV-n0-V8r" secondAttribute="firstBaseline" id="tjr-g6-VXl"/>
                 <constraint firstItem="boD-YA-pgv" firstAttribute="top" secondItem="E3l-XL-QyW" secondAttribute="bottom" constant="2" id="twd-AH-tlW"/>
-                <constraint firstAttribute="trailing" secondItem="bqj-2U-TN2" secondAttribute="trailing" constant="64" id="uKq-A2-CLi"/>
+                <constraint firstAttribute="trailing" secondItem="bqj-2U-TN2" secondAttribute="trailing" constant="117" id="uKq-A2-CLi"/>
                 <constraint firstItem="Q5j-tu-GLJ" firstAttribute="leading" secondItem="MPj-yo-ux3" secondAttribute="leading" id="ubW-1H-kdD"/>
                 <constraint firstItem="AfK-vv-V6c" firstAttribute="baseline" secondItem="uOV-n0-V8r" secondAttribute="baseline" id="uzH-2K-u41"/>
                 <constraint firstItem="Bme-8I-xeU" firstAttribute="trailing" secondItem="i19-7n-9fb" secondAttribute="trailing" id="vLs-3g-Pv7"/>
@@ -335,5 +369,7 @@
         <image name="round.png" width="382" height="382"/>
         <image name="turn_on.png" width="99" height="99"/>
         <image name="video_point.png" width="16" height="16"/>
+        <image name="开启视频_03.png" width="135" height="185"/>
+        <image name="开启视频_05.png" width="135" height="185"/>
     </resources>
 </document>

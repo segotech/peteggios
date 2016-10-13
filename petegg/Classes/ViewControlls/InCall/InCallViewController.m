@@ -8,6 +8,7 @@
 
 #import "InCallViewController.h"
 #import "SettingViewController.h"
+#import "HWWeakTimer.h"
 
 @import CoreTelephony;
 
@@ -97,16 +98,8 @@
         [updateTimer invalidate];
         updateTimer = nil;
     }
-    if (hideControlsTimer != nil) {
-        [hideControlsTimer invalidate];
-        hideControlsTimer = nil;
-    }
     
-    if (timeShow !=nil) {
-        [timeShow invalidate];
-        timeShow = nil;
-        
-    }
+    [moveTimer invalidate];
     
     // Clear windows
     //  必须清除，否则会因为arc导致再次视频通话时crash。
@@ -482,8 +475,79 @@
 
 
 
+//  抬头  上
+
+- (IBAction)uptop_start:(UIButton *)sender {
+    
+    [self moverobot:@"1"]; // 上
+    
+
+    
+}
 
 
+- (IBAction)topup:(UIButton *)sender {
+    [self overTime];
+    
+}
+
+
+- (IBAction)topdown_start:(UIButton *)sender {
+    [self moverobot:@"2"]; // 上
+    
+
+    
+}
+
+- (IBAction)topdown:(UIButton *)sender {
+    
+    [self overTime];
+}
+
+
+-(void)moverobot:(NSString *)str
+{
+    NSInteger i = [str integerValue];
+    switch (i) {
+        case 1:
+            self.right_btn.userInteractionEnabled = NO;
+            self.left_btn.userInteractionEnabled = NO;
+            self.up_btn.userInteractionEnabled = NO;
+            self.down_btn.userInteractionEnabled = NO;
+            self.left_up_btn.userInteractionEnabled = YES;
+            self.left_down_btn.userInteractionEnabled = NO;
+            break;
+            
+        case 2:
+            self.right_btn.userInteractionEnabled = NO;
+            self.left_btn.userInteractionEnabled = NO;
+            self.up_btn.userInteractionEnabled = NO;
+            self.down_btn.userInteractionEnabled = NO;
+            self.left_up_btn.userInteractionEnabled = NO;
+            self.left_down_btn.userInteractionEnabled = YES;
+            
+            break;
+        default:
+            break;
+    }
+    
+    
+    moveTimer = [HWWeakTimer scheduledTimerWithTimeInterval:1.0*0.2 block:^(id userInfo) {
+        
+        [self sendInfomationL:str];
+    } userInfo:@"Fire" repeats:YES];
+    [moveTimer fire];
+    
+    
+}
+
+- (void)sendInfomationL:(NSString *)sender
+{
+    
+    NSString * msg =[NSString stringWithFormat:@"control_servo,0,0,2,%d,200",[sender intValue]];
+    NSLog(@"我走");
+    [self sendMessage:msg];
+}
 
 
 
@@ -491,20 +555,62 @@
 - (void)moveRobot:(NSString *)str
 {
    
-    if (moveTimer != nil) {
-        [moveTimer invalidate];
-        moveTimer = nil;
-    }else{
-    moveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0*0.2 target:self selector:@selector(sendInfomation:) userInfo:str repeats:YES];
+    NSInteger i = [str integerValue];
+    switch (i) {
+        case 4:
+            // 上
+            self.up_btn.userInteractionEnabled = YES;
+            self.down_btn.userInteractionEnabled = NO;
+            self.left_btn.userInteractionEnabled = NO;
+            self.right_btn.userInteractionEnabled = NO;
+            self.left_up_btn.userInteractionEnabled = NO;
+            self.left_down_btn.userInteractionEnabled = NO;
+            break;
+        case 3:
+            //下
+            self.down_btn.userInteractionEnabled = YES;
+            self.up_btn.userInteractionEnabled = NO;
+            self.left_btn.userInteractionEnabled = NO;
+            self.right_btn.userInteractionEnabled = NO;
+            self.left_up_btn.userInteractionEnabled = NO;
+            self.left_down_btn.userInteractionEnabled = NO;
+            break;
+        case 2:
+            //左
+            self.left_btn.userInteractionEnabled = YES;
+            self.right_btn.userInteractionEnabled = NO;
+            self.down_btn.userInteractionEnabled = NO;
+            self.up_btn.userInteractionEnabled = NO;
+            self.left_up_btn.userInteractionEnabled = NO;
+            self.left_down_btn.userInteractionEnabled = NO;
+            break;
+        case 1:
+            // 右
+            self.right_btn.userInteractionEnabled = YES;
+            self.left_btn.userInteractionEnabled = NO;
+            self.up_btn.userInteractionEnabled = NO;
+            self.down_btn.userInteractionEnabled = NO;
+            self.left_up_btn.userInteractionEnabled = NO;
+            self.left_down_btn.userInteractionEnabled = NO;
+            break;
+            
+        default:
+            break;
     }
     
+    
+    moveTimer = [HWWeakTimer scheduledTimerWithTimeInterval:1.0*0.2 block:^(id userInfo) {
+        
+        [self sendInfomation:str];
+    } userInfo:@"Fire" repeats:YES];
+    [moveTimer fire];
 }
 
 
-- (void)sendInfomation:(NSTimer *)sender
+- (void)sendInfomation:(NSString *)sender
 {
     
-    NSString * msg =[NSString stringWithFormat:@"control_servo,0,0,1,%d,200",[sender.userInfo intValue]];
+    NSString * msg =[NSString stringWithFormat:@"control_servo,0,0,1,%d,200",[sender intValue]];
     [self sendMessage:msg];
 
     
@@ -514,10 +620,14 @@
 
 - (void)overTime
 {
-    if (moveTimer != nil) {
-        [moveTimer invalidate];
-        moveTimer = nil;
-    }
+    [moveTimer invalidate];
+    self.up_btn.userInteractionEnabled = YES;
+    self.down_btn.userInteractionEnabled = YES;
+    self.left_btn.userInteractionEnabled = YES;
+    self.right_btn.userInteractionEnabled = YES;
+    self.left_up_btn.userInteractionEnabled = YES;
+    self.left_down_btn.userInteractionEnabled = YES;
+
 
     
 }

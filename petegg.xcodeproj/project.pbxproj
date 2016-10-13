@@ -24,6 +24,13 @@
 		34144BE51CC48C76007C4498 /* PhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BE41CC48C76007C4498 /* PhotoModel.m */; };
 		34144BE81CC4BCCA007C4498 /* QFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BE71CC4BCCA007C4498 /* QFTableView.m */; };
 		34144BF01CC4BFB9007C4498 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34144BEF1CC4BFB9007C4498 /* ImageModel.m */; };
+		3438AA541D9CC2E8006DFF8D /* 开启视频_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 3438AA4F1D9CC2E8006DFF8D /* 开启视频_05.png */; };
+		3438AA551D9CC2E8006DFF8D /* 上.png in Resources */ = {isa = PBXBuildFile; fileRef = 3438AA501D9CC2E8006DFF8D /* 上.png */; };
+		3438AA561D9CC2E8006DFF8D /* 下.png in Resources */ = {isa = PBXBuildFile; fileRef = 3438AA511D9CC2E8006DFF8D /* 下.png */; };
+		3438AA571D9CC2E8006DFF8D /* 右.png in Resources */ = {isa = PBXBuildFile; fileRef = 3438AA521D9CC2E8006DFF8D /* 右.png */; };
+		3438AA581D9CC2E8006DFF8D /* 左.png in Resources */ = {isa = PBXBuildFile; fileRef = 3438AA531D9CC2E8006DFF8D /* 左.png */; };
+		3438AA5A1D9CC321006DFF8D /* 开启视频_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 3438AA591D9CC321006DFF8D /* 开启视频_03.png */; };
+		3438AA5D1D9CE54C006DFF8D /* HWWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3438AA5C1D9CE54C006DFF8D /* HWWeakTimer.m */; };
 		344F022B1C9FD6200076CE62 /* noDevice.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F022A1C9FD6200076CE62 /* noDevice.png */; };
 		344F022D1C9FE02C0076CE62 /* new_egg_seting.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F022C1C9FE02C0076CE62 /* new_egg_seting.png */; };
 		344F02321C9FE0410076CE62 /* egg_calling.png in Resources */ = {isa = PBXBuildFile; fileRef = 344F022E1C9FE0410076CE62 /* egg_calling.png */; };
@@ -405,6 +412,14 @@
 		34144BE71CC4BCCA007C4498 /* QFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFTableView.m; sourceTree = "<group>"; };
 		34144BEE1CC4BFB9007C4498 /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
 		34144BEF1CC4BFB9007C4498 /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
+		3438AA4F1D9CC2E8006DFF8D /* 开启视频_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开启视频_05.png"; sourceTree = "<group>"; };
+		3438AA501D9CC2E8006DFF8D /* 上.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上.png"; sourceTree = "<group>"; };
+		3438AA511D9CC2E8006DFF8D /* 下.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下.png"; sourceTree = "<group>"; };
+		3438AA521D9CC2E8006DFF8D /* 右.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右.png"; sourceTree = "<group>"; };
+		3438AA531D9CC2E8006DFF8D /* 左.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "左.png"; sourceTree = "<group>"; };
+		3438AA591D9CC321006DFF8D /* 开启视频_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开启视频_03.png"; sourceTree = "<group>"; };
+		3438AA5B1D9CE54C006DFF8D /* HWWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWWeakTimer.h; sourceTree = "<group>"; };
+		3438AA5C1D9CE54C006DFF8D /* HWWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWWeakTimer.m; sourceTree = "<group>"; };
 		344F022A1C9FD6200076CE62 /* noDevice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noDevice.png; sourceTree = "<group>"; };
 		344F022C1C9FE02C0076CE62 /* new_egg_seting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_egg_seting.png; sourceTree = "<group>"; };
 		344F022E1C9FE0410076CE62 /* egg_calling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg_calling.png; sourceTree = "<group>"; };
@@ -1363,6 +1378,12 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				3438AA591D9CC321006DFF8D /* 开启视频_03.png */,
+				3438AA4F1D9CC2E8006DFF8D /* 开启视频_05.png */,
+				3438AA501D9CC2E8006DFF8D /* 上.png */,
+				3438AA511D9CC2E8006DFF8D /* 下.png */,
+				3438AA521D9CC2E8006DFF8D /* 右.png */,
+				3438AA531D9CC2E8006DFF8D /* 左.png */,
 				3466DBBE1CE5B93F0023393E /* guide1.jpg */,
 				3466DBBF1CE5B93F0023393E /* guide2.jpg */,
 				3466DBC01CE5B93F0023393E /* guide3.jpg */,
@@ -2384,6 +2405,8 @@
 		570BA4F51CA25570009AA2FC /* InCall */ = {
 			isa = PBXGroup;
 			children = (
+				3438AA5B1D9CE54C006DFF8D /* HWWeakTimer.h */,
+				3438AA5C1D9CE54C006DFF8D /* HWWeakTimer.m */,
 				7D825CCF1CBCA4C800F4E216 /* InCallViewController.h */,
 				7D825CD01CBCA4C800F4E216 /* InCallViewController.m */,
 				7D825CD11CBCA4C800F4E216 /* InCallViewController.xib */,
@@ -3065,6 +3088,7 @@
 				3481B3A61CBCB4A400A4344D /* selecting.png in Resources */,
 				7D825CD81CBCA4C800F4E216 /* WasCallViewController.xib in Resources */,
 				34D27AE71CE0444D00244333 /* nopattion.png in Resources */,
+				3438AA541D9CC2E8006DFF8D /* 开启视频_05.png in Resources */,
 				34024DDD1CE4930B000E3723 /* junkfoot_on.png in Resources */,
 				34DB51371CDB28AE0032CF39 /* video_point.png in Resources */,
 				7DF147161CD0BB740046D726 /* xuan_guize.png in Resources */,
@@ -3074,6 +3098,7 @@
 				7D825D261CBCA85A00F4E216 /* person_attention.png.png in Resources */,
 				34813FEE1CC5E039000DFE26 /* manAnimal.png in Resources */,
 				344F02C31CA2D9720076CE62 /* right_off.png in Resources */,
+				3438AA571D9CC2E8006DFF8D /* 右.png in Resources */,
 				7D825D391CBCA88D00F4E216 /* gou-xuan.png in Resources */,
 				57666FC01C96979F00A52DBA /* tab_personal_press@3x.png in Resources */,
 				7D825D291CBCA85A00F4E216 /* person_code.png in Resources */,
@@ -3111,6 +3136,7 @@
 				34A218171CCDFF9700ADD8FF /* active_chat.png in Resources */,
 				7DF147131CD0BB740046D726 /* add_guize.png in Resources */,
 				7D24EA8E1CC4E74A004EB1E2 /* wangwang.png in Resources */,
+				3438AA581D9CC2E8006DFF8D /* 左.png in Resources */,
 				57666FC41C96979F00A52DBA /* tab_square_press@3x.png in Resources */,
 				57666FC31C96979F00A52DBA /* tab_square_normal@3x.png in Resources */,
 				344F02591C9FEBDE0076CE62 /* feed_on.png in Resources */,
@@ -3163,10 +3189,12 @@
 				34A218251CCDFF9700ADD8FF /* dialer-orange.png in Resources */,
 				344F02CB1CA2DA2C0076CE62 /* before_off.png in Resources */,
 				34A215D11CCDFD6F00ADD8FF /* nowebcamCIF.jpg in Resources */,
+				3438AA5A1D9CC321006DFF8D /* 开启视频_03.png in Resources */,
 				344F025A1C9FEBDE0076CE62 /* juankfood_off.png in Resources */,
 				34A215CE1CCDFD6F00ADD8FF /* hold.wav in Resources */,
 				34A215D71CCDFD6F00ADD8FF /* sephonerc in Resources */,
 				34A2182B1CCDFF9700ADD8FF /* mic_muted.png in Resources */,
+				3438AA561D9CC2E8006DFF8D /* 下.png in Resources */,
 				344F02341C9FE0410076CE62 /* egg_online.png in Resources */,
 				7D15E7CF1CD8A35B003A472C /* tubiaobiao.png in Resources */,
 				344F02C81CA2D9E70076CE62 /* behand_on.png in Resources */,
@@ -3197,6 +3225,7 @@
 				34A218241CCDFF9700ADD8FF /* contact_unstarred.png in Resources */,
 				34A218331CCDFF9700ADD8FF /* startcall-small.png in Resources */,
 				7D24EA8C1CC4E74A004EB1E2 /* manquanquan.png in Resources */,
+				3438AA551D9CC2E8006DFF8D /* 上.png in Resources */,
 				344F02651C9FEBDE0076CE62 /* turn_on.png in Resources */,
 				7D825D101CBCA65000F4E216 /* personTableViewCell.xib in Resources */,
 				34024DE51CE5745F000E3723 /* 引导页ok.png in Resources */,
@@ -3335,6 +3364,7 @@
 				7D0E136B1CDC71EA00F9BAD5 /* TransactionRecordModel.m in Sources */,
 				7DFF05971CB781F200CF713E /* AFHttpClient+Detailed.m in Sources */,
 				5778B3011CC08BBC00EC2D96 /* NSString+URLEncoding.m in Sources */,
+				3438AA5D1D9CE54C006DFF8D /* HWWeakTimer.m in Sources */,
 				57666FA71C968B1F00A52DBA /* LoginViewController.m in Sources */,
 				7D825CCB1CBCA41700F4E216 /* VideoModel.m in Sources */,
 				57E053EC1D1FEFB300AA29F8 /* ViewControllerss.m in Sources */,
