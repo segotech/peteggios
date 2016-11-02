@@ -10,6 +10,7 @@
 #import "BalckListTableViewCell.h"
 #import "AFHttpClient+ChangepasswordAndBlacklist.h"
 #import "BlackListModel.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 static NSString * cellId = @"balack12232132131";
 @interface BalckListViewController ()
 
@@ -21,7 +22,37 @@ static NSString * cellId = @"balack12232132131";
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setNavTitle:@"黑名单"];
+    [self showBarButton:NAV_RIGHT title:@"ceshi" fontColor:[UIColor blackColor]];
 }
+//iOS自带的分享功能，能直接分享图片，链接等信息
+//-(void)doRightButtonTouch{
+//    //分享链接
+//    NSString *textToShare = @"请大家登录《iOS云端与网络通讯》服务网站。";
+//    
+//    UIImage *imageToShare = [UIImage imageNamed:@"egg_login.jpg"];
+//    
+//    NSURL *urlToShare = [NSURL URLWithString:@"http://www.baidu.com"];
+//    
+//    NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
+//    
+//    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems
+//                                        applicationActivities:nil];
+//    //不出现在活动项目
+//   // activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,
+//                                       //  UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
+//    [self presentViewController:activityVC animated:YES completion:nil];
+//    
+//
+//}
+
+
+
+
+
+
+
+
+
 
 -(void)setupView{
     [super  setupView];
@@ -64,7 +95,6 @@ static NSString * cellId = @"balack12232132131";
 {
     BlackListModel * model = self.dataSource[indexPath.row];
     
-    
     BalckListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
     cell.nameLabel.text = model.nickname;
@@ -79,6 +109,7 @@ static NSString * cellId = @"balack12232132131";
     cell.rightBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     cell.rightBtn.tag = indexPath.row + 1234;
     [cell.rightBtn addTarget:self action:@selector(yichuButtontouch:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     return cell;
 }
@@ -98,9 +129,6 @@ static NSString * cellId = @"balack12232132131";
     }]];
     
     
-       
-    
-    
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }]];
@@ -111,5 +139,47 @@ static NSString * cellId = @"balack12232132131";
 
 
 }
+//左滑删除
+-(NSString*)tableView:(UITableView*)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    //昨滑的文字
+    return@"删除";
+}
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    //让它能够滑动
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //删除的属性
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:
+(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+       // NSUInteger row = [indexPath row];
+       // [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+         //                withRowAnimation:UITableViewRowAnimationAutomatic];
+       // [tableView reloadData];
+        // 数据源也要相应删除一项
+         BlackListModel * model = self.dataSource[indexPath.row];
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定要把ta移除黑名单吗？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[AFHttpClient sharedAFHttpClient]delBlacklistWithMid:[AccountManager sharedAccountManager].loginModel.mid friend:model.friend complete:^(BaseModel *model) {
+                [[AppUtil appTopViewController] showHint:model.retDesc];
+                [self setupData];
+            }];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.tableView reloadData];
+        }]];
+         [self presentViewController:alert animated:YES completion:nil];
+    }
+}
 @end

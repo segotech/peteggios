@@ -30,7 +30,7 @@
 
 
 -(void)cleanTip{
-     _pageViewController.view.frame = CGRectMake(0 * W_Wide_Zoom, 64 * W_Hight_Zoom, self.view.frame.size.width, self.view.frame.size.height * W_Hight_Zoom - 64 * W_Hight_Zoom);
+     _pageViewController.view.frame = CGRectMake(0 * W_Wide_Zoom, CGRectGetMinY(self.view.frame) + 64, self.view.frame.size.width, self.view.frame.size.height);
     _headButton.hidden = YES;
 }
 
@@ -63,7 +63,7 @@
    
 }
 -(void)initTopView{
-    UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, self.view.width, 40 * W_Hight_Zoom)];
+    UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, CGRectGetMinY(self.view.frame) + 60, self.view.width, 40 * W_Hight_Zoom)];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
     _leftButton =[[UIButton alloc]initWithFrame:CGRectMake(73.75 * W_Wide_Zoom , 5 * W_Hight_Zoom, 40 * W_Wide_Zoom , 30 * W_Hight_Zoom )];
@@ -94,13 +94,12 @@
 
 -(void)setupView{
     [super setupView];
-   
    //如果有新消息，pageviecontroller的位置要发生改变，看了消息之后，还要发送通知让它变回来
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                     navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                     options:nil];
     if (self.isredTip == NO) {
-          _pageViewController.view.frame = CGRectMake(0 * W_Wide_Zoom, 94 * W_Hight_Zoom, self.view.frame.size.width, self.view.frame.size.height * W_Hight_Zoom - 94 * W_Hight_Zoom );
+          _pageViewController.view.frame = CGRectMake(0 * W_Wide_Zoom, 94 * W_Hight_Zoom, self.view.frame.size.width, self.view.frame.size.height * W_Hight_Zoom  );
         _headButton =[[UIButton alloc]initWithFrame:CGRectMake(117.5 * W_Wide_Zoom, 7 * W_Hight_Zoom, 140 * W_Wide_Zoom, 30 * W_Hight_Zoom)];
         _headButton.titleEdgeInsets = UIEdgeInsetsMake(0 , 0, 0 , 0);
         [_headButton setBackgroundImage:[UIImage imageNamed:@"moveing.png"] forState:UIControlStateNormal];

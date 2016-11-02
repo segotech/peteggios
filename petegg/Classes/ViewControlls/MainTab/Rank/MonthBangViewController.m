@@ -155,6 +155,8 @@ static NSString * cellId = @"ranksCellIddddddd";
     cell.rightLabel.text = [NSString stringWithFormat:@"NO.%@",model.ranking];
     if (indexPath.row < 2) {
         cell.rightLabel.textColor = [UIColor brownColor];
+    }else{
+        cell.rightLabel.textColor = [UIColor blackColor];
     }
     
     

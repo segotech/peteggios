@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    //self.title =
    [self setNavTitle: NSLocalizedString(@"tabNear", nil)];
     self.view.backgroundColor = LIGHT_GRAY_COLOR;
     
@@ -30,13 +29,13 @@
 
 -(void)setupView{
     [super setupView];
-    _seacherBtn = [[UIButton alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom,69 *W_Hight_Zoom , 355 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
+    _seacherBtn = [[UIButton alloc]initWithFrame:CGRectMake(10 * W_Wide_Zoom,CGRectGetMinY(self.view.frame)+69 , 355 * W_Wide_Zoom, 25 * W_Hight_Zoom)];
     [_seacherBtn setImage:[UIImage imageNamed:@"seacherkuang.png"] forState:UIControlStateNormal];
     [self.view addSubview:_seacherBtn];
     [_seacherBtn addTarget:self action:@selector(seacherTouch) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UIView * whiteView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 100 * W_Hight_Zoom, self.view.width, 120 * W_Hight_Zoom)];
+    UIView * whiteView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, CGRectGetMinY(self.view.frame)+100, self.view.width, 120 * W_Hight_Zoom)];
     whiteView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:whiteView];
  
@@ -80,7 +79,7 @@
     if (0 == sender.tag) {
         NearbyPeopleViewController * NearVc = [[NearbyPeopleViewController alloc]init];
         [self.navigationController pushViewController:NearVc animated:YES];
-    
+     
     }else{
         DouYIDouViewController * douVc = [[DouYIDouViewController alloc]init];
         [self.navigationController pushViewController:douVc animated:YES];

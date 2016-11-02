@@ -205,7 +205,7 @@
     [self yincang:nil];
     WechatShortVideoController *wechatShortVideoController = [[WechatShortVideoController alloc] init];
     wechatShortVideoController.delegate = self;
-    [self.navigationController pushViewController:wechatShortVideoController animated:YES];
+      [self.navigationController pushViewController:wechatShortVideoController animated:YES];
 }
 
 
@@ -250,10 +250,6 @@
     [self presentViewController:_imagePicker animated:NO completion:nil];
     
 }
-
-
-
-
 //得到图片之后的处理
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {

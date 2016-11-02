@@ -187,7 +187,7 @@
 
 
 /**
- *  头像点击
+ *  头像点击 
  */
 - (void)handButton:(UITapGestureRecognizer *)sender
 {
