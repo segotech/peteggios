@@ -217,6 +217,12 @@
 		34DB513C1CDC68520032CF39 /* GetPhotoGraphModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DB513B1CDC68510032CF39 /* GetPhotoGraphModel.m */; };
 		34EDB5CC1CD34279001BB50C /* OtherEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB5CB1CD34279001BB50C /* OtherEggViewController.m */; };
 		34EDB5CE1CD3542A001BB50C /* opvideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 34EDB5CD1CD3542A001BB50C /* opvideo.png */; };
+		34FB246A1D8F812800C78482 /* 开启视频_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FB24641D8F812800C78482 /* 开启视频_03.png */; };
+		34FB246B1D8F812800C78482 /* 开启视频_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FB24651D8F812800C78482 /* 开启视频_05.png */; };
+		34FB246C1D8F812800C78482 /* 上.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FB24661D8F812800C78482 /* 上.png */; };
+		34FB246D1D8F812800C78482 /* 下.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FB24671D8F812800C78482 /* 下.png */; };
+		34FB246E1D8F812800C78482 /* 右.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FB24681D8F812800C78482 /* 右.png */; };
+		34FB246F1D8F812800C78482 /* 左.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FB24691D8F812800C78482 /* 左.png */; };
 		570BA4F41CA234E0009AA2FC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */; };
 		572220D01CB3B6CB00C9C7D2 /* AFHttpClient+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220CF1CB3B6CB00C9C7D2 /* AFHttpClient+Account.m */; };
 		572220E01CB7541E00C9C7D2 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 572220DF1CB7541E00C9C7D2 /* DetailContentCell.m */; };
@@ -1124,6 +1130,12 @@
 		34EDB5CA1CD34279001BB50C /* OtherEggViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherEggViewController.h; sourceTree = "<group>"; };
 		34EDB5CB1CD34279001BB50C /* OtherEggViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherEggViewController.m; sourceTree = "<group>"; };
 		34EDB5CD1CD3542A001BB50C /* opvideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opvideo.png; sourceTree = "<group>"; };
+		34FB24641D8F812800C78482 /* 开启视频_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开启视频_03.png"; sourceTree = "<group>"; };
+		34FB24651D8F812800C78482 /* 开启视频_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开启视频_05.png"; sourceTree = "<group>"; };
+		34FB24661D8F812800C78482 /* 上.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上.png"; sourceTree = "<group>"; };
+		34FB24671D8F812800C78482 /* 下.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下.png"; sourceTree = "<group>"; };
+		34FB24681D8F812800C78482 /* 右.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右.png"; sourceTree = "<group>"; };
+		34FB24691D8F812800C78482 /* 左.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "左.png"; sourceTree = "<group>"; };
 		3BB6EDD7054C07D15F9BB6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		570BA4F21CA234E0009AA2FC /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		570BA4F31CA234E0009AA2FC /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -1640,6 +1652,12 @@
 		344F02271C9FD5A00076CE62 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				34FB24641D8F812800C78482 /* 开启视频_03.png */,
+				34FB24651D8F812800C78482 /* 开启视频_05.png */,
+				34FB24661D8F812800C78482 /* 上.png */,
+				34FB24671D8F812800C78482 /* 下.png */,
+				34FB24681D8F812800C78482 /* 右.png */,
+				34FB24691D8F812800C78482 /* 左.png */,
 				3466DBC41CE5BE550023393E /* guide4.jpg */,
 				3466DBBE1CE5B93F0023393E /* guide1.jpg */,
 				3466DBBF1CE5B93F0023393E /* guide2.jpg */,
@@ -3618,7 +3636,7 @@
 				TargetAttributes = {
 					57666F4B1C96619700A52DBA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 86LKUHCT4N;
+						DevelopmentTeam = 454LPD78S8;
 					};
 				};
 			};
@@ -3660,6 +3678,7 @@
 				3466DBC11CE5B93F0023393E /* guide1.jpg in Resources */,
 				34144BD71CBFB1B3007C4498 /* MessageTableViewCell.xib in Resources */,
 				3481B3A61CBCB4A400A4344D /* selecting.png in Resources */,
+				34FB246D1D8F812800C78482 /* 下.png in Resources */,
 				7D825CD81CBCA4C800F4E216 /* WasCallViewController.xib in Resources */,
 				7D4961561D82656600B2B56B /* tab_my_dian@2x.png in Resources */,
 				34D27AE71CE0444D00244333 /* nopattion.png in Resources */,
@@ -3766,6 +3785,7 @@
 				34A218251CCDFF9700ADD8FF /* dialer-orange.png in Resources */,
 				344F02CB1CA2DA2C0076CE62 /* before_off.png in Resources */,
 				34A215D11CCDFD6F00ADD8FF /* nowebcamCIF.jpg in Resources */,
+				34FB246A1D8F812800C78482 /* 开启视频_03.png in Resources */,
 				344F025A1C9FEBDE0076CE62 /* juankfood_off.png in Resources */,
 				34A215CE1CCDFD6F00ADD8FF /* hold.wav in Resources */,
 				34A215D71CCDFD6F00ADD8FF /* sephonerc in Resources */,
@@ -3779,6 +3799,7 @@
 				57AFD66B1CE5AE1700B611FC /* launcher_icon@2x.png in Resources */,
 				7D3DA5B91CA3D2C7005BD38B /* sego.png in Resources */,
 				344F02581C9FEBDE0076CE62 /* feed_off.png in Resources */,
+				34FB246E1D8F812800C78482 /* 右.png in Resources */,
 				7D825D3C1CBCA88D00F4E216 /* update.png in Resources */,
 				34A215D31CCDFD6F00ADD8FF /* ring.wav in Resources */,
 				7DF147181CD0BB740046D726 /* xuanzhong_guize.png in Resources */,
@@ -3848,6 +3869,7 @@
 				7D49614F1D82652B00B2B56B /* tab_bangdan@2x.png in Resources */,
 				34A2181F1CCDFF9700ADD8FF /* chat_message_not_delivered.png in Resources */,
 				579CF1171CF3E8310091EA6D /* LaunchScreen.storyboard in Resources */,
+				34FB246B1D8F812800C78482 /* 开启视频_05.png in Resources */,
 				7D2F82001CAE25030097820B /* egg_bigKuang.png in Resources */,
 				7D825CEC1CBCA57A00F4E216 /* WifiViewController.xib in Resources */,
 				34EDB5CE1CD3542A001BB50C /* opvideo.png in Resources */,
@@ -3856,12 +3878,14 @@
 				7D825D3A1CBCA88D00F4E216 /* soundSlider.png in Resources */,
 				7D4961471D82646200B2B56B /* tab_squar@2x.png in Resources */,
 				344F02621C9FEBDE0076CE62 /* snap_off.png in Resources */,
+				34FB246C1D8F812800C78482 /* 上.png in Resources */,
 				34A2183C1CCDFF9700ADD8FF /* hello8000.wav in Resources */,
 				7D825D151CBCA65000F4E216 /* VideoViewController.xib in Resources */,
 				34A218411CCDFF9700ADD8FF /* oldphone-mono.wav in Resources */,
 				34A2183A1CCDFF9700ADD8FF /* rootca.pem in Resources */,
 				34A218481CCDFF9700ADD8FF /* toy-mono.wav in Resources */,
 				7D825D111CBCA65000F4E216 /* HeaderViewCollection.xib in Resources */,
+				34FB246F1D8F812800C78482 /* 左.png in Resources */,
 				34A218361CCDFF9700ADD8FF /* status-orange.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4218,7 +4242,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 86LKUHCT4N;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4265,7 +4288,7 @@
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib",
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpettest1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -4280,7 +4303,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 86LKUHCT4N;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4327,7 +4349,7 @@
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib",
 					"$(PROJECT_DIR)/petegg/Classes/Sephone/SP_sdk/libsephone-sdk/apple-darwin/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpettest1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sego.eggpet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -27,6 +27,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *right_btn;
 @property (strong, nonatomic) IBOutlet UIButton *left_btn;
 
+@property (strong, nonatomic) IBOutlet UIButton *left_up_btn;
+@property (strong, nonatomic) IBOutlet UIButton *right_down_btn;
 // 别人
 
 @property(nonatomic,strong)NSString * deviceoOth;
