@@ -392,7 +392,4 @@ static NSString * cellId = @"personDetailCellId";
 
 
 
-
-
-
 @end

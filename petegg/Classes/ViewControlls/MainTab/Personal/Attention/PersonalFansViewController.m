@@ -34,7 +34,7 @@ static NSString * cellId = @"personAttentionCeliddd";
 
 -(void)setupView{
     [super setupView];
-    self.tableView.frame = CGRectMake(0, 40, self.view.width, 563 * W_Hight_Zoom);
+    self.tableView.frame = CGRectMake(0, 40, self.view.width, self.view.height);
     //  [self.tableView registerClass:[PersonDataTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView registerClass:[PersonAttentionTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];

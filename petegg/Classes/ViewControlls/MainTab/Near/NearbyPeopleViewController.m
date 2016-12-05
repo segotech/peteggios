@@ -32,34 +32,20 @@ static NSString * cellId = @"111111111111";
 -(void)setupView{
     [super setupView];
     self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height );
-  //  [self.tableView registerClass:[PersonDataTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView registerClass:[NearTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-  //  [self initRefreshView];
+  
     
 }
 
 -(void)setupData{
     [super setupData];
     [[AFHttpClient sharedAFHttpClient]querNeighborhoodWithMid:[AccountManager sharedAccountManager].loginModel.mid pageIndex:1 pageSize:REQUEST_PAGE_SIZE complete:^(BaseModel *model) {
-//        if (page == START_PAGE_INDEX) {
-//            [self.dataSource removeAllObjects];
-//            [self.dataSource addObjectsFromArray:model.list];
-//        } else {
-//            [self.dataSource addObjectsFromArray:model.list];
-//        }
-//        
-//        if (model.list.count < REQUEST_PAGE_SIZE){
-//            self.tableView.footer.hidden = YES;
-//        }else{
-//            self.tableView.footer.hidden = NO;
-//        }
+
         if (model) {
             [self.dataSource addObjectsFromArray:model.list];
             [self.tableView reloadData];
         }
-       
-       // [self handleEndRefresh];
     }];
 }
 

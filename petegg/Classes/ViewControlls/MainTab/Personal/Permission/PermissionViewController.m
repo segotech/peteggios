@@ -153,12 +153,16 @@ static NSString * cellId = @"permiss2321312321";
 }
 
 -(void)quanButtonTouch:(UIButton *)sender{
+    //这里要先屏蔽掉按钮的点击事件，不然的话，会崩溃的
+    //这里连续点两次同一个地方会出现问题，i变成nil了，间歇性的
+    sender.userInteractionEnabled = NO;
     NSInteger i = sender.tag - 6789;
     PremissModel * model = self.dataSource[i];
     
     [[AFHttpClient sharedAFHttpClient]ruleModifyStatusWithMid:[AccountManager sharedAccountManager].loginModel.mid rid:model.rid complete:^(BaseModel *model) {
         [[AppUtil appTopViewController] showHint:model.retDesc];
         [self setupData];
+        sender.userInteractionEnabled = YES;
     }];
     
     
@@ -186,8 +190,6 @@ static NSString * cellId = @"permiss2321312321";
         
     
 
-
-
+ 
 }
-
 @end

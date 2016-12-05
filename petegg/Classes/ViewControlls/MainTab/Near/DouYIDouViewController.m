@@ -158,9 +158,9 @@ static NSString * cellId = @"douyidouCellId";
 //    NSMutableArray * arr =[[NSMutableArray alloc]init];
 //    [arr addObject:dic];
     
-            OtherEggViewController * other =[[OtherEggViewController alloc]init];
-            other.otherMid = model.mid;
-            [self.navigationController pushViewController:other animated:YES];
+    OtherEggViewController * other =[[OtherEggViewController alloc]init];
+    other.otherMid = model.mid;
+    [self.navigationController pushViewController:other animated:YES];
     
 }
 

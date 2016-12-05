@@ -29,7 +29,7 @@ static NSString * cellId = @"seacherCelliddddd";
     [self initTopView];
 }
 -(void)initTopView{
-    UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, 60 * W_Hight_Zoom, self.view.width, 40 * W_Hight_Zoom)];
+    UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0 * W_Wide_Zoom, CGRectGetMinY(self.view.frame) + 60, self.view.width, 40 * W_Hight_Zoom)];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
     UIImageView * headImage = [[UIImageView alloc]initWithFrame:CGRectMake(5 * W_Wide_Zoom, 11 * W_Hight_Zoom, 15 * W_Wide_Zoom, 20 * W_Hight_Zoom)];
@@ -55,7 +55,7 @@ static NSString * cellId = @"seacherCelliddddd";
     [topView addSubview:_searchBtn];
     [_searchBtn addTarget:self action:@selector(searchButtonTouch) forControlEvents:UIControlEventTouchUpInside];
     
-    self.tableView.frame = CGRectMake(0, 40 * W_Hight_Zoom, self.view.width, self.view.height);
+    self.tableView.frame = CGRectMake(0, CGRectGetMinY(self.view.frame) + 35, self.view.width, self.view.height);
     //  [self.tableView registerClass:[PersonDataTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView registerClass:[NearTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];

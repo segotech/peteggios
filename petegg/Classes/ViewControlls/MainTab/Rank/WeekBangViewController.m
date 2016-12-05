@@ -82,7 +82,7 @@ static NSString * cellId = @"ranksCellIdddd";
    // _rightLabel.text = @"NO.1";
     [topView addSubview:_rightLabel];
 }
-
+ 
 -(void)topImageTouch{
      RankModel * model = self.dataSource[0];
     PersonDetailViewController * personVc = [[PersonDetailViewController alloc]init];
@@ -156,8 +156,9 @@ static NSString * cellId = @"ranksCellIdddd";
     cell.rightLabel.text = [NSString stringWithFormat:@"NO.%@",model.ranking];
     if (indexPath.row < 2) {
         cell.rightLabel.textColor = [UIColor brownColor];
+    }else{
+        cell.rightLabel.textColor = [UIColor blackColor];
     }
-    
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
