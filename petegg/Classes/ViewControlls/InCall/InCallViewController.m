@@ -64,7 +64,7 @@
     [super viewWillAppear:animated];
     // Set observer
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callUpdateEvent:) name:kSephoneCallUpdate object:nil];
-      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:)name:UIApplicationWillResignActiveNotification object:nil]; //监听是否触发home键挂起程序.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:)name:UIApplicationWillResignActiveNotification object:nil]; //监听是否触发home键挂起程序.
     
     // Update on show
     SephoneCall *call_ = sephone_core_get_current_call([SephoneManager getLc]);
@@ -405,7 +405,6 @@
     
     NSString * str =@"clientAction.do?common=photoGraph&classes=appinterface&method=json";
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    
     if (isOth) {
         [dic setValue:deviceoOth forKey:@"deviceno"];
         [dic setValue:termidOth forKey:@"termid"];
@@ -435,7 +434,7 @@
 //  返回
 - (IBAction)backBtnClick:(UIButton *)sender {
     [self videoEnd];
-     [moveTimer invalidate];
+    [moveTimer invalidate];
     [SephoneManager terminateCurrentCallOrConference];
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -647,7 +646,7 @@
 
 - (void)overTime
 {
-      [moveTimer invalidate];
+    [moveTimer invalidate];
     self.right_btn.userInteractionEnabled = YES;
     self.left_btn.userInteractionEnabled = YES;
     self.top_btn.userInteractionEnabled = YES;

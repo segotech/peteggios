@@ -27,13 +27,13 @@
     
 }
 
-//广场
+//home
 @property (nonatomic, strong) UINavigationController* navSquareVC;
-//附近
+//寻找
 @property (nonatomic, strong) UINavigationController* navNearVC;
 //不倒蛋
 @property (strong, nonatomic) UINavigationController  *navEggVC;
-//榜单
+//好友
 @property (strong, nonatomic) UINavigationController  *navRankVC;
 //个人中心
 @property (strong, nonatomic) UINavigationController  *navPersonalVC;

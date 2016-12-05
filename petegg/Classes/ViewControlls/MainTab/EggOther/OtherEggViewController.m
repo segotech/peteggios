@@ -16,6 +16,9 @@
     UIButton * button0;
     UIImageView * imageStatus;
     NSString * money;
+    UIButton * btn;
+    UIButton * btn1;
+    
     
     
 }
@@ -163,6 +166,7 @@
         // 在线
         imageStatus.image =[UIImage imageNamed:@"egg_online.png"];
         [self btn_select];
+        [self initUIquiltuy];
         
       
     }
@@ -171,25 +175,25 @@
        imageStatus.image =[UIImage imageNamed:@"egg_calling.png"];
         button0.backgroundColor = GRAY_COLOR;
         [self btn_select];
-
+        [self initUIquiltuy];
         
     }
     else if ([status isEqualToString:@"ds004"]) {
         //正在上传
         imageStatus.image =[UIImage imageNamed:@"egg_upload.png"];
         [self btn_select];
-
+        [self initUIquiltuy];
         
     }else if([status isEqualToString:@"ds000"])
     {
         // 设备不存在
         imageStatus.image =[UIImage imageNamed:@"egg_offline.png"];
-        
+        [self initUIquiltuy];
     }
     else {
         // 离线
         imageStatus.image =[UIImage imageNamed:@"egg_offline.png"];
-    
+       [self btn_select];
 
     }
 
@@ -198,6 +202,123 @@
     [self.view addSubview:imageStatus];
     
 }
+
+
+
+
+- (void)initUIquiltuy
+{
+    
+    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(100* W_Wide_Zoom, 395*W_Hight_Zoom, 80, 50)];
+    label.text = @"画面质量:";
+    //  label.textColor =GRAY_COLOR;
+    
+    [self.view addSubview:label];
+    
+    
+    btn =[[UIButton alloc]initWithFrame:CGRectMake(180*W_Wide_Zoom, 405*W_Hight_Zoom, 45, 25)];
+    [btn setTitle:@"清晰" forState:UIControlStateNormal];
+    btn.titleLabel.font =[UIFont systemFontOfSize:14];
+    btn.userInteractionEnabled =YES;
+    btn.layer.borderColor =GRAY_COLOR.CGColor;
+    btn.layer.borderWidth = 0.3;
+    btn.backgroundColor = GREEN_COLOR;
+    btn.layer.masksToBounds = YES;
+    btn.layer.cornerRadius = 2;
+    
+    
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(beginTouch) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    btn1 =[[UIButton alloc]initWithFrame:CGRectMake(225*W_Wide_Zoom, 405*W_Hight_Zoom, 45,25)];
+    btn1.userInteractionEnabled = YES;
+    btn1.titleLabel.font =[UIFont systemFontOfSize:14];
+    [btn1 setTitle:@"流畅" forState:UIControlStateNormal];
+    btn1.backgroundColor = [UIColor whiteColor];
+    btn1.layer.borderColor =GRAY_COLOR.CGColor;
+    btn1.layer.borderWidth = 0.3;
+    btn1.layer.masksToBounds = YES;
+    btn1.layer.cornerRadius = 3;
+    [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(startBegin) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn1];
+    
+    
+}
+
+
+
+- (void)beginTouch
+{
+    
+    btn.backgroundColor = GREEN_COLOR;
+    btn1.backgroundColor =[UIColor whiteColor];
+    
+    NSLog(@"清晰");
+    NSString * service = @"clientAction.do?method=json&classes=appinterface&common=chooseVideoQuality";
+    
+    //  输入参数	mid：当前登录会员标识发 vtype:类型（r1流畅/r2清晰）
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:@"r2" forKey:@"vtype"];
+    [dic setValue:self.otherArr[0][@"mid"] forKey:@"mid"];
+    
+    [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            
+            NSLog(@"成功");
+            
+            
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+        
+        
+    }];
+    
+    
+}
+
+
+- (void)startBegin
+{
+    
+    btn.backgroundColor = [UIColor whiteColor];
+    btn1.backgroundColor =GREEN_COLOR;
+    NSLog(@"流畅");
+    
+    
+    
+    NSString * service = @"clientAction.do?method=json&classes=appinterface&common=chooseVideoQuality";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:@"r1" forKey:@"vtype"];
+    [dic setValue:self.otherArr[0][@"mid"] forKey:@"mid"];
+    
+    [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            
+            NSLog(@"成功");
+            
+            
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+        
+        
+    }];
+    
+    
+}
+
+
+
+
+
+
+
+
 
 
 /**

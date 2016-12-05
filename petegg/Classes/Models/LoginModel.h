@@ -88,4 +88,6 @@
 @property (nonatomic, copy) NSString<Optional> * type;
 
 @property (nonatomic, copy) NSString<Optional> * wechat;
+@property  (nonatomic,copy)NSString<Optional>* resolution;
+
 @end

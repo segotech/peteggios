@@ -275,7 +275,7 @@
      */
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200*W_Wide_Zoom, 20*W_Hight_Zoom)];
     _nameLabel.text = @"";
-    _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+90*W_Hight_Zoom);
+    _nameLabel.center = CGPointMake(self.view.center.x,_heandBtn.frame.origin.y+100*W_Hight_Zoom);
     _nameLabel.font = [UIFont systemFontOfSize:15];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.textColor = [UIColor whiteColor];

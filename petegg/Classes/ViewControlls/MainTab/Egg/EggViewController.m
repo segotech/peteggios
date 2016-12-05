@@ -19,6 +19,11 @@
     BOOL _isOpen;
     UIButton * _openButton;
     InCallViewController * _incallVC;
+    UIButton * btn;
+    UIButton * btn1;
+    NSString * bV;
+    
+    
     
     
 }
@@ -31,7 +36,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
- 
+
+    
     [self setNavTitle: NSLocalizedString(@"tabEgg", nil)];
     
     UIButton * btnFb2 =[UIButton buttonWithType:UIButtonTypeCustom];
@@ -246,7 +252,7 @@
     NSString * mid =[AccountManager sharedAccountManager].loginModel.mid;
     NSString * devico =[AccountManager sharedAccountManager].loginModel.deviceno;
     
-   NSString * service = @"clientAction.do?common=queryDeviceStatus&classes=appinterface&method=json";
+    NSString * service = @"clientAction.do?common=queryDeviceStatus&classes=appinterface&method=json";
     
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     [dic setValue:@"a" forKey:@"quantity"];
@@ -295,6 +301,7 @@
         _yesDeviceImageView.image =[UIImage imageNamed:@"egg_online.png"];
         _isOpen = YES;
         [self buttonOpen];
+         [self initUIquiltuy];
     }
     else if ([status isEqualToString:@"ds003"]) {
         //通话
@@ -302,13 +309,14 @@
         _yesDeviceImageView.image =[UIImage imageNamed:@"egg_calling.png"];
         _isOpen = NO;
         _openButton.backgroundColor = GRAY_COLOR;
-        
+         [self initUIquiltuy];
         
     }
     else if ([status isEqualToString:@"ds004"]) {
         //正在上传
         _yesDeviceImageView.image =[UIImage imageNamed:@"egg_upload.png"];
         [self buttonOpen];
+         [self initUIquiltuy];
         
     }else if([status isEqualToString:@"ds000"])
     {
@@ -320,16 +328,24 @@
     }
     else {
         // 离线
+         [self buttonOpen];
         _yesDeviceImageView.image =[UIImage imageNamed:@"egg_offline.png"];
         [_noDeviceImageView removeFromSuperview];
+        [self initUIquiltuy];
         
     }
     [self.view addSubview:_yesDeviceImageView];
     
 }
 
+
+
+
+
 - (void)buttonOpen
 {
+    
+    
     [_noDeviceImageView removeFromSuperview];
     [_openButton removeFromSuperview];
     _openButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -343,9 +359,168 @@
     [_openButton.layer setMasksToBounds:YES];
     [_openButton.layer setCornerRadius:5.0];
     [_openButton addTarget:self action:@selector(btn_set:) forControlEvents:UIControlEventTouchUpInside];
-    _openButton.frame = CGRectMake(70*W_Wide_Zoom, 420*W_Hight_Zoom, 240*W_Wide_Zoom, 40*W_Hight_Zoom);
+    _openButton.frame = CGRectMake(70*W_Wide_Zoom, 460*W_Hight_Zoom, 240*W_Wide_Zoom, 40*W_Hight_Zoom);
     [self.view addSubview:_openButton];
+    
+    
+    
+    
+    
+
+    
 }
+
+- (void)initUIquiltuy
+{
+     bV =[AccountManager sharedAccountManager].loginModel.resolution;
+    NSUserDefaults * defaule =[NSUserDefaults standardUserDefaults];
+    
+    
+    
+    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(100* W_Wide_Zoom, 395*W_Hight_Zoom, 80, 50)];
+    label.text = @"画面质量:";
+  //  label.textColor =GRAY_COLOR;
+    
+    [self.view addSubview:label];
+    
+    
+    btn =[[UIButton alloc]initWithFrame:CGRectMake(180*W_Wide_Zoom, 405*W_Hight_Zoom, 45, 25)];
+    [btn setTitle:@"清晰" forState:UIControlStateNormal];
+    btn.titleLabel.font =[UIFont systemFontOfSize:14];
+    btn.userInteractionEnabled =YES;
+    btn.layer.borderColor =GRAY_COLOR.CGColor;
+    btn.layer.borderWidth = 0.3;
+    btn.layer.masksToBounds = YES;
+    btn.layer.cornerRadius = 2;
+    
+    
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(beginTouch) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+     btn1 =[[UIButton alloc]initWithFrame:CGRectMake(225*W_Wide_Zoom, 405*W_Hight_Zoom, 45,25)];
+    btn1.userInteractionEnabled = YES;
+    btn1.titleLabel.font =[UIFont systemFontOfSize:14];
+    [btn1 setTitle:@"流畅" forState:UIControlStateNormal];
+    btn1.layer.borderColor =GRAY_COLOR.CGColor;
+    btn1.layer.borderWidth = 0.3;
+    btn1.layer.masksToBounds = YES;
+    btn1.layer.cornerRadius = 3;
+    [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(startBegin) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSString * str = [defaule objectForKey:@"vb"] ;
+    
+    if ([AppUtil isBlankString:str]) {
+        
+        if ([bV isEqualToString:@"r1"]) {
+            // 流畅
+            btn1.backgroundColor = GREEN_COLOR;
+            btn.backgroundColor =[UIColor whiteColor];
+            
+        }else
+        {
+            // 清晰
+            
+            btn1.backgroundColor =[UIColor whiteColor];
+            btn.backgroundColor =GREEN_COLOR;
+        }
+    }else
+        
+    {
+        if ([str isEqualToString:@"r1"]) {
+            
+            btn1.backgroundColor = GREEN_COLOR;
+            btn.backgroundColor =[UIColor whiteColor];
+        }else
+        {
+            
+            btn1.backgroundColor =[UIColor whiteColor];
+            btn.backgroundColor =GREEN_COLOR;
+        }
+        
+        
+    }
+    [self.view addSubview:btn1];
+    
+    
+    
+    
+}
+
+
+
+- (void)beginTouch
+{
+    
+    btn.backgroundColor = GREEN_COLOR;
+    btn1.backgroundColor =[UIColor whiteColor];
+    
+     NSLog(@"清晰");
+      NSString * service = @"clientAction.do?method=json&classes=appinterface&common=chooseVideoQuality";
+
+    //  输入参数	mid：当前登录会员标识发 vtype:类型（r1流畅/r2清晰）
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:@"r2" forKey:@"vtype"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+    
+    [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            NSLog(@"成功");
+            
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+        
+        
+    }];
+    
+    NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+    [defaults setValue:@"r2" forKey:@"vb"];
+    [defaults synchronize];
+    
+
+    
+}
+
+
+- (void)startBegin
+{
+    
+    btn.backgroundColor = [UIColor whiteColor];
+    btn1.backgroundColor =GREEN_COLOR;
+    NSLog(@"流畅");
+    
+    
+    
+     NSString * service = @"clientAction.do?method=json&classes=appinterface&common=chooseVideoQuality";
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    [dic setValue:@"r1" forKey:@"vtype"];
+    [dic setValue:[AccountManager sharedAccountManager].loginModel.mid forKey:@"mid"];
+    
+    [AFNetWorking postWithApi:service parameters:dic success:^(id json) {
+        if ([json[@"jsondata"][@"retCode"] isEqualToString:@"0000"]) {
+            
+            NSLog(@"成功");
+            
+            
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+        
+        
+    }];
+    
+    NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
+    [defaults setValue:@"r1" forKey:@"vb"];
+    [defaults synchronize];
+
+    
+
+}
+
 
 // 点击开启视频按钮
 - (void)btn_set:(UIButton * )sender
